@@ -24,6 +24,8 @@ import static java.lang.Character.toLowerCase;
  * 输入: "race a car"
  * 输出: false
  * 解释："raceacar" 不是回文串
+ *
+ * 提示：解题思路：双指针法，收尾指针对比
  */
 @Slf4j
 public class NO125_IsPalindrome {
@@ -34,23 +36,53 @@ public class NO125_IsPalindrome {
     }
 
     public boolean isPalindrome(String s) {
-        //解题思路：双指针法，收尾指针对比
         int start = 0;
         int end = s.length() - 1;
+
         while (start < end) {
-            //如果头尾不是字母或数字则往丢弃，看下一个字符
-            if(!isLetterOrDigit(s.charAt(start))){
+            if (!Character.isLetterOrDigit(s.charAt(start))) {
                 start++;
                 continue;
             }
-            if(!isLetterOrDigit(s.charAt(end))){
+
+            if (!Character.isLetterOrDigit(s.charAt(end))) {
                 end--;
                 continue;
             }
-            if (toLowerCase(s.charAt(start++)) != toLowerCase(s.charAt(end--)))
+
+            if (toLowerCase(s.charAt(start)) != toLowerCase(s.charAt(end)))
                 return false;
+
+            start++;
+            end--;
         }
         return true;
     }
 
 }
+
+
+
+
+
+/*
+public boolean isPalindrome(String s) {
+    //解题思路：双指针法，收尾指针对比
+    int start = 0;
+    int end = s.length() - 1;
+    while (start < end) {
+        //如果头尾不是字母或数字则往丢弃，看下一个字符
+        if(!isLetterOrDigit(s.charAt(start))){
+            start++;
+            continue;
+        }
+        if(!isLetterOrDigit(s.charAt(end))){
+            end--;
+            continue;
+        }
+        if (toLowerCase(s.charAt(start++)) != toLowerCase(s.charAt(end--)))
+            return false;
+    }
+    return true;
+}
+*/
