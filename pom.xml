@@ -14,7 +14,7 @@
         <module>leetcode-easy</module>
         <module>leetcode-normal</module>
         <module>leetcode-hard</module>-->
-        <module>interval</module>
+        <module>demo-test</module>
         <!--<module>jedis-demo</module>
         <module>springboot-demo</module>
         <module>leetcode-yfd</module>
