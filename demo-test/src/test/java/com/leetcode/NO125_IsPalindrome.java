@@ -50,7 +50,8 @@ public class NO125_IsPalindrome {
                 continue;
             }
 
-            if (toLowerCase(s.charAt(start)) != toLowerCase(s.charAt(end)))
+            if (Character.toLowerCase(s.charAt(start))
+                != Character.toLowerCase(s.charAt(end)))
                 return false;
 
             start++;
