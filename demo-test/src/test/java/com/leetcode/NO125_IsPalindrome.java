@@ -3,6 +3,7 @@
  */
 package com.leetcode;
 
+import com.leetcode.util.Logable;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -35,6 +36,7 @@ public class NO125_IsPalindrome {
         info(isPalindrome("A man, a plan, a canal：Panama"));
     }
 
+    @Logable
     public boolean isPalindrome(String s) {
         int start = 0;
         int end = s.length() - 1;
