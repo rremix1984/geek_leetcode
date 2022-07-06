@@ -58,4 +58,15 @@ public class NO11_ContainerWithMostWater {
 
 
 
-
+/**
+    public int maxArea(int[] a) {
+        int max = 0;
+        for (int i = 0; i < a.length -1; ++i) {
+            for (int j = i + 1; j<a.length; ++j) {
+                int area = (j-i) * Math.min(a[i], a[j]);
+                max = Math.max(area, max);
+            }
+        }
+        return max;
+    }
+*/
