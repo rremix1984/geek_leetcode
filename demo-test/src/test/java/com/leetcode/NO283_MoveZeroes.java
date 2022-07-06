@@ -5,6 +5,7 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.SwapUtil.swap;
 
 /**
  * NO.283 Move Zeroes 移动零
@@ -27,7 +28,13 @@ public class NO283_MoveZeroes {
     }
 
     public void moveZeroes(int nums[]) {
-        return;
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                swap(nums, i, j);
+                j++;
+            }
+        }
     }
 
 }
