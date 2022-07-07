@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
 
+/**
+ * 难度【简单】
+ *
+ */
 public class NO70_ClimbStairs {
 
     @Test
