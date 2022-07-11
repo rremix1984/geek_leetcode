@@ -38,13 +38,18 @@ public class NO11_ContainerWithMostWater {
 
     @Test
     public void test() {
-        info(maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));// 49
+//        info(maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));// 49
 //        info(maxArea(new int[]{1, 1}));// 1
-//        info(maxArea(new int[]{4, 3, 2, 1, 4}));// 16
+        info(maxArea(new int[]{4, 3, 2, 1, 4}));// 16
     }
 
     public int maxArea(int[] a) {
-        return -1;
+        int max = 0;
+        for (int i = 0, j = a.length - 1; i < j;) {
+            int min = a[i] < a[j]?a[i++]:a[j--];
+            max = Math.max(max, (j - i + 1) * min);
+        }
+        return max;
     }
 
 }
