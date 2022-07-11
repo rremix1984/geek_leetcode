@@ -4,9 +4,7 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import java.util.Stack;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
