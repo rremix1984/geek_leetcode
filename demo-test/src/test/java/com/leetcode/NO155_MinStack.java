@@ -8,7 +8,7 @@ import java.util.Stack;
 import static com.leetcode.util.LogUtil.info;
 
 /**
- * 155. MinStack
+ * 155. MinStack（辅助栈法 ）
  * 设计一个支持 push ，pop ，top 操作，
  * 并能在常数时间内检索到最小元素的栈。
  *
