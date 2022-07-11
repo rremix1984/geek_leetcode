@@ -63,8 +63,10 @@ public class NO15_ThreeSum {
              while (lo < hi) {
                  if (nums[lo] + nums[hi] == sum) {
                      res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
-                     while (lo < hi && nums[lo] == nums[lo + 1]) lo++;
-                     while (lo < hi && nums[hi] == nums[hi - 1]) hi--;
+                     while (lo < hi && nums[lo] == nums[lo + 1])
+                        lo++;
+                     while (lo < hi && nums[hi] == nums[hi - 1])
+                        hi--;
                      lo++;
                      hi--;
                  } else if (nums[lo] + nums[hi] < sum) {
