@@ -27,8 +27,14 @@ public class NO84_LargestRectangleArea {
         info(largestRectangleArea(new int[]{2, 1, 5, 6, 2, 3}));
     }
 
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea(int[] h) {
+        if (h.length == 0) {
+            return 0;
+        }
 
+        for (int i = 0; i < h.length; i++) {
+
+        }
         return -1;
     }
 }
