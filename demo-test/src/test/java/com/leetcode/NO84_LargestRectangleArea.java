@@ -28,14 +28,17 @@ public class NO84_LargestRectangleArea {
     }
 
     public int largestRectangleArea(int[] h) {
-        if (h.length == 0) {
-            return 0;
-        }
-
+        int maxarea = 0;
         for (int i = 0; i < h.length; i++) {
-
+            for (int j = i; j < h.length; j++) {
+                int minheight = Integer.MAX_VALUE;
+                for (int k = i; k <= j; k++) {
+                    minheight = Math.min(minheight, h[k]);
+                }
+                maxarea = Math.max(maxarea, minheight * (j - i + 1));
+            }
         }
-        return -1;
+        return maxarea;
     }
 }
 
@@ -47,9 +50,20 @@ public class NO84_LargestRectangleArea {
 
 
 
-/**
-public int largestRectangleArea(int[] heights) {
 
-    return -1;
+
+/*
+public int largestRectangleArea(int[] h) {
+    int maxarea = 0;
+    for (int i = 0; i < h.length; i++) {
+        for (int j = i; j < h.length; j++) {
+            int minheight = Integer.MAX_VALUE;
+            for (int k = i; k <= j; k++) {
+                minheight = Math.min(minheight, h[k]);
+            }
+            maxarea = Math.max(maxarea, minheight * (j - i + 1));
+        }
+    }
+    return maxarea;
 }
 */
