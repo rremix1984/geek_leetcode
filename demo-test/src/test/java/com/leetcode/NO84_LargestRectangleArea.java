@@ -40,16 +40,13 @@ public class NO84_LargestRectangleArea {
         Stack<Integer> stack = new Stack<>();
         stack.push(-1);
         for (int i = 0; i < h.length; i++) {
-            while (stack.peek() != -1 && h[i] <= stack.peek()) {
+            while (stack.peek() != -1 && h[i] <= h[stack.peek()]) {
                 maxarea = max(maxarea, h[stack.pop()] * (i - stack.peek() - 1));
             }
             stack.push(i);
         }
-        while (stack.peek() != -1) {
-            int t = stack.pop();
-            info(h[t] + "|" + t);
-            maxarea = max(maxarea, h[t] * (t - 1));
-        }
+        while (stack.peek() != -1)
+            maxarea = max(maxarea, h[stack.pop()] * (h.length - stack.peek() - 1));
         return maxarea;
     }
 
