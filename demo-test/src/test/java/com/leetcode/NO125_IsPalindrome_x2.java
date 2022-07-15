@@ -6,6 +6,9 @@ package com.leetcode;
 import com.leetcode.util.Logable;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
+import java.util.LinkedList;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -36,24 +39,7 @@ public class NO125_IsPalindrome_x2 {
 
     @Logable
     public boolean isPalindrome(String s) {
-        int start = 0;
-        int end = s.length() - 1;
-        char[] chars = s.toCharArray();
-        while (start < end) {
-            if (chars[start] == ' ' || !Character.isLetterOrDigit(chars[start])) {
-                start++;
-                continue;
-            }
 
-            if (chars[end] == ' ' || !Character.isLetterOrDigit(chars[end])) {
-                end--;
-                continue;
-            }
-
-            if (Character.toLowerCase(chars[start++]) != Character.toLowerCase(chars[end--])) {
-                return false;
-            }
-        }
         return true;
     }
 
