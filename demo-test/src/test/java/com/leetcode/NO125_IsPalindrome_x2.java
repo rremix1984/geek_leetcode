@@ -7,8 +7,6 @@ import com.leetcode.util.Logable;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Character.isLetterOrDigit;
-import static java.lang.Character.toLowerCase;
 
 /**
  * 回文字符串
@@ -29,7 +27,7 @@ import static java.lang.Character.toLowerCase;
  * 提示：解题思路：双指针法，收尾指针对比
  */
 @Slf4j
-public class NO125_IsPalindrome {
+public class NO125_IsPalindrome_x2 {
 
     @Test
     public void test() {
@@ -40,21 +38,21 @@ public class NO125_IsPalindrome {
     public boolean isPalindrome(String s) {
         int start = 0;
         int end = s.length() - 1;
-
+        char[] chars = s.toCharArray();
         while (start < end) {
-            if (!Character.isLetterOrDigit(s.charAt(start))) {
+            if (chars[start] == ' ' || !Character.isLetterOrDigit(chars[start])) {
                 start++;
                 continue;
             }
 
-            if (!Character.isLetterOrDigit(s.charAt(end))) {
+            if (chars[end] == ' ' || !Character.isLetterOrDigit(chars[end])) {
                 end--;
                 continue;
             }
 
-            if (Character.toLowerCase(s.charAt(start++))
-                != Character.toLowerCase(s.charAt(end--)))
+            if (Character.toLowerCase(chars[start++]) != Character.toLowerCase(chars[end--])) {
                 return false;
+            }
         }
         return true;
     }
