@@ -35,7 +35,8 @@ public class NO239_MaxSlidingWindow {
     }
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-
+        int[] res = new int[nums.length - k + 1];
+        return res;
     }
 
 }
