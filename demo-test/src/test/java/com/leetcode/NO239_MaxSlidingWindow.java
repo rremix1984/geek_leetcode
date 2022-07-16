@@ -36,9 +36,28 @@ public class NO239_MaxSlidingWindow {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] res = new int[nums.length - k + 1];
+        int idx = 0;
+        LinkedList<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < nums.length; i++) {
+            // 头部出队列
+            if (!queue.isEmpty() && i - k == queue.peekFirst()) {
+                queue.removeFirst();
+            }
+
+            // 尾部出队列
+            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]) {
+                queue.removeLast();
+            }
+            // 尾部入队列
+            queue.addLast(i);
+
+            // 填数据进入结果集数组
+            if (i >= k - 1) {
+                res[idx++] = nums[queue.peekFirst()];
+            }
+        }
         return res;
     }
-
 }
 
 
