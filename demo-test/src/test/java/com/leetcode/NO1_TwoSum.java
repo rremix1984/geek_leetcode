@@ -5,18 +5,27 @@ package com.leetcode;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.leetcode.util.LogUtil.info;
 
 public class NO1_TwoSum {
 
     @Test
     public void test() {
-        info(twoSum(new int[]{2,2,4}, 6));// 6
+        info(twoSum(new int[]{2, 2, 4}, 6));// 6
     }
 
     public int[] twoSum(int[] nums, int target) {
-        int[] a = new int[2];
-
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int comp = target - nums[i];
+            if (map.containsKey(comp)) {
+                return new int[]{ map.get(comp), i};
+            }
+            map.put(nums[i], i);
+        }
         return new int[0];
     }
 
