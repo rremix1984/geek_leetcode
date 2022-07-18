@@ -78,7 +78,7 @@ public List<Integer> postorderTraversal(TreeNode root) {
 
     Stack<TreeNode> stack = new Stack<>();
     stack.push(root);
-    while(!stack.isEmpty()){
+    while (!stack.isEmpty()) {
         TreeNode node = stack.pop();
 
         //和传统先序遍历不一样，先将左结点入栈

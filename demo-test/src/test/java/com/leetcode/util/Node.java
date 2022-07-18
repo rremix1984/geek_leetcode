@@ -23,13 +23,13 @@ public class Node {
 
     public Node(int val) {
         this.val = val;
-        this.children = null;
+        this.children = new ArrayList<>();
     }
 
     public Node(int... vals) {
         this.val = vals[0];
         this.children = new ArrayList<>();
-        for (int i=1;i<vals.length;i++) {
+        for (int i = 1; i < vals.length; i++) {
             int t = vals[i];
             this.children.add(new Node(t));
         }
