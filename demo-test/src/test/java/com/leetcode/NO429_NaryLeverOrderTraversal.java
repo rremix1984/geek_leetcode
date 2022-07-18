@@ -31,6 +31,20 @@ public class NO429_NaryLeverOrderTraversal {
 
     public List<List<Integer>> levelOrder(Node root) {
         List<List<Integer>> ans = new ArrayList<>();
+        Deque<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int cnt = queue.size();
+            for (int i = 0; i < cnt; i++) {
+                Node poll = queue.poll();
+                level.add(poll.val);
+                for (Node child : poll.children) {
+                    queue.offer(child);
+                }
+            }
+            ans.add(level);
+        }
         return ans;
     }
 
@@ -59,7 +73,8 @@ public List<List<Integer>> levelOrder(Node root) {
     queue.offer(root);
     while (!queue.isEmpty()) {
         List<Integer> level = new ArrayList<>();
-        for (int i = 0; i < queue.size(); i++) {
+        int cnt = queue.size();
+        for (int i = 0; i < cnt; i++) {
             Node cur = queue.poll();
             level.add(cur.val);
             for (Node child : cur.children)
