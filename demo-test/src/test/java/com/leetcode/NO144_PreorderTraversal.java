@@ -53,8 +53,10 @@ public List<Integer> preorderTraversal(TreeNode root) {
     while (!stack.isEmpty()) {
         TreeNode node = stack.pop();
         res.add(node.val);
+
         if (node.right != null)
             stack.push(node.right);
+
         if (node.left != null)
             stack.push(node.left);
     }

@@ -5,7 +5,6 @@ package com.leetcode;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -31,18 +30,6 @@ public class NO94_InorderTraversal_x2 {
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
-        Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-            TreeNode node = stack.pop();
-            res.add(node.val);
-            root = node.right;
-        }
         return res;
     }
 
@@ -61,20 +48,37 @@ public class NO94_InorderTraversal_x2 {
 /**
 public List<Integer> inorderTraversal(TreeNode root) {
     List<Integer> res = new ArrayList<>();
-    if (root == null) {
+    if (root == null)
         return res;
-    }
     Stack<TreeNode> stack = new Stack<>();
-    TreeNode cur = root;
-    while (cur != null || !stack.isEmpty()) {
-        while (cur != null) {
-            stack.push(cur);
-            cur = cur.left;
+    while (root != null || !stack.isEmpty()) {
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
         }
         TreeNode node = stack.pop();
         res.add(node.val);
-        cur = node.right;
+        root = node.right;
     }
     return res;
+}
+
+// 方案2
+List<Integer> res = new ArrayList<>();
+public List<Integer> inorderTraversal(TreeNode root) {
+    inorder(root);
+    return res;
+}
+
+public void inorder(TreeNode root) {
+    if (root == null)
+        return;
+    if (root.left != null)
+        inorder(root.left);
+
+    res.add(root.val);
+
+    if (root.right != null)
+        inorder(root.right);
 }
 */

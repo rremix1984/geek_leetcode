@@ -30,7 +30,10 @@ public class NO145_PostorderTraversal {
 
     @Test
     public void test() {
-        info(postorderTraversal(new TreeNode(1, null, new TreeNode(2,3))));
+        info(postorderTraversal(
+                new TreeNode(1,
+                        null, new TreeNode(2,
+                                    3))));
     }
 
 
