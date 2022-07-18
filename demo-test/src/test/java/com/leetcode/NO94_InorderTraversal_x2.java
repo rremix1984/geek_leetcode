@@ -31,16 +31,17 @@ public class NO94_InorderTraversal_x2 {
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
+        if (root == null)
+            return res;
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);
-                cur = cur.left;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
             TreeNode node = stack.pop();
             res.add(node.val);
-            cur = node.right;
+            root = node.right;
         }
         return res;
     }

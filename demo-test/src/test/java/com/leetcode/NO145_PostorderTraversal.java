@@ -36,25 +36,6 @@ public class NO145_PostorderTraversal {
 
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if(root == null)
-            return res;
-
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while(!stack.isEmpty()){
-            TreeNode node = stack.pop();
-
-            //和传统先序遍历不一样，先将左结点入栈
-            if(node.left != null)
-                stack.push(node.left);
-
-            //后将右结点入栈
-            if(node.right != null)
-                stack.push(node.right);
-
-            //逆序添加结点值
-            res.add(0, node.val);
-        }
         return res;
     }
 }
@@ -83,5 +64,31 @@ private void postorder(TreeNode root) {
     postorder(root.left);
     postorder(root.right);
     res.add(root.val);
+}
+
+
+// 方法2
+public List<Integer> postorderTraversal(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    if(root == null)
+        return res;
+
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+    while(!stack.isEmpty()){
+        TreeNode node = stack.pop();
+
+        //和传统先序遍历不一样，先将左结点入栈
+        if(node.left != null)
+            stack.push(node.left);
+
+        //后将右结点入栈
+        if(node.right != null)
+            stack.push(node.right);
+
+        //逆序添加结点值
+        res.add(0, node.val);
+    }
+    return res;
 }
 */
