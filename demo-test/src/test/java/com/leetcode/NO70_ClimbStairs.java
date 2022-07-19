@@ -15,20 +15,12 @@ public class NO70_ClimbStairs {
 
     @Test
     public void test() {
-        info(climbStairs(3));// 3
+        info(climbStairs(4));// 5
+        info(climbStairs(10));// 89
     }
 
     public int climbStairs(int n) {
-        if (n <= 3)
-            return n;
-        int n_1 = 2;
-        int n_2 = 1;
-        for (int i = 3; i <= n; i++) {
-            int tmp = n_1;
-            n_1 = n_2 + n_1;
-            n_2 = tmp;
-        }
-        return n_1;
+        return -1;
     }
 }
 
