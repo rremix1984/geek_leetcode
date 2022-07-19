@@ -5,9 +5,6 @@ package com.leetcode;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
@@ -24,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         输入: strs = [""]
         输出: [[""]]
 */
-public class NO49_GroupAnagrams {
+public class NO49_GroupAnagrams_x2 {
 
     @Test
     public void test() {

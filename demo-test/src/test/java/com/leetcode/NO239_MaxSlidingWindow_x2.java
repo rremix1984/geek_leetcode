@@ -27,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
  *  1  3  -1  -3 [5  3  6] 7       6
  *  1  3  -1  -3  5 [3  6  7]      7
  */
-public class NO239_MaxSlidingWindow {
+public class NO239_MaxSlidingWindow_x2 {
 
     @Test
     public void test(){

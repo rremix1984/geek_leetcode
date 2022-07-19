@@ -27,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
  *  输出：[null,null,null,null,-3,null,0,-2]
  *
  */
-public class NO155_MinStack {
+public class NO155_MinStack_x2 {
 
     @Test
     public void test() {

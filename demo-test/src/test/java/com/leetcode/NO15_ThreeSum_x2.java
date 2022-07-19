@@ -5,8 +5,6 @@ package com.leetcode;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
      输入：nums = []
      输出：[]
  */
-public class NO15_ThreeSum {
+public class NO15_ThreeSum_x2 {
 
     @Test
     public void test() {

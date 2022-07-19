@@ -34,7 +34,7 @@ import static com.leetcode.util.LogUtil.info;
  *
  *      [4,3,2,1,4] = 16
  */
-public class NO11_ContainerWithMostWater {
+public class NO11_ContainerWithMostWater_x2 {
 
     @Test
     public void test() {
@@ -45,10 +45,6 @@ public class NO11_ContainerWithMostWater {
 
     public int maxArea(int[] a) {
         int max = 0;
-        for (int i = 0, j = a.length - 1; i < j;) {
-            int min = a[i] < a[j]?a[i++]:a[j--];
-            max = Math.max(max, (j - i + 1) * min);
-        }
         return max;
     }
 

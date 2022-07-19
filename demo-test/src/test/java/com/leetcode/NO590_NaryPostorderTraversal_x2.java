@@ -4,7 +4,6 @@
 package com.leetcode;
 
 import com.leetcode.util.Node;
-import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [1,null,3,2,4,null,5,6]
         输出：[5, 6, 3, 2, 4, 1]
 */
-public class NO590_NaryPostorderTraversal {
+public class NO590_NaryPostorderTraversal_x2 {
 
     @Test
     public void test() {

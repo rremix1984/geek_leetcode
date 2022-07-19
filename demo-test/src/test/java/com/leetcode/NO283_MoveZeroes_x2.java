@@ -18,7 +18,7 @@ import static com.leetcode.util.SwapUtil.swap;
  *    输出: [1,3,12,0,0]
  *  @author wangxiaozhe
  */
-public class NO283_MoveZeroes {
+public class NO283_MoveZeroes_x2 {
 
     @Test
     public void test() {

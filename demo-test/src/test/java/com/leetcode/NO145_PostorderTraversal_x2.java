@@ -7,9 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
 
@@ -26,7 +24,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [1]
         输出：[1]
 */
-public class NO145_PostorderTraversal {
+public class NO145_PostorderTraversal_x2 {
 
     @Test
     public void test() {

@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static com.leetcode.util.LogUtil.info;
 
-public class NO1_TwoSum {
+public class NO1_TwoSum_x2 {
 
     @Test
     public void test() {

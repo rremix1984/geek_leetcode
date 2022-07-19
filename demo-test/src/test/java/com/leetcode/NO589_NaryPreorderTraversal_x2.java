@@ -16,7 +16,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [1, null, 3, 2, 4, null, 5, 6]
         输出：[1, 3, 5, 6, 2, 4]
 */
-public class NO589_NaryPreorderTraversal {
+public class NO589_NaryPreorderTraversal_x2 {
 
     @Test
     public void test() {

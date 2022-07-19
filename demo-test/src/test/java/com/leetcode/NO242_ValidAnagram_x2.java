@@ -18,7 +18,7 @@ import static com.leetcode.util.LogUtil.info;
         输入: s = "rat", t = "car"
         输出: false
 */
-public class NO242_ValidAnagram {
+public class NO242_ValidAnagram_x2 {
 
     @Test
     public void test() {

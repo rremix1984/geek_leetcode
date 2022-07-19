@@ -24,7 +24,7 @@ import static com.leetcode.util.LogUtil.info;
  *  输入：s = "()[]{}"
  *  输出：true
  */
-public class NO20_IsValid {
+public class NO20_IsValid_x2 {
 
     @Test
     public void test(){

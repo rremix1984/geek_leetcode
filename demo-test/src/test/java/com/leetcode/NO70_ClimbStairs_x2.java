@@ -11,7 +11,7 @@ import static com.leetcode.util.LogUtil.info;
  * 难度【简单】
  *
  */
-public class NO70_ClimbStairs {
+public class NO70_ClimbStairs_x2 {
 
     @Test
     public void test() {
@@ -33,7 +33,7 @@ public class NO70_ClimbStairs {
 
 /**
 public int climbStairs(int n) {
-    if (n==1)
+    if (n == 1)
         return 1;
     int s2 = 1;
     int s1 = 2;
