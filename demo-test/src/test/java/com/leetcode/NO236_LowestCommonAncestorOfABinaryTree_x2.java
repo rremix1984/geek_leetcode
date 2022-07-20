@@ -4,6 +4,7 @@
 package com.leetcode;
 
 import com.leetcode.util.TreeNode;
+import lombok.var;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
