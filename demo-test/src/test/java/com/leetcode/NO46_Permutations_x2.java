@@ -23,7 +23,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：nums = [1]
         输出：[[1]]
 */
-public class NO46_Permutations {
+public class NO46_Permutations_x2 {
 
     @Test
     public void test() {
