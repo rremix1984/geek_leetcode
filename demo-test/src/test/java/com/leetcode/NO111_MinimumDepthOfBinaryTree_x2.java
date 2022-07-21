@@ -7,6 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Math.min;
 
 /**
     111. 二叉树的最小深度
@@ -21,7 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [2,null,3,null,4,null,5,null,6]
         输出：5
 */
-public class NO111_MinimumDepthOfBinaryTree {
+public class NO111_MinimumDepthOfBinaryTree_x2 {
 
     @Test
     public void test() {
@@ -35,20 +36,39 @@ public class NO111_MinimumDepthOfBinaryTree {
 null, new TreeNode(3,
         null, new TreeNode(4,
                 null, new TreeNode(5,
-                        null, new TreeNode(6)))))));
+                        null, new TreeNode(6))))))); // 5
     }
 
     public int minDepth(TreeNode root) {
-        if (root == null)
-            return 0;
-        if (root.left == null)
-            return minDepth(root.right) + 1;
-
-        if (root.right == null)
-            return minDepth(root.left) + 1;
-
-        return Math.min(
-                minDepth(root.left),
-                minDepth(root.right)) + 1;
+        return 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1  递归
+public int minDepth(TreeNode root) {
+    if (root == null)
+        return 0;
+
+    if (root.left == null)
+        return minDepth(root.right) + 1;
+
+    if (root.right == null)
+        return minDepth(root.left) + 1;
+
+    return Math.min(
+            minDepth(root.left),
+            minDepth(root.right)) + 1;
+}
+*/
