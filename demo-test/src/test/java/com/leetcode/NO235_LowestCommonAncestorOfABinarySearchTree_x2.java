@@ -33,7 +33,7 @@ import static com.leetcode.util.LogUtil.info;
     若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
     若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值；
 */
-public class NO235_LowestCommonAncestorOfABinarySearchTree {
+public class NO235_LowestCommonAncestorOfABinarySearchTree_x2 {
 
     @Test
     public void test() {
@@ -59,17 +59,7 @@ new TreeNode(0), new TreeNode(4,
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (p.val > q.val) {
-            TreeNode tmp = p;
-            p = q;
-            q = tmp;
-        }
-        if (root.val >= p.val && root.val <= q.val)
-            return root;
-
-        if (root.val > q.val)
-            return lowestCommonAncestor(root.left, p, q);
-        return lowestCommonAncestor(root.right, p, q);
+        return null;
     }
 }
 
