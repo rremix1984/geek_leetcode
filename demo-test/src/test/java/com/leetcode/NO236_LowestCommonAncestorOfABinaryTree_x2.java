@@ -4,7 +4,6 @@
 package com.leetcode;
 
 import com.leetcode.util.TreeNode;
-import lombok.var;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
@@ -17,7 +16,12 @@ import static com.leetcode.util.LogUtil.info;
     是它自己的祖先）。”
 
     示例 1：
-        输入：root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], p = 5, q = 1
+        输入：root = [        3,
+                     5,              1,
+                6,        2,       0,   8,
+           null,  null,  7, 4],
+             p = 5,
+             q = 1
         输出：3
         解释：节点 5 和节点 1 的最近公共祖先是节点 3 。
 */
