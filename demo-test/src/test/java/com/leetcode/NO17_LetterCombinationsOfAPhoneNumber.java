@@ -16,16 +16,19 @@ import static com.leetcode.util.LogUtil.info;
         答案可以按 任意顺序 返回。给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
     示例 1：
         输入：digits = "23"
-        输出：["ad","ae","af","bd","be","bf","cd","ce","cf"]
+        输出：["ad", "ae", "af", "bd",
+              "be", "bf", "cd", "ce", "cf"]
     示例 2：
         输入：digits = ""
         输出：[]
 */
+@SuppressWarnings("all")
 public class NO17_LetterCombinationsOfAPhoneNumber {
 
     @Test
     public void test() {
-        info(letterCombinations("23")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+//        info(letterCombinations("23")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+        info(letterCombinations("1234")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
     }
 
     String[] map = { " ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
@@ -36,24 +39,65 @@ public class NO17_LetterCombinationsOfAPhoneNumber {
         return res;
     }
 
-    void dfs(String str, StringBuilder curStr, int index) {
+    void dfs(String str, StringBuilder cur, int index) {
         if (str == null || str.length() == 0)
             return;
 
         if (index == str.length()) {
-            res.add(curStr.toString());
+            res.add(cur.toString());
             return;
         }
 
         int pos = str.charAt(index) - '0';
-        String map_string = map[pos];
-        for (int i = 0; i < map_string.length(); i++) {
+        String key = map[pos];
+        for (int i = 0; i < key.length(); i++) {
             // 回溯法
-            curStr.append(map_string.charAt(i));
+            cur.append(key.charAt(i));
 
-            dfs(str, curStr, index + 1);
+            dfs(str, cur, index + 1);
 
-            curStr.deleteCharAt(curStr.length() - 1);
+            cur.deleteCharAt(cur.length() - 1);
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方案1 回溯法
+String[] map = { " ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+List<String> res = new ArrayList<>();
+
+public List<String> letterCombinations(String str) {
+    dfs(str, new StringBuilder(), 0);
+    return res;
+}
+
+void dfs(String str, StringBuilder curStr, int index) {
+    if (str == null || str.length() == 0)
+        return;
+    if (index == str.length()) {
+        res.add(curStr.toString());
+        return;
+    }
+    int pos = str.charAt(index) - '0';
+    String map_string = map[pos];
+    for (int i = 0; i < map_string.length(); i++) {
+        curStr.append(map_string.charAt(i));
+        dfs(str, curStr, index + 1);
+        curStr.deleteCharAt(curStr.length() - 1);
+    }
+}
+*/
