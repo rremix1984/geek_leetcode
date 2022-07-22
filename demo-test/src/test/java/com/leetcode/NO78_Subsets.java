@@ -30,6 +30,7 @@ public class NO78_Subsets {
         info(subsets(new int[]{1, 2, 3}));
     }
 
+    List<Integer> t = new ArrayList<>();
     List<List<Integer>> ans = new ArrayList<List<Integer>>();
 
     public List<List<Integer>> subsets(int[] nums) {
@@ -38,7 +39,6 @@ public class NO78_Subsets {
     }
 
     public void dfs(int cur, int[] nums) {
-        List<Integer> t = new ArrayList<>();
         if (cur == nums.length) {
             ans.add(new ArrayList(t));
             return;
