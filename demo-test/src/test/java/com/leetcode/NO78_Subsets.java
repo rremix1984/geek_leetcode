@@ -31,7 +31,7 @@ public class NO78_Subsets {
     }
 
     List<Integer> t = new ArrayList<>();
-    List<List<Integer>> ans = new ArrayList<List<Integer>>();
+    List<List<Integer>> ans = new ArrayList<>();
 
     public List<List<Integer>> subsets(int[] nums) {
         dfs(0, nums);
@@ -46,7 +46,6 @@ public class NO78_Subsets {
         t.add(nums[cur]);
         dfs(cur + 1, nums);
         t.remove(t.size() - 1);
-
         dfs(cur + 1, nums);
     }
 
