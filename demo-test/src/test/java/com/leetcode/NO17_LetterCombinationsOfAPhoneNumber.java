@@ -28,37 +28,19 @@ public class NO17_LetterCombinationsOfAPhoneNumber {
     @Test
     public void test() {
 //        info(letterCombinations("23")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-        info(letterCombinations("1234")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+//        info(letterCombinations("1234")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+        info(letterCombinations(""));// []
     }
 
     String[] map = { " ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
 
     List<String> res = new ArrayList<>();
+
+    // 用回溯法解决
     public List<String> letterCombinations(String str) {
-        dfs(str, new StringBuilder(), 0);
         return res;
     }
 
-    void dfs(String str, StringBuilder cur, int index) {
-        if (str == null || str.length() == 0)
-            return;
-
-        if (index == str.length()) {
-            res.add(cur.toString());
-            return;
-        }
-
-        int pos = str.charAt(index) - '0';
-        String key = map[pos];
-        for (int i = 0; i < key.length(); i++) {
-            // 回溯法
-            cur.append(key.charAt(i));
-
-            dfs(str, cur, index + 1);
-
-            cur.deleteCharAt(cur.length() - 1);
-        }
-    }
 }
 
 
@@ -75,7 +57,7 @@ public class NO17_LetterCombinationsOfAPhoneNumber {
 
 
 
-/**
+/*
 // 方案1 回溯法
 String[] map = { " ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
 List<String> res = new ArrayList<>();
