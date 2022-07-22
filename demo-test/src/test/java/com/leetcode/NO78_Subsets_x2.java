@@ -4,9 +4,7 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import java.util.*;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -31,25 +29,8 @@ public class NO78_Subsets_x2 {
     }
 
     List<List<Integer>> ans = new ArrayList<>();
-
     public List<List<Integer>> subsets(int[] nums) {
-        for (int i = 0; i <= nums.length; i++)
-            call(0, i, new LinkedList<>(), nums);
         return ans;
-    }
-
-    //运行一次能够构造所有长度为 k 的子集
-    void call(int start, int k, Deque cur, int[] nums) {
-        if (k == 0) {
-            ans.add(new ArrayList(cur));
-            return;
-        }
-
-        for (int i = start; i < nums.length; i++) {
-            cur.add(nums[i]);
-            call(i + 1, k - 1, cur, nums);
-            cur.removeLast();
-        }
     }
 
 }
