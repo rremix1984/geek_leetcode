@@ -22,6 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：n = 1, k = 1
         输出：[[1]]
 */
+@SuppressWarnings("all")
 public class NO77_Combinations {
 
     @Test
