@@ -13,7 +13,7 @@ import static com.leetcode.util.LogUtil.info;
         注意，一开始你手头没有任何零钱。
         给你一个整数数组 bills ，其中 bills[i] 是第 i 位顾客付的账。如果你能给每位顾客正确找零，返回 true ，否则返回 false 。
     示例 1：
-        输入：bills = [5,5,5,10,20]
+        输入：bills = [5, 5, 5, 10, 20]
         输出：true
         解释：
             前 3 位顾客那里，我们按顺序收取 3 张 5 美元的钞票。
@@ -21,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
             第 5 位顾客那里，我们找还一张 10 美元的钞票和一张 5 美元的钞票。
             由于所有客户都得到了正确的找零，所以我们输出 true。
     示例 2：
-        输入：bills = [5,5,10,10,20]
+        输入：bills = [5, 5, 10, 10, 20]
         输出：false
         解释：
             前 2 位顾客那里，我们按顺序收取 2 张 5 美元的钞票。
@@ -39,26 +39,6 @@ public class NO860_LemonadeChange {
     }
 
     public boolean lemonadeChange(int[] bills) {
-        int five = 0, ten = 0;
-        for (int bill : bills) {
-            if (bill == 5) {
-                five++;
-            } else if (bill == 10) {
-                if (five == 0)
-                    return false;
-                five--;
-                ten++;
-            } else {
-                if (five > 0 && ten > 0) {
-                    five--;
-                    ten--;
-                } else if (five >= 3) {
-                    five -= 3;
-                } else {
-                    return false;
-                }
-            }
-        }
         return true;
     }
 }
