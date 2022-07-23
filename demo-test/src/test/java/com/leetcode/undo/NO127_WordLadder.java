@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import org.junit.Test;
 import java.util.*;

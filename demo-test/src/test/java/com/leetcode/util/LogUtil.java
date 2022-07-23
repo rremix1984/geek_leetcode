@@ -18,6 +18,11 @@ public class LogUtil {
         log.info("{}", obj);
     }
 
+    public static void info(Object[] obj) {
+        for (Object o : obj)
+            log.info("{}", o);
+    }
+
     public static void error(String msg) {
         log.error(msg);
     }

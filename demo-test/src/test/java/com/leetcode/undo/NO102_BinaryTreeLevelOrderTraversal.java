@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
@@ -37,21 +37,7 @@ public class NO102_BinaryTreeLevelOrderTraversal {
         List<List<Integer>> ret = new ArrayList<>();
         if (root == null)
             return ret;
-        Deque<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while(!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                level.add(node.val);
-                if (node.left!=null)
-                    queue.offer(node.left);
-                if (node.right!=null)
-                    queue.offer(node.right);
-            }
-            ret.add(level);
-        }
+
         return ret;
     }
 
@@ -68,7 +54,7 @@ public class NO102_BinaryTreeLevelOrderTraversal {
 
 
 
-/**
+/*
 // 方法1 层序遍历（BFS）
 public List<List<Integer>> levelOrder(TreeNode root) {
     List<List<Integer>> ret = new ArrayList<>();
