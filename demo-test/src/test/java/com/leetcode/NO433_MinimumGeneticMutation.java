@@ -42,8 +42,83 @@ public class NO433_MinimumGeneticMutation {
             new String[]{"AAAACCCC", "AAACCCCC", "AACCCCCC"}));
     }
 
+    int ans = Integer.MAX_VALUE;
     public int minMutation(String start, String end, String[] bank) {
+        call(start, end, bank, new boolean[bank.length], 0);
+        if (ans == Integer.MAX_VALUE)
+            return -1;
+        return ans;
+    }
 
-        return -1;
+    public void call(String start, String end, String[] bank, boolean[] used, int t) {
+        if (t >= ans)
+            return;
+        if (start.equals(end)) {
+            ans = t;
+        } else {
+            int diff = 0;
+            for (int i = 0; i < bank.length; i++) {
+                if (used[i])
+                    continue;
+                for (int j = 0; j < start.length(); j++) {
+                    if (start.charAt(j) != bank[i].charAt(j))
+                        diff++;
+                }
+                if (diff == 1) {
+                    used[i] = true;
+                    call(bank[i], end, bank, used, t + 1);
+                    used[i] = false;
+                }
+                diff = 0;
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：回溯法
+int ans = Integer.MAX_VALUE;
+public int minMutation(String start, String end, String[] bank) {
+    call(start, end, bank, new boolean[bank.length], 0);
+    if (ans == Integer.MAX_VALUE)
+        return -1;
+    return ans;
+}
+
+public void call(String start, String end, String[] bank, boolean[] used, int t) {
+    if (t >= ans)
+        return;
+    if (start.equals(end)) {
+        ans = t;
+    } else {
+        int diff = 0;
+        for (int i = 0; i < bank.length; i++) {
+            if (used[i])
+                continue;
+            for (int j = 0; j < start.length(); j++) {
+                if (start.charAt(j) != bank[i].charAt(j))
+                    diff++;
+            }
+            if (diff == 1) {
+                used[i] = true;
+                call(bank[i], end, bank, used, t + 1);
+                used[i] = false;
+            }
+            diff = 0;
+        }
+    }
+}
+*/
