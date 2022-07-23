@@ -54,6 +54,7 @@ public class NO77_Combinations {
         dfs(cur + 1, n, k);
 
         temp.remove(temp.size() - 1);
+
         // 考虑不选择当前位置
         dfs(cur + 1, n, k);
     }
