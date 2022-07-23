@@ -31,7 +31,7 @@ import static com.leetcode.util.LogUtil.info;
         解释：endWord "cog" 不在字典中，所以无法进行转换。
 */
 @SuppressWarnings("all")
-public class WordLadder {
+public class NO127_WordLadder {
 
     @Test
     public void test() {
@@ -52,6 +52,7 @@ public class WordLadder {
         queue.offer(beginWord);
         int level = 1;
 
+        // 层序遍历
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
