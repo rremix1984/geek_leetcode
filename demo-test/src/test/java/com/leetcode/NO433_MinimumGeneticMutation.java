@@ -76,6 +76,7 @@ public class NO433_MinimumGeneticMutation {
                     if (start.charAt(j) != bank[i].charAt(j))
                         diff++;
                 }
+
                 if (diff == 1) {
                     used[i] = true;
                     call(bank[i], end, bank, level + 1);
