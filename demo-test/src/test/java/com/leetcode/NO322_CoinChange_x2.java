@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -25,32 +25,25 @@ import static com.leetcode.util.LogUtil.info;
         输出：0
 */
 @SuppressWarnings("all")
-public class NO322_CoinChange {
+public class NO322_CoinChange_x2 {
 
     @Test
     public void test() {
         // 3
         info(coinChange(
             new int[]{1, 2, 5}, 11));
+        // -1
+//        info(coinChange(
+//                new int[]{2}, 3));
     }
 
+    // 其实是一个爬楼梯问题的变种
+    // 找到1元、2元面值的最少组合之后，就找到了3元的最少组合
+    // 以此类推amount元面值就是 amount-[面值] 和amount-[面值] 的最少面值组合的和
     public int coinChange(int[] coins, int amount) {
-        if (coins.length == 0)
-            return -1;
-        // 缓存
-        int[] memo = new int[amount + 1];
-        for (int i = 1; i <= amount; i++) {
-            int min = Integer.MAX_VALUE;
-            for (int j = 0; j < coins.length; j++) {
-                if (i - coins[j] >= 0
-                    && memo[i - coins[j]] < min)
-                    min = memo[i - coins[j]] + 1;
-            }
-            memo[i] = min;
-        }
-        if (memo[amount] == Integer.MAX_VALUE)
-            return -1;
-        return memo[amount];
+        int[] ans = new int[amount + 1];
+
+        return ans[amount];
     }
 }
 
@@ -65,18 +58,26 @@ public class NO322_CoinChange {
 
 
 
-/**
+/*
 // 方法1
 public int coinChange(int[] coins, int amount) {
     if (coins.length == 0)
         return -1;
+    // 缓存
     int[] memo = new int[amount + 1];
+    // 面值 i
     for (int i = 1; i <= amount; i++) {
         int min = Integer.MAX_VALUE;
+        // 硬币数组坐标 j
         for (int j = 0; j < coins.length; j++) {
-            if (i - coins[j] >= 0 && memo[i - coins[j]] < min)
+            // 硬币面值小于目标面值，且比最小的步 min 骤还少
+            if (i - coins[j] >= 0 && memo[i - coins[j]] < min) {
+                // 最小硬币数 min
                 min = memo[i - coins[j]] + 1;
+                info("面值:" + i + "，硬币数：" + min);
+            }
         }
+        // 凑齐面值 i，需要的最小硬币数 min
         memo[i] = min;
     }
     if (memo[amount] == Integer.MAX_VALUE)
