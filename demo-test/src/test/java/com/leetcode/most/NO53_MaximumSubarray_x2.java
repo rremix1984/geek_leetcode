@@ -34,12 +34,7 @@ public class NO53_MaximumSubarray_x2 {
     }
 
     public int maxSubArray(int[] nums) {
-        int pre = 0, max = nums[0];
-        for (int n : nums) {
-            pre = max(n, n + pre);
-            max = max(pre, max);
-        }
-        return max;
+        return -1;
     }
 
 }
