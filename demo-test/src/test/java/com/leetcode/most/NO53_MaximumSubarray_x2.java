@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.most;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -53,7 +53,7 @@ public class NO53_MaximumSubarray_x2 {
 
 
 
-/**
+/*
 // 方法1：dp动态规划
 public int maxSubArray(int[] nums) {
     int cur = nums[0];
