@@ -4,9 +4,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-
-import java.util.Arrays;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -45,15 +42,7 @@ public class NO62_UniquePaths_x2 {
     }
 
     public int uniquePaths(int m, int n) {
-        int[] cur = new int[n];
-        Arrays.fill(cur, 1);
-
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                cur[j] += cur[j - 1];
-            }
-        }
-        return cur[n - 1];
+        return -1;
     }
 
 }
