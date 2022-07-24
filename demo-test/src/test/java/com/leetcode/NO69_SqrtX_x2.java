@@ -30,11 +30,7 @@ public class NO69_SqrtX_x2 {
     }
 
     public int mySqrt(int x) {
-        long r = x;
-        while (r * r > x) {
-            r = (r + x / r) / 2;
-        }
-        return (int) r;
+        return 0;
     }
 }
 
@@ -66,7 +62,7 @@ public int mySqrt(int x) {
     return r;
 }
 
-// 方法3：牛顿迭代法
+// 方法2：牛顿迭代法
 public int mySqrt(int x) {
     long r = x;
     while (r * r > x) {
