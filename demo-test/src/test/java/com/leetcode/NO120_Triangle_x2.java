@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Math.min;
 
 /**
     （中等）
@@ -29,37 +30,61 @@ import static com.leetcode.util.LogUtil.info;
         输入：triangle = [[-10]]
         输出：-10
 */
-public class NO120_Triangle {
+public class NO120_Triangle_x2 {
 
     @Test
     public void test() {
         List list = new ArrayList<List<Integer>>(){{
             // [2],[3,4],[6,5,7],[4,1,8,3]
-            add(new ArrayList(){{add(2);}});
-            add(new ArrayList(){{add(3);add(4);}});
-            add(new ArrayList(){{add(6);add(5);add(7);}});
-            add(new ArrayList(){{add(4);add(1);add(8);add(3);}});
+            add(new ArrayList(){{
+                add(2);
+            }});
+            add(new ArrayList(){{
+                add(3);add(4);
+            }});
+            add(new ArrayList(){{
+                add(6);add(5);add(7);
+            }});
+            add(new ArrayList(){{
+                add(4);add(1);add(8);add(3);
+            }});
         }};
         info(minimumTotal(list)); // 11
 
         info(minimumTotal(new ArrayList(){{
-                add(new ArrayList(){{add(10);}});
+                add(new ArrayList(){{add(-10);}});
             }})); // -10
     }
 
     public int minimumTotal(List<List<Integer>> triangle) {
-        int n = triangle.size();
-        int[][] f = new int[n][n];
-        f[0][0] = triangle.get(0).get(0);
-        for (int i = 1; i < n; ++i) {
-            f[i][0] = f[i - 1][0] + triangle.get(i).get(0);
-            for (int j = 1; j < i; ++j)
-                f[i][j] = Math.min(f[i - 1][j - 1], f[i - 1][j]) + triangle.get(i).get(j);
-            f[i][i] = f[i - 1][i - 1] + triangle.get(i).get(i);
-        }
-        int minTotal = f[n - 1][0];
-        for (int i = 1; i < n; ++i)
-            minTotal = Math.min(minTotal, f[n - 1][i]);
-        return minTotal;
+        return -1;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：动态规划，一般公式（dp[i][j] = min(dp[i + 1][j], dp[i + 1][j + 1] + a[i][j]）
+public int minimumTotal(List<List<Integer>> triangle) {
+    int n = triangle.size();
+    // dp[i][j] 表示从点 (i, j) 到底边的最小路径和。
+    int[][] dp = new int[n + 1][n + 1];
+    // 从三角形的最后一行开始递推。
+    for (int i = n - 1; i >= 0; i--)
+        for (int j = 0; j <= i; j++)
+            dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1])
+                + triangle.get(i).get(j);
+    return dp[0][0];
+}
+*/
