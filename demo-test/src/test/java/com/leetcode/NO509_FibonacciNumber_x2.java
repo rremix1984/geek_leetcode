@@ -37,20 +37,7 @@ public class NO509_FibonacciNumber_x2 {
     }
 
     public int fib(int n) {
-        int n_1 = 1; // f(1)
-        int n_2 = 1; // f(0)
-        if (n == 0)
-            return 0;
-
-        if (n <= 2)
-            return 1;
-
-        for (int i = 3; i <= n; i++) {
-            int tmp = n_1;
-            n_1 = n_1 + n_2;
-            n_2 = tmp;
-        }
-        return n_1;
+        return -1;
     }
 }
 
