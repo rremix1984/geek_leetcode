@@ -4,7 +4,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.max;
 
@@ -24,6 +23,7 @@ import static com.leetcode.util.MathUtils.max;
         输入: nums = [2, 3, 0, 1, 4]
         输出: 2
 */
+@SuppressWarnings("all")
 public class NO45_JumpGameII {
 
     @Test
@@ -34,15 +34,15 @@ public class NO45_JumpGameII {
 
     public int jump(int[] nums) {
         int length = nums.length;
-        int end = 0, maxPosition = 0, steps = 0;
+        int end = 0, pos = 0, res = 0;
         for (int i = 0; i < length - 1; i++) {
-            maxPosition = max(maxPosition, i + nums[i]);
+            pos = max(pos, i + nums[i]);
             if (i == end) {
-                end = maxPosition;
-                steps++;
+                end = pos;
+                res++;
             }
         }
-        return steps;
+        return res;
     }
 
 }
