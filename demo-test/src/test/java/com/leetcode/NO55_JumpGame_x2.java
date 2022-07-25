@@ -12,7 +12,7 @@ import static com.leetcode.util.LogUtil.info;
         数组中的每个元素代表你在该位置可以跳跃的最大长度。
         判断你是否能够到达最后一个下标。
     示例 1：
-        输入：nums = [2,3,1,1,4]
+        输入：nums = [2, 3, 1, 1, 4]
         输出：true
         解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
     示例 2：
@@ -25,18 +25,12 @@ public class NO55_JumpGame_x2 {
 
     @Test
     public void test() {
-        info(canJump(new int[]{2, 3, 1, 1, 4}));
+        info(canJump(new int[]{2, 3, 1, 1, 4}));// true
+        info(canJump(new int[]{3, 2, 1, 0, 4}));// false
     }
 
     public boolean canJump(int[] nums) {
-        if (nums == null)
-            return false;
-        int end_idx = nums.length - 1;
-        for (int i = nums.length - 1; i >= 0; i--) {
-            if (nums[i] + i >= end_idx)
-                end_idx = i;
-        }
-        return end_idx == 0;
+        return false;
     }
 
 }

@@ -5,7 +5,6 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Integer.MAX_VALUE;
 
 /**
     （中等）
@@ -26,7 +25,7 @@ import static java.lang.Integer.MAX_VALUE;
         输出：0
 */
 @SuppressWarnings("all")
-public class NO322_CoinChange_x2 {
+public class NO322_CoinChange_x3 {
 
     @Test
     public void test() {
@@ -40,19 +39,9 @@ public class NO322_CoinChange_x2 {
 
     // 其实是一个爬楼梯问题的变种
     // 找到1元、2元面值的最少组合之后，就找到了3元的最少组合
-    // 以此类推amount元面值就是 amount-[面值] 和amount-[面值] 的最少面值组合的和
+    // 以此类推amount元面值就是 amount - [面值] 和 amount - [面值] 的最少面值组合的和
     public int coinChange(int[] coins, int amount) {
-        int[] memory = new int[amount + 1];
-        for (int i = 1; i <= amount; i++) {
-            int min = MAX_VALUE;
-            for (int c : coins)
-                if (i - c >= 0 && memory[i - c] < min)
-                    min = memory[i - c] + 1;
-            memory[i] = min;
-        }
-        if (memory[amount] == MAX_VALUE)
-            return -1;
-        return memory[amount];
+        return -1;
     }
 }
 
