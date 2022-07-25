@@ -5,6 +5,7 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Integer.MAX_VALUE;
 
 /**
     （中等）
@@ -33,17 +34,25 @@ public class NO322_CoinChange_x2 {
         info(coinChange(
             new int[]{1, 2, 5}, 11));
         // -1
-//        info(coinChange(
-//                new int[]{2}, 3));
+        info(coinChange(
+                new int[]{2}, 3));
     }
 
     // 其实是一个爬楼梯问题的变种
     // 找到1元、2元面值的最少组合之后，就找到了3元的最少组合
     // 以此类推amount元面值就是 amount-[面值] 和amount-[面值] 的最少面值组合的和
     public int coinChange(int[] coins, int amount) {
-        int[] ans = new int[amount + 1];
-
-        return ans[amount];
+        int[] memory = new int[amount + 1];
+        for (int i = 1; i <= amount; i++) {
+            int min = MAX_VALUE;
+            for (int c : coins)
+                if (i - c >= 0 && memory[i - c] < min)
+                    min = memory[i - c] + 1;
+            memory[i] = min;
+        }
+        if (memory[amount] == MAX_VALUE)
+            return -1;
+        return memory[amount];
     }
 }
 
@@ -61,19 +70,17 @@ public class NO322_CoinChange_x2 {
 /*
 // 方法1
 public int coinChange(int[] coins, int amount) {
-    if (coins.length == 0)
-        return -1;
     // 缓存
     int[] memo = new int[amount + 1];
     // 面值 i
     for (int i = 1; i <= amount; i++) {
         int min = Integer.MAX_VALUE;
         // 硬币数组坐标 j
-        for (int j = 0; j < coins.length; j++) {
-            // 硬币面值小于目标面值，且比最小的步 min 骤还少
-            if (i - coins[j] >= 0 && memo[i - coins[j]] < min) {
+        for (int c : coins) {
+            // 硬币面值小于目标面值，且比最小的 min 步骤还少
+            if (i - c >= 0 && memo[i - c] < min) {
                 // 最小硬币数 min
-                min = memo[i - coins[j]] + 1;
+                min = memo[i - c] + 1;
                 info("面值:" + i + "，硬币数：" + min);
             }
         }
