@@ -21,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。
 */
 @SuppressWarnings("all")
-public class NO55_JumpGame_x2 {
+public class NO55_JumpGame_x3 {
 
     @Test
     public void test() {
@@ -30,7 +30,13 @@ public class NO55_JumpGame_x2 {
     }
 
     public boolean canJump(int[] nums) {
-        return false;
+        int reach = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > reach)
+                return false;
+            reach = Math.max(reach, i + nums[i]);
+        }
+        return true;
     }
 
 }
@@ -49,16 +55,27 @@ public class NO55_JumpGame_x2 {
 
 
 
-/**
+/*
 // 方法1
 public boolean canJump(int[] nums) {
     if (nums == null || nums.length == 0)
         return false;
     int end_index = nums.length - 1;
-    for (int i = nums.length - 1; i >=0 ; i--) {
+    for (int i = nums.length - 1; i >=0 ; i--)
+        // 可以跳到数组最后的位置
         if (nums[i] + i >= end_index)
             end_index = i;
-    }
     return end_index == 0;
+}
+
+// 方法2：
+public boolean canJump(int[] nums) {
+    int reach = 0;
+    for (int i = 0; i < nums.length; i++) {
+        if (i > reach)
+            return false;
+        reach = Math.max(reach, i + nums[i]);
+    }
+    return true;
 }
 */
