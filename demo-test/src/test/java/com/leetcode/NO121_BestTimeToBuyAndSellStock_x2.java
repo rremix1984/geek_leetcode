@@ -5,10 +5,9 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Integer.MAX_VALUE;
-import static java.lang.Math.max;
 
 /**
+    （简单）
     121. 买卖股票的最佳时机
         给定一个数组prices ，它的第i个元素prices[i]表示一支
         给定股票第i天的价格。你只能选择某一天买入这只股票，并选择
