@@ -5,6 +5,8 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Math.min;
 
 /**
     （中等）
@@ -41,7 +43,8 @@ public class NO322_CoinChange_x3 {
     // 找到1元、2元面值的最少组合之后，就找到了3元的最少组合
     // 以此类推amount元面值就是 amount - [面值] 和 amount - [面值] 的最少面值组合的和
     public int coinChange(int[] coins, int amount) {
-        return -1;
+        int[] memory = new int[amount + 1];
+        return memory[amount];
     }
 }
 
