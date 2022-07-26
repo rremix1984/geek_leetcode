@@ -45,11 +45,33 @@ public class NO122_BestTimeToBuyAndSellStockII_x2 {
 
     public int maxProfit(int[] prices) {
         int max = 0;
-        for (int i = 1; i < prices.length; i++) {
-            if (prices[i] > prices[i - 1]) {
-                max += prices[i] - prices[i - 1];
-            }
-        }
         return max;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public int maxProfit(int[] prices) {
+    int max = 0;
+    for (int i = 1; i < prices.length; i++) {
+        if (prices[i] > prices[i - 1]) {
+            max += prices[i] - prices[i - 1];
+        }
+    }
+    return max;
+}
+*/
