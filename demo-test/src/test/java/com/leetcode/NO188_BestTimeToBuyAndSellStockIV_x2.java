@@ -6,8 +6,11 @@ package com.leetcode;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.max;
+import static java.lang.Integer.MIN_VALUE;
 
 /**
+    （困难）
     188. 买卖股票的最佳时机 IV
         给定一个整数数组 prices ，它的第 i 个元素 prices[i] 是一支给定的股票在第 i 天的价格。
         设计一个算法来计算你所能获取的最大利润。你最多可以完成 k 笔交易。
@@ -28,17 +31,21 @@ import static com.leetcode.util.LogUtil.info;
             在第 6 天 (股票价格 = 3) 的时候卖出,
             这笔交易所能获得利润 = 3-0 = 3 。
 */
-public class NO188_BestTimeToBuyAndSellStockIV {
+@SuppressWarnings("all")
+public class NO188_BestTimeToBuyAndSellStockIV_x2 {
 
     @Test
     public void test() {
+        info(maxProfit(2, new int[]{}));// 0
         info(maxProfit(2, new int[]{2, 4, 1}));// 2
         info(maxProfit(2, new int[]{3, 2, 6, 5, 0, 3}));// 7
+        info(maxProfit(2, new int[]{3, 3, 5, 0, 0, 3, 1, 4}));// 6
     }
 
     public int maxProfit(int k, int[] prices) {
         return -1;
     }
+
 }
 
 
@@ -75,5 +82,23 @@ int maxProfit_with_fee(int[] prices, int fee) {
         dp_i_1 = Math.max(dp_i_1, temp   - prices[i] - fee);
     }
     return dp_i_0;
+}
+
+// 方法2：
+public int maxProfit(int k, int[] prices) {
+    if (prices.length == 0)
+        return 0;
+    int[][] dp = new int[k+1][2];
+    // 第0天，无论交易多少次，不持有股票为0，持有股票利润为-prices[0]
+    for (int j = 0; j <= k; ++j) {
+        dp[j][1] = -prices[0];
+    }
+    for (int price : prices) {
+        for (int j = 1; j <= k; j++) {
+            dp[j][0] = max(dp[j][0], dp[j][1] + price);
+            dp[j][1] = max(dp[j][1], dp[j - 1][0] - price);
+        }
+    }
+    return dp[k][0];
 }
 */

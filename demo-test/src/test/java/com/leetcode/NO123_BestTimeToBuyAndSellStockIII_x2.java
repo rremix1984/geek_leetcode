@@ -5,6 +5,7 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.max;
 
 /**
     （困难）
@@ -32,7 +33,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：0
 */
 @SuppressWarnings("all")
-public class NO123_BestTimeToBuyAndSellStockIII {
+public class NO123_BestTimeToBuyAndSellStockIII_x2 {
 
     @Test
     public void test() {
@@ -40,7 +41,16 @@ public class NO123_BestTimeToBuyAndSellStockIII {
     }
 
     public int maxProfit(int[] prices) {
-        return -1;
+        int[][] dp = new int[3][2];
+        dp[1][1] = -prices[0];
+        dp[2][1] = -prices[0];
+        for (int c : prices) {
+            for (int i = 1; i <= 2; i++) {
+                dp[i][0] = max(dp[i][0], dp[i][1] + c);
+                dp[i][1] = max(dp[i][1], dp[i-1][0] - c);
+            }
+        }
+        return dp[2][0];
     }
 
 }
@@ -98,5 +108,18 @@ int maxProfit_with_cool(int[] prices) {
     }
     return dp_i_0;
 }
-*/
 
+// 方法2：dp动态规划
+public int maxProfit(int[] prices) {
+    int[][] dp = new int[3][2];
+    dp[1][1] = -prices[0];
+    dp[2][1] = -prices[0];
+    for (int c : prices) {
+        for (int i = 1; i <= 2; i++) {
+            dp[i][0] = max(dp[i][0], dp[i][1] + c);
+            dp[i][1] = max(dp[i][1], dp[i-1][0] - c);
+        }
+    }
+    return dp[2][0];
+}
+*/

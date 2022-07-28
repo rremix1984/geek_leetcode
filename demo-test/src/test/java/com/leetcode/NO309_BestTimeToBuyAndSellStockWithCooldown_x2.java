@@ -20,6 +20,10 @@ import static com.leetcode.util.LogUtil.info;
     示例 2:
         输入: prices = [1]
         输出: 0
+
+    一般转移方程
+    dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i]);
+    dp[i][1] = max(dp[i-1][1], dp[i-2][0] - prices[i]);
 */
 public class NO309_BestTimeToBuyAndSellStockWithCooldown_x2 {
 
@@ -30,21 +34,8 @@ public class NO309_BestTimeToBuyAndSellStockWithCooldown_x2 {
         info(maxProfit(new int[]{1, 2}));// 1
     }
 
-    // 一般转移方程
-    // dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i]);
-    // dp[i][1] = max(dp[i-1][1], dp[i-2][0] - prices[i]);
     public int maxProfit(int[] prices) {
-        // 定义状态转移方程
         int sell = 0;
-        int buy = -prices[0];
-        int freeze = 0;
-        for (int c : prices) {
-            int tmp = sell;
-            sell = Math.max(sell, buy + c);
-            buy = Math.max(buy, freeze - c);
-            freeze = tmp;
-        }
-        // 返回第n天卖掉的收益
         return sell;
     }
 }

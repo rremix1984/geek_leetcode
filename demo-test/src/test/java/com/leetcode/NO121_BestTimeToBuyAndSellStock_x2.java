@@ -5,6 +5,9 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.max;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
 
 /**
     （简单）
@@ -17,8 +20,9 @@ import static com.leetcode.util.LogUtil.info;
     示例 1：
         输入：[7, 1, 5, 3, 6, 4]
         输出：5
-        解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
-        注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+        解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，
+            最大利润 = 6 - 1 = 5 。
+        注意利润不能是 7 - 1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
     示例 2：
         输入：prices = [7, 6, 4, 3, 1]
         输出：0
@@ -44,7 +48,15 @@ public class NO121_BestTimeToBuyAndSellStock_x2 {
     }
 
     public int maxProfit(int[] prices) {
-        return -1;
+        int min = MAX_VALUE;
+        int res = 0;
+        for (int c : prices) {
+            if (c < min)
+                min = c;
+            else
+                res = max(res, c - min);
+        }
+        return res;
     }
 
 }
