@@ -2,6 +2,7 @@ package com.leetcode.util;
 
 import lombok.NoArgsConstructor;
 
+import static java.lang.Integer.MIN_VALUE;
 import static java.util.Arrays.copyOf;
 import static lombok.AccessLevel.PRIVATE;
 
@@ -26,8 +27,21 @@ public class MathUtils {
         return getmax(a);
     }
 
+    /**
+     * 三个值取最小
+     */
+    public static int mins(int... a) {
+        if (a == null || a.length == 0)
+            return -1;
+
+        if (a.length == 1)
+            return a[0];
+
+        return getmin(a);
+    }
+
     public static int max(int... input) {
-        int max = -2147483648;
+        int max = MIN_VALUE;
         for (int element : input) {
             if (element > max) {
                 max = element;
@@ -37,7 +51,11 @@ public class MathUtils {
     }
 
     private static int getmax(int[] a) {
-        return getmax(a, Integer.MIN_VALUE);
+        return getmax(a, MIN_VALUE);
+    }
+
+    private static int getmin(int[] a) {
+        return getmin(a, Integer.MAX_VALUE);
     }
 
     /**
@@ -46,15 +64,34 @@ public class MathUtils {
     private static int getmax(int[] a, int max) {
         int lastindex = a.length-1;
         int last = a[lastindex];
-        if (a.length == 2) {
+        if (a.length == 1) {
             return max(last, max);
         }
         //每次数组缩短一个元素，最后一个元素与缩短的数组进行 getmax 操作
         return getmax(copyOf(a, lastindex), max(max, last));
     }
 
+    /**
+     * 递归方法 找最小值
+     */
+    private static int getmin(int[] a, int min) {
+        int lastindex = a.length - 1;
+        int last = a[lastindex];
+        if (a.length == 1)
+            return min(last, min);
+
+        //每次数组缩短一个元素，最后一个元素与缩短的数组进行 getmax 操作
+        return getmin(copyOf(a, lastindex), min(min, last));
+    }
+
     private static int max(int i, int j) {
         if (i >= j)
+            return i;
+        return j;
+    }
+
+    private static int min(int i, int j) {
+        if (i <= j)
             return i;
         return j;
     }
@@ -65,7 +102,15 @@ public class MathUtils {
         return j;
     }
 
+    private static long min(long i, long j) {
+        if (i <= j)
+            return i;
+        return j;
+    }
+
     public static void main(String[] args) {
         System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
+        System.out.println(mins(0, 6, 3));
+        System.out.println(maxs(0, -6, -3, -41111, -5, -2, -5, -8, -109));
     }
 }
