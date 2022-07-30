@@ -1,13 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -31,6 +27,7 @@ import static com.leetcode.util.LogUtil.info;
         解释: t 中两个字符 'a' 均应包含在 s 的子串中，
         因此没有符合条件的子字符串，返回空字符串。
 */
+@SuppressWarnings("all")
 public class NO76_MinimumWindowSubstring {
 
     @Test
