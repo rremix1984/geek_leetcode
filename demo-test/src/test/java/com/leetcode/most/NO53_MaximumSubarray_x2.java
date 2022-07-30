@@ -48,15 +48,3 @@ public class NO53_MaximumSubarray_x2 {
 
 
 
-/*
-// 方法1：dp动态规划
-public int maxSubArray(int[] nums) {
-    int cur = nums[0];
-    int max = nums[0];
-    for (int i = 1; i < nums.length; i++) {
-        cur = max(nums[i], nums[i] + cur);
-        max = max(cur, max);
-    }
-    return max;
-}
-*/
