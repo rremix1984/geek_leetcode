@@ -6,7 +6,6 @@ package com.leetcode;
 import org.junit.Test;
 import java.util.Stack;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Math.max;
 
 /**
     （困难）
@@ -36,19 +35,6 @@ public class NO32_LongestValidParentheses_x2 {
 
     public int longestValidParentheses(String s) {
         int max = 0;
-        Stack<Integer> stack = new Stack<>();
-        stack.push(-1);
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                stack.push(i);
-            } else if (stack.size() > 1 && s.charAt(stack.peek()) == '(' ) {
-                stack.pop();
-                max = Math.max(max, i - stack.peek());
-            } else {
-                stack.push(i);
-            }
-        }
         return max;
     }
 
