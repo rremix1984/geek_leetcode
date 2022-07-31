@@ -4,7 +4,9 @@
 package com.leetcode;
 
 import org.junit.Test;
+import java.util.Stack;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Math.max;
 
 /**
     （困难）
@@ -22,18 +24,32 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = ""
         输出：0
 */
-public class NO32_LongestValidParentheses {
+public class NO32_LongestValidParentheses_x2 {
 
     @Test
     public void test() {
         info(longestValidParentheses("(()"));// 2
         info(longestValidParentheses(")()())"));// 4
         info(longestValidParentheses(""));// 0
+        info(longestValidParentheses("()"));// 2
     }
 
     public int longestValidParentheses(String s) {
-        int maxLen = 0;
-        return maxLen;
+        int max = 0;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            } else if (stack.size() > 1 && s.charAt(stack.peek()) == '(' ) {
+                stack.pop();
+                max = Math.max(max, i - stack.peek());
+            } else {
+                stack.push(i);
+            }
+        }
+        return max;
     }
 
 }
@@ -71,16 +87,20 @@ public int longestValidParentheses(String s) {
 public int longestValidParentheses(String s) {
     Stack<Integer> stack = new Stack<>();
     stack.push(-1);
-    int len=0;
+    int max = 0;
 
     for (int i = 0; i < s.length(); i++)
-        if (s.charAt(i) == '(')
+        // 所有 '(' 一定先入
+        if (s.charAt(i) == '(') {
             stack.push(i);
-        else if (stack.size()>1 && s.charAt(stack.peek()) == '(')
+        // 排除上面的条件那就一定是 ')' 了，就直接带走第一个 '('
+        } else if (stack.size() > 1 && s.charAt(stack.peek()) == '(') {
             stack.pop();
-            len = Math.max(len, i - stack.peek());
-        else
+            max = Math.max(max, i - stack.peek());
+        // 没有对应的 '(' 了
+        } else {
             stack.push(i);
-    return len;
+        }
+    return max;
 }
 */
