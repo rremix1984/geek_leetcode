@@ -125,12 +125,11 @@ public int uniquePathsWithObstacles(int[][] arr) {
         dp[0][j] = 1;
 
     // 根据状态转移方程 dp[i][j] = dp[i - 1][j] + dp[i][j - 1] 进行递推。
-    for (int i = 1; i < m; i++) {
-        for (int j = 1; j < n; j++) {
+    for (int i = 1; i < m; i++)
+        for (int j = 1; j < n; j++)
             if (arr[i][j] == 0)
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
-        }
-    }
+
     return dp[m - 1][n - 1];
 }
 */
