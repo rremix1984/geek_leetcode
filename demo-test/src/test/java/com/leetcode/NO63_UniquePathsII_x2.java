@@ -29,18 +29,19 @@ import static com.leetcode.util.LogUtil.info;
                      [0, 0]]
         输出：1
 */
-public class NO63_UniquePathsII {
+public class NO63_UniquePathsII_x2 {
 
     @Test
     public void test() {
         info(uniquePathsWithObstacles(
-                new int[][]{
-                        {0, 0, 0},
+            new int[][]{{0, 0, 0},
                         {0, 1, 0},
                         {0, 0, 0}}));// 2
         info(uniquePathsWithObstacles(
             new int[][]{{0, 1},
                         {0, 0}}));// 1
+        info(uniquePathsWithObstacles(
+            new int[][]{{1, 0}}));// 0
     }
 
     public int uniquePathsWithObstacles(int[][] arr) {
