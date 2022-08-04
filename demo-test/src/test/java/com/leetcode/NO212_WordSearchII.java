@@ -40,29 +40,26 @@ public class NO212_WordSearchII {
     }
 
     public void dfs(char[][] board, Trie now, int i1, int j1, Set<String> ans) {
-        if (!now.children.containsKey(board[i1][j1])) {
+        if (!now.children.containsKey(board[i1][j1]))
             return;
-        }
+
         char ch = board[i1][j1];
         now = now.children.get(ch);
-        if (!"".equals(now.word)) {
+        if (!"".equals(now.word))
             ans.add(now.word);
-        }
 
         board[i1][j1] = '#';
         for (int[] dir : dirs) {
             int i2 = i1 + dir[0], j2 = j1 + dir[1];
-            if (i2 >= 0 && i2 < board.length && j2 >= 0 && j2 < board[0].length) {
+            if (i2 >= 0 && i2 < board.length && j2 >= 0 && j2 < board[0].length)
                 dfs(board, now, i2, j2, ans);
-            }
         }
         board[i1][j1] = ch;
     }
 
-    class Trie {
+    static class Trie {
         String word;
         Map<Character, Trie> children;
-        boolean isWord;
 
         public Trie() {
             this.word = "";
