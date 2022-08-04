@@ -4,6 +4,9 @@
 package com.leetcode;
 
 import org.junit.Test;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
 import static com.leetcode.util.BoardUtil.printBoard;
 import static com.leetcode.util.LogUtil.info;
 
@@ -44,6 +47,8 @@ import static com.leetcode.util.LogUtil.info;
 */
 public class NO37_SodukuSolver {
 
+    static AtomicInteger number = new AtomicInteger(0);
+
     @Test
     public void test() {
         char[][] board = new char[][]{
@@ -63,6 +68,20 @@ public class NO37_SodukuSolver {
         };
         solveSudoku(board);
         printBoard(board);
+//        char[][] board2 = new char[][]{
+//                {'5','3','.', '.','7','.', '.','.','.'},
+//                {'6','.','.', '1','9','5', '.','.','.'},
+//                {'.','9','8', '.','.','.', '.','6','.'},
+//                // ---------------------------------
+//                {'8','.','.', '.','6','.', '.','.','3'},
+//                {'4','.','.', '8','.','3', '.','.','1'},
+//                {'7','.','.', '.','2','.', '.','.','6'},
+//                // ---------------------------------
+//                {'.','6','.', '.','.','.', '2','8','.'},
+//                {'.','.','.', '4','1','9', '.','.','5'},
+//                {'.','.','.', '.','8','.', '.','7','9'}};
+//        solveSudoku(board2);
+//        printBoard(board2);
     }
 
     public void solveSudoku(char[][] board) {
@@ -79,14 +98,14 @@ public class NO37_SodukuSolver {
                     block[i / 3 * 3 + j / 3][num] = true;
                 }
         dfs(board, row, col, block, 0, 0);
+        info(number.get());
     }
 
     private boolean dfs(char[][] board,   // 数独
                         boolean[][] row,  // 第 i 行是否有元素 m
                         boolean[][] col,  // 第 j 行是否有元素 n
                         boolean[][] block,// 第 k 个九宫格是否有元素 o
-                        int i,  // 行
-                        int j) {// 列
+                        int i, int j) {   // 行，列
         // 找寻空位置
         while (board[i][j] != '.') {
             if (++j >= 9) {
@@ -97,7 +116,8 @@ public class NO37_SodukuSolver {
                 return true;
         }
 
-        for (int num = 1; num <= 9; num++) {
+        for (int num = 9; num >= 1; num--) {
+//        for (int num = 1; num <= 9; num++) {
             int idx = i / 3 * 3 + j / 3;
             // 如果数字 num 同时不在 "行、列、九宫格" 任何一个中
             if (!row[i][num]
@@ -109,7 +129,6 @@ public class NO37_SodukuSolver {
                 row[i][num] = true;
                 col[j][num] = true;
                 block[idx][num] = true;
-
                 if (dfs(board, row, col, block, i, j))
                     return true;
 
@@ -120,8 +139,8 @@ public class NO37_SodukuSolver {
                 board[i][j] = '.';
             }
         }
-
         // 当所有数字都根填好了，说明当前值不应该放到这个格子里，返回false，触发回溯。
+        number.addAndGet(1);
         return false;
     }
 }
