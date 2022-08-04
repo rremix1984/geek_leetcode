@@ -5,6 +5,7 @@ package com.leetcode;
 
 import org.junit.Test;
 import static com.leetcode.util.BoardUtil.printBoard;
+import static com.leetcode.util.LogUtil.info;
 
 /**
     37. 解数独
@@ -65,21 +66,11 @@ public class NO37_SodukuSolver {
     }
 
     public void solveSudoku(char[][] board) {
-        /**
-         * 记录某行，某位数字是否已经被摆放
-         */
-        boolean[][] row = new boolean[9][10];
-        /**
-         * 记录某列，某位数字是否已经被摆放
-         */
-        boolean[][] col = new boolean[9][10];
-        /**
-         * 记录某 3x3 宫格内，某位数字是否已经被摆放
-         */
-        boolean[][] block = new boolean[9][10];
-
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
+        boolean[][] row = new boolean[9][10]//记录某行，某位数字是否已经被摆放
+                ,col = new boolean[9][10] //记录某列，某位数字是否已经被摆放
+                ,block = new boolean[9][10];//记录某3x3宫格内，某位数字是否已经被摆放
+        for (int i = 0; i < 9; i++)
+            for (int j = 0; j < 9; j++)
                 if (board[i][j] != '.') {
                     int num = board[i][j] - '0';
                     row[i][num] = true;
@@ -87,14 +78,15 @@ public class NO37_SodukuSolver {
                     // blockIndex = i / 3 * 3 + j / 3，取整
                     block[i / 3 * 3 + j / 3][num] = true;
                 }
-            }
-        }
         dfs(board, row, col, block, 0, 0);
     }
 
-    private boolean dfs(char[][] board,
-                        boolean[][] row, boolean[][] col, boolean[][] block,
-                        int i, int j) {
+    private boolean dfs(char[][] board,   // 数独
+                        boolean[][] row,  // 第 i 行是否有元素 m
+                        boolean[][] col,  // 第 j 行是否有元素 n
+                        boolean[][] block,// 第 k 个九宫格是否有元素 o
+                        int i,  // 行
+                        int j) {// 列
         // 找寻空位置
         while (board[i][j] != '.') {
             if (++j >= 9) {
@@ -105,25 +97,99 @@ public class NO37_SodukuSolver {
                 return true;
         }
         for (int num = 1; num <= 9; num++) {
-            int blockIndex = i / 3 * 3 + j / 3;
-            if (!row[i][num] && !col[j][num] && !block[blockIndex][num]) {
+            int idx = i / 3 * 3 + j / 3;
+            if (!row[i][num]
+                    && !col[j][num]
+                    && !block[idx][num]) {
+
                 // 递归
                 board[i][j] = (char) ('0' + num);
                 row[i][num] = true;
                 col[j][num] = true;
-                block[blockIndex][num] = true;
-                if (dfs(board, row, col, block, i, j)) {
+                block[idx][num] = true;
+
+                if (dfs(board, row, col, block, i, j))
                     return true;
-                } else {
-                    // 回溯
-                    row[i][num] = false;
-                    col[j][num] = false;
-                    block[blockIndex][num] = false;
-                    board[i][j] = '.';
-                }
+
+                // 回溯
+                row[i][num] = false;
+                col[j][num] = false;
+                block[idx][num] = false;
+                board[i][j] = '.';
             }
         }
         return false;
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：回溯法
+public void solveSudoku(char[][] board) {
+    boolean[][] row = new boolean[9][10]//记录某行，某位数字是否已经被摆放
+            ,col = new boolean[9][10] //记录某列，某位数字是否已经被摆放
+            ,block = new boolean[9][10];//记录某3x3宫格内，某位数字是否已经被摆放
+    for (int i = 0; i < 9; i++)
+        for (int j = 0; j < 9; j++)
+            if (board[i][j] != '.') {
+                int num = board[i][j] - '0';
+                row[i][num] = true;
+                col[j][num] = true;
+                // blockIndex = i / 3 * 3 + j / 3，取整
+                block[i / 3 * 3 + j / 3][num] = true;
+            }
+    dfs(board, row, col, block, 0, 0);
+}
+
+private boolean dfs(char[][] board,   // 数独
+                    boolean[][] row,  // 第 i 行是否有元素 m
+                    boolean[][] col,  // 第 j 行是否有元素 n
+                    boolean[][] block,// 第 k 个九宫格是否有元素 o
+                    int i,  // 行
+                    int j) {// 列
+    // 找寻空位置
+    while (board[i][j] != '.') {
+        if (++j >= 9) {
+            i++;
+            j = 0;
+        }
+        if (i >= 9)
+            return true;
+    }
+    for (int num = 1; num <= 9; num++) {
+        int idx = i / 3 * 3 + j / 3;
+        if (!row[i][num]
+                && !col[j][num]
+                && !block[idx][num]) {
+            // 递归
+            board[i][j] = (char) ('0' + num);
+            row[i][num] = true;
+            col[j][num] = true;
+            block[idx][num] = true;
+            if (dfs(board, row, col, block, i, j))
+                return true;
+            // 回溯
+            row[i][num] = false;
+            col[j][num] = false;
+            block[idx][num] = false;
+            board[i][j] = '.';
+        }
+    }
+    return false;
+}
+*/
