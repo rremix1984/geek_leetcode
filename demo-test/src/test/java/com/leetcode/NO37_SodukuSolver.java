@@ -67,8 +67,8 @@ public class NO37_SodukuSolver {
 
     public void solveSudoku(char[][] board) {
         boolean[][] row = new boolean[9][10]//记录某行，某位数字是否已经被摆放
-                ,col = new boolean[9][10] //记录某列，某位数字是否已经被摆放
-                ,block = new boolean[9][10];//记录某3x3宫格内，某位数字是否已经被摆放
+                   ,col = new boolean[9][10] //记录某列，某位数字是否已经被摆放
+                 ,block = new boolean[9][10];//记录某3x3宫格内，某位数字是否已经被摆放
         for (int i = 0; i < 9; i++)
             for (int j = 0; j < 9; j++)
                 if (board[i][j] != '.') {
@@ -96,11 +96,13 @@ public class NO37_SodukuSolver {
             if (i >= 9)
                 return true;
         }
+
         for (int num = 1; num <= 9; num++) {
             int idx = i / 3 * 3 + j / 3;
+            // 如果数字 num 同时不在 "行、列、九宫格" 任何一个中
             if (!row[i][num]
-                    && !col[j][num]
-                    && !block[idx][num]) {
+                && !col[j][num]
+                && !block[idx][num]) {
 
                 // 递归
                 board[i][j] = (char) ('0' + num);
@@ -111,13 +113,15 @@ public class NO37_SodukuSolver {
                 if (dfs(board, row, col, block, i, j))
                     return true;
 
-                // 回溯
+                // 说明递归的过程中遇到了错误答案，开始回溯，把单元格内容还原回去 [false, false, false, .]
                 row[i][num] = false;
                 col[j][num] = false;
                 block[idx][num] = false;
                 board[i][j] = '.';
             }
         }
+
+        // 当所有数字都根填好了，说明当前值不应该放到这个格子里，返回false，触发回溯。
         return false;
     }
 }
