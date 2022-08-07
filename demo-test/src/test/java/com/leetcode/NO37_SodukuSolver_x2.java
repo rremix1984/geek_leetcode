@@ -82,18 +82,26 @@ public class NO37_SodukuSolver_x2 {
     }
 
     public void solveSudoku(char[][] board) {
-        boolean[][] row = new boolean[9][10]//记录某行，某位数字是否已经被摆放
-                   ,col = new boolean[9][10] //记录某列，某位数字是否已经被摆放
-                 ,block = new boolean[9][10];//记录某3x3宫格内，某位数字是否已经被摆放
-        for (int i = 0; i < 9; i++)
-            for (int j = 0; j < 9; j++)
+        //记录某行，某位数字是否已经被摆放，9个小格子，0-9共10个数字
+        boolean[][] row = new boolean[9][10],
+        //记录某列，某位数字是否已经被摆放, 9个小格子，0-9共10个数字
+                    col = new boolean[9][10],
+        //记录某3x3宫格内，某位数字是否已经被摆放，9个【大】格子，0-9共10个数字
+                  block = new boolean[9][10];
+
+        for (int i = 0; i < row.length; i++) {
+            for (int j = 0; j < col.length; j++) {
                 if (board[i][j] != '.') {
                     int num = board[i][j] - '0';
+                    // blockIndex = i / 3 * 3 + j / 3，取整
+                    int idx = i / 3 * 3 + j / 3;
                     row[i][num] = true;
                     col[j][num] = true;
-                    // blockIndex = i / 3 * 3 + j / 3，取整
-                    block[i / 3 * 3 + j / 3][num] = true;
+                    block[idx][num] = true;
                 }
+            }
+        }
+        // 深度遍历二维数组 board 判断数独的每一种可能性
         dfs(board, row, col, block, 0, 0);
     }
 

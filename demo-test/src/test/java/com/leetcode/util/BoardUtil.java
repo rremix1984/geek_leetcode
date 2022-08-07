@@ -13,9 +13,10 @@ public class BoardUtil {
                     System.out.print("| ");
                 System.out.print(board[i][j] + " ");
             }
+            System.out.print("| ");
             System.out.println();
             if (i % 3 == 2)
-                System.out.println("-----------------------");
+                System.out.println("-------------------------");
         }
     }
 
