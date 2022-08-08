@@ -3,6 +3,9 @@
  */
 package com.leetcode.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BoardUtil {
 
     public static void printBoard(char[][] board) {
@@ -17,6 +20,29 @@ public class BoardUtil {
             System.out.println();
             if (i % 3 == 2)
                 System.out.println("-------------------------");
+        }
+    }
+
+
+    public static class Trie {
+        public String word;
+        public Map<Character, Trie> children;
+
+        public Trie() {
+            this.word = "";
+            this.children = new HashMap<>();
+        }
+
+        public void insert(String word) {
+            Trie cur = this;
+            for (int i = 0; i < word.length(); ++i) {
+                char c = word.charAt(i);
+                if (!cur.children.containsKey(c)) {
+                    cur.children.put(c, new Trie());
+                }
+                cur = cur.children.get(c);
+            }
+            cur.word = word;
         }
     }
 
