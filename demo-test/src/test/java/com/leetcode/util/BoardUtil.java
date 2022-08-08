@@ -6,6 +6,8 @@ package com.leetcode.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.leetcode.util.LogUtil.info;
+
 public class BoardUtil {
 
     public static void printBoard(char[][] board) {
@@ -23,7 +25,6 @@ public class BoardUtil {
         }
     }
 
-
     public static class Trie {
         public String word;
         public Map<Character, Trie> children;
@@ -35,11 +36,9 @@ public class BoardUtil {
 
         public void insert(String word) {
             Trie cur = this;
-            for (int i = 0; i < word.length(); ++i) {
-                char c = word.charAt(i);
-                if (!cur.children.containsKey(c)) {
-                    cur.children.put(c, new Trie());
-                }
+            // 一个字符接一个字符的遍历，最后把word赋值给最后一层 p -> e -> a -> pea -> null
+            for (Character c : word.toCharArray()) {
+                cur.children.putIfAbsent(c, new Trie());
                 cur = cur.children.get(c);
             }
             cur.word = word;
@@ -47,3 +46,40 @@ public class BoardUtil {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+public static class Trie {
+
+    public String word;
+
+    public Map<Character, Trie> children;
+
+    public Trie() {
+        this.word = "";
+        this.children = new HashMap<>();
+    }
+
+    public void insert(String word) {
+        Trie cur = this;
+        for (Character c : word.toCharArray()) {
+            cur.children.putIfAbsent(c, new Trie());
+            cur = cur.children.get(c);
+        }
+        cur.word = word;
+    }
+}
+*/

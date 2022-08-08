@@ -1,10 +1,9 @@
 package com.leetcode;
 
+import com.leetcode.util.BoardUtil;
 import org.junit.Test;
-
 import static com.leetcode.util.BoardUtil.*;
 import static com.leetcode.util.LogUtil.info;
-
 import java.util.*;
 
 /**
@@ -47,61 +46,9 @@ public class NO212_WordSearchII_x2 {
     }
 
     public List<String> findWords(char[][] board, String[] words) {
-        // 首先构建一个 Trie 树
-        Trie trie = new Trie();
-
-        // 把字符一个一个添加进去
-        for (String word : words) {
-            trie.insert(word);
-        }
-
-        // 定义结果集 HashSet
-        Set<String> ans = new HashSet<>();
-
-        // 遍历每一行、每一列进行深度遍历，结果写入ans
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                dfs(board, trie, i, j, ans);
-            }
-        }
-
-        // 返回结果集
-        return new ArrayList<>(ans);
+        return null;
     }
 
-    public void dfs(char[][] board, Trie now, int i, int j, Set<String> ans) {
-        // 如果子节点中没有这个元素，就不用遍历了
-        if (!now.children.containsKey(board[i][j]))
-            return;
-
-        // 取出第i行、第j列，这个元素 ch
-        char ch = board[i][j];
-
-        // 获取 ch 对应的 Trie 树
-        now = now.children.get(ch);
-
-        // 如果 Trie 树本身不为空，就加入结果集中
-        if (!"".equals(now.word))
-            ans.add(now.word);
-
-        // 先把自己设置唯一个非法字符 '#' 这样就不会在遍历到自己了
-        board[i][j] = '#';
-
-        // 遍历4个方向 { 1, 0},
-        //           {-1, 0},
-        //           { 0, 1},
-        //           { 0,-1}
-        for (int[] arr : dirs) {
-            int m = i + arr[0];
-            int n = j + arr[1];
-            // 行、列都没有到达边界时，继续进行深度遍历
-            if (m >= 0 && m < board.length &&
-                n >= 0 && n < board[0].length)
-                dfs(board, now, m, n, ans);
-        }
-        // 遍历完成后，把当前元素复原
-        board[i][j] = ch;
-    }
 }
 
 
