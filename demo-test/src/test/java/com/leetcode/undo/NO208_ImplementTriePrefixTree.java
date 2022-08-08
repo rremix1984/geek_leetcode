@@ -1,10 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -38,12 +37,13 @@ public class NO208_ImplementTriePrefixTree {
         trie.insert("apple");
         info(trie.search("apple"));   // 返回 True
         info(trie.search("app"));     // 返回 False
-        info(trie.startsWith("app")); // 返回 True
+        info(trie.startsWith("app"));       // 返回 True
         trie.insert("app");
         info(trie.search("app"));     // 返回 True
     }
 
     static class Trie {
+
         public Trie[] children;
         private boolean isEnd;
 
@@ -54,12 +54,10 @@ public class NO208_ImplementTriePrefixTree {
 
         public void insert(String word) {
             Trie node = this;
-            for (int i = 0; i < word.length(); i++) {
-                char ch = word.charAt(i);
+            for (Character ch : word.toCharArray()) {
                 int index = ch - 'a';
-                if (node.children[index] == null) {
+                if (node.children[index] == null)
                     node.children[index] = new Trie();
-                }
                 node = node.children[index];
             }
             node.isEnd = true;
@@ -76,14 +74,9 @@ public class NO208_ImplementTriePrefixTree {
 
         private Trie searchPrefix(String prefix) {
             Trie node = this;
-            for (int i = 0; i < prefix.length(); i++) {
-                char ch = prefix.charAt(i);
-                int index = ch - 'a';
-                if (node.children[index] == null) {
+            for (Character c : prefix.toCharArray())
+                if ((node = node.children[c - 'a']) == null)
                     return null;
-                }
-                node = node.children[index];
-            }
             return node;
         }
     }
@@ -138,8 +131,7 @@ class Trie {
     private Trie searchPrefix(String prefix) {
         Trie node = this;
         for (int i = 0; i < prefix.length(); i++) {
-            char ch = prefix.charAt(i);
-            int index = ch - 'a';
+            int index = prefix.charAt(i) - 'a';
             if (node.children[index] == null)
                 return null;
             node = node.children[index];

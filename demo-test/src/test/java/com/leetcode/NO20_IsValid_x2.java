@@ -4,7 +4,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import java.util.Stack;
 import static com.leetcode.util.LogUtil.info;
 
@@ -32,20 +31,7 @@ public class NO20_IsValid_x2 {
     }
 
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
-        for (char c : s.toCharArray()) {
-            if (c == '(')
-                stack.push(')');
-            else if (c == '[')
-                stack.push(']');
-            else if (c == '{')
-                stack.push('}');
-            else if (c == ' ')
-                continue;
-            else if (stack.isEmpty() || stack.pop() != c)
-                return false;
-        }
-        return stack.empty();
+        return false;
     }
 }
 
