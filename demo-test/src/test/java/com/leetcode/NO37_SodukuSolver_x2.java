@@ -82,71 +82,9 @@ public class NO37_SodukuSolver_x2 {
     }
 
     public void solveSudoku(char[][] board) {
-        //记录某行，某位数字是否已经被摆放，9个小格子，0-9共10个数字
-        boolean[][] row = new boolean[9][10],
-        //记录某列，某位数字是否已经被摆放, 9个小格子，0-9共10个数字
-                    col = new boolean[9][10],
-        //记录某3x3宫格内，某位数字是否已经被摆放，9个【大】格子，0-9共10个数字
-                  block = new boolean[9][10];
 
-        for (int i = 0; i < row.length; i++) {
-            for (int j = 0; j < col.length; j++) {
-                if (board[i][j] != '.') {
-                    int num = board[i][j] - '0';
-                    // blockIndex = i / 3 * 3 + j / 3，取整
-                    int idx = i / 3 * 3 + j / 3;
-                    row[i][num] = true;
-                    col[j][num] = true;
-                    block[idx][num] = true;
-                }
-            }
-        }
-        // 深度遍历二维数组 board 判断数独的每一种可能性
-        dfs(board, row, col, block, 0, 0);
     }
 
-    private boolean dfs(char[][] board,   // 数独数组本身
-                        boolean[][] row,  // 第 i 行是否有元素 m
-                        boolean[][] col,  // 第 j 行是否有元素 n
-                        boolean[][] block,// 第 k 个九宫格是否有元素 o
-                        int i, int j) {   // 行，列
-        // 找寻空位置
-        while (board[i][j] != '.') {
-            // 本列已经遍历完了，另起一行，j归0
-            if (++j >= 9) {
-                j = 0;
-                i++;
-            }
-            // 说明全都遍历完了，所有单元格都已经赋值完毕
-            if (i == 9)
-                return true;
-        }
-
-        for (int num = 9; num >= 1; num--) {
-            // 第 idx 个九宫格
-            int idx = i / 3 * 3 + j / 3;
-            // 如果数字 num 同时不在 "行、列、九宫格" 任何一个中
-            if (!row[i][num] &&
-                !col[j][num] &&
-                !block[idx][num]) {
-                // 递归
-                row[i][num] = true;
-                col[j][num] = true;
-                block[idx][num] = true;
-                board[i][j] = (char) (num + '0');
-                // 递归，采用深度遍历搜索
-                if (dfs(board, row, col, block, i, j))
-                    return true;
-                // 说明递归的过程中遇到了错误答案，开始回溯，把单元格内容还原回去 [false, false, false, .]
-                row[i][num] = false;
-                col[j][num] = false;
-                block[idx][num] = false;
-                board[i][j] = '.';
-            }
-        }
-        // 当所有数字都根填好了，说明当前值不应该放到这个格子里，返回false，触发回溯。
-        return false;
-    }
 }
 
 

@@ -40,12 +40,12 @@ public class NO433_MinimumGeneticMutation {
         // 需1步
 //        info(minMutation("AACCGGTT", "AACCGGTA",
 //            new String[]{"AACCGGTA"}));// 1
-        // 需2步
-        info(minMutation("AACCGGTT", "AAACGGTA",
-            new String[]{"AACCGGTA", "AACCGCTA", "AAACGGTA"})); // 2
+//        // 需2步
+//        info(minMutation("AACCGGTT", "AAACGGTA",
+//            new String[]{"AACCGGTA", "AACCGCTA", "AAACGGTA"})); // 2
         // 需3步
-//        info(minMutation("AAAAACCC", "AACCCCCC",
-//            new String[]{"AAAACCCC", "AAACCCCC", "AACCCCCC"}));// 3
+        info(minMutation("AAAAACCC", "AACCCCCC",
+            new String[]{"AAAACCCC", "AAACCCCC", "AACCCCCC"}));// 3
     }
 
     int ans = Integer.MAX_VALUE;
@@ -87,6 +87,9 @@ public class NO433_MinimumGeneticMutation {
         }
     }
 }
+
+
+
 
 
 
