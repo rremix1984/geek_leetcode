@@ -55,6 +55,7 @@ public class NO127_WordLadder {
         end.add(endWord);
 
         // 第 3 步：执行双向 BFS，左右交替扩散的步数之和为所求
+        // 双向BFS，每次都保证是小的一方先扩散
         int step = 1;
         while (!begin.isEmpty() && !end.isEmpty()) {
             // 优先选择小的哈希表进行扩散，考虑到的情况更少
@@ -70,7 +71,7 @@ public class NO127_WordLadder {
                 if (changeLetter(word, end, visited, wordSet, next))
                     return step + 1;
 
-            // 原来的 begin 废弃，从 nextVisited 开始新的双向 BFS
+            // 原来的 begin 废弃，从 next 开始新的双向 BFS
             begin = next;
             step++;
         }
@@ -78,12 +79,12 @@ public class NO127_WordLadder {
     }
 
     /**
-     * 尝试对 word 修改每一个字符，看看是不是能落在 endVisited 中，扩展得到的新的 word 添加到 nextLevelVisited 里
+     * 尝试对 word 修改每一个字符，看看是不是能落在 end 中，扩展得到的新的 word 添加到 next 里
      */
-    private boolean changeLetter(String word, Set<String> endVisited,
+    private boolean changeLetter(String word, Set<String> end,
                                              Set<String> visited,
                                              Set<String> wordSet,
-                                             Set<String> nextVisited) {
+                                             Set<String> next) {
         char[] charArray = word.toCharArray();
         for (int i = 0; i < word.length(); i++) {
             char originChar = charArray[i];
@@ -92,14 +93,14 @@ public class NO127_WordLadder {
                     continue;
 
                 charArray[i] = c;
-                String next = String.valueOf(charArray);
-                if (wordSet.contains(next)) {
-                    if (endVisited.contains(next))
+                String nextStr = String.valueOf(charArray);
+                if (wordSet.contains(nextStr)) {
+                    if (end.contains(nextStr))
                         return true;
 
-                    if (!visited.contains(next)) {
-                        nextVisited.add(next);
-                        visited.add(next);
+                    if (!visited.contains(nextStr)) {
+                        next.add(nextStr);
+                        visited.add(nextStr);
                     }
                 }
             }
