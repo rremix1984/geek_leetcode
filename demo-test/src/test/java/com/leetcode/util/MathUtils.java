@@ -108,6 +108,17 @@ public class MathUtils {
         return j;
     }
 
+    public static int bin2Dec(String binaryString){
+        int sum = 0;
+        for(int i = 0;i < binaryString.length();i++){
+            char ch = binaryString.charAt(i);
+            if(ch > '2' || ch < '0')
+                throw new NumberFormatException(String.valueOf(i));
+            sum = sum * 2 + (binaryString.charAt(i) - '0');
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
         System.out.println(mins(0, 6, 3));
