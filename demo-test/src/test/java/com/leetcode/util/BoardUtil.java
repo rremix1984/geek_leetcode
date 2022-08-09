@@ -6,8 +6,6 @@ package com.leetcode.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.leetcode.util.LogUtil.info;
-
 public class BoardUtil {
 
     public static void printBoard(char[][] board) {
@@ -22,6 +20,18 @@ public class BoardUtil {
             System.out.println();
             if (i % 3 == 2)
                 System.out.println("-------------------------");
+        }
+    }
+
+    public static class Node {
+        public int x;
+        public int y;
+        public int step;
+
+        public Node(int start, int end, int step) {
+            this.x = start;
+            this.y = end;
+            this.step = step;
         }
     }
 
