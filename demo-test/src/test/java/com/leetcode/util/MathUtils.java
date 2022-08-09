@@ -119,6 +119,17 @@ public class MathUtils {
         return sum;
     }
 
+    public static String binaryString(int num) {
+        StringBuilder result = new StringBuilder();
+        int flag = 1 << 7;
+        for (int i = 0; i < 8; i++) {
+            int val = (flag & num) == 0 ? 0 : 1;
+            result.append(val);
+            num <<= 1;
+        }
+        return result.toString();
+    }
+
     public static void main(String[] args) {
         System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
         System.out.println(mins(0, 6, 3));
