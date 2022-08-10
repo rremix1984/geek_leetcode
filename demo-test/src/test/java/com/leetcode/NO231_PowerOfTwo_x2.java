@@ -45,9 +45,10 @@ public class NO231_PowerOfTwo_x2 {
     // (5)   00000101 -> 11111010 -> 11111011
     public boolean isPowerOfTwo(int n) {
         //方法1：
-        return n > 0 && (n & -n) == n;
+//        return n > 0 && (n & -n) == n;
         //方法2：
 //        return n > 0 && (1 << 30) % n == 0;
+        return n > 0 && (n & (n - 1)) == 0;
     }
 }
 
