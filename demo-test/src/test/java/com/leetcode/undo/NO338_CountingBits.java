@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -56,7 +56,6 @@ public class NO338_CountingBits {
         for (int i = 1; i <= n; i++) {
             if ((i & (i - 1)) == 0)
                 highBit = i;
-
             bits[i] = bits[i - highBit] + 1;
         }
         return bits;
