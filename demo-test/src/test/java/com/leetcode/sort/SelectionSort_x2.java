@@ -23,25 +23,52 @@ import static com.leetcode.util.SwapUtil.swap;
         使 R[1..i] 和 R[i+1 .. n) 分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；
         n-1趟结束，数组有序化了。
 */
-public class SelectionSort {
+public class SelectionSort_x2 {
 
     @Test
     public void test() {
         info(selectionSort(new int[]{1, 3, 5, 2, 4, 6}));
+        info(selectionSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
+        info(selectionSort(new int[]{1, 2, 5, 5, 3, 6}));
     }
 
     public int[] selectionSort(int[] arr) {
-        int len = arr.length;
-        for (int i = 0; i < len - 1; i++) {
+        for (int i = 0; i < arr.length - 1; i++) {
             int min = i;
-            for (int j = i + 1; j < len; j++)
-                // 寻找最小的数，将最小数的索引保存
-                if (arr[j] < arr[min])
+            for (int j = i + 1; j < arr.length; j++)
+                if (arr[min] > arr[j])
                     min = j;
-            swap(arr, i, min);
+            swap(arr, min, i);
         }
         return arr;
     }
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+public int[] selectionSort(int[] arr) {
+    int len = arr.length;
+    for (int i = 0; i < len - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < len; j++)
+            // 寻找最小的数，将最小数的索引保存
+            if (arr[j] < arr[min])
+                min = j;
+        swap(arr, i, min);
+    }
+    return arr;
+}
+*/
