@@ -30,17 +30,11 @@ public class SelectionSort_x2 {
         info(selectionSort(new int[]{1, 3, 5, 2, 4, 6}));
         info(selectionSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
         info(selectionSort(new int[]{1, 2, 5, 5, 3, 6}));
+        info(selectionSort(null));
     }
 
     public int[] selectionSort(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            int min = i;
-            for (int j = i + 1; j < arr.length; j++)
-                if (arr[min] > arr[j])
-                    min = j;
-            swap(arr, min, i);
-        }
-        return arr;
+        return null;
     }
 }
 
@@ -60,6 +54,9 @@ public class SelectionSort_x2 {
 
 /**
 public int[] selectionSort(int[] arr) {
+    if (arr == null || arr.length == 0)
+        return new int[0];
+
     int len = arr.length;
     for (int i = 0; i < len - 1; i++) {
         int min = i;
@@ -69,6 +66,7 @@ public int[] selectionSort(int[] arr) {
                 min = j;
         swap(arr, i, min);
     }
+
     return arr;
 }
 */
