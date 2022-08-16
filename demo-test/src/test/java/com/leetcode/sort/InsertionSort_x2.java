@@ -30,6 +30,15 @@ public class InsertionSort_x2 {
     }
 
     private int[] insertionSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int pre = i - 1;
+            int cur = arr[i];
+            while (pre >= 0 && arr[pre] > cur) {
+                arr[pre + 1] = arr[pre];
+                pre--;
+            }
+            arr[pre + 1] = cur;
+        }
         return arr;
     }
 }

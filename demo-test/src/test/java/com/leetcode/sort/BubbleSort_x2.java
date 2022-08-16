@@ -31,12 +31,10 @@ public class BubbleSort_x2 {
     }
 
     public int[] bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
+        for (int i = 0; i < arr.length; i++)
+            for (int j = 0; j < arr.length - i - 1; j++)
                 if (arr[j] > arr[j + 1])
                     swap(arr, j,j+1);
-            }
-        }
         return arr;
     }
 
@@ -61,6 +59,8 @@ public class BubbleSort_x2 {
 public int[] bubbleSort(int[] arr) {
     for (int i = 0; i < arr.length - 1; i++) {
         // 相邻元素两两对比
+        // arr.length - i - 1 代表着
+        // 最后的 i 个元素已经是有序的了，不需要重新排序
         for (int j = 0; j < arr.length - i - 1; j++)
             if (arr[j] > arr[j + 1])
                 swap(arr, j + 1, j);
