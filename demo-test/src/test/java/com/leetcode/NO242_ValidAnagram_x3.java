@@ -18,7 +18,7 @@ import static com.leetcode.util.LogUtil.info;
         输入: s = "rat", t = "car"
         输出: false
 */
-public class NO242_ValidAnagram_x2 {
+public class NO242_ValidAnagram_x3 {
 
     @Test
     public void test() {
@@ -26,22 +26,6 @@ public class NO242_ValidAnagram_x2 {
     }
 
     public boolean isAnagram(String s, String t) {
-        if (s.length() != t.length())
-            return false;
-
-        int[] ss = new int[26];
-
-        for (int i = 0; i < s.length(); i++) {
-            ss[s.charAt(i) - 'a']++;
-            ss[t.charAt(i) - 'a']--;
-        }
-
-        for (int i = 0; i < s.length(); i++) {
-            if (ss[i] != 0) {
-                return false;
-            }
-        }
-
         return true;
     }
 }
