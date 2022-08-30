@@ -44,34 +44,55 @@ public class NO127_WordLadder {
     }
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> set = new HashSet<>(wordList);
-        if (set.isEmpty() || !set.contains(endWord))
-            return 0;
-
-        Queue<String> queue = new LinkedList<>();
-        queue.offer(beginWord);
-        int level = 1;
-
-        // 层序遍历
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                String currWord = queue.poll();
-                if (currWord.equals(endWord))
-                    return level;
-
-                for (char j = 'a'; j <= 'z'; j++) {
-                    for (int k = 0; k < currWord.length(); k++) {
-                        String newWord = currWord.substring(0, k) + j + currWord.substring(k + 1);
-                        if (set.contains(newWord)) {
-                            queue.offer(newWord);
-                            set.remove(newWord);
-                        }
-                    }
-                }
-            }
-            level++;
-        }
         return 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    Set<String> set = new HashSet<>(wordList);
+    if (set.isEmpty() || !set.contains(endWord))
+        return 0;
+
+    Queue<String> queue = new LinkedList<>();
+    queue.offer(beginWord);
+    int level = 1;
+
+    // 层序遍历
+    while (!queue.isEmpty()) {
+        int size = queue.size();
+        for (int i = 0; i < size; i++) {
+            String currWord = queue.poll();
+            if (currWord.equals(endWord))
+                return level;
+
+            for (char j = 'a'; j <= 'z'; j++) {
+                for (int k = 0; k < currWord.length(); k++) {
+                    String newWord = currWord.substring(0, k) + j + currWord.substring(k + 1);
+                    if (set.contains(newWord)) {
+                        queue.offer(newWord);
+                        set.remove(newWord);
+                    }
+                }
+            }
+        }
+        level++;
+    }
+    return 0;
+}
+*/
