@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 
@@ -11,6 +11,7 @@ import java.util.Map;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    （简单）
     387. 字符串中的第一个唯一字符
         给定一个字符串 s ，找到 它的第一个不重复的字符，并返回它的索引 。如果不存在，则返回 -1 。
     示例 1：
@@ -33,13 +34,14 @@ public class NO387_FirstUniqueCharacterInAString {
     }
 
     public int firstUniqChar(String s) {
-        Map<Character, Integer> frequency = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); ++i) {
             char ch = s.charAt(i);
-            frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
+
         for (int i = 0; i < s.length(); ++i)
-            if (frequency.get(s.charAt(i)) == 1)
+            if (map.get(s.charAt(i)) == 1)
                 return i;
 
         return -1;

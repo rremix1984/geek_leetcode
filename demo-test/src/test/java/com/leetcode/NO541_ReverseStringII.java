@@ -29,11 +29,10 @@ public class NO541_ReverseStringII {
     }
 
     public String reverseStr(String s, int k) {
-        int n = s.length();
         char[] arr = s.toCharArray();
-        for (int i = 0; i < n; i += 2 * k)
-            reverse(arr, i, min(i + k, n) - 1);
-
+        for (int i = 0; i < s.length(); i += 2 * k) {
+            reverse(arr, i, min(i + k, s.length()) - 1);
+        }
         return new String(arr);
     }
 
@@ -45,3 +44,41 @@ public class NO541_ReverseStringII {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+public String reverseStr(String s, int k) {
+    int n = s.length();
+    char[] arr = s.toCharArray();
+    for (int i = 0; i < n; i += 2 * k)
+        reverse(arr, i, min(i + k, n) - 1);
+
+    return new String(arr);
+}
+
+public void reverse(char[] arr, int left, int right) {
+    while (left < right) {
+        swap(arr, left, right);
+        left++;
+        right--;
+    }
+}
+*/
