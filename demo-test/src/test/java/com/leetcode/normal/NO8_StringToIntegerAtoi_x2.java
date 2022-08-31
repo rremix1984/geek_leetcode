@@ -57,33 +57,43 @@ public class NO8_StringToIntegerAtoi_x2 {
         info(myAtoi("   -42"));// -42
         info(myAtoi("4193 with words"));// 4193
         info(myAtoi("00000-42a1234"));// 0
+        info(myAtoi(" "));// 0
     }
 
-    public int myAtoi(String s) {
-        char[] arr = s.trim().toCharArray();
-        boolean isPositive = true;
-        boolean sign = false;
-        long ans = 0;
-        for (char c : arr) {
-            if (!sign && (c == '+' || c == '-')) {
-                isPositive = c == '+';
-                sign = true;
-                continue;
-            } else if (!Character.isDigit(c)) {
-                break;
-            }
-            sign = true;
-            ans = ans * 10 + (c - '0');
-            if (ans > MAX_VALUE) {
-                if (isPositive)
-                    return MAX_VALUE;
-                else
-                    return MIN_VALUE;
-            }
+    public int myAtoi(String str) {
+        int index = 0;
+        int sign = 1;
+        int total = 0;
+
+        // 1. Empty string
+        if (str.length() == 0)
+            return 0;
+
+        // 2. Remove spaces
+        while (str.charAt(index) == ' ')
+            index++;
+
+        // 3. Handle signs
+        if (str.charAt(index) == '+' || str.charAt(index) == '-') {
+            sign = str.charAt(index) == '+' ? 1 : -1;
+            index++;
         }
-        return isPositive ? (int)ans : (int)-ans;
-    }
 
+        // 4. Convert number and avoid  overflow
+        while (index < str.length()) {
+            int digit = str.charAt(index) - '0';
+            if (digit < 0 || digit > 9)
+                break;
+
+            // check if total will be overflow after 10 times and add digit
+            if (Integer.MAX_VALUE / 10 < total || Integer.MAX_VALUE / 10 == total && Integer.MAX_VALUE % 10 < digit)
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+
+            total = 10 * total + digit;
+            index++;
+        }
+        return total * sign;
+    }
 }
 
 
@@ -125,7 +135,7 @@ public int myAtoi(String str) {
     return neg ? (int) -ans : (int) ans;
 }
 
-// 方法2：短一点
+// 方法2：短一点（推荐）
 public int myAtoi(String s) {
     char[] arr = s.trim().toCharArray();
     int n = arr.length;
@@ -233,5 +243,40 @@ public int myAtoi(String str) {
     }
     return ret;
 }
-*/
 
+// 方法4：有瑕疵，leetcode过不了，对于 " " 返回outOfBoundsException
+public int myAtoi(String str) {
+    int index = 0;
+    int sign = 1;
+    int total = 0;
+
+    // 1. Empty string
+    if (str.length() == 0)
+        return 0;
+
+    // 2. Remove spaces
+    while (str.charAt(index) == ' ')
+        index++;
+
+    // 3. Handle signs
+    if (str.charAt(index) == '+' || str.charAt(index) == '-') {
+        sign = str.charAt(index) == '+' ? 1 : -1;
+        index++;
+    }
+
+    // 4. Convert number and avoid  overflow
+    while (index < str.length()) {
+        int digit = str.charAt(index) - '0';
+        if (digit < 0 || digit > 9)
+            break;
+
+        // check if total will be overflow after 10 times and add digit
+        if (Integer.MAX_VALUE / 10 < total || Integer.MAX_VALUE / 10 == total && Integer.MAX_VALUE % 10 < digit)
+            return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+
+        total = 10 * total + digit;
+        index++;
+    }
+    return total * sign;
+}
+*/

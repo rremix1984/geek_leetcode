@@ -6,7 +6,6 @@ package com.leetcode.easy;
 import com.leetcode.util.Logable;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import java.util.LinkedList;
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -30,7 +29,7 @@ import static com.leetcode.util.LogUtil.info;
             由于空字符串正着反着读都一样，所以是回文串。
 */
 @Slf4j
-public class NO125_IsPalindrome_x2 {
+public class NO125_ValidPalindrome_x2 {
 
     @Test
     public void test() {
@@ -48,9 +47,23 @@ public class NO125_IsPalindrome_x2 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+// 方法1：解题思路：双指针法，收尾指针对比
 public boolean isPalindrome(String s) {
-    //解题思路：双指针法，收尾指针对比
     int start = 0;
     int end = s.length() - 1;
     while (start < end) {

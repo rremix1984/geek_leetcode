@@ -17,7 +17,7 @@ import static com.leetcode.util.LogUtil.info;
 
     示例 1:
         输入: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
-        输出: [["bat"],["nat","tan"],["ate","eat","tea"]]
+        输出: [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
     示例 2:
         输入: strs = [""]
         输出: [[""]]
