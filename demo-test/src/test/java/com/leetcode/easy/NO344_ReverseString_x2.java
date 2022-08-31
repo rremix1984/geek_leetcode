@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ import static com.leetcode.util.SwapUtil.swap;
         输入：s = {'H','a','n','n','a','h'}
         输出：{'h','a','n','n','a','H'}
 */
-public class NO344_ReverseString {
+public class NO344_ReverseString_x2 {
 
     @Test
     public void test() {
@@ -35,9 +35,11 @@ public class NO344_ReverseString {
 
     // 双指针法
     public void reverseString(char[] s) {
-        for (int left = 0, right = s.length - 1;
-            left < right; left++, right--)
-            swap(s, left, right);
+        int left = 0;
+        int right = s.length - 1;
+        for (;left < right;) {
+            swap(s,left++,right--);
+        }
     }
 }
 
@@ -57,8 +59,9 @@ public class NO344_ReverseString {
 /**
 // 双指针法
 public void reverseString(char[] s) {
-    for (int left = 0, right = s.length - 1;
-         left < right; left++, right--)
-        swap(s, left, right);
+    int left = 0;
+    int right = s.length - 1;
+    while (left < right)
+        swap(s, left++, right--);
 }
 */
