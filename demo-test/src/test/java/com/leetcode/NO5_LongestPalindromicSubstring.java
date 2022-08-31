@@ -27,28 +27,20 @@ public class NO5_LongestPalindromicSubstring {
     }
 
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 2)
-            return s;
-
-        int strLen = s.length();
-        int maxStart = 0;  //最长回文串的起点
-        int maxEnd = 0;    //最长回文串的终点
-        int maxLen = 1;  //最长回文串的长度
-
-        boolean[][] dp = new boolean[strLen][strLen];
-        for (int r = 1; r < strLen; r++) {
-            for (int l = 0; l < r; l++) {
-                if (s.charAt(l) == s.charAt(r) && (r - l <= 2 || dp[l + 1][r - 1])) {
-                    dp[l][r] = true;
-                    if (r - l + 1 > maxLen) {
-                        maxLen = r - l + 1;
-                        maxStart = l;
-                        maxEnd = r;
-                    }
-                }
+        int n = s.length();
+        String res = "";
+        // dp方程的含义：从 i 到 j 这个子串是一个回文字符串
+        boolean[][] dp = new boolean[n][n];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                // 一般状态转移方程 j - i < 2 长度为 0 或者 1 都是回文串
+                dp[i][j] = s.charAt(i) == s.charAt(j)
+                        && (j - i < 2 || dp[i + 1][j - 1]);
+                if (dp[i][j] && j - i + 1 > res.length())
+                    res = s.substring(i, j + 1);
             }
         }
-        return s.substring(maxStart, maxEnd + 1);
+        return res;
     }
 }
 
@@ -69,7 +61,7 @@ public class NO5_LongestPalindromicSubstring {
 
 
 /**
-// 方法1：
+// 方法1：选中中心，向两边扩散
 public String longestPalindrome(String s) {
     if (s == null || s.length() < 1)
         return "";
@@ -88,7 +80,8 @@ public String longestPalindrome(String s) {
 }
 
 public int expandAroundCenter(String s, int left, int right) {
-    while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+    while (left >= 0 && right < s.length()
+        && s.charAt(left) == s.charAt(right)) {
         --left;
         ++right;
     }
