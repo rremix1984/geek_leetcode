@@ -43,10 +43,12 @@ public class NO10_RegularExpressionMatching {
         f[0][0] = true;
         for (int i = 0; i <= m; ++i) {
             for (int j = 1; j <= n; ++j) {
+                // 是 * 的情况下
                 if (p.charAt(j - 1) == '*') {
                     f[i][j] = f[i][j - 2];
                     if (matches(s, p, i, j - 1))
                         f[i][j] = f[i][j] || f[i - 1][j];
+                //
                 } else {
                     if (matches(s, p, i, j))
                         f[i][j] = f[i - 1][j - 1];

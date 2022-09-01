@@ -17,18 +17,18 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "rabbbit", t = "rabbit"
         输出：3
         解释：如下图所示, 有 3 种可以从 s 中得到 "rabbit" 的方案。
-            rabbbit
-            rabbbit
-            rabbbit
+            ra[b]bbit  -> rabbit
+            rabb[b]it  -> rabbit
+            rab[b]bit  -> rabbit
     示例 2：
         输入：s = "babgbag", t = "bag"
         输出：5
         解释：如下图所示, 有 5 种可以从 s 中得到 "bag" 的方案。
-            babgbag
-            babgbag
-            babgbag
-            babgbag
-            babgbag
+            [ba]b[g]bag    -> bag
+            babg[ba][g]    -> bag
+            [b]abgb[a][g]  -> bag
+            ba[b]gb[a][g]  -> bag
+            [ba]bgba[g]    -> bag
 */
 public class NO115_DistinctSubsequences {
 
