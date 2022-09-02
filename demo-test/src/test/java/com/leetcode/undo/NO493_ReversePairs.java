@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import org.junit.Test;
 import java.util.Arrays;
@@ -25,8 +25,8 @@ public class NO493_ReversePairs {
 
     @Test
     public void test() {
-        info(reversePairs(new int[]{1,3,2,3,1}));// 2
-        info(reversePairs(new int[]{2,4,3,5,1}));// 3
+        info(reversePairs(new int[]{1, 3, 2, 3, 1}));// 2
+        info(reversePairs(new int[]{2, 4, 3, 5, 1}));// 3
     }
 
     public int reversePairs(int[] nums) {
@@ -38,10 +38,11 @@ public class NO493_ReversePairs {
             return 0;
 
         int mid = left + (right - left) / 2;
-        int cnt = mergeSort(arr, left, mid) + mergeSort(arr, mid + 1, right);
+        int cnt = mergeSort(arr, left, mid)
+                + mergeSort(arr, mid + 1, right);
 
         for (int i = left, j = mid + 1; i <= mid; i++) {
-            while (j <=  right && arr[i]/2.0 > arr[j])
+            while (j <=  right && arr[i] / 2.0 > arr[j])
                 j++;
             cnt += j - (mid + 1);
         }

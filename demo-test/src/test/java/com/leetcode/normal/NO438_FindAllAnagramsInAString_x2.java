@@ -1,11 +1,10 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
 
@@ -28,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
         起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
         起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
 */
-public class NO438_FindAllAnagramsInAString {
+public class NO438_FindAllAnagramsInAString_x2 {
 
     @Test
     public void test() {
@@ -37,29 +36,7 @@ public class NO438_FindAllAnagramsInAString {
     }
 
     public List<Integer> findAnagrams(String s, String p) {
-        int sLen = s.length(), pLen = p.length();
-
-        if (sLen < pLen)
-            return new ArrayList<>();
-
         List<Integer> ans = new ArrayList<>();
-        int[] sCount = new int[26];
-        int[] pCount = new int[26];
-        for (int i = 0; i < pLen; ++i) {
-            ++sCount[s.charAt(i) - 'a'];
-            ++pCount[p.charAt(i) - 'a'];
-        }
-
-        if (Arrays.equals(sCount, pCount))
-            ans.add(0);
-
-        for (int i = 0; i < sLen - pLen; i++) {
-            sCount[s.charAt(i) - 'a']--;
-            sCount[s.charAt(i + pLen) - 'a']++;
-            if (Arrays.equals(sCount, pCount))
-                ans.add(i + 1);
-        }
-
         return ans;
     }
 }
@@ -90,14 +67,18 @@ public List<Integer> findAnagrams(String s, String p) {
     List<Integer> ans = new ArrayList<>();
     int[] sCount = new int[26];
     int[] pCount = new int[26];
+
+    // 初始化滑动窗口,把元素放入字典表中
     for (int i = 0; i < pLen; ++i) {
         ++sCount[s.charAt(i) - 'a'];
         ++pCount[p.charAt(i) - 'a'];
     }
 
+    // 如果一开始就相等，就+1
     if (Arrays.equals(sCount, pCount))
         ans.add(0);
 
+    // 滑动窗口向后移动,前面的--,后面的++，最后对比一下是否两个列表元素相同
     for (int i = 0; i < sLen - pLen; i++) {
         sCount[s.charAt(i) - 'a']--;
         sCount[s.charAt(i + pLen) - 'a']++;
