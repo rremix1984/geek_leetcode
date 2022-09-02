@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -21,7 +21,7 @@ import static java.lang.Math.min;
         输入：s = "abcd", k = 2
         输出："bacd"
 */
-public class NO541_ReverseStringII {
+public class NO541_ReverseStringII_x2 {
 
     @Test
     public void test() {
@@ -30,16 +30,8 @@ public class NO541_ReverseStringII {
     }
 
     public String reverseStr(String s, int k) {
-        char[] arr = s.toCharArray();
-        for (int i = 0; i < s.length(); i += 2 * k)
-            reverse(arr, i, min(i + k, s.length()) - 1);
-
-        return new String(arr);
-    }
-
-    public void reverse(char[] arr, int left, int right) {
-        while (left < right)
-            swap(arr, left++, right--);
+        char[] res = s.toCharArray();
+        return new String(res);
     }
 }
 
@@ -66,6 +58,8 @@ public class NO541_ReverseStringII {
 public String reverseStr(String s, int k) {
     int n = s.length();
     char[] arr = s.toCharArray();
+    // i 步进为 2 * k
+    // 到最后一个元素时，直接取s.length()
     for (int i = 0; i < n; i += 2 * k)
         reverse(arr, i, min(i + k, n) - 1);
 
@@ -73,10 +67,9 @@ public String reverseStr(String s, int k) {
 }
 
 public void reverse(char[] arr, int left, int right) {
-    while (left < right) {
-        swap(arr, left, right);
-        left++;
-        right--;
-    }
+    // 把2k的前k个元素左右交换
+    // 从两边向中间：一对儿一对儿的换
+    while (left < right)
+        swap(arr, left++, right--);
 }
 */
