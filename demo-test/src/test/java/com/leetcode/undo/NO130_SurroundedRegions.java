@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.undo;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -40,46 +40,70 @@ public class NO130_SurroundedRegions {
         info(tmp);
     }
 
-    int[] dx = {-1, 0, 1, 0}, dy = {0, 1, 0, -1};
-    int m, n;
-
-    public void dfs(int x, int y, char[][] board) {
-        board[x][y] = '1';
-
-        for (int i = 0; i < 4; i++) {
-            int xx = x + dx[i];
-            int yy = y + dy[i];
-            if (xx >= 0 && xx <= m && yy >=0 && yy <= n && board[xx][yy] == 'O') {
-                dfs(xx, yy, board);
-            }
-        }
-    }
-
     public void solve(char[][] board) {
-        m = board.length - 1; // 行
-        n = board[0].length - 1; // 列
-        for (int j = 0; j <= n; j++)
-            if (board[0][j] == 'O')
-                dfs(0, j, board);
 
-        for (int j = 0; j <= n; j++)
-            if (board[m][j] == 'O')
-                dfs(m, j, board);
-
-        for (int i = 0; i <= m; i++)
-            if (board[i][0] == 'O')
-                dfs(i, 0, board);
-
-        for (int i = 0; i <= m; i++)
-            if (board[i][n] == 'O')
-                dfs(i, n, board);
-
-        for (int i = 0; i <= m; i++)
-            for (int j = 0; j <= n; j++)
-                if (board[i][j] == 'O')
-                    board[i][j] = 'X';
-                else if (board[i][j] == '1')
-                    board[i][j] = 'O';
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+int[] dx = {-1, 0, 1, 0}, dy = {0, 1, 0, -1};
+int m, n;
+
+public void dfs(int x, int y, char[][] board) {
+    board[x][y] = '1';
+
+    for (int i = 0; i < 4; i++) {
+        int xx = x + dx[i];
+        int yy = y + dy[i];
+        if (xx >= 0 && xx <= m && yy >=0 && yy <= n && board[xx][yy] == 'O') {
+            dfs(xx, yy, board);
+        }
+    }
+}
+
+public void solve(char[][] board) {
+    m = board.length - 1; // 行
+    n = board[0].length - 1; // 列
+    for (int j = 0; j <= n; j++)
+        if (board[0][j] == 'O')
+            dfs(0, j, board);
+
+    for (int j = 0; j <= n; j++)
+        if (board[m][j] == 'O')
+            dfs(m, j, board);
+
+    for (int i = 0; i <= m; i++)
+        if (board[i][0] == 'O')
+            dfs(i, 0, board);
+
+    for (int i = 0; i <= m; i++)
+        if (board[i][n] == 'O')
+            dfs(i, n, board);
+
+    for (int i = 0; i <= m; i++)
+        for (int j = 0; j <= n; j++)
+            if (board[i][j] == 'O')
+                board[i][j] = 'X';
+            else if (board[i][j] == '1')
+                board[i][j] = 'O';
+}
+*/
