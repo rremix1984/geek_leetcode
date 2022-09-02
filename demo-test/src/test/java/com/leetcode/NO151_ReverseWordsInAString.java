@@ -4,9 +4,7 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import java.util.*;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -49,7 +47,7 @@ public class NO151_ReverseWordsInAString {
         while (left <= right && s.charAt(right) == ' ')
             --right;
 
-        Deque<String> queue = new ArrayDeque<>();
+        Deque<String> queue = new LinkedList<>();
         StringBuilder word = new StringBuilder();
 
         while (left <= right) {
@@ -61,7 +59,7 @@ public class NO151_ReverseWordsInAString {
             } else if (c != ' ') {
                 word.append(c);
             }
-            ++left;
+            left++;
         }
         queue.offerFirst(word.toString());
         return String.join(" ", queue);
@@ -89,5 +87,36 @@ public String reverseWords(String s) {
     List<String> wordList = Arrays.asList(s.trim().split("\\s+"));
     Collections.reverse(wordList);
     return String.join(" ", wordList);
+}
+
+// 方法2：
+public String reverseWords(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+
+    // 去掉字符串开头的空白字符
+    while (left <= right && s.charAt(left) == ' ')
+        ++left;
+
+    // 去掉字符串末尾的空白字符
+    while (left <= right && s.charAt(right) == ' ')
+        --right;
+
+    Deque<String> queue = new ArrayDeque<>();
+    StringBuilder word = new StringBuilder();
+
+    while (left <= right) {
+        char c = s.charAt(left);
+        if ((word.length() != 0) && (c == ' ')) {
+            // 将单词 push 到队列的头部
+            queue.offerFirst(word.toString());
+            word.setLength(0);
+        } else if (c != ' ') {
+            word.append(c);
+        }
+        ++left;
+    }
+    queue.offerFirst(word.toString());
+    return String.join(" ", queue);
 }
 */

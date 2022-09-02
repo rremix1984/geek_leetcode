@@ -4,10 +4,10 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    （简单）
     557. 反转字符串中的单词 III
         给定一个字符串 s ，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
     示例 1：
@@ -31,6 +31,7 @@ public class NO557_ReverseWordsInAStringIII {
         int i = 0;
         while (i < length) {
             int start = i;
+            // 去掉左边的 ' '
             while (i < length && s.charAt(i) != ' ')
                 i++;
 

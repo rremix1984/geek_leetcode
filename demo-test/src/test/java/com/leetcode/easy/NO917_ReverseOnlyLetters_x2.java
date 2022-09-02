@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -25,7 +25,7 @@ import static java.lang.Character.isLetter;
         输入：s = "Test1ng-Leet=code-Q!"
         输出："Qedo1ct-eeLg=ntse-T!"
 */
-public class NO917_ReverseOnlyLetters {
+public class NO917_ReverseOnlyLetters_x2 {
 
     @Test
     public void test() {
@@ -35,24 +35,7 @@ public class NO917_ReverseOnlyLetters {
     }
 
     public String reverseOnlyLetters(String s) {
-        int n = s.length();
         char[] arr = s.toCharArray();
-        int left = 0;
-        int right = n - 1;
-        while (true) {
-            while (left < right && !isLetter(s.charAt(left))) // 判断左边是否扫描到字母
-                left++;
-
-            while (right > left && !isLetter(s.charAt(right))) // 判断右边是否扫描到字母
-                right--;
-
-            if (left >= right)
-                break;
-
-            swap(arr, left, right);
-            left++;
-            right--;
-        }
         return new String(arr);
     }
 }
@@ -88,9 +71,7 @@ public String reverseOnlyLetters(String s) {
         if (left >= right)
             break;
 
-        swap(arr, left, right);
-        left++;
-        right--;
+        swap(arr, left++, right--);
     }
     return new String(arr);
 }
