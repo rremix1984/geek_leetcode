@@ -31,7 +31,6 @@ public class NO557_ReverseWordsInAStringIII {
         int i = 0;
         while (i < length) {
             int start = i;
-            // 去掉左边的 ' '
             while (i < length && s.charAt(i) != ' ')
                 i++;
 
