@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode.hard;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -17,20 +17,42 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "rabbbit", t = "rabbit"
         输出：3
         解释：如下图所示, 有 3 种可以从 s 中得到 "rabbit" 的方案。
-            ra[b]bbit  -> rabbit
-            rabb[b]it  -> rabbit
-            rab[b]bit  -> rabbit
+            ra[b]bbit -> rabbit
+            rab[b]bit -> rabbit
+            rabb[b]it -> rabbit
+               r  a  b  b  i  t <null>
+             ----------------------
+          r  |[3] 3, 3, 3, 1, 1, 1
+          a  | 0, 3, 3, 3, 1, 1, 1
+          b  | 0, 0, 3, 3, 1, 1, 1
+          b  | 0, 0, 1, 2, 1, 1, 1
+          b  | 0, 0, 0, 1, 1, 1, 1
+          i  | 0, 0, 0, 0, 1, 1, 1
+          t  | 0, 0, 0, 0, 0, 1, 1
+      <null> | 0, 0, 0, 0, 0, 0, 1
+
     示例 2：
         输入：s = "babgbag", t = "bag"
         输出：5
         解释：如下图所示, 有 5 种可以从 s 中得到 "bag" 的方案。
-            [ba]b[g]bag    -> bag
-            babg[ba][g]    -> bag
-            [b]abgb[a][g]  -> bag
-            ba[b]gb[a][g]  -> bag
-            [ba]bgba[g]    -> bag
+            ba[b]g[bag] -> bag
+            ba[bgba]g   -> bag
+            b[abgb]ag   -> bag
+            [ba]b[gb]ag -> bag
+            [babg]bag   -> bag
+
+              b  a  g <null>
+            -------------
+          b |[5] 3  2  1
+          a | 2  3  2  1
+          b | 2  1  2  1
+          g | 1  1  2  1
+          b | 1  1  1  1
+          a | 0  1  1  1
+          g | 0  0  1  1
+     <null> | 0  0  0  1
 */
-public class NO115_DistinctSubsequences {
+public class NO115_DistinctSubsequences_x2 {
 
     @Test
     public void test() {
@@ -39,25 +61,7 @@ public class NO115_DistinctSubsequences {
     }
 
     public int numDistinct(String s, String t) {
-        int m = s.length(), n = t.length();
-        if (m < n)
-            return 0;
-
-        int[][] dp = new int[m + 1][n + 1];
-        for (int i = 0; i <= m; i++)
-            dp[i][n] = 1;
-
-        for (int i = m - 1; i >= 0; i--) {
-            char sChar = s.charAt(i);
-            for (int j = n - 1; j >= 0; j--) {
-                char tChar = t.charAt(j);
-                if (sChar == tChar)
-                    dp[i][j] = dp[i + 1][j + 1] + dp[i + 1][j];
-                else
-                    dp[i][j] = dp[i + 1][j];
-            }
-        }
-        return dp[0][0];
+        return 0;
     }
 }
 
@@ -82,7 +86,8 @@ public class NO115_DistinctSubsequences {
 /**
 // 方法1：
 public int numDistinct(String s, String t) {
-    int m = s.length(), n = t.length();
+    int m = s.length();
+    int n = t.length();
     if (m < n)
         return 0;
 
@@ -91,10 +96,8 @@ public int numDistinct(String s, String t) {
         dp[i][n] = 1;
 
     for (int i = m - 1; i >= 0; i--) {
-        char sChar = s.charAt(i);
         for (int j = n - 1; j >= 0; j--) {
-            char tChar = t.charAt(j);
-            if (sChar == tChar)
+            if (s.charAt(i) == t.charAt(j))
                 dp[i][j] = dp[i + 1][j + 1] + dp[i + 1][j];
             else
                 dp[i][j] = dp[i + 1][j];
