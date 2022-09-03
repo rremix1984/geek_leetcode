@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode.hard;
 
 import org.junit.Test;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         输出: 3
         解释：[4, 1], [3, 1], [5, 1]
 */
-public class NO493_ReversePairs {
+public class NO493_ReversePairs_x2 {
 
     @Test
     public void test() {
@@ -30,25 +30,7 @@ public class NO493_ReversePairs {
     }
 
     public int reversePairs(int[] nums) {
-        return mergeSort(nums, 0, nums.length - 1);
-    }
-
-    public static int mergeSort(int[] arr, int left, int right) {
-        if (left >= right)
-            return 0;
-
-        int mid = left + (right - left) / 2;
-        int cnt = mergeSort(arr, left, mid)
-                + mergeSort(arr, mid + 1, right);
-
-        for (int i = left, j = mid + 1; i <= mid; i++) {
-            while (j <=  right && arr[i] / 2.0 > arr[j])
-                j++;
-            cnt += j - (mid + 1);
-        }
-
-        Arrays.sort(arr, left, right + 1);
-        return cnt;
+        return -1;
     }
 
 }
@@ -71,20 +53,19 @@ public class NO493_ReversePairs {
 
 /**
 private int count;
-
 public int reversePairs(int[] nums) {
-    if (nums == null || nums.length < 2) {
+    if (nums == null || nums.length < 2)
         return 0;
-    }
+
     count = 0;
     mergeSort(nums, 0, nums.length - 1);
     return count;
 }
 
 private void mergeSort(int[] nums, int start, int end) {
-    if (start == end) {
+    if (start == end)
         return;
-    }
+
     int mid = start + (end - start) / 2;
     mergeSort(nums, start, mid);
     mergeSort(nums, mid + 1, end);
@@ -131,10 +112,13 @@ public static int mergeSort(int[] arr, int left, int right) {
 
     int cnt = mergeSort(arr, left, mid) + mergeSort(arr, mid + 1, right);
 
-    for (int i = left, j = mid + 1; i <= mid; i++) {
+    int i = left;
+    int j = mid + 1;
+    for (i <= mid) {
         while (j <=  right && arr[i]/2.0 > arr[j])
             j++;
         cnt += j - (mid + 1);
+        i++;
     }
 
     Arrays.sort(arr, left, right + 1);
