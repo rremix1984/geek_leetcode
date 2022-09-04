@@ -56,9 +56,9 @@ public class NO151_ReverseWordsInAString {
                 // 将单词 push 到队列的头部
                 queue.offerFirst(word.toString());
                 word.setLength(0);
-            } else if (c != ' ') {
+            } else if (c != ' ')
                 word.append(c);
-            }
+
             left++;
         }
         queue.offerFirst(word.toString());
