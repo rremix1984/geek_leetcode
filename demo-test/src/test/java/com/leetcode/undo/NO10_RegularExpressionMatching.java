@@ -48,7 +48,6 @@ public class NO10_RegularExpressionMatching {
                     f[i][j] = f[i][j - 2];
                     if (matches(s, p, i, j - 1))
                         f[i][j] = f[i][j] || f[i - 1][j];
-                //
                 } else {
                     if (matches(s, p, i, j))
                         f[i][j] = f[i - 1][j - 1];
