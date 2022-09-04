@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.*;
@@ -26,7 +26,7 @@ import static com.leetcode.util.LogUtil.info;
         输出："example good a"
         解释：如果两个单词间有多余的空格，反转后的字符串需要将单词间的空格减少到仅有一个。
 */
-public class NO151_ReverseWordsInAString {
+public class NO151_ReverseWordsInAString_x2 {
 
     @Test
     public void test() {
@@ -36,32 +36,17 @@ public class NO151_ReverseWordsInAString {
     }
 
     public String reverseWords(String s) {
-        int left = 0;
-        int right = s.length() - 1;
-
-        // 去掉字符串开头的空白字符
-        while (left <= right && s.charAt(left) == ' ')
-            ++left;
-
-        // 去掉字符串末尾的空白字符
-        while (left <= right && s.charAt(right) == ' ')
-            --right;
-
+        String t = s.trim() + ' ';
         Deque<String> queue = new LinkedList<>();
         StringBuilder word = new StringBuilder();
-
-        while (left <= right) {
-            char c = s.charAt(left);
-            if ((word.length() != 0) && (c == ' ')) {
-                // 将单词 push 到队列的头部
+        for (int i = 0; i <= t.length() - 1; i++) {
+            if (word.length() > 0 && t.charAt(i) == ' ') {
                 queue.offerFirst(word.toString());
                 word.setLength(0);
-            } else if (c != ' ')
-                word.append(c);
-
-            left++;
+            } else if (t.charAt(i) != ' ') {
+                word.append(t.charAt(i));
+            }
         }
-        queue.offerFirst(word.toString());
         return String.join(" ", queue);
     }
 }
@@ -117,6 +102,22 @@ public String reverseWords(String s) {
         ++left;
     }
     queue.offerFirst(word.toString());
+    return String.join(" ", queue);
+}
+
+// 优化后的方法2：
+public String reverseWords(String s) {
+    String t = s.trim() + ' ';
+    Deque<String> queue = new LinkedList<>();
+    StringBuilder word = new StringBuilder();
+    for (int i = 0; i <= t.length() - 1; i++) {
+        if (word.length() > 0 && t.charAt(i) == ' ') {
+            queue.offerFirst(word.toString());
+            word.setLength(0);
+        } else if (t.charAt(i) != ' ') {
+            word.append(t.charAt(i));
+        }
+    }
     return String.join(" ", queue);
 }
 */

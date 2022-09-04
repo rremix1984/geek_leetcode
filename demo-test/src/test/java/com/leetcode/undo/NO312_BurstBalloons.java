@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    （困难）
+    (困难)
     312. 戳气球
         有 n 个气球，编号为0 到 n - 1，每个气球上都标有一个数字，这些数字
         存在数组 nums 中。现在要求你戳破所有的气球。戳破第 i 个气球，你可
@@ -53,3 +53,44 @@ public class NO312_BurstBalloons {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+public int maxCoins(int[] nums) {
+    int n = nums.length;
+    int[][] dp = new int[n + 2][n + 2];
+    int[] val = new int[n + 2];
+    val[0] = val[n + 1] = 1;
+    for (int i = 1; i <= n; i++)
+        val[i] = nums[i - 1];
+
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = i + 2; j <= n + 1; j++) {
+            for (int k = i + 1; k < j; k++) {
+                int sum = val[i] * val[k] * val[j];
+                sum += dp[i][k] + dp[k][j];
+                dp[i][j] = Math.max(dp[i][j], sum);
+            }
+        }
+    }
+    return dp[0][n + 1];
+}
+*/
