@@ -26,7 +26,8 @@ public class NO557_ReverseWordsInAStringIII_x2 {
     }
 
     public String reverseWords(String s) {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        return sb.toString();
     }
 }
 
