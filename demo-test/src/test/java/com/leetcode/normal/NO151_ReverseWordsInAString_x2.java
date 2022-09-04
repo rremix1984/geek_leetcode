@@ -36,18 +36,7 @@ public class NO151_ReverseWordsInAString_x2 {
     }
 
     public String reverseWords(String s) {
-        String t = s.trim() + ' ';
-        Deque<String> queue = new LinkedList<>();
-        StringBuilder word = new StringBuilder();
-        for (int i = 0; i <= t.length() - 1; i++) {
-            if (word.length() > 0 && t.charAt(i) == ' ') {
-                queue.offerFirst(word.toString());
-                word.setLength(0);
-            } else if (t.charAt(i) != ' ') {
-                word.append(t.charAt(i));
-            }
-        }
-        return String.join(" ", queue);
+        return null;
     }
 }
 
@@ -105,7 +94,7 @@ public String reverseWords(String s) {
     return String.join(" ", queue);
 }
 
-// 优化后的方法2：
+// 方法3：优化后的方法2
 public String reverseWords(String s) {
     String t = s.trim() + ' ';
     Deque<String> queue = new LinkedList<>();
