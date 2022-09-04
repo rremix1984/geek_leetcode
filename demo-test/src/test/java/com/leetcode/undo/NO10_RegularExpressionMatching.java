@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    （困难）
+    (困难)
     10. 正则表达式匹配
         给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
         '.' 匹配任意单个字符
@@ -25,6 +25,11 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "ab", p = ".*"
         输出：true
         解释：".*" 表示可匹配零个或多个（'*'）任意字符（'.'）。
+             ?      a       b
+        ------------------------
+     ? |   true,  false,  true
+     . |  false,  true,   true
+     * |  false,  false, [true]
 */
 public class NO10_RegularExpressionMatching {
 
@@ -41,9 +46,10 @@ public class NO10_RegularExpressionMatching {
 
         boolean[][] f = new boolean[m + 1][n + 1];
         f[0][0] = true;
-        for (int i = 0; i <= m; ++i) {
-            for (int j = 1; j <= n; ++j) {
+        for (int i = 0; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
                 // 是 * 的情况下
+                // '*' 匹配零个或多个前面的那一个元素
                 if (p.charAt(j - 1) == '*') {
                     f[i][j] = f[i][j - 2];
                     if (matches(s, p, i, j - 1))
@@ -54,6 +60,7 @@ public class NO10_RegularExpressionMatching {
                 }
             }
         }
+        info(f);
         return f[m][n];
     }
 
@@ -61,6 +68,7 @@ public class NO10_RegularExpressionMatching {
         if (i == 0)
             return false;
 
+        // '.' 匹配任意单个字符
         if (p.charAt(j - 1) == '.')
             return true;
 
