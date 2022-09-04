@@ -5,7 +5,6 @@ package com.leetcode.hard;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.mins;
 
 /**
     （困难）
@@ -33,7 +32,7 @@ import static com.leetcode.util.MathUtils.mins;
             exention -> exection (将 'n' 替换为 'c')
             exection -> execution (插入 'u')
 */
-public class NO72_EditDistance_x2 {
+public class NO72_H_EditDistance_x2 {
 
     @Test
     public void test() {

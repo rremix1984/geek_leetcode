@@ -6,8 +6,6 @@ package com.leetcode.hard;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.max;
-import static java.lang.Integer.MIN_VALUE;
 
 /**
     （困难）
@@ -32,7 +30,7 @@ import static java.lang.Integer.MIN_VALUE;
             这笔交易所能获得利润 = 3-0 = 3 。
 */
 @SuppressWarnings("all")
-public class NO188_BestTimeToBuyAndSellStockIV_x2 {
+public class NO188_H_BestTimeToBuyAndSellStockIV_x2 {
 
     @Test
     public void test() {

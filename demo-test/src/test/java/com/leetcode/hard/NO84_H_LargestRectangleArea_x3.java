@@ -22,7 +22,7 @@ import static java.lang.Math.min;
         输入： heights = [2,4]
         输出： 4
  */
-public class NO84_LargestRectangleArea_x3 {
+public class NO84_H_LargestRectangleArea_x3 {
 
     @Test
     public void test() {

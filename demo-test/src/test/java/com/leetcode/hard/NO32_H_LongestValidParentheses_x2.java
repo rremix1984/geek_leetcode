@@ -4,7 +4,7 @@
 package com.leetcode.hard;
 
 import org.junit.Test;
-import java.util.Stack;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -23,7 +23,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = ""
         输出：0
 */
-public class NO32_LongestValidParentheses_x2 {
+public class NO32_H_LongestValidParentheses_x2 {
 
     @Test
     public void test() {

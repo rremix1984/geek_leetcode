@@ -52,7 +52,7 @@ import static com.leetcode.util.LogUtil.info;
           g | 0  0  1  1
      <null> | 0  0  0  1
 */
-public class NO115_DistinctSubsequences_x2 {
+public class NO115_H_DistinctSubsequences_x2 {
 
     @Test
     public void test() {

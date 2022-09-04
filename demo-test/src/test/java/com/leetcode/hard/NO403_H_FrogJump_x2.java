@@ -60,7 +60,7 @@ import static com.leetcode.util.LogUtil.info;
      这里本质是利用「路径可逆」的性质，将问题进行了「等效对偶」。表面上我们是进行「正向递推」，但事实
      上我们是在验证是否存在某条「反向路径」到达位置 1。
 */
-public class NO403_FrogJump_x2 {
+public class NO403_H_FrogJump_x2 {
 
     @Test
     public void test() {

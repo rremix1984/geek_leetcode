@@ -43,7 +43,7 @@ import static com.leetcode.util.LogUtil.info;
                 ['3','4','5', | '2','8','6', | '1','7','9']]
         解释：输入的数独如上图所示，唯一有效的解决方案如下所示：
 */
-public class NO37_SodukuSolver_x2 {
+public class NO37_H_SodukuSolver_x2 {
 
 //    static AtomicInteger number = new AtomicInteger(0);
 

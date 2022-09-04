@@ -1,8 +1,7 @@
 package com.leetcode.hard;
 
-import com.leetcode.util.BoardUtil;
 import org.junit.Test;
-import static com.leetcode.util.BoardUtil.*;
+
 import static com.leetcode.util.LogUtil.info;
 import java.util.*;
 
@@ -26,7 +25,7 @@ import java.util.*;
              words = {"abcb"}
         输出：[]
 */
-public class NO212_WordSearchII_x2 {
+public class NO212_H_WordSearchII_x2 {
 
     int[][] dirs = {{ 1, 0},
                     {-1, 0},

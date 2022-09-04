@@ -44,7 +44,7 @@ import static com.leetcode.util.LogUtil.info;
  有元素的最大值。通过二分查找，我们可以得到最小的最大分
  割子数组和，这样就可以得到最终的答案了。
 */
-public class NO410_SplitArrayLargestSum_x2 {
+public class NO410_H_SplitArrayLargestSum_x2 {
 
     @Test
     public void test() {

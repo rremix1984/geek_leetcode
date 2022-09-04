@@ -4,7 +4,7 @@
 package com.leetcode.hard;
 
 import org.junit.Test;
-import java.util.Arrays;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -21,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         输出: 3
         解释：[4, 1], [3, 1], [5, 1]
 */
-public class NO493_ReversePairs_x2 {
+public class NO493_H_ReversePairs_x2 {
 
     @Test
     public void test() {

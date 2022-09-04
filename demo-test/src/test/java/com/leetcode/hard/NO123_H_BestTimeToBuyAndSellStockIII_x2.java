@@ -33,7 +33,7 @@ import static com.leetcode.util.MathUtils.max;
         输出：0
 */
 @SuppressWarnings("all")
-public class NO123_BestTimeToBuyAndSellStockIII_x2 {
+public class NO123_H_BestTimeToBuyAndSellStockIII_x2 {
 
     @Test
     public void test() {
