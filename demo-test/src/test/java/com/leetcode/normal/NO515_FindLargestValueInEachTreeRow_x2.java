@@ -1,15 +1,16 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.ArrayList;
+
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    （中等）
     515. 在每个树行中找最大值
         给定一棵二叉树的根节点 root ，请找出该二叉树中每一层的最大值。
     示例1：
@@ -20,20 +21,19 @@ import static com.leetcode.util.LogUtil.info;
         输出: [1, 3]
 */
 @SuppressWarnings("all")
-public class NO515_FindLargestValueInEachTreeRow {
+public class NO515_FindLargestValueInEachTreeRow_x2 {
 
     @Test
     public void test() {
-        // [1, 3, 9]
         info(largestValues(new TreeNode(1,
                 new TreeNode(3,
                         5, 3), new TreeNode(2,
-                                            null, 9))));
+                                            null, 9))));// [1, 3, 9]
+        info(largestValues(new TreeNode(1,2,3)));// [1, 3]
     }
 
     public List<Integer> largestValues(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        return res;
+        return null;
     }
 }
 
@@ -82,15 +82,15 @@ public List<Integer> largestValues(TreeNode root) {
 }
 
 public void dfs(List<Integer> res, TreeNode root, int level) {
-    if (level == res.size())
-        res.add(root.val);
-    else
-        res.set(level, Math.max(res.get(level), root.val));
+        if (root == null)
+            return;
 
-    if (root.left != null)
-        dfs(res, root.left, level + 1);
+        if (level == res.size())
+            res.add(root.val);
+        else
+            res.set(level, max(res.get(level), root.val));
 
-    if (root.right != null)
-        dfs(res, root.right, level + 1);
-}
+        dfs(res, root.left, level+1);
+        dfs(res, root.right, level+1);
+    }
 */
