@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -17,7 +17,7 @@ import static com.leetcode.util.LogUtil.info;
         输入： s = "God Ding"
         输出："doG gniD"
 */
-public class NO557_ReverseWordsInAStringIII {
+public class NO557_ReverseWordsInAStringIII_x2 {
 
     @Test
     public void test () {
@@ -26,23 +26,7 @@ public class NO557_ReverseWordsInAStringIII {
     }
 
     public String reverseWords(String s) {
-        StringBuilder ret = new StringBuilder();
-        int length = s.length();
-        int i = 0;
-        while (i < length) {
-            int start = i;
-            while (i < length && s.charAt(i) != ' ')
-                i++;
-
-            for (int p = start; p < i; p++)
-                ret.append(s.charAt(start + i - 1 - p));
-
-            while (i < length && s.charAt(i) == ' ') {
-                i++;
-                ret.append(' ');
-            }
-        }
-        return ret.toString();
+        return null;
     }
 }
 
@@ -66,17 +50,19 @@ public class NO557_ReverseWordsInAStringIII {
 /**
 public String reverseWords(String s) {
     StringBuilder ret = new StringBuilder();
-    int length = s.length();
     int i = 0;
-    while (i < length) {
+    while (i < s.length()) {
         int start = i;
-        while (i < length && s.charAt(i) != ' ')
+
+        // 1.1 字符串不等于空的情况，反转字符串 (start + i) - (p + 1) --> [5, 4, 3, 2, 1]
+        while (i < s.length() && s.charAt(i) != ' ')
             i++;
 
         for (int p = start; p < i; p++)
-            ret.append(s.charAt(start + i - 1 - p));
+            ret.append(s.charAt((start + i) - (p + 1)));
 
-        while (i < length && s.charAt(i) == ' ') {
+        // 1.2 字符串等于空的情况，拼上 ' '
+        while (i < s.length() && s.charAt(i) == ' ') {
             i++;
             ret.append(' ');
         }
