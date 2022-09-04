@@ -31,7 +31,7 @@ import static com.leetcode.util.LogUtil.info;
        输入：height = [1,1]
        输出：1
  */
-public class NO11_ContainerWithMostWater_x2 {
+public class NO11_N_ContainerWithMostWater_x2 {
 
     @Test
     public void test() {

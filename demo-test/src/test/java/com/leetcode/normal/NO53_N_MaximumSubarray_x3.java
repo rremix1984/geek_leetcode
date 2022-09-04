@@ -23,7 +23,7 @@ import static java.lang.Integer.MIN_VALUE;
         输入：nums = [5, 4, -1, 7, 8]
         输出：23
 */
-public class NO53_MaximumSubarray_x3 {
+public class NO53_N_MaximumSubarray_x3 {
 
     @Test
     public void test() {

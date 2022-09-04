@@ -27,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：nums = [1], target = 0
         输出：-1
 */
-public class NO33_SearchInRotatedSortedArray_x2 {
+public class NO33_N_SearchInRotatedSortedArray_x2 {
 
     @Test
     public void test() {

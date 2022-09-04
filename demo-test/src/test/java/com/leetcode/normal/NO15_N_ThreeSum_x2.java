@@ -27,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
      输入：nums = []
      输出：[]
  */
-public class NO15_ThreeSum_x2 {
+public class NO15_N_ThreeSum_x2 {
 
     @Test
     public void test() {

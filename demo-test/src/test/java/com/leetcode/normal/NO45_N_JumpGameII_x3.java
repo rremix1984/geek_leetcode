@@ -24,7 +24,7 @@ import static com.leetcode.util.MathUtils.max;
         输出: 2
 */
 @SuppressWarnings("all")
-public class NO45_JumpGameII_x3 {
+public class NO45_N_JumpGameII_x3 {
 
     @Test
     public void test() {

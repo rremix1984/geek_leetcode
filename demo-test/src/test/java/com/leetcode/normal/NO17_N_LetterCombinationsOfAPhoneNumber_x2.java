@@ -24,7 +24,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：[]
 */
 @SuppressWarnings("all")
-public class NO17_LetterCombinationsOfAPhoneNumber_x2 {
+public class NO17_N_LetterCombinationsOfAPhoneNumber_x2 {
 
     @Test
     public void test() {

@@ -23,12 +23,14 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = {}
         输出：[]
 */
-public class NO102_BinaryTreeLevelOrderTraversal {
+public class NO102_N_BinaryTreeLevelOrderTraversal_x2 {
 
     @Test
     public void test() {
         info(levelOrder(new TreeNode(1,
-                new TreeNode(2, 4), new TreeNode(3,null,5))));// [[1], [2, 3], [4, 5]]
+                new TreeNode(2,
+                    4), new TreeNode(3,
+                                    null,5))));// [[1], [2, 3], [4, 5]]
         info(levelOrder(new TreeNode(3,
                         9, new TreeNode(20,
                                         15, 7))));// [[3], [9, 20], [15, 7]]
@@ -37,29 +39,10 @@ public class NO102_BinaryTreeLevelOrderTraversal {
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ret = new ArrayList<>();
-        if (root == null)
-            return ret;
+        List<List<Integer>> ans = new ArrayList();
 
-        Deque<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-
-        while(!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
-                level.add(node.val);
-                if (node.left!=null)
-                    queue.offer(node.left);
-                if (node.right!=null)
-                    queue.offer(node.right);
-            }
-            ret.add(level);
-        }
-        return ret;
+        return ans;
     }
-
 }
 
 
@@ -82,18 +65,18 @@ public List<List<Integer>> levelOrder(TreeNode root) {
 
     Deque<TreeNode> queue = new LinkedList<>();
     queue.offer(root);
+
     while (!queue.isEmpty()) {
         List<Integer> level = new ArrayList<>();
         int size = queue.size();
         for (int i = 1; i <= size; i++) {
             TreeNode node = queue.poll();
             level.add(node.val);
-            if (node.left != null) {
+            if (node.left != null)
                 queue.offer(node.left);
-            }
-            if (node.right != null) {
+
+            if (node.right != null)
                 queue.offer(node.right);
-            }
         }
         ret.add(level);
     }

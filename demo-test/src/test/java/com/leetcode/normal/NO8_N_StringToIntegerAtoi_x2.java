@@ -5,8 +5,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Integer.MAX_VALUE;
-import static java.lang.Integer.MIN_VALUE;
 
 /**
     （中等）
@@ -49,7 +47,7 @@ import static java.lang.Integer.MIN_VALUE;
         解析得到整数 4193 。
         由于 "4193" 在范围 [-231, 231 - 1] 内，最终结果为 4193 。
 */
-public class NO8_StringToIntegerAtoi_x2 {
+public class NO8_N_StringToIntegerAtoi_x2 {
 
     @Test
     public void test() {

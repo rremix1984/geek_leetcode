@@ -19,7 +19,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：n = 1
         输出：["()"]
 */
-public class NO22_GenerateParenthesis_x2 {
+public class NO22_N_GenerateParenthesis_x2 {
 
     @Test
     public void test() {
