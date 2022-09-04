@@ -4,6 +4,7 @@
 package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
+import lombok.val;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.LogUtil.info;
@@ -39,9 +40,8 @@ public class NO102_N_BinaryTreeLevelOrderTraversal_x2 {
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ans = new ArrayList();
-
-        return ans;
+        List<List<Integer>> ret = new ArrayList<>();
+        return ret;
     }
 }
 
