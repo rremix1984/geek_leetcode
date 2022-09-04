@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    （困难）
+    (困难)
     552. 学生出勤记录 II
         可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天
         的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：
@@ -33,7 +33,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：n = 10101
         输出：183236316
 */
-public class NO552_StudentAttendanceRecordII {
+public class NO552_H_StudentAttendanceRecordII {
 
     @Test
     public void test() {

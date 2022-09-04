@@ -25,7 +25,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：nums = [1, 5]
         输出：10
 */
-public class NO312_BurstBalloons {
+public class NO312_H_BurstBalloons {
 
     @Test
     public void test() {

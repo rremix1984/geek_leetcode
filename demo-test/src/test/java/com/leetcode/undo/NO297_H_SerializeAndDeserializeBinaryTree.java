@@ -23,7 +23,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [1,2,3,null,null,4,5]
         输出：[1,2,3,null,null,4,5]
 */
-public class NO297_SerializeAndDeserializeBinaryTree {
+public class NO297_H_SerializeAndDeserializeBinaryTree {
 
     @Test
     public void test() {

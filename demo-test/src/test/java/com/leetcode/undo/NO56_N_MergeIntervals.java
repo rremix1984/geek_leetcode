@@ -6,7 +6,6 @@ package com.leetcode.undo;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.max;
@@ -26,7 +25,7 @@ import static java.util.Comparator.comparingInt;
         输出：[[1, 5]]
         解释：区间 [1, 4] 和 [4, 5] 可被视为重叠区间。
 */
-public class NO56_MergeIntervals {
+public class NO56_N_MergeIntervals {
 
     @Test
     public void test() {

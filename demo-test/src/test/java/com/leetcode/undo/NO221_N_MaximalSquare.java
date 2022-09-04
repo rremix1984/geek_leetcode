@@ -25,7 +25,7 @@ import static com.leetcode.util.MathUtils.mins;
         输入：matrix = {{'0'}}
         输出：0
 */
-public class NO221_MaximalSquare {
+public class NO221_N_MaximalSquare {
 
     @Test
     public void test() {

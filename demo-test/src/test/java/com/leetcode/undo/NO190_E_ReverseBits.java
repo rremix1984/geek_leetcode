@@ -27,7 +27,7 @@ import static com.leetcode.util.MathUtils.bin2Dec;
         解释：输入的二进制串 11111111111111111111111111111101 表示无符号整数 4294967293，
         因此返回 3221225471 其二进制表示形式为 10111111111111111111111111111111 。
 */
-public class NO190_ReverseBits {
+public class NO190_E_ReverseBits {
 
     @Test
     public void test() {

@@ -42,7 +42,7 @@ import static com.leetcode.util.LogUtil.info;
             i−highBit 的「一比特数」已知，令 bits[i]=bits[i−highBit]+1。
             最终得到的数组 bits 即为答案。
 */
-public class NO338_CountingBits {
+public class NO338_E_CountingBits {
 
     @Test
     public void test() {

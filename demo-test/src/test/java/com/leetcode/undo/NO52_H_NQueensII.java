@@ -9,6 +9,7 @@ import java.util.Set;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (困难)
     52. N皇后 II
         n 皇后问题 研究的是如何将 n 个皇后放置在 n × n 的棋盘上，并且使皇后彼此之间不能相互攻击。
         给你一个整数 n ，返回 n 皇后问题 不同的解决方案的数量。
@@ -20,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：n = 1
         输出：1
 */
-public class NO52_NQueensII {
+public class NO52_H_NQueensII {
 
     @Test
     public void test() {

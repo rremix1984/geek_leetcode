@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (困难)
     363. 矩形区域不超过 K 的最大数值和
         给你一个 m x n 的矩阵 matrix 和一个整数 k ，找出并返回矩阵内部矩形区域的不超过 k 的最大数值和。
         题目数据保证总会存在一个数值和不超过 k 的矩形区域。
@@ -18,7 +19,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：matrix = [[2,2,-1]], k = 3
         输出：3
 */
-public class NO363_MaxSumOfRectangleNoLargerThanK {
+public class NO363_H_MaxSumOfRectangleNoLargerThanK {
 
     @Test
     public void test() {

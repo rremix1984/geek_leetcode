@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (中等)
     529.扫雷游戏
     让我们一起来玩扫雷游戏！
     给你一个大小为 m x n 二维字符矩阵 board ，表示扫雷游戏的盘面，其中：
@@ -47,7 +48,7 @@ import static com.leetcode.util.LogUtil.info;
           ["B','B','B','B','B"]]
 */
 @SuppressWarnings("all")
-public class NO529_Minesweeper {
+public class NO529_N_Minesweeper {
 
     @Test
     public void test() {

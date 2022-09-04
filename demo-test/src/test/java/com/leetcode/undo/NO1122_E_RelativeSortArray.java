@@ -23,7 +23,7 @@ import static com.leetcode.util.MathUtils.max;
              arr2 = {22, 28, 8, 6}
         输出：[22, 28, 8, 6, 17, 44]
 */
-public class NO1122_RelativeSortArray {
+public class NO1122_E_RelativeSortArray {
 
     @Test
     public void test() {

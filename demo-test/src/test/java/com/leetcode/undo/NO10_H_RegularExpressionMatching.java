@@ -31,7 +31,7 @@ import static com.leetcode.util.LogUtil.info;
      . |  false,  true,   true
      * |  false,  false, [true]
 */
-public class NO10_RegularExpressionMatching {
+public class NO10_H_RegularExpressionMatching {
 
     @Test
     public void test() {

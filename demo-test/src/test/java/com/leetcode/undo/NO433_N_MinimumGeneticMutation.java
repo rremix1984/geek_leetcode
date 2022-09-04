@@ -33,7 +33,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：3
 */
 @SuppressWarnings("all")
-public class NO433_MinimumGeneticMutation {
+public class NO433_N_MinimumGeneticMutation {
 
     @Test
     public void test() {

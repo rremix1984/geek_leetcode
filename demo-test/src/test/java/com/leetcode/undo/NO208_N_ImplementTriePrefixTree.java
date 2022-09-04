@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (中等)
     208. 实现 Trie (前缀树)
         Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
         请你实现 Trie 类：
@@ -29,7 +30,7 @@ import static com.leetcode.util.LogUtil.info;
       * boolean param_3 = obj.startsWith(prefix);
       *
 */
-public class NO208_ImplementTriePrefixTree {
+public class NO208_N_ImplementTriePrefixTree {
 
     @Test
     public void test() {

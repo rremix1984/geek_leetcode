@@ -46,7 +46,7 @@ import static com.leetcode.util.LogUtil.info;
         p = "a*c?b"
         输出: false
 */
-public class NO44_WildcardMatching {
+public class NO44_H_WildcardMatching {
 
     @Test
     public void test() {

@@ -10,6 +10,7 @@ import java.util.List;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+
     126. 单词接龙 II
         按字典 wordList 完成从单词 beginWord 到单词 endWord 转化，一个表示此过程的 转换序列 是形式上像 beginWord -> s1 -> s2 -> ... -> sk 这样的单词序列，并满足：
         每对相邻的单词之间仅有单个字母不同。
@@ -29,7 +30,7 @@ import static com.leetcode.util.LogUtil.info;
         解释：endWord "cog" 不在字典 wordList 中，所以不存在符合要求的转换序列。
 */
 @SuppressWarnings("all")
-public class NO126_WordLadderII {
+public class NO126_H_WordLadderII {
 
     @Test
     public void test() {

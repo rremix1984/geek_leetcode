@@ -29,7 +29,7 @@ import static com.leetcode.util.LogUtil.info;
         最短指令序列是 "AAARA" 。
         位置变化 0 --> 1 --> 3 --> 7 --> 7 --> 6 。
 */
-public class NO818_RaceCar {
+public class NO818_H_RaceCar {
 
     @Test
     public void test() {

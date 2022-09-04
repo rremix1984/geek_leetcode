@@ -34,7 +34,7 @@ import static com.leetcode.util.LogUtil.info;
             移动 4 次: {{1,2,0},{4,5,3}}
             移动 5 次: {{1,2,3},{4,5,0}}
 */
-public class NO773_SlidingPuzzle {
+public class NO773_H_SlidingPuzzle {
 
     @Test
     public void test() {

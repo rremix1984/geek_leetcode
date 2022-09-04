@@ -8,6 +8,7 @@ import java.util.*;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (困难)
     51. N 皇后
         按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线
         上的棋子。n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘
@@ -31,7 +32,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：[["Q"]]
 */
 @SuppressWarnings("all")
-public class NO51_NQueens {
+public class NO51_H_NQueens {
 
     @Test
     public void test() {

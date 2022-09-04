@@ -42,7 +42,7 @@ import static com.leetcode.util.LogUtil.info;
         没有一条路能完全穿过每一个空的方格一次。
         请注意，起始和结束方格可以位于网格中的任意位置。
 */
-public class NO980_UniquePathsIII {
+public class NO980_H_UniquePathsIII {
 
     @Test
     public void test() {

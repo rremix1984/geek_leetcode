@@ -31,7 +31,7 @@ import static java.lang.Math.*;
         输入：matrix = {{'0', '0'}}
         输出：0
 */
-public class NO85_MaximalRectangle {
+public class NO85_H_MaximalRectangle {
 
     @Test
     public void test() {

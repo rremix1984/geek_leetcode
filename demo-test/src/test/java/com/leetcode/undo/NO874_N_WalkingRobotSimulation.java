@@ -43,7 +43,7 @@ import static com.leetcode.util.LogUtil.info;
              5. 向北走 4 个单位，到达 (1, 8)
          距离原点最远的是 (1, 8) ，距离为 1^2 + 8^2 = 65
 */
-public class NO874_WalkingRobotSimulation {
+public class NO874_N_WalkingRobotSimulation {
 
     @Test
     public void test() {

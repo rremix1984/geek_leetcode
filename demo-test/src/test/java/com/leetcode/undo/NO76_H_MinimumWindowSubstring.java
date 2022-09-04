@@ -33,7 +33,7 @@ import static java.lang.Integer.MAX_VALUE;
              因此没有符合条件的子字符串，返回空字符串。
 */
 @SuppressWarnings("all")
-public class NO76_MinimumWindowSubstring {
+public class NO76_H_MinimumWindowSubstring {
 
     @Test
     public void test() {
