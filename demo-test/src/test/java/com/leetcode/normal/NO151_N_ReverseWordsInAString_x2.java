@@ -4,7 +4,7 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
-import java.util.*;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -26,7 +26,7 @@ import static com.leetcode.util.LogUtil.info;
         输出："example good a"
         解释：如果两个单词间有多余的空格，反转后的字符串需要将单词间的空格减少到仅有一个。
 */
-public class NO151_ReverseWordsInAString_x2 {
+public class NO151_N_ReverseWordsInAString_x2 {
 
     @Test
     public void test() {

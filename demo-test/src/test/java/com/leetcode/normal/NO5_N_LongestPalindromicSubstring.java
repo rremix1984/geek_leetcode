@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.undo;
+package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
@@ -18,7 +18,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "cbbd"
         输出："bb"
 */
-public class NO5_LongestPalindromicSubstring {
+public class NO5_N_LongestPalindromicSubstring {
 
     @Test
     public void test() {
@@ -28,7 +28,18 @@ public class NO5_LongestPalindromicSubstring {
 
     public String longestPalindrome(String s) {
         String res = "";
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                // 一般状态转移方程
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 2 || dp[i + 1][j - 1]);
 
+                //
+                if (j - i + 1 > res.length() && dp[i][j])
+                    res = s.substring(i, j + 1);
+            }
+        }
         return res;
     }
 }
