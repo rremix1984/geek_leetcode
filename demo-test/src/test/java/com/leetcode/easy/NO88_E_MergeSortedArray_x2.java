@@ -72,7 +72,7 @@ public class NO88_E_MergeSortedArray_x2 {
 
 
 
-/*
+/**
 // 方法1：双指针法
 // 每次从头部取出相对较小的元素，放入新数组
 public void merge(int[] target, int m, int[] source, int n) {
