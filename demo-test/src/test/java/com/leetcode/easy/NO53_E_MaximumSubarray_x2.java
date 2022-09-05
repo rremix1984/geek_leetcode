@@ -25,7 +25,7 @@ import static java.lang.Math.max;
         输出：23
 */
 @SuppressWarnings("all")
-public class NO53_MaximumSubarray_x2 {
+public class NO53_E_MaximumSubarray_x2 {
 
     @Test
     public void test() {
