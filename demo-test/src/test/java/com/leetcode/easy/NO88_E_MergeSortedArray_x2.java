@@ -1,10 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -34,7 +33,8 @@ import static com.leetcode.util.LogUtil.info;
              注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0
              仅仅是为了确保合并结果可以顺利存放到 nums1 中。
 */
-public class NO88_E_MergeSortedArray {
+@SuppressWarnings("all")
+public class NO88_E_MergeSortedArray_x2 {
 
     @Test
     public void test() {
@@ -51,7 +51,7 @@ public class NO88_E_MergeSortedArray {
         info(target2);// [1]
     }
 
-    public void merge(int[] target, int m, int[] source, int n) {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
         return;
     }
 
@@ -72,7 +72,7 @@ public class NO88_E_MergeSortedArray {
 
 
 
-/**
+/*
 // 方法1：双指针法
 // 每次从头部取出相对较小的元素，放入新数组
 public void merge(int[] target, int m, int[] source, int n) {
