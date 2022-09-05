@@ -43,6 +43,13 @@ public class SwapUtil {
     }
 
     @SuppressWarnings("all")
+    public static void swap(int t1, int t2) {
+        int temp = t1;
+        t1 = t2;
+        t2 = temp;
+    }
+
+    @SuppressWarnings("all")
     public static void swap(ListNode left, ListNode right) {
         int tmp = left.val;
         left.val = right.val;
