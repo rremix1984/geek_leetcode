@@ -46,6 +46,20 @@ public class ListNode {
         return head;
     }
 
+    public static ListNode reverse(ListNode head) {
+        if (head == null)
+            return null;
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
     @SuppressWarnings("all")
     public ListNode next(ListNode next) {
         this.next = next;
