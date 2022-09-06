@@ -57,16 +57,9 @@ public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
                 new ListNode(3).next(two)));
     }
 
+
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null)
-            return null;
-        ListNode p1 = headA;
-        ListNode p2 = headB;
-        while (p1 != p2) {
-            p1 = p1 == null? headB : p1.next;
-            p2 = p2 == null? headA : p2.next;
-        }
-        return p1;
+        return null;
     }
 
 }
@@ -90,7 +83,7 @@ public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
 
 
 /**
-// 方法1：
+// 方法1：双指针法
 public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     // 定义两个指针, 第一轮让两个到达末尾的节点指向另一个链表的头部,
     // 最后如果相遇则为交点(在第一轮移动中恰好抹除了长度差)
@@ -108,5 +101,41 @@ public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         pB = pB == null ? headA : pB.next;
     }
     return pA;
+}
+
+// 方法2：
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    int l1 = 0;
+    int l2 = 0;
+    int diff = 0;
+    ListNode head1 = headA;
+    ListNode head2 = headB;
+    while (head1 != null) {
+        l1++;
+        head1 = head1.next;
+    }
+    while (head2 != null) {
+        l2++;
+        head2 = head2.next;
+    }
+    if (l1 < l2) {
+        head1 = headB;
+        head2 = headA;
+        diff = l2 - l1;
+    } else {
+        head1 = headA;
+        head2 = headB;
+        diff = l1 - l2;
+    }
+    for (int i = 0; i < diff; i++) {
+        head1 = head1.next;
+    }
+    while (head1 != null && head2 != null) {
+        if (head1 == head2)
+            return head1;
+        head1 = head1.next;
+        head2 = head2.next;
+    }
+    return null;
 }
 */
