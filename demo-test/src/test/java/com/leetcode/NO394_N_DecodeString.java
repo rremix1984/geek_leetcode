@@ -39,24 +39,35 @@ public class NO394_N_DecodeString {
 
     public String decodeString(String s) {
         StringBuilder res = new StringBuilder();
+        // 数字计数器，用于累计大于9的数字
         int multi = 0;
         LinkedList<Integer> stack_multi = new LinkedList<>();
         LinkedList<String> stack_res = new LinkedList<>();
+        // 一共4种情况，[、]、1-9的数字、字母
         for(Character c : s.toCharArray()) {
+            // 第 1 种场景，遇到左括号 "["
             if(c == '[') {
                 stack_multi.addLast(multi);
                 stack_res.addLast(res.toString());
                 multi = 0;
-                res = new StringBuilder();
-            }
-            else if(c == ']') {
+                res.setLength(0);
+            // 第 2 种场景，遇到右括号 "]"
+            // 代表着 1-9[xxx] 这样的一个正则匹配满足了结算条件
+            // 先把计数器 cur_multi 取出来，重复 [ 与 ] 中间的所有字符串 multi 次
+            // 把结果放入 res 中
+            } else if(c == ']') {
                 StringBuilder tmp = new StringBuilder();
                 int cur_multi = stack_multi.removeLast();
-                for(int i = 0; i < cur_multi; i++) tmp.append(res);
+                for(int i = 0; i < cur_multi; i++)
+                    tmp.append(res);
                 res = new StringBuilder(stack_res.removeLast() + tmp);
+            // 遇到数字,需要对multi变量做累加
+            } else if(c >= '0' && c <= '9') {
+                multi = multi * 10 + Integer.parseInt(c + "");
+            // 遇到字母，直接放到结果集中
+            } else {
+                res.append(c);
             }
-            else if(c >= '0' && c <= '9') multi = multi * 10 + Integer.parseInt(c + "");
-            else res.append(c);
         }
         return res.toString();
     }
