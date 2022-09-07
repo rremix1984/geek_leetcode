@@ -43,48 +43,19 @@ public class NO232_E_ImplementQueueUsingStacks {
 // 双Stack法，实现队列
 class MyQueue {
 
-    private Stack<Object> stack1;
-    private Stack<Object> stack2;
-
     public MyQueue() {
-        stack1 = new Stack<>();
-        stack2 = new Stack<>();
     }
 
     public void push(int x) {
-        stack1.push(x);
     }
 
     public int pop() {
-        int value;
-        while (!stack1.empty()) {
-            stack2.push(stack1.peek());
-            stack1.pop();
-        }
-        value = (int)stack2.pop();
-        while (!stack2.empty()) {
-            stack1.push(stack2.peek());
-            stack2.pop();
-        }
-        return value;
     }
 
     public int peek() {
-        int value;
-        while (!stack1.empty()) {
-            stack2.push(stack1.peek());
-            stack1.pop();
-        }
-        value = (int)stack2.peek();
-        while (!stack2.empty()) {
-            stack1.push(stack2.peek());
-            stack2.pop();
-        }
-        return value;
     }
 
     public boolean empty() {
-        return stack1.empty();
     }
 }
 
@@ -110,48 +81,53 @@ class MyQueue {
 /**
 class MyQueue {
 
-    private Stack<Object> stack1;
-    private Stack<Object> stack2;
+    // 输入栈
+    private Stack<Integer> instack;
+
+    // 输出栈
+    private Stack<Integer> outstack;
 
     public MyQueue() {
-        stack1 = new Stack<>();
-        stack2 = new Stack<>();
+        instack = new Stack<>();
+        outstack = new Stack<>();
     }
 
     public void push(int x) {
-        stack1.push(x);
+        instack.push(x);
     }
 
     public int pop() {
         int value;
-        while (!stack1.empty()) {
-            stack2.push(stack1.peek());
-            stack1.pop();
+        while (!instack.empty()) {
+            outstack.push(instack.peek());
+            instack.pop();
         }
-        value = (int)stack2.pop();
-        while (!stack2.empty()) {
-            stack1.push(stack2.peek());
-            stack2.pop();
+
+        value = (int) outstack.pop();
+        while (!outstack.empty()) {
+            instack.push(outstack.peek());
+            outstack.pop();
         }
         return value;
     }
 
     public int peek() {
         int value;
-        while (!stack1.empty()) {
-            stack2.push(stack1.peek());
-            stack1.pop();
+        while (!instack.empty()) {
+            outstack.push(instack.peek());
+            instack.pop();
         }
-        value = (int)stack2.peek();
-        while (!stack2.empty()) {
-            stack1.push(stack2.peek());
-            stack2.pop();
+
+        value = (int) outstack.peek();
+        while (!outstack.empty()) {
+            instack.push(outstack.peek());
+            outstack.pop();
         }
         return value;
     }
 
     public boolean empty() {
-        return stack1.empty();
+        return instack.empty();
     }
 }
 */
