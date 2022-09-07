@@ -18,7 +18,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [1,null,2,3]
         输出：[1,3,2]
 */
-public class NO94_E_InorderTraversal_x2 {
+public class NO94_E_InorderTraversal_x3 {
 
     @Test
     public void test() {
@@ -26,6 +26,8 @@ public class NO94_E_InorderTraversal_x2 {
                 1,
         null, new TreeNode(2,
                     3))));
+        info(inorderTraversal(new TreeNode()));// []
+        info(inorderTraversal(new TreeNode(1)));// [1]
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
