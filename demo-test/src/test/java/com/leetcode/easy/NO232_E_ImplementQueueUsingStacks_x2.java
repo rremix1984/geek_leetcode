@@ -1,15 +1,13 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-
-import java.util.Stack;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (简单)
     232. 用栈实现队列
         请你仅使用两个栈实现先入先出队列。队列应当支持一般队列支持的所有操作（push、pop、peek、empty）：
         实现 MyQueue 类：
@@ -27,7 +25,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：
             [null, null, null, 1, 1, false]
 */
-public class NO232_E_ImplementQueueUsingStacks {
+public class NO232_E_ImplementQueueUsingStacks_x2 {
 
     @Test
     public void test() {
@@ -50,12 +48,15 @@ class MyQueue {
     }
 
     public int pop() {
+        return 0;
     }
 
     public int peek() {
+        return 0;
     }
 
     public boolean empty() {
+        return false;
     }
 }
 
