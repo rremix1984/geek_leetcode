@@ -7,7 +7,6 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
@@ -32,7 +31,7 @@ import static org.junit.Assert.assertEquals;
         输入：root = [1,null,2]
         输出：[1, 2]
 */
-public class NO144_E_PreorderTraversal_x2 {
+public class NO144_E_PreorderTraversal_x3 {
 
     @Test
     public void test() {
@@ -52,20 +51,6 @@ public class NO144_E_PreorderTraversal_x2 {
 
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            res.add(node.val);
-
-            if (node.right != null)
-                stack.push(node.right);
-
-            if (node.left != null)
-                stack.push(node.left);
-        }
         return res;
     }
 }

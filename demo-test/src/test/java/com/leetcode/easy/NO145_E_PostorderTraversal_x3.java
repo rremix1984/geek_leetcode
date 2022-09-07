@@ -7,7 +7,9 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -15,7 +17,7 @@ import static com.leetcode.util.LogUtil.info;
     给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。
     示例 1：
         输入：root = [1,null,2,3]
-        输出：[3,2,1]
+        输出：[3, 2, 1]
     示例 2：
         输入：root = []
         输出：[]
@@ -23,14 +25,21 @@ import static com.leetcode.util.LogUtil.info;
         输入：root = [1]
         输出：[1]
 */
-public class NO145_E_PostorderTraversal_x2 {
+public class NO145_E_PostorderTraversal_x3 {
 
     @Test
     public void test() {
-        info(postorderTraversal(
+        assertEquals(new ArrayList<Integer>(){{add(3);add(2);add(1);}},
+            postorderTraversal(
                 new TreeNode(1,
                         null, new TreeNode(2,
                                     3))));
+        assertEquals(new ArrayList<Integer>(){{add(0);}},
+                postorderTraversal(
+                        new TreeNode()));
+        assertEquals(new ArrayList<Integer>(){{add(1);}},
+                postorderTraversal(
+                        new TreeNode(1)));
     }
 
 
