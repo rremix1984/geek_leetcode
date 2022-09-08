@@ -7,6 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
@@ -34,6 +35,9 @@ public class NO145_E_PostorderTraversal_x3 {
                 new TreeNode(1,
                         null, new TreeNode(2,
                                     3))));
+        assertEquals(new ArrayList<Integer>(){{add(1);add(2);add(3);}},
+                postorderTraversal(
+                        new TreeNode(3,1,2)));
         assertEquals(new ArrayList<Integer>(){{add(0);}},
                 postorderTraversal(
                         new TreeNode()));
@@ -45,6 +49,20 @@ public class NO145_E_PostorderTraversal_x3 {
 
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
+        if (root == null)
+            return res;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            root = stack.pop();
+            if (root.left != null)
+                stack.push(root.left);
+
+            if (root.right != null)
+                stack.push(root.right);
+
+            res.add(0, root.val);
+        }
         return res;
     }
 }
