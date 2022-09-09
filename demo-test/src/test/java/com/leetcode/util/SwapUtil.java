@@ -42,6 +42,12 @@ public class SwapUtil {
         t2.val = temp;
     }
 
+    public static void swapLR(TreeNode root) {
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+    }
+
     @SuppressWarnings("all")
     public static void swap(int t1, int t2) {
         int temp = t1;

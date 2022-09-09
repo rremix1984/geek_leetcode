@@ -9,17 +9,19 @@ import org.junit.Test;
 import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.SwapUtil.swap;
+import static com.leetcode.util.SwapUtil.swapLR;
 
 /**
     （简单）
     226. 翻转二叉树
     给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。
     示例 1：
-        输入：root = [4,2,7,1,3,6,9]
-        输出：[4,7,2,9,6,3,1]
+        输入：root = [4, 2, 7, 1, 3, 6, 9]
+        输出：[4, 7, 2, 9, 6, 3, 1]
     示例 2：
-        输入：root = [2,1,3]
-        输出：[2,3,1]
+        输入：root = [2, 1, 3]
+        输出：[2, 3, 1]
 */
 public class NO226_E_InvertBinaryTree_x2 {
 
@@ -31,6 +33,11 @@ public class NO226_E_InvertBinaryTree_x2 {
                                         6, 9));
         info(tmp);
         info(invertTree(tmp));
+
+        TreeNode tmp2 = new TreeNode(2,
+                    new TreeNode(1,3));
+        info(tmp2);
+        info(invertTree(tmp2));
     }
 
     public TreeNode invertTree(TreeNode root) {
@@ -39,12 +46,11 @@ public class NO226_E_InvertBinaryTree_x2 {
 
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
+
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
 
-            TreeNode tmp = node.left;
-            node.left = node.right;
-            node.right = tmp;
+            swapLR(node);
 
             if (node.left != null)
                 stack.push(node.left);
