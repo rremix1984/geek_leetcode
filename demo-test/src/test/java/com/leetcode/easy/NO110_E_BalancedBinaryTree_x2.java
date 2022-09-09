@@ -1,14 +1,14 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.max;
 import static java.lang.Math.abs;
 
 /**
+    (简单)
     110. 平衡二叉树
         给定一个二叉树，判断它是否是高度平衡的二叉树。
         本题中，一棵高度平衡二叉树定义为：
@@ -23,7 +23,7 @@ import static java.lang.Math.abs;
         输入：root = []
         输出：true
 */
-public class NO110_E_BalancedBinaryTree {
+public class NO110_E_BalancedBinaryTree_x2 {
 
     @Test
     public void test() {
@@ -42,18 +42,7 @@ public class NO110_E_BalancedBinaryTree {
     public boolean isBalanced(TreeNode root) {
         if (root == null)
             return true;
-
-        return abs(height(root.left) - height(root.right)) <= 1
-                && isBalanced(root.left)
-                && isBalanced(root.right);
-    }
-
-    public int height(TreeNode root) {
-        if (root == null)
-            return 0;
-
-        return max(height(root.left),
-                   height(root.right)) + 1;
+        return false;
     }
 
 }
