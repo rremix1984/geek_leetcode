@@ -41,24 +41,7 @@ public class NO226_E_InvertBinaryTree_x2 {
     }
 
     public TreeNode invertTree(TreeNode root) {
-        if (root == null)
-            return null;
-
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-
-            swapLR(node);
-
-            if (node.left != null)
-                stack.push(node.left);
-
-            if (node.right != null)
-                stack.push(node.right);
-        }
-        return root;
+        return null;
     }
 
 }
@@ -101,10 +84,14 @@ public TreeNode invertTree(TreeNode root) {
 
 // 方法2 递归法
 public TreeNode invertTree(TreeNode root) {
-    if (root == null)
+    if (root == null) {
         return null;
-    root.left = invertTree(root.right);;
-    root.right = invertTree(root.left);;
+    }
+    TreeNode left = invertTree(root.left);
+    TreeNode right = invertTree(root.right);
+
+    root.left = right;
+    root.right = left;
     return root;
 }
 */
