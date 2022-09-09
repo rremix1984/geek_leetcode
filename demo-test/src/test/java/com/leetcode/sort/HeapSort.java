@@ -23,7 +23,7 @@ public class HeapSort {
         info(heapSort(new int[]{2, 1, 3, 5, 4, 6, 9, 8, 7, 10}));
     }
 
-    public int[] heapSort(int[] arr) {
+    public static int[] heapSort(int[] arr) {
         int len = arr.length;
         int high = (int) floor(len / 2);
 
@@ -39,7 +39,7 @@ public class HeapSort {
         return arr;
     }
 
-    private void heapify(int[] arr, int max, int len) {
+    private static void heapify(int[] arr, int max, int len) {
         int left = 2 * max + 1;
         int right = 2 * max + 2;
         int largest = max;
@@ -57,3 +57,49 @@ public class HeapSort {
     }
 
 }
+
+
+/** 方法2：
+public int[] sortArray(int[] nums) {
+    heapSort(nums);
+    return nums;
+}
+
+public void heapSort(int[] nums) {
+    int len = nums.length - 1;
+    buildMaxHeap(nums, len);
+    for (int i = len; i >= 1; --i) {
+        swap(nums, i, 0);
+        len -= 1;
+        maxHeapify(nums, 0, len);
+    }
+}
+
+public void buildMaxHeap(int[] nums, int len) {
+    for (int i = len / 2; i >= 0; --i) {
+        maxHeapify(nums, i, len);
+    }
+}
+
+public void maxHeapify(int[] nums, int i, int len) {
+    for (; (i << 1) + 1 <= len;) {
+        int lson = (i << 1) + 1;
+        int rson = (i << 1) + 2;
+        int large;
+        if (lson <= len && nums[lson] > nums[i]) {
+            large = lson;
+        } else {
+            large = i;
+        }
+        if (rson <= len && nums[rson] > nums[large]) {
+            large = rson;
+        }
+        if (large != i) {
+            swap(nums, i, large);
+            i = large;
+        } else {
+            break;
+        }
+    }
+}
+*/

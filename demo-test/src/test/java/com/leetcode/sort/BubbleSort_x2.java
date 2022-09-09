@@ -30,11 +30,7 @@ public class BubbleSort_x2 {
         info(bubbleSort(new int[]{1, 2, 5, 5, 3, 6}));
     }
 
-    public int[] bubbleSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++)
-            for (int j = 0; j < arr.length - i - 1; j++)
-                if (arr[j] > arr[j + 1])
-                    swap(arr, j,j+1);
+    public static int[] bubbleSort(int[] arr) {
         return arr;
     }
 

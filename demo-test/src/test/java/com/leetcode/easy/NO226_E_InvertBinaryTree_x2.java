@@ -41,7 +41,9 @@ public class NO226_E_InvertBinaryTree_x2 {
     }
 
     public TreeNode invertTree(TreeNode root) {
-        return null;
+        if (root == null)
+            return null;
+        return root;
     }
 
 }
@@ -84,9 +86,9 @@ public TreeNode invertTree(TreeNode root) {
 
 // 方法2 递归法
 public TreeNode invertTree(TreeNode root) {
-    if (root == null) {
+    if (root == null)
         return null;
-    }
+
     TreeNode left = invertTree(root.left);
     TreeNode right = invertTree(root.right);
 

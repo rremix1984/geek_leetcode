@@ -29,7 +29,7 @@ public class InsertionSort_x2 {
         info(insertionSort(new int[]{1, 2, 5, 5, 3, 6}));
     }
 
-    private int[] insertionSort(int[] arr) {
+    public static int[] insertionSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int pre = i - 1;
             int cur = arr[i];
@@ -59,7 +59,7 @@ public class InsertionSort_x2 {
 
 
 /**
-private int[] insertionSort(int[] arr) {
+private static int[] insertionSort(int[] arr) {
     // 从第一个元素之后查找
     for (int i = 1; i < arr.length; i++) {
         int pre = i - 1;
