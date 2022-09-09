@@ -5,6 +5,7 @@ package com.leetcode.hard;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -64,9 +65,9 @@ public class NO403_H_FrogJump_x2 {
 
     @Test
     public void test() {
-        info(canCross(new int[]{0, 1, 3, 5, 6, 8, 12, 17}));// true
-        info(canCross(new int[]{0, 1, 2, 3, 4, 8, 9, 11}));// false
-        info(canCross(new int[]{0, 1}));// true
+        assert canCross(new int[]{0, 1, 3, 5, 6, 8, 12, 17});// true
+        assert !canCross(new int[]{0, 1, 2, 3, 4, 8, 9, 11});// false
+        assert canCross(new int[]{0, 1});// true
     }
 
     public boolean canCross(int[] stones) {

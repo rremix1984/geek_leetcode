@@ -5,11 +5,10 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
-import java.util.Deque;
-import java.util.LinkedList;
-
+import java.util.*;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.max;
+import static org.junit.Assert.assertEquals;
 
 /**
    （简单）
@@ -32,31 +31,27 @@ public class NO104_E_MaximumDepthOfBinaryTree_x3 {
 
     @Test
     public void test() {
-        info(maxDepth(
-            new TreeNode(3,
-                9, new TreeNode(20,
-                                15, 7))));// 3
+        assertEquals(3, maxDepth(new TreeNode(3,
+                                        9, new TreeNode(20,
+                                                        15, 7))));// 3
+        assertEquals(4, maxDepth(
+                            new TreeNode(3,
+                        new TreeNode(9,
+                    new TreeNode(10,
+                new TreeNode(11))))));// 4
+        assertEquals(5, maxDepth(
+                            new TreeNode(3,
+                        null, new TreeNode(9,
+                            null, new TreeNode(10,
+                                new TreeNode(11,
+                            new TreeNode(12)))))));// 5
     }
 
     public int maxDepth(TreeNode root) {
-        int res = 0;
-        Deque<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            while (size > 0) {
-                TreeNode node = queue.poll();
-
-                if (node.left != null)
-                    queue.offer(node.left);
-
-                if (node.right != null)
-                    queue.offer(node.right);
-                size--;
-            }
-            res++;
-        }
-        return res;
+        int depth = 0;
+        if (root == null)
+            return depth;
+        return depth;
     }
 
 }
@@ -72,17 +67,19 @@ public class NO104_E_MaximumDepthOfBinaryTree_x3 {
 public int maxDepth(TreeNode root) {
     if (root == null)
         return 0;
-    return 1 + max(maxDepth(root.left), maxDepth(root.right));
+    return 1 + max(maxDepth(root.left),
+             maxDepth(root.right));
 }
 
 // 方法2  迭代法
 public int maxDepth(TreeNode root) {
-    int ans = 0;
+    int depth = 0;
     if (root == null)
-        return ans;
+        return depth;
 
     Queue<TreeNode> queue = new LinkedList<>();
     queue.offer(root);
+
     while (!queue.isEmpty()) {
         int size = queue.size();
         while (size > 0) {
@@ -95,8 +92,8 @@ public int maxDepth(TreeNode root) {
 
             size--;
         }
-        ans++;
+        depth++;
     }
-    return ans;
+    return depth;
 }
 */

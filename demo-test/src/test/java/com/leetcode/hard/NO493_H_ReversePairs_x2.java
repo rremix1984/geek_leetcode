@@ -6,6 +6,7 @@ package com.leetcode.hard;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -25,8 +26,8 @@ public class NO493_H_ReversePairs_x2 {
 
     @Test
     public void test() {
-        info(reversePairs(new int[]{1, 3, 2, 3, 1}));// 2
-        info(reversePairs(new int[]{2, 4, 3, 5, 1}));// 3
+        assertEquals(2, reversePairs(new int[]{1, 3, 2, 3, 1}));// 2
+        assertEquals(3, reversePairs(new int[]{2, 4, 3, 5, 1}));// 3
     }
 
     public int reversePairs(int[] nums) {

@@ -6,6 +6,7 @@ package com.leetcode.hard;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -27,15 +28,15 @@ public class NO32_H_LongestValidParentheses_x2 {
 
     @Test
     public void test() {
-        info(longestValidParentheses("(()"));// 2
-        info(longestValidParentheses(")()())"));// 4
-        info(longestValidParentheses(""));// 0
-        info(longestValidParentheses("()"));// 2
+        assertEquals(2,longestValidParentheses("(()"));
+        assertEquals(4,longestValidParentheses(")()())"));// 4
+        assertEquals(0,longestValidParentheses(""));// 0
+        assertEquals(2,longestValidParentheses("()"));// 2
     }
 
     public int longestValidParentheses(String s) {
-        int max = 0;
-        return max;
+        int maxLen = 0;
+        return maxLen;
     }
 
 }

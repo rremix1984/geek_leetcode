@@ -6,6 +6,7 @@ package com.leetcode.hard;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.max;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -37,19 +38,11 @@ public class NO123_H_BestTimeToBuyAndSellStockIII_x2 {
 
     @Test
     public void test() {
-        info(maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}));// 6
+        assertEquals(6, maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}));// 6
     }
 
     public int maxProfit(int[] prices) {
         int[][] dp = new int[3][2];
-        dp[1][1] = -prices[0];
-        dp[2][1] = -prices[0];
-        for (int c : prices) {
-            for (int i = 1; i <= 2; i++) {
-                dp[i][0] = max(dp[i][0], dp[i][1] + c);
-                dp[i][1] = max(dp[i][1], dp[i-1][0] - c);
-            }
-        }
         return dp[2][0];
     }
 

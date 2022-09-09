@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -26,7 +27,7 @@ public class NO84_H_LargestRectangleArea_x3 {
 
     @Test
     public void test() {
-        info(largestRectangleArea(
+        assertEquals(10,largestRectangleArea(
             new int[]{2, 1, 5, 6, 2, 3}
         ));// 10
     }

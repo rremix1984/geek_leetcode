@@ -5,6 +5,7 @@ package com.leetcode.hard;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -36,9 +37,9 @@ public class NO72_H_EditDistance_x2 {
 
     @Test
     public void test() {
-        info(minDistance("horse", "ros")); // 3
-        info(minDistance("intention", "execution")); // 5
-        info(minDistance("oppa", "apple"));// 3
+        assertEquals(3,minDistance("horse", "ros")); // 3
+        assertEquals(5,minDistance("intention", "execution")); // 5
+        assertEquals(3,minDistance("oppa", "apple"));// 3
     }
 
     public int minDistance(String word1, String word2) {

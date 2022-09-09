@@ -5,6 +5,7 @@ package com.leetcode.hard;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -56,8 +57,8 @@ public class NO115_H_DistinctSubsequences_x2 {
 
     @Test
     public void test() {
-        info(numDistinct("rabbbit", "rabbit"));// 3
-        info(numDistinct("babgbag", "bag"));// 5
+        assertEquals(3, numDistinct("rabbbit", "rabbit"));// 3
+        assertEquals(5, numDistinct("babgbag", "bag"));// 5
     }
 
     public int numDistinct(String s, String t) {

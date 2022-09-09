@@ -6,6 +6,7 @@ package com.leetcode.hard;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （困难）
@@ -27,29 +28,29 @@ import static com.leetcode.util.LogUtil.info;
         输入：nums = [1, 4, 4], m = 3
         输出：4
 
- 方法二：二分查找 + 贪心
- 思路及算法
- 「使……最大值尽可能小」是二分搜索题目常见的问法。
- 本题中，我们注意到：当我们选定一个值 x，我们可
- 以线性地验证是否存在一种分割方案，满足其最大分割
- 子数组和不超过 x。
- 策略如下：
- 贪心地模拟分割的过程，从前到后遍历数组，用 sum 表示
- 当前分割子数组的和，cnt 表示已经分割出的子数组的数量
- （包括当前子数组），那么每当 sum 加上当前值超过了 x，
- 我们就把当前取的值作为新的一段分割子数组的开头，并将
- cnt 加 1。遍历结束后验证是否 cnt 不超过 m。
- 这样我们可以用二分查找来解决。二分的上界为数组 nums
- 中所有元素的和，下界为数组 nums 中所
- 有元素的最大值。通过二分查找，我们可以得到最小的最大分
- 割子数组和，这样就可以得到最终的答案了。
+     方法二：二分查找 + 贪心
+     思路及算法
+         「使……最大值尽可能小」是二分搜索题目常见的问法。
+         本题中，我们注意到：当我们选定一个值 x，我们可
+         以线性地验证是否存在一种分割方案，满足其最大分割
+         子数组和不超过 x。
+         策略如下：
+         贪心地模拟分割的过程，从前到后遍历数组，用 sum 表示
+         当前分割子数组的和，cnt 表示已经分割出的子数组的数量
+         （包括当前子数组），那么每当 sum 加上当前值超过了 x，
+         我们就把当前取的值作为新的一段分割子数组的开头，并将
+         cnt 加 1。遍历结束后验证是否 cnt 不超过 m。
+         这样我们可以用二分查找来解决。二分的上界为数组 nums
+         中所有元素的和，下界为数组 nums 中所
+         有元素的最大值。通过二分查找，我们可以得到最小的最大分
+         割子数组和，这样就可以得到最终的答案了。
 */
 public class NO410_H_SplitArrayLargestSum_x2 {
 
     @Test
     public void test() {
-        info(splitArray(new int[]{7, 2, 5, 10, 8}, 2));// 18
-        info(splitArray(new int[]{1, 2, 3, 4, 5},2));// 9
+        assertEquals(18, splitArray(new int[]{7, 2, 5, 10, 8}, 2));// 18
+        assertEquals(9, splitArray(new int[]{1, 2, 3, 4, 5},2));// 9
     }
 
     public int splitArray(int[] nums, int m) {
