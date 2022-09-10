@@ -5,8 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.max;
-import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Math.max;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -39,7 +38,7 @@ import static org.junit.Assert.assertEquals;
      数之时，我们就得到了最好的答案。
 */
 @SuppressWarnings("all")
-public class NO121_E_BestTimeToBuyAndSellStock_x2 {
+public class NO121_E_BestTimeToBuyAndSellStock_x3 {
 
     @Test
     public void test() {
@@ -47,10 +46,10 @@ public class NO121_E_BestTimeToBuyAndSellStock_x2 {
         assertEquals(0, maxProfit(new int[]{7, 6, 4, 3, 1}));// 0
     }
 
-    public int maxProfit(int[] prices) {
-        int res = 0;
-        return res;
+    private int maxProfit(int[] ints) {
+        return 0;
     }
+
 
 }
 
@@ -104,5 +103,45 @@ public int maxProfit(int[] prices) {
             res = max(res, c - min);
     }
     return res;
+}
+
+// 方法4：
+public int maxProfit(int[] prices) {
+    int n = prices.length;
+    if (n < 2)
+        return 0;
+
+    // 动态规划：第n天，手里持有[1]或者不持有[0]
+    int[][] dp = new int[n][2];
+    dp[0][0] = 0;
+    dp[0][1] = -prices[0];
+
+    // 从第2天开始遍历
+    for (int i = 1; i < n; i++) {
+        dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i]);
+        dp[i][1] = max(dp[i-1][1], - prices[i]);// 一共只能买一次，如果买了那说明 一定会花掉 -price[i]，所以不用参考昨天干了什么
+    }
+
+    // 结果一定是在第n-1天，状态为不持有[0]
+    return dp[n-1][0];
+}
+
+// 方法5：
+public int maxProfit(int[] prices) {
+    int n = prices.length;
+    if (n < 2)
+        return 0;
+
+    int max = 0;
+    int min = prices[0];
+    for (int i = 0; i < n; i++) {
+        if (prices[i] > min)
+            // 当前值大于最小值，就需要重新审视最大收益 max
+            max = max(max, prices[i] - min);
+        else
+            // 当前元素小于最小值，更新最小值
+            min = prices[i];
+    }
+    return max;
 }
 */
