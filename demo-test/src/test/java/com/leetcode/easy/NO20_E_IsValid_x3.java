@@ -22,17 +22,17 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "()[]{}"
         输出：true
  */
-public class NO20_E_IsValid_x2 {
+public class NO20_E_IsValid_x3 {
 
     @Test
     public void test(){
-        info(isValid("()"));// true
-        info(isValid("()[]{}"));// true
-        info(isValid("({ } )"));
+        assert isValid("()");// true
+        assert isValid("()[]{}");// true
+        assert !isValid("({ } )");
     }
 
     public boolean isValid(String s) {
-        return false;
+        return true;
     }
 }
 
@@ -72,7 +72,7 @@ public boolean isValid(String s) {
     return stack.empty();
 }
 
-// 方法二
+// 方法二：
 public boolean isValid(String s) {
      Stack<Character> stack = new Stack<>();
      for (char c : s.toCharArray()) {
