@@ -10,7 +10,8 @@ import static com.leetcode.util.LogUtil.info;
     （简单）
     338. 比特位计数
         给你一个整数 n ，对于 0 <= i <= n 中的每个 i，
-        计算其二进制表示中 1 的个数，返回一个长度为 n + 1 的数组 ans 作为答案。
+        计算其二进制表示中 1 的个数，
+        返回一个长度为 n + 1 的数组 ans 作为答案。
     示例 1：
         输入：n = 2
         输出：{0, 1, 1}
@@ -51,13 +52,20 @@ public class NO338_E_CountingBits {
     }
 
     public int[] countBits(int n) {
-        int[] dp = new int[n + 1];
+        int[] bits = new int[n + 1];
+        for (int i = 0; i <= n; i++) {
+            bits[i] = countOnes(i);
+        }
+        return bits;
+    }
 
-        // dp动态规划
-        for (int i = 1; i <= n; i++)
-            dp[i] = dp[i & (i - 1)] + 1;
-
-        return dp;
+    public int countOnes(int x) {
+        int ones = 0;
+        while (x > 0) {
+            x &= (x - 1);
+            ones++;
+        }
+        return ones;
     }
 }
 
@@ -85,6 +93,20 @@ public int[] countBits(int n) {
     for (int i = 1; i <= n; i++) {
         if ((i & (i - 1)) == 0)
             highBit = i;
+        bits[i] = bits[i - highBit] + 1;
+    }
+    return bits;
+}
+
+
+// 方法二：动态规划——最高有效位
+public int[] countBits(int n) {
+    int[] bits = new int[n + 1];
+    int highBit = 0;
+    for (int i = 1; i <= n; i++) {
+        if ((i & (i - 1)) == 0) {
+            highBit = i;
+        }
         bits[i] = bits[i - highBit] + 1;
     }
     return bits;
