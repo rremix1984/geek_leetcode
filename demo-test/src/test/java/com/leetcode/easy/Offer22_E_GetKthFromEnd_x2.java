@@ -16,7 +16,7 @@ import static com.leetcode.util.LogUtil.info;
         给定一个链表: 1 -> 2-> 3 -> 4 -> 5, 和 k = 2.
         返回链表 4 -> 5.
 */
-public class Offer22_E_GetKthFromEnd {
+public class Offer22_E_GetKthFromEnd_x2 {
 
     @Test
     public void test() {
