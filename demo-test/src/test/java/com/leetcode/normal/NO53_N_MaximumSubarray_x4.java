@@ -5,7 +5,8 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Integer.MIN_VALUE;
+import static java.lang.Math.max;
+import static org.junit.Assert.assertEquals;
 
 /**
     （中等）
@@ -23,22 +24,16 @@ import static java.lang.Integer.MIN_VALUE;
         输入：nums = [5, 4, -1, 7, 8]
         输出：23
 */
-public class NO53_N_MaximumSubarray_x3 {
+public class NO53_N_MaximumSubarray_x4 {
 
     @Test
     public void test() {
-        info(maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));// 6
-        info(maxSubArray(new int[]{-1}));// -1
+        assertEquals(6, maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));// 6
+        assertEquals(-1, maxSubArray(new int[]{-1}));// -1
     }
 
     public int maxSubArray(int[] nums) {
-        int pre = 0, max = MIN_VALUE;
-        for (int n : nums) {
-            pre = Math.max(n, n + pre);
-            if (max < pre)
-                max = pre;
-        }
-        return max;
+        return -1;
     }
 
 }
@@ -66,5 +61,17 @@ public int maxSubArray(int[] nums) {
     }
     return max;
 }
-*/
 
+// 方法2：动态规划
+public int maxSubArray(int[] nums) {
+    // dp用于保存每个阶段计算出来的 连续子数组的和
+    int[] dp = new int[nums.length];
+    dp[0] = nums[0];
+    int res = nums[0];
+    for (int i = 1; i < nums.length; i++) {
+        dp[i] = max(dp[i - 1] + nums[i] , nums[i]);
+        res = max(res, dp[i]);
+    }
+    return res;
+}
+*/

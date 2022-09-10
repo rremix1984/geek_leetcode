@@ -5,6 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -30,10 +31,10 @@ public class NO509_E_FibonacciNumber_x2 {
 
     @Test
     public void test() {
-        info(fib(15));// 610
-        info(fib(2));// 1
-        info(fib(3));// 2
-        info(fib(4));// 3
+        assertEquals(610, fib(15));// 610
+        assertEquals(1, fib(2));// 1
+        assertEquals(2, fib(3));// 2
+        assertEquals(3, fib(4));// 3
     }
 
     public int fib(int n) {
@@ -53,7 +54,7 @@ public class NO509_E_FibonacciNumber_x2 {
 
 
 
-/*
+/**
 // 方法1：递归
 public int fib(int n) {
     return call(n,new int[n + 1]);
@@ -83,5 +84,20 @@ public int fib(int n) {
         n_2 = tmp;
     }
     return n_1;
+}
+
+// 方法3：动态规划
+public int fib(int n) {
+    if (n <= 1)
+        return n;
+
+    int[] dp = new int[n + 1];
+    dp[0] = 0;
+    dp[1] = 1;
+
+    for (int i = 2; i <= n; i++)
+        dp[i] = dp[i - 1] + dp[i - 2];
+
+    return dp[n];
 }
 */
