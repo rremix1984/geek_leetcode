@@ -25,10 +25,14 @@ public class NO136_E_SingleNumber_x2 {
     public void test() {
         assertEquals(1, singleNumber(new int[]{2, 2, 1}));
         assertEquals(4, singleNumber(new int[]{4, 1, 2, 1, 2}));
+        assertEquals(2, singleNumber(new int[]{4, 1, 2, 1, 4}));
     }
 
     private int singleNumber(int[] nums) {
         int ans = 0;
+        for (int n : nums) {
+            ans ^= n;
+        }
         return ans;
     }
 
@@ -50,20 +54,20 @@ public class NO136_E_SingleNumber_x2 {
 
 
 /**
- 答案是使用位运算。对于这道题，可使用异或运算 ⊕。异或运算有以下三个性质。
-    1）任何数和 00 做异或运算，结果仍然是原来的数，即 a ⊕ 0 = a。
-    2）任何数和其自身做异或运算，结果是 0，即 a ⊕ a = 0。
+ 答案是使用位运算。对于这道题，可使用异或运算 ⊕。异或运算有以下三个性质
+    1）任何数和 00 做异或运算，结果仍然是原来的数，即 a ⊕ 0 = a
+    2）任何数和其自身做异或运算，结果是 0，即 a ⊕ a = 0
     3）异或运算满足交换律和结合律，即  a ⊕ b ⊕ a
                                 = b ⊕ a ⊕ a
                                 = b ⊕ (a ⊕ a)
                                 = b ⊕ 0
-                                = b。
+                                = b
 // 方法1：
 private int singleNumber(int[] nums) {
     int ans = 0;
-    for (int n : nums) {
+    for (int n : nums)
         ans ^= n;
-    }
+
     return ans;
 }
 */
