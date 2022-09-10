@@ -35,7 +35,6 @@ public class NO110_E_BalancedBinaryTree_x2 {
                 new TreeNode(2,
             new TreeNode(3,
                     4, 4), 3), new TreeNode(2)));
-
         assert isBalanced(new TreeNode());
     }
 
