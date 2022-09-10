@@ -7,9 +7,10 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.max;
 import static java.lang.Integer.MAX_VALUE;
+import static org.junit.Assert.assertEquals;
 
 /**
-    （简单）
+    (简单)
     121. 买卖股票的最佳时机
         给定一个数组prices ，它的第i个元素prices[i]表示一支
         给定股票第i天的价格。你只能选择某一天买入这只股票，并选择
@@ -42,19 +43,12 @@ public class NO121_E_BestTimeToBuyAndSellStock_x2 {
 
     @Test
     public void test() {
-        info(maxProfit(new int[]{7, 1, 5, 3, 6, 4}));// 5
-        info(maxProfit(new int[]{7, 6, 4, 3, 1}));// 0
+        assertEquals(5, maxProfit(new int[]{7, 1, 5, 3, 6, 4}));// 5
+        assertEquals(0, maxProfit(new int[]{7, 6, 4, 3, 1}));// 0
     }
 
     public int maxProfit(int[] prices) {
-        int min = MAX_VALUE;
         int res = 0;
-        for (int c : prices) {
-            if (c < min)
-                min = c;
-            else
-                res = max(res, c - min);
-        }
         return res;
     }
 
@@ -97,5 +91,18 @@ public int maxProfit(int prices[]) {
             maxprofit = prices[i] - minprice;
     }
     return maxprofit;
+}
+
+// 方法3：
+public int maxProfit(int[] prices) {
+    int min = MAX_VALUE;
+    int res = 0;
+    for (int c : prices) {
+        if (c < min)
+            min = c;
+        else
+            res = max(res, c - min);
+    }
+    return res;
 }
 */

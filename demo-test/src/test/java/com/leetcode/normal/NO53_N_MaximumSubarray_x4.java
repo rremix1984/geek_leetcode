@@ -5,6 +5,7 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 import static org.junit.Assert.assertEquals;
 
@@ -35,7 +36,6 @@ public class NO53_N_MaximumSubarray_x4 {
     public int maxSubArray(int[] nums) {
         return -1;
     }
-
 }
 
 
@@ -67,7 +67,7 @@ public int maxSubArray(int[] nums) {
     // dp用于保存每个阶段计算出来的 连续子数组的和
     int[] dp = new int[nums.length];
     dp[0] = nums[0];
-    int res = nums[0];
+    int res = nums[0];// 只有一个元素的时候，至少要是数组里的那个元素，不要用 MIN_VALUE
     for (int i = 1; i < nums.length; i++) {
         dp[i] = max(dp[i - 1] + nums[i] , nums[i]);
         res = max(res, dp[i]);
