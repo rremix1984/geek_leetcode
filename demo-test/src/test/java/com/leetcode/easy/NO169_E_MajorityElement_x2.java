@@ -29,7 +29,8 @@ public class NO169_E_MajorityElement_x2 {
     }
 
     public int majorityElement(int[] nums) {
-        return -1;
+        int ans = nums[0];
+        return ans;
     }
 
 }
