@@ -1,13 +1,12 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.normal;
 
 import org.junit.Test;
-
 import java.util.Random;
-
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.rand7;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -36,22 +35,50 @@ public class NO470_N_ImplementRand10UsingRand7_x2 {
         for (int i = 0; i < len; i++) {
             int tmp = rand10();
             dp[tmp - 1]++;
-        }// info(dp);
-        for (int j : dp)
+        }
+        info(dp);
+        for (int j : dp) {
+            assert j != 0;
             res += j;
-        assertEquals(len, res);
+        }
+        assert len == res;
     }
 
-    public int rand7() {
-        return new Random().nextInt(7);
-    }
-
-    public int rand10() {
+    public static int rand10() {
         while (true) {
-            int ans = (rand7() - 1) * 7 + (rand7() - 1); // 进制转换
-            if (1 <= ans && ans <= 10)
-                return ans;
+            int res = (rand7() - 1) * 7 + (rand7() - 1);
+            if (res >= 1 && res <= 10)
+                return res;
         }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public int rand10() {
+    while (true) {
+        // 进制转换：将【7】进制 转换为【10】进制
+        // [0 - 100] 的随机数
+        int ans = (rand7() - 1) * 7 + (rand7() - 1);
+        if (1 <= ans && ans <= 10)
+            return ans;
+    }
+}
+*/

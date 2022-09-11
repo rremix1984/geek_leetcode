@@ -2,6 +2,8 @@ package com.leetcode.util;
 
 import lombok.NoArgsConstructor;
 
+import java.util.Random;
+
 import static java.lang.Integer.MIN_VALUE;
 import static java.util.Arrays.copyOf;
 import static lombok.AccessLevel.PRIVATE;
@@ -48,6 +50,10 @@ public class MathUtils {
             }
         }
         return max;
+    }
+
+    public static int rand7() {
+        return new Random().nextInt(7) + 1;
     }
 
     private static int getmax(int[] a) {
