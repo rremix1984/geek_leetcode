@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     (简单)
@@ -47,18 +48,21 @@ public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
     @Test
     public void test() {
         ListNode eight = new ListNode(8, 4, 5);
-        info(getIntersectionNode(
+        ListNode two = new ListNode(2, 4);
+
+        assertEquals(eight, getIntersectionNode(
                 new ListNode(4, 1).next(eight),
                 new ListNode(5, 6, 1).next(eight)));
 
-        ListNode two = new ListNode(2, 4);
-        info(getIntersectionNode(
+        assertEquals(two, getIntersectionNode(
                 new ListNode(1, 9, 1).next(two),
                 new ListNode(3).next(two)));
     }
 
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null)
+            return null;
         return null;
     }
 

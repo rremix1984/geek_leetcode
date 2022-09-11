@@ -51,18 +51,6 @@ public class NO145_E_PostorderTraversal_x3 {
         List<Integer> res = new ArrayList<>();
         if (root == null)
             return res;
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            root = stack.pop();
-            if (root.left != null)
-                stack.push(root.left);
-
-            if (root.right != null)
-                stack.push(root.right);
-
-            res.add(0, root.val);
-        }
         return res;
     }
 }

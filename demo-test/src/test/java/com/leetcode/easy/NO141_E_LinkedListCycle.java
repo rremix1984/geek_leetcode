@@ -5,6 +5,8 @@ package com.leetcode.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
+
+import static com.leetcode.util.ListNode.newCycle;
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -31,16 +33,22 @@ public class NO141_E_LinkedListCycle {
 
     @Test
     public void test() {
-        ListNode first  = ListNode.newCycle( 3, 2, 0, -4, 2);
-        info(hasCycle(first));// true
+        assert hasCycle(newCycle( 3, 2, 0, -4, 2));// true
 
-        ListNode second  = ListNode.newCycle( 1, 2, 1);
-        info(hasCycle(second));//  true
+        assert hasCycle(newCycle( 1, 2, 1));//  true
 
-        info(hasCycle(ListNode.newCycle(1, -1)));// false
+        assert !hasCycle(newCycle(1, -1));// false
     }
 
     public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow)
+                return true;
+        }
         return false;
     }
 }
