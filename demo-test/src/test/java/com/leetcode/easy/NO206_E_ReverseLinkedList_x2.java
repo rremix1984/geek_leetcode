@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     (简单)
@@ -25,9 +26,12 @@ public class NO206_E_ReverseLinkedList_x2 {
 
     @Test
     public void test() {
-        info(reverseList(new ListNode(1,2,3,4,5)));// [5, 4, 3, 2, 1]
-        info(reverseList(new ListNode(1,2)));// [2, 1]
-        info(reverseList(new ListNode()));// []
+        assert new ListNode(5, 4, 3, 2, 1).equals(
+            reverseList(new ListNode(1, 2, 3, 4, 5)));// [5, 4, 3, 2, 1]
+        assert new ListNode(2, 1).equals(
+            reverseList(new ListNode(1,2)));// [2, 1]
+        assert new ListNode().equals(
+            reverseList(new ListNode()));// []
     }
 
     public ListNode reverseList(ListNode head) {

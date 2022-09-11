@@ -3,6 +3,7 @@ package com.leetcode.util;
 import lombok.ToString;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * listNode
@@ -80,6 +81,19 @@ public class ListNode {
         }
     }
 
+    public boolean equals(ListNode listNode) {
+        ListNode p1 = this;
+        ListNode p2 = listNode;
+        if (p2 == null)
+            return true;
+
+        while (p1!=null && p2!= null && p1.val == p2.val) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1 == null && p2 == null;
+    }
+
     @Override
     public String toString() {
         ListNode cur = this;
@@ -90,4 +104,5 @@ public class ListNode {
         }
         return sb.append(cur.val).append(" -> null").toString();
     }
+
 }

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.bin2Dec;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -32,12 +33,14 @@ public class NO191_E_NumberOf1Bits_x2 {
 
     @Test
     public void test() {
-        info(hammingWeight(bin2Dec("00000000000000000000000000001011")));// 3
-        info(hammingWeight(bin2Dec("00000000000000000000000010000000")));// 1
-        info(hammingWeight(bin2Dec("11111111111111111111111111111101")));// 31
+        assertEquals(3, hammingWeight(bin2Dec("00000000000000000000000000001011")));// 3
+        assertEquals(1, hammingWeight(bin2Dec("00000000000000000000000010000000")));// 1
+        assertEquals(31, hammingWeight(bin2Dec("11111111111111111111111111111101")));// 31
     }
 
-    // you need to treat n as an unsigned value
+    /**
+     * you need to treat n as an unsigned value
+     */
     public int hammingWeight(int n) {
         int ret = 0;
         return ret;

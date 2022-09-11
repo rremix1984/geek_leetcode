@@ -29,17 +29,7 @@ public class NO169_E_MajorityElement_x2 {
     }
 
     public int majorityElement(int[] nums) {
-        int cand_num = nums[0];
-        int count = 1;
-        for (int num : nums) {
-            if (cand_num == num) {
-                ++count;
-            } else if (--count == 0) {
-                cand_num = num;
-                count = 1;
-            }
-        }
-        return cand_num;
+        return -1;
     }
 
 }
