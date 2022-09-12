@@ -31,20 +31,7 @@ public class NO643_E_MaximumAverageSubarrayI_x2 {
 
     public double findMaxAverage(int[] nums, int k) {
         int sum = 0;
-
-        // 窗口大小
-        for (int i = 0; i < k; i++) {
-            sum += nums[i];
-        }
-
-        int maxSum = sum;
-        for (int i = k; i < nums.length; i++) {
-            // 滑动一次
-            sum -= nums[i - k] - nums[i];
-            maxSum = max(maxSum, sum);
-        }
-
-        return (double) maxSum / k;
+        return (double) sum / k;
     }
 
 }
