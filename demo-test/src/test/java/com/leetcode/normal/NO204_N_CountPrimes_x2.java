@@ -4,7 +4,6 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
-
 import java.util.Arrays;
 
 /**
@@ -28,24 +27,12 @@ public class NO204_N_CountPrimes_x2 {
         assert 4 == countPrimes(10);
         assert 0 == countPrimes(0);
         assert 0 == countPrimes(1);
+        assert 0 == countPrimes(2);
     }
 
     public int countPrimes(int n) {
-        boolean[] isPrime = new boolean[n];
-        Arrays.fill(isPrime, true);
-
-        for(int i=2;i*i<n;++i){
-            if(isPrime[i]){
-                for(int j=i*i;j<n;j+=i){
-                    isPrime[j]=false;
-                }
-            }
-        }
-        int cnt=0;
-        for(int i=2;i<n;++i){
-            if(isPrime[i])++cnt;
-        }
-        return cnt;
+        int ans = 0;
+        return ans;
     }
 
 }
@@ -87,5 +74,23 @@ public boolean isPrime(int x) {
             return false;
 
     return true;
+}
+
+// 方法2：
+public int countPrimes(int n) {
+    boolean[] isPrime = new boolean[n];
+    Arrays.fill(isPrime, true);
+
+    for (int i = 2; i * i < n; i++)
+        if (isPrime[i])
+            for (int j = i * i; j < n; j += i)
+                isPrime[j] = false;
+
+    int cnt = 0;
+    for (int i = 2; i < n; i++)
+        if (isPrime[i])
+            ++cnt;
+
+    return cnt;
 }
 */
