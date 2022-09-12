@@ -22,7 +22,7 @@ import static com.leetcode.util.LogUtil.info;
             由于返回类型是整数，小数部分将被舍去。
 */
 @SuppressWarnings("all")
-public class NO69_E_SqrtX_x2 {
+public class NO69_E_SqrtX_x3 {
 
     @Test
     public void test() {
@@ -31,7 +31,7 @@ public class NO69_E_SqrtX_x2 {
     }
 
     public int mySqrt(int x) {
-        return 0;
+        return -1;
     }
 }
 

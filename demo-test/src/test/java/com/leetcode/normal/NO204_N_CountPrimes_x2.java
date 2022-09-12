@@ -5,6 +5,8 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
     204. 计数质数
         给定整数 n ，返回 所有小于非负整数 n 的质数的数量 。
@@ -29,8 +31,23 @@ public class NO204_N_CountPrimes_x2 {
     }
 
     public int countPrimes(int n) {
-        return 0;
+        boolean[] isPrime = new boolean[n];
+        Arrays.fill(isPrime, true);
+
+        for(int i=2;i*i<n;++i){
+            if(isPrime[i]){
+                for(int j=i*i;j<n;j+=i){
+                    isPrime[j]=false;
+                }
+            }
+        }
+        int cnt=0;
+        for(int i=2;i<n;++i){
+            if(isPrime[i])++cnt;
+        }
+        return cnt;
     }
+
 }
 
 
