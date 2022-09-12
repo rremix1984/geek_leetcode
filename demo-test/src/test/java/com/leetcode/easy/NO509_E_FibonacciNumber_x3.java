@@ -8,7 +8,7 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
 
 /**
-    （简单）
+    (简单)
     509. 斐波那契数
         斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
         F(0) = 0，F(1) = 1
@@ -27,7 +27,7 @@ import static org.junit.Assert.assertEquals;
         输出：3
         解释：F(4) = F(3) + F(2) = 2 + 1 = 3
 */
-public class NO509_E_FibonacciNumber_x2 {
+public class NO509_E_FibonacciNumber_x3 {
 
     @Test
     public void test() {
