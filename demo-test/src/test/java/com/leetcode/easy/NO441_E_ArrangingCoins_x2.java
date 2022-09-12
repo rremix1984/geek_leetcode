@@ -32,6 +32,9 @@ public class NO441_E_ArrangingCoins_x2 {
     }
 
     public int arrangeCoins(int n) {
+        if (n == 0)
+            return 0;
+
         return -1;
     }
 
@@ -57,7 +60,7 @@ public class NO441_E_ArrangingCoins_x2 {
 
 
 /**
-// 方法1:
+// 方法1: 二分查找法
 public int arrangeCoins(int n) {
     int left = 1, right = n;
     while (left < right) {
@@ -79,5 +82,22 @@ public int arrangeCoins(int n) {
             return i;
     }
     return 0;
+}
+
+// 方法3：牛顿迭代法，效率最高
+public int arrangeCoins(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    return (int)sqrt(n, n);
+}
+
+private double sqrt(double x, int n) {
+    double res = (x + (2 * n - x) / x) / 2;
+    if (res == x) {
+        return x;
+    } else {
+        return sqrt(res, n);
+    }
 }
 */

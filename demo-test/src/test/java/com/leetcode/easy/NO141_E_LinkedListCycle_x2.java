@@ -10,6 +10,7 @@ import static com.leetcode.util.ListNode.newCycle;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    (简单)
     141. 环形链表
         给你一个链表的头节点 head ，判断链表中是否有环。
         如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。
@@ -29,26 +30,16 @@ import static com.leetcode.util.LogUtil.info;
         输出：false
         解释：链表中没有环。
 */
-public class NO141_E_LinkedListCycle {
+public class NO141_E_LinkedListCycle_x2 {
 
     @Test
     public void test() {
         assert hasCycle(newCycle( 3, 2, 0, -4, 2));// true
-
         assert hasCycle(newCycle( 1, 2, 1));//  true
-
         assert !hasCycle(newCycle(1, -1));// false
     }
 
     public boolean hasCycle(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-            if (fast == slow)
-                return true;
-        }
         return false;
     }
 }
