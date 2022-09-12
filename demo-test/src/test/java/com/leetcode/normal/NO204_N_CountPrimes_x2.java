@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    (中等)
     204. 计数质数
         给定整数 n ，返回 所有小于非负整数 n 的质数的数量 。
     示例 1：
