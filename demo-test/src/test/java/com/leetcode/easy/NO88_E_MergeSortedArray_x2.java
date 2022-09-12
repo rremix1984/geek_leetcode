@@ -5,6 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     (简单)
@@ -40,20 +41,25 @@ public class NO88_E_MergeSortedArray_x2 {
     public void test() {
         int[] target = new int[]{1, 2, 3, 0, 0, 0};
         merge(target, 3, new int[]{2, 5, 6}, 3);// [1, 2, 2, 3, 5, 6]
-        info(target);// [1, 2, 2, 3, 5, 6]
+        assertArrayEquals(new int[]{1,2,2,3,5,6}, target);
 
         int[] target1 = new int[]{1};
         merge(target1, 1, new int[]{}, 0);
-        info(target1);// [1]
+        assertArrayEquals(new int[]{1}, target1);// [1]
 
         int[] target2 = new int[]{0};
         merge(target2, 0, new int[]{1}, 1);
-        info(target2);// [1]
+        assertArrayEquals(new int[]{1}, target2);// [1]
     }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-
-        return;
+        int p1 = m - 1, p2 = n - 1, tail = m + n - 1;
+        while (p1 >= 0 || p2 >= 0)
+            // 如果p1到头了
+            if (p1 == -1 || (p2 != -1 && nums1[p1] < nums2[p2]))
+                nums1[tail--] = nums2[p2--];
+            else
+                nums1[tail--] = nums1[p1--];
     }
 
 }
@@ -74,9 +80,8 @@ public class NO88_E_MergeSortedArray_x2 {
 
 
 /**
-// 方法1：双指针法
-// 每次从头部取出相对较小的元素，放入新数组
-public void merge(int[] target, int m, int[] source, int n) {
+// 方法1：双指针法，每次从头部取出相对较小的元素，放入新数组
+public void merge(int[] nums1, int m, int[] nums2, int n) {
     int p1 = m - 1;// nums1 数组的指针，从后向前
     int p2 = n - 1;// nums2 数组的指针，从后向前
     int tail = m + n - 1;// 新数组的尾指针：tail
@@ -85,14 +90,14 @@ public void merge(int[] target, int m, int[] source, int n) {
         int cur; //当前值，通过tail指针放入
         // 数组p1 到头了，就直接遍历 p2 数组
         if (p1 == -1)
-            cur = source[p2--];
-            // 数组p2 到头了，就直接遍历 p1 数组
-        else if (p2 == -1 || target[p1] > source[p2])
-            cur = target[p1--];
+            cur = nums2[p2--];
+        // 数组p2 到头了，就直接遍历 p1 数组
+        else if (p2 == -1 || nums1[p1] > nums2[p2])
+            cur = nums1[p1--];
         else // target[p1] <= source[p2]
-            cur = source[p2--];
+            cur = nums2[p2--];
 
-        target[tail--] = cur;
+        nums1[tail--] = cur;
     }
 }
 */
