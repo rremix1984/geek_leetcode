@@ -72,6 +72,7 @@ public int maximumProduct(int[] nums) {
     return Math.max(t1, t2);
 }
 
+// 最优解
 // 方法2：不用排序算法，找到最大的3个值，和最小的2个值
 public int maximumProduct(int[] nums) {
     int min1 = MAX_VALUE, min2 = MAX_VALUE;

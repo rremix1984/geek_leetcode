@@ -5,10 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     （简单）
@@ -21,20 +19,20 @@ import static com.leetcode.util.LogUtil.info;
         输出：[0, 1]
         解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
     示例 2：
-        输入：nums = [3,2,4], target = 6
+        输入：nums = [3, 2, 4], target = 6
         输出：[1, 2]
     示例 3：
-        输入：nums = [3,3], target = 6
+        输入：nums = [3, 3], target = 6
         输出：[0, 1]
 */
-public class NO1_E_TwoSum_x2 {
+public class NO1_E_TwoSum_x3 {
 
     @Test
     public void test() {
-        info(twoSum(new int[]{2, 2, 4}, 6));// [1, 2]
-        info(twoSum(new int[]{2, 7, 11, 15}, 9));// [0, 1]
-        info(twoSum(new int[]{3, 2, 4}, 6));// [1, 2]
-        info(twoSum(new int[]{3, 3},6));// [0, 1]
+        assertArrayEquals(new int[]{1, 2}, twoSum(new int[]{2, 2, 4}, 6));// [1, 2]
+        assertArrayEquals(new int[]{0, 1}, twoSum(new int[]{2, 7, 11, 15}, 9));// [0, 1]
+        assertArrayEquals(new int[]{1, 2}, twoSum(new int[]{3, 2, 4}, 6));// [1, 2]
+        assertArrayEquals(new int[]{0, 1}, twoSum(new int[]{3, 3},6));// [0, 1]
     }
 
     public int[] twoSum(int[] nums, int target) {
