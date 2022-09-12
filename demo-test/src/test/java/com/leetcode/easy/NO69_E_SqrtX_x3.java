@@ -31,7 +31,8 @@ public class NO69_E_SqrtX_x3 {
     }
 
     public int mySqrt(int x) {
-        return -1;
+        int l = 0;
+        return l;
     }
 }
 
