@@ -5,6 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 
 /**
@@ -68,5 +70,33 @@ public int maximumProduct(int[] nums) {
     int t2 = nums[nums.length - 1] * nums[0] * nums[1];
 
     return Math.max(t1, t2);
+}
+
+// 方法2：不用排序算法，找到最大的3个值，和最小的2个值
+public int maximumProduct(int[] nums) {
+    int min1 = MAX_VALUE, min2 = MAX_VALUE;
+    int max1 = MIN_VALUE, max2 = MIN_VALUE, max3 = MIN_VALUE;
+    for (int x : nums) {
+        // 找到最小的2个值
+        if (x < min1) {// 如果比最小的还要小
+            min2 = min1;// 原来最小的变成第二小的
+            min1 = x;
+        } else if (x < min2) {
+            min2 = x; // 第二小的就是 x
+        }
+
+        // 找到最大的3个值
+        if (x > max1) {
+            max3 = max2;
+            max2 = max1;
+            max1 = x;
+        } else if (x > max2) {
+            max3 = max2;
+            max2 = x;
+        } else if (x > max3) {
+            max3 = x;
+        }
+    }
+    return max(max3*max2*max1, min1*min2*max1);
 }
 */
