@@ -31,6 +31,10 @@ public class QuickSort_x2 {
         int[] arr3 = new int[]{-99999, 1, 8, 99, -1, 9999999};
         quickSort(arr3, 0, arr3.length - 1);
         info(arr3);
+
+        int[] arr4 = new int[]{-1, -2, -3};
+        quickSort(arr4, 0, arr4.length - 1);
+        info(arr4);
     }
 
     public static void quickSort(int[] arr, int left, int right) {
@@ -41,11 +45,12 @@ public class QuickSort_x2 {
         int j = right;
         int base = arr[left];
         while (i != j) {
-            while (i < j && arr[i] < base)
-                i++;
 
-            while (i < j && arr[j] > base)
+            while (i < j && arr[j] >= base)
                 j--;
+
+            while (i < j && arr[i] <= base)
+                i++;
 
             swap(arr, i, j);
         }
@@ -55,6 +60,8 @@ public class QuickSort_x2 {
 
         quickSort(arr,left, i - 1);
         quickSort(arr, i + 1, right);
+
+
     }
 }
 
