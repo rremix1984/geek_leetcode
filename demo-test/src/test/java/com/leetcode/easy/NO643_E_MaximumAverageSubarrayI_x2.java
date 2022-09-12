@@ -1,10 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-
 import static java.lang.Math.max;
 
 /**
@@ -21,7 +20,7 @@ import static java.lang.Math.max;
         输入：nums = {5}, k = 1
         输出：5.00000
 */
-public class NO643_E_MaximumAverageSubarrayI {
+public class NO643_E_MaximumAverageSubarrayI_x2 {
 
     @Test
     public void test() {
@@ -32,13 +31,16 @@ public class NO643_E_MaximumAverageSubarrayI {
 
     public double findMaxAverage(int[] nums, int k) {
         int sum = 0;
-        for (int i = 0; i < k; i++)
-            sum += nums[i];
 
+        // 窗口大小
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
 
         int maxSum = sum;
         for (int i = k; i < nums.length; i++) {
-            sum = sum - nums[i - k] + nums[i];
+            // 滑动一次
+            sum -= nums[i - k] - nums[i];
             maxSum = max(maxSum, sum);
         }
 
