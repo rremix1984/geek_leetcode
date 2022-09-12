@@ -4,6 +4,7 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import java.util.Arrays;
 
 /**
     (简单)
@@ -36,9 +37,10 @@ public class NO724_E_FindPivotIndex_x2 {
         assert  3 == pivotIndex(new int[]{1, 7, 3, 6, 5, 6});
         assert -1 == pivotIndex(new int[]{1, 2, 3});
         assert  0 == pivotIndex(new int[]{2, 1, -1});
+        assert -1 == pivotIndex(new int[]{2, 1, 1, 2});
+        assert  2 == pivotIndex(new int[]{2, 1, 3, 1, 2});
     }
 
-    // 双指针法：sum逐渐减少，total逐渐增加，当两个值相等的时候正好到中间
     public int pivotIndex(int[] nums) {
         return -1;
     }
