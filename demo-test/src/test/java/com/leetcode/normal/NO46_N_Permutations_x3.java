@@ -23,38 +23,17 @@ import static com.leetcode.util.LogUtil.info;
         输入：nums = [1]
         输出：[[1]]
 */
-public class NO46_N_Permutations_x2 {
+public class NO46_N_Permutations_x3 {
 
     @Test
     public void test() {
-        info("================\n" + permute(new int[]{1, 2, 3}));
+        info(permute(new int[]{1, 2, 3}));
     }
 
     List<List<Integer>> res = new LinkedList<>();
 
     public List<List<Integer>> permute(int[] nums) {
-        Deque<Integer> list = new LinkedList();
-        call(nums, list);
         return res;
-    }
-
-    public void call(int[] nums, Deque<Integer> list) {
-        // 当所有元素都在list里面 代表遍历完成
-        if (list.size() == nums.length) {
-            res.add(new ArrayList<>(list));
-            return;
-        }
-
-        for (int num : nums) {
-            if (list.contains(num))
-                continue;
-
-            list.add(num);
-
-            call(nums, list);
-
-            list.removeLast();
-        }
     }
 
 }
@@ -101,6 +80,35 @@ void backtrack(int[] nums, Deque<Integer> alreadyList) {
         //  [1]
         // add [2] -> [2, 3, 4] remove [2] -> [3, 4]
         alreadyList.removeLast();
+    }
+}
+
+
+// 方法2：回溯法
+List<List<Integer>> res = new LinkedList<>();
+
+public List<List<Integer>> permute(int[] nums) {
+    Deque<Integer> list = new LinkedList();
+    call(nums, list);
+    return res;
+}
+
+public void call(int[] nums, Deque<Integer> list) {
+    // 当所有元素都在list里面 代表遍历完成
+    if (list.size() == nums.length) {
+        res.add(new ArrayList<>(list));
+        return;
+    }
+
+    for (int num : nums) {
+        if (list.contains(num))
+            continue;
+
+        list.add(num);
+
+        call(nums, list);
+
+        list.removeLast();
     }
 }
 */
