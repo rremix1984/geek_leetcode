@@ -6,9 +6,10 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Math.max;
 
 /**
-    （中等）
+    (中等)
     300. 最长递增子序列
         给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
         子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。
@@ -28,15 +29,17 @@ public class NO300_N_LongestIncreasingSubsequence_x2 {
 
     @Test
     public void test() {
-        info(lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));// 4
-        info(lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3}));// 4
-        info(lengthOfLIS(new int[]{7, 7, 7, 7, 7, 7, 7}));// 1
-        info(lengthOfLIS(new int[]{0}));// 1
+        assert 4 == lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18});// 4
+        assert 4 == lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3});// 4
+        assert 1 == lengthOfLIS(new int[]{7, 7, 7, 7, 7, 7, 7});// 1
+        assert 1 == lengthOfLIS(new int[]{0});// 1
     }
 
     public int lengthOfLIS(int[] nums) {
-        return -1;
+        int max = 0;
+        return max;
     }
+
 }
 
 
@@ -68,8 +71,8 @@ public int lengthOfLIS(int[] nums) {
         dp[i] = 1;
         for (int j = 0; j < i; j++)
             if (nums[i] > nums[j])
-                dp[i] = Math.max(dp[i], dp[j] + 1);
-        maxans = Math.max(maxans, dp[i]);
+                dp[i] = max(dp[i], dp[j] + 1);
+        maxans = max(maxans, dp[i]);
     }
     return maxans;
 }
