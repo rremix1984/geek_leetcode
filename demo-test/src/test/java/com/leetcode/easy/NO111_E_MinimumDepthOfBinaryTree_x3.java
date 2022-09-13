@@ -6,6 +6,11 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 import static com.leetcode.util.LogUtil.info;
 import static java.lang.Math.min;
 
@@ -27,10 +32,13 @@ public class NO111_E_MinimumDepthOfBinaryTree_x3 {
 
     @Test
     public void test() {
-        assert 2 == minDepth(new TreeNode(3,
-                        9, new TreeNode(20,
-                                        15, 7)));// 2
-
+        info( minDepth(new TreeNode(3,
+                            9, new TreeNode(20,
+                                        15, 7))));// 2
+        info( minDepth(new TreeNode(1,
+                    new TreeNode(2,
+                        4, null), new TreeNode(3,
+                                                null, 5))));// 3
         info( minDepth(new TreeNode(2,
                             null, new TreeNode(3,
                                     null, new TreeNode(4,
@@ -41,6 +49,7 @@ public class NO111_E_MinimumDepthOfBinaryTree_x3 {
     public int minDepth(TreeNode root) {
         return 0;
     }
+
 }
 
 
@@ -55,7 +64,7 @@ public class NO111_E_MinimumDepthOfBinaryTree_x3 {
 
 
 /**
-// 方法1  递归
+// 方法1：深度优先，递归法
 public int minDepth(TreeNode root) {
     if (root == null)
         return 0;
@@ -69,5 +78,33 @@ public int minDepth(TreeNode root) {
     return Math.min(
             minDepth(root.left),
             minDepth(root.right)) + 1;
+}
+
+// 方法2：广度优先
+public int minDepth(TreeNode root) {
+    if (root == null)
+        return 0;
+    Deque<TreeNode> queue = new LinkedList<>();
+    queue.offer(root);
+    int height = 1;
+    while (!queue.isEmpty()) {
+        int size = queue.size();
+        while (size > 0) {
+            TreeNode node = queue.poll();
+            if (node.left == null && node.right == null)
+                return height;
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+            size--;
+        }
+        height++;
+    }
+    return height;
 }
 */

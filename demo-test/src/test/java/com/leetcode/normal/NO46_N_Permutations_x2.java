@@ -48,8 +48,11 @@ public class NO46_N_Permutations_x2 {
         for (int num : nums) {
             if (list.contains(num))
                 continue;
+
             list.add(num);
+
             call(nums, list);
+
             list.removeLast();
         }
     }
