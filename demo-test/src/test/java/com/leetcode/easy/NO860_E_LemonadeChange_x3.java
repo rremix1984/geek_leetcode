@@ -31,7 +31,7 @@ import static com.leetcode.util.LogUtil.info;
             由于不是每位顾客都得到了正确的找零，所以答案是 false。
 */
 @SuppressWarnings("all")
-public class NO860_E_LemonadeChange_x2 {
+public class NO860_E_LemonadeChange_x3 {
 
     @Test
     public void test() {
