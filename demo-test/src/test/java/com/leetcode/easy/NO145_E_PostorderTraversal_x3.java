@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
     145. 二叉树的后序遍历
     给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。
     示例 1：
-        输入：root = [1,null,2,3]
+        输入：root = [1, null, 2, 3]
         输出：[3, 2, 1]
     示例 2：
         输入：root = []
@@ -49,8 +49,6 @@ public class NO145_E_PostorderTraversal_x3 {
 
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
         return res;
     }
 }

@@ -31,7 +31,7 @@ import static org.junit.Assert.assertEquals;
         输入：root = [1,null,2]
         输出：[1, 2]
 */
-public class NO144_E_PreorderTraversal_x3 {
+public class NO144_E_PreorderTraversal_x4 {
 
     @Test
     public void test() {
