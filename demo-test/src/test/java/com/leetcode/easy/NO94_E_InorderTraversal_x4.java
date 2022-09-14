@@ -46,19 +46,6 @@ public class NO94_E_InorderTraversal_x4 {
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
-        Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
-            }
-
-            TreeNode node = stack.pop();
-            res.add(node.val);
-            root = node.right;
-        }
         return res;
     }
 
