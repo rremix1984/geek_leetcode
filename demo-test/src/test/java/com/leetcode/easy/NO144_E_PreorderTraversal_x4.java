@@ -53,6 +53,7 @@ public class NO144_E_PreorderTraversal_x4 {
         List<Integer> res = new ArrayList<>();
         return res;
     }
+
 }
 
 
@@ -66,6 +67,7 @@ public class NO144_E_PreorderTraversal_x4 {
 
 
 /**
+// 方法1：迭代法
 public List<Integer> preorderTraversal(TreeNode root) {
     List<Integer> res = new ArrayList<>();
     if (root == null)
@@ -83,5 +85,35 @@ public List<Integer> preorderTraversal(TreeNode root) {
             stack.push(node.left);
     }
     return res;
+}
+
+// 方法2：莫里斯遍历
+public List<Integer> preorderTraversal(TreeNode root) {
+    List<Integer> ans = new ArrayList<Integer>();
+    if(root == null) return ans;
+    //morris遍历
+    TreeNode current = root;
+
+    while (current != null) {
+        TreeNode mostR = current.left;
+        if(mostR != null){
+            while(mostR.right != null && mostR.right != current)
+                mostR = mostR.right;
+
+            if(mostR.right == null){
+                ans.add(current.val);
+                mostR.right = current;
+                current = current.left;
+            }else{
+                //第二次遍历该节点
+                current = current.right;
+                mostR.right = null;
+            }
+        } else {
+            ans.add(current.val);
+            current = current.right;
+        }
+    }
+    return ans;
 }
 */
