@@ -1,12 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.normal;
+package com.leetcode.offer;
 
-import com.leetcode.util.ListNode;
 import org.junit.Test;
-
-import static com.leetcode.util.LogUtil.info;
 
 /**
     (普通)
@@ -41,24 +38,8 @@ public class OfferII_116_N_FindCircleNum_x2 {
     }
 
     public int findCircleNum(int[][] isConn) {
-        int cities = isConn.length;
-        boolean[] vstd = new boolean[cities];
         int ans = 0;
-        for (int i = 0; i < cities; i++)
-            if (!vstd[i]) {
-                dfs(isConn, vstd, cities, i);
-                ans++;
-            }
-
         return ans;
-    }
-
-    public void dfs(int[][] isConn, boolean[] vstd, int cities, int i) {
-        for (int j = 0; j < cities; j++)
-            if (isConn[i][j] == 1 && !vstd[j]) {
-                vstd[j] = true;
-                dfs(isConn, vstd, cities, j);
-            }
     }
 
 }
@@ -78,15 +59,31 @@ public class OfferII_116_N_FindCircleNum_x2 {
 
 
 /**
-// 方法1：快慢指针法
-public ListNode getKthFromEnd(ListNode head, int k) {
-    ListNode fast = head, slow = head;
-    for (int i = 0; i < k; i++)
-        fast = fast.next;
-    while (fast != null) {
-        fast = fast.next;
-        slow = slow.next;
+// 方法1：dfs深度遍历
+public int findCircleNum(int[][] isConn) {
+    int ans = 0;
+    // vstd 代表城市是否被访问过 true-是，false-否
+    boolean[] vstd = new boolean[isConn.length];
+    // 选中一个城市 i，迭代选择另一个城市 j 判断是否相邻
+    for (int i = 0; i < isConn.length; i++) {
+        // 如果城市 i 没有被决策过
+        if (!vstd[i]) {
+            // 判断是否有两个城市(i, j) 相邻
+            dfs(isConn, vstd, i);
+            ans++;
+        }
     }
-    return slow;
+    return ans;
+}
+
+public void dfs(int[][] isConn, boolean[] vstd, int i) {
+    // 判断城市 i 与城市 j 是否相邻
+    for (int j = 0; j < isConn.length; j++) {
+        // 如果两个城市（i, j）相邻，说明可以成为一个'省'，同时标记城市 j 为访问过
+        if (isConn[i][j] == 1 && !vstd[j]) {
+            vstd[j] = true;
+            dfs(isConn, vstd, i);
+        }
+    }
 }
 */

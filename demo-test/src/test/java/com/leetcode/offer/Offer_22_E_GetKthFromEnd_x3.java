@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.easy;
+package com.leetcode.offer;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static com.leetcode.util.LogUtil.info;
         给定一个链表: 1 -> 2-> 3 -> 4 -> 5, 和 k = 2.
         返回链表 4 -> 5.
 */
-public class Offer22_E_GetKthFromEnd_x3 {
+public class Offer_22_E_GetKthFromEnd_x3 {
 
     @Test
     public void test() {
