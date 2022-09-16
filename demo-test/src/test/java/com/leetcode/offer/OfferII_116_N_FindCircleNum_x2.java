@@ -5,6 +5,8 @@ package com.leetcode.offer;
 
 import org.junit.Test;
 
+import static com.leetcode.util.LogUtil.info;
+
 /**
     (普通)
     剑指 Offer II 116. 省份数量
@@ -28,13 +30,13 @@ public class OfferII_116_N_FindCircleNum_x2 {
     @Test
     public void test() {
         assert 2 == findCircleNum(
-                new int[][]{{1,1,0},
-                            {1,1,0},
-                            {0,0,1}});
+                new int[][]{{1, 1, 0},
+                            {1, 1, 0},
+                            {0, 0, 1}});
         assert 3 == findCircleNum(
-                new int[][]{{1,0,0},
-                            {0,1,0},
-                            {0,0,1}});
+                new int[][]{{1, 0, 0},
+                            {0, 1, 0},
+                            {0, 0, 1}});
     }
 
     public int findCircleNum(int[][] isConn) {
@@ -85,5 +87,23 @@ public void dfs(int[][] isConn, boolean[] vstd, int i) {
             dfs(isConn, vstd, i);
         }
     }
+}
+
+// 方法2：简化后的dfs
+public int findCircleNum(int[][] isConn) {
+    int ans = 0;
+    boolean[] vstd = new boolean[isConn.length];
+    for (int i = 0; i < isConn.length; i++) {
+        if (!vstd[i]) {
+            for (int j = 0; j < isConn.length; j++) {
+                if (!vstd[j] && isConn[i][j] == 1) {
+                    vstd[j] = true;
+                    j = 0;
+                }
+            }
+            ans++;
+        }
+    }
+    return ans;
 }
 */

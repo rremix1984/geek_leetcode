@@ -7,7 +7,6 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
@@ -26,7 +25,7 @@ import static org.junit.Assert.assertEquals;
         输入：root = [1]
         输出：[1]
 */
-public class NO145_E_PostorderTraversal_x3 {
+public class NO145_E_PostorderTraversal_x4 {
 
     @Test
     public void test() {
