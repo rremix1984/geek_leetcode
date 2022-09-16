@@ -38,8 +38,9 @@ public class NO122_N_BestTimeToBuyAndSellStockII_x2 {
 
     @Test
     public void test() {
-        // 7
-        info(maxProfit(new int[]{7, 1, 5, 3, 6, 4}));
+        assert 7 == maxProfit(new int[]{7, 1, 5, 3, 6, 4});
+        assert 4 == maxProfit(new int[]{1, 2, 3, 4, 5});
+        assert 0 == maxProfit(new int[]{7, 6, 4, 3, 1});
     }
 
     public int maxProfit(int[] prices) {

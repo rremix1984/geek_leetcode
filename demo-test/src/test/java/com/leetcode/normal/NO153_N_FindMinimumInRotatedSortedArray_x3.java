@@ -36,23 +36,14 @@ public class NO153_N_FindMinimumInRotatedSortedArray_x3 {
 
     @Test
     public void test() {
-        info(findMin(new int[]{3, 4, 5, 1, 2})); // 1
-        info(findMin(new int[]{4, 5, 6, 7, 0, 1, 2}));// 0
-        info(findMin(new int[]{11, 13, 15, 17}));// 11
-        info(findMin(new int[]{4, 5, 6, 16, 1}));// 1
+        assert 1 == findMin(new int[]{3, 4, 5, 1, 2}); // 1
+        assert 0 == findMin(new int[]{4, 5, 6, 7, 0, 1, 2});// 0
+        assert 11 == findMin(new int[]{11, 13, 15, 17});// 11
+        assert 1 == findMin(new int[]{4, 5, 6, 16, 1});// 1
     }
 
     public int findMin(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
-        while(left < right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] < nums[right])
-                right = mid;
-            else
-                left = mid + 1;
-        }
-        return nums[right];
+        return -1;
     }
 
 }

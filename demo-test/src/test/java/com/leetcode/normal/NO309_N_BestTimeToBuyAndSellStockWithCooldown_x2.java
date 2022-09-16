@@ -30,9 +30,9 @@ public class NO309_N_BestTimeToBuyAndSellStockWithCooldown_x2 {
 
     @Test
     public void test() {
-        info(maxProfit(new int[]{1, 2, 3, 0, 2}));// 3
-        info(maxProfit(new int[]{1}));// 0
-        info(maxProfit(new int[]{1, 2}));// 1
+        assert 3 == maxProfit(new int[]{1, 2, 3, 0, 2});// 3
+        assert 0 == maxProfit(new int[]{1});// 0
+        assert 1 == maxProfit(new int[]{1, 2});// 1
     }
 
     public int maxProfit(int[] prices) {

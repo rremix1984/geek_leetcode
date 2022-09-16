@@ -35,7 +35,7 @@ public class NO62_N_UniquePaths_x2 {
 
     @Test
     public void test() {
-        info(uniquePaths(3, 7));// 28
+        assert 28 == uniquePaths(3, 7);// 28
 //        info(uniquePaths(7, 3));// 28
 //        info(uniquePaths(3, 3));// 6
 //        info(uniquePaths(3, 2));// 3

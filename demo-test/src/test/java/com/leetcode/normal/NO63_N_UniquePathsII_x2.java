@@ -31,38 +31,19 @@ public class NO63_N_UniquePathsII_x2 {
 
     @Test
     public void test() {
-        info(uniquePathsWithObstacles(
+        assert 2 == uniquePathsWithObstacles(
             new int[][]{{0, 0, 0},
                         {0, 1, 0},
-                        {0, 0, 0}}));// 2
-        info(uniquePathsWithObstacles(
+                        {0, 0, 0}});// 2
+        assert 1 == uniquePathsWithObstacles(
             new int[][]{{0, 1},
-                        {0, 0}}));// 1
-        info(uniquePathsWithObstacles(
-            new int[][]{{1, 0}}));// 0
+                        {0, 0}});// 1
+        assert 0 == uniquePathsWithObstacles(
+            new int[][]{{1, 0}});// 0
     }
 
     public int uniquePathsWithObstacles(int[][] arr) {
-        if (arr == null || arr.length == 0)
-            return 0;
-
-        // 定义 dp 数组并初始化第 1 行和第 1 列。
-        int m = arr.length;
-        int n = arr[0].length;
-        int[][] dp = new int[m][n];
-        for (int i = 0; i < m && arr[i][0] == 0; i++)
-            dp[i][0] = 1;
-
-        for (int j = 0; j < n && arr[0][j] == 0; j++)
-            dp[0][j] = 1;
-
-        // 根据状态转移方程 dp[i][j] = dp[i - 1][j] + dp[i][j - 1] 进行递推。
-        for (int i = 1; i < m; i++)
-            for (int j = 1; j < n; j++)
-                if (arr[i][j] == 0)
-                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
-
-        return dp[m - 1][n - 1];
+        return 0;
     }
 
 }

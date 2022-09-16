@@ -6,8 +6,11 @@ package com.leetcode.normal;
 import com.leetcode.util.Node;
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （中等）
@@ -23,9 +26,13 @@ public class NO429_N_NaryLeverOrderTraversal_x2 {
 
     @Test
     public void test() {
-        info(levelOrder(new Node(1,
-                new Node(3,
-                        new Node(5), new Node(6)), new Node(2), new Node(4))));
+        assertEquals(new ArrayList<ArrayList<Integer>>(){{
+                    add(new ArrayList<Integer>(){{add(1);}});
+                    add(new ArrayList<Integer>(){{add(3);add(2);add(4);}});
+                    add(new ArrayList<Integer>(){{add(5);add(6);}});}},
+            levelOrder(new Node(1,
+                    new Node(3,
+            new Node(5), new Node(6)), new Node(2), new Node(4))));//[[1], [3, 2, 4], [5, 6]]
     }
 
     public List<List<Integer>> levelOrder(Node root) {

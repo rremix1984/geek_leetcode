@@ -48,9 +48,9 @@ public class NO518_N_CoinChangeII_x2 {
 
     @Test
     public void test() {
-        info(change(5, new int[]{1, 2, 5}));// 4
-        info(change(3, new int[]{2}));// 0
-        info(change(10, new int[]{10}));// 1
+        assert 4 == change(5, new int[]{1, 2, 5});// 4
+        assert 0 == change(3, new int[]{2});// 0
+        assert 1 == change(10, new int[]{10});// 1
     }
 
     public int change(int amount, int[] coins) {

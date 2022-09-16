@@ -5,6 +5,7 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （中等）
@@ -22,8 +23,8 @@ public class NO5_N_LongestPalindromicSubstring {
 
     @Test
     public void test() {
-        info(longestPalindrome("babad"));// bab 或者 aba 都行
-        info(longestPalindrome("cbbd"));// bb
+        assertEquals("aba", longestPalindrome("babad"));// bab 或者 aba 都行
+        assertEquals("bb", longestPalindrome("cbbd"));// bb
     }
 
     public String longestPalindrome(String s) {

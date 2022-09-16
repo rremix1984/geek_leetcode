@@ -37,7 +37,7 @@ public class NO11_N_ContainerWithMostWater_x2 {
     public void test() {
 //        info(maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));// 49
 //        info(maxArea(new int[]{1, 1}));// 1
-        info(maxArea(new int[]{4, 3, 2, 1, 4}));// 16
+        assert 16 == maxArea(new int[]{4, 3, 2, 1, 4});// 16
     }
 
     public int maxArea(int[] a) {

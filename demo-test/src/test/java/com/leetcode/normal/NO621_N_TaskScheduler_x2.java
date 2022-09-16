@@ -42,12 +42,12 @@ public class NO621_N_TaskScheduler_x2 {
 
     @Test
     public void test() {
-        info(leastInterval(
-            new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 2));// 8
-        info(leastInterval(
-            new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 0));// 6
-        info(leastInterval(
-            new char[]{'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'}, 2));// 16
+        assert 8 == leastInterval(
+            new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 2);// 8
+        assert 6 == leastInterval(
+            new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 0);// 6
+        assert 16 == leastInterval(
+            new char[]{'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'}, 2);// 16
 
     }
 

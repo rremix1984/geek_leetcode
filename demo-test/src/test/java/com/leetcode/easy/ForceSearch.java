@@ -15,7 +15,7 @@ public class ForceSearch {
 
     @Test
     public void test() {
-        info(forceSearch("BBC ABCDAB ABCDABCDABDE", "ABCDABCD"));// 11
+        assert 11 == forceSearch("BBC ABCDAB ABCDABCDABDE", "ABCDABCD");// 11
     }
 
     public int forceSearch(String txt, String pat) {

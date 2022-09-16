@@ -30,20 +30,15 @@ public class NO322_N_CoinChange_x3 {
 
     @Test
     public void test() {
-        // 3
-        info(coinChange(
-            new int[]{1, 2, 5}, 11));
-        // -1
-        info(coinChange(
-                new int[]{2}, 3));
+        assert 3 == coinChange(
+            new int[]{1, 2, 5}, 11);
+        assert -1 == coinChange(
+            new int[]{2}, 3);
     }
 
-    // 其实是一个爬楼梯问题的变种
-    // 找到1元、2元面值的最少组合之后，就找到了3元的最少组合
-    // 以此类推amount元面值就是 amount - [面值] 和 amount - [面值] 的最少面值组合的和
     public int coinChange(int[] coins, int amount) {
-        int[] memory = new int[amount + 1];
-        return memory[amount];
+        int[] memo = new int[amount + 1];
+        return memo[amount];
     }
 }
 
@@ -59,7 +54,9 @@ public class NO322_N_CoinChange_x3 {
 
 
 /*
-// 方法1
+// 方法1：其实是一个爬楼梯问题的变种
+//    找到1元、2元面值的最少组合之后，就找到了3元的最少组合
+//    以此类推amount元面值就是 amount - [面值] 和 amount - [面值] 的最少面值组合的和
 public int coinChange(int[] coins, int amount) {
     // 缓存
     int[] memo = new int[amount + 1];

@@ -27,8 +27,8 @@ public class NO647_N_PalindromicSubstrings_x2 {
 
     @Test
     public void test() {
-        info(countSubstrings("abc"));// 3
-        info(countSubstrings("aaa"));// 6
+        assert 3 == countSubstrings("abc");// 3
+        assert 6 == countSubstrings("aaa");// 6
     }
 
     public int countSubstrings(String s) {

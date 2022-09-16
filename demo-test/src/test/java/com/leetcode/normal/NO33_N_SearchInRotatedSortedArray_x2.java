@@ -31,14 +31,9 @@ public class NO33_N_SearchInRotatedSortedArray_x2 {
 
     @Test
     public void test() {
-        // 4
-        info(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
-
-        // -1
-        info(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 3));
-
-        // -1
-        info(search(new int[]{1}, 0));
+        assert 4 == search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0);
+        assert -1 == search(new int[]{4, 5, 6, 7, 0, 1, 2}, 3);
+        assert -1 == search(new int[]{1}, 0);
     }
 
     public int search(int[] nums, int target) {

@@ -42,9 +42,9 @@ public class NO213_N_HouseRobberII_x2 {
 
     @Test
     public void test() {
-        info(rob(new int[]{2, 3, 2}));// 3
-        info(rob(new int[]{1, 2, 3, 1}));// 4
-        info(rob(new int[]{1, 2, 3}));// 3
+        assert 3 == rob(new int[]{2, 3, 2});// 3
+        assert 4 == rob(new int[]{1, 2, 3, 1});// 4
+        assert 3 == rob(new int[]{1, 2, 3});// 3
     }
 
     public int rob(int[] nums) {

@@ -43,7 +43,7 @@ public class NO91_N_DecodeWays_x2 {
 //        info(numDecodings("12"));// 2
 //        info(numDecodings("226"));// 3
 //        info(numDecodings("0"));// 0
-        info(numDecodings("123"));// 3
+        assert 3 == numDecodings("123");// 3
     }
 
     public int numDecodings(String s) {

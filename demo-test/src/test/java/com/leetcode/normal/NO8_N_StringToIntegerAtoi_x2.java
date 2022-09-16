@@ -51,45 +51,16 @@ public class NO8_N_StringToIntegerAtoi_x2 {
 
     @Test
     public void test() {
-        info(myAtoi("42"));// 42
-        info(myAtoi("   -42"));// -42
-        info(myAtoi("4193 with words"));// 4193
-        info(myAtoi("00000-42a1234"));// 0
-        info(myAtoi(" "));// 0
+        assert 42 == myAtoi("42");// 42
+        assert -42 == myAtoi("   -42");// -42
+        assert 4193 == myAtoi("4193 with words");// 4193
+        assert 0 == myAtoi("00000-42a1234");// 0
+        assert 0 == myAtoi(" ");// 0
     }
 
     public int myAtoi(String str) {
-        int index = 0;
         int sign = 1;
         int total = 0;
-
-        // 1. Empty string
-        if (str.length() == 0)
-            return 0;
-
-        // 2. Remove spaces
-        while (str.charAt(index) == ' ')
-            index++;
-
-        // 3. Handle signs
-        if (str.charAt(index) == '+' || str.charAt(index) == '-') {
-            sign = str.charAt(index) == '+' ? 1 : -1;
-            index++;
-        }
-
-        // 4. Convert number and avoid  overflow
-        while (index < str.length()) {
-            int digit = str.charAt(index) - '0';
-            if (digit < 0 || digit > 9)
-                break;
-
-            // check if total will be overflow after 10 times and add digit
-            if (Integer.MAX_VALUE / 10 < total || Integer.MAX_VALUE / 10 == total && Integer.MAX_VALUE % 10 < digit)
-                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-
-            total = 10 * total + digit;
-            index++;
-        }
         return total * sign;
     }
 }

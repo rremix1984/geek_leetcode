@@ -31,31 +31,7 @@ public class NO47_N_PermutationsII_x2 {
     List<List<Integer>> res = new ArrayList<>();
 
     public List<List<Integer>> permuteUnique(int[] nums) {
-        Arrays.sort(nums);
-        call(new LinkedList<>(), nums, new boolean[nums.length]);
         return res;
-    }
-
-    void call(Deque<Integer> path, int[] nums, boolean[] used) {
-        if (nums.length == path.size()) {
-            res.add(new ArrayList<>(path));
-            return;
-        }
-
-        for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && !used[i - 1] && nums[i] == nums[i - 1])
-                continue;
-
-            if (!used[i]) {
-                used[i] = true;
-                path.add(nums[i]);
-
-                call(path, nums, used);
-
-                used[i] = false;
-                path.removeLast();
-            }
-        }
     }
 }
 

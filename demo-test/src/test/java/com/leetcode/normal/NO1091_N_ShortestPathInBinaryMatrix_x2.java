@@ -34,17 +34,17 @@ public class NO1091_N_ShortestPathInBinaryMatrix_x2 {
 
     @Test
     public void test() {
-        info(shortestPathBinaryMatrix(
+        assert 2 == shortestPathBinaryMatrix(
             new int[][]{{0, 1},
-                        {1, 0}}));// 2
-        info(shortestPathBinaryMatrix(
+                        {1, 0}});// 2
+        assert 4 == shortestPathBinaryMatrix(
             new int[][]{{0, 0, 0},
                         {1, 1, 0},
-                        {1, 1, 0}}));// 4
-        info(shortestPathBinaryMatrix(
+                        {1, 1, 0}});// 4
+        assert -1 == shortestPathBinaryMatrix(
             new int[][]{{1, 0, 0},
                         {1, 1, 0},
-                        {1, 1, 0}}));// -1
+                        {1, 1, 0}});// -1
     }
     
     int[] dx = {0, 0, -1, 1,-1, 1,-1, 1};

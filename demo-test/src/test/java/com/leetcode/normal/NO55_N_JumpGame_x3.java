@@ -26,8 +26,8 @@ public class NO55_N_JumpGame_x3 {
 
     @Test
     public void test() {
-        info(canJump(new int[]{2, 3, 1, 1, 4}));// true
-        info(canJump(new int[]{3, 2, 1, 0, 4}));// false
+        assert canJump(new int[]{2, 3, 1, 1, 4});// true
+        assert !canJump(new int[]{3, 2, 1, 0, 4});// false
     }
 
     public boolean canJump(int[] nums) {

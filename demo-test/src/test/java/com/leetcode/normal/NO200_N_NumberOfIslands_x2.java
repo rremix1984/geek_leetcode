@@ -29,53 +29,22 @@ public class NO200_N_NumberOfIslands_x2 {
 
     @Test
     public void test() {
-        info(numIslands(new char[][]{
+        assert 1 == numIslands(new char[][]{
                 {'1', '1', '1', '1', '0'},
                 {'1', '1', '0', '1', '0'},
                 {'1', '1', '0', '0', '0'},
-                {'0', '0', '0', '0', '0'}}));// 1
-        info(numIslands(new char[][]{
+                {'0', '0', '0', '0', '0'}});// 1
+        assert 3 == numIslands(new char[][]{
                 {'1', '1', '0', '0', '0'},
                 {'1', '1', '0', '0', '0'},
                 {'0', '0', '1', '0', '0'},
-                {'0', '0', '0', '1', '1'}})); // 3
+                {'0', '0', '0', '1', '1'}}); // 3
     }
 
     int row, col;
     public int numIslands(char[][] grid) {
         int islands_count = 0;
-        // 初始化行、列数
-        row = grid.length;
-        if (row == 0)
-            return 0;
-        col = grid[0].length;
-
-        // 遍历每一个节点
-        for (int i = 0; i < row; i++)
-            for (int j = 0; j < col; j++) {
-                // 如果是海洋，就不用管了
-                if (grid[i][j] == '0')
-                    continue;
-                dfs(grid, i, j);
-                islands_count++;
-            }
         return islands_count;
-    }
-
-    void dfs(char[][] grid, int i, int j) {
-        // 处理边界情况
-        if (i < 0 || j < 0 ||
-            i >= row || j >= col ||
-            grid[i][j] == '0')
-            return;
-
-        // floodfill
-        grid[i][j] = '0';
-
-        dfs(grid, i, j+1);
-        dfs(grid, i, j-1);
-        dfs(grid, i-1, j);
-        dfs(grid, i+1, j);
     }
 
 }

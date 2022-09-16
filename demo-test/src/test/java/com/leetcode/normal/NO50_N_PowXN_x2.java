@@ -27,21 +27,11 @@ public class NO50_N_PowXN_x2 {
 
     @Test
     public void test() {
-        info(myPow(2.0, -2));
+        assert 0.25d == myPow(2.0, -2);
     }
 
     public double myPow(double x, int n) {
         double res = 1.0;
-        long N = abs((long) n);
-        double c = x;
-        while (N > 0) {
-            if (N % 2 == 1)
-                res *= c;
-            c *= c;
-            N /= 2;
-        }
-        if (n < 0)
-            return 1 / res;
         return res;
     }
 }

@@ -33,24 +33,7 @@ public class NO77_N_Combinations_x2 {
     List<Integer> temp = new ArrayList<>();
 
     public List<List<Integer>> combine(int n, int k) {
-        call(1, n, k);
         return ans;
-    }
-
-    private void call(int cur, int n, int k) {
-        if (temp.size() + (n - cur + 1) < k)
-            return;
-
-        if (temp.size() == k) {
-            ans.add(new ArrayList(temp));
-            return;
-        }
-
-        temp.add(cur);
-        call(cur + 1, n, k);
-
-        temp.remove(temp.size() - 1);
-        call(cur + 1, n, k);
     }
 
 }

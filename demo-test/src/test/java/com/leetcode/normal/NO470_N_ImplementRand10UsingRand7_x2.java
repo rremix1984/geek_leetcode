@@ -45,11 +45,7 @@ public class NO470_N_ImplementRand10UsingRand7_x2 {
     }
 
     public static int rand10() {
-        while (true) {
-            int res = (rand7() - 1) * 7 + (rand7() - 1);
-            if (res >= 1 && res <= 10)
-                return res;
-        }
+        return -1;
     }
 
 }

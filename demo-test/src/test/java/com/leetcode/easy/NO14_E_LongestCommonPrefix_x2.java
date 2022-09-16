@@ -5,6 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -23,8 +24,8 @@ public class NO14_E_LongestCommonPrefix_x2 {
 
     @Test
     public void test() {
-        info(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));// fl
-        info(longestCommonPrefix(new String[]{"dog", "racecar", "car"}));// ""
+        assertEquals("fl", longestCommonPrefix(new String[]{"flower", "flow", "flight"}));// fl
+        assertEquals("", longestCommonPrefix(new String[]{"dog", "racecar", "car"}));// ""
     }
 
     public String longestCommonPrefix(String[] strs) {

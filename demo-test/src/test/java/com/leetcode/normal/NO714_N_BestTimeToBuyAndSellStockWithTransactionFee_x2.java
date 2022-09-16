@@ -35,8 +35,8 @@ public class NO714_N_BestTimeToBuyAndSellStockWithTransactionFee_x2 {
 
     @Test
     public void test() {
-        info(maxProfit(new int[]{1, 3, 2, 8, 4, 9},2));//8
-        info(maxProfit(new int[]{1, 3, 7, 5, 10, 3}, 3));// 6
+        assert 8 == maxProfit(new int[]{1, 3, 2, 8, 4, 9},2);//8
+        assert 6 == maxProfit(new int[]{1, 3, 7, 5, 10, 3}, 3);// 6
     }
 
     public int maxProfit(int[] prices, int fee) {

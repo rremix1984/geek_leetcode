@@ -34,21 +34,12 @@ public class NO279_N_PerfectSquares_x2 {
 
     @Test
     public void test() {
-        info(numSquares(12));// 3
-//        info(numSquares(13));// 2
+        assert 3 == numSquares(12);// 3
+        assert 2 == numSquares(13);// 2
     }
 
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
-            // 完全平方数的最小值 min
-            int min = Integer.MAX_VALUE;
-            for (int j = 1; j * j <= i; j++)
-                min = Math.min(min, dp[i - j * j]);
-            // （前面）min(dp[i - j*j])  与 （本次）j * j，合在一起就是 dp[i]
-            dp[i] = min + 1;
-            info("dp[" + i + "] -> "+dp[i]);
-        }
         return dp[n];
     }
 

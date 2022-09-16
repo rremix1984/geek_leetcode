@@ -5,6 +5,7 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （中等）
@@ -29,9 +30,9 @@ public class NO151_N_ReverseWordsInAString_x2 {
 
     @Test
     public void test() {
-        info(reverseWords("the sky is blue"));// "blue is sky the"
-        info(reverseWords("  hello world  "));// "world hello"
-        info(reverseWords("a good   example"));// "example good a"
+        assertEquals("blue is sky the", reverseWords("the sky is blue"));
+        assertEquals("world hello", reverseWords("  hello world  "));
+        assertEquals("example good a", reverseWords("a good   example"));
     }
 
     public String reverseWords(String s) {

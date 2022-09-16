@@ -33,14 +33,14 @@ public class NO1306_N_JumpGameIII_x2 {
 
     @Test
     public void test() {
-        info(canReach(new int[]{4, 2, 3, 0, 3, 1, 2}, 5));// true
-        info(canReach(new int[]{4, 2, 3, 0, 3, 1, 2}, 0));// true
-        info(canReach(new int[]{3, 0, 2, 1, 2}, 2));// false
-        info(canReach(new int[]{4, 2, 3, 0, 3, 1, 2},5));// true
+        assert  canReach(new int[]{4, 2, 3, 0, 3, 1, 2}, 5);// true
+        assert  canReach(new int[]{4, 2, 3, 0, 3, 1, 2}, 0);// true
+        assert !canReach(new int[]{3, 0, 2, 1, 2}, 2);// false
+        assert  canReach(new int[]{4, 2, 3, 0, 3, 1, 2},5);// true
     }
 
     public boolean canReach(int[] arr, int start) {
-        return true;
+        return false;
     }
 
 }

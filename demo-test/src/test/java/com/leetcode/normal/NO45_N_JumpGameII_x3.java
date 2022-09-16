@@ -28,22 +28,13 @@ public class NO45_N_JumpGameII_x3 {
 
     @Test
     public void test() {
-        info(jump(new int[]{2, 3, 0, 1, 4}));//2
-        info(jump(new int[]{2, 3, 1, 1, 4}));//2
-        info(jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4}));//6
+        assert 2 == jump(new int[]{2, 3, 0, 1, 4});//2
+        assert 2 == jump(new int[]{2, 3, 1, 1, 4});//2
+        assert 6 == jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4});//6
     }
 
     public int jump(int[] nums) {
-        int cur = 0;
-        int max = 0;
         int jump = 0;
-        for (int i = 0; i < nums.length; i++) {
-            max = max(max, cur + nums[i]);
-            if (cur == i) {
-                cur = max;
-                jump++;
-            }
-        }
         return jump;
     }
 

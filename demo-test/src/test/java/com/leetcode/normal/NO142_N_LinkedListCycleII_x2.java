@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.ListNode.newCycle;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     (中等)
@@ -33,26 +34,13 @@ public class NO142_N_LinkedListCycleII_x2 {
 
     @Test
     public void test() {
-        info(detectCycle(newCycle(3, 2, 0, -4, 5, 6, 5)).val);// 5 ->...
-        info(detectCycle(newCycle(3,2,0,-4,2)).val);// 2 ->...
-        info(detectCycle(ListNode.newCycle(1,2,1)).val);// 1 ->...
-        info(detectCycle(ListNode.newCycle(1,-1)));// null
+        assertEquals(5, detectCycle(newCycle(3, 2, 0, -4, 5, 6, 5)).val);
+        assertEquals(2, detectCycle(newCycle(3,2,0,-4,2)).val);
+        assertEquals(1, detectCycle(ListNode.newCycle(1,2,1)).val);
+        assertEquals(null, detectCycle(ListNode.newCycle(1,-1)));
     }
 
     public ListNode detectCycle(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
-        while (slow != null && fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {
-                while (head != slow) {
-                    head = head.next;
-                    slow = slow.next;
-                }
-                return slow;
-            }
-        }
         return null;
     }
 

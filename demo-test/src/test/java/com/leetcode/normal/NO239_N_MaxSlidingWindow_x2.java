@@ -6,6 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 import java.util.LinkedList;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     （困难）
@@ -31,31 +32,12 @@ public class NO239_N_MaxSlidingWindow_x2 {
 
     @Test
     public void test(){
-        info(maxSlidingWindow(new int[]{1,3,-1,-3,5,3,6,7}, 3));// [3,3,5,5,6,7]
+        assertArrayEquals(new int[]{3, 3, 5, 5, 6, 7},
+            maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3));// [3, 3, 5, 5, 6, 7]
     }
 
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] res = new int[nums.length - k + 1];
-        int idx = 0;
-        LinkedList<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < nums.length; i++) {
-            // 头部出队列
-            if (!queue.isEmpty() && i - k == queue.peekFirst()) {
-                queue.removeFirst();
-            }
-
-            // 尾部出队列
-            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]) {
-                queue.removeLast();
-            }
-            // 尾部入队列
-            queue.addLast(i);
-
-            // 填数据进入结果集数组
-            if (i >= k - 1) {
-                res[idx++] = nums[queue.peekFirst()];
-            }
-        }
         return res;
     }
 }

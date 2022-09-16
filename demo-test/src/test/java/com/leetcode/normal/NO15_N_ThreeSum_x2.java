@@ -36,7 +36,6 @@ public class NO15_N_ThreeSum_x2 {
 
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
-
         return res;
     }
 }

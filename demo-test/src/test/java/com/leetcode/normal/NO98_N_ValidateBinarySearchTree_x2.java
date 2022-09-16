@@ -36,10 +36,10 @@ public class NO98_N_ValidateBinarySearchTree_x2 {
 //                        5,
 //                1, new TreeNode(4,
 //                                3,6))));// false
-        info(isValidBST(new TreeNode(
+        assert !isValidBST(new TreeNode(
                     5,
             4, new TreeNode(6,
-                            3,7))));// false
+                            3,7)));// false
 //        info(isValidBST(new TreeNode(0)));// true
     }
 
