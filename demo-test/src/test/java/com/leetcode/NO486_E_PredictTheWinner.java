@@ -40,18 +40,23 @@ public class NO486_E_PredictTheWinner {
     }
 
     public boolean PredictTheWinner(int[] nums) {
-        int length = nums.length;
-        int[][] dp = new int[length][length];
+        return score(nums, 0, nums.length - 1, 1) >= 0;
+    }
 
-        for (int i = 0; i < length; i++)
-            dp[i][i] = nums[i];
+    // 从 start 开始到 end 结束，第 turn 轮
+    public int score(int[] nums, int start, int end, int turn) {
+        // 当 start 和 end 相遇了，结束
+        if (start == end)
+            return nums[start] * turn;
 
-        for (int i = length - 2; i >= 0; i--)
-            for (int j = i + 1; j < length; j++)
-                dp[i][j] = max(nums[i] - dp[i + 1][j],
-                               nums[j] - dp[i][j - 1]);
+        int scoreStart = nums[start] * turn +
+                score(nums, start + 1, end, -turn);
 
-        return dp[0][length - 1] >= 0;
+        int scoreEnd = nums[end] * turn +
+                score(nums, start, end - 1, -turn);
+
+        return max(scoreStart * turn,
+                     scoreEnd * turn) * turn;
     }
 
 }
@@ -121,6 +126,7 @@ private int dfs(int[] nums, int i, int j, int[][] memo) {
 // 方法2：动态规划
 public boolean PredictTheWinner(int[] nums) {
     int length = nums.length;
+    // 先手 i 后手 j 差值最大化，就可以让收益最大化
     int[][] dp = new int[length][length];
 
     for (int i = 0; i < length; i++)
@@ -128,9 +134,11 @@ public boolean PredictTheWinner(int[] nums) {
 
     for (int i = length - 2; i >= 0; i--)
         for (int j = i + 1; j < length; j++)
+            // 先手、后手差值的【最大值】
             dp[i][j] = max(nums[i] - dp[i + 1][j],
-                    nums[j] - dp[i][j - 1]);
+                           nums[j] - dp[i][j - 1]);
 
+    // 先手减去后手 >=0 先手就赢了
     return dp[0][length - 1] >= 0;
 }
 */
