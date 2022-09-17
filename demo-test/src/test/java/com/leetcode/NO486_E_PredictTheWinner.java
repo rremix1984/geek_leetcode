@@ -38,25 +38,7 @@ public class NO486_E_PredictTheWinner {
     }
 
     public boolean PredictTheWinner(int[] nums) {
-        int length = nums.length;
-        // 先手 i 后手 j 差值最大化，就可以让收益最大化
-        int[][] dp = new int[length][length];
-
-        // 就一个元素dp就是 nums[i] 本身，玩家一（i）和 玩家二（j）没有任何选择，只能选 nums[i]
-        for (int i = 0; i < length; i++)
-            dp[i][i] = nums[i];
-
-        // i 最多只能到 len - 2，
-        // 因为就算两位玩家只从最左侧选，二号玩家也要选走 n - 1，一号玩家永远选不到 n - 1
-        for (int i = length - 2; i >= 0; i--)
-            for (int j = i + 1; j < length; j++)
-                // 先手、后手差值的【最大值】
-                // i + 1就是j, j - 1 就是 i
-                dp[i][j] = max(nums[i] - dp[i + 1][j],
-                               nums[j] - dp[i][j - 1]);
-
-        // i 从 0 开始，j 从 len - 1 开始
-        return dp[0][length - 1] >= 0;
+        return false;
     }
 
 }

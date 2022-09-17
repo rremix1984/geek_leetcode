@@ -32,9 +32,9 @@ public class NO232_E_ImplementQueueUsingStacks_x2 {
         MyQueue myQueue = new MyQueue();
         myQueue.push(1); // queue is: [1]
         myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
-        info(myQueue.peek()); // return 1
-        info(myQueue.pop()); // return 1, queue is [2]
-        info(myQueue.empty()); // return false
+        assert 1 == myQueue.peek(); // return 1
+        assert 1 == myQueue.pop(); // return 1, queue is [2]
+        assert !myQueue.empty(); // return false
     }
 }
 

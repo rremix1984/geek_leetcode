@@ -26,13 +26,12 @@ public class NO69_E_SqrtX_x3 {
 
     @Test
     public void test() {
-        info(mySqrt(4));
-        info(mySqrt(2147395599));
+        assert 2 == mySqrt(4);
+        assert 46339 == mySqrt(2147395599);
     }
 
     public int mySqrt(int x) {
-        int l = 0;
-        return l;
+        return 0;
     }
 }
 

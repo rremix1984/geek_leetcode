@@ -28,10 +28,10 @@ public class NO58_E_LengthOfLastWord_x2 {
 
     @Test
     public void test() {
-        info(lengthOfLastWord("Hello World"));// 5
-        info(lengthOfLastWord("   fly me   to   the moon  "));// 4
-        info(lengthOfLastWord("luffy is still joyboy"));// 6
-        info(lengthOfLastWord("a"));// 1
+        assert 5 == (lengthOfLastWord("Hello World"));// 5
+        assert 4 == (lengthOfLastWord("   fly me   to   the moon  "));// 4
+        assert 6 == (lengthOfLastWord("luffy is still joyboy"));// 6
+        assert 1 == (lengthOfLastWord("a"));// 1
     }
 
     public int lengthOfLastWord(String s) {

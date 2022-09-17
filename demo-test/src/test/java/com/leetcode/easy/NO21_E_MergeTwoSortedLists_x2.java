@@ -26,16 +26,34 @@ public class NO21_E_MergeTwoSortedLists_x2 {
 
     @Test
     public void test() {
-        info(mergeTwoLists(
+        assert new ListNode(1, 1, 2, 3, 4, 4).equals(mergeTwoLists(
             new ListNode(1, 2, 4), new ListNode(1, 3, 4)));//[1, 1, 2, 3, 4, 4]
-        info(mergeTwoLists(
+        assert new ListNode(0, 0).equals(mergeTwoLists(
             new ListNode(),new ListNode()));//[]
-        info(mergeTwoLists(
+        assert new ListNode(0, 0).equals(mergeTwoLists(
             new ListNode(),new ListNode(0)));//[0]
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null)
+            return l2;
+
+        if (l2 == null)
+            return l1;
+
         ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                cur.next = new ListNode(l1.val);
+                l1 = l1.next;
+            } else {
+                cur.next = new ListNode(l2.val);
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = l1 == null ? l2 : l1;
         return dummy.next;
     }
 
