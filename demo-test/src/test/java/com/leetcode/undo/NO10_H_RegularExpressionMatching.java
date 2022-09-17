@@ -35,9 +35,9 @@ public class NO10_H_RegularExpressionMatching {
 
     @Test
     public void test() {
-        info(isMatch("aa", "a"));// false
-        info(isMatch("aa", "a*"));// true
-        info(isMatch("ab", ".*"));// true
+        assert !(isMatch("aa", "a"));// false
+        assert (isMatch("aa", "a*"));// true
+        assert (isMatch("ab", ".*"));// true
     }
 
     public boolean isMatch(String s, String p) {

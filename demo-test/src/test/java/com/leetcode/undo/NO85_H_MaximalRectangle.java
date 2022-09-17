@@ -35,14 +35,14 @@ public class NO85_H_MaximalRectangle {
 
     @Test
     public void test() {
-        info(maximalRectangle(new char[][]{{'1', '0', '1', '0', '0'},
-                                           {'1', '0', '1', '1', '1'},
-                                           {'1', '1', '1', '1', '1'},
-                                           {'1', '0', '0', '1', '0'}}));// 6
-        info(maximalRectangle(new char[][]{}));// 0
-        info(maximalRectangle(new char[][]{{'0'}}));// 0
-        info(maximalRectangle(new char[][]{{'1'}}));// 1
-        info(maximalRectangle(new char[][]{{'0'}, {'0'}}));// 0
+        assert 6 == (maximalRectangle(new char[][]{{'1', '0', '1', '0', '0'},
+                                                   {'1', '0', '1', '1', '1'},
+                                                   {'1', '1', '1', '1', '1'},
+                                                   {'1', '0', '0', '1', '0'}}));// 6
+        assert 0 == (maximalRectangle(new char[][]{}));// 0
+        assert 0 == (maximalRectangle(new char[][]{{'0'}}));// 0
+        assert 1 == (maximalRectangle(new char[][]{{'1'}}));// 1
+        assert 0 == (maximalRectangle(new char[][]{{'0'}, {'0'}}));// 0
     }
 
     public int maximalRectangle(char[][] matrix) {

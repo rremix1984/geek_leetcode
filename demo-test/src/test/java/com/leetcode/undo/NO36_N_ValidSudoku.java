@@ -43,7 +43,7 @@ public class NO36_N_ValidSudoku {
     
     @Test
     public void test() {
-        info(isValidSudoku(new char[][]{
+        assert (isValidSudoku(new char[][]{
                      {'5','3','.', '.','7','.', '.','.','.'}
                     ,{'6','.','.', '1','9','5', '.','.','.'}
                     ,{'.','9','8', '.','.','.', '.','6','.'}
@@ -56,7 +56,7 @@ public class NO36_N_ValidSudoku {
                     ,{'.','.','.', '4','1','9', '.','.','5'}
                     ,{'.','.','.', '.','8','.', '.','7','9'}}));// true
 
-        info(isValidSudoku(new char[][]{
+        assert !(isValidSudoku(new char[][]{
                      {'8','3','.', '.','7','.', '.','.','.'}
                     ,{'6','.','.', '1','9','5', '.','.','.'}
                     ,{'.','9','8', '.','.','.', '.','6','.'}

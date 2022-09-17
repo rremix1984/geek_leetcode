@@ -6,6 +6,7 @@ package com.leetcode.offer;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     (简单)
@@ -20,7 +21,7 @@ public class Offer_22_E_GetKthFromEnd_x3 {
 
     @Test
     public void test() {
-        info(getKthFromEnd(new ListNode(1,2,3,4,5),2));
+        assertEquals(4, getKthFromEnd(new ListNode(1,2,3,4,5),2).val);
     }
 
     public ListNode getKthFromEnd(ListNode head, int k) {

@@ -23,12 +23,11 @@ public class NO363_H_MaxSumOfRectangleNoLargerThanK {
 
     @Test
     public void test() {
-        info(maxSumSubmatrix(
+        assert 2 == (maxSumSubmatrix(
                 new int[][]{{1,  0, 1},
                             {0, -2, 3}}, 2));// 2
-        info(maxSumSubmatrix(
-                new int[][]{{2, 2, -1}}, 3
-        ));// 3
+        assert 3 == (maxSumSubmatrix(
+                new int[][]{{2, 2, -1}}, 3));// 3
     }
 
     public int maxSumSubmatrix(int[][] matrix, int k) {

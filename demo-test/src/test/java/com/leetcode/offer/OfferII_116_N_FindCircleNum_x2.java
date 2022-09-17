@@ -5,6 +5,9 @@ package com.leetcode.offer;
 
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -37,6 +40,12 @@ public class OfferII_116_N_FindCircleNum_x2 {
                 new int[][]{{1, 0, 0},
                             {0, 1, 0},
                             {0, 0, 1}});
+        assert 5 == findCircleNum(
+                new int[][]{{1, 0, 0, 0, 0},
+                            {0, 1, 0, 0, 0},
+                            {0, 0, 1, 0, 0},
+                            {0, 0, 0, 1, 0},
+                            {0, 0, 0, 0, 1}});
     }
 
     public int findCircleNum(int[][] isConn) {
@@ -103,6 +112,31 @@ public int findCircleNum(int[][] isConn) {
             }
             ans++;
         }
+    }
+    return ans;
+}
+
+// 方法2：BFS
+public int findCircleNum(int[][] isConn) {
+    int ans = 0;
+    // vstd 代表城市是否被访问过 true-是，false-否
+    boolean[] vstd = new boolean[isConn.length];
+    Queue<Integer> queue = new LinkedList<>();
+    // 选中一个城市 i，迭代选择另一个城市 j 判断是否相邻
+    for (int i = 0; i < isConn.length; i++) {
+        // 如果城市 i 访问过跳过循环
+        if (vstd[i])
+            continue;
+
+        queue.offer(i);
+        while (!queue.isEmpty()) {
+            int k = queue.poll();
+            vstd[k] = true;
+            for (int j = 0; j < isConn.length; j++)
+                if (isConn[i][j] == 1 && !vstd[j])
+                    queue.offer(j);
+        }
+        ans++;
     }
     return ans;
 }

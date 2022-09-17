@@ -25,8 +25,8 @@ public class NO52_H_NQueensII {
 
     @Test
     public void test() {
-        info(totalNQueens(4));// 2
-        info(totalNQueens(1));// 1
+        assert 2 == (totalNQueens(4));// 2
+        assert 1 == (totalNQueens(1));// 1
     }
 
 

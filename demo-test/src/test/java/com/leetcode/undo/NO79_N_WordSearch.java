@@ -37,18 +37,18 @@ public class NO79_N_WordSearch {
 
     @Test
     public void test() {
-        info(exist(new char[][]
+        assert exist(new char[][]
                 {{'A','B','C','E'},
                 {'S','F','C','S'},
-                {'A','D','E','E'}}, "ABCCED"));// true
-        info(exist(new char[][]{
+                {'A','D','E','E'}}, "ABCCED");// true
+        assert exist(new char[][]{
                 {'A','B','C','E'},
                 {'S','F','C','S'},
-                {'A','D','E','E'}},"SEE"));// true
-        info(exist(new char[][]{
+                {'A','D','E','E'}},"SEE");// true
+        assert !exist(new char[][]{
                 {'A','B','C','E'},
                 {'S','F','C','S'},
-                {'A','D','E','E'}}, "ABCB"));// false
+                {'A','D','E','E'}}, "ABCB");// false
     }
 
     private static final int[][] DIRECTIONS = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};

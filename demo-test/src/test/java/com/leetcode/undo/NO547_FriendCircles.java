@@ -48,7 +48,7 @@ public class NO547_FriendCircles {
 
     @Test
     public void test() {
-        info(findCircleNum(new int[][]{
+        assert 1 == (findCircleNum(new int[][]{
                 {1, 1, 0},
                 {1, 1, 1},
                 {0, 1, 1}}));// 1

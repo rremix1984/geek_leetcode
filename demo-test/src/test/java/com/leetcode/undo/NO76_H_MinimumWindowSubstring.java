@@ -10,6 +10,7 @@ import java.util.Map;
 
 import static com.leetcode.util.LogUtil.info;
 import static java.lang.Integer.MAX_VALUE;
+import static org.junit.Assert.assertEquals;
 
 /**
     (困难)
@@ -37,9 +38,9 @@ public class NO76_H_MinimumWindowSubstring {
 
     @Test
     public void test() {
-        info(minWindow("ADOBECODEBANC", "ABC"));// BANC
-        info(minWindow("a", "a"));// a
-        info(minWindow("a","aa"));// ""
+        assertEquals("BANC", minWindow("ADOBECODEBANC", "ABC"));// BANC
+        assertEquals("a", minWindow("a", "a"));// a
+        assertEquals("", minWindow("a","aa"));// ""
     }
 
     public String minWindow(String s, String t) {

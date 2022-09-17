@@ -46,15 +46,15 @@ public class NO980_H_UniquePathsIII {
 
     @Test
     public void test() {
-        info(uniquePathsIII(
+        assert 2 == (uniquePathsIII(
             new int[][]{{1, 0, 0,  0},
                         {0, 0, 0,  0},
                         {0, 0, 2, -1}}));// 2
-        info(uniquePathsIII(
+        assert 4 == (uniquePathsIII(
             new int[][]{{1, 0, 0, 0},
                         {0, 0, 0, 0},
                         {0, 0, 0, 2}}));// 4
-        info(uniquePathsIII(
+        assert 0 == (uniquePathsIII(
             new int[][]{{0, 1},
                         {2, 0}}));// 0
     }

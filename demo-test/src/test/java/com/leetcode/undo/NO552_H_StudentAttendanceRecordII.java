@@ -37,9 +37,9 @@ public class NO552_H_StudentAttendanceRecordII {
 
     @Test
     public void test() {
-        info(checkRecord(2));// 8
-        info(checkRecord(1));// 3
-        info(checkRecord(10101));// 183236316
+        assert 8 == (checkRecord(2));// 8
+        assert 3 == (checkRecord(1));// 3
+        assert 183236316 == (checkRecord(10101));// 183236316
     }
 
     public int checkRecord(int n) {
