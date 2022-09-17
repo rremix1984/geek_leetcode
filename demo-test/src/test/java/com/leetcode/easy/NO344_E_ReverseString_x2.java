@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     （简单）
@@ -26,20 +27,16 @@ public class NO344_E_ReverseString_x2 {
     public void test() {
         char[] char1 = new char[]{'h','e','l','l','o'};
         reverseString(char1);
-        info(char1);// {'o','l','l','e','h'}
+        assertArrayEquals(new char[]{'o','l','l','e','h'}, char1);// {'o','l','l','e','h'}
 
         char[] char2 = new char[]{'H','a','n','n','a','h'};
         reverseString(char2);
-        info(char2);// {'h','a','n','n','a','H'}
+        assertArrayEquals(new char[]{'h','a','n','n','a','H'}, char2);// {'h','a','n','n','a','H'}
     }
 
     // 双指针法
     public void reverseString(char[] s) {
-        int left = 0;
-        int right = s.length - 1;
-        for (;left < right;) {
-            swap(s,left++,right--);
-        }
+
     }
 }
 

@@ -26,9 +26,9 @@ public class NO680_E_ValidPalindromeII_x2 {
 
     @Test
     public void test() {
-        info(validPalindrome("aba"));// true
-        info(validPalindrome("abca"));// true
-        info(validPalindrome("abc"));// false
+        assert validPalindrome("aba");// true
+        assert validPalindrome("abca");// true
+        assert !validPalindrome("abc");// false
     }
 
     public boolean validPalindrome(String s) {

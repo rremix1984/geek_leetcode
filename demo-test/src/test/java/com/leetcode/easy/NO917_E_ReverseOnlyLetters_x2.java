@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
 import static java.lang.Character.isLetter;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -29,9 +30,9 @@ public class NO917_E_ReverseOnlyLetters_x2 {
 
     @Test
     public void test() {
-        info(reverseOnlyLetters("ab-cd"));// dc-ba
-        info(reverseOnlyLetters("a-bC-dEf-ghIj"));// j-Ih-gfE-dCba
-        info(reverseOnlyLetters("Test1ng-Leet=code-Q!"));// Qedo1ct-eeLg=ntse-T!
+        assertEquals("dc-ba", reverseOnlyLetters("ab-cd"));// dc-ba
+        assertEquals("j-Ih-gfE-dCba", reverseOnlyLetters("a-bC-dEf-ghIj"));// j-Ih-gfE-dCba
+        assertEquals("Qedo1ct-eeLg=ntse-T!", reverseOnlyLetters("Test1ng-Leet=code-Q!"));// Qedo1ct-eeLg=ntse-T!
     }
 
     public String reverseOnlyLetters(String s) {

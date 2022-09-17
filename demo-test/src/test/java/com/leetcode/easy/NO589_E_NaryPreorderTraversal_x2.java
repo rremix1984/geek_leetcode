@@ -7,6 +7,7 @@ import com.leetcode.util.Node;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -21,26 +22,14 @@ public class NO589_E_NaryPreorderTraversal_x2 {
 
     @Test
     public void test() {
-        info(preorder(new Node(1,
+        assertEquals(new ArrayList<Integer>(){{add(1);add(3);add(5);add(6);add(2);add(4);}},
+                preorder(new Node(1,
                 new Node(3,
         new Node(5), new Node(6)), new Node(2), new Node(4))));
     }
 
     public List<Integer> preorder(Node root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
-
-        Stack<Node> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            Node node = stack.pop();
-            res.add(node.val);
-            // 只有这里跟二叉树不相同，其他都是类似的
-            for (int i = node.children.size() - 1; i >= 0; --i) {
-                stack.push(node.children.get(i));
-            }
-        }
         return res;
     }
 

@@ -33,7 +33,7 @@ public class NO125_E_ValidPalindrome_x2 {
 
     @Test
     public void test() {
-        info(isPalindrome("A man, a plan, a canal：Panama"));
+        assert isPalindrome("A man, a plan, a canal：Panama");
     }
 
     @Logable

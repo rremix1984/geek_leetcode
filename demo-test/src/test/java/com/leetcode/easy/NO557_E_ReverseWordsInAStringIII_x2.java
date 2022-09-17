@@ -5,6 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -21,8 +22,8 @@ public class NO557_E_ReverseWordsInAStringIII_x2 {
 
     @Test
     public void test () {
-        info(reverseWords("Let's take LeetCode contest"));// "s'teL ekat edoCteeL tsetnoc"
-        info(reverseWords("God Ding"));// "doG gniD"
+        assertEquals("s'teL ekat edoCteeL tsetnoc", reverseWords("Let's take LeetCode contest"));// "s'teL ekat edoCteeL tsetnoc"
+        assertEquals("doG gniD", reverseWords("God Ding"));// "doG gniD"
     }
 
     public String reverseWords(String s) {

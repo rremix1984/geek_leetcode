@@ -35,8 +35,8 @@ public class NO860_E_LemonadeChange_x3 {
 
     @Test
     public void test() {
-        info(lemonadeChange(new int[]{5, 5, 5, 10, 20}));// true
-        info(lemonadeChange(new int[]{5, 5, 10, 10, 20}));// false
+        assert (lemonadeChange(new int[]{5, 5, 5, 10, 20}));// true
+        assert !(lemonadeChange(new int[]{5, 5, 10, 10, 20}));// false
     }
 
     public boolean lemonadeChange(int[] bills) {

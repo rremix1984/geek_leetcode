@@ -25,9 +25,9 @@ public class NO387_E_FirstUniqueCharacterInAString_x2 {
 
     @Test
     public void test() {
-        info(firstUniqChar("leetcode"));// 0
-        info(firstUniqChar("loveleetcode"));// 2
-        info(firstUniqChar("aabb"));// -1
+        assert  0 == firstUniqChar("leetcode");// 0
+        assert  2 == firstUniqChar("loveleetcode");// 2
+        assert -1 == firstUniqChar("aabb");// -1
     }
 
     public int firstUniqChar(String s) {
@@ -71,14 +71,13 @@ public int firstUniqChar(String s) {
 public int firstUniqChar(String s) {
     int[] freq = new int[26];
     char[] chars = s.toCharArray();
-    for (char ch : chars) {
+    for (char ch : chars)
         freq[ch - 'a']++;
-    }
-    for (int i = 0; i < chars.length; i++) {
+
+    for (int i = 0; i < chars.length; i++)
         if (freq[chars[i] - 'a'] == 1) {
             return i;
-        }
-    }
+
     return -1;
 }
 

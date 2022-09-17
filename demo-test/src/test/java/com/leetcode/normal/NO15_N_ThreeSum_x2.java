@@ -5,10 +5,12 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
  * 难度【中等】
@@ -18,10 +20,8 @@ import static com.leetcode.util.LogUtil.info;
    注意：答案中不可以包含重复的三元组。
    示例 1：
      输入：nums = [-1, 0, 1, 2, -1, -4]
-     输出：[
-            [-1, -1, 2],
-            [-1, 0, 1]
-          ]
+     输出：[[-1, -1, 2],
+            [-1, 0, 1]]
 
    示例 2：
      输入：nums = []
@@ -31,7 +31,10 @@ public class NO15_N_ThreeSum_x2 {
 
     @Test
     public void test() {
-        info(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        assertEquals(new ArrayList<ArrayList>(){{
+            add(new ArrayList<Integer>(){{add(-1);add(-1);add(2);}});
+            add(new ArrayList<Integer>(){{add(-1);add(0);add(1);}});}},
+                threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
     }
 
     public List<List<Integer>> threeSum(int[] nums) {

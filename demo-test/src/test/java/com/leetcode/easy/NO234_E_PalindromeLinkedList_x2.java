@@ -23,8 +23,8 @@ public class NO234_E_PalindromeLinkedList_x2 {
 
     @Test
     public void test() {
-        info(isPalindrome(new ListNode(1, 2, 2, 1)));// true
-        info(isPalindrome(new ListNode(1, 2)));// false
+        assert isPalindrome(new ListNode(1, 2, 2, 1));// true
+        assert !isPalindrome(new ListNode(1, 2));// false
     }
 
     public boolean isPalindrome(ListNode head) {

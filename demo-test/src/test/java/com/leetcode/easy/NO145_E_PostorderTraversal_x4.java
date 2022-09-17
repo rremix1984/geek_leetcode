@@ -45,7 +45,6 @@ public class NO145_E_PostorderTraversal_x4 {
                         new TreeNode(1)));
     }
 
-
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         return res;

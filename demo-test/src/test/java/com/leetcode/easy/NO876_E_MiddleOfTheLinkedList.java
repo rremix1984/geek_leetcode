@@ -4,6 +4,7 @@
 package com.leetcode.easy;
 
 import com.leetcode.util.ListNode;
+import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
@@ -26,8 +27,8 @@ public class NO876_E_MiddleOfTheLinkedList {
 
     @Test
     public void test() {
-        info(middleNode(new ListNode(1,2,3,4,5)));
-        info(middleNode(new ListNode(1,2,3,4,5,6)));
+        assert new TreeNode(3).val == middleNode(new ListNode(1,2,3,4,5)).val;
+        assert new TreeNode(4).val == middleNode(new ListNode(1,2,3,4,5,6)).val;
     }
 
     public ListNode middleNode(ListNode head) {

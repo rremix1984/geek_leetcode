@@ -29,23 +29,14 @@ public class NO70_E_ClimbStairs_x2 {
 
     @Test
     public void test() {
-        info(climbStairs(2));// 2
-        info(climbStairs(3));// 3
-        info(climbStairs(4));// 5
-        info(climbStairs(10));// 89
+        assert 2 == climbStairs(2);// 2
+        assert 3 == climbStairs(3);// 3
+        assert 5 == climbStairs(4);// 5
+        assert 89 == climbStairs(10);// 89
     }
 
     public int climbStairs(int n) {
-        if (n < 2)
-            return n;
-        int n_2 = 1;
-        int n_1 = 2;
-        for (int i = 3; i <= n; i++) {
-            int tmp = n_1;
-            n_1 = n_1 + n_2;
-            n_2 = tmp;
-        }
-        return n_1;
+        return 0;
     }
 }
 

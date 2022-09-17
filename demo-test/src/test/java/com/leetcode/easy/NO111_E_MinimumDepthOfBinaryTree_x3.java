@@ -32,18 +32,18 @@ public class NO111_E_MinimumDepthOfBinaryTree_x3 {
 
     @Test
     public void test() {
-        info( minDepth(new TreeNode(3,
+        assert 2 == minDepth(new TreeNode(3,
                             9, new TreeNode(20,
-                                        15, 7))));// 2
-        info( minDepth(new TreeNode(1,
+                                        15, 7)));// 2
+        assert 3 == minDepth(new TreeNode(1,
                     new TreeNode(2,
                         4, null), new TreeNode(3,
-                                                null, 5))));// 3
-        info( minDepth(new TreeNode(2,
+                                                null, 5)));// 3
+        assert 5 == minDepth(new TreeNode(2,
                             null, new TreeNode(3,
                                     null, new TreeNode(4,
                                             null, new TreeNode(5,
-                                                    null, new TreeNode(6))))))); // 5
+                                                    null, new TreeNode(6)))))); // 5
     }
 
     public int minDepth(TreeNode root) {

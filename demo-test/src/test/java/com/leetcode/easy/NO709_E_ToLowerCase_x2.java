@@ -5,6 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -24,9 +25,9 @@ public class NO709_E_ToLowerCase_x2 {
 
     @Test
     public void test() {
-        info(toLowerCase("Hello"));// hello
-        info(toLowerCase("here"));// here
-        info(toLowerCase("LOVELY"));// lovely
+        assertEquals("hello", toLowerCase("Hello"));// hello
+        assertEquals("here", toLowerCase("here"));// here
+        assertEquals("lovely", toLowerCase("LOVELY"));// lovely
     }
 
     public String toLowerCase(String s) {

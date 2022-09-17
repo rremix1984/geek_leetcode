@@ -23,7 +23,8 @@ public class NO242_E_ValidAnagram_x3 {
 
     @Test
     public void test() {
-        info(isAnagram("anagram", "nagaram"));
+        assert isAnagram("anagram", "nagaram");
+        assert !isAnagram("rat", "car");
     }
 
     public boolean isAnagram(String s, String t) {

@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
 import static java.lang.Math.min;
+import static org.junit.Assert.assertEquals;
 
 /**
     （简单）
@@ -25,8 +26,8 @@ public class NO541_E_ReverseStringII_x2 {
 
     @Test
     public void test() {
-        info(reverseStr("abcdefg", 2));// "bacdfeg"
-        info(reverseStr("abcd", 2));// "bacd"
+        assertEquals("bacdfeg", reverseStr("abcdefg", 2));// "bacdfeg"
+        assertEquals("bacd", reverseStr("abcd", 2));// "bacd"
     }
 
     public String reverseStr(String s, int k) {

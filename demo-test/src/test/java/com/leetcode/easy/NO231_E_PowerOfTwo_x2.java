@@ -5,6 +5,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertFalse;
 
 /**
     （简单）
@@ -33,15 +34,14 @@ public class NO231_E_PowerOfTwo_x2 {
 
     @Test
     public void test() {
-        info(isPowerOfTwo(1));//  true
-        info(isPowerOfTwo(16));// true
-        info(isPowerOfTwo(3));//  false
-        info(isPowerOfTwo(4));//  true
-        info(isPowerOfTwo(5));//  false
+        assert isPowerOfTwo(1);//  true
+        assert isPowerOfTwo(16);// true
+        assertFalse(isPowerOfTwo(3));//  false
+        assert isPowerOfTwo(4);//  true
+        assert !isPowerOfTwo(5);//  false
     }
 
     // 负数是正数的补码，按位取反再 +1
-    //
     // (5)   00000101 -> 11111010 -> 11111011
     public boolean isPowerOfTwo(int n) {
         //方法1：

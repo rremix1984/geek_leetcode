@@ -33,14 +33,12 @@ public class NO455_E_AssignCookies_x2 {
 
     @Test
     public void test() {
-        // 1
-        info(findContentChildren(
+        assert 1 == findContentChildren(
                 new int[]{1, 2, 3},
-                new int[]{1, 1}));
-        // 2
-        info(findContentChildren(
+                new int[]{1, 1});
+        assert 2 == findContentChildren(
                 new int[]{1, 2},
-                new int[]{1, 2, 3}));
+                new int[]{1, 2, 3});
     }
 
     public int findContentChildren(int[] child, int[] cookie) {

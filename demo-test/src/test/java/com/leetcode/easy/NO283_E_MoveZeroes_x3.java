@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     (简单)
@@ -22,7 +23,7 @@ public class NO283_E_MoveZeroes_x3 {
     public void test() {
         int[] input = new int[]{0, 1, 0, 3, 12};
         moveZeroes(input);
-        info(input);
+        assertArrayEquals(new int[]{1, 3, 12, 0, 0}, input);
     }
 
     public void moveZeroes(int nums[]) {

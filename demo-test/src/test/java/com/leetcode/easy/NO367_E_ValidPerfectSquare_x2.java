@@ -25,23 +25,12 @@ public class NO367_E_ValidPerfectSquare_x2 {
 
     @Test
     public void test() {
-//        info(isPerfectSquare(144));// true
-//        info(isPerfectSquare(120));// false
-        info(isPerfectSquare(2147483647));// 容易超时
+        assert isPerfectSquare(144);// true
+        assert !isPerfectSquare(120);// false
+        assert !isPerfectSquare(2147483647);// false 容易超时
     }
 
     public boolean isPerfectSquare(int num) {
-        int l = 1, r = num;
-        while (l <= r) {
-            int mid = (r - l) / 2 + l;
-            long square = (long) mid * mid;
-            if (square > num)
-                r = mid - 1;
-            else if (square < num)
-                l = mid + 1;
-            else
-                return true;
-        }
         return false;
     }
 

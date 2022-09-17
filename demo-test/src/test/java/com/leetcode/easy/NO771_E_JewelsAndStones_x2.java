@@ -20,8 +20,8 @@ public class NO771_E_JewelsAndStones_x2 {
 
     @Test
     public void test() {
-        info(numJewelsInStones("aA", "aAAbbbb"));// 3
-        info(numJewelsInStones("z", "ZZ"));// 0
+        assert 3 == (numJewelsInStones("aA", "aAAbbbb"));// 3
+        assert 0 == (numJewelsInStones("z", "ZZ"));// 0
     }
 
     public int numJewelsInStones(String jewels, String stones) {

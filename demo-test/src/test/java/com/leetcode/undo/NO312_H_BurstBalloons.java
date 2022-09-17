@@ -29,7 +29,7 @@ public class NO312_H_BurstBalloons {
 
     @Test
     public void test() {
-        info(maxCoins(new int[]{3, 1, 5, 8}));// 167
+        assert 167 == maxCoins(new int[]{3, 1, 5, 8});// 167
     }
 
     public int maxCoins(int[] nums) {

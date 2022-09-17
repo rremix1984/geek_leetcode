@@ -35,8 +35,8 @@ public class NO746_E_MinCostClimbingStairs_x2 {
 
     @Test
     public void test() {
-        info(minCostClimbingStairs(new int[]{10,15,20}));// 15
-        info(minCostClimbingStairs(new int[]{1,100,1,1,1,100,1,1,100,1}));// 6
+        assert 15 == minCostClimbingStairs(new int[]{10,15,20});// 15
+        assert  6 == minCostClimbingStairs(new int[]{1,100,1,1,1,100,1,1,100,1});// 6
     }
 
     public int minCostClimbingStairs(int[] cost) {
