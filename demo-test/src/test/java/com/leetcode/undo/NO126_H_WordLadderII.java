@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
 
@@ -34,8 +35,7 @@ public class NO126_H_WordLadderII {
 
     @Test
     public void test() {
-        // [["hit","hot","dot","dog","cog"],
-        //  ["hit","hot","lot","log","cog"]]
+        // assertEquals(//[[hit, hot, dot, dog, cog], [hit, hot, lot, log, cog]]
         info(findLadders("hit", "cog",
                 Arrays.asList("hot","dot","dog","lot","log","cog")));
     }

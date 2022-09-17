@@ -36,11 +36,11 @@ public class NO208_N_ImplementTriePrefixTree {
     public void test() {
         Trie trie = new Trie();
         trie.insert("apple");
-        info(trie.search("apple"));   // 返回 True
-        info(trie.search("app"));     // 返回 False
-        info(trie.startsWith("app"));       // 返回 True
+        assert trie.search("apple");   // 返回 True
+        assert !trie.search("app");     // 返回 False
+        assert trie.startsWith("app");       // 返回 True
         trie.insert("app");
-        info(trie.search("app"));     // 返回 True
+        assert trie.search("app");     // 返回 True
     }
 
     static class Trie {

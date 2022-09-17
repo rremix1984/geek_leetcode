@@ -29,15 +29,15 @@ public class NO221_N_MaximalSquare {
 
     @Test
     public void test() {
-        info(maximalSquare(new char[][]{
+        assert 4 == (maximalSquare(new char[][]{
                 {'1','0','1','0','0'},
                 {'1','0','1','1','1'},
                 {'1','1','1','1','1'},
                 {'1','0','0','1','0'}}));// 4
-        info(maximalSquare(new char[][]{
+        assert 1 == (maximalSquare(new char[][]{
                 {'0','1'},
                 {'1','0'}}));// 1
-        info(maximalSquare(new char[][]{
+        assert 0 == (maximalSquare(new char[][]{
                 {'0'}}));// 0
     }
 

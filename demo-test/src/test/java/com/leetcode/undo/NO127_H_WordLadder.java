@@ -35,11 +35,9 @@ public class NO127_H_WordLadder {
 
     @Test
     public void test() {
-        // 0
-        info(ladderLength("hit", "cog",
+        assert 0 == (ladderLength("hit", "cog",
                 Arrays.asList("hot", "dot", "dog", "lot", "log")));
-        // 5
-        info(ladderLength("hit", "cog",
+        assert 5 == (ladderLength("hit", "cog",
                 Arrays.asList("hot", "dot", "dog", "lot", "log", "cog")));
     }
 

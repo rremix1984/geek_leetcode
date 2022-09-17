@@ -31,8 +31,8 @@ public class NO190_E_ReverseBits {
 
     @Test
     public void test() {
-        info(reverseBits(bin2Dec("00000010100101000001111010011100")));// 964176192
-        info(reverseBits(bin2Dec("11111111111111111111111111111101")));// 3221225471
+        assert 964176192 == (reverseBits(bin2Dec("00000010100101000001111010011100")));// 964176192
+        assert 3221225471L == (reverseBits(bin2Dec("11111111111111111111111111111101")));// 3221225471
     }
 
     // you need treat n as an unsigned value
