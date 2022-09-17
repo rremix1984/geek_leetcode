@@ -58,6 +58,7 @@ public class NO21_E_MergeTwoSortedLists_x2 {
 
 
 /**
+// 方法1：
 public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
     if (l1 == null)
         return l2;

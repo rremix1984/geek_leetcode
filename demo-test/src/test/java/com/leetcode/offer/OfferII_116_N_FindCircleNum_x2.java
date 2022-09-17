@@ -140,4 +140,56 @@ public int findCircleNum(int[][] isConn) {
     }
     return ans;
 }
+
+
+// 方法3：并查集
+public int findCircleNum(int[][] citysConnected) {
+    int citys = citysConnected.length;
+
+    int[] head = new int[citys];
+    int[] level = new int[citys];
+
+    for (int i = 0; i < citys; i++) {
+        head[i] = i;
+        level[i] = 1;
+    }
+
+    for (int i = 0; i < citys; i++)
+        for (int j = 0; j < citys; j++)
+            if (citysConnected[i][j] == 1)
+                merge(i, j, head, level);
+
+    int count = 0;
+    for (int i = 0; i < citys; i++)
+        if (head[i] == i)
+            count++;
+
+    return count;
+}
+
+public void merge(int x, int y, int[] head, int[] level) {
+    int i = find(x, head);
+    int j = find(y, head);
+
+    if (i == j)
+        return;
+
+    if (level[i] <= level[j])
+        head[i] = j;
+    else
+        head[j] = i;
+
+    if (level[i] == level[j]) {
+        level[i]++;
+        level[j]++;
+    }
+}
+
+public int find(int x, int[] head) {
+    if (head[x] == x)
+        return x;
+
+    head[x] = find(head[x], head);
+    return head[x];
+}
 */

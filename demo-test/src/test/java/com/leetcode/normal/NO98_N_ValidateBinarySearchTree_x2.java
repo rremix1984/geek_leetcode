@@ -30,9 +30,9 @@ public class NO98_N_ValidateBinarySearchTree_x2 {
 
     @Test
     public void test() {
-//        info(isValidBST(new TreeNode(2,
+//        assert (isValidBST(new TreeNode(2,
 //                                1, 3))); // true
-//        info(isValidBST(new TreeNode(
+//        assert !(isValidBST(new TreeNode(
 //                        5,
 //                1, new TreeNode(4,
 //                                3,6))));// false
@@ -40,7 +40,7 @@ public class NO98_N_ValidateBinarySearchTree_x2 {
                     5,
             4, new TreeNode(6,
                             3,7)));// false
-//        info(isValidBST(new TreeNode(0)));// true
+//        assert (isValidBST(new TreeNode(0)));// true
     }
 
     long pre = MIN_VALUE;
