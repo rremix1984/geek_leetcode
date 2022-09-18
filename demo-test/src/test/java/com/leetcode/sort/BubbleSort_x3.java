@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     冒泡排序
@@ -25,9 +26,12 @@ public class BubbleSort_x3 {
 
     @Test
     public void test() {
-        info(bubbleSort(new int[]{1, 3, 5, 2, 4, 6}));
-        info(bubbleSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
-        info(bubbleSort(new int[]{1, 2, 5, 5, 3, 6}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+               bubbleSort(new int[]{1, 3, 5, 2, 4, 6}));
+        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+                bubbleSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
+        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+                bubbleSort(new int[]{1, 2, 5, 5, 3, 6}));
     }
 
     public static int[] bubbleSort(int[] arr) {
