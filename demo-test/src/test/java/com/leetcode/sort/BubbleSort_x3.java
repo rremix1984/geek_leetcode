@@ -21,7 +21,7 @@ import static com.leetcode.util.SwapUtil.swap;
         后的元素应该会是最大的数；针对所有的元素重复以上的步骤，除了最后一个；
         重复步骤1~3，直到排序完成。
 */
-public class BubbleSort_x2 {
+public class BubbleSort_x3 {
 
     @Test
     public void test() {
@@ -31,6 +31,13 @@ public class BubbleSort_x2 {
     }
 
     public static int[] bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j + 1, j);
+                }
+            }
+        }
         return arr;
     }
 
