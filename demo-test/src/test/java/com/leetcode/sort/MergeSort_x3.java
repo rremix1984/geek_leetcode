@@ -20,18 +20,18 @@ import static org.junit.Assert.assertArrayEquals;
         对这两个子序列分别采用归并排序；
         将两个排序好的子序列合并成一个最终的排序序列。
 */
-public class MergeSort_x2 {
+public class MergeSort_x3 {
 
     @Test
     public void test() {
-//        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
-//                mergeSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
-//        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
-//                mergeSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
-//        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
-//                mergeSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
-//        assertArrayEquals(new int[]{-3, -2, -1},
-//                mergeSort(new int[]{-1, -2, -3}, 0, 2));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+                mergeSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
+        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+                mergeSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
+        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+                mergeSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
+        assertArrayEquals(new int[]{-3, -2, -1},
+                mergeSort(new int[]{-1, -2, -3}, 0, 2));
         int[] origin = generateRandomArray(100, 100);
         assertArrayEquals(Arrays.stream(origin).sorted().toArray(),
                 mergeSort(origin, 0, origin.length - 1));
