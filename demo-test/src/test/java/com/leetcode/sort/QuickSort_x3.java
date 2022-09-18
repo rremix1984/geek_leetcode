@@ -32,26 +32,6 @@ public class QuickSort_x3 {
     }
 
     public static int[] quickSort(int[] arr, int left, int right) {
-        if (left > right)
-            return arr;
-
-        int i = left;
-        int j = right;
-        int mid = arr[left];
-        while (i != j) {
-            while (arr[j] >= mid && i < j)
-                j--;
-
-            while (arr[i] <= mid && i < j)
-                i++;
-
-            swap(arr, i, j);
-        }
-        arr[left] = arr[i];
-        arr[i] = mid;
-
-        quickSort(arr, left, i - 1);
-        quickSort(arr,i + 1, right);
         return arr;
     }
 }
