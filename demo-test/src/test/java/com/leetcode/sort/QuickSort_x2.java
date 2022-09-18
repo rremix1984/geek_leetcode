@@ -6,6 +6,7 @@ package com.leetcode.sort;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     快速排序（Quick Sort）
@@ -20,26 +21,19 @@ public class QuickSort_x2 {
 
     @Test
     public void test() {
-        int[] arr1 = new int[]{1, 3, 5, 2, 4, 6};
-        quickSort(arr1, 0, arr1.length - 1);
-        info(arr1);
-
-        int[] arr2 = new int[]{1, 2, 5, 5, 3, 6};
-        quickSort(arr2, 0, arr2.length - 1);
-        info(arr2);
-
-        int[] arr3 = new int[]{-99999, 1, 8, 99, -1, 9999999};
-        quickSort(arr3, 0, arr3.length - 1);
-        info(arr3);
-
-        int[] arr4 = new int[]{-1, -2, -3};
-        quickSort(arr4, 0, arr4.length - 1);
-        info(arr4);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+                quickSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
+        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+                quickSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
+        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+                quickSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
+        assertArrayEquals(new int[]{-3, -2, -1},
+                quickSort(new int[]{-1, -2, -3}, 0, 2));
     }
 
-    public static void quickSort(int[] arr, int left, int right) {
+    public static int[] quickSort(int[] arr, int left, int right) {
         if (left > right)
-            return;
+            return arr;
 
         int i = left;
         int j = right;
@@ -61,7 +55,7 @@ public class QuickSort_x2 {
         quickSort(arr,left, i - 1);
         quickSort(arr, i + 1, right);
 
-
+        return arr;
     }
 }
 

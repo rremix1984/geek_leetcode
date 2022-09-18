@@ -5,6 +5,7 @@ package com.leetcode.sort;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     插入排序（Insertion-Sort）
@@ -20,24 +21,32 @@ import static com.leetcode.util.LogUtil.info;
         将新元素插入到该位置后；
         重复步骤2~5。
 */
-public class InsertionSort_x2 {
+public class InsertionSort_x3 {
 
     @Test
     public void test() {
-        info(insertionSort(new int[]{1, 3, 5, 2, 4, 6}));
-        info(insertionSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
-        info(insertionSort(new int[]{1, 2, 5, 5, 3, 6}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+                insertionSort(new int[]{1, 3, 5, 2, 4, 6}));
+        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+                insertionSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
+        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+                insertionSort(new int[]{1, 2, 5, 5, 3, 6}));
     }
 
     public static int[] insertionSort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int pre = i - 1;
+        // 从第一个元素之后查找
+        for (int i = 1; i < arr.length; i++) {
+            int j = i - 1;
             int cur = arr[i];
-            while (pre >= 0 && arr[pre] > cur) {
-                arr[pre + 1] = arr[pre];
-                pre--;
+            // 当找到的元素小于pre时，插入前面
+            // 挨个【向后】 "挪" 动
+            // 最后把 j + 1 这个位置让出来
+            while (j >= 0 && arr[j] > cur) {
+                arr[j + 1] = arr[j];
+                j--;
             }
-            arr[pre + 1] = cur;
+            // j + 1 这个位置让出来之后，把 cur 放进去
+            arr[j + 1] = cur;
         }
         return arr;
     }
@@ -59,17 +68,21 @@ public class InsertionSort_x2 {
 
 
 /**
-private static int[] insertionSort(int[] arr) {
+// 方法1：
+public static int[] insertionSort(int[] arr) {
     // 从第一个元素之后查找
     for (int i = 1; i < arr.length; i++) {
-        int pre = i - 1;
+        int j = i - 1;
         int cur = arr[i];
         // 当找到的元素小于pre时，插入前面
-        while (pre >= 0 && arr[pre] > cur) {
-            arr[pre + 1] = arr[pre];
-            pre--;
+        // 挨个【向后】 "挪" 动
+        // 最后把 j + 1 这个位置让出来
+        while (j >= 0 && arr[j] > cur) {
+            arr[j + 1] = arr[j];
+            j--;
         }
-        arr[pre + 1] = cur;
+        // j + 1 这个位置让出来之后，把 cur 放进去
+        arr[j + 1] = cur;
     }
     return arr;
 }

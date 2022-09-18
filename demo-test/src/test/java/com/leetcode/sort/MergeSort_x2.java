@@ -5,6 +5,7 @@ package com.leetcode.sort;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     5、归并排序（Merge Sort）
@@ -19,27 +20,25 @@ public class MergeSort_x2 {
 
     @Test
     public void test() {
-        int[] arr = new int[]{1, 3, 5, 2, 4, 6};
-        mergeSort(arr, 0, arr.length - 1);
-        info(arr);
-
-        int[] arr2 = new int[]{1, 2, 5, 5, 3, 6};
-        mergeSort(arr2, 0, arr2.length - 1);
-        info(arr2);
-
-        int[] arr3 = new int[]{-99999, 1, 8, 99, -1, 9999999};
-        mergeSort(arr3, 0, arr3.length - 1);
-        info(arr3);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+                mergeSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
+        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+                mergeSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
+        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+                mergeSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
+        assertArrayEquals(new int[]{-3, -2, -1},
+                mergeSort(new int[]{-1, -2, -3}, 0, 2));
     }
 
-    public static void mergeSort(int[] arr, int left, int right) {
+    public static int[] mergeSort(int[] arr, int left, int right) {
         if (left >= right)
-            return;
+            return arr;
 
         int mid = left + (right - left) / 2;
         mergeSort(arr, left, mid);
         mergeSort(arr, mid + 1, right);
         merge(arr, left, mid, right);
+        return arr;
     }
 
     private static void merge(int[] arr, int left, int mid, int right) {
