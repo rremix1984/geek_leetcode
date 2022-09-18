@@ -4,6 +4,10 @@
 package com.leetcode.sort;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+
+import static com.leetcode.sort.BaseTest.generateRandomArray;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
 import static org.junit.Assert.assertArrayEquals;
@@ -30,14 +34,17 @@ public class SelectionSort_x3 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
-            selectionSort(new int[]{1, 3, 5, 2, 4, 6}));
-        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
-            selectionSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
-        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
-            selectionSort(new int[]{1, 2, 5, 5, 3, 6}));
-        assertNull(selectionSort(null));
-        assertArrayEquals(new int[]{}, selectionSort(new int[]{}));
+//        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+//            selectionSort(new int[]{1, 3, 5, 2, 4, 6}));
+//        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+//            selectionSort(new int[]{-99999, 1, 8, 99, -1, 9999999}));
+//        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+//            selectionSort(new int[]{1, 2, 5, 5, 3, 6}));
+//        assertNull(selectionSort(null));
+//        assertArrayEquals(new int[]{}, selectionSort(new int[]{}));
+        int[] origin = generateRandomArray(100, 100);
+        assertArrayEquals(Arrays.stream(origin).sorted().toArray(),
+                selectionSort(origin));
     }
 
     public static int[] selectionSort(int[] arr) {

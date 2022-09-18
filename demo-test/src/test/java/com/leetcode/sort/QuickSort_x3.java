@@ -4,6 +4,10 @@
 package com.leetcode.sort;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+
+import static com.leetcode.sort.BaseTest.generateRandomArray;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
 import static org.junit.Assert.assertArrayEquals;
@@ -21,14 +25,17 @@ public class QuickSort_x3 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
-            quickSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
-        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
-            quickSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
-        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
-            quickSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
-        assertArrayEquals(new int[]{-3, -2, -1},
-            quickSort(new int[]{-1, -2, -3}, 0, 2));
+//        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+//            quickSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
+//        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
+//            quickSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
+//        assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
+//            quickSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
+//        assertArrayEquals(new int[]{-3, -2, -1},
+//            quickSort(new int[]{-1, -2, -3}, 0, 2));
+        int[] origin = generateRandomArray(100, 100);
+        assertArrayEquals(Arrays.stream(origin).sorted().toArray(),
+                quickSort(origin, 0, origin.length - 1));
     }
 
     public static int[] quickSort(int[] arr, int left, int right) {

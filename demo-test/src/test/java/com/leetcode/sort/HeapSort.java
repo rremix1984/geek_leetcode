@@ -4,9 +4,14 @@
 package com.leetcode.sort;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+
+import static com.leetcode.sort.BaseTest.generateRandomArray;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
 import static java.lang.Math.floor;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * 7. 堆排序
@@ -20,40 +25,13 @@ public class HeapSort {
 
     @Test
     public void test() {
-        info(heapSort(new int[]{2, 1, 3, 5, 4, 6, 9, 8, 7, 10}));
+        int[] origin = generateRandomArray(100, 100);
+        assertArrayEquals(Arrays.stream(origin).sorted().toArray(),
+                heapSort(origin));
     }
 
     public static int[] heapSort(int[] arr) {
-        int len = arr.length;
-        int high = (int) floor(len / 2);
-
-        // 初始化构建堆
-        for (int i = high; i >= 0; i--)
-            heapify(arr, i, len);
-
-        for (int i = len - 1; i > 0; i--) {
-            swap(arr, 0, i);
-            len--;
-            heapify(arr, 0, len);
-        }
         return arr;
-    }
-
-    private static void heapify(int[] arr, int max, int len) {
-        int left = 2 * max + 1;
-        int right = 2 * max + 2;
-        int largest = max;
-
-        if (left < len && arr[left] > arr[largest])
-            largest = left;
-
-        if (right < len && arr[right] > arr[largest])
-            largest = right;
-
-        if (largest != max) {
-            swap(arr, max, largest);
-            heapify(arr, largest, len);
-        }
     }
 
 }
@@ -100,6 +78,41 @@ public void maxHeapify(int[] nums, int i, int len) {
         } else {
             break;
         }
+    }
+}
+
+
+// 方法1：
+public static int[] heapSort(int[] arr) {
+    int len = arr.length;
+    int high = (int) floor(len / 2);
+
+    // 初始化构建堆
+    for (int i = high; i >= 0; i--)
+        heapify(arr, i, len);
+
+    for (int i = len - 1; i > 0; i--) {
+        swap(arr, 0, i);
+        len--;
+        heapify(arr, 0, len);
+    }
+    return arr;
+}
+
+private static void heapify(int[] arr, int max, int len) {
+    int left = 2 * max + 1;
+    int right = 2 * max + 2;
+    int largest = max;
+
+    if (left < len && arr[left] > arr[largest])
+        largest = left;
+
+    if (right < len && arr[right] > arr[largest])
+        largest = right;
+
+    if (largest != max) {
+        swap(arr, max, largest);
+        heapify(arr, largest, len);
     }
 }
 */
