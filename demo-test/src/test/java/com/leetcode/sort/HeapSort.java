@@ -31,7 +31,36 @@ public class HeapSort {
     }
 
     public static int[] heapSort(int[] arr) {
+        int len = arr.length;
+        int high = len / 2;
+
+        // 初始化构建堆
+        for (int i = high; i >= 0; i--)
+            heapify(arr, i, len);
+
+        for (int i = len - 1; i > 0; i--) {
+            swap(arr, 0, i);
+            len--;
+            heapify(arr, 0, len);
+        }
         return arr;
+    }
+
+    private static void heapify(int[] arr, int max, int len) {
+        int left = 2 * max + 1;
+        int right = 2 * max + 2;
+        int largest = max;
+
+        if (left < len && arr[left] > arr[largest])
+            largest = left;
+
+        if (right < len && arr[right] > arr[largest])
+            largest = right;
+
+        if (largest != max) {
+            swap(arr, max, largest);
+            heapify(arr, largest, len);
+        }
     }
 
 }
