@@ -34,20 +34,6 @@ public class InsertionSort_x3 {
     }
 
     public static int[] insertionSort(int[] arr) {
-        // 从第一个元素之后查找
-        for (int i = 1; i < arr.length; i++) {
-            int j = i - 1;
-            int cur = arr[i];
-            // 当找到的元素小于pre时，插入前面
-            // 挨个【向后】 "挪" 动
-            // 最后把 j + 1 这个位置让出来
-            while (j >= 0 && arr[j] > cur) {
-                arr[j + 1] = arr[j];
-                j--;
-            }
-            // j + 1 这个位置让出来之后，把 cur 放进去
-            arr[j + 1] = cur;
-        }
         return arr;
     }
 }

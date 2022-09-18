@@ -22,13 +22,13 @@ public class QuickSort_x2 {
     @Test
     public void test() {
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
-                quickSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
+            quickSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
         assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
-                quickSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
+            quickSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
         assertArrayEquals(new int[]{-99999, -1, 1, 8, 99, 9999999},
-                quickSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
+            quickSort(new int[]{-99999, 1, 8, 99, -1, 9999999}, 0, 5));
         assertArrayEquals(new int[]{-3, -2, -1},
-                quickSort(new int[]{-1, -2, -3}, 0, 2));
+            quickSort(new int[]{-1, -2, -3}, 0, 2));
     }
 
     public static int[] quickSort(int[] arr, int left, int right) {
@@ -37,24 +37,21 @@ public class QuickSort_x2 {
 
         int i = left;
         int j = right;
-        int base = arr[left];
+        int mid = arr[left];
         while (i != j) {
-
-            while (i < j && arr[j] >= base)
+            while (arr[j] >= mid && i < j)
                 j--;
 
-            while (i < j && arr[i] <= base)
+            while (arr[i] <= mid && i < j)
                 i++;
 
             swap(arr, i, j);
         }
-
         arr[left] = arr[i];
-        arr[i] = base;
+        arr[i] = mid;
 
-        quickSort(arr,left, i - 1);
-        quickSort(arr, i + 1, right);
-
+        quickSort(arr, left, i - 1);
+        quickSort(arr,i + 1, right);
         return arr;
     }
 }
