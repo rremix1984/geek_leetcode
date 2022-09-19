@@ -4,8 +4,7 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.LinkedList;
-import java.util.Queue;
+
 import static com.leetcode.util.SwapUtil.swap;
 
 /**
@@ -27,7 +26,7 @@ import static com.leetcode.util.SwapUtil.swap;
         输出：
             [null, null, null, 2, 2, false]
 */
-public class NO225_E_ImplementStackUsingQueues {
+public class NO225_E_ImplementStackUsingQueues_x2 {
 
     @Test
     public void test() {
@@ -50,18 +49,19 @@ public class NO225_E_ImplementStackUsingQueues {
         }
 
         public int pop() {
-
+            return -1;
         }
 
         public int top() {
-
+            return -1;
         }
 
         public boolean empty() {
-
+            return true;
         }
     }
 }
+
 
 
 

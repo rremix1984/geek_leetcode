@@ -44,11 +44,6 @@ public class SwapUtil {
         t2.val = temp;
     }
 
-    public static void swap(Queue<Integer> queue1, Queue<Integer> queue2) {
-        Queue<Integer> temp = queue1;
-        queue1 = queue2;
-        queue2 = temp;
-    }
     public static void swapLR(TreeNode root) {
         TreeNode temp = root.left;
         root.left = root.right;
