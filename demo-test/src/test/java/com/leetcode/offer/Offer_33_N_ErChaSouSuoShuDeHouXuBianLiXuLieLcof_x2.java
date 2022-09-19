@@ -4,8 +4,9 @@
 package com.leetcode.offer;
 
 import org.junit.Test;
+import java.util.Deque;
+import java.util.LinkedList;
 
-import java.util.Stack;
 
 /**
     (中等)
@@ -18,13 +19,13 @@ import java.util.Stack;
               / \
              1   3
     示例 1：
-        输入: [1,6,3,2,5]
+        输入: [1, 6, 3, 2, 5]
         输出: false
     示例 2：
-        输入: [1,3,2,6,5]
+        输入: [1, 3, 2, 6, 5]
         输出: true
 */
-public class Offer_33_N_ErChaSouSuoShuDeHouXuBianLiXuLieLcof {
+public class Offer_33_N_ErChaSouSuoShuDeHouXuBianLiXuLieLcof_x2 {
 
     @Test
     public void test() {
@@ -32,7 +33,20 @@ public class Offer_33_N_ErChaSouSuoShuDeHouXuBianLiXuLieLcof {
         assert verifyPostorder(new int[]{1, 3, 2, 6, 5});
     }
 
-    public boolean verifyPostorder(int[] postorder) {
+    public static boolean verifyPostorder(int[] arr) {
+        Deque<Integer> queue = new LinkedList<>();
+        int rootVal = Integer.MAX_VALUE;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int num = arr[i];
+            if (num > rootVal)
+                return false;
+
+            while (!queue.isEmpty() && queue.peek() > num)
+                rootVal = queue.removeFirst();
+
+            queue.addLast(num);
+        }
         return true;
     }
 
@@ -65,6 +79,7 @@ public boolean verifyPostorder(int[] postorder) {
 boolean call(int[] postorder, int i, int j) {
     if (i >= j)
         return true;
+
     int p = i;
 
     while (postorder[p] < postorder[j])
