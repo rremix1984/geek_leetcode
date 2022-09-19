@@ -67,7 +67,6 @@ public ListNode removeElements(ListNode head, int val) {
     return dummy.next;
 }
 
-
 // 方法2：递归
 public ListNode removeElements(ListNode head, int val) {
     if (head == null)
