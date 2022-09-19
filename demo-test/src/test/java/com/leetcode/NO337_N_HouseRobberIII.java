@@ -5,10 +5,8 @@ package com.leetcode;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import static java.lang.Math.max;
 
 /**
