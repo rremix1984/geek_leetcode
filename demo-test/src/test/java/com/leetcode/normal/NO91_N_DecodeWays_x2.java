@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    （中等）
+    (中等)
     91. 解码方法
         一条包含字母 A-Z 的消息通过以下映射进行了 编码 ：
             'A' -> "1"
@@ -40,9 +40,9 @@ public class NO91_N_DecodeWays_x2 {
 
     @Test
     public void test() {
-//        info(numDecodings("12"));// 2
-//        info(numDecodings("226"));// 3
-//        info(numDecodings("0"));// 0
+        assert 2 == numDecodings("12");// 2
+        assert 3 == numDecodings("226");// 3
+        assert 0 == numDecodings("0");// 0
         assert 3 == numDecodings("123");// 3
     }
 

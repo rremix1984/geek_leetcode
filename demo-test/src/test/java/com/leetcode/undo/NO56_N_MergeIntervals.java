@@ -10,9 +10,10 @@ import java.util.List;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.max;
 import static java.util.Comparator.comparingInt;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
-    （中等）
+    (中等)
     56. 合并区间
         以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。
         请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
@@ -29,8 +30,8 @@ public class NO56_N_MergeIntervals {
 
     @Test
     public void test() {
-        info(merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}));// [[1, 6], [8, 10], [15, 18]]
-        info(merge(new int[][]{{1, 4}, {4, 5}}));// [[1, 5]]
+        assertArrayEquals(new int[][]{{1, 6}, {8, 10}, {15, 18}}, merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}));// [[1, 6], [8, 10], [15, 18]]
+        assertArrayEquals(new int[][]{{1,5}}, merge(new int[][]{{1, 4}, {4, 5}}));// [[1, 5]]
     }
 
     public int[][] merge(int[][] intervals) {
@@ -42,13 +43,13 @@ public class NO56_N_MergeIntervals {
         );
 
         List<int[]> merged = new ArrayList<>();
-        for (int[] interval : intervals) {
+        for (int[] interval : intervals)
             if (merged.size() == 0 || merged.get(merged.size() - 1)[1] < interval[0])
                 merged.add(new int[]{interval[0], interval[1]});
             else
                 merged.get(merged.size() - 1)[1] =
                     max(merged.get(merged.size() - 1)[1], interval[1]);
-        }
+
         return merged.toArray(new int[merged.size()][]);
     }
 

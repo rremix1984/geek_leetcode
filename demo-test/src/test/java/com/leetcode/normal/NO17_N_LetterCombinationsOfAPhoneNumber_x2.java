@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     （中等）
@@ -30,7 +31,7 @@ public class NO17_N_LetterCombinationsOfAPhoneNumber_x2 {
     public void test() {
 //        info(letterCombinations("23")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 //        info(letterCombinations("1234")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-        info(letterCombinations(""));// []
+        assert new ArrayList<>().toString().equals(letterCombinations("").toString());// []
     }
 
     String[] map = { " ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
@@ -68,7 +69,7 @@ public List<String> letterCombinations(String str) {
     return res;
 }
 
-void dfs(String str, StringBuilder curStr, int index) {
+public void dfs(String str, StringBuilder curStr, int index) {
     if (str == null || str.length() == 0)
         return;
 

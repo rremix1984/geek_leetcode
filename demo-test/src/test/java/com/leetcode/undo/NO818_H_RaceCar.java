@@ -33,8 +33,8 @@ public class NO818_H_RaceCar {
 
     @Test
     public void test() {
-        info(racecar(3));// 2
-        info(racecar(6));// 5
+        assert 2 == (racecar(3));// 2
+        assert 5 == (racecar(6));// 5
     }
 
     public int racecar(int target) {

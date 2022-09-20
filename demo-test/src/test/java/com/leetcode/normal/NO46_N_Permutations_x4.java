@@ -5,7 +5,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.*;
-import static com.leetcode.util.LogUtil.info;
 
 /**
    （中等）
@@ -13,27 +12,64 @@ import static com.leetcode.util.LogUtil.info;
         给定一个不含重复数字的数组 nums，
         返回其所有可能的全排列 。你可以按任意顺序返回答案。
     示例1：
-        输入：nums = [1,2,3]
+        输入：nums = {1, 2, 3}
         输出：[[1, 2, 3], [1, 3, 2], [2, 1, 3],
               [2, 3, 1], [3, 1, 2], [3, 2, 1]]
     示例2：
-        输入：nums = [0, 1]
+        输入：nums = {0, 1}
         输出：[[0, 1], [1, 0]]
     示例3：
-        输入：nums = [1]
+        输入：nums = {1}
         输出：[[1]]
 */
-public class NO46_N_Permutations_x3 {
+public class NO46_N_Permutations_x4 {
 
     @Test
     public void test() {
-        info(permute(new int[]{1, 2, 3}));
+        assert permute(new int[]{1, 2, 3}).containsAll(
+            new ArrayList<ArrayList<Integer>>() {{
+                add(new ArrayList<Integer>() {{add(1);add(2);add(3);}});
+                add(new ArrayList<Integer>() {{add(1);add(3);add(2);}});
+                add(new ArrayList<Integer>() {{add(2);add(3);add(1);}});
+                add(new ArrayList<Integer>() {{add(2);add(1);add(3);}});
+                add(new ArrayList<Integer>() {{add(3);add(2);add(1);}});
+                add(new ArrayList<Integer>() {{add(3);add(1);add(2);}});
+            }});
+        assert permute(new int[]{1}).containsAll(
+                new ArrayList<ArrayList<Integer>>() {{
+                    add(new ArrayList<Integer>() {{add(1);}});
+                }});
+        assert permute(new int[]{1, 2}).containsAll(
+                new ArrayList<ArrayList<Integer>>() {{
+                    add(new ArrayList<Integer>() {{add(1);add(2);}});
+                    add(new ArrayList<Integer>() {{add(2);add(1);}});
+                }});
     }
 
     List<List<Integer>> res = new LinkedList<>();
 
     public List<List<Integer>> permute(int[] nums) {
+        Deque<Integer> queue = new LinkedList<>();
+        call(nums, queue);
         return res;
+    }
+
+    private void call(int[] nums, Deque<Integer> queue) {
+        if (nums.length == queue.size()) {
+            res.add(new ArrayList<>(queue));
+            return;
+        }
+
+        for (int num : nums) {
+            if (queue.contains(num))
+                continue;
+
+            queue.addLast(num);
+
+            call(nums, queue);
+
+            queue.removeLast();
+        }
     }
 
 }

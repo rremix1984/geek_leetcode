@@ -48,14 +48,14 @@ public class NO235_N_LowestCommonAncestorOfABinarySearchTree_x2 {
 //            , new TreeNode(8)
 //        )); // 6
 
-        info(lowestCommonAncestor(
+        assert new TreeNode(2).val == (lowestCommonAncestor(
         new TreeNode(6,
     new TreeNode(2,
 new TreeNode(0), new TreeNode(4,
                             3, 5)), new TreeNode(8,
                                                      7,9))
         ,new TreeNode(2)
-        ,new TreeNode(4))); // 2
+        ,new TreeNode(4)).val); // 2
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {

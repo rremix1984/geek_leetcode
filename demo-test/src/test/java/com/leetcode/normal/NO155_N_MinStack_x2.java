@@ -8,25 +8,22 @@ import java.util.Stack;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    （中等）
- * 155. MinStack（辅助栈法 ）最小栈
- * 设计一个支持 push ，pop ，top 操作，
- * 并能在常数时间内检索到最小元素的栈。
- *
- * 实现 MinStack 类:
- *
- *  MinStack() 初始化堆栈对象。
- *  void push(int val) 将元素val推入堆栈。
- *  void pop() 删除堆栈顶部的元素。
- *  int top() 获取堆栈顶部的元素。
- *  int getMin() 获取堆栈中的最小元素。
- *
- * 示例 1:
- *  输入：["MinStack","push","push","push","getMin","pop","top","getMin"]
- * [[],[-2],[0],[-3],[],[],[],[]]
- *
- *  输出：[null,null,null,null,-3,null,0,-2]
- *
+    (中等)
+    155. MinStack（辅助栈法 ）最小栈
+    设计一个支持 push ，pop ，top 操作，
+    并能在常数时间内检索到最小元素的栈。
+
+    实现 MinStack 类:
+        MinStack() 初始化堆栈对象。
+        void push(int val) 将元素val推入堆栈。
+        void pop() 删除堆栈顶部的元素。
+        int top() 获取堆栈顶部的元素。
+        int getMin() 获取堆栈中的最小元素。
+
+    示例 1:
+        输入：["MinStack","push","push","push","getMin","pop","top","getMin"]
+            [[],[-2],[0],[-3],[],[],[],[]]
+        输出：[null,null,null,null,-3,null,0,-2]
  */
 public class NO155_N_MinStack_x2 {
 
@@ -41,40 +38,28 @@ public class NO155_N_MinStack_x2 {
         obj.push(6);
         obj.push(7);
         obj.pop();
-        int param_3 = obj.top();
-        int param_4 = obj.getMin();
-        info(param_3);
-        info(param_4);
+        assert 6 == obj.top();
+        assert 1 == obj.getMin();
     }
 
-    class MinStack {
+    static class MinStack {
 
-        Stack<Integer> s1 = new Stack<>();
-        Stack<Integer> s2 = new Stack<>();
-
-        /** initialize your data structure here. */
         public MinStack() {}
 
         public void push(int x) {
-            s1.push(x);
-            if (s2.isEmpty() || s2.peek() >= x) {
-                s2.push(x);
-            }
+
         }
 
         public void pop() {
-            int v = s1.pop();
-            if (s2.peek() == v) {
-                s2.pop();
-            }
+
         }
 
         public int top() {
-            return s1.peek();
+            return 1;
         }
 
         public int getMin() {
-            return s2.peek();
+            return 1;
         }
     }
 }

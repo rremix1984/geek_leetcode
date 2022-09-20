@@ -38,9 +38,9 @@ public class NO773_H_SlidingPuzzle {
 
     @Test
     public void test() {
-        info(slidingPuzzle(new int[][]{{1, 2, 3}, {4, 0, 5}}));//  1
-        info(slidingPuzzle(new int[][]{{1, 2, 3}, {5, 4, 0}}));// -1
-        info(slidingPuzzle(new int[][]{{4, 1, 2}, {5, 0, 3}}));//  5
+        assert  1 == (slidingPuzzle(new int[][]{{1, 2, 3}, {4, 0, 5}}));//  1
+        assert -1 == (slidingPuzzle(new int[][]{{1, 2, 3}, {5, 4, 0}}));// -1
+        assert  5 == (slidingPuzzle(new int[][]{{4, 1, 2}, {5, 0, 3}}));//  5
     }
 
     int[][] neighbors = {{1, 3  },// 当位置在0的时候，可以交换的位置只有 1, 3

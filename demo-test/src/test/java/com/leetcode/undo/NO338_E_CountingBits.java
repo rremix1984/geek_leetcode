@@ -5,6 +5,7 @@ package com.leetcode.undo;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     （简单）
@@ -47,8 +48,8 @@ public class NO338_E_CountingBits {
 
     @Test
     public void test() {
-        info(countBits(2));// [0, 1, 1]
-        info(countBits(5));// [0, 1, 1, 2, 1, 2]
+        assertArrayEquals(new int[]{0, 1, 1}, countBits(2));// [0, 1, 1]
+        assertArrayEquals(new int[]{0, 1, 1, 2, 1, 2}, countBits(5));// [0, 1, 1, 2, 1, 2]
     }
 
     public int[] countBits(int n) {

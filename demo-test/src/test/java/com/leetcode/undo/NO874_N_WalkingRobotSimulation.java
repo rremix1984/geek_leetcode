@@ -47,7 +47,7 @@ public class NO874_N_WalkingRobotSimulation {
 
     @Test
     public void test() {
-        info(robotSim(new int[]{4, -1, 3}, new int[][]{}));// 25
+        assert 25 == robotSim(new int[]{4, -1, 3}, new int[][]{});// 25
     }
 
     public int robotSim(int[] commands, int[][] obstacles) {
