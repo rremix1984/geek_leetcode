@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.easy;
+package com.leetcode.interval;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
