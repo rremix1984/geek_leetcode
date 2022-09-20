@@ -22,7 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         输出: [4, 5, 9]
         解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -> 5 -> 9.
 */
-public class Offer_18_E_ShanChuLianBiaoDeJieDianLcof_x2 {
+public class Offer_18_E_DeleteNodeLcof_x2 {
 
     @Test
     public void test() {

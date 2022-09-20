@@ -20,7 +20,7 @@ import static com.leetcode.util.LogUtil.info;
         Input: preorder = [-1], inorder = [-1]
         Output: [-1]
 */
-public class Offer_07_N_ChongJianErChaShuLcof_x2 {
+public class Offer_07_N_BuildTreeLcof_x2 {
 
     @Test
     public void test() {

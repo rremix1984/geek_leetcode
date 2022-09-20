@@ -25,7 +25,7 @@ import java.util.LinkedList;
         输入: [1, 3, 2, 6, 5]
         输出: true
 */
-public class Offer_33_N_ErChaSouSuoShuDeHouXuBianLiXuLieLcof_x2 {
+public class Offer_33_N_VerifyPostorderLcof_x2 {
 
     @Test
     public void test() {
