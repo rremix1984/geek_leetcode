@@ -34,7 +34,7 @@ public class NO23_H_MergeKSortedLists_x2 {
     @Test
     public void test() {
         assert new ListNode(1, 1, 2, 3, 4, 4, 5, 6).equals(
-            mergeKLists(new ListNode[]{
+                mergeKLists(new ListNode[]{
                     new ListNode(1, 4, 5),
                     new ListNode(1, 3, 4),
                     new ListNode(2, 6)
