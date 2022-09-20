@@ -5,8 +5,6 @@ package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
-import static com.leetcode.util.LogUtil.info;
 import static java.lang.Long.MIN_VALUE;
 
 /**

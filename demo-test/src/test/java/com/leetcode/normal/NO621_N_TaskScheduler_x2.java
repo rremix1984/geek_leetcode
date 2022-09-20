@@ -76,8 +76,6 @@ public int leastInterval(char[] tasks, int n) {
     for (char c : tasks)
         arr[c - 'A']++;
 
-    info(arr);
-
     int max = 0;
     for (int i = 0; i < 26; i++)
         max = Math.max(max, arr[i]);

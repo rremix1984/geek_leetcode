@@ -25,11 +25,22 @@ public class NO78_N_Subsets_x2 {
 
     @Test
     public void test() {
-        info(subsets(new int[]{1, 2, 3}));
+        assert new ArrayList<ArrayList<Integer>>(){{
+            add(new ArrayList<Integer>(){{}});
+            add(new ArrayList<Integer>(){{add(1);}});
+            add(new ArrayList<Integer>(){{add(2);}});
+            add(new ArrayList<Integer>(){{add(1);add(2);}});
+            add(new ArrayList<Integer>(){{add(3);}});
+            add(new ArrayList<Integer>(){{add(1);add(3);}});
+            add(new ArrayList<Integer>(){{add(2);add(3);}});
+            add(new ArrayList<Integer>(){{add(1);add(2);add(3);}});
+        }}.stream().allMatch(
+            s -> subsets(new int[]{1, 2, 3}).contains(s)
+        );
     }
 
-    List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
         return ans;
     }
 

@@ -109,7 +109,6 @@ public static void quickSort(int[] array, int begin, int end) {
     int pivot = partition(array, begin, end);
     quickSort(array, begin, pivot - 1);
     quickSort(array, pivot + 1, end);
-    info(array);
 }
 
 static int partition(int[] a, int begin, int end) {

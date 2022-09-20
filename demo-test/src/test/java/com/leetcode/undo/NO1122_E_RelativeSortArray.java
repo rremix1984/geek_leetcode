@@ -6,9 +6,10 @@ package com.leetcode.undo;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.max;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
-    （简单）
+    (简单)
     1122. 数组的相对排序
         给你两个数组，arr1 和 arr2，arr2 中的元素各不相同，arr2 中的每个元素都出现在 arr1 中。
         对 arr1 中的元素进行排序：
@@ -27,9 +28,9 @@ public class NO1122_E_RelativeSortArray {
 
     @Test
     public void test() {
-        info(relativeSortArray(new int[]{2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19},
+        assertArrayEquals(new int[]{2, 2, 2, 1, 4, 3, 3, 9, 6, 7, 19}, relativeSortArray(new int[]{2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19},
                                new int[]{2, 1, 4, 3, 9, 6}));// [2, 2, 2, 1, 4, 3, 3, 9, 6, 7, 19]
-        info(relativeSortArray(new int[]{28, 6, 22, 8, 44, 17},
+        assertArrayEquals(new int[]{22, 28, 8, 6, 17, 44}, relativeSortArray(new int[]{28, 6, 22, 8, 44, 17},
                                new int[]{22, 28, 8, 6}));// [22, 28, 8, 6, 17, 44]
     }
 

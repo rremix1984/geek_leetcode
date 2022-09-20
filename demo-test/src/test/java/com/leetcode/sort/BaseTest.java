@@ -4,7 +4,6 @@
 package com.leetcode.sort;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 
 public class BaseTest {

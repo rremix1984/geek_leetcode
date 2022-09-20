@@ -60,7 +60,6 @@ public class NO10_H_RegularExpressionMatching {
                 }
             }
         }
-        info(f);
         return f[m][n];
     }
 

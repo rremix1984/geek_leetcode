@@ -5,6 +5,7 @@ package com.leetcode.undo;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
     (中等)
@@ -24,28 +25,28 @@ import static com.leetcode.util.LogUtil.info;
     如果在此次点击中，若无更多方块可被揭露，则返回盘面。
     示例 1：
         输入：board = [
-          ["E','E','E','E','E"],
-          ["E','E','M','E','E"],
-          ["E','E','E','E','E"],
-          ["E','E','E','E','E"]],
+          ['E','E','E','E','E'],
+          ['E','E','M','E','E'],
+          ['E','E','E','E','E'],
+          ['E','E','E','E','E']],
         click = [3, 0]
         输出：[
-          ["B','1','E','1','B"],
-          ["B','1','M','1','B"],
-          ["B','1','1','1','B"],
-          ["B','B','B','B','B"]]
+          ['B','1','E','1','B'],
+          ['B','1','M','1','B'],
+          ['B','1','1','1','B'],
+          ['B','B','B','B','B']]
     示例 2：
         输入：board = [
-          ["B','1','E','1','B"],
-          ["B','1','M','1','B"],
-          ["B','1','1','1','B"],
-          ["B','B','B','B','B"]],
+          ['B','1','E','1','B'],
+          ['B','1','M','1','B'],
+          ['B','1','1','1','B'],
+          ['B','B','B','B','B']],
         click = [1, 2]
         输出：[
-          ["B','1','E','1','B"],
-          ["B','1','X','1','B"],
-          ["B','1','1','1','B"],
-          ["B','B','B','B','B"]]
+          ['B','1','E','1','B'],
+          ['B','1','X','1','B'],
+          ['B','1','1','1','B'],
+          ['B','B','B','B','B']]
 */
 @SuppressWarnings("all")
 public class NO529_N_Minesweeper {
@@ -57,13 +58,12 @@ public class NO529_N_Minesweeper {
                 {'E', 'E', 'M', 'E', 'E'},
                 {'E', 'E', 'E', 'E', 'E'},
                 {'E', 'E', 'E', 'E', 'E'}};
-//        info(updateBoard(map, new int[]{1, 2}));
-//        info("-----\n");
-//        info(updateBoard(map, new int[]{2, 2}));
-//        info("-----\n");
-//        info(updateBoard(map, new int[]{3, 3}));
-//        info("-----\n");
-        info(updateBoard(map, new int[]{3, 4}));
+        assertArrayEquals(new char[][]{
+                {'B','1','E','1','B'},
+                {'B','1','M','1','B'},
+                {'B','1','1','1','B'},
+                {'B','B','B','B','B'}},
+                updateBoard(map, new int[]{3, 4}));
     }
 
     // 定义 8 个方向

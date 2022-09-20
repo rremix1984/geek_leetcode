@@ -38,14 +38,14 @@ public class NO433_N_MinimumGeneticMutation {
     @Test
     public void test() {
         // 需1步
-//        info(minMutation("AACCGGTT", "AACCGGTA",
-//            new String[]{"AACCGGTA"}));// 1
+//        assert 1 == minMutation("AACCGGTT", "AACCGGTA",
+//            new String[]{"AACCGGTA"});// 1
 //        // 需2步
-//        info(minMutation("AACCGGTT", "AAACGGTA",
-//            new String[]{"AACCGGTA", "AACCGCTA", "AAACGGTA"})); // 2
+//        assert 2 == minMutation("AACCGGTT", "AAACGGTA",
+//            new String[]{"AACCGGTA", "AACCGCTA", "AAACGGTA"}); // 2
         // 需3步
-        info(minMutation("AAAAACCC", "AACCCCCC",
-            new String[]{"AAAACCCC", "AAACCCCC", "AACCCCCC"}));// 3
+        assert 3 == minMutation("AAAAACCC", "AACCCCCC",
+            new String[]{"AAAACCCC", "AAACCCCC", "AACCCCCC"});// 3
     }
 
     int ans = Integer.MAX_VALUE;

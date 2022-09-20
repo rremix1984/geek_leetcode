@@ -26,24 +26,21 @@ public class NO46_N_Permutations_x4 {
 
     @Test
     public void test() {
-        assert permute(new int[]{1, 2, 3}).containsAll(
-            new ArrayList<ArrayList<Integer>>() {{
+        assert new ArrayList<ArrayList<Integer>>() {{
                 add(new ArrayList<Integer>() {{add(1);add(2);add(3);}});
                 add(new ArrayList<Integer>() {{add(1);add(3);add(2);}});
                 add(new ArrayList<Integer>() {{add(2);add(3);add(1);}});
                 add(new ArrayList<Integer>() {{add(2);add(1);add(3);}});
                 add(new ArrayList<Integer>() {{add(3);add(2);add(1);}});
                 add(new ArrayList<Integer>() {{add(3);add(1);add(2);}});
-            }});
-        assert permute(new int[]{1}).containsAll(
-                new ArrayList<ArrayList<Integer>>() {{
+            }}.stream().allMatch(
+                s -> permute(new int[]{1, 2, 3}).contains(s)
+            );
+        assert new ArrayList<ArrayList<Integer>>() {{
                     add(new ArrayList<Integer>() {{add(1);}});
-                }});
-        assert permute(new int[]{1, 2}).containsAll(
-                new ArrayList<ArrayList<Integer>>() {{
-                    add(new ArrayList<Integer>() {{add(1);add(2);}});
-                    add(new ArrayList<Integer>() {{add(2);add(1);}});
-                }});
+                }}.stream().allMatch(
+                    s -> permute(new int[]{1}).contains(s)
+                );
     }
 
     List<List<Integer>> res = new LinkedList<>();
