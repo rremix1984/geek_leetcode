@@ -6,7 +6,6 @@ package com.leetcode.interval;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static com.leetcode.util.LogUtil.info;
 
 /**
     (简单)
@@ -38,34 +37,7 @@ public class Interval_08_06_E_HanotaLcci_x2 {
     }
 
     public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {
-        int n = a.size();
-        call(n, a, b, c);
-    }
 
-    private void call(int n, List<Integer> a, List<Integer> b, List<Integer> c) {
-
-        //      ||            ||               ||
-        //     _||_           ||            ___||___
-        //  __|____|__     ___||___      __|________|_
-        if (n == 1) {
-            c.add(a.remove(a.size() - 1));
-            return;
-        }
-
-        //         ||               ||            ||
-        //      ___||___          __||__          ||
-        //   __|________|__    __|______|__   ____||____
-        call(n - 1, a, c, b);
-
-        //         ||               ||               ||
-        //         ||             __||__          ___||___
-        //   ______||______    __|______|__   ___|________|___
-        c.add(a.remove(a.size() - 1));
-
-        //         ||               ||              __||__
-        //         ||               ||            _|______|_
-        //   ______||______    _____||_____   ___|__________|___
-        call(n - 1, b, a, c);
     }
 
 }
@@ -123,5 +95,37 @@ void move(int N, List<Integer> A, List<Integer> B, List<Integer> C) {
     // 3.最后将B柱子的N-1个圆盘移动到C柱子(此时C为目标柱子,B为原始柱子)
     // 步骤3：B -> C
     move(N - 1, B, A, C);
+}
+*/
+
+/**
+public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {
+    int n = a.size();
+    call(n, a, b, c);
+}
+
+private void call(int n, List<Integer> a, List<Integer> b, List<Integer> c) {
+
+    //         ||               ||               ||
+    //        _||_              ||            ___||___
+    //   ____|____|____     ____||____     __|________|_
+    if (n == 1) {
+        c.add(a.remove(a.size() - 1));
+        return;
+    }
+    //         ||               ||               ||
+    //      ___||___          __||__             ||
+    //   __|________|__    __|______|__     _____||_____
+    call(n - 1, a, c, b);
+
+    //         ||               ||               ||
+    //         ||             __||__          ___||___
+    //   ______||______    __|______|__   ___|________|___
+    c.add(a.remove(a.size() - 1));
+
+    //         ||               ||             __||__
+    //         ||               ||           _|______|_
+    //   ______||______    _____||_____  ___|__________|__
+    call(n - 1, b, a, c);
 }
 */
