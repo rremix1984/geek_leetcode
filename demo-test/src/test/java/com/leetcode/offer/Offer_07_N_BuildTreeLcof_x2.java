@@ -36,31 +36,7 @@ public class Offer_07_N_BuildTreeLcof_x2 {
     }
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder == null || preorder.length == 0)
-            return null;
-
-        TreeNode root = new TreeNode(preorder[0]);
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-
-        int inorderIdx = 0;
-
-        for (int i = 1; i < preorder.length; i++) {
-            int preorderVal = preorder[i];
-            TreeNode node = stack.peek();
-            if (node.val != inorder[inorderIdx]) {
-                node.left = new TreeNode(preorderVal);
-                stack.push(node.left);
-            } else {
-                while (!stack.isEmpty() && stack.peek().val == inorder[inorderIdx]) {
-                    node = stack.pop();
-                    inorderIdx++;
-                }
-                node.right = new TreeNode(preorderVal);
-                stack.push(node.right);
-            }
-        }
-        return root;
+        return null;
     }
 
 }
