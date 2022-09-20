@@ -85,9 +85,9 @@ public class ListNode {
         ListNode p1 = this;
         ListNode p2 = listNode;
         if (p2 == null)
-            return true;
+            return false;
 
-        while (p1!=null && p2!= null && p1.val == p2.val) {
+        while (p1 != null && p2 != null && p1.val == p2.val) {
             p1 = p1.next;
             p2 = p2.next;
         }
