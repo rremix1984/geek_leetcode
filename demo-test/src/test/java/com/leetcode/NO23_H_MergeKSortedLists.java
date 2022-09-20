@@ -65,8 +65,10 @@ public class NO23_H_MergeKSortedLists {
         if (l > r)
             return null;
 
-        int mid = (l + r) >> 1;
-        return mergeTwoLists(merge(lists, l, mid), merge(lists, mid + 1, r));
+        int mid = l + (r - l) >> 1;
+        return mergeTwoLists(
+                    merge(lists, l, mid),
+                    merge(lists, mid + 1, r));
     }
 
     public ListNode mergeTwoLists(ListNode a, ListNode b) {
@@ -75,22 +77,27 @@ public class NO23_H_MergeKSortedLists {
             return a != null ? a : b;
 
         // 虚拟头节点
-        ListNode dummy = new ListNode(0);
-        ListNode pre = dummy;
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
         ListNode p1 = a;
         ListNode p2 = b;
 
         while (p1 != null && p2 != null) {
             if (p1.val < p2.val) {
-                pre.next = p1;
+                cur.next = p1;
                 p1 = p1.next;
             } else {
-                pre.next = p2;
+                cur.next = p2;
                 p2 = p2.next;
             }
-            pre = pre.next;
+            cur = cur.next;
         }
-        pre.next = (p1 != null ? p1 : p2);
+
+        if (p1 != null)
+            cur.next = p1;
+        else
+            cur.next = p2;
+
         return dummy.next;
     }
 }
