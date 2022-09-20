@@ -68,6 +68,7 @@ public class ListNode {
     }
 
     public ListNode() {
+
     }
 
     public ListNode(int... vals) {

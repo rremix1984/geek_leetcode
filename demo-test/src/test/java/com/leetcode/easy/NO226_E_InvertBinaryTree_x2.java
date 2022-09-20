@@ -31,18 +31,40 @@ public class NO226_E_InvertBinaryTree_x2 {
         new TreeNode(2,
                 1, 3), new TreeNode(7,
                                         6, 9));
-        info(tmp);
-        info(invertTree(tmp));
-
+        assert invertTree(tmp).toString().equals(new TreeNode(4,
+                new TreeNode(7,
+                        9, 6), new TreeNode(2,
+                                                3, 1)).toString());
         TreeNode tmp2 = new TreeNode(2,
-                    new TreeNode(1,3));
-        info(tmp2);
-        info(invertTree(tmp2));
+                    new TreeNode(1,
+                            3));
+        assert invertTree(tmp2).toString().equals(
+            new TreeNode(2,
+            null, new TreeNode(1,
+                              null,3)).toString()
+        );
     }
 
     public TreeNode invertTree(TreeNode root) {
-        if (root == null)
+        if (root==null)
             return null;
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode head = stack.pop();
+
+            // 核心左、右互换逻辑
+            TreeNode tmp = head.left;
+            head.left = head.right;
+            head.right = tmp;
+
+            if (head.left!=null)
+                stack.push(head.left);
+
+            if (head.right!=null)
+                stack.push(head.right);
+        }
         return root;
     }
 

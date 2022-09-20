@@ -34,28 +34,19 @@ public class NO23_H_MergeKSortedLists_x2 {
     @Test
     public void test() {
         assert new ListNode(1, 1, 2, 3, 4, 4, 5, 6).equals(
-                mergeKLists(new ListNode[]{
-                    new ListNode(1, 4, 5),
-                    new ListNode(1, 3, 4),
-                    new ListNode(2, 6)
-                }));
+                mergeKLists(new ListNode[]{new ListNode(1, 4, 5),new ListNode(1, 3, 4),new ListNode(2, 6)}));
         assert new ListNode().equals(
-                mergeKLists(new ListNode[]{
-                }));
+                mergeKLists(new ListNode[]{}));
         assert new ListNode().equals(
-                mergeKLists(new ListNode[]{new ListNode()
-                }));
+                mergeKLists(new ListNode[]{new ListNode()}));
         assert new ListNode(0, 1, 2, 3, 4, 4, 5, 6).equals(
-                mergeKLists(new ListNode[]{
-                        new ListNode(1, 4, 5, 6),
-                        new ListNode(2, 3, 4),
-                        new ListNode()
-                }));
+                mergeKLists(new ListNode[]{new ListNode(1, 4, 5, 6),new ListNode(2, 3, 4),new ListNode()}));
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
         return null;
     }
+
 }
 
 
