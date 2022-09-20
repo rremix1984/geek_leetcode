@@ -1,13 +1,13 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.offer;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
     (中等)
@@ -21,7 +21,7 @@ import java.util.Queue;
         输入: [1, 2, 3, 4, null, 5, 6, null, null, 7]
         输出: 7
 */
-public class OfferII_045_N_FindBottomLeftValue {
+public class OfferII_045_N_FindBottomLeftValue_x2 {
 
     @Test
     public void test() {
@@ -36,19 +36,63 @@ public class OfferII_045_N_FindBottomLeftValue {
 
     public int findBottomLeftValue(TreeNode root) {
         int ret = 0;
-        Queue<TreeNode> queue = new LinkedList<>();
+        Deque<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-
         while (!queue.isEmpty()) {
-            TreeNode p = queue.poll();
-            if (p.right != null)
-                queue.offer(p.right);
+            TreeNode node = queue.poll();
+            if (node.right != null)
+                queue.offer(node.right);
 
-            if (p.left != null)
-                queue.offer(p.left);
+            if (node.left != null)
+                queue.offer(node.left);
 
-            ret = p.val;
+            ret = node.val;
         }
         return ret;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：层序遍历
+public int findBottomLeftValue(TreeNode root) {
+    int ret = 0;
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.offer(root);
+
+    while (!queue.isEmpty()) {
+        TreeNode p = queue.poll();
+        if (p.right != null)
+            queue.offer(p.right);
+
+        if (p.left != null)
+            queue.offer(p.left);
+
+        ret = p.val;
+    }
+    return ret;
+}
+*/

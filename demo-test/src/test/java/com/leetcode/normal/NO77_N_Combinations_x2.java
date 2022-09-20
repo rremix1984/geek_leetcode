@@ -27,18 +27,16 @@ public class NO77_N_Combinations_x2 {
     @Test
     public void test() {
         assertEquals(new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>(){{
-                add(1);add(2);
-            }});
-            add(new ArrayList<Integer>(){{
-                add(1);add(3);
-            }});
-            add(1);add(4);
-            add(2);add(3);
-            add(2);add(4);
-            add(3);add(4);
+            add(new ArrayList<Integer>(){{add(1);add(2);}});
+            add(new ArrayList<Integer>(){{add(1);add(3);}});
+            add(new ArrayList<Integer>(){{add(1);add(4);}});
+            add(new ArrayList<Integer>(){{add(2);add(3);}});
+            add(new ArrayList<Integer>(){{add(2);add(4);}});
+            add(new ArrayList<Integer>(){{add(3);add(4);}});
         }}, combine(4, 2));//{{1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}}
-        // info(combine(1, 1));//{{1}}
+//        assertEquals(new ArrayList<ArrayList<Integer>>(){{
+//            add(new ArrayList<Integer>(){{add(1);}});
+//        }}, combine(1, 1));
     }
 
     List<List<Integer>> ans = new ArrayList<>();
