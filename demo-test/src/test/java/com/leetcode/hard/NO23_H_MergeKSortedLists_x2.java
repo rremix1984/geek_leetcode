@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.hard;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
@@ -29,7 +29,7 @@ import org.junit.Test;
         输入：lists = [[]]
         输出：[]
 */
-public class NO23_H_MergeKSortedLists {
+public class NO23_H_MergeKSortedLists_x2 {
 
     @Test
     public void test() {
@@ -53,52 +53,8 @@ public class NO23_H_MergeKSortedLists {
                 }));
     }
 
-    // 方法1：分治法
     public ListNode mergeKLists(ListNode[] lists) {
-        return merge(lists, 0, lists.length - 1);
-    }
-
-    public ListNode merge(ListNode[] lists, int l, int r) {
-        if (l == r)
-            return lists[l];
-
-        if (l > r)
-            return null;
-
-        int mid = l + (r - l) >> 1;
-        return mergeTwoLists(
-                    merge(lists, l, mid),
-                    merge(lists, mid + 1, r));
-    }
-
-    public ListNode mergeTwoLists(ListNode a, ListNode b) {
-        // 任何一个为空，就返回另一边
-        if (a == null || b == null)
-            return a != null ? a : b;
-
-        // 虚拟头节点
-        ListNode dummy = new ListNode(-1);
-        ListNode cur = dummy;
-        ListNode p1 = a;
-        ListNode p2 = b;
-
-        while (p1 != null && p2 != null) {
-            if (p1.val < p2.val) {
-                cur.next = p1;
-                p1 = p1.next;
-            } else {
-                cur.next = p2;
-                p2 = p2.next;
-            }
-            cur = cur.next;
-        }
-
-        if (p1 != null)
-            cur.next = p1;
-        else
-            cur.next = p2;
-
-        return dummy.next;
+        return null;
     }
 }
 
