@@ -6,11 +6,8 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import java.util.Stack;
-
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.SwapUtil.swap;
-import static com.leetcode.util.SwapUtil.swapLR;
 
 /**
     (简单)
@@ -23,7 +20,7 @@ import static com.leetcode.util.SwapUtil.swapLR;
         输入：root = [2, 1, 3]
         输出：[2, 3, 1]
 */
-public class NO226_E_InvertBinaryTree_x2 {
+public class NO226_E_InvertBinaryTree_x3 {
 
     @Test
     public void test() {
@@ -46,25 +43,6 @@ public class NO226_E_InvertBinaryTree_x2 {
     }
 
     public TreeNode invertTree(TreeNode root) {
-        if (root==null)
-            return null;
-
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode head = stack.pop();
-
-            // 核心左、右互换逻辑
-            TreeNode tmp = head.left;
-            head.left = head.right;
-            head.right = tmp;
-
-            if (head.left!=null)
-                stack.push(head.left);
-
-            if (head.right!=null)
-                stack.push(head.right);
-        }
         return root;
     }
 
@@ -88,6 +66,7 @@ public TreeNode invertTree(TreeNode root) {
 
     Stack<TreeNode> stack = new Stack<>();
     stack.push(root);
+
     while (!stack.isEmpty()) {
         TreeNode head = stack.pop();
 
