@@ -44,6 +44,7 @@ public class OfferII_046_N_RightSightView_x2 {
         List<Integer> res = new ArrayList<>();
         return res;
     }
+
 }
 
 
