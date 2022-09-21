@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
         输入：s = "cbbd"
         输出："bb"
 */
-public class NO5_N_LongestPalindromicSubstring {
+public class NO5_N_LongestPalindromicSubstring_x2 {
 
     @Test
     public void test() {
@@ -29,6 +29,7 @@ public class NO5_N_LongestPalindromicSubstring {
 
     public String longestPalindrome(String s) {
         String res = "";
+
         return res;
     }
 }
