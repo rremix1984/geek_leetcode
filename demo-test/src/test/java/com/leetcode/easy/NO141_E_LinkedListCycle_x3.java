@@ -30,7 +30,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：false
         解释：链表中没有环。
 */
-public class NO141_E_LinkedListCycle_x2 {
+public class NO141_E_LinkedListCycle_x3 {
 
     @Test
     public void test() {
