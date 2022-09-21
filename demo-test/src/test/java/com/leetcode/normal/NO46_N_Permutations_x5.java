@@ -6,6 +6,8 @@ package com.leetcode.normal;
 import org.junit.Test;
 import java.util.*;
 
+import static com.leetcode.util.LogUtil.info;
+
 /**
    （中等）
     46.全排列
@@ -22,7 +24,7 @@ import java.util.*;
         输入：nums = {1}
         输出：[[1]]
 */
-public class NO46_N_Permutations_x4 {
+public class NO46_N_Permutations_x5 {
 
     @Test
     public void test() {
@@ -46,27 +48,7 @@ public class NO46_N_Permutations_x4 {
     List<List<Integer>> res = new LinkedList<>();
 
     public List<List<Integer>> permute(int[] nums) {
-        Deque<Integer> queue = new LinkedList<>();
-        call(nums, queue);
         return res;
-    }
-
-    private void call(int[] nums, Deque<Integer> queue) {
-        if (nums.length == queue.size()) {
-            res.add(new ArrayList<>(queue));
-            return;
-        }
-
-        for (int num : nums) {
-            if (queue.contains(num))
-                continue;
-
-            queue.addLast(num);
-
-            call(nums, queue);
-
-            queue.removeLast();
-        }
     }
 
 }
