@@ -28,19 +28,41 @@ public class NO713_N_SubarrayProductLessThanK_x2 {
 
     public int numSubarrayProductLessThanK(int[] nums, int k) {
         int ret = 0;
-        int sum = 1;
-        int i = 0;
-        for (int j = 0; j < nums.length; j++) {
-            // 累乘结果
-            sum *= nums[j];
-
-            // 回溯，把不可能的元素扣除
-            while (i <= j && sum >= k)
-                sum /= nums[i++];
-
-            // 可能的(j) 减去不可能的(i) 再 +1 就是结果了
-            ret += j - i + 1;
-        }
         return ret;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public int numSubarrayProductLessThanK(int[] nums, int k) {
+    int ret = 0;
+    int sum = 1;
+    int i = 0;
+    for (int j = 0; j < nums.length; j++) {
+        // 累乘结果
+        sum *= nums[j];
+
+        while (i <= j && sum >= k)
+            sum /= nums[i++];
+
+        ret += j - i + 1;
+    }
+    return ret;
+}
+*/
