@@ -26,31 +26,7 @@ public class NO61_N_RotateList {
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if (k == 0 || head == null || head.next == null)
-            return head;
-
-        int n = 1;
-        ListNode iter = head;
-        while (iter.next != null) {
-            iter = iter.next;
-            n++;
-        }
-
-        int add = n - k % n;
-        if (add == n)
-            return head;
-
-        // 先把链表形成【环】
-        iter.next = head;
-
-        while (add-- > 0)
-            iter = iter.next;
-
-        ListNode ret = iter.next;
-
-        // 把链表还原为无【环】
-        iter.next = null;
-        return ret;
+        return null;
     }
 
 }
@@ -87,11 +63,16 @@ public ListNode rotateRight(ListNode head, int k) {
     if (add == n)
         return head;
 
+    // 先把链表形成【环】
     iter.next = head;
+
     while (add-- > 0)
         iter = iter.next;
 
+    // 新的头节点 ret
     ListNode ret = iter.next;
+
+    // 把链表还原为无【环】
     iter.next = null;
     return ret;
 }
