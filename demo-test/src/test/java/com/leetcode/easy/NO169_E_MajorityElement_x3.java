@@ -20,17 +20,20 @@ import static org.junit.Assert.assertEquals;
         输入：nums = [2, 2, 1, 1, 1, 2, 2]
         输出：2
 */
-public class NO169_E_MajorityElement_x2 {
+public class NO169_E_MajorityElement_x3 {
 
     @Test
     public void test() {
-        assertEquals(3, majorityElement(new int[]{3, 2, 3}));// 3
-        assertEquals(2, majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2}));// 2
+        assert  3 == majorityElement(new int[]{3, 2, 3});// 3
+        assert -1 == majorityElement(new int[]{3, 2});// -1
+        assert  2 == majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2});// 2
+        assert  5 == majorityElement(new int[]{1, 2, 5, 9, 5, 9, 5, 5, 5});
+        assert  2 == majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2});
     }
 
     public int majorityElement(int[] nums) {
-        int ans = nums[0];
-        return ans;
+        int cand_num = nums[0];
+        return cand_num;
     }
 
 }
@@ -63,6 +66,14 @@ public int majorityElement(int[] nums) {
             count = 1;
         }
     }
+    int c = 0;
+    for (int num : nums)
+        if (num == cand_num)
+            c++;
+
+    if ((nums.length / c) > 1)
+        return -1;
+
     return cand_num;
 }
 */
