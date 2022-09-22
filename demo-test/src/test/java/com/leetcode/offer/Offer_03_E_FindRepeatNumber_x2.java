@@ -1,10 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.easy;
+package com.leetcode.offer;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -17,12 +16,12 @@ import static com.leetcode.util.LogUtil.info;
         输入：{2, 3, 1, 0, 2, 5, 3}
         输出：2 或 3
 */
-public class Offer_03_E_FindRepeatNumber {
+public class Offer_03_E_FindRepeatNumber_x2 {
 
     @Test
     public void test() {
         assert  2 == findRepeatNumber(new int[]{2, 3, 1, 0, 2, 5, 3});
-//        assert 11 == findRepeatNumber(new int[]{0, 1, 2, 3, 4, 11, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15});
+        assert 11 == findRepeatNumber(new int[]{0, 1, 2, 3, 4, 11, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15});
     }
 
     public int findRepeatNumber(int[] nums) {
