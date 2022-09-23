@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.offer;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
@@ -30,7 +30,7 @@ import org.junit.Test;
         输入：A = {3, 4, 5, 1, 2}, B = {4, 1}
         输出：true
 */
-public class Offer_26_N_IsSubStructure {
+public class Offer_26_N_IsSubStructure_x2 {
 
     @Test
     public void test() {
