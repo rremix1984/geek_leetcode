@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.offer;
 
 import org.junit.Test;
 import java.util.*;
@@ -30,60 +30,31 @@ import java.util.*;
         输出：[[0,0,0]]
         解释：唯一可能的三元组和为 0 。
 */
-public class OfferII_007_N_ThreeSum {
+public class OfferII_007_N_ThreeSum_x2 {
 
     @Test
     public void test() {
-        assert new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>(){{add(-1);add(-1);add(2);}});
-            add(new ArrayList<Integer>(){{add(-1);add(0);add(1);}});
-        }}.toString().equals(threeSum(new int[]{-1,0,1,2,-1,-4}).toString());
-        assert new ArrayList<ArrayList<Integer>>().toString().equals(threeSum(new int[]{0, 1, 1}).toString());
-        assert new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>(){{add(0);add(0);add(0);}});
+        assert new ArrayList<ArrayList<Integer>>() {{
+            add(new ArrayList<Integer>() {{add(-1);add(-1);add(2);}});
+            add(new ArrayList<Integer>() {{add(-1);add(0);add(1);}});
+        }}.toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
+        assert new ArrayList<ArrayList<Integer>>()
+          .toString().equals(threeSum(new int[]{0, 1, 1}).toString());
+        assert new ArrayList<ArrayList<Integer>>() {{
+            add(new ArrayList<Integer>() {{add(0);add(0);add(0);}});
         }}.toString().equals(threeSum(new int[]{0, 0, 0}).toString());
+        assert new ArrayList<ArrayList<Integer>>(){{
+            add(new ArrayList<Integer>() {{add(-1);add(-1);add(2);}});
+            add(new ArrayList<Integer>() {{add(-1);add(0);add(1);}});
+        }}.toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
+        assert new ArrayList<ArrayList<Integer>>(){{
+            add(new ArrayList<Integer>() {{add(0);add(0);add(0);}});
+        }}.toString().equals(threeSum(new int[]{0, 0, 0, 0}).toString());
     }
 
     // 方法2：三指针
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        Arrays.sort(nums);
-        int n = nums.length;
-
-        // 三个指针 i, j, k 先固定一个 i 在看其他两个 j, k
-        for (int i = 0; i < n; i++) {
-
-            // 如果前后两个元素相同，就不用判断了，跳过
-            if (i > 0 && nums[i] == nums[i - 1])
-                continue;
-
-            // j 指针从 i 后面 1 位开始
-            int j = i + 1;
-
-            // k 从最后一个元素 n - 1 位置开始
-            int k = n - 1;
-
-            // j 和 k 相向而行
-            while (j < k) {
-
-                // j 和 j-1 相等，j 指针向后走
-                while (j > i + 1 &&
-                       j < n && nums[j] == nums[j - 1])
-                    j++;
-
-                // j 不能超过 k
-                if (j >= k)
-                    break;
-
-                // 三数求和
-                if (nums[i] + nums[j] + nums[k] == 0)
-                    ans.add(Arrays.asList(nums[i], nums[j++], nums[k]));
-                else if (nums[i] + nums[j] + nums[k] > 0)
-                    k--;
-                else
-                    j++;
-            }
-        }
         return ans;
     }
 
