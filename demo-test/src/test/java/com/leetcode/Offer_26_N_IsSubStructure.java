@@ -19,15 +19,15 @@ import org.junit.Test;
              / \
             1   2
         给定的树 B：
-                4
-               /
-              1
+              4
+             /
+            1
         返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。
     示例 1：
-        输入：A = [1,2,3], B = [3,1]
+        输入：A = {1, 2, 3}, B = {3, 1}
         输出：false
     示例 2：
-        输入：A = [3,4,5,1,2], B = [4,1]
+        输入：A = {3, 4, 5, 1, 2}, B = {4, 1}
         输出：true
 */
 public class Offer_26_N_IsSubStructure {
@@ -35,7 +35,7 @@ public class Offer_26_N_IsSubStructure {
     @Test
     public void test() {
         assert !isSubStructure(new TreeNode(1,
-                                    2, 3), new TreeNode(3,
+                                     2, 3), new TreeNode(3,
                                                             1));
         assert isSubStructure(new TreeNode(3,
                         new TreeNode(4,
