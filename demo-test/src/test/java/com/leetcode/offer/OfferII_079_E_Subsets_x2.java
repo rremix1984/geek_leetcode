@@ -1,15 +1,13 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.offer;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
-import static org.junit.Assert.assertEquals;
 
 /**
     (中等)
@@ -23,7 +21,7 @@ import static org.junit.Assert.assertEquals;
         输入：nums = {0}
         输出：{{}, {0}}
 */
-public class OfferII_079_E_Subsets {
+public class OfferII_079_E_Subsets_x2 {
 
     @Test
     public void test() {
@@ -52,19 +50,7 @@ public class OfferII_079_E_Subsets {
 
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        dfs(0, nums, new ArrayList<>(), ans);
         return ans;
-    }
-
-    public void dfs(int cur, int[] nums, List<Integer> t, List<List<Integer>> ans) {
-        if (cur == nums.length) {
-            ans.add(new ArrayList<>(t));
-            return;
-        }
-        t.add(nums[cur]);
-        dfs(cur + 1, nums, t, ans);
-        t.remove(t.size() - 1);
-        dfs(cur + 1, nums, t, ans);
     }
 }
 
