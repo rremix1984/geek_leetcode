@@ -39,12 +39,12 @@ public class Offer_26_N_IsSubStructure {
     }
 
     public boolean isSubStructure(TreeNode A, TreeNode B) {
-        return  (A != null && B != null)
-                &&
-                (   recur(A, B)
-                 || isSubStructure(A.left, B)
-                 || isSubStructure(A.right, B)
-                );
+        return A != null
+            && B != null
+            && ( recur(A, B)
+               || isSubStructure(A.left, B)
+               || isSubStructure(A.right, B)
+            );
     }
 
     boolean recur(TreeNode A, TreeNode B) {
