@@ -6,7 +6,6 @@ package com.offer;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
@@ -15,8 +14,8 @@ import static com.leetcode.util.MathUtils.getArray;
         给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
     示例 1:
         输入: n = 4, k = 2
-        输出:[[2,4], [3,4], [2,3],
-             [1,2], [1,3], [1,4]]
+        输出:[[2, 4], [3, 4], [2, 3],
+             [1, 2], [1, 3], [1, 4]]
     示例 2:
         输入: n = 1, k = 1
         输出: [[1]]
@@ -50,7 +49,7 @@ public class OfferII_080_N_Combine {
 
         // 记录合法的答案
         if (temp.size() == k) {
-            ans.add(new ArrayList<Integer>(temp));
+            ans.add(new ArrayList<>(temp));
             return;
         }
 
@@ -100,7 +99,7 @@ public void dfs(List<List<Integer>> ans, List<Integer> temp, int cur, int n, int
 
     // 记录合法的答案
     if (temp.size() == k) {
-        ans.add(new ArrayList<Integer>(temp));
+        ans.add(new ArrayList<>(temp));
         return;
     }
 

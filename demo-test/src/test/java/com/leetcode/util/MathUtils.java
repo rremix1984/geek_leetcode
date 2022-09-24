@@ -139,7 +139,7 @@ public class MathUtils {
         return result.toString();
     }
 
-    public static ArrayList<ArrayList<Integer>> getArray(int[][] arr) {
+    public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         for (int[] ints : arr) {
             ArrayList<Integer> inner = new ArrayList<>();
