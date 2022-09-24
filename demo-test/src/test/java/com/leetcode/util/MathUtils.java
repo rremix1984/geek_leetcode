@@ -206,6 +206,20 @@ public class MathUtils {
         return dummy.next;
     }
 
+    public static ListNode[] getListNodes(int[][] arr) {
+        if (arr == null ||arr.length == 0 || arr[0] == null)
+            return new ListNode[]{new ListNode()};
+
+        ListNode[] res = new ListNode[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].length == 0)
+                res[i] = new ListNode();
+            else
+                res[i] = new ListNode(arr[i]);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
         System.out.println(mins(0, 6, 3));
