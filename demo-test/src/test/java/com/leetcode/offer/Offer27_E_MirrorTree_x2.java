@@ -1,12 +1,10 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.offer;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
-import java.util.Stack;
 
 /**
     (简单)
@@ -28,7 +26,7 @@ import java.util.Stack;
         输入：root = [4, 2, 7, 1, 3, 6, 9]
         输出：[4, 7, 2, 9, 6, 3, 1]
 */
-public class Offer27_E_MirrorTree {
+public class Offer27_E_MirrorTree_x2 {
 
     @Test
     public void test() {
@@ -50,26 +48,9 @@ public class Offer27_E_MirrorTree {
         );
     }
 
-    // 方法2：
     public TreeNode mirrorTree(TreeNode root) {
         if (root == null)
             return null;
-        Stack<TreeNode> stack = new Stack<TreeNode>(){{
-            add(root);
-        }};
-        while(!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-
-            if(node.left != null)
-                stack.add(node.left);
-
-            if(node.right != null)
-                stack.add(node.right);
-
-            TreeNode tmp = node.left;
-            node.left = node.right;
-            node.right = tmp;
-        }
         return root;
     }
 
@@ -105,7 +86,6 @@ public TreeNode mirrorTree(TreeNode root) {
     root.right = left;
     return root;
 }
-
 
 // 方法2：辅助栈
 public TreeNode mirrorTree(TreeNode root) {
