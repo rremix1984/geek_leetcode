@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.offer;
+package com.offer.normal;
 
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ import org.junit.Test;
         输入：nums = [0, 1, 0, 1, 0, 1, 100]
         输出：100
 */
-public class Offer_II_004_N_SingleNumber_x2 {
+public class OfferII_004_N_SingleNumber_x2 {
 
    @Test
    public void test() {
