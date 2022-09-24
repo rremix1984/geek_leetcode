@@ -39,15 +39,16 @@ public class NO235_N_LowestCommonAncestorOfABinarySearchTree_x2 {
     @Test
     public void test() {
         assert 6 == lowestCommonAncestor(createFullTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5)
-            , new TreeNode(2), new TreeNode(8)
+            , createFullTree(2), createFullTree(8)
         ).val; // 6
         assert 2 == lowestCommonAncestor(createFullTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5)
-            ,new TreeNode(2) ,new TreeNode(4)).val; // 2
+            , createFullTree(2), createFullTree(4)).val; // 2
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        return null;
+        return root;
     }
+
 }
 
 

@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getListNodes;
+import static com.leetcode.util.MathUtils.mergeTwoLists;
 
 /**
     (困难)
@@ -42,8 +43,8 @@ public class OfferII_078_H_MergeKLists {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode ans = null;
-        return ans;
+        ListNode dummy = new ListNode(-1);
+        return dummy.next;
     }
 
 }

@@ -27,20 +27,14 @@ public class NO876_E_MiddleOfTheLinkedList {
 
     @Test
     public void test() {
-        assert new TreeNode(3).val == middleNode(new ListNode(1,2,3,4,5)).val;
-        assert new TreeNode(4).val == middleNode(new ListNode(1,2,3,4,5,6)).val;
+        assert 3 == middleNode(new ListNode(1,2,3,4,5)).val;
+        assert 4 == middleNode(new ListNode(1,2,3,4,5,6)).val;
     }
 
     public ListNode middleNode(ListNode head) {
-        if (head == null)
-            return null;
-        ListNode fast = head, slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        return slow;
+        return null;
     }
+
 }
 
 

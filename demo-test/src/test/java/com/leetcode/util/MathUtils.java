@@ -189,9 +189,17 @@ public class MathUtils {
         return null;
     }
 
-    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if (list1 == null)
+            return list2;
+
+        if (list2 == null)
+            return list1;
+
         ListNode dummy = new ListNode(-1);
         ListNode temp = dummy;
+        ListNode l1 = list1;
+        ListNode l2 = list2;
         while (l1 != null && l2 != null) {
             if (l1.val <= l2.val) {
                 temp.next = l1;
