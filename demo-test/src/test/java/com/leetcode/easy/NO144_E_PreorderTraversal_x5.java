@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -36,36 +37,18 @@ public class NO144_E_PreorderTraversal_x5 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<Integer>(){{add(1);add(2);add(3);}},
+        assertEquals(getArray(new int[]{1, 2, 3}),
             preorderTraversal(new TreeNode(1,
                             null, new TreeNode(2,
                                         3))));// [1, 2, 3]
-        assertEquals(new ArrayList<Integer>(){{add(0);}},
-            preorderTraversal(new TreeNode()));// []
-        assertEquals(new ArrayList<Integer>(){{add(1);}},
-            preorderTraversal(new TreeNode(1)));// [1]
-        assertEquals(new ArrayList<Integer>(){{add(1);add(2);}},
-            preorderTraversal(new TreeNode(1,2, null)));// [1, 2]
-        assertEquals(new ArrayList<Integer>(){{add(1);add(2);}},
-            preorderTraversal(new TreeNode(1,null,2)));// [1, 2]
+        assertEquals(getArray(new int[]{0}), preorderTraversal(new TreeNode()));// []
+        assertEquals(getArray(new int[]{1}), preorderTraversal(new TreeNode(1)));// [1]
+        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(new TreeNode(1,2, null)));// [1, 2]
+        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(new TreeNode(1,null,2)));// [1, 2]
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            res.add(node.val);
-
-            if (node.right != null)
-                stack.push(node.right);
-
-            if (node.left != null)
-                stack.push(node.left);
-        }
         return res;
     }
 

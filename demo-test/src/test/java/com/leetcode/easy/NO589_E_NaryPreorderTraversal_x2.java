@@ -7,6 +7,7 @@ import com.leetcode.util.Node;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -22,14 +23,15 @@ public class NO589_E_NaryPreorderTraversal_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<Integer>(){{add(1);add(3);add(5);add(6);add(2);add(4);}},
+        assertEquals(getArray(new int[]{1, 3, 5, 6, 2, 4}),
                 preorder(new Node(1,
                 new Node(3,
         new Node(5), new Node(6)), new Node(2), new Node(4))));
     }
 
+    List<Integer> res = new ArrayList<>();
+
     public List<Integer> preorder(Node root) {
-        List<Integer> res = new ArrayList<>();
         return res;
     }
 
