@@ -6,6 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 
 /**
     （中等）
@@ -25,22 +26,24 @@ public class NO78_N_Subsets_x2 {
 
     @Test
     public void test() {
-        assert new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>(){{}});
-            add(new ArrayList<Integer>(){{add(1);}});
-            add(new ArrayList<Integer>(){{add(2);}});
-            add(new ArrayList<Integer>(){{add(1);add(2);}});
-            add(new ArrayList<Integer>(){{add(3);}});
-            add(new ArrayList<Integer>(){{add(1);add(3);}});
-            add(new ArrayList<Integer>(){{add(2);add(3);}});
-            add(new ArrayList<Integer>(){{add(1);add(2);add(3);}});
-        }}.stream().allMatch(
-            s -> subsets(new int[]{1, 2, 3}).contains(s)
-        );
+        assert getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}).stream().allMatch(
+            s -> subsets(new int[]{1, 2, 3}).contains(s));
+        assert getArray(new int[][]{{}, {0}}).stream().allMatch(
+            s -> subsets(new int[]{0}).contains(s));
     }
 
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
+        ans.add(new ArrayList<>());
+        for (int num : nums) {
+            List<List<Integer>> newSubsets = new ArrayList<>();
+            for (List<Integer> subset : ans) {
+                List<Integer> newSubset = new ArrayList<>(subset);
+                newSubset.add(num);
+                newSubsets.add(newSubset);
+            }
+            ans.addAll(newSubsets);
+        }
         return ans;
     }
 

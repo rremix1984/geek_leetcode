@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -19,27 +20,27 @@ import static org.junit.Assert.assertEquals;
         输入：root = [1, null, 2, 3]
         输出：[1, 3, 2]
 */
-public class NO94_E_InorderTraversal_x5 {
+public class NO94_E_InorderTraversal_x6 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<Integer>(){{add(1);add(3);add(2);}},
+        assertEquals(getArray(new int[]{1, 3, 2}),
                 inorderTraversal(new TreeNode(1,
                                     null, new TreeNode(2,
                                                 3))));
-        assertEquals(new ArrayList<Integer>(){{add(3);add(9);add(12);add(11);add(10);}},
+        assertEquals(getArray(new int[]{3, 9, 12, 11, 10}),
                 inorderTraversal(new TreeNode(3,
                             null, new TreeNode(9,
                                 null, new TreeNode(10,
                                     new TreeNode(11,
                             new TreeNode(12)))))));// [3, 9, 12, 11, 10]
-        assertEquals(new ArrayList<Integer>(){{add(9);add(3);add(15);add(20);add(7);}},
+        assertEquals(getArray(new int[]{9, 3, 15, 20, 7}),
                 inorderTraversal(new TreeNode(3,
                             9, new TreeNode(20,
                                         15, 7))));// [9, 3, 15, 20, 7]
-        assertEquals(new ArrayList<Integer>(){{add(0);}},
+        assertEquals(getArray(new int[]{0}),
                 inorderTraversal(new TreeNode()));// []
-        assertEquals(new ArrayList<Integer>(){{add(1);}},
+        assertEquals(getArray(new int[]{1}),
                 inorderTraversal(new TreeNode(1)));// [1]
     }
 

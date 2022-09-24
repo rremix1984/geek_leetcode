@@ -141,7 +141,8 @@ public class MathUtils {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         for (int[] ints : arr) {
             ArrayList<Integer> inner = new ArrayList<>();
-            for (int j = 0; j < arr[0].length; j++) {
+            int len = ints.length;
+            for (int j = 0; j < len; j++) {
                 inner.add(ints[j]);
             }
             res.add(new ArrayList<>(inner));
