@@ -27,43 +27,22 @@ public class NO54_N_SpiralOrder {
         }}.toString().equals(
             spiralOrder(new int[][]{{1, 2, 3},
                                     {4, 5, 6},
-                                    {7, 8, 9}}).toString())
-        && new ArrayList<Integer>(){{
+                                    {7, 8, 9}}).toString());
+        assert new ArrayList<Integer>(){{
             add(1);add(2);add(3);add(4);add(8);add(12);add(11);add(10);add(9);add(5);add(6);add(7);
         }}.toString().equals(
             spiralOrder(new int[][]{{1, 2, 3, 4},
                                     {5, 6, 7, 8},
                                     {9, 10, 11, 12}}).toString()
         );
+        assert new ArrayList<Integer>(){{add(3);add(2);}}.toString().equals(
+            spiralOrder(new int[][]{{3, 2}}).toString()
+        );
     }
 
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> res = new ArrayList<>();
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
-            return res;
-
-        int rows = matrix.length, columns = matrix[0].length;
-        int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
-        while (left <= right && top <= bottom) {
-            for (int column = left; column <= right; column++)
-                res.add(matrix[top][column]);
-
-            for (int row = top + 1; row <= bottom; row++)
-                res.add(matrix[row][right]);
-
-            if (left < right && top < bottom)
-                for (int column = right - 1; column > left; column--)
-                    res.add(matrix[bottom][column]);
-
-                for (int row = bottom; row > top; row--)
-                    res.add(matrix[row][left]);
-
-            left++;
-            right--;
-            top++;
-            bottom--;
-        }
-        return res;
+        List<Integer> order = new ArrayList<>();
+        return order;
     }
 
 }
@@ -90,25 +69,27 @@ public class NO54_N_SpiralOrder {
 // 方法1：
 public List<Integer> spiralOrder(int[][] matrix) {
     List<Integer> order = new ArrayList<>();
-    if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+    if (matrix == null || matrix.length == 0)
         return order;
-    }
-    int rows = matrix.length, columns = matrix[0].length;
-    int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+
+    int left = 0;
+    int right = matrix[0].length - 1;
+    int top = 0;
+    int bottom = matrix.length - 1;
+
     while (left <= right && top <= bottom) {
-        for (int column = left; column <= right; column++) {
-            order.add(matrix[top][column]);
-        }
-        for (int row = top + 1; row <= bottom; row++) {
-            order.add(matrix[row][right]);
-        }
+        for (int i = left; i <= right; i++)
+            order.add(matrix[top][i]);
+
+        for (int i = top + 1; i <= bottom; i++)
+            order.add(matrix[i][right]);
+
         if (left < right && top < bottom) {
-            for (int column = right - 1; column > left; column--) {
-                order.add(matrix[bottom][column]);
-            }
-            for (int row = bottom; row > top; row--) {
-                order.add(matrix[row][left]);
-            }
+             for (int i = right - 1; i > left ; i--)
+                order.add(matrix[bottom][i]);
+
+             for (int i = bottom; i > top ; i--)
+                order.add(matrix[i][left]);
         }
         left++;
         right--;
