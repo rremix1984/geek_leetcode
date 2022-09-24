@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -26,7 +27,7 @@ public class NO590_E_NaryPostorderTraversal_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<Integer>(){{add(5);add(6);add(3);add(2);add(4);add(1);}},
+        assertEquals(getArray(new int[]{5, 6, 3, 2, 4, 1}),
             postorder(new Node(1,
                 new Node(3,
                         new Node(5), new Node(6)), new Node(2), new Node(4))));
@@ -38,3 +39,39 @@ public class NO590_E_NaryPostorderTraversal_x2 {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public List<Integer> postorder(Node root) {
+    List<Integer> res = new ArrayList<>();
+    if (root == null)
+        return res;
+
+    Stack<Node> stack = new Stack<>();
+    stack.push(root);
+
+    while (!stack.isEmpty()) {
+        Node node = stack.pop();
+        res.add(0, node.val);
+        for (Node item : node.children)
+            stack.push(item);
+    }
+    return res;
+}
+*/

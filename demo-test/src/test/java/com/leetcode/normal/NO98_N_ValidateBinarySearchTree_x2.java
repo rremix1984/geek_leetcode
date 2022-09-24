@@ -5,6 +5,8 @@ package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
+
+import static com.leetcode.util.MathUtils.createFullTree;
 import static java.lang.Long.MIN_VALUE;
 
 /**
@@ -28,33 +30,16 @@ public class NO98_N_ValidateBinarySearchTree_x2 {
 
     @Test
     public void test() {
-//        assert (isValidBST(new TreeNode(2,
-//                                1, 3))); // true
-//        assert !(isValidBST(new TreeNode(
-//                        5,
-//                1, new TreeNode(4,
-//                                3,6))));// false
-        assert !isValidBST(new TreeNode(
-                    5,
-            4, new TreeNode(6,
-                            3,7)));// false
+//        assert (isValidBST(createFullTree(2, 1, 3)));
+        assert !isValidBST(createFullTree(5, 1, 4, null, null, 3, 6));
+//        assert !isValidBST(createFullTree(5, 4, 6, null, null, 3, 7));
 //        assert (isValidBST(new TreeNode(0)));// true
     }
 
     long pre = MIN_VALUE;
 
     public boolean isValidBST(TreeNode root) {
-        if (root == null)
-            return true;
-
-        if (!isValidBST(root.left))
-            return false;
-
-        if (root.val <= pre)
-            return false;
-
-        pre = root.val;
-        return isValidBST(root.right);
+        return false;
     }
 
 }

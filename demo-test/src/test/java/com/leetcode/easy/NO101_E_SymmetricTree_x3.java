@@ -6,6 +6,11 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (简单)
     101. 对称二叉树
@@ -21,24 +26,12 @@ public class NO101_E_SymmetricTree_x3 {
 
     @Test
     public void test() {
-        assert isSymmetric(new TreeNode(1,
-                new TreeNode(2,
-                        3, 4), new TreeNode(2,
-                                                4, 3)));
-        assert !isSymmetric(new TreeNode(1,
-                new TreeNode(2,
-                        null, 3), new TreeNode(2,
-                                                null, 3)));
-        assert !isSymmetric(new TreeNode(1,
-                new TreeNode(2,
-            new TreeNode(3,
-                    4, 5), 3), new TreeNode(2,
-                                                    null, 3)));
+        assert isSymmetric(createFullTree(1, 2, 2, 3, 4, 4, 3));
+        assert !isSymmetric(createFullTree(1, 2, 2, null, 3, null, 3));
+        assert !isSymmetric(createFullTree(1, 2, 2, 3, 3, 3, 3, 4, 5));
     }
 
     public boolean isSymmetric(TreeNode root) {
-        if (root == null)
-            return true;
         return true;
     }
 

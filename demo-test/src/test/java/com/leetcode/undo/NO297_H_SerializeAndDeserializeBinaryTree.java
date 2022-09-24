@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.Queue;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
 
 /**
     （困难）
@@ -20,17 +21,14 @@ import static com.leetcode.util.LogUtil.info;
     你并非必须采取这种方式，你也可以采用其他的方法解决这个问题。
 
     示例 1：
-        输入：root = [1,2,3,null,null,4,5]
-        输出：[1,2,3,null,null,4,5]
+        输入：root = [1, 2, 3, null, null, 4, 5]
+        输出：[1, 2, 3, null, null, 4, 5]
 */
 public class NO297_H_SerializeAndDeserializeBinaryTree {
 
     @Test
     public void test() {
-        String s = serialize(
-            new TreeNode(1,
-                2, new TreeNode(3,
-                                4, 5)));
+        String s = serialize(createFullTree(1, 2, 3, null, null, 4, 5));
         info(s);
         info(deserialize(s));
     }

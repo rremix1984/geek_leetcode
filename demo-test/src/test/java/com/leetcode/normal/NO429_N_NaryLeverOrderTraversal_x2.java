@@ -10,10 +10,11 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
-    （中等）
+    (中等)
     429. N 叉树的层序遍历
     给定一个 N 叉树，返回其节点值的层序遍历。（即从左到右，逐层遍历）。
     树的序列化输入是用层序遍历，每组子节点都由 null 值分隔（参见示例）。
@@ -26,10 +27,7 @@ public class NO429_N_NaryLeverOrderTraversal_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<ArrayList<Integer>>(){{
-                    add(new ArrayList<Integer>(){{add(1);}});
-                    add(new ArrayList<Integer>(){{add(3);add(2);add(4);}});
-                    add(new ArrayList<Integer>(){{add(5);add(6);}});}},
+        assertEquals(getArray(new int[][]{{1}, {3, 2, 4}, {5, 6}}),
             levelOrder(new Node(1,
                     new Node(3,
             new Node(5), new Node(6)), new Node(2), new Node(4))));//[[1], [3, 2, 4], [5, 6]]
@@ -56,6 +54,7 @@ public class NO429_N_NaryLeverOrderTraversal_x2 {
 
 
 /**
+// 方法1：
 public List<List<Integer>> levelOrder(Node root) {
     List<List<Integer>> ans = new ArrayList<>();
     if (root == null)

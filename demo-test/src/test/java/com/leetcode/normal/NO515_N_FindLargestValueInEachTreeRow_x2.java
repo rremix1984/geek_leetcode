@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.getArray;
 import static java.lang.Math.max;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -29,13 +31,10 @@ public class NO515_N_FindLargestValueInEachTreeRow_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList(){{add(1);add(3);add(9);}},
-                largestValues(new TreeNode(1,
-                        new TreeNode(3,
-                                5, 3), new TreeNode(2,
-                                                    null, 9))));// [1, 3, 9]
-        assertEquals(new ArrayList(){{add(1);add(3);}},
-                largestValues(new TreeNode(1,2,3)));// [1, 3]
+        assertEquals(getArray(new int[]{1, 3, 9}),
+                largestValues(createFullTree(1, 3, 2, 5, 3, null, 9)));
+        assertEquals(getArray(new int[]{1, 3}),
+                largestValues(createFullTree(1, 2, 3)));// [1, 3]
     }
 
     public List<Integer> largestValues(TreeNode root) {

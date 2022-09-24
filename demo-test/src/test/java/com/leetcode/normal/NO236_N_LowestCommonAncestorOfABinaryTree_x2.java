@@ -6,6 +6,7 @@ package com.leetcode.normal;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -30,18 +31,11 @@ public class NO236_N_LowestCommonAncestorOfABinaryTree_x2 {
 
     @Test
     public void test() {
-        TreeNode node = new TreeNode(3,
-                new TreeNode(5,
-                    6, new TreeNode(2,
-                                    7,4)), new TreeNode(1,
-                                                            0, 8));
-        assertEquals(node,
-            lowestCommonAncestor(node, 5, 1));// 3
+        TreeNode node = createFullTree(2, 5, 1, 6, 2, 0, 8, null, null, 7, 4);
+        assertEquals(node, lowestCommonAncestor(node, 5, 1));// 3
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null)
-            return null;
         return null;
     }
 

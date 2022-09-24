@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
@@ -38,18 +39,16 @@ public class NO144_E_PreorderTraversal_x5 {
     @Test
     public void test() {
         assertEquals(getArray(new int[]{1, 2, 3}),
-            preorderTraversal(new TreeNode(1,
-                            null, new TreeNode(2,
-                                        3))));// [1, 2, 3]
-        assertEquals(getArray(new int[]{0}), preorderTraversal(new TreeNode()));// []
-        assertEquals(getArray(new int[]{1}), preorderTraversal(new TreeNode(1)));// [1]
-        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(new TreeNode(1,2, null)));// [1, 2]
-        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(new TreeNode(1,null,2)));// [1, 2]
+            preorderTraversal(createFullTree(1, null, 2, null, null, 3)));
+        assertEquals(getArray(new int[]{}), preorderTraversal(createFullTree()));// []
+        assertEquals(getArray(new int[]{1}), preorderTraversal(createFullTree(1)));// [1]
+        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(createFullTree(1, 2, null)));// [1, 2]
+        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(createFullTree(1, null, 2)));// [1, 2]
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        return res;
+        List<Integer> ans = new ArrayList<>();
+        return ans;
     }
 
 }
@@ -87,7 +86,7 @@ public List<Integer> preorderTraversal(TreeNode root) {
 
 // 方法2：莫里斯遍历
 public List<Integer> preorderTraversal(TreeNode root) {
-    List<Integer> ans = new ArrayList<Integer>();
+    List<Integer> ans = new ArrayList<>();
     if(root == null) return ans;
     //morris遍历
     TreeNode current = root;

@@ -9,6 +9,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static java.lang.Math.min;
 import static org.junit.Assert.assertEquals;
 
@@ -37,24 +38,9 @@ public class NO120_N_Triangle_x2 {
 
     @Test
     public void test() {
-        ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>(){{
-            // [2],[3,4],[6,5,7],[4,1,8,3]
-            add(new ArrayList<Integer>(){{
-                add(2);
-            }});
-            add(new ArrayList<Integer>(){{
-                add(3);add(4);
-            }});
-            add(new ArrayList<Integer>(){{
-                add(6);add(5);add(7);
-            }});
-            add(new ArrayList<Integer>(){{
-                add(4);add(1);add(8);add(3);
-            }});
-        }};
+        ArrayList<ArrayList<Integer>> list = getArray(new int[][]{{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}});
         assertEquals(11, minimumTotal(list)); // 11
-        assertEquals(-10, minimumTotal(new ArrayList<ArrayList<Integer>>(){{
-                add(new ArrayList<Integer>(){{add(-10);}});}})); // -10
+        assertEquals(-10, minimumTotal(getArray(new int[][]{{-10}}))); // -10
     }
 
     public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {

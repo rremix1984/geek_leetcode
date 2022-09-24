@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -26,8 +27,8 @@ public class NO448_E_FindAllNumbersDisappearedInAnArray_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList(){{add(5);add(6);}}, findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));// [5, 6]
-        assertEquals(new ArrayList(){{add(2);}}, findDisappearedNumbers(new int[]{1, 1}));// [2]
+        assertEquals(getArray(new int[]{5, 6}), findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));// [5, 6]
+        assertEquals(getArray(new int[]{2}), findDisappearedNumbers(new int[]{1, 1}));// [2]
     }
 
     public List<Integer> findDisappearedNumbers(int[] nums) {

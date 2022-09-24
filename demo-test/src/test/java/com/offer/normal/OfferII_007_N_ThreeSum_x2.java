@@ -6,6 +6,8 @@ package com.offer.normal;
 import org.junit.Test;
 import java.util.*;
 
+import static com.leetcode.util.MathUtils.getArray;
+
 /**
     (中等)
     剑指 Offer II 007. 数组中和为 0 的三个数
@@ -14,8 +16,8 @@ import java.util.*;
         你返回所有和为 0 且不重复的三元组。
         注意：答案中不可以包含重复的三元组。
     示例 1：
-        输入：nums = [-1,0,1,2,-1,-4]
-        输出：[[-1,-1,2],[-1,0,1]]
+        输入：nums = [-1, 0, 1, 2, -1, -4]
+        输出：[[-1, -1, 2], [-1, 0, 1]]
         解释：nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0 。
              nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0 。
              nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
@@ -34,25 +36,18 @@ public class OfferII_007_N_ThreeSum_x2 {
 
     @Test
     public void test() {
-        assert new ArrayList<ArrayList<Integer>>() {{
-            add(new ArrayList<Integer>() {{add(-1);add(-1);add(2);}});
-            add(new ArrayList<Integer>() {{add(-1);add(0);add(1);}});
-        }}.toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
-        assert new ArrayList<ArrayList<Integer>>()
+        assert getArray(new int[][]{{-1, -1, 2}, {-1, 0, 1}})
+            .toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
+        assert getArray(new int[]{})
           .toString().equals(threeSum(new int[]{0, 1, 1}).toString());
-        assert new ArrayList<ArrayList<Integer>>() {{
-            add(new ArrayList<Integer>() {{add(0);add(0);add(0);}});
-        }}.toString().equals(threeSum(new int[]{0, 0, 0}).toString());
-        assert new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>() {{add(-1);add(-1);add(2);}});
-            add(new ArrayList<Integer>() {{add(-1);add(0);add(1);}});
-        }}.toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
-        assert new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>() {{add(0);add(0);add(0);}});
-        }}.toString().equals(threeSum(new int[]{0, 0, 0, 0}).toString());
+        assert getArray(new int[][]{{0, 0, 0}})
+            .toString().equals(threeSum(new int[]{0, 0, 0}).toString());
+        assert getArray(new int[][]{{-1, -1, 2}, {-1, 0, 1}})
+            .toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
+        assert getArray(new int[][]{{0, 0, 0}})
+            .toString().equals(threeSum(new int[]{0, 0, 0, 0}).toString());
     }
 
-    // 方法2：三指针
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         return ans;

@@ -7,8 +7,11 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -29,24 +32,19 @@ public class NO145_E_PostorderTraversal_x4 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<Integer>(){{add(3);add(2);add(1);}},
-            postorderTraversal(
-                new TreeNode(1,
-                        null, new TreeNode(2,
-                                    3))));
-        assertEquals(new ArrayList<Integer>(){{add(1);add(2);add(3);}},
-                postorderTraversal(
-                        new TreeNode(3,1,2)));
-        assertEquals(new ArrayList<Integer>(){{add(0);}},
-                postorderTraversal(
-                        new TreeNode()));
-        assertEquals(new ArrayList<Integer>(){{add(1);}},
-                postorderTraversal(
-                        new TreeNode(1)));
+        assertEquals(getArray(new int[]{3, 2, 1}),
+            postorderTraversal(createFullTree(1, null, 2, null, null, 3)));
+        assertEquals(getArray(new int[]{1, 2, 3}),
+                postorderTraversal(createFullTree(3, 1, 2)));
+        assertEquals(getArray(new int[]{0}),
+                postorderTraversal(createFullTree(0)));
+        assertEquals(getArray(new int[]{1}),
+                postorderTraversal(createFullTree(1)));
     }
 
+    List<Integer> res = new ArrayList<>();
+
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
         return res;
     }
 }

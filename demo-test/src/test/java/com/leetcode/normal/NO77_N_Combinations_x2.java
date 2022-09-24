@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -26,23 +27,14 @@ public class NO77_N_Combinations_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<ArrayList<Integer>>(){{
-            add(new ArrayList<Integer>(){{add(1);add(2);}});
-            add(new ArrayList<Integer>(){{add(1);add(3);}});
-            add(new ArrayList<Integer>(){{add(1);add(4);}});
-            add(new ArrayList<Integer>(){{add(2);add(3);}});
-            add(new ArrayList<Integer>(){{add(2);add(4);}});
-            add(new ArrayList<Integer>(){{add(3);add(4);}});
-        }}, combine(4, 2));//{{1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}}
-//        assertEquals(new ArrayList<ArrayList<Integer>>(){{
-//            add(new ArrayList<Integer>(){{add(1);}});
-//        }}, combine(1, 1));
+        assertEquals(getArray(new int[][]{{1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}}),
+            combine(4, 2));//{{1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}}
+        assertEquals(getArray(new int[][]{{1}}),
+            combine(1, 1));
     }
 
-    List<List<Integer>> ans = new ArrayList<>();
-    List<Integer> temp = new ArrayList<>();
-
     public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> ans = new ArrayList<>();
         return ans;
     }
 

@@ -7,6 +7,10 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
 
+import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.getArray;
+
 /**
     (中等)
     199. 二叉树的右视图
@@ -26,12 +30,8 @@ public class NO199_N_BinaryTreeRightSideView_x2 {
 
     @Test
     public void test() {
-        assert new ArrayList<Integer>(){{add(1);add(3);add(4);}}.toString().equals(
-            rightSideView(new TreeNode(1,
-                  new TreeNode(2,
-                          null,5), new TreeNode(3,
-                                                    null,4))).toString()
-        );
+        assert getArray(new int[]{1, 3, 4}).equals(
+            rightSideView(createFullTree(1, 2, 3, null, 5, null, 4)));
     }
 
     public List<Integer> rightSideView(TreeNode root) {
@@ -97,11 +97,11 @@ public List<Integer> rightSideView(TreeNode root) {
 
 // 方法2：
 public List<Integer> rightSideView(TreeNode root) {
-    Map<Integer, Integer> rightmostValueAtDepth = new HashMap<Integer, Integer>();
+    Map<Integer, Integer> rightmostValueAtDepth = new HashMap<>();
     int max_depth = -1;
 
-    Deque<TreeNode> nodeStack = new ArrayDeque<TreeNode>();
-    Deque<Integer> depthStack = new ArrayDeque<Integer>();
+    Deque<TreeNode> nodeStack = new ArrayDeque<>();
+    Deque<Integer> depthStack = new ArrayDeque<>();
     nodeStack.push(root);
     depthStack.push(0);
 
@@ -125,7 +125,7 @@ public List<Integer> rightSideView(TreeNode root) {
         }
     }
 
-    List<Integer> rightView = new ArrayList<Integer>();
+    List<Integer> rightView = new ArrayList<>();
     for (int depth = 0; depth <= max_depth; depth++) {
         rightView.add(rightmostValueAtDepth.get(depth));
     }

@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.leetcode.util.MathUtils.getArray;
+
 /**
     (中等)
     54. 螺旋矩阵
@@ -22,20 +24,16 @@ public class NO54_N_SpiralOrder_x2 {
 
     @Test
     public void test() {
-        assert new ArrayList<Integer>(){{
-            add(1);add(2);add(3);add(6);add(9);add(8);add(7);add(4);add(5);
-        }}.toString().equals(
+        assert getArray(new int[]{1, 2, 3, 6, 9, 8, 7, 4, 5}).toString().equals(
             spiralOrder(new int[][]{{1, 2, 3},
                                     {4, 5, 6},
                                     {7, 8, 9}}).toString());
-        assert new ArrayList<Integer>(){{
-            add(1);add(2);add(3);add(4);add(8);add(12);add(11);add(10);add(9);add(5);add(6);add(7);
-        }}.toString().equals(
+        assert getArray(new int[]{1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7}).toString().equals(
             spiralOrder(new int[][]{{1, 2, 3, 4},
                                     {5, 6, 7, 8},
                                     {9, 10, 11, 12}}).toString()
         );
-        assert new ArrayList<Integer>(){{add(3);add(2);}}.toString().equals(
+        assert getArray(new int[]{3, 2}).toString().equals(
             spiralOrder(new int[][]{{3, 2}}).toString()
         );
     }

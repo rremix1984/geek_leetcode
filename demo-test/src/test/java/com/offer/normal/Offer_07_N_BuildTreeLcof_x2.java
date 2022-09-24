@@ -5,8 +5,12 @@ package com.offer.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
+
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
-import static com.leetcode.util.LogUtil.info;
+
+import static com.leetcode.util.MathUtils.createFullTree;
 
 /**
     (中等)
@@ -24,15 +28,12 @@ public class Offer_07_N_BuildTreeLcof_x2 {
 
     @Test
     public void test() {
-        assert new TreeNode(3,
-            9, new TreeNode(20,
-                          15, 7)
-            ).toString().equals(
+        assert createFullTree(3, 9, 20, null, null, 15, 7).equals(
                 buildTree(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7}
-            ).toString());
-        assert new TreeNode(-1).toString().equals(
+            ));
+        assert createFullTree(-1).equals(
                 buildTree(new int[]{-1}, new int[]{-1}
-            ).toString());
+            ));
     }
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {

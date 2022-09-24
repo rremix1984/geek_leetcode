@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.leetcode.util.MathUtils.getArray;
+
 /**
     (中等)
     22. 括号生成
@@ -23,10 +25,9 @@ public class NO22_N_GenerateParentheses_x2 {
 
     @Test
     public void test() {
-        assert new ArrayList<String>(){{add("((()))");add("(()())");add("(())()");
-                                        add("()(())");add("()()()");}}.equals(
+        assert getArray(new String[]{"((()))", "(()())", "(())()", "()(())", "()()()"}).equals(
                 generateParenthesis(3));
-        assert new ArrayList<String>(){{add("()");}}.equals(
+        assert getArray(new String[]{"()"}).equals(
                 generateParenthesis(1));
     }
 

@@ -7,7 +7,7 @@ package com.leetcode.util;
 @SuppressWarnings("all")
 public class TreeNode {
 
-    public int val;
+    public Integer val;
 
     public TreeNode left;
 
@@ -67,5 +67,22 @@ public class TreeNode {
             sb.append(" -> " + tn.val);
         }
         return sb.toString();
+    }
+
+    public boolean equals(TreeNode node) {
+        if (node == null)
+            return false;
+
+        return equalsSub(node, this);
+    }
+
+    private boolean equalsSub(TreeNode left, TreeNode right) {
+        if (left == null && right == null)
+            return true;
+
+        if (left == null || right == null || left.val != right.val)
+            return false;
+
+        return equalsSub(left.left, right.left) && equalsSub(left.right, right.right);
     }
 }

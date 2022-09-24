@@ -6,6 +6,11 @@ package com.offer.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (简单)
     剑指 Offer 28. 对称的二叉树
@@ -34,20 +39,11 @@ public class Offer28_E_IsSymmetric_x2 {
     @Test
     public void test() {
         assert isSymmetric(null);
-        assert isSymmetric(new TreeNode(1,
-                new TreeNode(2,
-                        3,4), new TreeNode(2,
-                                                4,3)));
-        assert !isSymmetric(new TreeNode(1,
-                new TreeNode(2,
-                    null,3), new TreeNode(2,
-                                            null,3)));
+        assert isSymmetric(createFullTree(1, 2, 2, 3, 4, 4, 3));
+        assert !isSymmetric(createFullTree(1, 2, 2, null, 3, null, 3));
     }
 
     public boolean isSymmetric(TreeNode root) {
-        if (root == null)
-            return true;
-
         return true;
     }
 

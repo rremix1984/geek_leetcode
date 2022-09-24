@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.leetcode.util.MathUtils.getArray;
+
 /**
     (简单)
     面试题 08.06. 汉诺塔问题
@@ -28,12 +30,12 @@ public class Interval_08_06_E_HanotaLcci_x2 {
     @Test
     public void test() {
         ArrayList<Integer> c = new ArrayList<>();
-        hanota(new ArrayList<Integer>(){{add(2);add(1);add(0);}}, new ArrayList<Integer>(){{}}, c);
-        assert c.toString().equals(new ArrayList<Integer>(){{add(2);add(1);add(0);}}.toString());
+        hanota(getArray(new int[]{2, 1, 0}), getArray(new int[]{}), c);
+        assert c.toString().equals(getArray(new int[]{2, 1, 0}).toString());
 
         ArrayList<Integer> c2 = new ArrayList<>();
-        hanota(new ArrayList<Integer>(){{add(5);add(4);add(3);add(2);add(1);add(0);}}, new ArrayList<Integer>(){{}}, c2);
-        assert c2.toString().equals(new ArrayList<Integer>(){{add(5);add(4);add(3);add(2);add(1);add(0);}}.toString());
+        hanota(getArray(new int[]{5, 4, 3, 2, 1, 0}), getArray(new int[]{}), c2);
+        assert c2.toString().equals(getArray(new int[]{5, 4, 3, 2, 1, 0}).toString());
     }
 
     public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {

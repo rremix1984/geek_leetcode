@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (简单)
     剑指 Offer 54. 二叉搜索树的第k大节点
@@ -37,35 +39,13 @@ public class Offer54_E_KthLargest_x2 {
 
     @Test
     public void test() {
-        assert 4 == kthLargest(new TreeNode(3,
-                new TreeNode(1,
-                    null,2),        4), 1);
-        assert 4 == kthLargest(new TreeNode(5,
-                new TreeNode(3,
-            new TreeNode(2,
-                    1),     4), new TreeNode(6)),3);
-        assert 2 == kthLargest(new TreeNode(3,
-                new TreeNode(1,
-                        null,2),        4), 3);
+        assert 4 == kthLargest(createFullTree(3, 1, 4, null, 2), 1);
+        assert 4 == kthLargest(createFullTree(5, 3, 6, 2, 4, null, null, 1), 3);
+        assert 2 == kthLargest(createFullTree(3, 1, 4, null, 2), 3);
     }
 
     public int kthLargest(TreeNode root, int k) {
-        List<Integer> queue = new ArrayList<>();
-        inorder(root, queue, k);
-        return queue.get(queue.size() - k);
-    }
-
-    private void inorder(TreeNode root, List<Integer> queue, int k) {
-        if (root == null)
-            return;
-
-        if (root.left != null)
-            inorder(root.left,queue,k);
-
-        queue.add(root.val);
-
-        if (root.right != null)
-            inorder(root.right,queue,k);
+        return -1;
     }
 }
 

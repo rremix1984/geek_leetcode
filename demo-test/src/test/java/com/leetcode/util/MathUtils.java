@@ -3,6 +3,8 @@ package com.leetcode.util;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static java.lang.Integer.MIN_VALUE;
@@ -156,6 +158,34 @@ public class MathUtils {
             inner.add(arr[j]);
         }
         return inner;
+    }
+
+    public static ArrayList<String> getArray(String[] arr) {
+        ArrayList<String> inner = new ArrayList<>();
+        for (int j = 0; j < arr.length; j++) {
+            inner.add(arr[j]);
+        }
+        return inner;
+    }
+
+    public static TreeNode createFullTree(Integer... args) {
+        int rootIndex = 0;
+        List<Integer> arr = Arrays.asList(args);
+        return createFullTree(rootIndex, arr);
+    }
+
+    public static TreeNode createFullTree(int rootIndex, List<Integer> values) {
+        if (rootIndex >= values.size())
+            return null;
+
+        if (values.get(rootIndex) != null) {
+            TreeNode rootNode = new TreeNode();
+            rootNode.val = values.get(rootIndex);
+            rootNode.left = createFullTree(2 * rootIndex + 1, values);
+            rootNode.right = createFullTree(2 * rootIndex + 2, values);
+            return rootNode;
+        }
+        return null;
     }
 
     public static void main(String[] args) {

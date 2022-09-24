@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (中等)
     230. 二叉搜索树中第K小的元素
@@ -23,35 +25,12 @@ public class NO230_N_KthSmallestElementInABst_x2 {
 
     @Test
     public void test() {
-        assert 1 == kthSmallest(new TreeNode(3,
-                new TreeNode(1,
-                    null,2),            4), 1);
-        assert 3 == kthSmallest(new TreeNode(5,
-                new TreeNode(3,
-            new TreeNode(2,
-                    1),      4), new TreeNode(6)), 3);
+        assert 1 == kthSmallest(createFullTree(3, 1, 4, null, 2), 1);
+        assert 3 == kthSmallest(createFullTree(5, 3, 6, 2, 4, null, null, 1), 3);
     }
 
     public int kthSmallest(TreeNode root, int k) {
-        Deque<Integer> list = new LinkedList<>();
-        inorder(root, list, k);
-        return list.getLast();
-    }
-
-    private void inorder(TreeNode root, Deque<Integer> list, int k) {
-        if (root == null)
-            return;
-
-        if (root.left != null)
-            inorder(root.left, list, k);
-
-        if (list.size() < k)
-            list.add(root.val);
-        else
-            return;
-
-        if (root.right != null)
-            inorder(root.right, list, k);
+        return -1;
     }
 
 }

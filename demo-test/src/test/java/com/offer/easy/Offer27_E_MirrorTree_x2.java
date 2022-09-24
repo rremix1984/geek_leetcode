@@ -5,6 +5,12 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
+import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
 
 /**
     (简单)
@@ -30,27 +36,19 @@ public class Offer27_E_MirrorTree_x2 {
 
     @Test
     public void test() {
-        TreeNode tmp = new TreeNode(4,
-                new TreeNode(2,
-                        1, 3), new TreeNode(7,
-                6, 9));
-        assert mirrorTree(tmp).toString().equals(new TreeNode(4,
-                new TreeNode(7,
-                        9, 6), new TreeNode(2,
-                3, 1)).toString());
-        TreeNode tmp2 = new TreeNode(2,
-                new TreeNode(1,
-                        3));
-        assert mirrorTree(tmp2).toString().equals(
-                new TreeNode(2,
-                        null, new TreeNode(1,
-                        null,3)).toString()
-        );
+        TreeNode source = createFullTree(4, 2, 7, 1, 3, 6, 9);
+        TreeNode target = createFullTree(4, 7, 2, 9, 6, 3, 1);
+        assert mirrorTree(source).equals(target);
+
+        TreeNode source2 = createFullTree(2, 1, null, 3);
+        TreeNode target2 = createFullTree(2, null, 1, null, null, null, 3);
+        assert mirrorTree(source2).equals(target2);
     }
 
     public TreeNode mirrorTree(TreeNode root) {
         if (root == null)
             return null;
+
         return root;
     }
 
@@ -92,9 +90,8 @@ public TreeNode mirrorTree(TreeNode root) {
     if (root == null)
         return null;
 
-    Stack<TreeNode> stack = new Stack<TreeNode>(){{
-        add(root);
-    }};
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
 
     while(!stack.isEmpty()) {
         TreeNode node = stack.pop();

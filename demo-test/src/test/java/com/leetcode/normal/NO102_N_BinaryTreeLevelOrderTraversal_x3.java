@@ -7,6 +7,8 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -29,32 +31,19 @@ public class NO102_N_BinaryTreeLevelOrderTraversal_x3 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList<ArrayList<Integer>>(){{add(new ArrayList<Integer>(){{add(1);}});
-                                      add(new ArrayList<Integer>(){{add(2);add(3);}});
-                                      add(new ArrayList<Integer>(){{add(4);add(5);}});}},
-                levelOrder(new TreeNode(1,
-                    new TreeNode(2,
-                        4),     new TreeNode(3,
-                                          null,5))));// [[1], [2, 3], [4, 5]]
-        assertEquals(new ArrayList<ArrayList<Integer>>(){{add(new ArrayList<Integer>(){{add(3);}});
-                                      add(new ArrayList<Integer>(){{add(9);add(20);}});
-                                      add(new ArrayList<Integer>(){{add(15);add(7);}});}},
-                levelOrder(new TreeNode(3,
-                        9, new TreeNode(20,
-                                        15, 7))));// [[3], [9, 20], [15, 7]]
-        assertEquals(new ArrayList<ArrayList<Integer>>(){{add(new ArrayList<Integer>(){{add(1);}});}},
-                levelOrder(new TreeNode(1)));// [1]
-        assertEquals(new ArrayList<ArrayList<Integer>>(){{add(new ArrayList<Integer>(){{add(0);}});}},
-                levelOrder(new TreeNode()));// []
+        assertEquals(getArray(new int[][]{{1}, {2, 3}, {4, 5}}),
+                levelOrder(createFullTree(1, 2, 3, 4, null, null, 5)));
+        assertEquals(getArray(new int[][]{{3}, {9, 20}, {15, 7}}),
+                levelOrder(createFullTree(3, 9, 20, null, null, 15, 7)));
+        assertEquals(getArray(new int[][]{{1}}),
+                levelOrder(createFullTree(1)));// [1]
+//        assertEquals(getArray(new int[][]{{0}}),
+//                levelOrder(new TreeNode()));// []
     }
 
     // 方法2：递归法
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
-        if (root == null)
-            return res;
-
-
         return res;
     }
 

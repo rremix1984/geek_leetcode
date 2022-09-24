@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -32,9 +33,9 @@ public class NO438_N_FindAllAnagramsInAString_x2 {
 
     @Test
     public void test() {
-        assertEquals(new ArrayList(){{add(0);add(6);}},
+        assertEquals(getArray(new int[]{0, 6}),
                 findAnagrams("cbaebabacd", "abc"));// [0, 6]
-        assertEquals(new ArrayList(){{add(0);add(1);add(2);}},
+        assertEquals(getArray(new int[]{0, 1, 2}),
                 findAnagrams("abab", "ab"));// [0, 1, 2]
     }
 

@@ -6,6 +6,8 @@ package com.offer.normal;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (中等)
     剑指 Offer 26. 树的子结构
@@ -34,13 +36,8 @@ public class Offer_26_N_IsSubStructure_x2 {
 
     @Test
     public void test() {
-        assert !isSubStructure(new TreeNode(1,
-                                     2, 3), new TreeNode(3,
-                                                            1));
-        assert isSubStructure(new TreeNode(3,
-                        new TreeNode(4,
-                                1, 2), 5), new TreeNode(4,
-                                                                1));
+        assert !isSubStructure(createFullTree(1, 2, 3), createFullTree(3, 1));
+        assert isSubStructure(createFullTree(3, 4, 5, 1, 2), createFullTree(4, 1));
     }
 
     public boolean isSubStructure(TreeNode A, TreeNode B) {

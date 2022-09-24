@@ -6,6 +6,8 @@ package com.leetcode;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (中等)
     450. 删除二叉搜索树中的节点
@@ -31,47 +33,14 @@ public class NO450_N_DeleteNodeInABst {
 
     @Test
     public void test() {
-        assert new TreeNode(5,new TreeNode(4, 2,null), new TreeNode(6,null,7 )).toString().equals(
-            deleteNode(new TreeNode(5,
-                    new TreeNode(3,
-                            2, 4),new TreeNode(6,
-                                                null, 7)),3).toString());
-        assert new TreeNode(5,new TreeNode(3, 2,4), new TreeNode(6,null,7 )).toString().equals(
-            deleteNode(new TreeNode(5,
-                    new TreeNode(3,
-                            2, 4),new TreeNode(6,
-                                                null, 7)),0).toString());
+        assert createFullTree(5, 4, 6, 2, null, null, 7).equals(
+            deleteNode(createFullTree(5, 3, 6, 2, 4, null, 7), 3));
+        assert createFullTree(5, 3, 6, 2, 4, null, 7).equals(
+            deleteNode(createFullTree(5, 3, 6, 2, 4, null, 7),0));
     }
 
-    // 方法2：递归法
     public TreeNode deleteNode(TreeNode root, int key) {
-        if (root == null)
-            return null;
-
-        // 如果根节点等于 key 值
-        if (root.val == key) {
-            if (root.left == null)
-                return root.right;
-
-            if (root.right == null)
-                return root.left;
-
-            TreeNode t = root.right;
-            while (t.left != null)
-                t = t.left;
-
-            t.left = root.left;
-            return root.right;
-        // 根节点小于 key 值
-        } else if (root.val < key) {
-            // 递归右子树
-            root.right = deleteNode(root.right, key);
-        // 根节点大于 key 值
-        } else {
-            // 递归左子树
-            root.left = deleteNode(root.left, key);
-        }
-        return root;
+        return null;
     }
 
 }

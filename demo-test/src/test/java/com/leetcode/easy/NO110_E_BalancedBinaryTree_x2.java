@@ -5,7 +5,10 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
+
+import static com.leetcode.util.MathUtils.createFullTree;
 import static java.lang.Math.abs;
+import static java.lang.Math.max;
 
 /**
     (简单)
@@ -27,21 +30,13 @@ public class NO110_E_BalancedBinaryTree_x2 {
 
     @Test
     public void test() {
-        assert isBalanced(new TreeNode(3,
-                new TreeNode(9,
-                    null, null), new TreeNode(20,
-                                                15, 7)));
-        assert !isBalanced(new TreeNode(1,
-                new TreeNode(2,
-            new TreeNode(3,
-                    4, 4), 3), new TreeNode(2)));
+        assert isBalanced(createFullTree(3, 9, 20, null, null, 15, 7));
+        assert !isBalanced(createFullTree(1, 2, 2, 3, 3, null, null, 4, 4));
         assert isBalanced(new TreeNode());
     }
 
     public boolean isBalanced(TreeNode root) {
-        if (root == null)
-            return true;
-        return false;
+        return true;
     }
 
 }

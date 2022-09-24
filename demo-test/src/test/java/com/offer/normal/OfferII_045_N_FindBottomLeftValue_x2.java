@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 
+import static com.leetcode.util.MathUtils.createFullTree;
+
 /**
     (中等)
     剑指 Offer II 045. 二叉树最底层最左边的值
@@ -25,29 +27,12 @@ public class OfferII_045_N_FindBottomLeftValue_x2 {
 
     @Test
     public void test() {
-        assert 1 == findBottomLeftValue(new TreeNode(2,1,3));
-        assert 7 == findBottomLeftValue(
-                new TreeNode(1,
-            new TreeNode(2,
-        new TreeNode(4,null)),new TreeNode(3,
-                                new TreeNode(5,
-                                        7),     6)));
+        assert 1 == findBottomLeftValue(createFullTree(2, 1, 3));
+        assert 7 == findBottomLeftValue(createFullTree(1, 2, 3, 4, null, 5, 6, null, null, null, null, 7));
     }
 
     public int findBottomLeftValue(TreeNode root) {
         int ret = 0;
-        Deque<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (node.right != null)
-                queue.offer(node.right);
-
-            if (node.left != null)
-                queue.offer(node.left);
-
-            ret = node.val;
-        }
         return ret;
     }
 
