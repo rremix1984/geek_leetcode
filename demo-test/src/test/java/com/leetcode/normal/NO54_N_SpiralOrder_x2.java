@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
         输入：matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
         输出：[1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
 */
-public class NO54_N_SpiralOrder {
+public class NO54_N_SpiralOrder_x2 {
 
     @Test
     public void test() {
