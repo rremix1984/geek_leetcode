@@ -1,16 +1,11 @@
 /**
  * copyright 2022/1/19
  */
-package com.offer;
+package com.offer.easy;
 
 import org.junit.Test;
-
-import java.sql.Array;
-import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
-
 import static com.leetcode.util.LogUtil.info;
 import static java.lang.String.join;
 import static org.junit.Assert.assertEquals;
@@ -31,7 +26,7 @@ import static org.junit.Assert.assertEquals;
         输出: "example good a"
         解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
 */
-public class Offer58_I_E_ReverseWords {
+public class Offer58_I_E_ReverseWords_x2 {
 
     @Test
     public void test() {
@@ -41,7 +36,8 @@ public class Offer58_I_E_ReverseWords {
     }
 
     public String reverseWords(String s) {
-        return null;
+        Deque<String> queue = new LinkedList<>();
+        return String.join(" ", queue);
     }
 
 }
