@@ -4,6 +4,8 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+
+import static com.leetcode.util.MathUtils.reverse;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -25,15 +27,15 @@ public class NO415_E_AddStrings_x2 {
 
     @Test
     public void test() {
-        assertEquals("134", addStrings("11","123"));
-        assertEquals("533",addStrings("456","77"));
-        assertEquals("0", addStrings("0","0"));
-        assertEquals("1998", addStrings("999","999"));
+        assertEquals("134", addStrings("11", "123"));
+        assertEquals("533",addStrings("456", "77"));
+        assertEquals("0", addStrings("0", "0"));
+        assertEquals("1998", addStrings("999", "999"));
     }
 
     public String addStrings(String num1, String num2) {
         StringBuilder sb = new StringBuilder();
-        return sb.reverse().toString();
+        return reverse(sb);
     }
 
 }

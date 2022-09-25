@@ -25,21 +25,21 @@ public class NO94_E_InorderTraversal_x6 {
 
     @Test
     public void test() {
-//        assertEquals(getArray(new int[]{1, 3, 2}),
+//        assertEquals(getArray(1, 3, 2),
 //                inorderTraversal(createFullTree(1, null, 2, null, null, 3)));
-        assertEquals(getArray(new int[]{3, 9, 12, 11, 10}),
+        assertEquals(getArray(3, 9, 12, 11, 10),
                 inorderTraversal(new TreeNode(3,
                             null, new TreeNode(9,
                                     null, new TreeNode(10,
                                         new TreeNode(11,
                                 new TreeNode(12)))))));// [3, 9, 12, 11, 10]
-//        assertEquals(getArray(new int[]{9, 3, 15, 20, 7}),
+//        assertEquals(getArray(9, 3, 15, 20, 7),
 //                inorderTraversal(new TreeNode(3,
 //                            9, new TreeNode(20,
 //                                        15, 7))));// [9, 3, 15, 20, 7]
-//        assertEquals(getArray(new int[]{0}),
+//        assertEquals(getArray(0),
 //                inorderTraversal(new TreeNode()));// []
-//        assertEquals(getArray(new int[]{1}),
+//        assertEquals(getArray(1),
 //                inorderTraversal(new TreeNode(1)));// [1]
     }
 

@@ -23,8 +23,8 @@ public class NO589_E_NaryPreorderTraversal_x2 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[]{1, 3, 5, 6, 2, 4}),
-                preorder(new Node(1,
+        assertEquals(getArray(1, 3, 5, 6, 2, 4),
+            preorder(new Node(1,
                 new Node(3,
         new Node(5), new Node(6)), new Node(2), new Node(4))));
     }

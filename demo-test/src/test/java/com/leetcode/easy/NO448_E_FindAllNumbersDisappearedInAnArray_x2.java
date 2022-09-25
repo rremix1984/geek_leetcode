@@ -27,8 +27,8 @@ public class NO448_E_FindAllNumbersDisappearedInAnArray_x2 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[]{5, 6}), findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));// [5, 6]
-        assertEquals(getArray(new int[]{2}), findDisappearedNumbers(new int[]{1, 1}));// [2]
+        assertEquals(getArray(5, 6), findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));// [5, 6]
+        assertEquals(getArray(2), findDisappearedNumbers(new int[]{1, 1}));// [2]
     }
 
     public List<Integer> findDisappearedNumbers(int[] nums) {

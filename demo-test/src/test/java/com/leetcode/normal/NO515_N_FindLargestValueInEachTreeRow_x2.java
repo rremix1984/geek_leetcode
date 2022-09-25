@@ -31,9 +31,9 @@ public class NO515_N_FindLargestValueInEachTreeRow_x2 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[]{1, 3, 9}),
+        assertEquals(getArray(1, 3, 9),
                 largestValues(createFullTree(1, 3, 2, 5, 3, null, 9)));
-        assertEquals(getArray(new int[]{1, 3}),
+        assertEquals(getArray(1, 3),
                 largestValues(createFullTree(1, 2, 3)));// [1, 3]
     }
 

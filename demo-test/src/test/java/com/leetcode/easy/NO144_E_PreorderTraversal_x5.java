@@ -38,12 +38,12 @@ public class NO144_E_PreorderTraversal_x5 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[]{1, 2, 3}),
+        assertEquals(getArray(1, 2, 3),
             preorderTraversal(createFullTree(1, null, 2, null, null, 3)));
-        assertEquals(getArray(new int[]{}), preorderTraversal(createFullTree()));// []
-        assertEquals(getArray(new int[]{1}), preorderTraversal(createFullTree(1)));// [1]
-        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(createFullTree(1, 2, null)));// [1, 2]
-        assertEquals(getArray(new int[]{1, 2}), preorderTraversal(createFullTree(1, null, 2)));// [1, 2]
+        assertEquals(getArray(), preorderTraversal(createFullTree()));// []
+        assertEquals(getArray(1), preorderTraversal(createFullTree(1)));// [1]
+        assertEquals(getArray(1, 2), preorderTraversal(createFullTree(1, 2, null)));// [1, 2]
+        assertEquals(getArray(1, 2), preorderTraversal(createFullTree(1, null, 2)));// [1, 2]
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {

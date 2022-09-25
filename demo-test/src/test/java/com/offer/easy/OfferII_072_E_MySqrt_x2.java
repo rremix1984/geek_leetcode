@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.offer;
+package com.offer.easy;
 
 import org.junit.Test;
 
@@ -19,7 +19,7 @@ import org.junit.Test;
         输出: 2
         解释: 8 的平方根是 2.82842...，由于小数部分将被舍去，所以返回 2
 */
-public class OfferII_072_E_MySqrt {
+public class OfferII_072_E_MySqrt_x2 {
 
     @Test
     public void test() {
@@ -28,8 +28,8 @@ public class OfferII_072_E_MySqrt {
     }
 
     public int mySqrt(int x) {
-        int ans = -1;
-        return ans;
+        long r = -1;
+        return (int) r;
     }
 
 }
@@ -67,5 +67,16 @@ public int mySqrt(int x) {
         }
     }
     return ans;
+}
+
+
+// 方法2：牛顿迭代法
+public int mySqrt(int x) {
+    // 这里必须是long，否则越界
+    long r = x;
+    while (r * r > x)
+        r = (r + x / r) / 2;
+
+    return (int) r;
 }
 */

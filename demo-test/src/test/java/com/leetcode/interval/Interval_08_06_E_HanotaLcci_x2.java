@@ -30,16 +30,16 @@ public class Interval_08_06_E_HanotaLcci_x2 {
     @Test
     public void test() {
         ArrayList<Integer> c = new ArrayList<>();
-        hanota(getArray(new int[]{2, 1, 0}), getArray(new int[]{}), c);
-        assert c.toString().equals(getArray(new int[]{2, 1, 0}).toString());
+        hanota(getArray(2, 1, 0), getArray(), c);
+        assert c.equals(getArray(2, 1, 0));
 
         ArrayList<Integer> c2 = new ArrayList<>();
-        hanota(getArray(new int[]{5, 4, 3, 2, 1, 0}), getArray(new int[]{}), c2);
-        assert c2.toString().equals(getArray(new int[]{5, 4, 3, 2, 1, 0}).toString());
+        hanota(getArray(5, 4, 3, 2, 1, 0), getArray(), c2);
+        assert c2.equals(getArray(5, 4, 3, 2, 1, 0));
     }
 
     public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {
-
+        
     }
 
 }

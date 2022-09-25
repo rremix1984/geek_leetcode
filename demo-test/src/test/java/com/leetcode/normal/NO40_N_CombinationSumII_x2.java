@@ -31,12 +31,10 @@ public class NO40_N_CombinationSumII_x2 {
 
     @Test
     public void test() {
-        assert getArray(new int[][]{{1, 1, 6}, {1, 2, 5}, {1, 7}, {2, 6}}).toString().equals(
-                combinationSum2(new int[]{10, 1, 2, 7, 6, 1, 5}, 8).toString()
-        );
-        assert getArray(new int[][]{{1, 2, 2}, {5}}).toString().equals(
-                combinationSum2(new int[]{2, 5, 2, 1, 2}, 5).toString()
-        );
+        assert getArray(new int[]{1, 1, 6}, new int[]{1, 2, 5}, new int[]{1, 7}, new int[]{2, 6}).equals(
+                combinationSum2(new int[]{10, 1, 2, 7, 6, 1, 5}, 8));
+        assert getArray(new int[]{1, 2, 2}, new int[]{5}).equals(
+                combinationSum2(new int[]{2, 5, 2, 1, 2}, 5));
     }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {

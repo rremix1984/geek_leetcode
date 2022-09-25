@@ -37,15 +37,14 @@ public class OfferII_007_N_ThreeSum_x2 {
     @Test
     public void test() {
         assert getArray(new int[][]{{-1, -1, 2}, {-1, 0, 1}})
-            .toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
-        assert getArray(new int[]{})
-          .toString().equals(threeSum(new int[]{0, 1, 1}).toString());
+            .equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        assert threeSum(new int[]{0, 1, 1}).isEmpty();
         assert getArray(new int[][]{{0, 0, 0}})
-            .toString().equals(threeSum(new int[]{0, 0, 0}).toString());
+            .equals(threeSum(new int[]{0, 0, 0}));
         assert getArray(new int[][]{{-1, -1, 2}, {-1, 0, 1}})
-            .toString().equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}).toString());
+            .equals(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
         assert getArray(new int[][]{{0, 0, 0}})
-            .toString().equals(threeSum(new int[]{0, 0, 0, 0}).toString());
+            .equals(threeSum(new int[]{0, 0, 0, 0}));
     }
 
     public List<List<Integer>> threeSum(int[] nums) {

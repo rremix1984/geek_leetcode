@@ -140,6 +140,14 @@ public class MathUtils {
         return result.toString();
     }
 
+    public static List<Integer> getArray() {
+        return new ArrayList<>();
+    }
+
+    public static String reverse(StringBuilder sb) {
+        return sb.reverse().toString();
+    }
+
     public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         for (int[] ints : arr) {
@@ -153,7 +161,7 @@ public class MathUtils {
         return res;
     }
 
-    public static ArrayList<Integer> getArray(int[] arr) {
+    public static ArrayList<Integer> getArray(int... arr) {
         ArrayList<Integer> inner = new ArrayList<>();
         for (int j = 0; j < arr.length; j++) {
             inner.add(arr[j]);

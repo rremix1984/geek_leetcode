@@ -32,13 +32,13 @@ public class NO145_E_PostorderTraversal_x4 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[]{3, 2, 1}),
+        assertEquals(getArray(3, 2, 1),
             postorderTraversal(createFullTree(1, null, 2, null, null, 3)));
-        assertEquals(getArray(new int[]{1, 2, 3}),
+        assertEquals(getArray(1, 2, 3),
                 postorderTraversal(createFullTree(3, 1, 2)));
-        assertEquals(getArray(new int[]{0}),
+        assertEquals(getArray(0),
                 postorderTraversal(createFullTree(0)));
-        assertEquals(getArray(new int[]{1}),
+        assertEquals(getArray(1),
                 postorderTraversal(createFullTree(1)));
     }
 
@@ -47,6 +47,7 @@ public class NO145_E_PostorderTraversal_x4 {
     public List<Integer> postorderTraversal(TreeNode root) {
         return res;
     }
+
 }
 
 

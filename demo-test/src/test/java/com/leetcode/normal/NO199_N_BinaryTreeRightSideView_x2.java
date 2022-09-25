@@ -30,7 +30,7 @@ public class NO199_N_BinaryTreeRightSideView_x2 {
 
     @Test
     public void test() {
-        assert getArray(new int[]{1, 3, 4}).equals(
+        assert getArray(1, 3, 4).equals(
             rightSideView(createFullTree(1, 2, 3, null, 5, null, 4)));
     }
 

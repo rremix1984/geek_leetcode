@@ -31,7 +31,7 @@ public class NO17_N_LetterCombinationsOfAPhoneNumber_x2 {
     public void test() {
 //        info(letterCombinations("23")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 //        info(letterCombinations("1234")); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-        assert new ArrayList<>().toString().equals(letterCombinations("").toString());// []
+        assert letterCombinations("").isEmpty();// []
     }
 
     String[] map = { " ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };

@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getListNodes;
-import static com.leetcode.util.MathUtils.mergeTwoLists;
 
 /**
     (困难)
@@ -30,7 +29,7 @@ import static com.leetcode.util.MathUtils.mergeTwoLists;
         输入：lists = [[]]
         输出：[]
 */
-public class OfferII_078_H_MergeKLists {
+public class OfferII_078_H_MergeKLists_x2 {
 
     @Test
     public void test() {

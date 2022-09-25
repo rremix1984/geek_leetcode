@@ -24,18 +24,15 @@ public class NO54_N_SpiralOrder_x2 {
 
     @Test
     public void test() {
-        assert getArray(new int[]{1, 2, 3, 6, 9, 8, 7, 4, 5}).toString().equals(
+        assert getArray(1, 2, 3, 6, 9, 8, 7, 4, 5).equals(
             spiralOrder(new int[][]{{1, 2, 3},
                                     {4, 5, 6},
-                                    {7, 8, 9}}).toString());
-        assert getArray(new int[]{1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7}).toString().equals(
+                                    {7, 8, 9}}));
+        assert getArray(1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7).equals(
             spiralOrder(new int[][]{{1, 2, 3, 4},
                                     {5, 6, 7, 8},
-                                    {9, 10, 11, 12}}).toString()
-        );
-        assert getArray(new int[]{3, 2}).toString().equals(
-            spiralOrder(new int[][]{{3, 2}}).toString()
-        );
+                                    {9, 10, 11, 12}}));
+        assert getArray(3, 2).equals(spiralOrder(new int[][]{{3, 2}}));
     }
 
     public List<Integer> spiralOrder(int[][] matrix) {

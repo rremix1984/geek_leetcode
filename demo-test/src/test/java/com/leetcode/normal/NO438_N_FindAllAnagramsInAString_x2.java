@@ -33,9 +33,9 @@ public class NO438_N_FindAllAnagramsInAString_x2 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[]{0, 6}),
+        assertEquals(getArray(0, 6),
                 findAnagrams("cbaebabacd", "abc"));// [0, 6]
-        assertEquals(getArray(new int[]{0, 1, 2}),
+        assertEquals(getArray(0, 1, 2),
                 findAnagrams("abab", "ab"));// [0, 1, 2]
     }
 
