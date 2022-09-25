@@ -5,6 +5,8 @@ package com.offer.easy;
 
 import org.junit.Test;
 import java.util.stream.IntStream;
+
+import static java.util.stream.IntStream.range;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -19,11 +21,11 @@ public class Offer17_E_PrintNumbers_x2 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, printNumbers(1));
-        assertArrayEquals(IntStream.range(1,100).toArray(), printNumbers(2));
-        assertArrayEquals(IntStream.range(1,1000).toArray(), printNumbers(3));
-        assertArrayEquals(IntStream.range(1,10000).toArray(), printNumbers(4));
-        assertArrayEquals(IntStream.range(1,100000).toArray(), printNumbers(5));
+        assertArrayEquals(range(1,10).toArray(), printNumbers(1));
+        assertArrayEquals(range(1,100).toArray(), printNumbers(2));
+        assertArrayEquals(range(1,1000).toArray(), printNumbers(3));
+        assertArrayEquals(range(1,10000).toArray(), printNumbers(4));
+        assertArrayEquals(range(1,100000).toArray(), printNumbers(5));
     }
 
     public int[] printNumbers(int n) {

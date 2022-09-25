@@ -4,7 +4,11 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
+
+import java.util.stream.IntStream;
+
 import static com.leetcode.util.LogUtil.info;
+import static java.util.stream.IntStream.range;
 
 /**
     （中等）
@@ -39,7 +43,7 @@ public class NO122_N_BestTimeToBuyAndSellStockII_x2 {
     @Test
     public void test() {
         assert 7 == maxProfit(new int[]{7, 1, 5, 3, 6, 4});
-        assert 4 == maxProfit(new int[]{1, 2, 3, 4, 5});
+        assert 4 == maxProfit(range(1, 6).toArray());
         assert 0 == maxProfit(new int[]{7, 6, 4, 3, 1});
     }
 

@@ -6,6 +6,7 @@ package com.leetcode.hard;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
+import static java.util.stream.IntStream.range;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -50,47 +51,13 @@ public class NO410_H_SplitArrayLargestSum_x2 {
     @Test
     public void test() {
         assertEquals(18, splitArray(new int[]{7, 2, 5, 10, 8}, 2));// 18
-        assertEquals(9, splitArray(new int[]{1, 2, 3, 4, 5},2));// 9
+        assertEquals(9, splitArray(range(1, 6).toArray(),2));// 9
     }
 
     public int splitArray(int[] nums, int m) {
-        // 1. 确定两个指针 left = 最大值，right = 数组和
         int left = 0;
-        int right = 0;
-        for (int n : nums) {
-            if (n >= left)
-                left = n;
-            right += n;
-        }
-
-        // 2. 开始循环
-        while (left < right) {
-            // 3. 中间值
-            int mid = left + (right - left) / 2;
-            // 3.1 能找到，说明mid还大，还有潜力，往左边找更小的
-            if (check(nums, mid, m))
-                right = mid;
-            // 3.2 没找到，没潜力，说明值太小了，右面有更大的
-            else
-                left = mid + 1;
-        }
         return left;
     }
-
-    private boolean check(int[] nums, int mid, int m) {
-        int cnt = 1;
-        int sum = 0;
-        for (int num : nums) {
-            if (sum + num > mid) {
-                sum = num;
-                cnt++;
-            } else {
-                sum += num;
-            }
-        }
-        return cnt <= m;
-    }
-
 
 }
 

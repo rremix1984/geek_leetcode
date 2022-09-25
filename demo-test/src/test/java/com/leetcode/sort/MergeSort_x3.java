@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import static com.leetcode.sort.BaseTest.generateRandomArray;
 import static com.leetcode.util.LogUtil.info;
+import static java.util.stream.IntStream.range;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -24,7 +25,7 @@ public class MergeSort_x3 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
+        assertArrayEquals(range(1, 7).toArray(),
                 mergeSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
         assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
                 mergeSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));
