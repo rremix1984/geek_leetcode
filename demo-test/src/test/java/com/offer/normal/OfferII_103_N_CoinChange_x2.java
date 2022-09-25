@@ -4,7 +4,9 @@
 package com.offer.normal;
 
 import org.junit.Test;
+import java.util.Arrays;
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Math.min;
 
 /**
@@ -36,6 +38,7 @@ public class OfferII_103_N_CoinChange_x2 {
     public void test() {
         assert  3 == coinChange(new int[]{1, 2, 5}, 11);
         assert -1 == coinChange(new int[]{2}, 3);
+        assert  2 == coinChange(new int[]{2}, 4);
         assert  0 == coinChange(new int[]{1}, 0);
         assert  1 == coinChange(new int[]{1}, 1);
         assert  2 == coinChange(new int[]{1}, 2);
@@ -63,25 +66,6 @@ public class OfferII_103_N_CoinChange_x2 {
 
 
 /**
-// 方法1：动态规划 dp
-public int coinChange(int[] coins, int amount) {
-    int[] dp = new int[amount + 1];
-
-    Arrays.fill(dp, MAX_VALUE);
-    dp[0] = 0;
-
-    for (int i = 1; i <= amount; i++)
-        for (int num : coins) {
-            if (num <= i)
-                dp[i] = min(dp[i], dp[i - num] + 1);
-
-            if (dp[i] > amount)
-                return -1;
-        }
-    return dp[amount];
-}
-
-
 // 方法2：递归
 public int coinChange(int[] coins, int amount) {
     if (amount < 1)
@@ -105,5 +89,21 @@ private int coinChange(int[] coins, int rem, int[] count) {
 
     count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
     return count[rem - 1];
+}
+
+
+// 方法1：动态规划 dp
+public int coinChange(int[] coins, int amount) {
+    int[] dp = new int[amount + 1];
+
+    Arrays.fill(dp, amount + 1);
+    dp[0] = 0;
+
+    for (int i = 1; i <= amount; i++)
+        for (int num : coins)
+            if (num <= i)
+                dp[i] = min(dp[i], dp[i - num] + 1);
+
+    return dp[amount] > amount ? -1 : dp[amount];
 }
 */
