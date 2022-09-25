@@ -41,7 +41,7 @@ public class Offer66_N_ConstructArr {
         int res = 1;
         for (int i = a.length - 1; i >= 0; i--) {
             // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 res
-            ans[i] = ans[i] * res;
+            ans[i] *= res;
 
             // res 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 res 上
             res *= a[i];
@@ -87,7 +87,7 @@ public int[] constructArr(int[] a) {
     int res = 1;
     for (int i = a.length - 1; i >= 0; i--) {
         // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 res
-        ans[i] = ans[i] * res;
+        ans[i] *= res;
 
         // res 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 res 上
         res *= a[i];

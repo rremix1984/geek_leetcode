@@ -168,9 +168,13 @@ public class MathUtils {
 
     public static int[] getArrays(int... arr) {
         int[] inner = new int[arr.length];
-        for (int j = 0; j < arr.length; j++)
-            inner[j] = arr[j];
+        System.arraycopy(arr, 0, inner, 0, arr.length);
+        return inner;
+    }
 
+    public static String[] getArrays(String... arr) {
+        String[] inner = new String[arr.length];
+        System.arraycopy(arr, 0, inner, 0, arr.length);
         return inner;
     }
 
