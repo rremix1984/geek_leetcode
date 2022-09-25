@@ -36,14 +36,39 @@ public class OfferII_078_H_MergeKLists_x2 {
         assert new ListNode(1, 1, 2, 3, 4, 4, 5, 6).equals(
                 mergeKLists(getListNodes(new int[][]{{1, 4, 5}, {1, 3, 4}, {2, 6}})));
         assert new ListNode().equals(
-                mergeKLists(getListNodes(new int[][]{})));
-        assert new ListNode().equals(
-                mergeKLists(getListNodes(new int[][]{{}})));
+                mergeKLists(getListNodes()));
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode dummy = new ListNode(-1);
-        return dummy.next;
+        ListNode ans = null;
+
+        for (ListNode list : lists)
+            ans = mergeTwoLists(ans, list);
+
+        return ans;
+    }
+
+    public ListNode mergeTwoLists(ListNode a, ListNode b) {
+        if (a == null || b == null)
+            return a != null ? a : b;
+
+        ListNode head = new ListNode(-1);
+        ListNode tail = head;
+        ListNode p1 = a;
+        ListNode p2 = b;
+
+        while (p1 != null && p2 != null) {
+            if (p1.val < p2.val) {
+                tail.next = p1;
+                p1 = p1.next;
+            } else {
+                tail.next = p2;
+                p2 = p2.next;
+            }
+            tail = tail.next;
+        }
+        tail.next = p1 != null ? p1 : p2;
+        return head.next;
     }
 
 }

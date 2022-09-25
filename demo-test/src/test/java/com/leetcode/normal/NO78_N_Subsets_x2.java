@@ -15,35 +15,29 @@ import static com.leetcode.util.MathUtils.getArray;
         返回该数组所有可能的子集（幂集）。解集 不能 包含
         重复的子集。你可以按 任意顺序 返回解集。
     示例 1：
-        输入：nums = [1,2,3]
-        输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+        输入：nums = {1, 2, 3}
+        输出：{{}, {1}, {2}, {1, 2}, {3}, {1, 3}, {2, 3}, {1, 2, 3}}
     示例 2：
-        输入：nums = [0]
-        输出：[[], [0]]
+        输入：nums = {0}
+        输出：{{}, {0}}
 */
 @SuppressWarnings("all")
 public class NO78_N_Subsets_x2 {
 
     @Test
     public void test() {
-        assert getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}).stream().allMatch(
-            s -> subsets(new int[]{1, 2, 3}).contains(s));
-        assert getArray(new int[][]{{}, {0}}).stream().allMatch(
-            s -> subsets(new int[]{0}).contains(s));
+        ArrayList<ArrayList<Integer>> target = getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}});
+        List<List<Integer>> source = subsets(new int[]{1, 2, 3});
+        assert target.containsAll(source);
+        assert source.containsAll(target);
+        ArrayList<ArrayList<Integer>> target2 = getArray(new int[][]{{}, {0}});
+        List<List<Integer>> source2 = subsets(new int[]{0});
+        assert target2.containsAll(source2);
+        assert source2.containsAll(target2);
     }
 
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        ans.add(new ArrayList<>());
-        for (int num : nums) {
-            List<List<Integer>> newSubsets = new ArrayList<>();
-            for (List<Integer> subset : ans) {
-                List<Integer> newSubset = new ArrayList<>(subset);
-                newSubset.add(num);
-                newSubsets.add(newSubset);
-            }
-            ans.addAll(newSubsets);
-        }
         return ans;
     }
 
@@ -108,9 +102,8 @@ void call(int start, int k, ArrayList<Integer> cur, int[] nums) {
 
 
 // 方案3 字典排序法
-List<List<Integer>> ans = new ArrayList<>();
-
 public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> ans = new ArrayList<>();
     int n = nums.length;
     for (int i = (int) Math.pow(2, n);
          i < (int) Math.pow(2, n + 1) ;

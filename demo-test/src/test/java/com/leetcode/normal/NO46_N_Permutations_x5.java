@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.*;
 
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.getArray;
 
 /**
    （中等）
@@ -15,39 +16,32 @@ import static com.leetcode.util.LogUtil.info;
         返回其所有可能的全排列 。你可以按任意顺序返回答案。
     示例1：
         输入：nums = {1, 2, 3}
-        输出：[[1, 2, 3], [1, 3, 2], [2, 1, 3],
-              [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+        输出：{{1, 2, 3}, {1, 3, 2}, {2, 1, 3},
+              {2, 3, 1}, {3, 1, 2}, {3, 2, 1}}
     示例2：
         输入：nums = {0, 1}
-        输出：[[0, 1], [1, 0]]
+        输出：{{0, 1}, {1, 0}}
     示例3：
         输入：nums = {1}
-        输出：[[1]]
+        输出：{{1}}
 */
 public class NO46_N_Permutations_x5 {
 
     @Test
     public void test() {
-        assert new ArrayList<ArrayList<Integer>>() {{
-                add(new ArrayList<Integer>() {{add(1);add(2);add(3);}});
-                add(new ArrayList<Integer>() {{add(1);add(3);add(2);}});
-                add(new ArrayList<Integer>() {{add(2);add(3);add(1);}});
-                add(new ArrayList<Integer>() {{add(2);add(1);add(3);}});
-                add(new ArrayList<Integer>() {{add(3);add(2);add(1);}});
-                add(new ArrayList<Integer>() {{add(3);add(1);add(2);}});
-            }}.stream().allMatch(
-                s -> permute(new int[]{1, 2, 3}).contains(s)
-            );
-        assert new ArrayList<ArrayList<Integer>>() {{
-                    add(new ArrayList<Integer>() {{add(1);}});
-                }}.stream().allMatch(
-                    s -> permute(new int[]{1}).contains(s)
-                );
+        ArrayList<ArrayList<Integer>> target = getArray(
+            new int[][]{{1, 2, 3}, {1, 3, 2}, {2, 3, 1}, {2, 1, 3}, {3, 2, 1}, {3, 1, 2}});
+        List<List<Integer>> source =  permute(new int[]{1, 2, 3});
+        assert target.containsAll(source);
+        assert source.containsAll(target);
+        ArrayList<ArrayList<Integer>> target2 = getArray(new int[][]{{1}});
+        List<List<Integer>> source2 = permute(new int[]{1});
+        assert target2.containsAll(source2);
+        assert source2.containsAll(target2);
     }
 
-    List<List<Integer>> res = new LinkedList<>();
-
     public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new LinkedList<>();
         return res;
     }
 
@@ -100,15 +94,13 @@ void backtrack(int[] nums, Deque<Integer> alreadyList) {
 
 
 // 方法2：回溯法
-List<List<Integer>> res = new LinkedList<>();
-
 public List<List<Integer>> permute(int[] nums) {
     Deque<Integer> list = new LinkedList();
-    call(nums, list);
+    call(res, nums, list);
     return res;
 }
 
-public void call(int[] nums, Deque<Integer> list) {
+public void call(List<List<Integer>> res, int[] nums, Deque<Integer> list) {
     // 当所有元素都在list里面 代表遍历完成
     if (list.size() == nums.length) {
         res.add(new ArrayList<>(list));
@@ -121,7 +113,7 @@ public void call(int[] nums, Deque<Integer> list) {
 
         list.add(num);
 
-        call(nums, list);
+        call(res, nums, list);
 
         list.removeLast();
     }

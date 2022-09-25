@@ -2,10 +2,7 @@ package com.leetcode.util;
 
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static com.leetcode.util.LogUtil.info;
 import static java.lang.Integer.MIN_VALUE;
@@ -169,11 +166,17 @@ public class MathUtils {
         return inner;
     }
 
-    public static ArrayList<String> getArray(String[] arr) {
+    public static int[] getArrays(int... arr) {
+        int[] inner = new int[arr.length];
+        for (int j = 0; j < arr.length; j++)
+            inner[j] = arr[j];
+
+        return inner;
+    }
+
+    public static ArrayList<String> getArray(String... arr) {
         ArrayList<String> inner = new ArrayList<>();
-        for (int j = 0; j < arr.length; j++) {
-            inner.add(arr[j]);
-        }
+        Collections.addAll(inner, arr);
         return inner;
     }
 
@@ -220,6 +223,10 @@ public class MathUtils {
         }
         temp.next = l1 == null ? l2 : l1;
         return dummy.next;
+    }
+
+    public static ListNode[] getListNodes() {
+        return new ListNode[]{new ListNode()};
     }
 
     public static ListNode[] getListNodes(int[][] arr) {

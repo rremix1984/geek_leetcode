@@ -1,16 +1,14 @@
 /**
  * copyright 2022/1/19
  */
-package com.offer;
+package com.offer.undo;
 
 import org.junit.Test;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
-
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
