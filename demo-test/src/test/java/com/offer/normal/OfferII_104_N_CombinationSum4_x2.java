@@ -1,14 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.offer;
+package com.offer.normal;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArrays;
 
 /**
@@ -33,36 +28,16 @@ import static com.leetcode.util.MathUtils.getArrays;
         输出：0
 
 */
-public class OfferII_104_N_CombinationSum4 {
+public class OfferII_104_N_CombinationSum4_x2 {
 
     @Test
     public void test() {
-//        assert 7 == combinationSum4(getArrays(1, 2, 3), 4);
-//        assert 0 == combinationSum4(getArrays(9), 3);
-        combinationSum4(getArrays(1, 2, 3), 4);
+        assert 7 == combinationSum4(getArrays(1, 2, 3), 4);
+        assert 0 == combinationSum4(getArrays(9), 3);
     }
 
-    public ArrayList<ArrayList<Integer>> combinationSum4(int[] nums, int target) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        call(res, new ArrayList<>(), nums, 0, 4);
-        info(res);
-        return res;
-    }
-
-    private void call(ArrayList<ArrayList<Integer>> res, ArrayList<Integer> list, int[] nums, int p, int target) {
-        if (list.size() == target) {
-            res.add(new ArrayList<>(list));
-            return;
-        }
-
-        for (int i = p; i < nums.length; i++) {
-
-            list.add(nums[p]);
-
-            call(res, list, nums, p + 1, target + 1);
-
-            list.remove(list.size() - 1);
-        }
+    public int combinationSum4(int[] nums, int target) {
+        return -1;
     }
 
 }
@@ -95,5 +70,32 @@ public int combinationSum4(int[] nums, int target) {
                 dp[i] += dp[i - num];
 
     return dp[target];
+}
+
+
+// 方法2：剪枝法
+public int combinationSum4(int[] nums, int target) {
+    ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+    call(res, new ArrayList<>(), nums, target);
+    return res.size();
+}
+
+private void call(ArrayList<ArrayList<Integer>> res, ArrayList<Integer> list, int[] nums, int target) {
+    int sum = list.stream().mapToInt(s->s.intValue()).sum();
+    if (sum == target) {
+        res.add(new ArrayList<>(list));
+        return;
+    }
+
+    for (int num : nums) {
+        if (list.size() > target)
+            continue;
+
+        list.add(num);
+
+        call(res, list, nums, target);
+
+        list.remove(list.size() - 1);
+    }
 }
 */
