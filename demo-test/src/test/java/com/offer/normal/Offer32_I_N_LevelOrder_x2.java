@@ -5,7 +5,6 @@ package com.offer.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.createFullTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertArrayEquals;
@@ -79,6 +78,7 @@ public int[] levelOrder(TreeNode root) {
             size--;
         }
     }
+
     int[] rest = new int[res.size()];
     for (int i = 0; i < rest.length; i++) {
         rest[i] = res.get(i);

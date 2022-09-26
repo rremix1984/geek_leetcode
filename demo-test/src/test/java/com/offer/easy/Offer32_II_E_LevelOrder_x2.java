@@ -5,14 +5,27 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.leetcode.util.MathUtils.createFullTree;
-import static com.leetcode.util.MathUtils.getArray;
+import java.util.*;
+import static com.leetcode.util.MathUtils.*;
 import static org.junit.Assert.assertEquals;
 
+/**
+    (简单)
+    剑指 Offer 32 - II. 从上到下打印二叉树 II
+        从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。
+    例如:
+        给定二叉树: [3,9,20,null,null,15,7],
+
+                 3
+                / \
+               9  20
+                 /  \
+                15   7
+        返回其层次遍历结果：
+        [[3],
+         [9,20],
+         [15,7]]
+*/
 public class Offer32_II_E_LevelOrder_x2 {
 
     @Test
@@ -31,9 +44,6 @@ public class Offer32_II_E_LevelOrder_x2 {
     }
 
 }
-
-
-
 
 
 
