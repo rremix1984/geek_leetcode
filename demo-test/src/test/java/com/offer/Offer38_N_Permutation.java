@@ -7,8 +7,14 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArrays;
+import static com.leetcode.util.SwapUtil.swap;
+import static java.util.Arrays.asList;
 
 /**
     (中等)
@@ -23,8 +29,8 @@ public class Offer38_N_Permutation {
 
     @Test
     public void test() {
-        List<String> target = Arrays.asList(getArrays("abc", "acb", "bac", "bca", "cab", "cba"));
-        List<String> source = Arrays.asList(permutation("abc"));
+        List<String> target = asList(getArrays("abc", "acb", "bac", "bca", "cab", "cba"));
+        List<String> source = asList(permutation("abc"));
         assert target.containsAll(source);
         assert source.containsAll(target);
     }
@@ -52,8 +58,8 @@ public class Offer38_N_Permutation {
         for (int j = 0; j < n; j++) {
             // 前、后相等 或者 干脆访问过
             if (vis[j] || (j > 0
-                            && !vis[j - 1]
-                            && arr[j - 1] == arr[j]))
+                    && !vis[j - 1]
+                    && arr[j - 1] == arr[j]))
                 continue;
 
             // 访问过

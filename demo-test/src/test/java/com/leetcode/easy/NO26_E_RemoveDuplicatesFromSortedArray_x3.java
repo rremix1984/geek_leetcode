@@ -5,6 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import static com.leetcode.util.LogUtil.info;
+
 /**
     (简单)
     26. 删除有序数组中的重复项
@@ -31,18 +33,24 @@ import org.junit.Test;
         输出：5, nums = [0,1,2,3,4]
         解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
 */
-public class NO26_E_RemoveDuplicatesFromSortedArray_x2 {
+public class NO26_E_RemoveDuplicatesFromSortedArray_x3 {
 
     @Test
     public void test() {
         assert 2 == removeDuplicates(new int[]{1, 1, 2});
         assert 5 == removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4});
+        assert 5 == removeDuplicates(new int[]{0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4});
     }
 
     // 方法1：双指针法
     public int removeDuplicates(int[] nums) {
-        return -1;
+        int slow = 0;
+        for (int fast = 1; fast < nums.length; fast++)
+            if (nums[slow] != nums[fast])
+                nums[++slow] = nums[fast];
+        return slow + 1;
     }
+
 }
 
 
@@ -70,11 +78,9 @@ public int removeDuplicates(int[] nums) {
         return 0;
 
     int slow = 0;
-    for (int fast = 1; fast < nums.length; fast++) {
-        if (nums[fast] != nums[slow]) {
+    for (int fast = 1; fast < nums.length; fast++)
+        if (nums[fast] != nums[slow])
             nums[++slow] = nums[fast];
-        }
-    }
     return slow + 1;
 }
 */
