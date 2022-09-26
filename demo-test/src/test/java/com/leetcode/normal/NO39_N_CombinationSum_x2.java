@@ -1,15 +1,11 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.normal;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
-
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.MathUtils.getArrays;
 import static org.junit.Assert.assertEquals;
@@ -35,7 +31,7 @@ import static org.junit.Assert.assertEquals;
         输入: candidates = {2},  target = 1
         输出: {}
 */
-public class NO39_N_CombinationSum {
+public class NO39_N_CombinationSum_x2 {
 
     @Test
     public void test() {
@@ -70,10 +66,7 @@ public class NO39_N_CombinationSum {
 // 方法1：
 public List<List<Integer>> combinationSum(int[] candidates, int target) {
     List<List<Integer>> res = new ArrayList<>();
-    if (candidates.length == 0)
-        return res;
-
-    dfs(res, candidates, 0, candidates.length, target, new LinkedList<>());
+    call(res, new ArrayList<>(), candidates, 0, target);
     return res;
 }
 
@@ -83,25 +76,25 @@ public List<List<Integer>> combinationSum(int[] candidates, int target) {
 // target     每减去一个元素，目标值变小
 // path       从根结点到叶子结点的路径，是一个栈
 // res        结果集列表
-private void dfs(List<List<Integer>> res, int[] candidates, int begin, int len, int target, Deque<Integer> path) {
+private void call(List<List<Integer>> res, ArrayList<Integer> list, int[] cand, int start, int target) {
     // target 为负数和 0 的时候不再产生新的孩子结点
     if (target < 0)
         return;
 
-    if (target == 0) {
-        res.add(new ArrayList<>(path));
+    if (0 == target) {
+        res.add(new ArrayList<>(list));
         return;
     }
 
-    // 重点理解这里从 begin 开始搜索的语意
-    for (int i = begin; i < len; i++) {
-        path.addLast(candidates[i]);
+    for (int i = start; i < cand.length; i++) {
+        // 重点理解这里从 begin 开始搜索的语意
+        list.add(cand[i]);
 
         // 注意：由于每一个元素可以重复使用，下一轮搜索的起点依然是 i，这里非常容易弄错
-        dfs(res, candidates, i, len, target - candidates[i], path);
+        call(res, list, cand, i, target - cand[i]);
 
         // 状态重置
-        path.removeLast();
+        list.remove(list.size() - 1);
     }
 }
 */
