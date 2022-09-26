@@ -7,15 +7,13 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.createFullTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
-public class Offer32_II_E_LevelOrder {
+public class Offer32_II_E_LevelOrder_x2 {
 
     @Test
     public void test() {

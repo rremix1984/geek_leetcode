@@ -6,11 +6,6 @@ package com.offer.normal;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-
 import static com.leetcode.util.MathUtils.createFullTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertArrayEquals;
@@ -29,7 +24,7 @@ import static org.junit.Assert.assertEquals;
        15   7
     返回：{3, 9, 20, 15, 7}
 */
-public class Offer32_I_N_LevelOrder {
+public class Offer32_I_N_LevelOrder_x2 {
 
     @Test
     public void test() {
