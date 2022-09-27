@@ -145,10 +145,10 @@ public class MathUtils {
         return sb.reverse().toString();
     }
 
-    public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        for (int[] ints : arr) {
-            ArrayList<Integer> inner = new ArrayList<>();
+    public static ArrayList<ArrayList<Object>> getArray(Object[]... arr) {
+        ArrayList<ArrayList<Object>> res = new ArrayList<>();
+        for (Object[] ints : arr) {
+            ArrayList<Object> inner = new ArrayList<>();
             int len = ints.length;
             for (int j = 0; j < len; j++) {
                 inner.add(ints[j]);
@@ -156,6 +156,27 @@ public class MathUtils {
             res.add(new ArrayList<>(inner));
         }
         return res;
+    }
+
+    public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        for (int[] ints : arr) {
+            ArrayList<Integer> inner = new ArrayList<>();
+            int len = ints.length;
+            for (int j = 0; j < len; j++)
+                inner.add(ints[j]);
+
+            res.add(new ArrayList<>(inner));
+        }
+        return res;
+    }
+
+    // 双指针判断回文字符
+    public static boolean isHuiwen(char[] chars,int start, int end){
+        for (int i = start, j = end; i < j; i++, j--)
+            if (chars[i] != chars[j])
+                return false;
+        return true;
     }
 
     public static ArrayList<Integer> getArray(int... arr) {

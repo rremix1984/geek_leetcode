@@ -90,4 +90,30 @@ public void dfs(int cur, int n, int k) {
     // [2, 3]、 [2, 4]
     dfs(cur + 1, n, k);
 }
+
+
+// 方法2：
+public List<List<Integer>> combine(int n, int k) {
+    List<List<Integer>> res = new ArrayList<>();
+    call(res, new ArrayList<Integer>(), 1, n, k);
+    return res;
+}
+
+public void call(List<List<Integer>> res, List<Integer> list, int begin, int end, int k) {
+    if (list.size() == k) {
+        res.add(new ArrayList<>(list));
+        return;
+    }
+
+    for (int i = begin; i <= end; i++) {
+        if (list.contains(i))
+            continue;
+
+        list.add(i);
+
+        call(res, list, i, end, k);
+
+        list.remove(list.size() - 1);
+    }
+}
 */
