@@ -1,9 +1,8 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.interval;
+package com.interval;
 
-import com.leetcode.sort.BaseTest;
 import org.junit.Test;
 
 import java.util.Arrays;

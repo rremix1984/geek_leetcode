@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.interval;
+package com.interval;
 
 import org.junit.Test;
 

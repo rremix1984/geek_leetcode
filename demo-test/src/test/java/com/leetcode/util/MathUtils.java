@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import java.util.*;
 
 import static com.leetcode.util.LogUtil.info;
+import static java.lang.Character.isLetterOrDigit;
+import static java.lang.Character.toLowerCase;
 import static java.lang.Integer.MIN_VALUE;
 import static java.util.Arrays.copyOf;
 import static lombok.AccessLevel.PRIVATE;
@@ -176,6 +178,26 @@ public class MathUtils {
         for (int i = start, j = end; i < j; i++, j--)
             if (chars[i] != chars[j])
                 return false;
+        return true;
+    }
+
+    public static void inorder(TreeNode node, List<Integer> res) {
+        if (node == null)
+            return;
+
+        inorder(node.left, res);
+        res.add(node.val);
+        inorder(node.right, res);
+    }
+
+
+    public static boolean validPal(String s, int i, int j) {
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j))
+                return false;
+            i++;
+            j--;
+        }
         return true;
     }
 
