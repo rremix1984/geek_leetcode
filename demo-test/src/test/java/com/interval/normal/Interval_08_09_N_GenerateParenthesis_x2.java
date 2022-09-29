@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.interval;
+package com.interval.normal;
 
 import org.junit.Test;
 
