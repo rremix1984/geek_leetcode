@@ -1,14 +1,11 @@
 /**
  * copyright 2022/1/19
  */
-package com.offer;
+package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.List;
 import static com.leetcode.util.MathUtils.createFullTree;
-import static com.leetcode.util.MathUtils.inorder;
 
 /**
     (简单)
@@ -21,7 +18,7 @@ import static com.leetcode.util.MathUtils.inorder;
         输入：root = [5,1,7]
         输出：[1,null,5,null,7]
 */
-public class OfferII_052_E_IncreasingBST {
+public class OfferII_052_E_IncreasingBST_x2 {
 
     @Test
     public void test() {
@@ -29,15 +26,7 @@ public class OfferII_052_E_IncreasingBST {
     }
 
     public TreeNode increasingBST(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        inorder(root, res);
-        TreeNode dummy = new TreeNode(-1);
-        TreeNode cur = dummy;
-        for (int c : res) {
-            cur.right = new TreeNode(c);
-            cur = cur.right;
-        }
-        return dummy.right;
+        return null;
     }
 
 }
@@ -92,12 +81,12 @@ public TreeNode increasingBST(TreeNode root) {
     // 二叉搜索树，中序遍历就是向右展开的
     inorder(root, res);
 
-    TreeNode dummyNode = new TreeNode(-1);
-    TreeNode cur = dummyNode;
+    TreeNode dummy = new TreeNode(-1);
+    TreeNode cur = dummy;
     for (int v : res) {
         cur.right = new TreeNode(v);
         cur = cur.right;
     }
-    return dummyNode.right;
+    return dummy.right;
 }
 */

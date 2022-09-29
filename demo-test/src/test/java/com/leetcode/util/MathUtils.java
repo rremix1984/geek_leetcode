@@ -201,6 +201,17 @@ public class MathUtils {
         return true;
     }
 
+    private boolean canBom(int[][] bombs, int i, int j){
+        int[] b1 = bombs[i];
+        int[] b2 = bombs[j];
+        long x0 = b1[0], x1 = b2[0], y0 = b1[1], y1 = b2[1], r0 = b1[2];
+        long len = (y1-y0)*(y1-y0) + (x1-x0)*(x1-x0);
+        long r02 = r0 * r0;
+        // 【两点距离的平方】(y1-y0)^2 + (x1-x0)^2 < 【引爆半径的平方】r0^2 则会被引爆
+        if(len <= r02) return true;
+        return false;
+    }
+
     public static ArrayList<Integer> getArray(int... arr) {
         ArrayList<Integer> inner = new ArrayList<>();
         for (int j = 0; j < arr.length; j++) {
