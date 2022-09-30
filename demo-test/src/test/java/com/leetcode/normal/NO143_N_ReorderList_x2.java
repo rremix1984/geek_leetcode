@@ -1,13 +1,10 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.normal;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
     (中等)
@@ -24,7 +21,7 @@ import java.util.List;
         输入：head = {1, 2, 3, 4, 5}
         输出：{1, 5, 2, 4, 3}
 */
-public class NO143_N_ReorderList {
+public class NO143_N_ReorderList_x2 {
 
     @Test
     public void test() {
@@ -38,30 +35,55 @@ public class NO143_N_ReorderList {
     }
 
     public void reorderList(ListNode head) {
-        if (head == null)
-            return;
 
-        List<ListNode> list = new ArrayList<ListNode>();
-        ListNode node = head;
-        while (node != null) {
-            list.add(node);
-            node = node.next;
-        }
-
-        int i = 0;
-        int j = list.size() - 1;
-        while (i < j) {
-            list.get(i).next = list.get(j);
-            i++;
-
-            if (i == j)
-                break;
-
-            list.get(j).next = list.get(i);
-            j--;
-        }
-
-        list.get(i).next = null;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：双指针法
+public void reorderList(ListNode head) {
+    if (head == null)
+        return;
+
+    List<ListNode> list = new ArrayList<>();
+    ListNode node = head;
+    while (node != null) {
+        list.add(node);
+        node = node.next;
+    }
+
+    int i = 0;
+    int j = list.size() - 1;
+    while (i < j) {
+        list.get(i).next = list.get(j);
+        i++;
+
+        if (i == j)
+            break;
+
+        list.get(j).next = list.get(i);
+        j--;
+    }
+
+    list.get(i).next = null;
+}
+*/
