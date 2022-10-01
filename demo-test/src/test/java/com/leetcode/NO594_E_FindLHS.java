@@ -35,7 +35,6 @@ public class NO594_E_FindLHS {
 
     public int findLHS(int[] nums) {
         int len = 0;
-
         return len;
     }
 
