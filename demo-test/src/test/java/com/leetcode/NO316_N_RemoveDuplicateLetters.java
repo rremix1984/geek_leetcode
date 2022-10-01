@@ -4,7 +4,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import java.util.Stack;
 
 /**
@@ -37,12 +36,12 @@ public class NO316_N_RemoveDuplicateLetters {
         for (int i = 0; i < s.length(); i++)
             count[s.charAt(i)]++;
 
-        boolean[] inStack = new boolean[256];
+        boolean[] vstd = new boolean[256];
         for (char ch : s.toCharArray()) {
             // 每遍历过一个字符，都将对应的计数减一
             count[ch]--;
 
-            if (inStack[ch])
+            if (vstd[ch])
                 continue;
 
             while (!stack.isEmpty() && stack.peek() > ch) {
@@ -51,10 +50,10 @@ public class NO316_N_RemoveDuplicateLetters {
                     break;
 
                 // 若之后还有，则可以 pop
-                inStack[stack.pop()] = false;
+                vstd[stack.pop()] = false;
             }
             stack.push(ch);
-            inStack[ch] = true;
+            vstd[ch] = true;
         }
 
         StringBuilder sb = new StringBuilder();
