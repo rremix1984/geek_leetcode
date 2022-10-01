@@ -1,11 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.Arrays;
-import static java.lang.Math.max;
 
 /**
     (简单)
@@ -24,7 +22,7 @@ import static java.lang.Math.max;
         输入：nums = {1, 1, 1, 1}
         输出：0
 */
-public class NO594_E_FindLHS {
+public class NO594_E_FindLHS_x2 {
 
     @Test
     public void test() {
