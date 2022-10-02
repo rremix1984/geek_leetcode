@@ -128,6 +128,11 @@ public class MathUtils {
         return sum;
     }
 
+    public static final String[] MORSE = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
+            "....", "..", ".---", "-.-", ".-..", "--", "-.",
+            "---", ".--.", "--.-", ".-.", "...", "-", "..-",
+            "...-", ".--", "-..-", "-.--", "--.."};
+
     public static String binaryString(int num) {
         StringBuilder result = new StringBuilder();
         int flag = 1 << 7;

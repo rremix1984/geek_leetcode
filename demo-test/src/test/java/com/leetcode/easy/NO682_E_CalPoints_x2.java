@@ -1,12 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
     (简单)
@@ -44,7 +41,7 @@ import java.util.List;
         输入：ops = ["1"]
         输出：1
 */
-public class NO682_E_CalPoints {
+public class NO682_E_CalPoints_x2 {
 
     @Test
     public void test() {
