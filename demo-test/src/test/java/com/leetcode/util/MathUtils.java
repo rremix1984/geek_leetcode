@@ -128,6 +128,31 @@ public class MathUtils {
         return sum;
     }
 
+    public static final int MOD = 1000000007;
+
+    /**
+     * n的阶乘
+     */
+    public static long factorial(int n) {
+        long res = 1;
+        for (int i = 1; i <= n; i++) {
+            res *= i;
+            res %= MOD;
+        }
+        return res;
+    }
+
+    public static boolean isPrime(int n) {
+        if (n == 1)
+            return false;
+
+        for (int i = 2; i * i <= n; i++)
+            if (n % i == 0)
+                return false;
+
+        return true;
+    }
+
     public static String[] WEEKS = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     public static int[] MONTHS = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 

@@ -1,11 +1,12 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-
 import java.util.Arrays;
+
+import static com.leetcode.util.LogUtil.info;
 
 /**
     (简单)
@@ -22,38 +23,30 @@ import java.util.Arrays;
         输入：text = "leetcode"
         输出：0
 */
-public class NO1189_E_MaxNumberOfBalloons {
+public class NO1189_E_MaxNumberOfBalloons_x2 {
 
     @Test
     public void test() {
         assert 1 == maxNumberOfBalloons("nlaebolko");
         assert 2 == maxNumberOfBalloons("loonbalxballpoon");
         assert 0 == maxNumberOfBalloons("leetcode");
+        assert 0 == maxNumberOfBalloons("lloo");
     }
 
     public int maxNumberOfBalloons(String text) {
         int[] cnt = new int[5];
-        for (char c : text.toCharArray()) {
-            switch (c) {
-                case 'b':
-                    cnt[0]++;
-                    break;
-                case 'a':
-                    cnt[1]++;
-                    break;
-                case 'l':
-                    cnt[2]++;
-                    break;
-                case 'o':
-                    cnt[3]++;
-                    break;
-                case 'n':
-                    cnt[4]++;
-            }
-        }
-        cnt[2] /= 2;
-        cnt[3] /= 2;
-        return Arrays.stream(cnt).min().getAsInt();
+        for (char c : text.toCharArray())
+            if (c == 'b')
+                cnt[0] += 2;
+            else if (c == 'a')
+                cnt[1] += 2;
+            else if (c == 'n')
+                cnt[4] += 2;
+            else if (c == 'l')
+                cnt[2] += 1;
+            else if (c == 'o')
+                cnt[3] += 1;
+        return Arrays.stream(cnt).min().getAsInt() / 2;
     }
 
 }
