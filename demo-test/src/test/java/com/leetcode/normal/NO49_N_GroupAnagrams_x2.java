@@ -37,6 +37,7 @@ public class NO49_N_GroupAnagrams_x2 {
     public List<List<String>> groupAnagrams(String[] strs) {
         return null;
     }
+
 }
 
 

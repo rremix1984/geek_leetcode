@@ -37,19 +37,6 @@ public class NO33_N_SearchInRotatedSortedArray_x2 {
     }
 
     public int search(int[] nums, int target) {
-        int lo = 0;
-        int hi = nums.length - 1;
-        while (lo < hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (nums[0] <= nums[mid] && (nums[0] > target || nums[mid] < target))
-                lo = mid + 1;
-            else if (nums[0] > target && nums[mid] < target)
-                lo = mid + 1;
-            else
-                hi = mid;
-        }
-        if (lo == hi && nums[lo] == target)
-            return lo;
         return -1;
     }
 }

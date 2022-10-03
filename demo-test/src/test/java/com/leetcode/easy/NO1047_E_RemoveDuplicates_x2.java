@@ -29,15 +29,6 @@ public class NO1047_E_RemoveDuplicates_x2 {
 
     public String removeDuplicates(String s) {
         StringBuilder sb = new StringBuilder();
-        int top = -1;
-        for (char ch : s.toCharArray())
-            if (top >= 0 && sb.charAt(top) == ch) {
-                sb.deleteCharAt(top);
-                --top;
-            } else {
-                sb.append(ch);
-                ++top;
-            }
         return sb.toString();
     }
 

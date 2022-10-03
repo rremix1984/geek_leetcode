@@ -49,43 +49,10 @@ public class NO433_N_MinimumGeneticMutation {
     }
 
     int ans = Integer.MAX_VALUE;
-    boolean[] used;
     public int minMutation(String start, String end, String[] bank) {
-        used = new boolean[bank.length];
-
-        call(start, end, bank, 0);
-
-        if (ans == Integer.MAX_VALUE)
-            return -1;
         return ans;
     }
 
-    public void call(String start, String end, String[] bank, int level) {
-        if (level >= ans)
-            return;
-        if (start.equals(end)) {
-            ans = level;
-        } else {
-            int diff = 0;
-            for (int i = 0; i < bank.length; i++) {
-                if (used[i])
-                    continue;
-                for (int j = 0; j < start.length(); j++) {
-                    // 找到任何一处不同的地方 diff++
-                    // diff就是需要的步数
-                    if (start.charAt(j) != bank[i].charAt(j))
-                        diff++;
-                }
-
-                if (diff == 1) {
-                    used[i] = true;
-                    call(bank[i], end, bank, level + 1);
-                    used[i] = false;
-                }
-                diff = 0;
-            }
-        }
-    }
 }
 
 
