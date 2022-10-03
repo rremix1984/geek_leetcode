@@ -25,6 +25,7 @@ public class NO2427_E_CommonFactors_x2 {
     public void test() {
         assert 4 == commonFactors(12, 6);
         assert 2 == commonFactors(25, 30);
+        assert 8 == commonFactors(885, 885);
     }
 
     public int commonFactors(int a, int b) {

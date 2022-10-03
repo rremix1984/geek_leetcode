@@ -16,6 +16,12 @@ public class SwapUtil {
         nums[j] = temp;
     }
 
+    public static void swap(String[] nums, int i, int j) {
+        String temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
     @SuppressWarnings("all")
     public static void swap(int[] pre, int[] cur) {
         int[] tmp = pre;
