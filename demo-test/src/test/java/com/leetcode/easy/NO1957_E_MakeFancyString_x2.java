@@ -37,7 +37,7 @@ public class NO1957_E_MakeFancyString_x2 {
     }
 
     public String makeFancyString(String s) {
-        return s;
+        return null;
     }
 
 }
