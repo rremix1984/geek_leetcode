@@ -1,11 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-
-import static com.leetcode.util.LogUtil.info;
 
 /**
     (简单)
@@ -29,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
         输出："aab"
         解释：没有连续三个相同字符，所以返回 "aab" 。
 */
-public class NO1957_E_MakeFancyString {
+public class NO1957_E_MakeFancyString_x2 {
 
     @Test
     public void test() {
