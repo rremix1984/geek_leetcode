@@ -128,6 +128,13 @@ public class MathUtils {
         return sum;
     }
 
+    public static String[] WEEKS = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    public static int[] MONTHS = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    public static boolean isLeap(int year) {
+        return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+    }
+
     public static final String[] MORSE = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
             "....", "..", ".---", "-.-", ".-..", "--", "-.",
             "---", ".--.", "--.-", ".-.", "...", "-", "..-",
