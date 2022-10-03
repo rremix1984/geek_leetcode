@@ -1,10 +1,9 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
@@ -26,43 +25,57 @@ import static com.leetcode.util.MathUtils.getArray;
         解释：对于 nums1 ，nums1[2] 和 nums1[3] 没有出现在 nums2 中。由于 nums1[2] == nums1[3] ，二者的值只需要在 answer[0] 中出现一次，故 answer[0] = [3]。
              nums2 中的每个整数都在 nums1 中出现，因此，answer[1] = [] 。
 */
-public class NO2215_E_FindDifference {
+public class NO2215_E_FindDifference_x2 {
 
     @Test
     public void test() {
-        assert getArray(new int[][]{{1, 3}, {4, 6}}).equals(findDifference(new int[]{1, 2, 3}, new int[]{2, 4, 6}));
-        assert getArray(new int[][]{{3}, {}}).equals(findDifference(new int[]{1, 2, 3, 3}, new int[]{1, 1, 2, 2}));
+        assert getArray(new int[][]{{1, 3}, {4, 6}}).equals(
+            findDifference(new int[]{1, 2, 3}, new int[]{2, 4, 6}));
+        assert getArray(new int[][]{{3}, {}}).equals(
+            findDifference(new int[]{1, 2, 3, 3}, new int[]{1, 1, 2, 2}));
     }
 
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        // 哈希表初始化
-        int[] nums = new int[2001];
-
-        // 出现在nums1中的数标记为1
-        for (int x : nums1)
-            nums[x + 1000] = 1;
-
-        for (int x:nums2) {
-            // 将数值转为大于等于0的数
-            x = x+1000;
-            // 定义规则，如果在nums1和nums2都出现了，那么标记为3
-            if (nums[x] == 1) nums[x] = 3;
-                // 如果只出现在nums2，那么标记为2
-            else if (nums[x] == 0) nums[x] = 2;
-        }
-        List<List<Integer>> list = new ArrayList<>();
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
-        // 根据规则将数添加到列表中，此时记得还原数值-1000
-        for (int i = 0; i < 2001; i++) {
-            if (nums[i] == 1)
-                list1.add(i-1000);
-            else if (nums[i] == 2)
-                list2.add(i-1000);
-        }
-        list.add(list1);
-        list.add(list2);
-        return list;
+        return null;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+    int[] arr1 = new int[2001];
+    int[] arr2 = new int[2001];
+    for (int num : nums1)
+        arr1[num + 1000]++;
+
+    for (int num : nums2)
+        arr2[num + 1000]++;
+
+    List<Integer> list1 = new ArrayList<>();
+    List<Integer> list2 = new ArrayList<>();
+    for (int i = 0; i < arr1.length; i++)
+        // 1有，2没有
+        if (arr1[i] > 0 && arr2[i] == 0)
+            list1.add(i - 1000);
+            // 2有，1没有
+        else if (arr2[i] > 0 && arr1[i] == 0)
+            list2.add(i - 1000);
+
+    return Arrays.asList(list1, list2);
+}
+*/
