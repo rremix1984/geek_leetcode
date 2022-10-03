@@ -31,6 +31,10 @@ public class NO1200_E_MinimumAbsDifference_x2 {
 
     @Test
     public void test() {
+        assert getArray(new int[][]{{1, 2}, {2, 3}, {3, 4}})
+                .equals(minimumAbsDifference(new int[]{4, 2, 1, 3}));
+        assert getArray(new int[][]{{1, 3}})
+                .equals(minimumAbsDifference(new int[]{1, 3, 6, 10, 15}));
         assert getArray(new int[][]{{-14, -10}, {19, 23}, {23, 27}})
                 .equals(minimumAbsDifference(new int[]{3, 8, -10, 23, 19, -4, -14, 27}));
     }
