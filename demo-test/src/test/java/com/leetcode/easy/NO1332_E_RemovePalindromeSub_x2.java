@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 
@@ -27,7 +27,7 @@ import org.junit.Test;
         解释："baabb" -> "b" -> "".
              先删除回文子序列 "baab"，然后再删除 "b"。
 */
-public class NO1332_E_RemovePalindromeSub {
+public class NO1332_E_RemovePalindromeSub_x2 {
 
     @Test
     public void test() {
