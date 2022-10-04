@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.interval;
+package com.interval.easy;
 
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertArrayEquals;
         说明:
             A.length == n + m
 */
-public class Interval_10_01_E_Merge {
+public class Interval_10_01_E_Merge_x2 {
 
     @Test
     public void test() {
@@ -73,5 +73,18 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
     // if (m + n >= 0) System.arraycopy(temp, 0, nums1, 0, m + n);
     for (int k = 0; k < m + n; k++)
         nums1[k] = tmp[k];
+}
+
+
+// 方法2：归并排序
+public void merge(int[] nums1, int m, int[] nums2, int n) {
+    int i = m - 1;
+    int j = n - 1;
+    int end = m + n - 1;
+    while (j >= 0)
+        if (i >= 0 && nums1[i] > nums2[j])
+            nums1[end--] = nums1[i--];
+        else
+            nums1[end--] = nums2[j--];
 }
 */
