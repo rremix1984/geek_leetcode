@@ -36,8 +36,7 @@ public class Offer_068_I_E_LowestCommonAncestor_x2 {
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        TreeNode ans = root;
-        return ans;
+        return root;
     }
 
 }

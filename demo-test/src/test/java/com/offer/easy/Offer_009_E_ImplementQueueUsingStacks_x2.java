@@ -18,7 +18,7 @@ import org.junit.Test;
             [[],[],[5],[2],[],[]]
         输出：[null,-1,null,null,5,2]
 */
-public class Offer_09_E_ImplementQueueUsingStacks_x2 {
+public class Offer_009_E_ImplementQueueUsingStacks_x2 {
 
     @Test
     public void test() {
