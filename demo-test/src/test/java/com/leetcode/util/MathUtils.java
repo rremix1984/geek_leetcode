@@ -238,6 +238,16 @@ public class MathUtils {
         return true;
     }
 
+    // 中序遍历
+    public static void inOrder(TreeNode root, List<Integer> lst) {
+        if (root == null)
+            return;
+
+        inOrder(root.left, lst);
+        lst.add(root.val);
+        inOrder(root.right, lst);
+    }
+
     private boolean canBom(int[][] bombs, int i, int j){
         int[] b1 = bombs[i];
         int[] b2 = bombs[j];
