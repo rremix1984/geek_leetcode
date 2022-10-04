@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.offer;
+package com.offer.easy;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
         输出: 6
         解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
 */
-public class Offer_042_E_MaxSubArray {
+public class Offer_042_E_MaxSubArray_x2 {
 
     @Test
     public void test() {

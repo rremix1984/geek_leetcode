@@ -28,7 +28,7 @@ import static com.leetcode.util.MathUtils.createFullTree;
           4   4
         返回 false。
 */
-public class Interval_04_04_E_IsBalanced {
+public class Interval_04_04_E_IsBalanced_x2 {
 
     @Test
     public void test() {

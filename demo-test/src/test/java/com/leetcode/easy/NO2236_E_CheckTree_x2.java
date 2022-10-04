@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static com.leetcode.util.MathUtils.createFullTree;
         解释：根结点、左子结点和右子结点的值分别是 5 、3 和 1 。
         由于 5 不等于 3 + 1 ，因此返回 false 。
 */
-public class NO2236_E_CheckTree {
+public class NO2236_E_CheckTree_x2 {
 
     @Test
     public void test() {

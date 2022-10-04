@@ -29,26 +29,7 @@ public class Interval_10_01_E_Merge {
     }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int[] tmp = new int[m + n];
-        int index = 0;
-        int i = 0;
-        int j = 0;
-        while (i < m && j < n)
-            if (nums1[i] <= nums2[j])
-                tmp[index++] = nums1[i++];
-            else
-                tmp[index++] = nums2[j++];
 
-        while (i < m)
-            tmp[index++] = nums1[i++];
-
-        while (j < n)
-            tmp[index++] = nums2[j++];
-
-        //再把数组temp中的值赋给nums1
-        // if (m + n >= 0) System.arraycopy(temp, 0, nums1, 0, m + n);
-        for (int k = 0; k < m + n; k++)
-              nums1[k] = tmp[k];
     }
 
 }
