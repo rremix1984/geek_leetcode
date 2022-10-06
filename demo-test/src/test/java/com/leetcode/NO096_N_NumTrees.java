@@ -16,7 +16,7 @@ import org.junit.Test;
         输入：n = 1
         输出：1
 */
-public class NO96_N_NumTrees {
+public class NO096_N_NumTrees {
 
     @Test
     public void test() {

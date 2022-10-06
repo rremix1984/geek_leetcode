@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
         输入：root = [1, null, 2, 3]
         输出：[1, 3, 2]
 */
-public class NO94_E_InorderTraversal_x6 {
+public class NO094_E_InorderTraversal_x6 {
 
     @Test
     public void test() {

@@ -19,7 +19,7 @@ import org.junit.Test;
         输出：1
         解释：小A 只猜对了第二次。
 */
-public class LCP01_E_Game_x2 {
+public class LCP_01_E_Game_x2 {
 
     @Test
     public void test() {

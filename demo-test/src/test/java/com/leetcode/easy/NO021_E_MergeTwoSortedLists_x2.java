@@ -22,7 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：l1 = {}, l2 = {0}
         输出：[0]
 */
-public class NO21_E_MergeTwoSortedLists_x2 {
+public class NO021_E_MergeTwoSortedLists_x2 {
 
     @Test
     public void test() {

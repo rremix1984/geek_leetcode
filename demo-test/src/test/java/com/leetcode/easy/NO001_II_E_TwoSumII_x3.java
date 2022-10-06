@@ -22,7 +22,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：nums = [2, 3, 4], target = 6
         输出：[0, 2]
 */
-public class NO1_1_E_TwoSumII_x3 {
+public class NO001_II_E_TwoSumII_x3 {
 
     @Test
     public void test() {

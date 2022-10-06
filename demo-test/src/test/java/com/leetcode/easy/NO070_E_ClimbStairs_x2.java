@@ -25,7 +25,7 @@ import static com.leetcode.util.SwapUtil.swap;
             2. 1 阶 + 2 阶
             3. 2 阶 + 1 阶
 */
-public class NO70_E_ClimbStairs_x2 {
+public class NO070_E_ClimbStairs_x2 {
 
     @Test
     public void test() {

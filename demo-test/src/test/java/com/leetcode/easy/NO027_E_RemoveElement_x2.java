@@ -38,7 +38,7 @@ import static com.leetcode.util.LogUtil.info;
             解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 {0, 1, 3, 0, 4}。注意这五个元素可为任意顺序。
                  你不需要考虑数组中超出新长度后面的元素。
 */
-public class NO27_E_RemoveElement_x2 {
+public class NO027_E_RemoveElement_x2 {
 
     @Test
     public void test() {

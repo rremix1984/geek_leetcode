@@ -33,7 +33,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：5, nums = [0,1,2,3,4]
         解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
 */
-public class NO26_E_RemoveDuplicatesFromSortedArray_x3 {
+public class NO026_E_RemoveDuplicatesFromSortedArray_x3 {
 
     @Test
     public void test() {

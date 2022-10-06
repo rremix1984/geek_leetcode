@@ -19,7 +19,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：head = {1, 1, 2, 3, 3}
         输出：[1, 2, 3]
 */
-public class NO83_E_RemoveDuplicatesFromSortedList_x2 {
+public class NO083_E_RemoveDuplicatesFromSortedList_x2 {
 
     @Test
     public void test() {

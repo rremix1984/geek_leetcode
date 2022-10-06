@@ -24,7 +24,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：6
         解释：最后一个单词是长度为6的“joyboy”。
 */
-public class NO58_E_LengthOfLastWord_x2 {
+public class NO058_E_LengthOfLastWord_x2 {
 
     @Test
     public void test() {

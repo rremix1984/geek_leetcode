@@ -17,7 +17,7 @@ import org.junit.Test;
         输入：head = {0, 1, 2}, k = 4
         输出：[2, 0, 1]
 */
-public class NO61_N_RotateList {
+public class NO061_N_RotateList {
 
     @Test
     public void test() {

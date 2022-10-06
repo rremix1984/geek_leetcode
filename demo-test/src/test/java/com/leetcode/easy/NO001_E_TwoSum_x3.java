@@ -5,10 +5,6 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -29,7 +25,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：nums = [3, 3], target = 6
         输出：[0, 1]
 */
-public class NO1_E_TwoSum_x3 {
+public class NO001_E_TwoSum_x3 {
 
     @Test
     public void test() {

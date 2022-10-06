@@ -1,6 +1,7 @@
 package com.leetcode.util;
 
 import lombok.NoArgsConstructor;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -10,6 +11,7 @@ import static java.lang.Character.toLowerCase;
 import static java.lang.Integer.MIN_VALUE;
 import static java.util.Arrays.copyOf;
 import static lombok.AccessLevel.PRIVATE;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * 工具类
@@ -349,8 +351,8 @@ public class MathUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
-        System.out.println(mins(0, 6, 3));
-        System.out.println(maxs(0, -6, -3, -41111, -5, -2, -5, -8, -109));
+//        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
+//        System.out.println(mins(0, 6, 3));
+//        System.out.println(maxs(0, -6, -3, -41111, -5, -2, -5, -8, -109));
     }
 }

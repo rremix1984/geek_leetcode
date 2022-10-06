@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
         输出：""
         解释：输入不存在公共前缀。
 */
-public class NO14_E_LongestCommonPrefix_x2 {
+public class NO014_E_LongestCommonPrefix_x2 {
 
     @Test
     public void test() {

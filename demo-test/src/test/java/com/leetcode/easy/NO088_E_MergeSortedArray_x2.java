@@ -35,7 +35,7 @@ import static org.junit.Assert.assertArrayEquals;
              仅仅是为了确保合并结果可以顺利存放到 nums1 中。
 */
 @SuppressWarnings("all")
-public class NO88_E_MergeSortedArray_x2 {
+public class NO088_E_MergeSortedArray_x2 {
 
     @Test
     public void test() {
