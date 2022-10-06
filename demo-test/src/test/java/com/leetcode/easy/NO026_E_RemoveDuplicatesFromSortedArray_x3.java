@@ -42,13 +42,8 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_x3 {
         assert 5 == removeDuplicates(new int[]{0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4});
     }
 
-    // 方法1：双指针法
     public int removeDuplicates(int[] nums) {
-        int slow = 0;
-        for (int fast = 1; fast < nums.length; fast++)
-            if (nums[slow] != nums[fast])
-                nums[++slow] = nums[fast];
-        return slow + 1;
+        return 0;
     }
 
 }
