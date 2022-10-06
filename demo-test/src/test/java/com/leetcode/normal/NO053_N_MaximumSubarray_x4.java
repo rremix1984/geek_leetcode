@@ -5,7 +5,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 import static org.junit.Assert.assertEquals;
 
@@ -25,7 +24,7 @@ import static org.junit.Assert.assertEquals;
         输入：nums = [5, 4, -1, 7, 8]
         输出：23
 */
-public class NO53_N_MaximumSubarray_x4 {
+public class NO053_N_MaximumSubarray_x4 {
 
     @Test
     public void test() {

@@ -21,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：true
 */
 @SuppressWarnings("all")
-public class NO74_N_SearchA2dMatrix_x2 {
+public class NO074_N_SearchA2dMatrix_x2 {
 
     @Test
     public void test() {

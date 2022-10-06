@@ -20,7 +20,7 @@ import static com.leetcode.util.LogUtil.info;
         [1,2,1],
         [2,1,1]]
 */
-public class NO47_N_PermutationsII_x2 {
+public class NO047_N_PermutationsII_x2 {
 
     @Test
     public void test() {

@@ -5,7 +5,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
@@ -27,7 +26,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输出: [[1,2,2],
               [5]]
 */
-public class NO40_N_CombinationSumII_x2 {
+public class NO040_N_CombinationSumII_x2 {
 
     @Test
     public void test() {

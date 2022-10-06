@@ -31,7 +31,7 @@ import static org.junit.Assert.assertEquals;
         输入: candidates = {2},  target = 1
         输出: {}
 */
-public class NO39_N_CombinationSum_x2 {
+public class NO039_N_CombinationSum_x2 {
 
     @Test
     public void test() {

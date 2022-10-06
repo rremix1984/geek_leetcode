@@ -36,7 +36,7 @@ import static com.leetcode.util.LogUtil.info;
              含有 0 的有效映射是 'J' -> "10" 和 'T'-> "20" 。
              由于没有字符，因此没有有效的方法对此进行解码，因为所有数字都需要映射。
 */
-public class NO91_N_DecodeWays_x2 {
+public class NO091_N_DecodeWays_x2 {
 
     @Test
     public void test() {

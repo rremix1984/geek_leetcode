@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
         输出：[]
 */
 @SuppressWarnings("all")
-public class NO17_N_LetterCombinationsOfAPhoneNumber_x2 {
+public class NO017_N_LetterCombinationsOfAPhoneNumber_x2 {
 
     @Test
     public void test() {

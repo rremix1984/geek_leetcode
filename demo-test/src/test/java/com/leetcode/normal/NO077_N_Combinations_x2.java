@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
         输出：{{ 1 }}
 */
 @SuppressWarnings("all")
-public class NO77_N_Combinations_x2 {
+public class NO077_N_Combinations_x2 {
 
     @Test
     public void test() {

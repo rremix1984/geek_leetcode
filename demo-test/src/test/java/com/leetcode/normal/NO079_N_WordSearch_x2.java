@@ -26,7 +26,7 @@ import org.junit.Test;
                       {'A','D','E','E'}}, word = "ABCB"
         输出：false
 */
-public class NO79_N_WordSearch_x2 {
+public class NO079_N_WordSearch_x2 {
 
     @Test
     public void test() {

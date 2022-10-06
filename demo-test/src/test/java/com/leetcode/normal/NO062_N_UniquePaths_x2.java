@@ -31,7 +31,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：m = 3, n = 3
         输出：6
 */
-public class NO62_N_UniquePaths_x2 {
+public class NO062_N_UniquePaths_x2 {
 
     @Test
     public void test() {

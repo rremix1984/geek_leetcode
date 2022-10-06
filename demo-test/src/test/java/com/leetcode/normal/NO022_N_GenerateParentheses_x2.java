@@ -21,7 +21,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输入：n = 1
         输出：["()"]
 */
-public class NO22_N_GenerateParentheses_x2 {
+public class NO022_N_GenerateParentheses_x2 {
 
     @Test
     public void test() {
@@ -81,6 +81,28 @@ private void call(List<String> res, StringBuilder cur, int left, int right, int 
         cur.append(")");
         call(res, cur, left, right + 1, max);
         cur.deleteCharAt(cur.length() - 1);
+    }
+}
+
+
+// 方法2：递归法
+List<String> res = new ArrayList<>();
+public List<String> generateParenthesis(int n) {
+    generate(n, n,"");
+    return res;
+}
+private void generate(int left, int right, String cur) {
+    if (left == 0 && right == 0) {
+        res.add(cur);
+        return;
+    }
+
+    if (left > 0) {
+        generate(left - 1, right, cur + "(");
+    }
+
+    if (right > left) {
+        generate(left, right - 1, cur + ")");
     }
 }
 */

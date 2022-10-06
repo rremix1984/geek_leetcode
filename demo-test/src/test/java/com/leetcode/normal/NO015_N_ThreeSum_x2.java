@@ -5,8 +5,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import static com.leetcode.util.LogUtil.info;
@@ -26,7 +24,7 @@ import static org.junit.Assert.assertEquals;
      输入：nums = []
      输出：[]
  */
-public class NO15_N_ThreeSum_x2 {
+public class NO015_N_ThreeSum_x2 {
 
     @Test
     public void test() {

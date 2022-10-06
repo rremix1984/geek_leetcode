@@ -26,7 +26,7 @@ import static java.lang.Long.MIN_VALUE;
         解释：根节点的值是 5 ，但是右子节点的值是 4
 */
 @SuppressWarnings("all")
-public class NO98_N_ValidateBinarySearchTree_x2 {
+public class NO098_N_ValidateBinarySearchTree_x2 {
 
     @Test
     public void test() {

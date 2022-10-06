@@ -22,7 +22,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输出：{{}, {0}}
 */
 @SuppressWarnings("all")
-public class NO78_N_Subsets_x2 {
+public class NO078_N_Subsets_x2 {
 
     @Test
     public void test() {
