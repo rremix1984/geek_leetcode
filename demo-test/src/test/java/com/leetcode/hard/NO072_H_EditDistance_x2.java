@@ -33,7 +33,7 @@ import static org.junit.Assert.assertEquals;
             exention -> exection (将 'n' 替换为 'c')
             exection -> execution (插入 'u')
 */
-public class NO72_H_EditDistance_x2 {
+public class NO072_H_EditDistance_x2 {
 
     @Test
     public void test() {

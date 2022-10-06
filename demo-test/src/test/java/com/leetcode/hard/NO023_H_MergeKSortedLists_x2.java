@@ -29,7 +29,7 @@ import org.junit.Test;
         输入：lists = [[]]
         输出：[]
 */
-public class NO23_H_MergeKSortedLists_x2 {
+public class NO023_H_MergeKSortedLists_x2 {
 
     @Test
     public void test() {

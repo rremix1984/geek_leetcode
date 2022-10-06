@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
         输入：s = ""
         输出：0
 */
-public class NO32_H_LongestValidParentheses_x2 {
+public class NO032_H_LongestValidParentheses_x2 {
 
     @Test
     public void test() {
