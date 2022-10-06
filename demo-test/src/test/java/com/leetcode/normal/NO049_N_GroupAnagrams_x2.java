@@ -22,7 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         输入: strs = [""]
         输出: [[""]]
 */
-public class NO49_N_GroupAnagrams_x2 {
+public class NO049_N_GroupAnagrams_x2 {
 
     @Test
     public void test() {

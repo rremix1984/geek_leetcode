@@ -25,7 +25,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输入：nums = {1}
         输出：{{1}}
 */
-public class NO46_N_Permutations_x5 {
+public class NO046_N_Permutations_x5 {
 
     @Test
     public void test() {

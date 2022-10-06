@@ -18,7 +18,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：n = 1
         输出：[[1]]
 */
-public class NO59_N_SpiralMatrixII_x2 {
+public class NO059_N_SpiralMatrixII_x2 {
 
     @Test
     public void test() {

@@ -5,7 +5,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.max;
 
 /**
     （中等）
@@ -24,7 +23,7 @@ import static com.leetcode.util.MathUtils.max;
         输出: 2
 */
 @SuppressWarnings("all")
-public class NO45_N_JumpGameII_x3 {
+public class NO045_N_JumpGameII_x3 {
 
     @Test
     public void test() {

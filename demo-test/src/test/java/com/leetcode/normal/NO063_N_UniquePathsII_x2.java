@@ -27,7 +27,7 @@ import static com.leetcode.util.LogUtil.info;
                              [0, 0]]
         输出：1
 */
-public class NO63_N_UniquePathsII_x2 {
+public class NO063_N_UniquePathsII_x2 {
 
     @Test
     public void test() {

@@ -22,7 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。
 */
 @SuppressWarnings("all")
-public class NO55_N_JumpGame_x3 {
+public class NO055_N_JumpGame_x3 {
 
     @Test
     public void test() {

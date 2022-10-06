@@ -23,7 +23,7 @@ import static java.lang.Math.abs;
         输出：0.25000
         解释：2-2 = 1/22 = 1/4 = 0.25
 */
-public class NO50_N_PowXN_x2 {
+public class NO050_N_PowXN_x2 {
 
     @Test
     public void test() {

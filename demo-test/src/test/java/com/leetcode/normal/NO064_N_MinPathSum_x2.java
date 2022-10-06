@@ -19,7 +19,7 @@ import static java.lang.Math.min;
         输入：grid = {{1, 2, 3}, {4, 5, 6}}
         输出：12
 */
-public class NO64_N_MinPathSum_x2 {
+public class NO064_N_MinPathSum_x2 {
 
     @Test
     public void test() {
