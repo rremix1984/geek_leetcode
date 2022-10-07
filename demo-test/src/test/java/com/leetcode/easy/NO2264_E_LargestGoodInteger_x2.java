@@ -34,21 +34,15 @@ public class NO2264_E_LargestGoodInteger_x2 {
 
     @Test
     public void test() {
+        assertEquals("777", largestGoodInteger("6777133339"));
+        assertEquals("000", largestGoodInteger("2300019"));
         assertEquals("", largestGoodInteger("42352338"));
     }
 
     public String largestGoodInteger(String num) {
         String [] strs = {"000", "111", "222", "333", "444",
                           "555", "666", "777", "888", "999"};
-        int index = -1;
-        for (int i = 0; i < strs.length; i++)
-            if (num.contains(strs[i]))
-                index = i;
-
-        if (index == -1)
-            return "";
-
-        return strs[index];
+        return "";
     }
 
 }
