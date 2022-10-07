@@ -51,4 +51,15 @@ public class NO2235_E_Sum_x2 {
 public int sum(int num1, int num2) {
     return num1 + num2;
 }
+
+// 方法2：
+public int sum(int num1, int num2) {
+    //进位为0即为递归出口
+    if(num2==0)
+        return num1;
+
+    int total = num1 ^ num2;
+    int carry = (num1 & num2) << 1;
+    return sum(total, carry);
+}
 */
