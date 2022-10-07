@@ -25,24 +25,29 @@ public class NO1304_E_SumZero_x2 {
 
     @Test
     public void test() {
-        assert 0 == Arrays.stream(sumZero(5)).sum();
-        assert 0 == Arrays.stream(sumZero(3)).sum();
-        assert 0 == Arrays.stream(sumZero(1)).sum();
+        int[] tmp1 = Arrays.stream(sumZero(5)).distinct().toArray();
+        assert tmp1.length == 5;
+        assert 0 == Arrays.stream(tmp1).sum();
+        int[] tmp2 = Arrays.stream(sumZero(3)).distinct().toArray();
+        assert tmp2.length == 3;
+        assert 0 == Arrays.stream(tmp2).sum();
+        int[] tmp3 = Arrays.stream(sumZero(1)).distinct().toArray();
+        assert 0 == Arrays.stream(tmp3).sum();
     }
 
     public int[] sumZero(int n) {
         int[] ans = new int[n];
-        int sum = 0;
-        for(int i = 1; i < n; i++) {
-            ans[i] = i;
-            sum -=i;
+        int idx = n % 2;
+        int tmp = 1;
+        while (idx < n) {
+            ans[idx++] = tmp;
+            ans[idx++] = -tmp;
+            tmp++;
         }
-        ans[0] = sum;
         return ans;
     }
 
 }
-
 
 
 
@@ -78,6 +83,19 @@ public int[] sumZero(int n) {
         sum -=i;
     }
     ans[0] = sum;
+    return ans;
+}
+
+// 方法3：一正一负，一对儿
+public int[] sumZero(int n) {
+    int[] ans = new int[n];
+    int idx = n % 2;
+    int tmp = 1;
+    while (idx < n) {
+        ans[idx++] = tmp;
+        ans[idx++] = -tmp;
+        tmp++;
+    }
     return ans;
 }
 */
