@@ -21,7 +21,7 @@ public class NO283_E_MoveZeroes_x3 {
 
     @Test
     public void test() {
-        int[] input = new int[]{0, 1, 0, 3, 12};
+        int[] input = {0, 1, 0, 3, 12};
         moveZeroes(input);
         assertArrayEquals(new int[]{1, 3, 12, 0, 0}, input);
     }

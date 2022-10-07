@@ -42,6 +42,7 @@ public class NO043_N_Multiply {
                 ansArr[i + j + 1] += x * y;
             }
         }
+
         for (int i = m + n - 1; i > 0; i--) {
             ansArr[i - 1] += ansArr[i] / 10;
             ansArr[i] %= 10;

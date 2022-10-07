@@ -75,9 +75,9 @@ public class MathUtils {
     private static int getmax(int[] a, int max) {
         int lastindex = a.length-1;
         int last = a[lastindex];
-        if (a.length == 1) {
+        if (a.length == 1)
             return max(last, max);
-        }
+
         //每次数组缩短一个元素，最后一个元素与缩短的数组进行 getmax 操作
         return getmax(copyOf(a, lastindex), max(max, last));
     }
@@ -155,8 +155,8 @@ public class MathUtils {
         return true;
     }
 
-    public static String[] WEEKS = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-    public static int[] MONTHS = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static String[] WEEKS = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    public static int[] MONTHS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public static boolean isLeap(int year) {
         return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
