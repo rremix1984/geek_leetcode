@@ -15,12 +15,12 @@ import org.junit.Test;
         输入：numBottles = 9, numExchange = 3
         输出：13
         解释：你可以用 3 个空瓶兑换 1 瓶水。
-        所以最多能喝到 9 + 3 + 1 = 13 瓶水。
+             所以最多能喝到 9 + 3 + 1 = 13 瓶水。
     示例 2：
         输入：numBottles = 15, numExchange = 4
         输出：19
         解释：你可以用 4 个空瓶兑换 1 瓶水。
-        所以最多能喝到 15 + 3 + 1 = 19 瓶水。
+             所以最多能喝到 15 + 3 + 1 = 19 瓶水。
 */
 public class NO1518_E_NumWaterBottles_x2 {
 
