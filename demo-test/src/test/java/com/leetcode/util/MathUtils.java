@@ -350,6 +350,8 @@ public class MathUtils {
         return res;
     }
 
+    public static String[] MONTH_ENUM = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};;
+
     public static void main(String[] args) {
 //        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
 //        System.out.println(mins(0, 6, 3));
