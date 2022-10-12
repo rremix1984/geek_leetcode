@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode.easy;
+package com.leetcode.normal;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
