@@ -204,10 +204,18 @@ public class MathUtils {
         for (int[] ints : arr) {
             ArrayList<Integer> inner = new ArrayList<>();
             int len = ints.length;
-            for (int j = 0; j < len; j++)
-                inner.add(ints[j]);
+            for (int anInt : ints)
+                inner.add(anInt);
 
             res.add(new ArrayList<>(inner));
+        }
+        return res;
+    }
+
+    public static ArrayList<Boolean> getArray(boolean... arr) {
+        ArrayList<Boolean> res = new ArrayList<>();
+        for (boolean bool : arr) {
+            res.add(bool);
         }
         return res;
     }
