@@ -189,11 +189,8 @@ public class MathUtils {
     public static ArrayList<ArrayList<Object>> getArray(Object[]... arr) {
         ArrayList<ArrayList<Object>> res = new ArrayList<>();
         for (Object[] ints : arr) {
-            ArrayList<Object> inner = new ArrayList<>();
             int len = ints.length;
-            for (int j = 0; j < len; j++) {
-                inner.add(ints[j]);
-            }
+            ArrayList<Object> inner = new ArrayList<>(Arrays.asList(ints).subList(0, len));
             res.add(new ArrayList<>(inner));
         }
         return res;
@@ -207,6 +204,16 @@ public class MathUtils {
             for (int anInt : ints)
                 inner.add(anInt);
 
+            res.add(new ArrayList<>(inner));
+        }
+        return res;
+    }
+
+    public static List<List<String>> getArray(String[]... arr) {
+        List<List<String>> res = new ArrayList<>();
+        for (String[] ints : arr) {
+            ArrayList<String> inner = new ArrayList<>();
+            Collections.addAll(inner, ints);
             res.add(new ArrayList<>(inner));
         }
         return res;
