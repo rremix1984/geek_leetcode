@@ -7,7 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.max;
 import static org.junit.Assert.assertEquals;
 
@@ -32,9 +32,9 @@ public class NO104_E_MaximumDepthOfBinaryTree_x3 {
 
     @Test
     public void test() {
-        assertEquals(3, maxDepth(createFullTree(3, 9, 20, null, null, 15, 7)));// 3
-        assertEquals(4, maxDepth(createFullTree(3, 9, null, 10, null, null, null, 11, null)));// 4
-        assertEquals(4, maxDepth(createFullTree(3, null, 9, null, null, null, 10, null, null, null, null, null, null, 11, null)));
+        assertEquals(3, maxDepth(cTree(3, 9, 20, null, null, 15, 7)));// 3
+        assertEquals(4, maxDepth(cTree(3, 9, null, 10, null, null, null, 11, null)));// 4
+        assertEquals(4, maxDepth(cTree(3, null, 9, null, null, null, 10, null, null, null, null, null, null, 11, null)));
     }
 
     public int maxDepth(TreeNode root) {

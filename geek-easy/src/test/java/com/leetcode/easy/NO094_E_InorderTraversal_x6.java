@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
@@ -28,7 +28,7 @@ public class NO094_E_InorderTraversal_x6 {
     @Test
     public void test() {
 //        assertEquals(getArray(1, 3, 2),
-//                inorderTraversal(createFullTree(1, null, 2, null, null, 3)));
+//                inorderTraversal(cTree(1, null, 2, null, null, 3)));
         Assert.assertEquals(getArray(3, 9, 12, 11, 10),
                 inorderTraversal(new TreeNode(3,
                             null, new TreeNode(9,

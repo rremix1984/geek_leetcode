@@ -5,7 +5,7 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -35,7 +35,7 @@ public class NO2331_E_EvaluateTree_x2 {
 
     @Test
     public void test() {
-        assert evaluateTree(createFullTree(2, 1, 3, null, null, 0, 1));
+        assert evaluateTree(cTree(2, 1, 3, null, null, 0, 1));
         assert !evaluateTree(new TreeNode(0));
     }
 

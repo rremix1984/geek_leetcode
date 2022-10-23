@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -26,9 +26,9 @@ public class NO101_E_SymmetricTree_x3 {
 
     @Test
     public void test() {
-        assert isSymmetric(createFullTree(1, 2, 2, 3, 4, 4, 3));
-        assert !isSymmetric(createFullTree(1, 2, 2, null, 3, null, 3));
-        assert !isSymmetric(createFullTree(1, 2, 2, 3, 3, 3, 3, 4, 5));
+        assert isSymmetric(cTree(1, 2, 2, 3, 4, 4, 3));
+        assert !isSymmetric(cTree(1, 2, 2, null, 3, null, 3));
+        assert !isSymmetric(cTree(1, 2, 2, 3, 3, 3, 3, 4, 5));
     }
 
     public boolean isSymmetric(TreeNode root) {

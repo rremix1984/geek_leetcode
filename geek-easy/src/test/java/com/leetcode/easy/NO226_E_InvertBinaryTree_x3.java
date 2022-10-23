@@ -7,7 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.SwapUtil.swap;
 
 /**
@@ -25,10 +25,10 @@ public class NO226_E_InvertBinaryTree_x3 {
 
     @Test
     public void test() {
-        TreeNode tmp = createFullTree(4, 2, 7, 1, 3, 6, 9);
-        assert invertTree(tmp).equals(createFullTree(4, 7, 2, 9, 6, 3, 1));
-        TreeNode tmp2 = createFullTree(2, 1, 3);
-        assert invertTree(tmp2).equals(createFullTree(2, 3, 1));
+        TreeNode tmp = cTree(4, 2, 7, 1, 3, 6, 9);
+        assert invertTree(tmp).equals(cTree(4, 7, 2, 9, 6, 3, 1));
+        TreeNode tmp2 = cTree(2, 1, 3);
+        assert invertTree(tmp2).equals(cTree(2, 3, 1));
     }
 
     public TreeNode invertTree(TreeNode root) {

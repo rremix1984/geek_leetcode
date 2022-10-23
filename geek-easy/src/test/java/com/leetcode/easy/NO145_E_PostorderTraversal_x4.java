@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
@@ -35,13 +35,13 @@ public class NO145_E_PostorderTraversal_x4 {
     @Test
     public void test() {
         Assert.assertEquals(getArray(3, 2, 1),
-            postorderTraversal(createFullTree(1, null, 2, null, null, 3)));
+            postorderTraversal(cTree(1, null, 2, null, null, 3)));
         Assert.assertEquals(getArray(1, 2, 3),
-                postorderTraversal(createFullTree(3, 1, 2)));
+                postorderTraversal(cTree(3, 1, 2)));
         Assert.assertEquals(getArray(0),
-                postorderTraversal(createFullTree(0)));
+                postorderTraversal(cTree(0)));
         Assert.assertEquals(getArray(1),
-                postorderTraversal(createFullTree(1)));
+                postorderTraversal(cTree(1)));
     }
 
     List<Integer> res = new ArrayList<>();

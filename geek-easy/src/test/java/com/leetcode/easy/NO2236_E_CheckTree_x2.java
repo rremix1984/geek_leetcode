@@ -5,7 +5,7 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -27,8 +27,8 @@ public class NO2236_E_CheckTree_x2 {
 
     @Test
     public void test() {
-        assert checkTree(createFullTree(10, 4, 6));
-        assert !checkTree(createFullTree(5, 3, 1));
+        assert checkTree(cTree(10, 4, 6));
+        assert !checkTree(cTree(5, 3, 1));
     }
 
     public boolean checkTree(TreeNode root) {

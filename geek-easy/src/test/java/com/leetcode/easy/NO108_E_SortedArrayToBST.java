@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -30,8 +30,8 @@ public class NO108_E_SortedArrayToBST {
 
     @Test
     public void test() {
-        assert createFullTree(0, -3, 9, -10, null, 5).equals(sortedArrayToBST(new int[]{-10, -3, 0, 5, 9}));
-        assert createFullTree(3, 1).equals(sortedArrayToBST(new int[]{1, 3}));
+        assert cTree(0, -3, 9, -10, null, 5).equals(sortedArrayToBST(new int[]{-10, -3, 0, 5, 9}));
+        assert cTree(3, 1).equals(sortedArrayToBST(new int[]{1, 3}));
     }
 
     public TreeNode sortedArrayToBST(int[] nums) {

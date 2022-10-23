@@ -8,7 +8,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -29,8 +29,8 @@ public class NO1022_E_SumRootToLeaf_x2 {
 
     @Test
     public void test() {
-        assert 22 == sumRootToLeaf(createFullTree(1, 0, 1, 0, 1, 0, 1));
-        assert 0 == sumRootToLeaf(createFullTree(0));
+        assert 22 == sumRootToLeaf(cTree(1, 0, 1, 0, 1, 0, 1));
+        assert 0 == sumRootToLeaf(cTree(0));
     }
 
     public int sumRootToLeaf(TreeNode root) {

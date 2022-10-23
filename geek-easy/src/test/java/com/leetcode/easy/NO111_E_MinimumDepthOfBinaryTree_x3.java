@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static java.lang.Math.min;
 
 /**
@@ -33,8 +33,8 @@ public class NO111_E_MinimumDepthOfBinaryTree_x3 {
 
     @Test
     public void test() {
-        assert 2 == minDepth(createFullTree(3, 9, 20, null, null, 15, 7));
-        assert 3 == minDepth(createFullTree(1, 2, 3, 4, null, null, 5));
+        assert 2 == minDepth(cTree(3, 9, 20, null, null, 15, 7));
+        assert 3 == minDepth(cTree(1, 2, 3, 4, null, null, 5));
         assert 5 == minDepth(new TreeNode(2,
                             null, new TreeNode(3,
                                     null, new TreeNode(4,

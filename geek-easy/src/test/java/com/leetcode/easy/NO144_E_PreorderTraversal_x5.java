@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
@@ -40,11 +40,11 @@ public class NO144_E_PreorderTraversal_x5 {
     @Test
     public void test() {
         Assert.assertEquals(getArray(1, 2, 3),
-            preorderTraversal(createFullTree(1, null, 2, null, null, 3)));
-        Assert.assertEquals(getArray(), preorderTraversal(createFullTree()));// []
-        Assert.assertEquals(getArray(1), preorderTraversal(createFullTree(1)));// [1]
-        Assert.assertEquals(getArray(1, 2), preorderTraversal(createFullTree(1, 2, null)));// [1, 2]
-        Assert.assertEquals(getArray(1, 2), preorderTraversal(createFullTree(1, null, 2)));// [1, 2]
+            preorderTraversal(cTree(1, null, 2, null, null, 3)));
+        Assert.assertEquals(getArray(), preorderTraversal(cTree()));// []
+        Assert.assertEquals(getArray(1), preorderTraversal(cTree(1)));// [1]
+        Assert.assertEquals(getArray(1, 2), preorderTraversal(cTree(1, 2, null)));// [1, 2]
+        Assert.assertEquals(getArray(1, 2), preorderTraversal(cTree(1, null, 2)));// [1, 2]
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {

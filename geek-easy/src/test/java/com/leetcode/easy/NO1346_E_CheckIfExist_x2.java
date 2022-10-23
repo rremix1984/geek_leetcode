@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 import java.util.HashSet;
@@ -28,7 +28,7 @@ import java.util.Set;
         输出：false
         解释：在该情况下不存在 N 和 M 满足 N = 2 * M 。
 */
-public class NO1346_E_CheckIfExist {
+public class NO1346_E_CheckIfExist_x2 {
 
     @Test
     public void test() {
@@ -38,13 +38,44 @@ public class NO1346_E_CheckIfExist {
     }
 
     public boolean checkIfExist(int[] arr) {
-        Set<Integer> set = new HashSet<>();
-        for (int i : arr) {
-            if (set.contains(2 * i) || (i % 2 == 0 && set.contains(i / 2)))
-                return true;
-            set.add(i);
-        }
         return false;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public boolean checkIfExist(int[] arr) {
+    Set<Integer> set = new HashSet<>();
+    for (int i : arr) {
+        // 前者是后者的 2 倍
+        if (set.contains(2 * i))
+            return true;
+
+        // 后者是前者的 2 倍
+        if (i % 2 == 0 && set.contains(i / 2))
+            return true;
+
+        set.add(i);
+    }
+    return false;
+}
+*/
