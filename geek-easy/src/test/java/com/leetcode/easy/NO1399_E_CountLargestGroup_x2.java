@@ -28,7 +28,6 @@ import static java.lang.Math.max;
     示例 4：
         输入：n = 24
         输出：5
-
     提示：
         0 <= num <= 10^6
  */
@@ -44,25 +43,59 @@ public class NO1399_E_CountLargestGroup_x2 {
 
     public int countLargestGroup(int n) {
         int ans = 0;
-
-        // 统计数位和有多少
-        int[] count = new int[n +  1];
-
-        //计算 1 - n 各个元素的数位和，例如数字i的数位和是sum[i / 10] + i % 10
         int[] sum = new int[n + 1];
-
+        int[] count = new int[n + 1];
         int max = 1;
         for (int i = 1; i <= n; i++) {
-            // [4, 13]   4 = 1 + 3 = (13 / 10) + 13 % 10
             sum[i] = sum[i / 10] + i % 10;
             max = max(max, ++count[sum[i]]);
         }
-
-        for (int num : count)
-            if (num == max)
+        for (int i : sum)
+            if (i == max)
                 ans++;
-
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+public int countLargestGroup(int n) {
+    int ans = 0;
+
+    // 统计数位和有多少
+    int[] count = new int[n +  1];
+
+    //计算 1 - n 各个元素的数位和，例如数字i的数位和是sum[i / 10] + i % 10
+    int[] sum = new int[n + 1];
+
+    int max = 1;
+    for (int i = 1; i <= n; i++) {
+        // [4, 13]   4 = 1 + 3 = (13 / 10) + 13 % 10
+        sum[i] = sum[i / 10] + i % 10;
+        max = max(max, ++count[sum[i]]);
+    }
+
+    for (int num : count)
+        if (num == max)
+            ans++;
+
+    return ans;
+}
+*/

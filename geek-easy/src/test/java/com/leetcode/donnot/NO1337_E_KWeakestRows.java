@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.donnot;
 
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;

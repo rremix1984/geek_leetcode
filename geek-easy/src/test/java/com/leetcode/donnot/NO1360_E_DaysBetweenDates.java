@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.donnot;
 
 import org.junit.Test;
 
@@ -36,7 +36,6 @@ public class NO1360_E_DaysBetweenDates {
         int year = Integer.parseInt(temp[0]);
         int month = Integer.parseInt(temp[1]);
         int day = Integer.parseInt(temp[2]);
-
         // 对于二月份的处理非常麻烦，因为二月份需要考虑当年是闰年还是平年来决定天数。
         // 既然这样，我们不妨把原先的日历往前2个月。这样一来，三月份便充当了今年的1月，
         // 四月份为今年的2月，依此类推，十二月份为今年的10月，并把下一年的一月份和二月份作为今年的11月和12月。
@@ -49,7 +48,11 @@ public class NO1360_E_DaysBetweenDates {
             month -= 2;
         }
         // Zeller公式
-        return 365 * year + (year / 4 - year / 100 + year / 400) + (30 * month) + (3 * month - 1) / 5 + day;
+        return 365 * year
+               + (year / 4 - year / 100 + year / 400)
+               + (30 * month)
+               + (3 * month - 1) / 5
+               + day;
     }
 
 }

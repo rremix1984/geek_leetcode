@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 
@@ -14,21 +14,21 @@ import org.junit.Test;
         给你一个 非递减 的整数数组 timeSeries ，其中 timeSeries[i] 表示提莫在 timeSeries[i] 秒时对艾希发起攻击，以及一个表示中毒持续时间的整数 duration 。
         返回艾希处于中毒状态的 总 秒数。
     示例 1：
-        输入：timeSeries = [1,4], duration = 2
+        输入：timeSeries = [1, 4], duration = 2
         输出：4
         解释：提莫攻击对艾希的影响如下：
-        - 第 1 秒，提莫攻击艾希并使其立即中毒。中毒状态会维持 2 秒，即第 1 秒和第 2 秒。
-        - 第 4 秒，提莫再次攻击艾希，艾希中毒状态又持续 2 秒，即第 4 秒和第 5 秒。
-        艾希在第 1、2、4、5 秒处于中毒状态，所以总中毒秒数是 4 。
+             - 第 1 秒，提莫攻击艾希并使其立即中毒。中毒状态会维持 2 秒，即第 1 秒和第 2 秒。
+             - 第 4 秒，提莫再次攻击艾希，艾希中毒状态又持续 2 秒，即第 4 秒和第 5 秒。
+             艾希在第 1、2、4、5 秒处于中毒状态，所以总中毒秒数是 4 。
     示例 2：
-        输入：timeSeries = [1,2], duration = 2
+        输入：timeSeries = [1, 2], duration = 2
         输出：3
         解释：提莫攻击对艾希的影响如下：
-        - 第 1 秒，提莫攻击艾希并使其立即中毒。中毒状态会维持 2 秒，即第 1 秒和第 2 秒。
-        - 第 2 秒，提莫再次攻击艾希，并重置中毒计时器，艾希中毒状态需要持续 2 秒，即第 2 秒和第 3 秒。
-        艾希在第 1、2、3 秒处于中毒状态，所以总中毒秒数是 3 。
+             - 第 1 秒，提莫攻击艾希并使其立即中毒。中毒状态会维持 2 秒，即第 1 秒和第 2 秒。
+             - 第 2 秒，提莫再次攻击艾希，并重置中毒计时器，艾希中毒状态需要持续 2 秒，即第 2 秒和第 3 秒。
+             艾希在第 1、2、3 秒处于中毒状态，所以总中毒秒数是 3 。
 */
-public class NO495_E_FindPoisonedDuration {
+public class NO495_E_FindPoisonedDuration_x2 {
 
     @Test
     public void test() {
@@ -38,15 +38,42 @@ public class NO495_E_FindPoisonedDuration {
 
     public int findPoisonedDuration(int[] timeSeries, int duration) {
         int ans = 0;
-        int expired = 0;
-        for (int timeSery : timeSeries) {
-            if (timeSery >= expired)
-                ans += duration;
-            else
-                ans += timeSery + duration - expired;
-            expired = timeSery + duration;
-        }
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public int findPoisonedDuration(int[] timeSeries, int duration) {
+    int ans = 0;
+    int end = 0;
+    for (int start : timeSeries) {
+        // 当下一个毒药的开始时间，小于上一个毒药结束时间
+        // 相当于上一次毒药还没发挥完，则毒药重置了（把毒药时间减掉剩余时间）
+        if (start < end)
+            ans += start - end;
+
+        ans += duration;
+        end = start + duration;
+    }
+    return ans;
+}
+*/

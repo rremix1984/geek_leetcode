@@ -1,11 +1,10 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.donnot;
 
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
@@ -33,19 +32,22 @@ public class NO1560_E_MostVisited {
 
     @Test
     public void test() {
-        assert getArray(1, 2).equals(mostVisited(4, new int[]{1, 3, 1, 2}));
-        assert getArray(2).equals(mostVisited(2, new int[]{2, 1, 2, 1, 2, 1, 2, 1, 2}));
-        assert getArray(1, 2, 3, 4, 5, 6, 7).equals(mostVisited(7, new int[]{1, 3, 5, 7}));
+        assert getArray(1, 2).equals(
+                mostVisited(4, new int[]{1, 3, 1, 2}));
+        assert getArray(2).equals(
+                mostVisited(2, new int[]{2, 1, 2, 1, 2, 1, 2, 1, 2}));
+        assert getArray(1, 2, 3, 4, 5, 6, 7).equals(
+                mostVisited(7, new int[]{1, 3, 5, 7}));
     }
 
     public List<Integer> mostVisited(int n, int[] rounds) {
         List<Integer> ret = new ArrayList<>();
         int start = rounds[0];
         int end = rounds[rounds.length - 1];
-        if (start <= end)
+        if (start <= end) {
             for (int i = start; i <= end; i++)
                 ret.add(i);
-        else {
+        } else {
             // 由于题目要求按扇区大小排序，因此我们要将区间分成两部分
             for (int i = 1; i <= end; i++)
                 ret.add(i);
