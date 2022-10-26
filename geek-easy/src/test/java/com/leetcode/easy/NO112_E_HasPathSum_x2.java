@@ -6,6 +6,9 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import static com.leetcode.util.MathUtils.cTree;
 
 /**

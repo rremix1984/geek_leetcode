@@ -33,9 +33,12 @@ public class NO191_E_NumberOf1Bits_x2 {
 
     @Test
     public void test() {
-        assertEquals(3, hammingWeight(bin2Dec("00000000000000000000000000001011")));// 3
-        assertEquals(1, hammingWeight(bin2Dec("00000000000000000000000010000000")));// 1
-        assertEquals(31, hammingWeight(bin2Dec("11111111111111111111111111111101")));// 31
+        assertEquals(3,
+                hammingWeight(bin2Dec("00000000000000000000000000001011")));// 3
+        assertEquals(1,
+                hammingWeight(bin2Dec("00000000000000000000000010000000")));// 1
+        assertEquals(31,
+                hammingWeight(bin2Dec("11111111111111111111111111111101")));// 31
     }
 
     /**

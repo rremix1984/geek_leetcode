@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
@@ -13,21 +13,17 @@ import static org.junit.Assert.assertArrayEquals;
         返回一个长度为 n + 1 的数组 ans 作为答案。
     示例 1：
         输入：n = 2
-        输出：[0,1,1]
-        解释：0 --> 0
+        输出：[0, 1, 1]
+        解释：0 --> 0      2 --> 10
              1 --> 1
-             2 --> 10
     示例 2：
         输入：n = 5
         输出：[0,1,1,2,1,2]
-        解释：0 --> 0
-             1 --> 1
-             2 --> 10
-             3 --> 11
-             4 --> 100
-             5 --> 101
+        解释：0 --> 0        3 --> 11
+             1 --> 1        4 --> 100
+             2 --> 10       5 --> 101
 */
-public class NO338_E_CountBits {
+public class NO338_E_CountBits_x2 {
 
     @Test
     public void test() {
@@ -36,13 +32,8 @@ public class NO338_E_CountBits {
     }
 
     public int[] countBits(int num) {
-        int[] result = new int[num + 1];
-        for (int i = 1; i <= num; i++)
-            if ((i & 1) == 0)
-                result[i] = result[i>>1];
-            else
-                result[i] = result[i - 1] + 1;
-        return result;
+        int[] ans = new int[num + 1];
+        return ans;
     }
 
 }
@@ -78,5 +69,19 @@ public int countOnes(int x) {
         ones++;
     }
     return ones;
+}
+
+
+// 方法2：
+public int[] countBits(int num) {
+    int[] result = new int[num + 1];
+    for (int i = 1; i <= num; i++)
+        // 1、偶数
+        if ((i & 1) == 0)
+            result[i] = result[i >> 1];
+            // 2、奇数
+        else
+            result[i] = result[i - 1] + 1;
+    return result;
 }
 */
