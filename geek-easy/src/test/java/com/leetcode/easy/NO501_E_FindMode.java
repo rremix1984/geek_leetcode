@@ -3,9 +3,11 @@
  */
 package com.leetcode.easy;
 
+import com.leetcode.util.MathUtils;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.inOrder;
@@ -32,7 +34,7 @@ import static org.junit.Assert.assertArrayEquals;
         树中节点的数目在范围 [1, 10 ^ 4] 内
         -10 ^ 5 <= Node.val <= 10 ^ 5
 */
-public class NO501_E_FindMode_x2 {
+public class NO501_E_FindMode {
 
     @Test
     public void test() {
