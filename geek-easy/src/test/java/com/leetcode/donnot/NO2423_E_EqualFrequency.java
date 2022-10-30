@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.donnot;
 
 import org.junit.Test;
 import java.util.*;
@@ -20,8 +20,8 @@ import java.util.*;
     示例 2：
         输入：word = "aazz"
         输出：false
-        解释：我们必须删除一个字母，所以要么 "a" 的频率变为 1 且 "z" 的频率为 2 ，要么两个字母频率反过来。所以不可能让剩余所有字母出现频率相同。
-
+        解释：我们必须删除一个字母，所以要么 "a" 的频率变为 1 且 "z" 的频率为 2 ，
+             要么两个字母频率反过来。所以不可能让剩余所有字母出现频率相同。
 */
 public class NO2423_E_EqualFrequency {
 

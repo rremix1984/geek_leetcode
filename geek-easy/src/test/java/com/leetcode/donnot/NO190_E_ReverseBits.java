@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.donnot;
 
 import org.junit.Test;
 
@@ -30,17 +30,21 @@ public class NO190_E_ReverseBits {
 
     @Test
     public void test() {
-        assert 964176192 == reverseBits(bin2Dec("00000010100101000001111010011100"));
+        assert 964176192 ==
+            reverseBits(
+                bin2Dec("00000010100101000001111010011100"));
+//        assert 3221225471l ==
+//            reverseBits(
+//                bin2Dec("11111111111111111111111111111101"));
     }
 
-    public long reverseBits(int n) {
-        long ans = 0;
-        for (int i = 0; i < 32; i++) {
-            long t = (n >> i) & 1;
-            if (t == 1)
-                ans |= (1 << (31 - i));
+    public int reverseBits(int n) {
+        int rev = 0;
+        for (int i = 0; i < 32 && n != 0; ++i) {
+            rev |= (n & 1) << (31 - i);
+            n >>>= 1;
         }
-        return ans;
+        return rev;
     }
 
 }
