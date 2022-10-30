@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
+import static java.util.Collections.emptyList;
 
 /**
     (简单)
@@ -34,7 +35,7 @@ public class NO2248_E_Intersection_x2 {
     public void test() {
         assert getArray(3, 4).equals(
             intersection(new int[][]{{3, 1, 2, 4, 5}, {1, 2, 3, 4}, {3, 4, 5, 6}}));
-        assert getArray().equals(
+        assert emptyList().equals(
             intersection(new int[][]{{1, 2, 3}, {4, 5, 6}}));
     }
 

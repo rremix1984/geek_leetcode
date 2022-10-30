@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
+import static java.util.Collections.emptyList;
 
 /**
     (简单)
@@ -35,7 +36,7 @@ public class NO2032_E_TwoOutOfThree_x2 {
 
     @Test
     public void test() {
-        assert getArray().equals(twoOutOfThree(new int[]{1, 2, 2}, new int[]{4, 3, 3}, new int[]{5}));
+        assert emptyList().equals(twoOutOfThree(new int[]{1, 2, 2}, new int[]{4, 3, 3}, new int[]{5}));
     }
 
     public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {

@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
+import static java.util.Collections.emptyList;
 
 /**
     (简单)
@@ -42,7 +43,7 @@ public class NO2089_E_TargetIndices_x2 {
         assert getArray(1, 2).equals(targetIndices(new int[]{1, 2, 5, 2, 3},2));
         assert getArray(3).equals(targetIndices(new int[]{1, 2, 5, 2, 3},3));
         assert getArray(4).equals(targetIndices(new int[]{1, 2, 5, 2, 3},5));
-        assert getArray().equals(targetIndices(new int[]{1, 2, 5, 2, 3},4));
+        assert emptyList().equals(targetIndices(new int[]{1, 2, 5, 2, 3},4));
     }
 
     public List<Integer> targetIndices(int[] nums, int target) {
