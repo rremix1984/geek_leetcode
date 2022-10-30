@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.donnot;
 
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
@@ -9,8 +9,10 @@ import static org.junit.Assert.assertArrayEquals;
 /**
     (简单)
     1030. 距离顺序排列矩阵单元格
-        给定四个整数 rows ,   cols ,  rCenter 和 cCenter 。有一个 rows x cols 的矩阵，你在单元格上的坐标是 (rCenter, cCenter) 。
-        返回矩阵中的所有单元格的坐标，并按与 (rCenter, cCenter) 的 距离 从最小到最大的顺序排。你可以按 任何 满足此条件的顺序返回答案。
+        给定四个整数 rows, cols, rCenter 和 cCenter。
+        有一个 rows x cols 的矩阵，你在单元格上的坐标是 (rCenter,cCenter) 。
+        返回矩阵中的所有单元格的坐标，并按与 (rCenter, cCenter) 的距离
+        从最小到最大的顺序排。你可以按 任何 满足此条件的顺序返回答案。
         单元格(r1, c1) 和 (r2, c2) 之间的距离为|r1 - r2| + |c1 - c2|。
     示例 1：
         输入：rows = 1,  cols = 2,  rCenter = 0,  cCenter = 0
@@ -76,7 +78,6 @@ public int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
         int d2 = dist(arr2[0], arr2[1], r0, c0);
         return Integer.compare(d1, d2);
     });
-
     return re;
 }
 
