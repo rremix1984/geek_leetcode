@@ -5,14 +5,12 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import static com.leetcode.util.SwapUtil.swap;
-
 /**
     (简单)
     859. 亲密字符串
         给你两个字符串s和goal，只要我们可以通过交换s中的两个字母得到
         与goal相等的结果，就返回true；否则返回false。
-        交换字母的定义是：取两个下标i和j（下标从0开始）且满足i!=j，
+        交换字母的定义是：取两个下标i和j（下标从0开始）且满足i != j，
         接着交换s[i]和s[j]处的字符。
         例如，在 "abcd" 中交换下标 0 和下标 2 的元素可以生成 "cbad" 。
     示例 1：
