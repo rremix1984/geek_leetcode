@@ -8,7 +8,8 @@ import org.junit.Test;
 /**
     (简单)
     1662. 检查两个字符串数组是否相等
-        给你两个字符串数组 word1 和 word2 。如果两个数组表示的字符串相同，返回 true ；否则，返回 false 。
+        给你两个字符串数组 word1 和 word2 。如果两个数组表示的字符串相同，
+        返回 true ；否则，返回 false 。
         数组表示的字符串 是由数组中的所有元素 按顺序 连接形成的字符串。
     示例 1：
         输入：word1 = {"ab", "c"}, word2 = {"a", "bc"}
@@ -24,13 +25,16 @@ import org.junit.Test;
         输入：word1  = {"abc", "d", "defg"}, word2 = {"abcddefg"}
         输出：true
 */
-public class NO1662_E_ArrayStringsAreEqual_x2 {
+public class NO1662_E_ArrayStringsAreEqual_x3 {
 
     @Test
     public void test() {
-        assert arrayStringsAreEqual(new String[]{"ab", "c"}, new String[]{"a", "bc"});
-        assert !arrayStringsAreEqual(new String[]{"a", "cb"}, new String[]{"ab", "c"});
-        assert arrayStringsAreEqual(new String[]{"abc", "d", "defg"}, new String[]{"abcddefg"});
+        assert arrayStringsAreEqual(
+                new String[]{"ab", "c"}, new String[]{"a", "bc"});
+        assert !arrayStringsAreEqual(
+                new String[]{"a", "cb"}, new String[]{"ab", "c"});
+        assert arrayStringsAreEqual(
+                new String[]{"abc", "d", "defg"}, new String[]{"abcddefg"});
     }
 
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {

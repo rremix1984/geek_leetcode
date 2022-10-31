@@ -44,15 +44,7 @@ public class NO1758_E_MinOperations_x2 {
     }
 
     public int minOperations(String s) {
-        int cnt1 = 0;
-        int cnt2 = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) % 2 != i % 2)
-                cnt1++;
-            else
-                cnt2++;
-        }
-        return min(cnt1, cnt2);
+        return 0;
     }
 
 }
@@ -72,14 +64,33 @@ public class NO1758_E_MinOperations_x2 {
 
 
 /**
+// 方法1：
 public int minOperations(String s) {
     // 第一位奇偶性（1-奇，0-偶）
     // 第二位奇偶性（1-奇，0-偶）
-    int[][] dp = new int[2][2];
+    int[][] a = new int[2][2];
     for (int i = 0; i < s.length(); i++)
-        dp[i & 1][s.charAt(i) & 1]++;
+        // 坐标和值的奇偶性，有四种情况
+        // [0][0]+[1][1] 或者 [1][0]+[0][1]
+        //a[i & 1][s.charAt(i) & 1]++;
+        a[i % 2][s.charAt(i) % 2]++;
 
-    return min(dp[0][1] + dp[1][0],
-            dp[0][0] + dp[1][1]);
+    // 把这几种可能性都拼在一起，取其中最小的一种即可
+    return min(a[0][1] + a[1][0], a[0][0] + a[1][1]);
+}
+
+// 如果想组成 01010101 或者 1010101010
+// 特点是【坐标（i）】和【值（s.charAt(i)）】的奇偶性全部相同（2种），或者全部不相同（2种）
+// 2 x 2 = 4（种）
+public int minOperations(String s) {
+    int cnt1 = 0;
+    int cnt2 = 0;
+    for (int i = 0; i < s.length(); i++)
+        if (s.charAt(i) % 2 != i % 2)
+            cnt1++;
+        else
+            cnt2++;
+
+    return min(cnt1, cnt2);
 }
 */

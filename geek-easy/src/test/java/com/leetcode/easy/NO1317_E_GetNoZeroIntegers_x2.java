@@ -1,7 +1,7 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
@@ -11,8 +11,8 @@ import static org.junit.Assert.assertArrayEquals;
     1317. 将整数转换为两个无零整数的和
         「无零整数」是十进制表示中 不含任何 0 的正整数。
         给你一个整数 n，请你返回一个 由两个整数组成的列表 [A, B]，满足：
-        A 和 B 都是无零整数
-        A + B = n
+          1）A 和 B 都是无零整数
+          2）A + B = n
         题目数据保证至少有一个有效的解决方案。
         如果存在多个有效解决方案，你可以返回其中任意一个。
     示例 1：
@@ -32,7 +32,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：n = 1010
         输出：{11, 999}
 */
-public class NO1317_E_GetNoZeroIntegers {
+public class NO1317_E_GetNoZeroIntegers_x2 {
 
     @Test
     public void test() {
@@ -44,39 +44,7 @@ public class NO1317_E_GetNoZeroIntegers {
     }
 
     public int[] getNoZeroIntegers(int n) {
-        int [] res = new int[2];
-        //n <= 10 时单独讨论一下
-        if(n <= 10) {
-            res[0] = 1;
-            res[1] = n - 1;
-            return res;
-        }
-
-        //求数字n的十进制长度
-        int length = (int)Math.log10(n);
-
-        //数字res[0]中每一位都是9,res[1]是与res[0]互补的数
-        res[0] = (int)Math.pow(10, length) - 1;
-        res[1] = n - res[0];
-
-        //判断res[1]中十进制某一位是否为0
-        int temp = res[1];
-        int index = 1;
-
-        while(temp > 0)
-        {
-            //如果res[1]某一位为0，则res[1]该位加上1，res[0]该位减去1
-            if(temp % 10 == 0)
-            {
-                res[0] -= index;
-                res[1] += index;
-            }
-
-            index *= 10;
-            temp = temp / 10;
-        }
-
-        return res;
+        return new int[2];
     }
 
 }
@@ -94,10 +62,34 @@ public class NO1317_E_GetNoZeroIntegers {
 
 
 
-
-
 /**
 // 方法1：
+public int[] getNoZeroIntegers(int n) {
+    int l = 1;
+    int r = n - 1;
+    while (l <= r)
+        // num1 和 num2 必须都是非0数
+        if (noZero(l) && noZero(r)) {
+            return new int[]{l, r};
+        // 有一个是0数 就继续找
+        } else {
+            l++;
+            r--;
+        }
+    return new int[2];
+}
+
+public boolean noZero(int num) {
+    while (num > 0) {
+        if (num % 10 == 0)
+            return false;
+        num /= 10;
+    }
+    return true;
+}
+
+
+// 方法2：
 public int[] getNoZeroIntegers(int n) {
     int num1 = 0;
     int num2 = 0;
@@ -117,5 +109,37 @@ public int[] getNoZeroIntegers(int n) {
     }
 
     return new int[]{num1, num2};
+}
+
+
+// 方法3：
+public int[] getNoZeroIntegers(int n) {
+    int [] res = new int[2];
+    //n <= 10 时单独讨论一下
+    if (n <= 10) {
+        res[0] = 1;
+        res[1] = n - 1;
+        return res;
+    }
+    //求数字n的十进制长度
+    int length = (int) Math.log10(n);
+
+    //数字res[0]中每一位都是9,res[1]是与res[0]互补的数
+    res[0] = (int) Math.pow(10, length) - 1;
+    res[1] = n - res[0];
+
+    //判断res[1]中十进制某一位是否为0
+    int temp = res[1];
+    int index = 1;
+    while (temp > 0) {
+        //如果res[1]某一位为0，则res[1]该位加上1，res[0]该位减去1
+        if (temp % 10 == 0) {
+            res[0] -= index;
+            res[1] += index;
+        }
+        index *= 10;
+        temp = temp / 10;
+    }
+    return res;
 }
 */

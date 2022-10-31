@@ -1,9 +1,12 @@
 /**
  * copyright 2022/1/19
  */
-package com.leetcode;
+package com.leetcode.easy;
 
 import org.junit.Test;
+
+import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.MathUtils.GCD;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -21,31 +24,66 @@ import static org.junit.Assert.assertEquals;
         输入：str1 = "LEET", str2 = "CODE"
         输出：""
 */
-public class NO1071_E_GcdOfStrings {
+public class NO1071_E_GcdOfStrings_x2 {
 
     @Test
     public void test() {
+        info(GCD(4, 6));
         assertEquals("ABC", gcdOfStrings("ABCABC", "ABC"));
         assertEquals("AB", gcdOfStrings("ABABAB", "ABAB"));
         assertEquals("", gcdOfStrings("LEET", "CODE"));
     }
 
     public String gcdOfStrings(String str1, String str2) {
-        if (!str1.concat(str2).equals(str2.concat(str1)))
+        if (!(str1 + str2).equals(str2 + str1))
             return "";
-
         return str1.substring(0,
-                    gcd(str1.length(), str2.length()));
+                    GCD(str1.length(), str2.length()));
     }
 
-    public int gcd(int begin, int end) {
-        int remainder = begin % end;
-        while (remainder != 0) {
-            begin = end;
-            end = remainder;
-            remainder = begin % end;
+    // 欧几里得法：计算最大公因数
+    // 也叫辗转相除法
+    public int GCD(int d1, int d2) {
+        int tmp = d1 % d2;
+        while (tmp != 0) {
+            d1 = d2;
+            d2 = tmp;
+            tmp = d1 % d2;
         }
-        return end;
+        return d2;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public String gcdOfStrings(String str1, String str2) {
+    if (!(str1 + str2).equals(str2 + str1))
+        return "";
+
+    return str1.substring(0,
+            GCD(str1.length(), str2.length()));
+}
+*/
