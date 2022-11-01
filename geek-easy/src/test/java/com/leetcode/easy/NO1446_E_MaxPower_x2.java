@@ -24,7 +24,7 @@ public class NO1446_E_MaxPower_x2 {
 
     @Test
     public void test() {
-        assert 2 == maxPower("com/leetcode");
+        assert 2 == maxPower("leetcode");
         assert 5 == maxPower("abbcccddddeeeeedcba");
     }
 

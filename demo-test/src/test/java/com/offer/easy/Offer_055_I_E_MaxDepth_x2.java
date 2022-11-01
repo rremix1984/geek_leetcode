@@ -7,7 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -26,7 +26,7 @@ public class Offer_055_I_E_MaxDepth_x2 {
 
     @Test
     public void test() {
-        assert 3 == maxDepth(createFullTree(3, 9, 20, null, null, 15, 7));
+        assert 3 == maxDepth(cTree(3, 9, 20, null, null, 15, 7));
     }
 
     public int maxDepth(TreeNode root) {

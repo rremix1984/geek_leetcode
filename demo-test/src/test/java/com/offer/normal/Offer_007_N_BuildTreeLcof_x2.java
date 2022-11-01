@@ -6,7 +6,7 @@ package com.offer.normal;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (中等)
@@ -24,10 +24,10 @@ public class Offer_007_N_BuildTreeLcof_x2 {
 
     @Test
     public void test() {
-        assert createFullTree(3, 9, 20, null, null, 15, 7).equals(
+        assert cTree(3, 9, 20, null, null, 15, 7).equals(
                 buildTree(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7}
             ));
-        assert createFullTree(-1).equals(
+        assert cTree(-1).equals(
                 buildTree(new int[]{-1}, new int[]{-1}
             ));
     }

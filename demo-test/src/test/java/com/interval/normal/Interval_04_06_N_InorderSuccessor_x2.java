@@ -5,7 +5,7 @@ package com.interval.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -37,7 +37,7 @@ public class Interval_04_06_N_InorderSuccessor_x2 {
         TreeNode left = new TreeNode(1);
         TreeNode t1 = new TreeNode(2, left, 3);
         assert t1.equals(inorderSuccessor(t1, left));
-        TreeNode t2 = createFullTree(5, 3, 6, 2, 4, null, null, 1);
+        TreeNode t2 = cTree(5, 3, 6, 2, 4, null, null, 1);
         assert null == inorderSuccessor(t2, t2.right);
     }
 

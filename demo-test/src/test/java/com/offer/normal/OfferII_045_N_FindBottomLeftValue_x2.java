@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (中等)
@@ -27,8 +27,8 @@ public class OfferII_045_N_FindBottomLeftValue_x2 {
 
     @Test
     public void test() {
-        assert 1 == findBottomLeftValue(createFullTree(2, 1, 3));
-        assert 7 == findBottomLeftValue(createFullTree(1, 2, 3, 4, null, 5, 6, null, null, null, null, 7));
+        assert 1 == findBottomLeftValue(cTree(2, 1, 3));
+        assert 7 == findBottomLeftValue(cTree(1, 2, 3, 4, null, 5, 6, null, null, null, null, 7));
     }
 
     public int findBottomLeftValue(TreeNode root) {

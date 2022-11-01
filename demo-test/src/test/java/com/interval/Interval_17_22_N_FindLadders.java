@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.leetcode.util.MathUtils.getArray;
+import static java.util.Collections.emptyList;
 
 /**
     (中等)
@@ -34,7 +35,7 @@ public class Interval_17_22_N_FindLadders {
     public void test() {
         assert getArray("hit","hot","dot","lot","log","cog").equals(
                 findLadders("hit", "cog", getArray("hot","dot","dog","lot","log","cog")));
-        assert getArray().equals(
+        assert emptyList().equals(
                 findLadders("hit", "cog", getArray("hot","dot","dog","lot","log")));
     }
 

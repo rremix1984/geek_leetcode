@@ -33,7 +33,7 @@ public class NO953_E_IsAlienSorted {
     @Test
     public void test() {
         assert isAlienSorted(
-                new String[]{"hello", "com/leetcode"},
+                new String[]{"hello", "leetcode"},
                 "hlabcdefgijkmnopqrstuvwxyz");
         assert !isAlienSorted(
                 new String[]{"word", "world", "row"},

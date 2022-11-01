@@ -5,7 +5,8 @@ package com.interval.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (中等)
@@ -30,8 +31,8 @@ public class Interval_04_05_N_IsValidBST_x2 {
 
     @Test
     public void test() {
-        assert isValidBST(createFullTree(2, 1, 3));
-        assert !isValidBST(createFullTree(5, 1, 4, null, null, 3, 6));
+        assert isValidBST(cTree(2, 1, 3));
+        assert !isValidBST(cTree(5, 1, 4, null, null, 3, 6));
     }
 
     public boolean isValidBST(TreeNode root) {

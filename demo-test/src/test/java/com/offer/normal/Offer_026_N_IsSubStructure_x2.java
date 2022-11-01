@@ -6,7 +6,7 @@ package com.offer.normal;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (中等)
@@ -36,8 +36,8 @@ public class Offer_026_N_IsSubStructure_x2 {
 
     @Test
     public void test() {
-        assert !isSubStructure(createFullTree(1, 2, 3), createFullTree(3, 1));
-        assert isSubStructure(createFullTree(3, 4, 5, 1, 2), createFullTree(4, 1));
+        assert !isSubStructure(cTree(1, 2, 3), cTree(3, 1));
+        assert isSubStructure(cTree(3, 4, 5, 1, 2), cTree(4, 1));
     }
 
     public boolean isSubStructure(TreeNode A, TreeNode B) {

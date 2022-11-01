@@ -6,7 +6,7 @@ package com.offer.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -27,11 +27,11 @@ public class Offer_068_I_E_LowestCommonAncestor_x2 {
 
     @Test
     public void test() {
-        TreeNode t1 = createFullTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5);
+        TreeNode t1 = cTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5);
         assert t1 == lowestCommonAncestor(t1, t1.left, t1.right);
-        TreeNode t2 = createFullTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5);
+        TreeNode t2 = cTree(6, 2, 8, 0, 4, 7, 9, null, null, 3, 5);
         assert t2.left == lowestCommonAncestor(t2, t2.left, t2.left.right);
-        TreeNode t3 = createFullTree(2, 1, 3);
+        TreeNode t3 = cTree(2, 1, 3);
         assert t3 == lowestCommonAncestor(t3, t3.left, t3.right);
     }
 

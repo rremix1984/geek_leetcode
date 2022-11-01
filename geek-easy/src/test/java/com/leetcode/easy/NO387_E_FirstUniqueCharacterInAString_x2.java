@@ -25,7 +25,7 @@ public class NO387_E_FirstUniqueCharacterInAString_x2 {
 
     @Test
     public void test() {
-        assert  0 == firstUniqChar("com/leetcode");// 0
+        assert  0 == firstUniqChar("leetcode");// 0
         assert  2 == firstUniqChar("loveleetcode");// 2
         assert -1 == firstUniqChar("aabb");// -1
     }

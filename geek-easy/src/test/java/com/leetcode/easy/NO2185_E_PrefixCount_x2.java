@@ -25,7 +25,7 @@ public class NO2185_E_PrefixCount_x2 {
     @Test
     public void test() {
         assert 2 == prefixCount(new String[]{"pay", "attention", "practice", "attend"},"at");
-        assert 0 == prefixCount(new String[]{"com/leetcode", "win", "loops", "success"},"code");
+        assert 0 == prefixCount(new String[]{"leetcode", "win", "loops", "success"},"code");
     }
 
     public int prefixCount(String[] words, String pref) {

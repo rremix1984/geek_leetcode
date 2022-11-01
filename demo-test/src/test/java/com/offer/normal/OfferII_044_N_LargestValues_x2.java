@@ -7,7 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
@@ -49,14 +49,14 @@ public class OfferII_044_N_LargestValues_x2 {
     @Test
     public void test() {
         assert getArray(1, 3, 9).equals(
-            largestValues(createFullTree(1, 3, 2, 5, 3, null, 9)));
+            largestValues(cTree(1, 3, 2, 5, 3, null, 9)));
         assert getArray(1, 3).equals(
-                largestValues(createFullTree(1, 2, 3)));
+                largestValues(cTree(1, 2, 3)));
         assert getArray(1, 2).equals(
-                largestValues(createFullTree(1, null, 2)));
+                largestValues(cTree(1, null, 2)));
         assert getArray(1).equals(
-                largestValues(createFullTree(1)));
-        assert largestValues(createFullTree(new Integer[]{})).isEmpty();
+                largestValues(cTree(1)));
+        assert largestValues(cTree(new Integer[]{})).isEmpty();
     }
 
     public List<Integer> largestValues(TreeNode root) {

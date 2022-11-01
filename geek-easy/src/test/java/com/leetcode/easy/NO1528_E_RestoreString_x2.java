@@ -24,7 +24,7 @@ public class NO1528_E_RestoreString_x2 {
 
     @Test
     public void test() {
-        assert "com/leetcode".equals(restoreString("codeleet", new int[]{4, 5, 6, 7, 0, 2, 1, 3}));
+        assert "leetcode".equals(restoreString("codeleet", new int[]{4, 5, 6, 7, 0, 2, 1, 3}));
         assert "abc".equals(restoreString("abc", new int[]{0, 1, 2}));
     }
 

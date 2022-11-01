@@ -1,0 +1,91 @@
+/**
+ * copyright 2022/1/19
+ */
+package com.leetcode.undo;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+    (困难)
+    76. 最小覆盖子串
+        给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符
+        的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字
+        符串 "" 。
+        注意：对于 t 中重复字符，我们寻找的子字符串中该字符数量必须
+             不少于 t 中该字符数量。如果 s 中存在这样的子串，我们保证它是
+             唯一的答案。
+    示例 1：
+        输入：s = "ADOBECODEBANC", t = "ABC"
+        输出："BANC"
+    示例 2：
+        输入：s = "a", t = "a"
+        输出："a"
+    示例 3:
+        输入: s = "a", t = "aa"
+        输出: ""
+        解释: t 中两个字符 'a' 均应包含在 s 的子串中，
+             因此没有符合条件的子字符串，返回空字符串。
+*/
+@SuppressWarnings("all")
+public class NO76_H_MinimumWindowSubstring {
+
+    @Test
+    public void test() {
+        assertEquals("BANC", minWindow("ADOBECODEBANC", "ABC"));// BANC
+        assertEquals("a", minWindow("a", "a"));// a
+        assertEquals("", minWindow("a","aa"));// ""
+    }
+
+    public String minWindow(String s, String t) {
+        String ans = "";
+        return ans;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+/**
+// 方法1：
+public String minWindow(String s, String t) {
+    Map<Character, Integer> hs = new HashMap<>();
+    Map<Character, Integer> ht = new HashMap<>();
+    for (int i = 0; i < t.length(); i++)
+        ht.put(t.charAt(i), ht.getOrDefault(t.charAt(i), 0) + 1);
+
+    String ans = "";
+    int len = 0x3f3f3f3f, cnt = 0;  //有多少个元素符合
+    for (int i = 0, j = 0; i < s.length(); i++) {
+        hs.put(s.charAt(i),
+                hs.getOrDefault(s.charAt(i), 0) + 1);
+
+        if (ht.containsKey(s.charAt(i))
+                && hs.get(s.charAt(i)) <= ht.get(s.charAt(i)))
+            cnt++;
+
+        while (j < i &&
+                (!ht.containsKey(s.charAt(j))
+                        || hs.get(s.charAt(j)) > ht.get(s.charAt(j))
+                )) {
+            int count = hs.get(s.charAt(j)) - 1;
+            hs.put(s.charAt(j), count);
+            j++;
+        }
+
+        if (cnt == t.length() && i - j + 1 < len) {
+            len = i - j + 1;
+            ans = s.substring(j, i + 1);
+        }
+    }
+    return ans;
+}
+*/

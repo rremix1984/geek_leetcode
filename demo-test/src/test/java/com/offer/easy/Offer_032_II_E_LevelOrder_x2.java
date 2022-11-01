@@ -31,11 +31,11 @@ public class Offer_032_II_E_LevelOrder_x2 {
     @Test
     public void test() {
         assertEquals(getArray(new int[][]{{1}, {2, 3}, {4, 5}}),
-                levelOrder(createFullTree(1, 2, 3, 4, null, null, 5)));
+                levelOrder(cTree(1, 2, 3, 4, null, null, 5)));
         assertEquals(getArray(new int[][]{{3}, {9, 20}, {15, 7}}),
-                levelOrder(createFullTree(3, 9, 20, null, null, 15, 7)));
+                levelOrder(cTree(3, 9, 20, null, null, 15, 7)));
         assertEquals(getArray(new int[][]{{1}}),
-                levelOrder(createFullTree(1)));// [1]
+                levelOrder(cTree(1)));// [1]
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {

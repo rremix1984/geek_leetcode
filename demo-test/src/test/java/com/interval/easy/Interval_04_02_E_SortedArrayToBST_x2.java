@@ -5,7 +5,7 @@ package com.interval.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -25,7 +25,7 @@ public class Interval_04_02_E_SortedArrayToBST_x2 {
 
     @Test
     public void test() {
-        assert createFullTree(0, -10, 5, null, -3, null, 9).equals(
+        assert cTree(0, -10, 5, null, -3, null, 9).equals(
                 sortedArrayToBST(new int[]{-10, -3, 0, 5, 9}));
     }
 

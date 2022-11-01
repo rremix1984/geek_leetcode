@@ -29,7 +29,7 @@ public class NO1189_E_MaxNumberOfBalloons_x2 {
     public void test() {
         assert 1 == maxNumberOfBalloons("nlaebolko");
         assert 2 == maxNumberOfBalloons("loonbalxballpoon");
-        assert 0 == maxNumberOfBalloons("com/leetcode");
+        assert 0 == maxNumberOfBalloons("leetcode");
         assert 0 == maxNumberOfBalloons("lloo");
     }
 

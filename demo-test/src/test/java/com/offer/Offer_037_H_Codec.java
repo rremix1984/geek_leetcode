@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (困难)
@@ -26,7 +26,7 @@ public class Offer_037_H_Codec {
 
     @Test
     public void test() {
-        TreeNode tree = createFullTree(1, 2, 3, null, null, 4, 5);
+        TreeNode tree = cTree(1, 2, 3, null, null, 4, 5);
         String ser = Codec.serialize(tree);
         assert tree.equals(Codec.deserialize(ser));
     }

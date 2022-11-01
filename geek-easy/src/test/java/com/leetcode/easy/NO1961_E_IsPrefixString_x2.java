@@ -25,8 +25,8 @@ public class NO1961_E_IsPrefixString_x2 {
 
     @Test
     public void test() {
-        assert isPrefixString("iloveleetcode", new String[]{"i", "love", "com/leetcode", "apples"});
-        assert !isPrefixString("iloveleetcode", new String[]{"apples", "i", "love", "com/leetcode"});
+        assert isPrefixString("iloveleetcode", new String[]{"i", "love", "leetcode", "apples"});
+        assert !isPrefixString("iloveleetcode", new String[]{"apples", "i", "love", "leetcode"});
     }
 
     public boolean isPrefixString(String s, String[] words) {

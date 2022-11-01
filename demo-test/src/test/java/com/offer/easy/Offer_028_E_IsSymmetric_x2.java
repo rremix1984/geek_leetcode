@@ -6,7 +6,7 @@ package com.offer.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -36,8 +36,8 @@ public class Offer_028_E_IsSymmetric_x2 {
     @Test
     public void test() {
         assert isSymmetric(null);
-        assert isSymmetric(createFullTree(1, 2, 2, 3, 4, 4, 3));
-        assert !isSymmetric(createFullTree(1, 2, 2, null, 3, null, 3));
+        assert isSymmetric(cTree(1, 2, 2, 3, 4, 4, 3));
+        assert !isSymmetric(cTree(1, 2, 2, null, 3, null, 3));
     }
 
     public boolean isSymmetric(TreeNode root) {

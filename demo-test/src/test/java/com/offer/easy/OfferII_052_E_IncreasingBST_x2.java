@@ -5,7 +5,7 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -22,7 +22,7 @@ public class OfferII_052_E_IncreasingBST_x2 {
 
     @Test
     public void test() {
-        assert createFullTree(1, null, 5, null, null, null, 7).equals(increasingBST(createFullTree(5, 1, 7)));
+        assert cTree(1, null, 5, null, null, null, 7).equals(increasingBST(cTree(5, 1, 7)));
     }
 
     public TreeNode increasingBST(TreeNode root) {

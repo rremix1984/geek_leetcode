@@ -5,7 +5,7 @@ package com.offer.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -28,11 +28,11 @@ public class Offer_032_I_N_LevelOrder_x2 {
     @Test
     public void test() {
         assertArrayEquals(new int[]{3, 9, 20, 15, 7},
-            levelOrder(createFullTree(3, 9, 20, 15, 7)));
+            levelOrder(cTree(3, 9, 20, 15, 7)));
         assertArrayEquals(new int[]{1, 2, 3, 4, 5},
-                levelOrder(createFullTree(1, 2, 3, 4, null, null, 5)));
+                levelOrder(cTree(1, 2, 3, 4, null, null, 5)));
         assertArrayEquals(new int[]{3, 9, 20, 15, 7},
-                levelOrder(createFullTree(3, 9, 20, null, null, 15, 7)));
+                levelOrder(cTree(3, 9, 20, null, null, 15, 7)));
     }
 
     public int[] levelOrder(TreeNode root) {

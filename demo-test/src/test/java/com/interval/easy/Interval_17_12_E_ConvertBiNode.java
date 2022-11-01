@@ -7,8 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static com.leetcode.util.MathUtils.createFullTree;
-import static com.leetcode.util.MathUtils.inorder;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -25,7 +24,7 @@ public class Interval_17_12_E_ConvertBiNode {
 
     @Test
     public void test() {
-        assert createFullTree(1, null, 2, null, null, null, 3).equals(
+        assert cTree(1, null, 2, null, null, null, 3).equals(
                 convertBiNode(new TreeNode(2,1,3)));
     }
 

@@ -31,7 +31,7 @@ public class NO1957_E_MakeFancyString_x2 {
 
     @Test
     public void test() {
-        assert "com/leetcode".equals(makeFancyString("leeetcode"));
+        assert "leetcode".equals(makeFancyString("leeetcode"));
         assert "aabaa".equals(makeFancyString("aaabaaaa"));
         assert "aab".equals(makeFancyString("aab"));
     }

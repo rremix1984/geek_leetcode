@@ -39,7 +39,7 @@ public class NO1417_E_Reformat_x2 {
     @Test
     public void test() {
         assert "0a1b2c".equals(reformat("a0b1c2"));
-        assert "".equals(reformat("com/leetcode"));
+        assert "".equals(reformat("leetcode"));
         assert "".equals(reformat("1229857369"));
         assert "c2o0v1i9d".equals(reformat("covid2019"));
         assert "1a2b3".equals(reformat("ab123"));

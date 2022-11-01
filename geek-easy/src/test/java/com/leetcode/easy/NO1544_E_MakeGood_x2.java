@@ -33,7 +33,7 @@ public class NO1544_E_MakeGood_x2 {
 
     @Test
     public void test() {
-        assert "com/leetcode".equals(makeGood("leEeetcode"));
+        assert "leetcode".equals(makeGood("leEeetcode"));
         assert "".equals(makeGood("abBAcC"));
         assert "s".equals(makeGood("s"));
     }

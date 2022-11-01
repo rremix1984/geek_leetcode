@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
+import static java.util.Collections.emptyList;
 
 /**
     (简单)
@@ -30,11 +31,11 @@ public class Interval_08_06_E_HanotaLcci_x2 {
     @Test
     public void test() {
         ArrayList<Integer> c = new ArrayList<>();
-        hanota(getArray(2, 1, 0), getArray(), c);
+        hanota(getArray(2, 1, 0), emptyList(), c);
         assert c.equals(getArray(2, 1, 0));
 
         ArrayList<Integer> c2 = new ArrayList<>();
-        hanota(getArray(5, 4, 3, 2, 1, 0), getArray(), c2);
+        hanota(getArray(5, 4, 3, 2, 1, 0), emptyList(), c2);
         assert c2.equals(getArray(5, 4, 3, 2, 1, 0));
     }
 

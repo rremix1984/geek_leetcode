@@ -9,7 +9,7 @@ import java.util.Deque;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -32,8 +32,8 @@ public class LCP_44_E_NumColor_x2 {
 
     @Test
     public void test() {
-        assert 3 == numColor(createFullTree(1, 3, 2, 1, null, 2));
-        assert 1 == numColor(createFullTree(3, 3, 3));
+        assert 3 == numColor(cTree(1, 3, 2, 1, null, 2));
+        assert 1 == numColor(cTree(3, 3, 3));
     }
 
     public int numColor(TreeNode root) {

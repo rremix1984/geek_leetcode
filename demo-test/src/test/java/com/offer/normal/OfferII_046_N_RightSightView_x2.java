@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -34,9 +34,9 @@ public class OfferII_046_N_RightSightView_x2 {
     @Test
     public void test () {
         assertArrayEquals(new Integer[]{1, 3, 4},
-            rightSideView(createFullTree(1, 2, 3, null, 5, null, 4)).toArray());
+            rightSideView(cTree(1, 2, 3, null, 5, null, 4)).toArray());
         assertArrayEquals(new Integer[]{1, 3},
-            rightSideView(createFullTree(1, null, 3)).toArray());
+            rightSideView(cTree(1, null, 3)).toArray());
     }
 
     public List<Integer> rightSideView(TreeNode root) {

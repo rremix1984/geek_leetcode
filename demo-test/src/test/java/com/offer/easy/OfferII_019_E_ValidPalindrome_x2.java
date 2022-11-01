@@ -4,7 +4,9 @@
 package com.offer.easy;
 
 import org.junit.Test;
+
 import static com.leetcode.util.MathUtils.validPal;
+
 
 /**
     (简单)

@@ -7,7 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -33,12 +33,12 @@ public class Offer_027_E_MirrorTree_x2 {
 
     @Test
     public void test() {
-        TreeNode source = createFullTree(4, 2, 7, 1, 3, 6, 9);
-        TreeNode target = createFullTree(4, 7, 2, 9, 6, 3, 1);
+        TreeNode source = cTree(4, 2, 7, 1, 3, 6, 9);
+        TreeNode target = cTree(4, 7, 2, 9, 6, 3, 1);
         assert mirrorTree(source).equals(target);
 
-        TreeNode source2 = createFullTree(2, 1, null, 3);
-        TreeNode target2 = createFullTree(2, null, 1, null, null, null, 3);
+        TreeNode source2 = cTree(2, 1, null, 3);
+        TreeNode target2 = cTree(2, null, 1, null, null, null, 3);
         assert mirrorTree(source2).equals(target2);
     }
 

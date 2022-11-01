@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 import static java.lang.Integer.bitCount;
+import static java.util.Collections.emptyList;
 
 /**
     (简单)
@@ -37,7 +38,7 @@ public class NO401_E_ReadBinaryWatch_x2 {
     @Test
     public void test() {
         assert getArray("0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00").equals(readBinaryWatch(1));
-        assert getArray().equals(readBinaryWatch(9));
+        assert emptyList().equals(readBinaryWatch(9));
     }
 
     public List<String> readBinaryWatch(int turnedOn) {

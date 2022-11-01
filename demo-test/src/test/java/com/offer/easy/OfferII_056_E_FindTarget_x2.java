@@ -5,7 +5,7 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import static com.leetcode.util.MathUtils.createFullTree;
+import static com.leetcode.util.MathUtils.cTree;
 
 /**
     (简单)
@@ -24,7 +24,7 @@ public class OfferII_056_E_FindTarget_x2 {
 
     @Test
     public void test() {
-        TreeNode node = createFullTree(8, 6, 10, 5, 7, 9, 11);
+        TreeNode node = cTree(8, 6, 10, 5, 7, 9, 11);
         assert findTarget(node, 12);
         assert !findTarget(node, 22);
         assert findTarget(node, 16);

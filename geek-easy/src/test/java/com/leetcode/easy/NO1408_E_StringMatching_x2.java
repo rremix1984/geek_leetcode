@@ -32,7 +32,7 @@ public class NO1408_E_StringMatching_x2 {
     @Test
     public void test() {
         assert getArray("as", "hero").equals(stringMatching(new String[]{"mass","as","hero","superhero"}));
-        assert getArray("et", "code").equals(stringMatching(new String[]{"com/leetcode","et","code"}));
+        assert getArray("et", "code").equals(stringMatching(new String[]{"leetcode","et","code"}));
         assert Collections.emptyList().equals(stringMatching(new String[]{"blue","green","bu"}));
     }
 
