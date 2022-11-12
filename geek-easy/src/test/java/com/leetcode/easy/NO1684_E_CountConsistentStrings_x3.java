@@ -24,7 +24,7 @@ import org.junit.Test;
         输出：4
         解释：字符串 "cc"，"acd"，"ac" 和 "d" 是一致字符串。
 */
-public class NO1684_E_CountConsistentStrings_x2 {
+public class NO1684_E_CountConsistentStrings_x3 {
 
     @Test
     public void test() {

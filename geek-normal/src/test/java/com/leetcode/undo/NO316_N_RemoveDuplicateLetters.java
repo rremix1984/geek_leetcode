@@ -23,45 +23,38 @@ public class NO316_N_RemoveDuplicateLetters {
 
     @Test
     public void test() {
-        assert "abc".equals(removeDuplicateLetters("bcabc"));
-        assert "acdb".equals(removeDuplicateLetters("cbacdcbc"));
+        assert "abc".equals(
+                removeDuplicateLetters("bcabc"));
+        assert "acdb".equals(
+                removeDuplicateLetters("cbacdcbc"));
     }
 
     // 方法1：单调栈
     public String removeDuplicateLetters(String s) {
-        Stack<Character> stack = new Stack<>();
-
-        // 维护一个计数器记录字符串中字符的数量
-        // 因为输入为 ASCII 字符，大小 256 够用了
-        int[] count = new int[256];
-        for (int i = 0; i < s.length(); i++)
-            count[s.charAt(i)]++;
-
-        boolean[] vstd = new boolean[256];
-        for (char ch : s.toCharArray()) {
-            // 每遍历过一个字符，都将对应的计数减一
-            count[ch]--;
-
-            if (vstd[ch])
-                continue;
-
-            while (!stack.isEmpty() && stack.peek() > ch) {
-                // 若之后不存在栈顶元素了，则停止 pop
-                if (count[stack.peek()] == 0)
-                    break;
-
-                // 若之后还有，则可以 pop
-                vstd[stack.pop()] = false;
-            }
-            stack.push(ch);
-            vstd[ch] = true;
-        }
+        boolean[] vis = new boolean[26];
+        int[] num = new int[26];
+        for (char c : s.toCharArray())
+            num[c - 'a']++;
 
         StringBuilder sb = new StringBuilder();
-        while (!stack.empty())
-            sb.append(stack.pop());
-
-        return sb.reverse().toString();
+        for (char ch : s.toCharArray()) {
+            if (!vis[ch - 'a']) {
+                while (sb.length() > 0 && sb.charAt(sb.length() - 1) > ch) {
+                    int idx = sb.charAt(sb.length() - 1) - 'a';
+                    if (num[idx] > 0) {
+                        vis[idx] = false;
+                        // 删除最后一个元素
+                        sb.deleteCharAt(sb.length() - 1);
+                    } else {
+                        break;
+                    }
+                }
+                vis[ch - 'a'] = true;
+                sb.append(ch);
+            }
+            num[ch - 'a']--;
+        }
+        return sb.toString();
     }
 
 }

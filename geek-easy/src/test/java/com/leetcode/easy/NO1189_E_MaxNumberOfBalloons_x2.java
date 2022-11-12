@@ -43,9 +43,9 @@ public class NO1189_E_MaxNumberOfBalloons_x2 {
             else if (c == 'n')
                 cnt[4] += 2;
             else if (c == 'l')
-                cnt[2] += 1;
+                cnt[2]++;
             else if (c == 'o')
-                cnt[3] += 1;
+                cnt[3]++;
         return Arrays.stream(cnt).min().getAsInt() / 2;
     }
 

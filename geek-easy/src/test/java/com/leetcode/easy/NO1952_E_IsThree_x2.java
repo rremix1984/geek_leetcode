@@ -56,7 +56,7 @@ public boolean isThree(int n) {
         if (i != n / i)
             res += 2;// 此时 i 与 n / i 为不同整数
         else
-            res += 1;// 此时 i 与 n / i 相等
+            res++;// 此时 i 与 n / i 相等
     return res == 3;
 }
 */

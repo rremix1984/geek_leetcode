@@ -104,7 +104,7 @@ public int[] distributeCandies(int candies, int num_people) {
     while (candies != 0) {
         ans[i % num_people] += min(candies, i + 1);
         candies -= min(candies, i + 1);
-        i += 1;
+        i++;
     }
     return ans;
 }

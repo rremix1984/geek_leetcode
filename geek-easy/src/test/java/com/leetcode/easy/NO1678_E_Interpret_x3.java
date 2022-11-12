@@ -3,7 +3,6 @@
  */
 package com.leetcode.easy;
 
-import com.leetcode.util.LogUtil;
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
@@ -29,11 +28,10 @@ import static com.leetcode.util.LogUtil.info;
         输入：command = "(al)G(al)()()G"
         输出："alGalooG"
 */
-public class NO1678_E_Interpret_x2 {
+public class NO1678_E_Interpret_x3 {
 
     @Test
     public void test() {
-        info(interpret("G()(al)"));
         assert "Gooooal".equals(interpret("G()()()()(al)"));
         assert "alGalooG".equals(interpret("(al)G(al)()()G"));
     }
@@ -66,7 +64,7 @@ public String interpret(String command) {
     while (i < command.length()) {
         if (command.charAt(i) == 'G') {
             sb.append('G');
-            i += 1;
+            i++;
         } else if (command.charAt(i) == '('
                 && command.charAt(i + 1) == ')') {
             sb.append("o");

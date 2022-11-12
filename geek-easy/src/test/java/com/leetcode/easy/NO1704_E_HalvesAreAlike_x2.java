@@ -31,8 +31,15 @@ public class NO1704_E_HalvesAreAlike_x2 {
     }
 
     public boolean halvesAreAlike(String s) {
-        int res = 0;
-        return res == 0;
+        int cnt = 0;
+        s = s.toUpperCase();
+        int mid = s.length() / 2;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if ("AEIOU".indexOf(c) != -1)
+                cnt = i < mid ? ++cnt : --cnt;
+        }
+        return cnt == 0;
     }
 
 }
@@ -62,7 +69,7 @@ public boolean halvesAreAlike(String s) {
     for (int i = 0; i < s.length(); i++) {
         char c = s.charAt(i);
         if ("AEIOU".indexOf(c) != -1)
-            cnt = i < mid ? cnt+1 : cnt-1;
+            cnt = i < mid ? ++cnt : --cnt;
     }
     return cnt == 0;
 }

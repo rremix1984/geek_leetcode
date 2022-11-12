@@ -84,7 +84,7 @@ public int longestConsecutive(int[] nums) {
         }
 
         if (nums[i] - nums[i - 1] == 1) {
-            t += 1;
+            t++;
             res = Math.max(res, t);
         } else {
             t = 1;

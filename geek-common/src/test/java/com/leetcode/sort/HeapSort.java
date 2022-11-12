@@ -75,7 +75,7 @@ public void heapSort(int[] nums) {
     buildMaxHeap(nums, len);
     for (int i = len; i >= 1; --i) {
         swap(nums, i, 0);
-        len -= 1;
+        len--;
         maxHeapify(nums, 0, len);
     }
 }

@@ -84,7 +84,7 @@ public int minDistance(String word1, String word2) {
             int down = dp[i][j - 1] + 1;
             int left_down = dp[i - 1][j - 1];
             if (word1.charAt(i - 1) != word2.charAt(j - 1))
-                left_down += 1;
+                left_down++;
             dp[i][j] = mins(left, down, left_down);
         }
     return dp[n][m];

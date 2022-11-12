@@ -54,7 +54,7 @@ public class NO501_E_FindMode {
         res.add(list.get(0));
         for (int cur : list) {
             if (pre == cur)
-                cnt += 1;
+                cnt++;
             else
                 cnt = 1;
             if (cnt == maxCnt)
@@ -108,7 +108,7 @@ public int[] findMode(TreeNode root) {
     for (int cur : list) {
         // 如果当前值 (cur) 与前一个节点 (pre) 的值相等
         if (pre == cur)
-            cnt += 1;
+            cnt++;
         else
             cnt = 1;
         // 如果和最大次数相同，将值放入 res
