@@ -41,8 +41,6 @@ import java.util.*;
     因此，拓扑排序出队次数等于课程个数，返回 numCourses == 0 判断课程是否可以成功安排。
 */
 public class NO207_N_CanFinish {
-
-    @Test
     public void test() {
         assert canFinish(2, new int[][]{{1,0}});
         assert !canFinish(2, new int[][]{{1,0}, {0,1}});

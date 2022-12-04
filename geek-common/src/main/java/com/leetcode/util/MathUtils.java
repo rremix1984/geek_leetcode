@@ -279,6 +279,10 @@ public class MathUtils {
         return inner;
     }
 
+    public static ArrayList<Integer> getArray() {
+        return new ArrayList<>();
+    }
+
     public static ArrayList<Double> getArray(double... arr) {
         ArrayList<Double> inner = new ArrayList<>();
         for (double v : arr)
