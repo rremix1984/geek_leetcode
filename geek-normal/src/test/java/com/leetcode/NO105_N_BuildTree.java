@@ -26,10 +26,11 @@ import static com.leetcode.util.MathUtils.cTree;
         1 <= preorder.length <= 3000
         inorder.length == preorder.length
         -3000 <= preorder[i], inorder[i] <= 3000
-        preorder 和 inorder 均 无重复 元素
+        preorder 和 inorder 均 无重复
         inorder 均出现在 preorder
         preorder 保证 为二叉树的前序遍历序列
         inorder 保证 为二叉树的中序遍历序列
+ wxz
 */
 public class NO105_N_BuildTree {
 
