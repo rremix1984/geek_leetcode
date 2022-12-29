@@ -6,7 +6,7 @@ import static org.junit.Assert.assertArrayEquals;
 /**
     (中等)
     289. 生命游戏
-        根据 百度百科 ， 生命游戏 ，简称为 生命 ，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。
+        根据百度百科， 生命游戏 ，简称为 生命 ，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。
         给定一个包含 m × n 个格子的面板，每一个格子都可以看成是一个细胞。每个细胞都具有一个初始状态：
         1 即为 活细胞 （live），或 0 即为 死细胞 （dead）。
         每个细胞与其八个相邻位置（水平，垂直，对角线）的细胞都遵循以下四条生存定律：
@@ -33,15 +33,24 @@ public class NO289_N_GameOfLife_x2 {
 
     @Test
     public void test() {
-        int[][] source1 = new int[][]{{
-            0,1,0},{0,0,1},{1,1,1},{0,0,0}};
-        int[][] target1 = new int[][]{{
-            0,0,0},{1,0,1},{0,1,1},{0,1,0}};
+        int[][] source1 =
+            new int[][]{{0, 1, 0},
+                        {0, 0, 1},
+                        {1, 1, 1},
+                        {0, 0, 0}};
+        int[][] target1 =
+            new int[][]{{0, 0, 0},
+                        {1, 0, 1},
+                        {0, 1, 1},
+                        {0, 1, 0}};
         gameOfLife(source1);
         assertArrayEquals(source1, target1);
-
-        int[][] source2 = new int[][]{{1,1},{1,0}};
-        int[][] target2 = new int[][]{{1,1},{1,1}};
+        int[][] source2 =
+            new int[][]{{1, 1},
+                        {1, 0}};
+        int[][] target2 =
+            new int[][]{{1, 1},
+                        {1, 1}};
         gameOfLife(source2);
         assertArrayEquals(source2, target2);
     }
