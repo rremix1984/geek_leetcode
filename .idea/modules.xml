@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/geek-hard/geek-hard.iml" filepath="$PROJECT_DIR$/geek-hard/geek-hard.iml" />
       <module fileurl="file://$PROJECT_DIR$/geek-normal/geek-normal.iml" filepath="$PROJECT_DIR$/geek-normal/geek-normal.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/geek_leetcode.iml" filepath="$PROJECT_DIR$/.idea/geek_leetcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-zookeeper-study/itcast-zookeeper-study.iml" filepath="$PROJECT_DIR$/itcast-zookeeper-study/itcast-zookeeper-study.iml" />
     </modules>
   </component>
 </project>
