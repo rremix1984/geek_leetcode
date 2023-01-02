@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <!-- 不打印Logback初始化日志 -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <!-- org.apache.zookeeper 目录下的日志都是warn -->
+    <logger name="org.apache.curator" level="warn" />
+    <!-- STDOUT 控制台日志的输出，全部都打印为 %msg%n 格式 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 根路径 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

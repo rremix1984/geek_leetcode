@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/curator-api-example/curator-api-example.iml" filepath="$PROJECT_DIR$/curator-api-example/curator-api-example.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-test/demo-test.iml" filepath="$PROJECT_DIR$/demo-test/demo-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/geek-common/geek-common.iml" filepath="$PROJECT_DIR$/geek-common/geek-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/geek-easy/geek-easy.iml" filepath="$PROJECT_DIR$/geek-easy/geek-easy.iml" />
