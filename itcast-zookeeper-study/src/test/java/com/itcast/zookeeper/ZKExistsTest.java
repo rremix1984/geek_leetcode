@@ -57,13 +57,16 @@ public class ZKExistsTest {
         zooKeeper.exists("/get/node2", false, new AsyncCallback.StatCallback() {
             @Override
             public void processResult(int rc, String path, Object ctx, Stat stat) {
+                // 0 代表成功
                 log.info("rc -> {}", rc);
+                // 节点路径
                 log.info("path -> {}", path);
+                // 上下文参数
                 log.info("ctx -> {}", ctx);
                 if (stat != null)
                     log.info("stat.version -> {}", stat.getVersion());
                 else
-                    log.error("no stat!");
+                    log.error("no  stat!");
             }
         }, "I am context");
         Thread.sleep(10000);
