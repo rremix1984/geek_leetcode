@@ -2,9 +2,11 @@ package com.itcast.watcher;
 
 import com.itcast.watcher.BaseTest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,8 +42,67 @@ public class ZKWatcherExistsTest extends BaseTest {
     }
 
     @Test
-    public void test() {
+    public void watcherExists1() throws Exception {
+        // arg1: 节点的路径
+        // arg2: 是否使用连接对象的watcher
+        zooKeeper.exists("/watcher1", true);
+        Thread.sleep(50000);
+        log.info("结束");
+    }
 
+    @Test
+    public void watcherExists2() throws Exception {
+        // arg1: 节点路径
+        // arg2: 自定义watcher对象
+        zooKeeper.exists("/watcher1", event -> {
+            log.info("自定义watcher");
+            log.info("path -> {}", event.getPath());
+            log.info("eventType -> {}", event.getType());
+        });
+        Thread.sleep(10000);
+        log.info("结束");
+    }
+
+    @Test
+    public void watcherExists3() throws Exception {
+        // watcher一次性
+        Watcher watcher = new Watcher() {
+            @Override
+            public void process(WatchedEvent event) {
+                log.info("自定义watcher");
+                log.info("path -> {}", event.getPath());
+                log.info("eventType -> {}", event.getType());
+                try {
+                    zooKeeper.exists("/watcher1", this);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        zooKeeper.exists("/watcher1", watcher);
+        Thread.sleep(80000);
+        log.info("结束");
+    }
+
+    @Test
+    public void watcherExists4() throws Exception {
+        // 注册多个监听对象
+        // 监听器1：
+        zooKeeper.exists("/watcher1", event -> {
+            log.info("自定义watcher1");
+            log.info("path -> {}", event.getPath());
+            log.info("eventType -> {}", event.getType());
+        });
+
+        // 监听器2：
+        zooKeeper.exists("/watcher1", event -> {
+            log.info("自定义watcher2");
+            log.info("path -> {}", event.getPath());
+            log.info("eventType -> {}", event.getType());
+        });
+
+        Thread.sleep(10000);
+        log.info("结束");
     }
 
 }

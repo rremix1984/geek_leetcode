@@ -27,4 +27,12 @@ public class BaseTest {
         zooKeeper.close();
     }
 
+    public void info(String msg) {
+        log.info(msg);
+    }
+
+    public void info(String regex, Object msg) {
+        log.info(regex, msg);
+    }
+
 }
