@@ -4,12 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Id;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import static org.apache.zookeeper.CreateMode.PERSISTENT;
 import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
 import static org.apache.zookeeper.ZooDefs.Ids.READ_ACL_UNSAFE;
@@ -17,55 +14,17 @@ import static org.apache.zookeeper.ZooDefs.Perms.READ;
 import static org.apache.zookeeper.ZooDefs.Perms.WRITE;
 
 @Slf4j
-public class ZKCreateTest {
-    public static final String ZK_IP_ADDRESS = "192.168.31.121:2181";
-    public static final int TIMEOUT = 5000;
+public class ZKCreateTest extends BaseTest {
 
-    ZooKeeper zooKeeper;
-
-    @Before
-    public void before() throws Exception {
-        System.out.println("before --> 进行资源的创建...");
-        try {
-            // 计数器对象
-            CountDownLatch countDownLatch = new CountDownLatch(1);
-
-            // 客户端延迟连接，需要用计数器对象将主线程阻塞、等待
-            // arg1: 服务器ip端口
-            // arg2: 客户端与服务器之间会话超时时间（毫秒）
-            // arg3: 监视器对象
-            // 当客户端连接成功后，会收到一条watch信息
-            zooKeeper = new ZooKeeper(ZK_IP_ADDRESS, TIMEOUT, event -> {
-                if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
-                    System.out.println("连接创建成功！");
-                    countDownLatch.countDown();
-                }
-            });
-
-            // 主线程阻塞等待连接对象，等待创建成功
-            countDownLatch.await();
-            // 打印会话编号
-            log.info("sessionId --> {}", zooKeeper.getSessionId());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @After
-    public void after() throws Exception {
-        System.out.println("after --> 进行资源的关闭... ");
-        zooKeeper.close();
-    }
-
-//    @Test
+    @Test
     public void create1() throws Exception {
         System.out.println("test --> 创建节点... ");
         // arg1: 创建节点的路径
         // arg2: 节点的数据（byte数组）
         // arg3: 权限列表 world:anyone:cdrwa
         // arg4: 节点类型 -> 持久化节点
-        String res = zooKeeper.create("/create/node1",
-                        "node1".getBytes(),
+        String res = zooKeeper.create("/create/node111",
+                        "node111".getBytes(),
                         OPEN_ACL_UNSAFE,
                         PERSISTENT);
         log.info("res1 -> {}", res);
@@ -168,7 +127,7 @@ public class ZKCreateTest {
         log.info(res);
     }
 
-    @Test
+//    @Test
     public void test11() throws Exception {
         zooKeeper.create("/create/node11", "node11".getBytes(), OPEN_ACL_UNSAFE,
                 PERSISTENT, new AsyncCallback.StringCallback() {

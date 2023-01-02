@@ -20,39 +20,7 @@ import static org.apache.zookeeper.ZooDefs.Perms.READ;
 import static org.apache.zookeeper.ZooDefs.Perms.WRITE;
 
 @Slf4j
-public class ZKSetTest {
-    public static final String ZK_IP_ADDRESS = "192.168.31.121:2181";
-    public static final int TIMEOUT = 5000;
-
-    ZooKeeper zooKeeper;
-
-    @Before
-    public void before() throws Exception {
-        try {
-            // 计数器对象
-            CountDownLatch countDownLatch = new CountDownLatch(1);
-
-            // 客户端延迟连接，需要用计数器对象将主线程阻塞、等待
-            // arg1: 服务器ip端口
-            // arg2: 客户端与服务器之间会话超时时间（毫秒）
-            // arg3: 监视器对象
-            // 当客户端连接成功后，会收到一条watch信息
-            zooKeeper = new ZooKeeper(ZK_IP_ADDRESS, TIMEOUT, event -> {
-                if (event.getState() == Watcher.Event.KeeperState.SyncConnected)
-                    countDownLatch.countDown();
-            });
-
-            // 主线程阻塞等待连接对象，等待创建成功
-            countDownLatch.await();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @After
-    public void after() throws Exception {
-        zooKeeper.close();
-    }
+public class ZKSetTest extends BaseTest {
 
 //    @Test
     public void set1() throws Exception {
