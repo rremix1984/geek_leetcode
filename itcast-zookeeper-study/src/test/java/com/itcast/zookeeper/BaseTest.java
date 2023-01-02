@@ -18,7 +18,6 @@ public class BaseTest {
     // 连接对象
     ZooKeeper zooKeeper;
 
-
     @Before
     public void before() throws Exception {
         System.out.println("before --> 进行资源的创建...");

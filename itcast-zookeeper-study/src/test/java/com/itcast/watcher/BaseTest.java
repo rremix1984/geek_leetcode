@@ -1,6 +1,7 @@
 package com.itcast.watcher;
 
 import com.itcast.watcher.ZKConnWatcherTest;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.ZooKeeper;
 import org.junit.After;
@@ -17,27 +18,8 @@ public class BaseTest {
     // 连接对象
     ZooKeeper zooKeeper;
 
-    @Before
-    public void before() throws Exception {
-        try {
-            // 计数器对象
-            CountDownLatch countDownLatch = new CountDownLatch(1);
-
-            // 客户端延迟连接，需要用计数器对象将主线程阻塞、等待
-            // arg1: 服务器ip端口
-            // arg2: 客户端与服务器之间会话超时时间（毫秒）
-            // arg3: 监视器对象
-            // 当客户端连接成功后，会收到一条watch信息
-            zooKeeper = new ZooKeeper(ZK_IP_ADDRESS, TIMEOUT, new ZKConnWatcherTest());
-            // 阻塞线程，等待连接成功
-            countDownLatch.await();
-            // 会话ID
-            log.info("{}", zooKeeper.getSessionId());
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+    // 计数器对象
+    static CountDownLatch countDownLatch = new CountDownLatch(1);
 
     @After
     public void after() throws Exception {
