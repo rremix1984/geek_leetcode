@@ -13,6 +13,10 @@ public class BaseTest {
 
     private String namespace;
 
+    public BaseTest() {
+
+    }
+
     public BaseTest(String namespace) {
         this.namespace = namespace;
     }
