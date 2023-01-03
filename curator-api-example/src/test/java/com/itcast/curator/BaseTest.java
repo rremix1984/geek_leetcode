@@ -11,6 +11,12 @@ import org.junit.Before;
 @Slf4j
 public class BaseTest {
 
+    private String namespace;
+
+    public BaseTest(String namespace) {
+        this.namespace = namespace;
+    }
+
     public static final String IPS = "192.168.31.121:2181,192.168.31.122:2181,192.168.31.123:2181";
     public static final int TIMEOUT = 5000;
     CuratorFramework client;
@@ -21,7 +27,7 @@ public class BaseTest {
                 .connectString(IPS)
                 .sessionTimeoutMs(5000)
                 .retryPolicy(retryPolicy)
-                .namespace("create")
+                .namespace(namespace)
                 .build();
         client.start();
     }
@@ -34,6 +40,10 @@ public class BaseTest {
 
     public void info(String msg) {
         log.info(msg);
+    }
+
+    public void info(String regex, Object... msg) {
+        log.info(regex, msg);
     }
 
 }

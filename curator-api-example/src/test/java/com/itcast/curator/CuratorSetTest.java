@@ -1,25 +1,12 @@
 package com.itcast.curator;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.curator.RetryPolicy;
-import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.retry.ExponentialBackoffRetry;
-import org.junit.Before;
 import org.junit.Test;
 
 @Slf4j
 public class CuratorSetTest extends BaseTest {
-
-    @Before
-    public void before() {
-        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
-        client = CuratorFrameworkFactory.builder()
-                .connectString(IPS)
-                .sessionTimeoutMs(5000)
-                .retryPolicy(retryPolicy)
-                .namespace("set")
-                .build();
-        client.start();
+    public CuratorSetTest() {
+        super("set");
     }
 
     @Test
@@ -28,7 +15,7 @@ public class CuratorSetTest extends BaseTest {
         client.setData()
                 // arg1: 要更新的节点路径
                 // arg2: 更新节点的数据
-                .forPath("/node1", "node11".getBytes());
+                .forPath("/node1", "node11111".getBytes());
     }
 
     @Test
