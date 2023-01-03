@@ -17,6 +17,14 @@ public class CuratorConnectionTest {
 
     @Test
     public void test() throws Exception {
+        /**
+            session 重连策略
+            1）RetryOneTime(3000)   3秒后重连一次，只重连一次
+            2）RetryNTimes(3, 3000) 每3秒重连一次，一共重连3次
+            3）RetryUtilElapsed(100000, 3000)  每3秒重连一次，总等待时间超过10秒后停止重连
+            4）ExponentialBackoffRetry(1000, 3) 一共重连3次，每次都会增加时间，间隔时间通过公式（如下）计算出来
+               baseSleepTimeMs * Math.max(1, random.nextInt(1 << (retryCount +1)))
+         */
         // 创建连接对象
         CuratorFramework client = CuratorFrameworkFactory.builder()
                 // ip地址和端口号
@@ -32,8 +40,10 @@ public class CuratorConnectionTest {
 
         // 打开连接
         client.start();
-        log.info("client连接打开: {}", client.isStarted());
+
+        log.info("client连接打开: {}", client.getState());
         log.info(new String(client.getData().forPath("node1")));
+        log.info("######################");
         GetChildrenBuilder gcb = client.getChildren();
         List<String> list = gcb.forPath("");
         Collections.sort(list);
