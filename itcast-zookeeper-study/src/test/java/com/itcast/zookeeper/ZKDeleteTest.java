@@ -2,13 +2,7 @@ package com.itcast.zookeeper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.AsyncCallback;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.concurrent.CountDownLatch;
 
 @Slf4j
 public class ZKDeleteTest extends BaseTest {

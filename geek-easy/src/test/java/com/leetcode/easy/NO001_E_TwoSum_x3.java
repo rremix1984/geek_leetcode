@@ -27,18 +27,24 @@ public class NO001_E_TwoSum_x3 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{0, 2}, twoSum(new int[]{2, 2, 4}, 6));// [0, 2]
-        assertArrayEquals(new int[]{0, 1}, twoSum(new int[]{2, 7, 11, 15}, 9));// [0, 1]
-        assertArrayEquals(new int[]{1, 2}, twoSum(new int[]{3, 2, 4}, 6));// [1, 2]
-        assertArrayEquals(new int[]{0, 1}, twoSum(new int[]{3, 3},6));// [0, 1]
+        assertArrayEquals(new int[]{0, 2},
+                twoSum(new int[]{2, 2, 4}, 6));// [0, 2]
+        assertArrayEquals(new int[]{0, 1},
+                twoSum(new int[]{2, 7, 11, 15}, 9));// [0, 1]
+        assertArrayEquals(new int[]{1, 2},
+                twoSum(new int[]{3, 2, 4}, 6));// [1, 2]
+        assertArrayEquals(new int[]{0, 1},
+                twoSum(new int[]{3, 3},6));// [0, 1]
     }
 
     public int[] twoSum(int[] nums, int target) {
-        for (int i = 0; i < nums.length - 1; i++)
-            for (int j = i + 1; j < nums.length; j++)
-                if (nums[i] + nums[j] == target)
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
                     return new int[]{i, j};
-
+                }
+            }
+        }
         return new int[0];
     }
 
@@ -74,7 +80,6 @@ public int[] twoSum(int[] nums, int target) {
 // 方法2：HashMap方法
 public int[] twoSum(int[] nums, int target) {
     // map 是nums数组中 v 和 k 的集合
-    // map.put(v, k)
     Map<Integer, Integer> map = new HashMap<>();
     for (int i = 0; i < nums.length; i++) {
         int comp = target - nums[i];
