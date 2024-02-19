@@ -5,6 +5,7 @@ package com.interval.easy;
 
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
@@ -31,16 +32,43 @@ public class Interval_08_06_E_HanotaLcci_x2 {
     @Test
     public void test() {
         ArrayList<Integer> c = new ArrayList<>();
-        hanota(getArray(2, 1, 0), emptyList(), c);
+        hanota(getArray(2, 1, 0), new ArrayList<>(), c);
         assert c.equals(getArray(2, 1, 0));
 
         ArrayList<Integer> c2 = new ArrayList<>();
-        hanota(getArray(5, 4, 3, 2, 1, 0), emptyList(), c2);
+        hanota(getArray(5, 4, 3, 2, 1, 0), new ArrayList<>(), c2);
         assert c2.equals(getArray(5, 4, 3, 2, 1, 0));
     }
 
+
     public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {
-        
+        int n = a.size();
+        call(n, a, b, c);
+    }
+
+    private void call(int n, List<Integer> a, List<Integer> b, List<Integer> c) {
+
+        //         ||               ||               ||
+        //        _||_              ||            ___||___
+        //   ____|____|____     ____||____     __|________|_
+        if (n == 1) {
+            c.add(a.remove(a.size() - 1));
+            return;
+        }
+        //         ||               ||               ||
+        //      ___||___          __||__             ||
+        //   __|________|__    __|______|__     _____||_____
+        call(n - 1, a, c, b);
+
+        //         ||               ||               ||
+        //         ||             __||__          ___||___
+        //   ______||______    __|______|__   ___|________|___
+        c.add(a.remove(a.size() - 1));
+
+        //         ||               ||             __||__
+        //         ||               ||           _|______|_
+        //   ______||______    _____||_____  ___|__________|__
+        call(n - 1, b, a, c);
     }
 
 }

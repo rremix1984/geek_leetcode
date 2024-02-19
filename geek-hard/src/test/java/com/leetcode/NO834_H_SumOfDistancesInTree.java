@@ -97,3 +97,82 @@ public class NO834_H_SumOfDistancesInTree {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+方法1：
+public int[] sumOfDistancesInTree(int n, int[][] edges) {
+    List<List<Integer>> graph = new ArrayList<>();
+    for (int i = 0; i < n; i++)
+        graph.add(new ArrayList<>());
+
+    for (int[] edge : edges) {
+        int u = edge[0];
+        int v = edge[1];
+        graph.get(u).add(v);
+        graph.get(v).add(u);
+    }
+
+    int[] count = new int[n];
+    int[] answer = new int[n];
+
+    // 第一次DFS计算子树节点个数和节点到其他节点的距离之和
+    count[0] = dfs(0, -1, graph, count, answer);
+
+    // 第二次DFS根据父节点的信息计算子节点的距离之和
+    dfs2(0, -1, graph, count, answer, n);
+
+    return answer;
+}
+
+// 第一次DFS
+private int dfs(int node, int parent, List<List<Integer>> graph, int[] count, int[] answer) {
+    int subCount = 1;
+
+    for (int child : graph.get(node)) {
+        if (child != parent) {
+            subCount += dfs(child, node, graph, count, answer);
+            answer[node] += answer[child] + count[child];
+        }
+    }
+
+    count[node] = subCount;
+    return subCount;
+}
+
+// 第二次DFS
+private void dfs2(int node, int parent, List<List<Integer>> graph, int[] count, int[] answer, int n) {
+    for (int child : graph.get(node)) {
+        if (child != parent) {
+            answer[child] = answer[node] - count[child] + n - count[child];
+            dfs2(child, node, graph, count, answer, n);
+        }
+    }
+}
+*/

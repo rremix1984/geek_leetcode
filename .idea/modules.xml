@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/curator-api-example/curator-api-example.iml" filepath="$PROJECT_DIR$/curator-api-example/curator-api-example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo-test/demo-test.iml" filepath="$PROJECT_DIR$/demo-test/demo-test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/geek-common/geek-common.iml" filepath="$PROJECT_DIR$/geek-common/geek-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/geek-easy/geek-easy.iml" filepath="$PROJECT_DIR$/geek-easy/geek-easy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/geek-hard/geek-hard.iml" filepath="$PROJECT_DIR$/geek-hard/geek-hard.iml" />
-      <module fileurl="file://$PROJECT_DIR$/geek-normal/geek-normal.iml" filepath="$PROJECT_DIR$/geek-normal/geek-normal.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/geek_leetcode.iml" filepath="$PROJECT_DIR$/.idea/geek_leetcode.iml" />
-      <module fileurl="file://$PROJECT_DIR$/itcast-zookeeper-study/itcast-zookeeper-study.iml" filepath="$PROJECT_DIR$/itcast-zookeeper-study/itcast-zookeeper-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sgg/sgg.iml" filepath="$PROJECT_DIR$/sgg/sgg.iml" />
     </modules>
   </component>
 </project>
