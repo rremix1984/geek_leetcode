@@ -4,7 +4,6 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
 
 /**
     (简单)
@@ -38,7 +37,7 @@ import static com.leetcode.util.LogUtil.info;
             解释：函数应该返回新的长度 5, 并且 nums 中的前五个元素为 {0, 1, 3, 0, 4}。注意这五个元素可为任意顺序。
                  你不需要考虑数组中超出新长度后面的元素。
 */
-public class NO027_E_RemoveElement_x2 {
+public class NO027_E_RemoveElement_x3 {
 
     @Test
     public void test() {
@@ -47,8 +46,9 @@ public class NO027_E_RemoveElement_x2 {
     }
 
     public int removeElement(int[] nums, int val) {
-        int j = 0;
-        return j;
+        // 2024/2/21 NO.3
+
+        return -1;
     }
 
 }
@@ -67,7 +67,7 @@ public class NO027_E_RemoveElement_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int removeElement(int[] nums, int val) {
     int left = 0;
@@ -76,7 +76,6 @@ public int removeElement(int[] nums, int val) {
             nums[left] = nums[right];
             left++;
         }
-
     return left;
 }
 */

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     9. 回文数
         给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
@@ -25,7 +26,7 @@ import org.junit.Test;
     提示：
         -2^31 <= x <= 2^31 - 1
 */
-public class NO009_E_IsPalindrome_x2 {
+public class NO009_E_IsPalindrome_x3 {
 
     @Test
     public void test() {
@@ -33,18 +34,13 @@ public class NO009_E_IsPalindrome_x2 {
         assert !isPalindrome(-121);
         assert !isPalindrome(10);
         assert !isPalindrome(123);
+        assert isPalindrome(0);
+        assert !isPalindrome(123210);
     }
 
     public boolean isPalindrome(int x) {
-        if (x < 0 || (x % 10 == 0 && x != 0))
-            return false;
-
-        int num = 0;
-        while (x > num) {
-            num = num * 10 + x % 10;
-            x /= 10;
-        }
-        return x == num || x == num / 10;
+        // 2024/2/20 NO.3
+        return false;
     }
 
 }
@@ -66,7 +62,7 @@ public class NO009_E_IsPalindrome_x2 {
 
 
 
-/**
+/*
 public boolean isPalindrome(int x) {
     // 特殊情况：
     // 如上所述，当 x < 0 时，x 不是回文数。

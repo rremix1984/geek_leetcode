@@ -1,22 +1,25 @@
-package com.sgg;
+package com.atguigu;
+
+import org.junit.Test;
 
 /**
- * (ç®€å•ï¼‰æ±‰è¯ºå¡”
+ * (¼òµ¥£©ººÅµËş
  */
 public class Hanoitower {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         hanoi(3, 'A', 'B', 'C');
     }
 
-    //æ±‰è¯ºå¡”çš„ç§»åŠ¨çš„æ–¹æ³•
-    //ä½¿ç”¨åˆ†æ²»ç®—æ³•
+    //ººÅµËşµÄÒÆ¶¯µÄ·½·¨
+    //Ê¹ÓÃ·ÖÖÎËã·¨
     public static void hanoi(int num, char a, char b, char c) {
         if (num == 1) {
-            System.out.println("ç¬¬1å±‚å¡”ï¼Œä»" + a + "åˆ°" + c);
+            System.out.println("µÚ1²ãËş£¬´Ó" + a + "µ½" + c);
         } else {
             hanoi(num -1, a, c, b);
-            System.out.println("ç¬¬" + num + "å±‚å¡”ï¼Œä»" + a + "åˆ°" + c);
+            System.out.println("µÚ" + num + "²ãËş£¬´Ó" + a + "µ½" + c);
             hanoi(num -1, b, a, c);
         }
     }
@@ -48,14 +51,14 @@ public class Hanoitower {
 
 
 /*
-æ–¹æ³•1ï¼š
+·½·¨1£º
 public static void hanoiTower(int num, char a, char b, char c) {
-    // å¦‚æœåªæœ‰ä¸€ä¸ª å…ƒç´ 
+    // Èç¹ûÖ»ÓĞÒ»¸ö ÔªËØ
     if (num == 1) {
-        System.out.println("ç¬¬[1]ä¸ªç›˜å­ï¼Œä»" + a + "ç§»åŠ¨åˆ°" + c);
+        System.out.println("µÚ[1]¸öÅÌ×Ó£¬´Ó" + a + "ÒÆ¶¯µ½" + c);
     } else {
         hanoiTower(num - 1, a, c, b);
-        System.out.println("ç¬¬" + num + "ä¸ªç›˜å­ï¼Œä»" + a + "ç§»åŠ¨åˆ°" + c);
+        System.out.println("µÚ" + num + "¸öÅÌ×Ó£¬´Ó" + a + "ÒÆ¶¯µ½" + c);
         hanoiTower(num - 1, b, a, c);
     }
 }

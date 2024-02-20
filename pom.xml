@@ -17,6 +17,7 @@
         <module>geek-common</module>
         <module>itcast-zookeeper-study</module>
         <module>curator-api-example</module>
+        <module>sgg</module>
     </modules>
 
     <dependencyManagement>

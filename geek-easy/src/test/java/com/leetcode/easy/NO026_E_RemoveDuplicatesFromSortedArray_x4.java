@@ -5,9 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import static com.leetcode.util.LogUtil.info;
-
 /**
+    [ARRAY]
     (简单)
     26. 删除有序数组中的重复项
         给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。元素的 相对顺序 应该保持 一致 。
@@ -33,17 +32,18 @@ import static com.leetcode.util.LogUtil.info;
         输出：5, nums = [0,1,2,3,4]
         解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
 */
-public class NO026_E_RemoveDuplicatesFromSortedArray_x3 {
+public class NO026_E_RemoveDuplicatesFromSortedArray_x4 {
 
     @Test
     public void test() {
+        assert 0 == removeDuplicates(null);
         assert 2 == removeDuplicates(new int[]{1, 1, 2});
         assert 5 == removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4});
         assert 5 == removeDuplicates(new int[]{0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4});
     }
 
     public int removeDuplicates(int[] nums) {
-        return 0;
+        return -1;
     }
 
 }
@@ -66,7 +66,7 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_x3 {
 
 
 
-/**
+/*
 // 方法1：双指针法
 public int removeDuplicates(int[] nums) {
     if (nums == null || nums.length == 0)
