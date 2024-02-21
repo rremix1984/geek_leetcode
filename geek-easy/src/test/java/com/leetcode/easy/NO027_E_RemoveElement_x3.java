@@ -3,7 +3,13 @@
  */
 package com.leetcode.easy;
 
+import org.junit.After;
 import org.junit.Test;
+
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.IntStream.range;
 
 /**
     (简单)
@@ -41,14 +47,23 @@ public class NO027_E_RemoveElement_x3 {
 
     @Test
     public void test() {
+        assert 0 == removeElement(null, 0);
+        assert 0 == removeElement(new int[]{0}, 0);
+        assert 1 == removeElement(new int[]{0}, 2);
         assert 2 == removeElement(new int[]{3, 2, 2, 3}, 3);
         assert 5 == removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2);
     }
 
     public int removeElement(int[] nums, int val) {
         // 2024/2/21 NO.3
-
         return -1;
+    }
+
+    public void print(int[] nums, int left) {
+        IntStream.range(0, left)
+            .mapToObj(i -> nums[i] + "\t")
+            .forEach(System.out::print);
+        System.out.println("=====");
     }
 
 }
