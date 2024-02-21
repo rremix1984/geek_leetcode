@@ -12,6 +12,7 @@ import java.util.Queue;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     112. 路径总和
         给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。

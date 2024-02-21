@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     459. 重复的子字符串
         给定一个非空的字符串s，检查是否可以通过由它的一个子串重复多次构成。

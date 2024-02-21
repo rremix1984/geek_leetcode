@@ -4,11 +4,10 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
-import static java.lang.Math.max;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [ARRAY] |
     (简单)
     121. 买卖股票的最佳时机
         给定一个数组prices ，它的第i个元素prices[i]表示一支
@@ -38,7 +37,7 @@ import static org.junit.Assert.assertEquals;
      数之时，我们就得到了最好的答案。
 */
 @SuppressWarnings("all")
-public class NO121_E_BestTimeToBuyAndSellStock_x3 {
+public class NO121_E_BestTimeToBuyAndSellStock_x4 {
 
     @Test
     public void test() {

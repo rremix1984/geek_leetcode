@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     594. 最长和谐子序列
         和谐数组是指一个数组里元素的最大值和最小值之间的差别 正好是 1 。

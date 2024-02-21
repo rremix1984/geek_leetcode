@@ -9,6 +9,7 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [LINKEDLIST]
     (简单)
     206. 反转链表
         给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。

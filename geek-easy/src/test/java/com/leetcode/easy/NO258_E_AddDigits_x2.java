@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [NUMBER]
     (简单)
     258. 各位相加
         给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。返回这个结果。

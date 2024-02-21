@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     389. 找不同
         给定两个字符串 s 和 t ，它们只包含小写字母。

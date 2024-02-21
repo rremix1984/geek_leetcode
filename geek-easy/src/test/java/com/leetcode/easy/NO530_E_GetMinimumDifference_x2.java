@@ -12,6 +12,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.min;
 
 /**
+    [TREE]
     (简单)
     530. 二叉搜索树的最小绝对差
         给你一个二叉搜索树的根节点 root ，返回 树中任意两不同节点值之间的最小差值 。

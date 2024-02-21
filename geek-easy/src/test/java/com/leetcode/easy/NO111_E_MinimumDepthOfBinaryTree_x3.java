@@ -16,6 +16,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static java.lang.Math.min;
 
 /**
+    [TREE]
     (简单)
     111. 二叉树的最小深度
     给定一个二叉树，找出其最小深度。

@@ -10,6 +10,7 @@ import static com.leetcode.util.ListNode.newCycle;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [QUEUE]
     (简单)
     141. 环形链表
         给你一个链表的头节点 head ，判断链表中是否有环。

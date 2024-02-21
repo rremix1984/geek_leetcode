@@ -11,6 +11,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [LIST]
     (简单)
     118. 杨辉三角
         给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     561. 数组拆分
         给定长度为 2n 的整数数组 nums ，你的任务是将这些数分成 n 对,

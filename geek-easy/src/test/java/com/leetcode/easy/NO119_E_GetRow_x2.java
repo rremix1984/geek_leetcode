@@ -11,6 +11,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [LIST]
     (简单)
     119. 杨辉三角 II
         给定一个非负索引 rowIndex，返回「杨辉三角」的第 rowIndex 行。

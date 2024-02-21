@@ -9,6 +9,7 @@ import static java.lang.Character.toUpperCase;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     482. 密钥格式化
         给定一个许可密钥字符串 s，仅由字母、数字字符和破折号组成。

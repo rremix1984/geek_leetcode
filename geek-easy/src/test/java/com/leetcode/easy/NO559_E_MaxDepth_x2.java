@@ -10,6 +10,7 @@ import java.util.List;
 import static java.lang.Math.max;
 
 /**
+    [TREE]
     (简单)
     559. N 叉树的最大深度
         给定一个 N 叉树，找到其最大深度。

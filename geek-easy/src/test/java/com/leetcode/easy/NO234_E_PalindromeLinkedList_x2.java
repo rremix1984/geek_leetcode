@@ -9,14 +9,16 @@ import static com.leetcode.util.ListNode.reverse;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [LISTNODE]
     (简单)
     234. 回文链表
-        给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
+        给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。
+        如果是，返回 true ；否则，返回 false 。
     示例 1：
-        输入：head = [1,2,2,1]
+        输入：head = [1, 2, 2, 1]
         输出：true
     示例 2：
-        输入：head = [1,2]
+        输入：head = [1, 2]
         输出：false
 */
 public class NO234_E_PalindromeLinkedList_x2 {

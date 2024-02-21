@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     392. 判断子序列
         给定字符串 s 和 t ，判断 s 是否为 t 的子序列。
@@ -26,13 +27,36 @@ public class NO392_E_IsSubsequence_x2 {
         assert !isSubsequence("axc", "ahbgdc");
     }
 
-    // 方法1：双指针法
     public boolean isSubsequence(String s, String t) {
-        int i = 0;
-        for (char c : t.toCharArray())
-            if (s.charAt(i) == c && ++i == s.length())
-                return true;
         return false;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：双指针法
+public boolean isSubsequence(String s, String t) {
+    int i = 0;
+    for (char c : t.toCharArray())
+        if (s.charAt(i) == c && ++i == s.length())
+            return true;
+    return false;
+}
+*/

@@ -14,6 +14,7 @@ import static com.leetcode.util.MathUtils.inOrder;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [TREE]
     (简单)
     501. 二叉搜索树中的众数
         给你一个含重复值的二叉搜索树（BST）的根节点 root ，

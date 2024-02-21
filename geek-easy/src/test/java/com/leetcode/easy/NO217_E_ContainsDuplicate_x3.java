@@ -4,9 +4,9 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.Arrays;
 
 /**
+    [ARRAY] |
     (简单)
     217. 存在重复元素
         给你一个整数数组 nums 。如果任一值在数组中出现 至少两次 ，返回 true ；
@@ -21,7 +21,7 @@ import java.util.Arrays;
         输入：nums = {1, 1, 1, 3, 3, 4, 3, 2, 4, 2}
         输出：true
 */
-public class NO217_E_ContainsDuplicate_x2 {
+public class NO217_E_ContainsDuplicate_x3 {
 
     @Test
     public void test() {
@@ -31,12 +31,37 @@ public class NO217_E_ContainsDuplicate_x2 {
     }
 
     public boolean containsDuplicate(int[] nums) {
-        Arrays.sort(nums);
-        int n = nums.length;
-        for (int i = 0; i < n - 1; i++)
-            if (nums[i] == nums[i + 1])
-                return true;
         return false;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public boolean containsDuplicate(int[] nums) {
+    Arrays.sort(nums);
+    int n = nums.length;
+    for (int i = 0; i < n - 1; i++)
+        if (nums[i] == nums[i + 1])
+            return true;
+    return false;
+}
+*/

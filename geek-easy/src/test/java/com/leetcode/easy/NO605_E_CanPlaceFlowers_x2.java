@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     605. 种花问题
         假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，

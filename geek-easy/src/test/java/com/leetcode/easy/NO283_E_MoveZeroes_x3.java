@@ -9,6 +9,7 @@ import static com.leetcode.util.SwapUtil.swap;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     NO.283 Move Zeroes 移动零
         给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，
@@ -27,7 +28,7 @@ public class NO283_E_MoveZeroes_x3 {
     }
 
     public void moveZeroes(int nums[]) {
-
+        return;
     }
 
 }

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     342. 4的幂
         给定一个整数，写一个函数来判断它是否是 4 的幂次方。

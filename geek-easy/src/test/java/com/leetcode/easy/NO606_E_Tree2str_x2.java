@@ -9,6 +9,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [TREE]
     (简单)
     606. 根据二叉树创建字符串
         给你二叉树的根节点 root ，请你采用前序遍历的方式，将二叉树转化为一个由括号和

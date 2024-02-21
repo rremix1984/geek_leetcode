@@ -9,6 +9,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static java.lang.Math.max;
 
 /**
+    [TREE]
     (简单)
     543. 二叉树的直径
         给定一棵二叉树，你需要计算它的直径长度。

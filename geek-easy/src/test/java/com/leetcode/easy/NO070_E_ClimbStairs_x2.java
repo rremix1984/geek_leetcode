@@ -57,7 +57,7 @@ public class NO070_E_ClimbStairs_x2 {
 
 
 
-/**
+/*
 public int climbStairs(int n) {
     if (n == 1)
         return 1;

@@ -13,6 +13,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [TREE]
     (简单)
     637. 二叉树的层平均值
         给定一个非空二叉树的根节点 root , 以数组的形式返回每一层节点的平均值。

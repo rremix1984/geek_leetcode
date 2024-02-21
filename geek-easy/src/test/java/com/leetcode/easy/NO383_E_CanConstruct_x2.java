@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     383. 赎金信
         给你两个字符串：ransomNote 和 magazine ，

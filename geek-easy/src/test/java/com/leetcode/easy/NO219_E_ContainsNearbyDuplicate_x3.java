@@ -5,10 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
+    [ARRAY]
     (简单)
     219. 存在重复元素 II
         给你一个整数数组 nums 和一个整数 k ，判断数组中是否存在两个 不同的索引 i 和 j ，
@@ -24,16 +22,17 @@ import java.util.Set;
         输入：nums = {1, 2, 3, 1, 2, 3},  k = 2
         输出：false
 */
-public class NO219_E_ContainsNearbyDuplicate_x2 {
+public class NO219_E_ContainsNearbyDuplicate_x3 {
 
     @Test
     public void test() {
-        assert  containsNearbyDuplicate(new int[]{1, 2, 3, 1},3);
-        assert  containsNearbyDuplicate(new int[]{1, 0, 1, 1},1);
+        assert containsNearbyDuplicate(new int[]{1, 2, 3, 1},3);
+        assert containsNearbyDuplicate(new int[]{1, 0, 1, 1},1);
         assert !containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3},2);
     }
 
     public boolean containsNearbyDuplicate(int[] nums, int k) {
+        // 2024/2/21 NO.3
         return false;
     }
 
@@ -51,7 +50,7 @@ public class NO219_E_ContainsNearbyDuplicate_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean containsNearbyDuplicate(int[] nums, int k) {
     Set<Integer> set = new HashSet<>();
@@ -78,5 +77,18 @@ public boolean containsNearbyDuplicate(int[] nums, int k) {
         map.put(nums[i], i);
     }
     return false;
+}
+
+// 方法3：
+public boolean containsNearbyDuplicate(int[] nums, int k){
+    for (int i = 0; i < nums.length; i++) {
+        // 从i+1开始，向后查找k个元素
+        for (int j = i + 1; j <= i + k && j < nums.length; j++) {
+            if (nums[i] == nums[j]) {
+                return true; // 发现满足条件的重复元素
+            }
+        }
+    }
+    return false; // 没有找到满足条件的重复元素
 }
 */

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     476. 数字的补数
         对整数的二进制表示取反（0变1 ，1变0）后，再转换为十进制表示，

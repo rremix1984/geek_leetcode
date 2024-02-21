@@ -8,6 +8,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
     (简单)
     485.最大连续 1 的个数
         给定一个二进制数组 nums，计算其中最大连续 1 的个数。

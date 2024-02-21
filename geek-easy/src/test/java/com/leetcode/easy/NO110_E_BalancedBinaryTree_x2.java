@@ -11,6 +11,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 /**
+    [TREE]
     (简单)
     110. 平衡二叉树
         给定一个二叉树，判断它是否是高度平衡的二叉树。

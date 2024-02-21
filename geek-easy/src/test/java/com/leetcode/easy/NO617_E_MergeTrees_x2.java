@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     617. 合并二叉树
         给你两棵二叉树： root1 和 root2 。

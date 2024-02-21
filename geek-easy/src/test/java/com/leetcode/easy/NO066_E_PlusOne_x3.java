@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY] |
     (简单)
     66. 加一
         给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
@@ -27,7 +28,7 @@ import static org.junit.Assert.assertArrayEquals;
         1 <= digits.length <= 100
         0 <= digits[i] <= 9
 */
-public class NO066_E_PlusOne_x2 {
+public class NO066_E_PlusOne_x3 {
 
     @Test
     public void test() {
@@ -35,19 +36,16 @@ public class NO066_E_PlusOne_x2 {
                 plusOne(new int[]{1, 2, 3}));
         assertArrayEquals(new int[]{4, 3, 2, 2},
                 plusOne(new int[]{4, 3, 2, 1}));
+        assertArrayEquals(new int[]{1, 2, 4, 0},
+                plusOne(new int[]{1, 2, 3, 9}));
+        assertArrayEquals(new int[]{1, 0, 0, 0},
+                plusOne(new int[]{9, 9, 9}));
         assertArrayEquals(new int[]{1},
                 plusOne(new int[]{0}));
     }
 
     public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i >= 0; i--) {
-            digits[i]++;
-            digits[i] = digits[i] % 10;
-            if (digits[i] != 0)
-                return digits;
-        }
-        digits = new int[digits.length + 1];
-        digits[0] = 1;
+        // 2024/2/21 NO.3
         return digits;
     }
 
@@ -71,7 +69,7 @@ public class NO066_E_PlusOne_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] plusOne(int[] digits) {
     for (int i = digits.length - 1; i >= 0; i--) {

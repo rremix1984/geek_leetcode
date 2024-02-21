@@ -16,6 +16,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [TREE]
     (简单)
     94. 二叉树的中序遍历
     给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。

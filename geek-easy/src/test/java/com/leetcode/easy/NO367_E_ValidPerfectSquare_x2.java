@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [NUMBER]
     （简单）
     367. 有效的完全平方数
         给定一个 正整数 num ，编写一个函数，

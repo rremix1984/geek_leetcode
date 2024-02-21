@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     572. 另一棵树的子树
         给你两棵二叉树 root 和 subRoot 。检验 root 中是否包含和 subRoot

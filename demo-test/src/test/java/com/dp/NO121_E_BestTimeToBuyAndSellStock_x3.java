@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [ARRAY]
     (简单)
     121. 买卖股票的最佳时机
         给定一个数组prices ，它的第i个元素prices[i]表示一支

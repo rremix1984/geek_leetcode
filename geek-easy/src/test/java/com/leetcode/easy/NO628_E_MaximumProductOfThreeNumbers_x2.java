@@ -10,6 +10,7 @@ import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
     628. 三个数的最大乘积
         给你一个整型数组 nums ，在数组中找出由三个数组成的最大乘积，并输出这个乘积。
     示例 1：

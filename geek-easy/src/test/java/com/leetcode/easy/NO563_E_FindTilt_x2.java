@@ -11,6 +11,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static java.lang.Math.abs;
 
 /**
+    [TREE]
     (简单)
     563. 二叉树的坡度
         给你一个二叉树的根节点 root ，计算并返回 整个树 的坡度 。

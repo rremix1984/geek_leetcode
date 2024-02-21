@@ -3,7 +3,7 @@ package com.atguigu.queue;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     用数组实现队列（需要用环形数组）
  */
 @SuppressWarnings("all")

@@ -9,6 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [LIST]
     (简单)
     228. 汇总区间
         给定一个  无重复元素 的 有序 整数数组 nums。

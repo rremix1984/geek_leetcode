@@ -8,6 +8,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
+    [ARRAY]
     (简单)
     575. 分糖果
         Alice 有 n 枚糖，其中第 i 枚糖的类型为 candyType[i] 。

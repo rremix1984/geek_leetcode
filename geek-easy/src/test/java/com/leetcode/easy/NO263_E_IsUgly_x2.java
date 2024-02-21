@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     263. 丑数
         丑数 就是只包含质因数2、3、5的正整数。

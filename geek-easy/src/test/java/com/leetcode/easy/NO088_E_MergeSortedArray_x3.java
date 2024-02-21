@@ -4,23 +4,23 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY] |
     (简单)
     88. 合并两个有序数组
         给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，
         分别表示 nums1 和 nums2 中的元素数目。
-        请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
+        请你【合并 nums2 到 nums1 中】，使合并后的数组同样按【非递减顺序】排列。
         注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，
         nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素，后 n 个元素为 0 ，应忽略。
         nums2 的长度为 n 。
     示例 1：
-        输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+        输入：nums1 = [1, 2, 3, 0, 0, 0], m = 3, nums2 = [2, 5, 6], n = 3
         输出：[1, 2, 2, 3, 5, 6]
-        解释：需要合并 [1,2,3] 和 [2,5,6] 。
-             合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。
+        解释：需要合并 [1, 2, 3] 和 [2, 5, 6] 。
+             合并结果是 [1, 2, 2, 3, 5, 6] ，其中斜体加粗标注的为 nums1 中的元素。
     示例 2：
         输入：nums1 = [1], m = 1, nums2 = [], n = 0
         输出：[1]
@@ -35,7 +35,7 @@ import static org.junit.Assert.assertArrayEquals;
              仅仅是为了确保合并结果可以顺利存放到 nums1 中。
 */
 @SuppressWarnings("all")
-public class NO088_E_MergeSortedArray_x2 {
+public class NO088_E_MergeSortedArray_x3 {
 
     @Test
     public void test() {
@@ -53,6 +53,7 @@ public class NO088_E_MergeSortedArray_x2 {
     }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
+        // 2024/2/21 NO.3 双指针法
         return;
     }
 
@@ -73,11 +74,11 @@ public class NO088_E_MergeSortedArray_x2 {
 
 
 
-/**
+/*
 // 方法1：双指针法，每次从头部取出相对较小的元素，放入新数组
 public void merge(int[] nums1, int m, int[] nums2, int n) {
-    int p1 = m - 1;// nums1 数组的指针，从后向前
-    int p2 = n - 1;// nums2 数组的指针，从后向前
+    int p1 = m - 1; // nums1 数组的指针，从后向前
+    int p2 = n - 1; // nums2 数组的指针，从后向前
     int tail = m + n - 1;// 新数组的尾指针：tail
 
     while (p1 >= 0 || p2 >= 0) {
@@ -97,7 +98,9 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
 
 // 简化后的方法2：
 public void merge(int[] nums1, int m, int[] nums2, int n) {
-    int p1 = m - 1, p2 = n - 1, tail = m + n - 1;
+    int p1 = m - 1;
+    int p2 = n - 1;
+    int tail = m + n - 1;
     while (p1 >= 0 || p2 >= 0)
         // 如果p1到头了
         if (p1 == -1 || (p2 != -1 && nums1[p1] < nums2[p2]))

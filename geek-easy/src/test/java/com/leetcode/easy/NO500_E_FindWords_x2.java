@@ -8,6 +8,7 @@ import java.util.*;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [STRING]
     (简单)
     500. 键盘行
         给你一个字符串数组 words ，只返回可以使用在【美式键盘】同一行的字母打印出来的单词。

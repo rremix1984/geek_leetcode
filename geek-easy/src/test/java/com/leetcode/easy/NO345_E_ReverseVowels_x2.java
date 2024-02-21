@@ -9,6 +9,7 @@ import static com.leetcode.util.SwapUtil.swap;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     345. 反转字符串中的元音字母
         给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。

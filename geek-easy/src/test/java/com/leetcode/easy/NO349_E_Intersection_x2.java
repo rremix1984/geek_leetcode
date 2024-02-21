@@ -8,6 +8,7 @@ import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     349. 两个数组的交集
         给定两个数组nums1和nums2，返回它们的交集。

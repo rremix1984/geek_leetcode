@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     171. Excel 表列序号
         给你一个字符串 columnTitle ，表示 Excel 表格中的列名称。
@@ -47,3 +48,29 @@ public class NO171_E_TitleToNumber_x2 {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public int titleToNumber(String columnTitle) {
+    int ans = 0;
+    for (char ch : columnTitle.toCharArray())
+        ans = ans * 26 + (ch - 'A' + 1);
+
+    return ans;
+}
+*/

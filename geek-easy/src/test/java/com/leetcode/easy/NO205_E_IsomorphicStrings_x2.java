@@ -9,6 +9,7 @@ import java.util.Map;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [STRING]
     (简单)
     205. 同构字符串
         给定两个字符串 s 和 t ，判断它们是否是同构的。
@@ -35,25 +36,6 @@ public class NO205_E_IsomorphicStrings_x2 {
     }
 
     public boolean isIsomorphic(String s, String t) {
-        // 定义一个Map
-        Map<Character,Character> map = new HashMap<>();
-
-        // 遍历 s
-        for (int i = 0; i < s.length(); i++) {
-            // 截取当前字符
-            char b = s.charAt(i);
-            char c = t.charAt(i);
-            // 判断map中是否包含b
-            if (map.containsKey(b)) {
-                // 判断包含的b的value是否等于c
-                // 不等于 return false
-                if (map.get(b) != c)
-                    return false;
-            } else {
-                // 相同
-                map.put(b, c);
-            }
-        }
         return true;
     }
 
@@ -83,6 +65,30 @@ public boolean isIsomorphic(String s, String t) {
         if (s.indexOf(s.charAt(i)) != t.indexOf(t.charAt(i)))
             return false;
 
+    return true;
+}
+
+// 方法2：
+public boolean isIsomorphic(String s, String t) {
+    // 定义一个Map
+    Map<Character,Character> map = new HashMap<>();
+
+    // 遍历 s
+    for (int i = 0; i < s.length(); i++) {
+        // 截取当前字符
+        char b = s.charAt(i);
+        char c = t.charAt(i);
+        // 判断map中是否包含b
+        if (map.containsKey(b)) {
+            // 判断包含的b的value是否等于c
+            // 不等于 return false
+            if (map.get(b) != c)
+                return false;
+        } else {
+            // 相同
+            map.put(b, c);
+        }
+    }
     return true;
 }
 */

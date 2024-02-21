@@ -3,20 +3,16 @@
  */
 package com.leetcode.easy;
 
-import com.leetcode.util.MathUtils;
 import com.leetcode.util.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
-import static org.junit.Assert.assertEquals;
 
 /**
+    [TREE]
     （简单）
     145. 二叉树的后序遍历
     给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。

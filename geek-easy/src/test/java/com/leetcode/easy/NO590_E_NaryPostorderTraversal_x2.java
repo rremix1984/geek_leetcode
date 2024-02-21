@@ -16,6 +16,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [TREE]
     （简单）
     590. N 叉树的后序遍历
     给定一个 n 叉树的根节点 root ，返回 其节点值的 后序遍历 。
