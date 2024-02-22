@@ -10,7 +10,7 @@ import static com.leetcode.util.SwapUtil.swap;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     （简单）
     344. 反转字符串
         编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 s 的形式给出。
@@ -37,6 +37,7 @@ public class NO344_E_ReverseString_x2 {
 
     // 双指针法
     public void reverseString(char[] s) {
+        // 2024/2/22 NO.2
 
     }
 }

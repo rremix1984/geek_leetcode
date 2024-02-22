@@ -4,11 +4,10 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     349. 两个数组的交集
         给定两个数组nums1和nums2，返回它们的交集。
@@ -24,7 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
         1 <= nums1.length, nums2.length <= 1000
         0 <= nums1[i], nums2[i] <= 1000
 */
-public class NO349_E_Intersection_x2 {
+public class NO349_E_Intersection_x3 {
 
     @Test
     public void test() {
@@ -35,7 +34,9 @@ public class NO349_E_Intersection_x2 {
     }
 
     public int[] intersection(int[] nums1, int[] nums2) {
-        return null;
+        // 2024/2/22 NO.3
+        int[] res = new int[0];
+        return res;
     }
 
 }
@@ -52,7 +53,7 @@ public class NO349_E_Intersection_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] intersection(int[] nums1, int[] nums2) {
     Arrays.sort(nums1);
@@ -65,11 +66,11 @@ public int[] intersection(int[] nums1, int[] nums2) {
     while (i < nums1.length && j < nums2.length) {
         if (nums1[i] == nums2[j]) {
             // 保证加入元素的唯一性
+            // 去重：仅当当前找到的交集元素不等于 res 最后一个元素时，才将其加入结果数组
             if (tail == 0 || nums1[i] != ans[tail - 1])
-                ans[tail] = nums1[i];
+                ans[tail++] = nums1[i];
             i++;
             j++;
-            tail++;
         } else if (nums1[i] < nums2[j]) {
             i++;
         } else {
