@@ -6,6 +6,8 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
+    [ARRAY]
     (简单)
     2255. 统计是给定字符串前缀的字符串数目
         给你一个字符串数组 words 和一个字符串 s ，其中 words[i] 和 s 只包含 小写英文字母 。

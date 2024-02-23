@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+    [ARRAY]
     (简单)
     961. 在长度 2N 的数组中找出重复 N 次的元素
         给你一个整数数组 nums ，该数组具有以下属性：

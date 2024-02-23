@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2243. 计算字符串的数字和
         给你一个由若干数字（0 - 9）组成的字符串 s ，和一个整数。

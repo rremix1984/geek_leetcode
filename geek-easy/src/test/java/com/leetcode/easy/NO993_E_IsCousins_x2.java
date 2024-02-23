@@ -10,6 +10,7 @@ import java.util.Map;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     993. 二叉树的堂兄弟节点
         在二叉树中，根节点位于深度 0 处，每个深度为 k 的节点的子节点位于深度 k+1 处。

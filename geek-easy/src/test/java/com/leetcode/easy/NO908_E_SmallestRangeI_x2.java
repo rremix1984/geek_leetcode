@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [ARRAY]
     (简单)
     908. 最小差值 I
         给你一个整数数组 nums，和一个整数 k 。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     1979. 找出数组的最大公约数
         给你一个整数数组 nums ，返回数组中最大数和最小数的 最大公约数 。

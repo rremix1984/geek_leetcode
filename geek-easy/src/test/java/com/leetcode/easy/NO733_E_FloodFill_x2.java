@@ -11,6 +11,7 @@ import java.util.Queue;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [GRAPH]
     (简单)
     733. 图像渲染
         有一幅以 m x n 的二维整数数组表示的图画 image ，其中 image[i][j] 表示该图画的像素值大小。

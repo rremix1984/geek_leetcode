@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2027. 转换字符串的最少操作次数
         给你一个字符串s，由n个字符组成，每个字符不是'X'就是'O'。

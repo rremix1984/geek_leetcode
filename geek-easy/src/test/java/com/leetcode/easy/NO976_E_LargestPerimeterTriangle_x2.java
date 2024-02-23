@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [ARRAY]
     (简单)
     976. 三角形的最大周长
         给定由一些正数（代表长度）组成的数组 nums ，返回 由其中三个长度组成的、

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2309. 兼具大小写的最好英文字母
         给你一个由英文字母组成的字符串 s ，请你找出并返回 s 中的 最好 英文字母。

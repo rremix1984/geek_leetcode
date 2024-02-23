@@ -11,6 +11,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Collections.emptyList;
 
 /**
+    [ARRAY]
     (简单)
     2248. 多个数组求交集
         给你一个二维整数数组nums ，其中 nums[i] 是由不同正整数组成的一个非空数组，

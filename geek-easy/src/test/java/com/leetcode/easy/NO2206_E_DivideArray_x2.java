@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2206. 将数组划分成相等数对
         给你一个整数数组 nums ，它包含 2 * n 个整数。

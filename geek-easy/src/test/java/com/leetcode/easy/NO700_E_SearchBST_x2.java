@@ -9,6 +9,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static org.junit.Assert.assertNull;
 
 /**
+    [TREE]
     (简单)
     700. 二叉搜索树中的搜索
         给定二叉搜索树（BST）的根节点 root 和一个整数值 val。

@@ -6,6 +6,8 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
+    [STRING]
     (简单)
     2347. 最好的扑克手牌
         给你一个整数数组 ranks 和一个字符数组 suit 。你有 5 张扑克牌，第 i 张牌大小为 ranks[i] ，花色为 suits[i] 。

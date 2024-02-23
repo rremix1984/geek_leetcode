@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     1752. 检查数组是否经排序和轮转得到
         给你一个数组 nums 。nums 的源数组中，所有元素与 nums 相同，但按非递减顺序排列。

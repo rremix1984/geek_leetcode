@@ -7,6 +7,7 @@ import org.junit.Test;
 import static java.lang.Integer.MAX_VALUE;
 
 /**
+    [ARRAY]
     (简单)
     1984. 学生分数的最小差值
         给你一个 下标从 0 开始 的整数数组 nums ，其中 nums[i] 表示第 i 名学生的分数。另给你一个整数 k 。
@@ -19,7 +20,7 @@ import static java.lang.Integer.MAX_VALUE;
              - [90] 最高分和最低分之间的差值是 90 - 90 = 0
              可能的最小差值是 0
     示例 2：
-        输入：nums = [9,4,1,7], k = 2
+        输入：nums = [9, 4, 1, 7], k = 2
         输出：2
         解释：选出 2 名学生的分数，有 6 种方法：
              - [9,4,1,7] 最高分和最低分之间的差值是 9 - 4 = 5

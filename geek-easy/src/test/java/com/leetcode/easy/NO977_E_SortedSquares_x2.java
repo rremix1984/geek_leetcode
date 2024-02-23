@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     977. 有序数组的平方
         给你一个按【非递减顺序】排序的整数数组 nums，

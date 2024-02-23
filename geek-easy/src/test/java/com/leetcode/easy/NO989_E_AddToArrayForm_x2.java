@@ -11,6 +11,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (简单)
     989. 数组形式的整数加法
         整数的数组形式 num 是按照从左到右的顺序表示其数字的数组。

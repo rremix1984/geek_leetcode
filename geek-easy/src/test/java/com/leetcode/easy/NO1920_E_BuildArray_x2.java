@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     1920. 基于排列构建数组
         给你一个 从 0 开始的排列 nums（下标也从 0 开始）。请你构建一个 同样长度 的数组 ans ，其中，对于每个 i（0 <= i < nums.length），都满足 ans[i] = nums[nums[i]] 。返回构建好的数组 ans 。
@@ -30,8 +31,10 @@ public class NO1920_E_BuildArray_x2 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{0, 1, 2, 4, 5, 3}, buildArray(new int[]{0, 2, 1, 5, 3, 4}));
-        assertArrayEquals(new int[]{4, 5, 0, 1, 2, 3}, buildArray(new int[]{5, 0, 1, 2, 3, 4}));
+        assertArrayEquals(new int[]{0, 1, 2, 4, 5, 3},
+                buildArray(new int[]{0, 2, 1, 5, 3, 4}));
+        assertArrayEquals(new int[]{4, 5, 0, 1, 2, 3},
+                buildArray(new int[]{5, 0, 1, 2, 3, 4}));
     }
 
     public int[] buildArray(int[] nums) {

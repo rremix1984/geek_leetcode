@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2455. 可被三整除的偶数的平均值
         给你一个由正整数组成的整数数组nums，返回其中可被3整除的所有偶数的平均值。

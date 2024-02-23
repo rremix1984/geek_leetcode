@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [MATRIX]
     (简单)
     2319. 判断矩阵是否是一个 X 矩阵
         如果一个正方形矩阵满足下述 全部 条件，则称之为一个 X 矩阵 ：

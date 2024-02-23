@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     693. 交替位二进制数
         给定一个正整数，检查它的二进制表示是否总是 0、1 交替出现：换

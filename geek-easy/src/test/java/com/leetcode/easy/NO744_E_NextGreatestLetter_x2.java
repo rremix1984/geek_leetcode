@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     744. 寻找比目标字母大的最小字母
         给你一个排序后的字符列表 letters ，列表中只包含小写英文字母。

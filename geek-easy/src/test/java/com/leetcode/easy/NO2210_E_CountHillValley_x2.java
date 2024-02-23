@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2210. 统计数组中峰和谷的数量
          给你一个下标从0开始的整数数组nums。如果两侧距i最近的不相等邻居的值均小于nums[i] ，

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1961. 检查字符串是否为数组前缀
         给你一个字符串 s 和一个字符串数组 words ，请你判断 s 是否为 words 的 前缀字符串 。
@@ -25,8 +26,10 @@ public class NO1961_E_IsPrefixString_x2 {
 
     @Test
     public void test() {
-        assert isPrefixString("iloveleetcode", new String[]{"i", "love", "leetcode", "apples"});
-        assert !isPrefixString("iloveleetcode", new String[]{"apples", "i", "love", "leetcode"});
+        assert isPrefixString("iloveleetcode",
+                new String[]{"i", "love", "leetcode", "apples"});
+        assert !isPrefixString("iloveleetcode",
+                new String[]{"apples", "i", "love", "leetcode"});
     }
 
     public boolean isPrefixString(String s, String[] words) {

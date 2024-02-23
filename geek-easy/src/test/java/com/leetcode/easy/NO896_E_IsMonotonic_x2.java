@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     896. 单调数列
         如果数组是单调递增或单调递减的，那么它是 单调 的。

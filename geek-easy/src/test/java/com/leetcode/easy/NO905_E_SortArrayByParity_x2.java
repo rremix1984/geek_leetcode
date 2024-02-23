@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     905. 按奇偶排序数组
         给你一个整数数组 nums，将 nums 中的的所有偶数元素移动到数组的前面，

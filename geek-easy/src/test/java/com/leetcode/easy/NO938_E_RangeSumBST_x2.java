@@ -9,6 +9,7 @@ import org.junit.Test;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     938. 二叉搜索树的范围和
         给定二叉搜索树的根结点 root，返回值位于范围 [low, high]

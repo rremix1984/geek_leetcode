@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     965. 单值二叉树
         如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。

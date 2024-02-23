@@ -9,6 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (简单)
     1431. 拥有最多糖果的孩子
         给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第i个孩子拥有的糖果数目。
@@ -34,9 +35,12 @@ public class NO1431_E_KidsWithCandies_x2 {
 
     @Test
     public void test() {
-        assert getArray(true, true, true, false, true).equals(kidsWithCandies(new int[]{2, 3, 5, 1, 3}, 3));
-        assert getArray(true, false, false, false, false).equals(kidsWithCandies(new int[]{4, 2, 1, 1, 2}, 1));
-        assert getArray(true, false, true).equals(kidsWithCandies(new int[]{12, 1, 12}, 10));
+        assert getArray(true, true, true, false, true)
+                .equals(kidsWithCandies(new int[]{2, 3, 5, 1, 3}, 3));
+        assert getArray(true, false, false, false, false)
+                .equals(kidsWithCandies(new int[]{4, 2, 1, 1, 2}, 1));
+        assert getArray(true, false, true)
+                .equals(kidsWithCandies(new int[]{12, 1, 12}, 10));
     }
 
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {

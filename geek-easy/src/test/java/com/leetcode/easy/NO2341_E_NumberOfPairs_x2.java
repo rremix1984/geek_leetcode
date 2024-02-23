@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     2341. 数组能形成多少数对
         给你一个下标从 0 开始的整数数组 nums 。在一步操作中，你可以执行以下步骤：

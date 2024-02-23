@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     1413. 逐步求和得到正数的最小值
         给你一个整数数组 nums 。你可以选定任意的 正数 startValue 作为初始值。

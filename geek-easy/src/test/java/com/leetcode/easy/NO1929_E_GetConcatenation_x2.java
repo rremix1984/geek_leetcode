@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     1929. 数组串联
         给你一个长度为 n 的整数数组 nums 。请你构建一个长度为 2n 的答案数组 ans ，数组下标 从 0 开始计数 ，对于所有 0 <= i < n 的 i ，满足下述所有要求：
@@ -31,7 +32,8 @@ public class NO1929_E_GetConcatenation_x2 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1,3,2,1,1,3,2,1}, getConcatenation(new int[]{1,3,2,1}));
+        assertArrayEquals(new int[]{1,3,2,1,1,3,2,1},
+                getConcatenation(new int[]{1,3,2,1}));
     }
 
     public int[] getConcatenation(int[] nums) {

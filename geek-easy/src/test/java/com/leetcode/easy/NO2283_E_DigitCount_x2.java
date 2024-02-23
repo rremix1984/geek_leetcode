@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2283. 判断一个数的数字计数是否等于数位的值
         给你一个下标从 0 开始长度为 n 的字符串 num ，它只包含数字。

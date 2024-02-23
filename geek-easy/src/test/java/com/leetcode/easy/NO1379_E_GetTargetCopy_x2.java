@@ -7,6 +7,7 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
 /**
+    [TREE]
     (简单)
     1379. 找出克隆二叉树中的相同节点
         给你两棵二叉树，原始树 original 和克隆树 cloned，以及一个位于原始树 original 中的目标节点 target。

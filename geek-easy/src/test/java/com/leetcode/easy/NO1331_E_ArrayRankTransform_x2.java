@@ -10,6 +10,7 @@ import java.util.Map;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     1331. 数组序号转换
         给你一个整数数组 arr ，请你将数组中的每个元素替换为它们排序后的序号。

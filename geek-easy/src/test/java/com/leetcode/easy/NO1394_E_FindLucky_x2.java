@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [ARRAY]
     (简单)
     1394. 找出数组中的幸运数
         在整数数组中，如果一个整数的出现频次和它的数值大小相等，我们就称这个整数为「幸运数」。

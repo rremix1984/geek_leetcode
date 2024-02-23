@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     2164. 对奇偶下标分别排序
         给你一个下标从 0 开始的整数数组 nums 。根据下述规则重排 nums 中的值：

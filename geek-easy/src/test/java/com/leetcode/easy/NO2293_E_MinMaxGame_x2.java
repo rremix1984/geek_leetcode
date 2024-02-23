@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2293. 极大极小游戏
         给你一个下标从 0 开始的整数数组 nums ，其长度是 2 的幂。

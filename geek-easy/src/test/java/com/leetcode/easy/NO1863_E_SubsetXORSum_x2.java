@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+    [ARRAY]
     (简单)
     1863. 找出所有子集的异或总和再求和
         一个数组的 异或总和 定义为数组中所有元素按位 XOR 的结果；如果数组为 空 ，则异或总和为 0 。

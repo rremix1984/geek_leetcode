@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2357. 使数组中所有元素都等于零
         给你一个非负整数数组 nums 。在一步操作中，你必须：

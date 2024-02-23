@@ -7,6 +7,7 @@ import org.junit.Test;
 import static java.lang.Character.*;
 
 /**
+    [STRING]
     (简单)
     2299. 强密码检验器 II
         如果一个密码满足以下所有条件，我们称它是一个 强 密码：

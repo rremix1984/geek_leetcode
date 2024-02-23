@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2278. 字母在字符串中的百分比
         给你一个字符串 s 和一个字符 letter ，返回在 s 中等于 letter

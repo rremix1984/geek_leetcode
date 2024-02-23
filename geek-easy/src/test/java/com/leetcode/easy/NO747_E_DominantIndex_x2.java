@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     747. 至少是其他数字两倍的最大数
         给你一个整数数组 nums ，其中总是存在 唯一的 一个最大整数 。

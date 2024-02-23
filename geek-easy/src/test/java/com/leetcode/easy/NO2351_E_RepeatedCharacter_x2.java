@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2351. 第一个出现两次的字母
         给你一个由小写英文字母组成的字符串 s ，请你找出并返回第一个出现 两次 的字母。

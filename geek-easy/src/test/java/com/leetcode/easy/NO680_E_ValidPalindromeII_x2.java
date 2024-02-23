@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [STRING]
     （简单）
     680. 验证回文串 II
         给你一个字符串 s，最多可以从中删除一个字符。

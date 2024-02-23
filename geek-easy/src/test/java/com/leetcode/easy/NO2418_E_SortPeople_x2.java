@@ -7,6 +7,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [STRING]
+    [ARRAY]
     (简单)
     2418. 按身高排序
         给你一个字符串数组 names ，和一个由 互不相同 的正整数组成的数组 heights 。两个数组的长度均为 n 。

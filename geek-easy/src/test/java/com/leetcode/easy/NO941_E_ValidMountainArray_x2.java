@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     941. 有效的山脉数组
         给定一个整数数组 arr，如果它是有效的山脉数组就返回 true，否则返回 false。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2404. 出现最频繁的偶数元素
         给你一个整数数组 nums ，返回出现最频繁的偶数元素。

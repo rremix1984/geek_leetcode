@@ -10,6 +10,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Collections.emptyList;
 
 /**
+    [ARRAY]
     (简单)
     2032. 至少在两个数组中出现的值
         给你三个整数数组 nums1、nums2 和 nums3 ，请你构造并返回一个 元素各不相同的 数组，
@@ -36,7 +37,8 @@ public class NO2032_E_TwoOutOfThree_x2 {
 
     @Test
     public void test() {
-        assert emptyList().equals(twoOutOfThree(new int[]{1, 2, 2}, new int[]{4, 3, 3}, new int[]{5}));
+        assert emptyList().equals(
+                twoOutOfThree(new int[]{1, 2, 2}, new int[]{4, 3, 3}, new int[]{5}));
     }
 
     public List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {

@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [ARRAY]
     (简单)
     724. 寻找数组的中心下标
         给你一个整数数组 nums ，请计算数组的 中心下标 。

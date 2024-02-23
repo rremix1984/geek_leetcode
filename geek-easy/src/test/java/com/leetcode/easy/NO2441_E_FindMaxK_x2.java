@@ -9,6 +9,7 @@ import java.util.Set;
 import static java.lang.Math.abs;
 
 /**
+    [ARRAY]
     (简单)
     2441. 与对应负数同时存在的最大正整数
         给你一个不包含任何零的整数数组 nums ，找出自身与对应的负数都在数组中存在的最大正整数 k 。

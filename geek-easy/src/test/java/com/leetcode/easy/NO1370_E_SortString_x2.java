@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1370. 上升下降字符串
         给你一个字符串 s ，请你根据下面的算法重新构造字符串：

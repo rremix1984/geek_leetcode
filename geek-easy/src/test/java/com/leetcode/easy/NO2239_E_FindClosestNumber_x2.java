@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2239. 找到最接近 0 的数字
         给你一个长度为 n 的整数数组 nums ，请你返回 nums 中最 接近 0 的数字。
