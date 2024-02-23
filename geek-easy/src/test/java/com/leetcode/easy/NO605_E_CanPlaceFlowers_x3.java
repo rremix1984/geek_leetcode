@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     605. 种花问题
         假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，
@@ -26,7 +26,7 @@ import org.junit.Test;
         flowerbed 中不存在相邻的两朵花
         0 <= n <= flowerbed.length
 */
-public class NO605_E_CanPlaceFlowers_x2 {
+public class NO605_E_CanPlaceFlowers_x3 {
 
     @Test
     public void test() {
@@ -35,6 +35,7 @@ public class NO605_E_CanPlaceFlowers_x2 {
     }
 
     public static boolean canPlaceFlowers(int[] flowerbed, int n) {
+        // 2024/2/23  no.3
         return false;
     }
 
@@ -56,21 +57,22 @@ public class NO605_E_CanPlaceFlowers_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public static boolean canPlaceFlowers(int[] flowerbed, int n) {
-    int cnt = 1; // 当前全0区段中连续0的数量，刚开始预设1个0，因为开头花坛的最左边没有花，可以认为存在一个虚无的0
+    int zero_num = 1; // 当前全0区段中连续0的数量，刚开始预设1个0，因为开头花坛的最左边没有花，可以认为存在一个虚无的0
     for (int bed : flowerbed)
         if (bed == 0) { // 遇到0，连续0的数量+1
-            cnt++;
+            zero_num++;
         } else { // 遇到1，结算上一段连续的0区间，看能种下几盆花：(countOfZero-1)/2
-            n -= (cnt - 1) / 2;
-            cnt = 0; // 0的数量清零，开始统计下一个全0分区
+            n = n - (zero_num - 1) / 2;
+            zero_num = 0; // 0的数量清零，开始统计下一个全0分区
         }
 
     // 最后一段0区还未结算：
     // 最后再预设1个0，因为最后花坛的最右边没有花，可以认为存在一个虚无的0
-    return n - cnt / 2 <= 0;
+    // zero_num / 2 ：两个0才能种一盆花
+    return n - zero_num / 2 <= 0;
 }
 
 // 方法2：

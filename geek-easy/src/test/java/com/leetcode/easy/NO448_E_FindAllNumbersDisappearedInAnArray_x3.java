@@ -7,12 +7,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
-import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     448. 找到所有数组中消失的数字
         给你一个含 n 个整数的数组 nums ，其中 nums[i] 在区间 [1, n] 内。
@@ -25,15 +23,18 @@ import static org.junit.Assert.assertEquals;
         输入：nums = {1, 1}
         输出：[2]
 */
-public class NO448_E_FindAllNumbersDisappearedInAnArray_x2 {
+public class NO448_E_FindAllNumbersDisappearedInAnArray_x3 {
 
     @Test
     public void test() {
-        Assert.assertEquals(getArray(5, 6), findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));// [5, 6]
-        Assert.assertEquals(getArray(2), findDisappearedNumbers(new int[]{1, 1}));// [2]
+        Assert.assertEquals(getArray(5, 6),
+                findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));// [5, 6]
+        Assert.assertEquals(getArray(2),
+                findDisappearedNumbers(new int[]{1, 1}));// [2]
     }
 
     public List<Integer> findDisappearedNumbers(int[] nums) {
+        // 2024/2/22  NO.3
         List<Integer> ret = new ArrayList<>();
         return ret;
     }
@@ -56,7 +57,7 @@ public class NO448_E_FindAllNumbersDisappearedInAnArray_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<Integer> findDisappearedNumbers(int[] nums) {
     // 凡是出现过的数字，考虑到都是正数。
@@ -80,7 +81,7 @@ public List<Integer> findDisappearedNumbers(int[] nums) {
     List<Integer> ret = new ArrayList<>();
     int n = nums.length;
     for (int num : nums) {
-        // 对n取模，还原出本来的值
+        // 对n取模，还原出本来的值（原来的数字加上n 之后，模n就相当于还原了）
         int x = (num - 1) % n;
         // 只是为了让他比较突出而已，也可以取反，也可以是大于n的数字
         nums[x] += n;

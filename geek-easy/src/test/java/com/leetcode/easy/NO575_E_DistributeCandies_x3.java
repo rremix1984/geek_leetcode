@@ -5,10 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import static java.lang.Math.min;
-
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     575. 分糖果
         Alice 有 n 枚糖，其中第 i 枚糖的类型为 candyType[i] 。
@@ -35,7 +33,7 @@ import static java.lang.Math.min;
         n 是一个偶数
         -105 <= candyType[i] <= 105
 */
-public class NO575_E_DistributeCandies_x2 {
+public class NO575_E_DistributeCandies_x3 {
 
     @Test
     public void test() {
@@ -45,7 +43,8 @@ public class NO575_E_DistributeCandies_x2 {
     }
 
     public int distributeCandies(int[] candyType) {
-        return 0;
+        // 2024/2/23 NO.3
+        return -1;
     }
 
 }
@@ -64,7 +63,7 @@ public class NO575_E_DistributeCandies_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int distributeCandies(int[] candyType) {
     Set<Integer> set = new HashSet<>();

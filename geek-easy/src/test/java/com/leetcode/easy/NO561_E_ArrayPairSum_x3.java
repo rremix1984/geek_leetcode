@@ -6,12 +6,12 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     561. 数组拆分
-        给定长度为 2n 的整数数组 nums ，你的任务是将这些数分成 n 对,
-        例如 (a1, b1), (a2, b2), ..., (an, bn) ，使得从 1 到 n 的
-        min(ai, bi) 总和最大。返回该 最大总和 。
+        给定长度为2n的整数数组nums，你的任务是将这些数分成n对,
+        例如 (a1, b1), (a2, b2), ..., (an, bn) ，使得从1到n的
+        min(ai, bi) 总和最大。返回该[最大总和]。
     示例 1：
         输入：nums = {1, 4, 3, 2}
         输出：4
@@ -29,7 +29,7 @@ import org.junit.Test;
         nums.length == 2 * n
         -10^4 <= nums[i] <= 10^4
 */
-public class NO561_E_ArrayPairSum_x2 {
+public class NO561_E_ArrayPairSum_x3 {
 
     @Test
     public void test() {
@@ -38,6 +38,7 @@ public class NO561_E_ArrayPairSum_x2 {
     }
 
     public int arrayPairSum(int[] nums) {
+        // 2024/2/23 NO.3
         int ans = 0;
         return ans;
     }
@@ -58,7 +59,7 @@ public class NO561_E_ArrayPairSum_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int arrayPairSum(int[] nums) {
     Arrays.sort(nums);

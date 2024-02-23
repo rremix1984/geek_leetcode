@@ -5,10 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import static java.lang.Math.max;
-
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     485.最大连续 1 的个数
         给定一个二进制数组 nums，计算其中最大连续 1 的个数。
@@ -23,7 +21,7 @@ import static java.lang.Math.max;
         1 <= nums.length <= 105
         nums[i] 不是 0 就是 1.
 */
-public class NO485_E_FindMaxConsecutiveOnes_x2 {
+public class NO485_E_FindMaxConsecutiveOnes_x3 {
 
     @Test
     public void test() {
@@ -32,8 +30,9 @@ public class NO485_E_FindMaxConsecutiveOnes_x2 {
     }
 
     public int findMaxConsecutiveOnes(int[] nums) {
-        int max = 0;
-        return max;
+        // 2024/2/23 NO.3
+        int res = 0;
+        return res;
     }
 
 }
@@ -54,16 +53,16 @@ public class NO485_E_FindMaxConsecutiveOnes_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int findMaxConsecutiveOnes(int[] nums) {
-    int max = 0;
+    int res = 0;
     int cnt = 0;
     for (int n : nums)
         if (n == 0)
             cnt = 0;
         else
-            max = max(max, ++cnt);
-    return max;
+            res = max(res, ++cnt);
+    return res;
 }
 */

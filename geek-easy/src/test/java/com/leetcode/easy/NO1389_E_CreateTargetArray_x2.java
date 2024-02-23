@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1389. 按既定顺序创建目标数组
         给你两个整数数组 nums 和 index。你需要按照以下规则创建目标数组：
@@ -74,7 +74,7 @@ public class NO1389_E_CreateTargetArray_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] createTargetArray(int[] nums, int[] index) {
     List<Integer> list = new ArrayList<>();
@@ -92,6 +92,7 @@ public int[] createTargetArray(int[] nums, int[] index) {
 public int[] createTargetArray(int[] nums, int[] index) {
     int[] ans = new int[index.length];
     for (int i = 0; i < index.length; i++) {
+        // 在插入元素前，所有元素向后移动
         for (int j = ans.length - 1; j > index[i]; j--)
             ans[j] = ans[j - 1];
 
