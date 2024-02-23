@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [ARRAY]
     (简单)
     1051. 高度检查器
         学校打算为全体学生拍一张年度纪念照。根据要求:学生需要按照非递减的

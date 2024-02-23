@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+    [ARRAY]
     (简单)
     LCP 11. 期望个数统计
         某互联网公司一年一度的春招开始了，一共有 n 名面试者入选。每名面试者都会提交一份简历，

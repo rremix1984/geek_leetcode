@@ -29,8 +29,10 @@ public class NO056_N_Merge_x2 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[][]{{1, 6}, {8, 10}, {15, 18}}, merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}));
-        assertArrayEquals(new int[][]{{1, 5}}, merge(new int[][]{{1, 4}, {4, 5}}));
+        assertArrayEquals(new int[][]{{1, 6}, {8, 10}, {15, 18}},
+                merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}}));
+        assertArrayEquals(new int[][]{{1, 5}},
+                merge(new int[][]{{1, 4}, {4, 5}}));
     }
 
     public int[][] merge(int[][] intervals) {

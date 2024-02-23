@@ -14,6 +14,7 @@ import static com.leetcode.util.MathUtils.getArrays;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [ARRAY]
     (中等)
     39. 组合总和
         给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，找出 candidates 中可以使数字和
@@ -38,9 +39,12 @@ public class NO039_N_CombinationSum_x2 {
 
     @Test
     public void test() {
-        assertEquals(getArray(new int[][]{{2, 2, 3}, {7}}), combinationSum(getArrays(2, 3, 6, 7), 7));
-        assertEquals(getArray(new int[][]{{2, 2, 2, 2}, {2, 3, 3}, {3, 5}}), combinationSum(getArrays(2, 3, 5), 8));
-        assertEquals(getArray(new int[][]{}), combinationSum(getArrays(2), 1));
+        assertEquals(getArray(new int[][]{{2, 2, 3}, {7}}),
+                combinationSum(getArrays(2, 3, 6, 7), 7));
+        assertEquals(getArray(new int[][]{{2, 2, 2, 2}, {2, 3, 3}, {3, 5}}),
+                combinationSum(getArrays(2, 3, 5), 8));
+        assertEquals(getArray(new int[][]{}),
+                combinationSum(getArrays(2), 1));
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {

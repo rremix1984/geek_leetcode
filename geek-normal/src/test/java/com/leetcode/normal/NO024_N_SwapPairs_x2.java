@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (中等)
     24. 两两交换链表中的节点
         给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。

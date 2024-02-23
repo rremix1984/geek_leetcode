@@ -8,6 +8,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
+    [ARRAY]
     (简单)
     1848. 到目标元素的最小距离
         给你一个整数数组 nums （下标 从 0 开始 计数）以及两个整数 target 和 start ，

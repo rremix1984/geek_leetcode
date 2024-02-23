@@ -6,6 +6,7 @@ package com.leetcode.undo;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2190. 数组中紧跟key之后出现最频繁的数字
         给你一个下标从0开始的整数数组nums，同时给你一个整数key，它在nums出现过。
@@ -38,16 +39,36 @@ public class NO2190_E_MostFrequent {
     }
 
     public int mostFrequent(int[] nums, int key) {
-        int[] arr = new int[1001];
-        int max = 0;
         int ans = 0;
-        for (int i = 0; i < nums.length - 1; i++)
-            if (nums[i] == key && ++arr[nums[i + 1]] > max) {
-                max = arr[nums[i + 1]];
-                ans = nums[i + 1];
-            }
-
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public int mostFrequent(int[] nums, int key) {
+    int[] arr = new int[1001];
+    int max = 0;
+    int ans = 0;
+    for (int i = 0; i < nums.length - 1; i++)
+        if (nums[i] == key && ++arr[nums[i + 1]] > max) {
+            max = arr[nums[i + 1]];
+            ans = nums[i + 1];
+        }
+
+    return ans;
+}
+*/

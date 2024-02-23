@@ -12,6 +12,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
    （中等）
     46.全排列
         给定一个不含重复数字的数组 nums，

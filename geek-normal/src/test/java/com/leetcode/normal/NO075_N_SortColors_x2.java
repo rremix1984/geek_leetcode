@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (中等)
     75. 颜色分类
         给定一个包含红色、白色和蓝色、共n个元素的数组nums，
@@ -14,11 +15,11 @@ import static org.junit.Assert.assertArrayEquals;
         我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
         必须在不使用库的sort函数的情况下解决这个问题。
     示例 1：
-        输入：nums = [2,0,2,1,1,0]
-        输出：[0,0,1,1,2,2]
+        输入：nums = [2, 0, 2, 1, 1, 0]
+        输出：[0, 0, 1, 1, 2, 2]
     示例 2：
-        输入：nums = [2,0,1]
-        输出：[0,1,2]
+        输入：nums = [2, 0, 1]
+        输出：[0, 1, 2]
     提示：
         n == nums.length
         1 <= n <= 300
@@ -54,18 +55,18 @@ public class NO075_N_SortColors_x2 {
 
     @Test
     public void test() {
-        int[] source = new int[]{2,0,2,1,1,0};
-        int[] target = new int[]{0,0,1,1,2,2};
+        int[] source = new int[]{2, 0, 2, 1, 1, 0};
+        int[] target = new int[]{0, 0, 1, 1, 2, 2};
         sortColors(source);
         assertArrayEquals(source, target);
 
-        int[] source2 = new int[]{2,0,1};
-        int[] target2 = new int[]{0,1,2};
+        int[] source2 = new int[]{2, 0, 1};
+        int[] target2 = new int[]{0, 1, 2};
         sortColors(source2);
         assertArrayEquals(source2, target2);
 
-        int[] source3 = new int[]{2,1,2};
-        int[] target3 = new int[]{1,2,2};
+        int[] source3 = new int[]{2, 1, 2};
+        int[] target3 = new int[]{1, 2, 2};
         sortColors(source3);
         assertArrayEquals(source3, target3);
     }
@@ -92,7 +93,7 @@ public class NO075_N_SortColors_x2 {
 
 
 
-/**
+/*
 // 方法2：
 public void sortColors(int[] nums) {
     int p0 = 0;

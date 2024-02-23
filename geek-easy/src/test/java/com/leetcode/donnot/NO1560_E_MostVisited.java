@@ -8,6 +8,7 @@ import java.util.*;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (简单)
     1560. 圆形赛道上经过次数最多的扇区
         给你一个整数 n 和一个整数数组 rounds 。有一条圆形赛道由 n 个扇区组成，扇区编号从 1 到 n 。

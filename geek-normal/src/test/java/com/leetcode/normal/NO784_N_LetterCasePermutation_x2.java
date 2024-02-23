@@ -10,6 +10,7 @@ import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (中等)
     784. 字母大小写全排列
         给定一个字符串 s ，通过将字符串 s 中的每个字母转变大小写，我们可以获得一个新的字符串。
