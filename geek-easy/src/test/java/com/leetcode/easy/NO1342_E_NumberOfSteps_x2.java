@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     1342. 将数字变成 0 的操作次数
         给你一个非负整数 num ，请你返回将它变成 0 所需要的步数。

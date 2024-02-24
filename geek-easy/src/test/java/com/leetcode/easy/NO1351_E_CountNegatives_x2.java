@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [MATRIX]
     (简单)
     1351. 统计有序矩阵中的负数
         给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，

@@ -7,6 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
     (简单)
     1399. 统计最大组的数目
         给你一个整数 n 。请你先求出从 1 到 n 的每个整数 10 进制表示下的数位和（每一位上的数字相加），

@@ -7,10 +7,10 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     268. 丢失的数字
-        给定一个包含 [0, n] 中 n 个数的数组 nums ，找出 [0, n] 这个范围内没有出现在数组中的那个数。
+        给定一个包含[0, n]中n个数的数组nums，找出[0, n]这个范围内没有出现在数组中的那个数。
     示例 1：
         输入：nums = [3, 0, 1]
         输出：2

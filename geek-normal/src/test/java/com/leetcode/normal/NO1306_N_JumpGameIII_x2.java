@@ -6,6 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (中等)
     1306. 跳跃游戏 III
         这里有一个非负整数数组 arr，你最开始位于该数组的起始下标 start 处。

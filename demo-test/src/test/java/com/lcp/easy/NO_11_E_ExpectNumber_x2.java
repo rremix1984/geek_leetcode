@@ -42,11 +42,34 @@ public class NO_11_E_ExpectNumber_x2 {
     }
 
     public int expectNumber(int[] scores) {
-        Set<Integer> set = new HashSet<>();
-        for (int score : scores)
-            set.add(score);
-
-        return set.size();
+        return -1;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int expectNumber(int[] scores) {
+    Set<Integer> set = new HashSet<>();
+    for (int score : scores)
+        set.add(score);
+
+    return set.size();
+}
+*/

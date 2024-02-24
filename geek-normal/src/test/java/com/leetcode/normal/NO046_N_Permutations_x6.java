@@ -6,13 +6,14 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [ARRAY]
+    [ARRAY] |
    （中等）
     46.全排列
         给定一个不含重复数字的数组 nums，
@@ -28,7 +29,8 @@ import static com.leetcode.util.MathUtils.getArray;
         输入：nums = {1}
         输出：{{1}}
 */
-public class NO046_N_Permutations_x5 {
+@SuppressWarnings("all")
+public class NO046_N_Permutations_x6 {
 
     @Test
     public void test() {
@@ -37,14 +39,16 @@ public class NO046_N_Permutations_x5 {
         List<List<Integer>> source =  permute(new int[]{1, 2, 3});
         assert target.containsAll(source);
         assert source.containsAll(target);
+
         ArrayList<ArrayList<Integer>> target2 = getArray(new int[][]{{1}});
         List<List<Integer>> source2 = permute(new int[]{1});
         assert target2.containsAll(source2);
         assert source2.containsAll(target2);
     }
 
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
+    private List<List<Integer>> permute(int[] nums) {
+        // 2024/2/24 NO.6
+        List<List<Integer>> res = new ArrayList<>();
         return res;
     }
 
@@ -61,17 +65,16 @@ public class NO046_N_Permutations_x5 {
 
 
 
-
-/**
-List<List<Integer>> res = new LinkedList<>();
-
+/*
+// 方法1：
 public List<List<Integer>> permute(int[] nums) {
+    List<List<Integer>> res = new LinkedList<>();
     Deque<Integer> alreadyList = new LinkedList<>();
-    backtrack(nums, alreadyList);
+    backtrack(res, nums, alreadyList);
     return res;
 }
 
-void backtrack(int[] nums, Deque<Integer> alreadyList) {
+void backtrack(List<List<Integer>> res, int[] nums, Deque<Integer> alreadyList) {
     if (alreadyList.size() == nums.length) {
         res.add(new LinkedList(alreadyList));
         return;
@@ -86,7 +89,7 @@ void backtrack(int[] nums, Deque<Integer> alreadyList) {
         alreadyList.add(nums[i]);
 
         // 递归调用方法 形成数组
-        backtrack(nums, alreadyList);
+        backtrack(res, nums, alreadyList);
 
         // 上一层遍历过的元素，下一层就换个继续便利
         //  [1]
@@ -95,9 +98,9 @@ void backtrack(int[] nums, Deque<Integer> alreadyList) {
     }
 }
 
-
 // 方法2：回溯法
 public List<List<Integer>> permute(int[] nums) {
+    List<List<Integer>> res = new LinkedList<>();
     Deque<Integer> list = new LinkedList();
     call(res, nums, list);
     return res;

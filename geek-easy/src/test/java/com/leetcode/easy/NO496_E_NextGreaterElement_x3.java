@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] ||
     (简单)
     496. 下一个更大元素 I
         nums1中数字x的下一个更大元素是指x在nums2中对应位置右侧的第一个比x大的元素。
@@ -46,6 +46,7 @@ public class NO496_E_NextGreaterElement_x3 {
 
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         // 2024/2/23 NO.3
+        // 2024/2/24 NO.4
         int[] res = new int[nums1.length];
         return res;
     }
