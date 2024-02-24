@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     704. 二分查找
         给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
         输出: -1
         解释: 2 不存在 nums 中因此返回 -1
 */
-public class NO704_E_BinarySearch_x2 {
+public class NO704_E_BinarySearch_x3 {
 
     @Test
     public void test() {
@@ -31,8 +31,10 @@ public class NO704_E_BinarySearch_x2 {
     }
 
     public int search(int[] nums, int target) {
+        // 2024/2/24 NO.3
         return -1;
     }
+
 }
 
 

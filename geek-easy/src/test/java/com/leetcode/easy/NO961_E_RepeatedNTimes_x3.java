@@ -5,11 +5,8 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     961. 在长度 2N 的数组中找出重复 N 次的元素
         给你一个整数数组 nums ，该数组具有以下属性：
@@ -30,7 +27,7 @@ import java.util.Set;
         2 <= n <= 5000
         nums.length == 2 * n
         0 <= nums[i] <= 104
-        nums 由 n + 1 个 不同的 元素组成，且其中一个元素恰好重复 n 次
+        nums 由 n + 1 个不同的元素组成，且其中一个元素恰好重复n次
 
     方法一：哈希表
         思路与算法
@@ -39,7 +36,7 @@ import java.util.Set;
     因此我们可以对数组进行一次遍历，并使用哈希集合存储已经出现过的元素。如果遍历到了哈
     希集合中的元素，那么返回该元素作为答案。
 */
-public class NO961_E_RepeatedNTimes_x2 {
+public class NO961_E_RepeatedNTimes_x3 {
 
     @Test
     public void test() {
@@ -49,12 +46,7 @@ public class NO961_E_RepeatedNTimes_x2 {
     }
 
     public int repeatedNTimes(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int num : nums)
-            if (!set.add(num))
-                return num;
-
-        // 不可能的情况
+        // 2024/2/24 NO.3
         return -1;
     }
 
@@ -77,7 +69,7 @@ public class NO961_E_RepeatedNTimes_x2 {
 
 
 
-/**
+/*
 // 方法1：脑筋急转弯
 public int repeatedNTimes(int[] nums) {
     Set<Integer> set = new HashSet<>();
@@ -87,5 +79,24 @@ public int repeatedNTimes(int[] nums) {
 
     // 不可能的情况
     return -1;
+}
+
+// 方法2：一半元素是重复的说明有两种情况
+// [X, 1, X, 2, X, 3]  间隔出现，第1个元素和倒数第1个 或者 倒数第2个相同
+// [X, X, X, 1, 2, 3]  连续出现，只要发现连续两个相同的就找到了
+public int repeatedNTimes(int[] nums) {
+    for (int i = 0; i < nums.length - 1; i++)
+        // 检查当前元素是否与下一个元素相同
+        if (nums[i] == nums[i + 1])
+            return nums[i];
+
+    // 如果没有找到重复的元素，可能是最坏的情况，即重复元素在数组的两端
+    // 这种情况下，可以直接返回前两个元素之一，因为根据题目的设定，重复N次的元素一定存在
+    // 这里的逻辑依赖于题目的特殊性质，可能不是一个通用的解决方案
+    if (nums[0] == nums[nums.length - 1]
+        || nums[0] == nums[nums.length - 2])
+        return nums[0];
+    else
+        return nums[1];
 }
 */
