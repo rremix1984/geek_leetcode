@@ -4,7 +4,6 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
-
 import static java.lang.Math.max;
 
 /**
