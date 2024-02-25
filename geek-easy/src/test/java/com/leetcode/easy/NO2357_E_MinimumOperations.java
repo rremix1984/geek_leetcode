@@ -4,7 +4,6 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-
 import java.util.Arrays;
 
 /**
