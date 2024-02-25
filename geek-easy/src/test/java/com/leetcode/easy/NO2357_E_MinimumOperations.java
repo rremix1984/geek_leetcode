@@ -27,17 +27,18 @@ import java.util.Arrays;
         输出：0
         解释：nums 中的每个元素都已经是 0 ，所以不需要执行任何操作。
 */
-public class NO2357_E_MinimumOperations_x3 {
+public class NO2357_E_MinimumOperations {
 
     @Test
     public void test() {
         assert 3 == minimumOperations(new int[]{1, 5, 0, 3, 5});
         assert 0 == minimumOperations(new int[]{0});
+        assert 6 == minimumOperations(new int[]{1, 2, 3, 4, 5, 6});
     }
 
     public int minimumOperations(int[] nums) {
         // 2024/2/24 NO.3
-        Arrays.sort(nums);
+        // 2024/2/25 NO.4
         int res = 0;
         return res;
     }
