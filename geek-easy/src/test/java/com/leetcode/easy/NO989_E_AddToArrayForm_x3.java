@@ -11,7 +11,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     989. 数组形式的整数加法
         整数的数组形式 num 是按照从左到右的顺序表示其数字的数组。
@@ -35,7 +35,7 @@ import static com.leetcode.util.MathUtils.getArray;
         num 不包含任何前导零，除了零本身
         1 <= k <= 104
 */
-public class NO989_E_AddToArrayForm_x2 {
+public class NO989_E_AddToArrayForm_x3 {
 
     @Test
     public void test() {
@@ -47,7 +47,8 @@ public class NO989_E_AddToArrayForm_x2 {
                 addToArrayForm(new int[]{2, 1, 5}, 806));
     }
 
-    public List<Integer> addToArrayForm(int[] num, int k) {
+    public List<Integer> addToArrayForm(int[] nums, int k) {
+        // 2024/2/25 NO.3
         List<Integer> res = new ArrayList<>();
         return res;
     }
@@ -72,7 +73,7 @@ public class NO989_E_AddToArrayForm_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<Integer> addToArrayForm(int[] num, int k) {
     List<Integer> res = new ArrayList<>();
