@@ -29,9 +29,9 @@ public class NO045_N_JumpGameII {
 
     @Test
     public void test() {
-        assert 2 == jump(new int[]{2, 3, 0, 1, 4});//2
-        assert 2 == jump(new int[]{2, 3, 1, 1, 4});//2
-        assert 6 == jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4});//6
+        assert 2 == jump(new int[]{2, 3, 0, 1, 4});// 2
+        assert 2 == jump(new int[]{2, 3, 1, 1, 4});// 2
+        assert 6 == jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4});// 6
     }
 
     public int jump(int[] nums) {

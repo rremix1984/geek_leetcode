@@ -45,7 +45,6 @@ public class NO1306_N_JumpGameIII {
 
     public boolean canReach(int[] arr, int start) {
         // 2024/2/25 NO.3
-
         return false;
     }
 
@@ -70,7 +69,7 @@ public class NO1306_N_JumpGameIII {
 
 
 
-/**
+/*
 // 方法1：
 public boolean canReach(int[] arr, int start) {
     // 访问过的数组

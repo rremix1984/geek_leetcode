@@ -5,7 +5,7 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 
-import static com.leetcode.util.MathUtils.max;
+import static java.lang.Math.max;
 
 /**
     [ARRAY] ||
@@ -26,7 +26,7 @@ import static com.leetcode.util.MathUtils.max;
             长度是0， 所以永远不可能到达最后一个下标。
 */
 @SuppressWarnings("all")
-public class NO055_N_JumpGame_x4 {
+public class NO055_N_JumpGame {
 
     @Test
     public void test() {
