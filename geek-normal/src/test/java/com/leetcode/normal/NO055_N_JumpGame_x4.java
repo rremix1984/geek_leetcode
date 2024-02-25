@@ -5,8 +5,10 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 
+import static com.leetcode.util.MathUtils.max;
+
 /**
-    [ARRAY] |
+    [ARRAY] ||
     （中等）
     55. 跳跃游戏 I
         给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
@@ -15,11 +17,13 @@ import org.junit.Test;
     示例 1：
         输入：nums = [2, 3, 1, 1, 4]
         输出：true
-        解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
+        解释：可以先跳1步，从下标0到达下标1,
+            然后再从下标1跳3步到达最后一个下标。
     示例 2：
         输入：nums = [3, 2, 1, 0, 4]
         输出：false
-        解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。
+        解释：无论怎样，总会到达下标为3的位置。但该下标的最大跳跃
+            长度是0， 所以永远不可能到达最后一个下标。
 */
 @SuppressWarnings("all")
 public class NO055_N_JumpGame_x4 {
@@ -28,10 +32,12 @@ public class NO055_N_JumpGame_x4 {
     public void test() {
         assert canJump(new int[]{2, 3, 1, 1, 4});// true
         assert !canJump(new int[]{3, 2, 1, 0, 4});// false
+        assert !canJump(new int[]{1, -1, 1, -1, 1});// false
     }
 
     public boolean canJump(int[] nums) {
         // 2024/2/24    NO.4
+        // 2024/2/25    NO.5
         return true;
     }
 
