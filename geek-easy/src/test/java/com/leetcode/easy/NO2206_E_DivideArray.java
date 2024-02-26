@@ -29,7 +29,7 @@ import org.junit.Test;
         1 <= n <= 500
         1 <= nums[i] <= 500
 */
-public class NO2206_E_DivideArray_x2 {
+public class NO2206_E_DivideArray {
 
     @Test
     public void test() {
@@ -38,13 +38,8 @@ public class NO2206_E_DivideArray_x2 {
     }
 
     public boolean divideArray(int[] nums) {
-        int[] arr = new int[501];
-        int cnt = 0;
-        for (int num : nums)
-            // 如果是偶数就 +1
-            if ((++arr[num] & 1 )== 0)
-                cnt++;
-        return cnt * 2 == nums.length;
+        // 2024/2/26 NO.3
+
     }
 
 }

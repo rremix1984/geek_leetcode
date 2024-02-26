@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY]    |
     (简单)
     1475. 商品折扣后的最终价格
         给你一个数组 prices ，其中 prices[i] 是商店里第 i 件商品的价格。

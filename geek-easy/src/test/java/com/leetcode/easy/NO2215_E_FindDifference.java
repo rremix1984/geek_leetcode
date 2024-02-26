@@ -4,11 +4,13 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.List;
+
+import java.util.*;
+
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2215. 找出两数组的不同
         给你两个下标从 0 开始的整数数组 nums1 和 nums2 ，请你返回一个长度为 2 的列表 answer ，其中：
@@ -26,7 +28,7 @@ import static com.leetcode.util.MathUtils.getArray;
         解释：对于 nums1 ，nums1[2] 和 nums1[3] 没有出现在 nums2 中。由于 nums1[2] == nums1[3] ，二者的值只需要在 answer[0] 中出现一次，故 answer[0] = [3]。
              nums2 中的每个整数都在 nums1 中出现，因此，answer[1] = [] 。
 */
-public class NO2215_E_FindDifference_x2 {
+public class NO2215_E_FindDifference {
 
     @Test
     public void test() {
@@ -37,6 +39,7 @@ public class NO2215_E_FindDifference_x2 {
     }
 
     public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        // 2024/2/25 NO.3
         return null;
     }
 
@@ -56,7 +59,7 @@ public class NO2215_E_FindDifference_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
     int[] arr1 = new int[2001];
@@ -73,10 +76,40 @@ public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
         // 1有，2没有
         if (arr1[i] > 0 && arr2[i] == 0)
             list1.add(i - 1000);
-            // 2有，1没有
+        // 2有，1没有
         else if (arr2[i] > 0 && arr1[i] == 0)
             list2.add(i - 1000);
 
     return Arrays.asList(list1, list2);
+}
+
+// 方法2：
+public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+    // 2024/2/25 NO.3
+    Set<Integer> set1 = new HashSet<>();
+    Set<Integer> set2 = new HashSet<>();
+
+    // 构建两个集合，分别包含 nums1 和 nums2 的唯一元素
+    for (int num : nums1)
+        set1.add(num);
+
+    for (int num : nums2)
+        set2.add(num);
+
+    List<List<Integer>> answer = new ArrayList<>();
+    answer.add(new ArrayList<>());
+    answer.add(new ArrayList<>());
+
+    // 查找只存在于 set1 中的元素
+    for (int num : set1)
+        if (!set2.contains(num))
+            answer.get(0).add(num);
+
+    // 查找只存在于 set2 中的元素
+    for (int num : set2)
+        if (!set1.contains(num))
+            answer.get(1).add(num);
+
+    return answer;
 }
 */

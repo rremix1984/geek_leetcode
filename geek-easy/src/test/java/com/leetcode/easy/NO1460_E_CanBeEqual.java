@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1460. 通过翻转子数组使两个数组相等
         给你两个长度相同的整数数组 target 和 arr 。每一步中，你可以选择 arr 的任意 非空子数组 并将它翻转。你可以执行此过程任意次。
@@ -15,6 +15,18 @@ import org.junit.Test;
         输入：target = {1, 2, 3, 4},  arr = {2, 4, 1, 3}
         输出：true
         解释：你可以按照如下步骤使 arr 变成 target：
+
+        2, 4, 1, 3
+        |_____|
+           |        第一次旋转
+        1, 4, 2, 3
+           |__|
+            |       第二次旋转
+        1, 2, 4, 3
+              |__|
+               |    第三次旋转
+        1, 2, 3, 4
+
         1- 翻转子数组 {2, 4, 1} ，arr 变成 {1, 4, 2, 3}
         2- 翻转子数组 {4, 2} ，arr 变成 {1, 2, 4, 3}
         3- 翻转子数组 {4, 3} ，arr 变成 {1, 2, 3, 4}
@@ -32,8 +44,14 @@ import org.junit.Test;
         1 <= target.length <= 1000
         1 <= target[i] <= 1000
         1 <= arr[i] <= 1000
+    [ChatGPT]
+        这个问题的关键在于理解，通过翻转子数组，实际上我们可以任意重新
+        排列arr数组中的元素。这是因为，通过足够的翻转操作，任何元素都
+        可以被移动到数组中的任何位置。因此，判断target和arr是否可以
+        通过翻转操作使得它们相等，归结为判断两个数组是否有相同的元素
+        和相同的元素数量，即两个数组的元素及其数量是否完全相同。
 */
-public class NO1460_E_CanBeEqual_x2 {
+public class NO1460_E_CanBeEqual {
 
     @Test
     public void test() {
@@ -42,7 +60,8 @@ public class NO1460_E_CanBeEqual_x2 {
         assert !canBeEqual(new int[]{3, 7, 9}, new int[]{3, 7, 11});
     }
 
-    public boolean canBeEqual(int[] target, int[] arr) {
+    public boolean canBeEqual(int[] target, int[] source) {
+        // 2024/2/25 NO.3
         return false;
     }
 
@@ -62,7 +81,7 @@ public class NO1460_E_CanBeEqual_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean canBeEqual(int[] target, int[] arr) {
     Arrays.sort(target);
