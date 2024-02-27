@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     977. 有序数组的平方
         给你一个按【非递减顺序】排序的整数数组 nums，
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertArrayEquals;
         -10 ^ 4 <= nums[i] <= 10 ^ 4
         nums 已按 非递减顺序 排序
 */
-public class NO977_E_SortedSquares_x2 {
+public class NO977_E_SortedSquares {
 
     @Test
     public void test() {
@@ -36,6 +36,7 @@ public class NO977_E_SortedSquares_x2 {
     }
 
     public int[] sortedSquares(int[] nums) {
+        // 2024/2/27 NO.3 双指针法
         int [] ans = new int [nums.length];
         return ans;
     }
@@ -58,7 +59,7 @@ public class NO977_E_SortedSquares_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] sortedSquares(int[] nums) {
     int[] ans = new int[nums.length];
@@ -72,13 +73,8 @@ public int[] sortedSquares(int[] nums) {
 // 方法2：推荐
 public int[] sortedSquares(int[] nums) {
     int [] ans = new int [nums.length];
-
-    // 头索引
-    int l = 0;
-
-    // 尾部索引
-    int r = nums.length - 1;
-
+    int l = 0; // 头索引
+    int r = nums.length - 1; // 尾部索引
     // i 新数组的的下标
     for (int i = nums.length - 1; i >= 0; i--)
         if (nums[l] * nums[l] < nums[r] * nums[r]) {

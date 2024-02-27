@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     1306. 跳跃游戏 III
         这里有一个非负整数数组arr，你最开始位于该数组的起始下标start处。
@@ -33,18 +33,19 @@ public class NO1306_N_JumpGameIII {
 
     @Test
     public void test() {
-        assert  canReach(
-                new int[]{4, 2, 3, 0, 3, 1, 2}, 5);// true
-        assert  canReach(
-                new int[]{4, 2, 3, 0, 3, 1, 2}, 0);// true
+        assert canReach(
+            new int[]{4, 2, 3, 0, 3, 1, 2}, 5);// true
+        assert canReach(
+            new int[]{4, 2, 3, 0, 3, 1, 2}, 0);// true
         assert !canReach(
-                new int[]{3, 0, 2, 1, 2}, 2);// false
-        assert  canReach(
-                new int[]{4, 2, 3, 0, 3, 1, 2},5);// true
+            new int[]{3, 0, 2, 1, 2}, 2);// false
+        assert canReach(
+            new int[]{4, 2, 3, 0, 3, 1, 2},5);// true
     }
 
     public boolean canReach(int[] arr, int start) {
         // 2024/2/25 NO.3
+        // 2024/2/27 NO.4 还需要复习一下，不是一遍过
         return false;
     }
 

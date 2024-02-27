@@ -7,11 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1480. 一维数组的动态和
-        给你一个数组 nums 。数组「动态和」的计算公式为：runningSum[i] = sum(nums[0]…nums[i]) 。
-        请返回 nums 的动态和。
+        给你一个数组nums。数组「动态和」的计算公式为：
+            runningSum[i] = sum(nums[0] … nums[i]) 。
+        请返回nums的动态和。
     示例 1：
         输入：nums = {1, 2, 3, 4}
         输出：{1, 3, 6, 10}
@@ -24,16 +25,20 @@ import static org.junit.Assert.assertArrayEquals;
         输入：nums = {3, 1, 2, 10, 1}
         输出：{3, 4, 6, 16, 17}
 */
-public class NO1480_E_RunningSum_x2 {
+public class NO1480_E_RunningSum {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 3, 6, 10}, runningSum(new int[]{1, 2, 3, 4}));
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, runningSum(new int[]{1, 1, 1, 1, 1}));
-        assertArrayEquals(new int[]{3, 4, 6, 16, 17}, runningSum(new int[]{3, 1, 2, 10, 1}));
+        assertArrayEquals(new int[]{1, 3, 6, 10},
+                runningSum(new int[]{1, 2, 3, 4}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5},
+                runningSum(new int[]{1, 1, 1, 1, 1}));
+        assertArrayEquals(new int[]{3, 4, 6, 16, 17},
+                runningSum(new int[]{3, 1, 2, 10, 1}));
     }
 
     public int[] runningSum(int[] nums) {
+        // 2024/2/26 NO.3
         return nums;
     }
 
@@ -50,7 +55,8 @@ public class NO1480_E_RunningSum_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int[] runningSum(int[] nums) {
     for (int i = 1; i < nums.length; i++)
         nums[i] += nums[i - 1];

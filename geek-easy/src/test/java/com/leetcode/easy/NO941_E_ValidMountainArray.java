@@ -6,15 +6,14 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     941. 有效的山脉数组
-        给定一个整数数组 arr，如果它是有效的山脉数组就返回 true，否则返回 false。
-        让我们回顾一下，如果 arr 满足下述条件，那么它是一个山脉数组：
-        arr.length >= 3
-        在 0 < i < arr.length - 1 条件下，存在 i 使得：
-        arr[0] < arr[1] < ... arr[i-1] < arr[i]
-        arr[i] > arr[i+1] > ... > arr[arr.length - 1]
+        给定一个整数数组arr，如果它是有效的山脉数组就返回true，否则返回false。
+        让我们回顾一下，如果arr满足下述条件，那么它是一个山脉数组：
+          1）arr.length >= 3
+          2）在 0 < i < arr.length - 1 条件下，存在 i 使得：
+          3）arr[0] < arr[1] < ... arr[i-1] < arr[i]
     示例 1：
         输入：arr = [2, 1]
         输出：false
@@ -28,7 +27,7 @@ import org.junit.Test;
         1 <= arr.length <= 104
         0 <= arr[i] <= 104
 */
-public class NO941_E_ValidMountainArray_x2 {
+public class NO941_E_ValidMountainArray {
 
     @Test
     public void test() {
@@ -38,6 +37,7 @@ public class NO941_E_ValidMountainArray_x2 {
     }
 
     public boolean validMountainArray(int[] arr) {
+        // 2024/2/26 NO.3
         return false;
     }
 
@@ -61,7 +61,7 @@ public class NO941_E_ValidMountainArray_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean validMountainArray(int[] arr) {
     int idx = 0;

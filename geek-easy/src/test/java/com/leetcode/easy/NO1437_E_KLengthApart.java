@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1437. 是否所有1都至少相隔k个元素
         给你一个由若干0和1组成的数组nums以及整数k。
@@ -43,6 +43,7 @@ public class NO1437_E_KLengthApart {
 
     public boolean kLengthApart(int[] nums, int k) {
         // 2024/2/25 NO.3
+        // 2024/2/27 NO.4
         return true;
     }
 
