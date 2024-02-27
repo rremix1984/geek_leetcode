@@ -9,7 +9,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY]
+    [TREE]
     (简单)
     783. 二叉搜索树节点最小距离
         给你一个二叉搜索树的根节点root，返回树中任意两不同节点值之间的最小差值。

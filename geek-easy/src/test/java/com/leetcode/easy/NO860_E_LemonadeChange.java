@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     860. 柠檬水找零
         在柠檬水摊上，每一杯柠檬水的售价为 5 美元。顾客排队购买你的产品，（按账单 bills 支付的顺序）一次购买一杯。
@@ -32,7 +32,7 @@ import static com.leetcode.util.LogUtil.info;
             由于不是每位顾客都得到了正确的找零，所以答案是 false。
 */
 @SuppressWarnings("all")
-public class NO860_E_LemonadeChange_x3 {
+public class NO860_E_LemonadeChange {
 
     @Test
     public void test() {
