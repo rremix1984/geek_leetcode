@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1991. 找到数组的中间位置
         给你一个下标从 0 开始的整数数组 nums ，请你找到 最左边 的中间位置 middleIndex （也就是所有可能中间位置下标最小的一个）。
@@ -34,7 +34,7 @@ import org.junit.Test;
         解释：下标 0 之前的数字和为：0
              下标 0 之后的数字和为：0
 */
-public class NO1991_E_FindMiddleIndex_x2 {
+public class NO1991_E_FindMiddleIndex {
 
     @Test
     public void test() {
@@ -45,6 +45,7 @@ public class NO1991_E_FindMiddleIndex_x2 {
     }
 
     public int findMiddleIndex(int[] nums) {
+        // 2024/2/27 NO.3
         return -1;
     }
 
@@ -64,7 +65,8 @@ public class NO1991_E_FindMiddleIndex_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int findMiddleIndex(int[] nums) {
     int total = Arrays.stream(nums).sum();
     int sum = 0;

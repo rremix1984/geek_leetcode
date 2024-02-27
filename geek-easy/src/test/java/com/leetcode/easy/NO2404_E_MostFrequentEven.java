@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2404. 出现最频繁的偶数元素
         给你一个整数数组 nums ，返回出现最频繁的偶数元素。
@@ -30,7 +30,7 @@ import org.junit.Test;
         1 <= nums.length <= 2000
         0 <= nums[i] <= 10^5
 */
-public class NO2404_E_MostFrequentEven_x2 {
+public class NO2404_E_MostFrequentEven {
 
     @Test
     public void test() {
@@ -42,6 +42,7 @@ public class NO2404_E_MostFrequentEven_x2 {
     public int mostFrequentEven(int[] nums) {
         // 偶数出现的最大频次，最大频次中最小的偶数
         // 如果没有返回 -1
+        // 2024/2/27 NO.3
         int res = -1;
         return res;
     }

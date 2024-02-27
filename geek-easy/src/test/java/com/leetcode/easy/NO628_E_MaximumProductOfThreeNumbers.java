@@ -4,39 +4,41 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import java.util.Arrays;
 import static com.leetcode.util.LogUtil.info;
-import static java.lang.Integer.MAX_VALUE;
-import static java.lang.Integer.MIN_VALUE;
+import static java.lang.Integer.*;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     628. 三个数的最大乘积
-        给你一个整型数组 nums ，在数组中找出由三个数组成的最大乘积，并输出这个乘积。
+        给你一个整型数组nums，在数组中找出由三个数组成的
+        最大乘积，并输出这个乘积。
     示例 1：
-        输入：nums = [1,2,3]
+        输入：nums = [1, 2, 3]
         输出：6
     示例 2：
-        输入：nums = [1,2,3,4]
+        输入：nums = [1, 2, 3, 4]
         输出：24
     示例 3：
-        输入：nums = [-1,-2,-3]
+        输入：nums = [-1, -2, -3]
         输出：-6
 */
-public class NO628_E_MaximumProductOfThreeNumbers_x2 {
+public class NO628_E_MaximumProductOfThreeNumbers {
 
     @Test
     public void test() {
-        assert  6 == maximumProduct(new int[]{1, 2, 3});
+        assert 6 == maximumProduct(new int[]{1, 2, 3});
         assert 24 == maximumProduct(new int[]{1, 2, 3, 4});
         assert -6 == maximumProduct(new int[]{-1, -2, -3});
-        assert  0 == maximumProduct(new int[]{-1, -2, 0});
-
+        assert 0 == maximumProduct(new int[]{-1, -2, 0});
     }
 
     public int maximumProduct(int[] nums) {
+        // 2024/2/27 NO.3 辣两头儿
         return -1;
     }
+
 }
 
 
@@ -55,7 +57,7 @@ public class NO628_E_MaximumProductOfThreeNumbers_x2 {
 
 
 
-/**
+/*
 // 方法1：快排
 public int maximumProduct(int[] nums) {
     // 快排

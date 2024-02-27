@@ -23,7 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：nums = {1, 1, 2, 2},  n = 2
         输出：{1, 2, 1, 2}
 */
-public class NO1470_E_Shuffle_x2 {
+public class NO1470_E_Shuffle {
 
     @Test
     public void test() {

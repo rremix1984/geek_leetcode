@@ -20,7 +20,7 @@ import static org.junit.Assert.assertArrayEquals;
         说明:
             A.length == n + m
 */
-public class Interval_10_01_E_Merge_x2 {
+public class Interval_10_01_E_Merge {
 
     @Test
     public void test() {
@@ -52,7 +52,8 @@ public class Interval_10_01_E_Merge_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public void merge(int[] nums1, int m, int[] nums2, int n) {
     int[] tmp = new int[m + n];
     int index = 0;

@@ -83,7 +83,7 @@ public class NO908_E_SmallestRangeI_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int smallestRangeI(int[] nums, int k) {
     int min = Arrays.stream(nums).min().getAsInt();

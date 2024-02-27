@@ -5,12 +5,14 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import static java.lang.Math.min;
+
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1979. 找出数组的最大公约数
-        给你一个整数数组 nums ，返回数组中最大数和最小数的 最大公约数 。
-        两个数的 最大公约数 是能够被两个数整除的最大正整数。
+        给你一个整数数组nums，返回数组中【最大数】和【最小数】的
+        【最大公约数】。两个数的最大公约数是能够被两个数整除的最大正整数。
     示例 1：
         输入：nums = {2, 5, 6, 9, 10}
         输出：2
@@ -30,7 +32,7 @@ import org.junit.Test;
              nums 中最大的数是 3
              3 和 3 的最大公约数是 3
 */
-public class NO1979_E_FindGCD_x2 {
+public class NO1979_E_FindGCD {
 
     @Test
     public void test() {
@@ -40,7 +42,8 @@ public class NO1979_E_FindGCD_x2 {
     }
 
     public int findGCD(int[] nums) {
-        return 0;
+        // 2024/2/27 NO.3 辗转相除法
+        return -1;
     }
 
 }
@@ -59,7 +62,7 @@ public class NO1979_E_FindGCD_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int findGCD(int[] nums) {
     Arrays.sort(nums);
@@ -70,5 +73,22 @@ public int findGCD(int[] nums) {
             return i;
 
     return 0;
+}
+
+// 方法2：用辗转相除法找出数组的最大公约数
+private static int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+public static int findGCD(int[] nums) {
+    int min = nums[0], max = nums[0];
+    // 遍历数组，找到最大值和最小值
+    for (int num : nums) {
+        if (num > max) max = num;
+        if (num < min) min = num;
+    }
+    // 计算并返回最大值和最小值的最大公约数
+    return gcd(max, min);
 }
 */

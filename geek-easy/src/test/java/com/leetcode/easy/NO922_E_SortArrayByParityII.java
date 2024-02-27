@@ -27,7 +27,7 @@ import static org.junit.Assert.assertArrayEquals;
         nums 中一半是偶数
         0 <= nums[i] <= 1000
 */
-public class NO922_E_SortArrayByParityII_x2 {
+public class NO922_E_SortArrayByParityII {
 
     @Test
     public void test() {
@@ -61,7 +61,7 @@ public class NO922_E_SortArrayByParityII_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] sortArrayByParityII(int[] nums) {
     int[] ans = new int[nums.length];
