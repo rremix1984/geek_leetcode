@@ -4,18 +4,21 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+
 import java.util.Arrays;
 
+import static com.leetcode.util.MathUtils.max;
+
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     908. 最小差值 I
-        给你一个整数数组 nums，和一个整数 k 。
-        在一个操作中，您可以选择 0 <= i < nums.length 的任何索引 i 。
-        将 nums[i] 改为 nums[i] + x ，其中 x 是一个范围为 [-k, k] 的整数。
-        对于每个索引 i ，最多 只能 应用 一次 此操作。
-        nums 的 分数 是 nums 中最大和最小元素的差值。
-        在对 nums 中的每个索引最多应用一次上述操作后，返回 nums 的最低 分数 。
+        给你一个整数数组nums，和一个整数k。
+        在一个操作中，您可以选择 0 <= i < nums.length 的任何索引 i。
+        将nums[i] 改为 nums[i] + x，其中x是一个范围为[-k, k]的整数。
+        对于每个索引i，最多只能应用一次此操作。
+        nums的分数是nums中最大和最小元素的差值。
+        在对nums中的每个索引最多应用一次上述操作后，返回nums的最低分数。
     示例 1：
         输入：nums = {1}, k = 0
         输出：0
@@ -34,7 +37,7 @@ import java.util.Arrays;
         0 <= k <= 104
 
     方法一：数学
-        思路与算法
+       思路与算法
         假设整数数组 nums 的最小值为 minNum，最大值为 maxNum。
     1）如果 maxNum − minNum ≤ 2k，那么我们总可以将整数数组 nums 的所有元素都改为同一个整数，
        因此更改后的整数数组 nums 的最低分数为 0。
@@ -51,7 +54,7 @@ import java.util.Arrays;
        [minNum + k,maxNum − k] 的整数，所以更改后的整数数组 nums 的最低分数小于等于 maxNum − minNum − 2k。
        综上所述，更改后的整数数组 nums 的最低分数为 maxNum − minNum − 2k。
  */
-public class NO908_E_SmallestRangeI_x2 {
+public class NO908_E_SmallestRangeI {
 
     @Test
     public void test() {
@@ -61,7 +64,10 @@ public class NO908_E_SmallestRangeI_x2 {
     }
 
     public int smallestRangeI(int[] nums, int k) {
-        return -1;
+        // 2024/2/27 NO.3
+        int max = Arrays.stream(nums).max().getAsInt();
+        int min = Arrays.stream(nums).min().getAsInt();
+        return max(max - min - 2 * k, 0);
     }
 
 }

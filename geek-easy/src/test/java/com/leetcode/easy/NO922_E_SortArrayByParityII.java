@@ -8,12 +8,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     922. 按奇偶排序数组 II
-        给定一个非负整数数组 nums，  nums 中一半整数是 奇数 ，一半整数是 偶数 。
-        对数组进行排序，以便当 nums[i] 为奇数时，i 也是 奇数 ；当 nums[i] 为偶数时， i 也是 偶数 。
-        你可以返回 任何满足上述条件的数组作为答案 。
+        给定一个非负整数数组nums，nums中一半整数是奇数，一半是偶数。
+        对数组进行排序，以便当nums[i]为奇数时，i也是奇数；当nums[i]为偶数时，i也是偶数。
+        你可以返回 任何满足上述条件的数组作为答案。
     示例 1：
         输入：nums = {4, 2, 5, 7}
         输出：{4, 5, 2, 7}
@@ -31,14 +31,29 @@ public class NO922_E_SortArrayByParityII {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{4, 5, 2, 7}, 
-                sortArrayByParityII(new int[]{4, 2, 5, 7}));
-        assertArrayEquals(new int[]{2, 3}, 
-                sortArrayByParityII(new int[]{2, 3}));
+        assertArrayEquals(new int[]{4, 5, 2, 7},
+            sortArrayByParityII(new int[]{4, 2, 5, 7}));
+        assertArrayEquals(new int[]{2, 3},
+            sortArrayByParityII(new int[]{2, 3}));
     }
 
     public int[] sortArrayByParityII(int[] nums) {
+        // 2024/2/27 NO.3
         int[] ans = new int[nums.length];
+        int l = 0;
+        int r = 1;
+        for (int num : nums)
+            if (num % 2 == 0) {
+                ans[l] = num;
+                l += 2;
+            }
+
+        for (int num : nums)
+            if (num % 2 == 1) {
+                ans[r] = num;
+                r += 2;
+            }
+
         return ans;
     }
 

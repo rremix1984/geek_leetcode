@@ -7,11 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     面试题 10.01. 合并排序的数组
-        给定两个排序后的数组 A 和 B，其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。
-        初始化 A 和 B 的元素数量分别为 m 和 n。
+        给定两个排序后的数组A和B，其中A的末端有足够的缓冲空间容纳B。
+        编写一个方法，将B合并入A并排序。
+        初始化A和B的元素数量分别为m和n。
     示例:
         输入:
             A = [1,2,3,0,0,0], m = 3
@@ -30,7 +31,7 @@ public class Interval_10_01_E_Merge {
     }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-
+        // 2024/2/27 NO.3 三指针
     }
 
 }
@@ -76,7 +77,6 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
     for (int k = 0; k < m + n; k++)
         nums1[k] = tmp[k];
 }
-
 
 // 方法2：归并排序
 public void merge(int[] nums1, int m, int[] nums2, int n) {

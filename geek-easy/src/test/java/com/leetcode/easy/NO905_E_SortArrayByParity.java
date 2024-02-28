@@ -39,6 +39,7 @@ public class NO905_E_SortArrayByParity {
     public int[] sortArrayByParity(int[] nums) {
         // 2024/2/27 NO.3
         int[] res = new int[nums.length];
+
         return res;
     }
 

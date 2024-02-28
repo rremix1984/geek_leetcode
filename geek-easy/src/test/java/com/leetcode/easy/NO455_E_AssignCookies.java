@@ -4,16 +4,19 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     （简单）
     455. 分发饼干
         假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最
-        多只能给一块饼干。对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们
-        满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果
-        s[j] >= g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满
+        多只能给一块饼干。对每个孩子i，都有一个胃口值g[i]，这是能让孩子们
+        满足胃口的饼干的最小尺寸；并且每块饼干j，都有一个尺寸s[j]。如果
+        s[j]>=g[i]，我们可以将这个饼干j分配给孩子i，这个孩子会得到满
         足。你的目标是尽可能满足越多数量的孩子，并输出这个最大数值。
     示例 1:
         输入: g = [1, 2, 3], s = [1, 1]
@@ -30,7 +33,7 @@ import static com.leetcode.util.LogUtil.info;
         你拥有的饼干数量和尺寸都足以让所有孩子满足。
         所以你应该输出2.
 */
-public class NO455_E_AssignCookies_x2 {
+public class NO455_E_AssignCookies {
 
     @Test
     public void test() {
@@ -42,8 +45,16 @@ public class NO455_E_AssignCookies_x2 {
                 new int[]{1, 2, 3});
     }
 
+//    public int findContentChildren(int[] child, int[] cookie) {
+//        // 2024/2/27 NO.3
+//
+//        return -1;
+//    }
+
     public int findContentChildren(int[] child, int[] cookie) {
-        return -1;
+        // 2024/2/27 NO.3
+        int ans = 0;
+        return ans;
     }
 
 }
@@ -62,18 +73,23 @@ public class NO455_E_AssignCookies_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int findContentChildren(int[] child, int[] cookie) {
+    int ans = 0;
     Arrays.sort(child);
     Arrays.sort(cookie);
-    int index = 0;
-    int result = 0;
-    for (int i = 0; i < cookie.length && index < child.length; i++) {
-        if (cookie[i] >= child[index]) {
-            index++;
-            result++;
+    int chd = 0;
+    int ck = 0;
+    while (ck < cookie.length && chd < child.length) {
+        // 孩子得到满足，结果+1
+        if (cookie[ck] >= child[chd]) {
+            chd++;
+            ans++;
         }
+        // 不论是否满足孩子，饼干都要跳过
+        ck++;
     }
-    return result;
+    return ans;
 }
 */
