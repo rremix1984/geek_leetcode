@@ -4,13 +4,12 @@
 package com.lcp;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
     (简单)
     LCP 51. 烹饪料理
         欢迎各位勇者来到力扣城，城内设有烹饪锅供勇者制作料理，为自己恢复状态。

@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [ARRAY]
     (简单)
     LCP 18. 早餐组合
         小扣在秋日市集选择了一家早餐摊位，一维整型数组 staple 中记录了每种主食的价格，

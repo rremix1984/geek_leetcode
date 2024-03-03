@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (中等)
     剑指 Offer 66. 构建乘积数组
         给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，

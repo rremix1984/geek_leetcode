@@ -6,6 +6,7 @@ package com.lcp.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     LCP 39. 无人机方阵
         在 「力扣挑战赛」 开幕式的压轴节目 「无人机方阵」中，每一架无人机展示一种灯光颜色。

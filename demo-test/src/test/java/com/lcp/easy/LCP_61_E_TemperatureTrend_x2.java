@@ -8,6 +8,7 @@ import static java.lang.Integer.compare;
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
     (简单)
     LCP 61. 气温变化趋势
         力扣城计划在两地设立「力扣嘉年华」的分会场，气象小组正在分析两地区的气温变化趋势，对于第 i ~ (i+1) 天的气温变化趋势，将根据以下规则判断：

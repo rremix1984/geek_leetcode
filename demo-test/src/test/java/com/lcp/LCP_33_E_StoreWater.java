@@ -8,6 +8,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
+    [ARRAY]
     (简单)
     LCP 33. 蓄水
         给定 N 个无限容量且初始均空的水缸，每个水缸配有一个水桶用来打水，第 i 个水缸配备的水桶容量记作 bucket[i]。小扣有以下两种操作：

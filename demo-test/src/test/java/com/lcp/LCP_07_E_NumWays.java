@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
+    [ARRAY]
     (简单)
     LCP 07. 传递信息
         小朋友 A 在和 ta 的小伙伴们玩传信息游戏，游戏规则如下：

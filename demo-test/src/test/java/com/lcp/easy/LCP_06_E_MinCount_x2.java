@@ -6,6 +6,7 @@ package com.lcp.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     LCP 06. 拿硬币
         桌上有 n 堆力扣币，每堆的数量保存在数组 coins 中。

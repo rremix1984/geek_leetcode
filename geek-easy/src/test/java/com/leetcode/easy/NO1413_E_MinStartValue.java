@@ -6,16 +6,17 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1413. 逐步求和得到正数的最小值
-        给你一个整数数组 nums 。你可以选定任意的 正数 startValue 作为初始值。
-        你需要从左到右遍历 nums 数组，并将 startValue 依次累加上 nums 数组中的值。
-        请你在确保累加和始终大于等于 1 的前提下，选出一个最小的 正数 作为 startValue 。
+        给你一个整数数组nums。你可以选定任意的【正数】startValue作为初始值。
+        你需要从左到右遍历nums数组，并将startValue依次累加上nums数组中的值。
+        请你在确保累加和始终【大于等于1】的前提下，
+        选出一个【最小的正数】（至少是1）作为startValue。
     示例 1：
         输入：nums = {-3, 2, -3, 4, 2}
         输出：5
-        解释：如果你选择 startValue = 4，在第三次累加时，和小于 1 。
+        解释：如果你选择startValue = 4，在第三次累加时和小于1。
              累加求和
              startValue = 4 | startValue = 5 | nums
                 (4 -3 ) = 1  | (5 -3 ) = 2    |  -3
@@ -40,7 +41,7 @@ import org.junit.Test;
         右起始点可以设为 nums 的最小值的相反数乘上长度后再加 1，这样可以保证右端点一定满足 startValue 的要求。
         判断某个数字是否满足 startValue 的要求时，可以将 nums 的数字逐步加到这个数字上，判断是否一直为正即可。
 */
-public class NO1413_E_MinStartValue_x2 {
+public class NO1413_E_MinStartValue {
 
     @Test
     public void test() {
@@ -50,6 +51,7 @@ public class NO1413_E_MinStartValue_x2 {
     }
 
     public int minStartValue(int[] nums) {
+        // 2024/2/29 NO.3
         return -1;
     }
 
@@ -69,7 +71,7 @@ public class NO1413_E_MinStartValue_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int minStartValue(int[] nums) {
     int sum = 0;

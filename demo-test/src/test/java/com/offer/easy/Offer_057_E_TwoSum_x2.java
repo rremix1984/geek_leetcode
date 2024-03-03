@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     剑指 Offer 57. 和为s的两个数字
         输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。

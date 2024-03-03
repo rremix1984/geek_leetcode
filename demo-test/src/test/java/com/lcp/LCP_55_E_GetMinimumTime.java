@@ -6,6 +6,7 @@ package com.lcp;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     LCP 55. 采集果实
         欢迎各位勇者来到力扣新手村，本次训练内容为「采集果实」。

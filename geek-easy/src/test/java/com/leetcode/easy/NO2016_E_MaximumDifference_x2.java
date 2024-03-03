@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2016. 增量元素之间的最大差值
         给你一个下标从 0 开始的整数数组 nums ，该数组的大小为 n ，

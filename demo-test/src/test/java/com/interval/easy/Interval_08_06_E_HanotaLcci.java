@@ -5,19 +5,19 @@ package com.interval.easy;
 
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import static com.leetcode.util.MathUtils.getArray;
-import static java.util.Collections.emptyList;
 
 /**
     (简单)
-    面试题 08.06. 汉诺塔问题
-        在经典汉诺塔问题中，有 3 根柱子及 N 个不同大小的穿孔圆盘，盘子可以滑入任意一根柱子。一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:
-        (1) 每次只能移动一个盘子;
-        (2) 盘子只能从柱子顶端滑出移到下一根柱子;
-        (3) 盘子只能叠在比它大的盘子上。
+    面试题 08.06. 汉诺塔问题    |
+        在经典汉诺塔问题中，有3根柱子及N个不同大小的穿孔圆盘，
+        盘子可以滑入任意一根柱子。一开始，所有盘子自上而下按
+        升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子
+        上面)。移动圆盘时受到以下限制:
+         1) 每次只能移动一个盘子;
+         2) 盘子只能从柱子顶端滑出移到下一根柱子;
+         3) 盘子只能叠在比它大的盘子上。
         请编写程序，用栈将所有盘子从第一根柱子移到最后一根柱子。
         你需要原地修改栈。
     示例1:
@@ -27,7 +27,7 @@ import static java.util.Collections.emptyList;
         输入：A = [1, 0], B = [], C = []
         输出：C = [1, 0]
 */
-public class Interval_08_06_E_HanotaLcci_x2 {
+public class Interval_08_06_E_HanotaLcci {
 
     @Test
     public void test() {
@@ -42,8 +42,9 @@ public class Interval_08_06_E_HanotaLcci_x2 {
 
 
     public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {
+        // 2024/2/19 NO.2 第一次做
+        // 2024/2/29 NO.3 分治法
 
-        return;
     }
 
 }
@@ -67,7 +68,7 @@ public class Interval_08_06_E_HanotaLcci_x2 {
 
 
 
-/**
+/*
 // 方法1：递归法
 // 如果要解决n层汉诺塔，一定要先解决n-1层
 // 如果要解决3层汉诺塔，一定要先解决2层
@@ -102,36 +103,35 @@ void move(int N, List<Integer> A, List<Integer> B, List<Integer> C) {
     // 步骤3：B -> C
     move(N - 1, B, A, C);
 }
-*/
 
-/**
-public void hanota(List<Integer> a, List<Integer> b, List<Integer> c) {
-    int n = a.size();
-    call(n, a, b, c);
+// 方法2
+public void hanota(List<Integer> A, List<Integer> B, List<Integer> C) {
+    int N = A.size();
+    call(N, A, B, C);
 }
 
-private void call(int n, List<Integer> a, List<Integer> b, List<Integer> c) {
+private void call(int N, List<Integer> A, List<Integer> B, List<Integer> C) {
 
     //         ||               ||               ||
     //        _||_              ||            ___||___
     //   ____|____|____     ____||____     __|________|_
-    if (n == 1) {
-        c.add(a.remove(a.size() - 1));
+    if (N == 1) {
+        C.add(A.remove(A.size() - 1));
         return;
     }
     //         ||               ||               ||
     //      ___||___          __||__             ||
     //   __|________|__    __|______|__     _____||_____
-    call(n - 1, a, c, b);
+    call(N - 1, A, C, B);
 
     //         ||               ||               ||
     //         ||             __||__          ___||___
     //   ______||______    __|______|__   ___|________|___
-    c.add(a.remove(a.size() - 1));
+    C.add(A.remove(A.size() - 1));
 
     //         ||               ||             __||__
     //         ||               ||           _|______|_
     //   ______||______    _____||_____  ___|__________|__
-    call(n - 1, b, a, c);
+    call(N - 1, B, A, C);
 }
 */

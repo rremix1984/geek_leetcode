@@ -4,13 +4,12 @@
 package com.dp;
 
 import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.Comparator;
-
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
     (简单)
     1235. 规划兼职工作
         你打算利用空闲时间来做兼职工作赚些零花钱。

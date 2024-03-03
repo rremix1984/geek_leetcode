@@ -6,10 +6,10 @@ package com.lcp;
 import org.junit.Test;
 
 import java.util.Arrays;
-
 import static java.lang.Math.min;
 
 /**
+    [ARRAY]
     (简单)
     LCP 40. 心算挑战
         「力扣挑战赛」心算项目的挑战比赛中，要求选手从 N 张卡牌中选出 cnt 张卡牌，若这 cnt 张卡牌数字总和为偶数，则选手成绩「有效」且得分为 cnt 张卡牌数字总和。
