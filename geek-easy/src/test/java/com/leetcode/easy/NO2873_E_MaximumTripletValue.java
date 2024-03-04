@@ -27,8 +27,7 @@ import org.junit.Test;
     提示：
         3 <= nums.length <= 100
         1 <= nums[i] <= 106
-    Related Topics:
-        数组
+    Related Topics:数组
 */
 public class NO2873_E_MaximumTripletValue {
 

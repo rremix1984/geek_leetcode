@@ -6,8 +6,9 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
+    (重要,面试题)
     1306. 跳跃游戏 III
         这里有一个非负整数数组arr，你最开始位于该数组的起始下标start处。
         当你位于下标i处时，你可以跳到i+arr[i]或者i-arr[i]。
@@ -46,6 +47,8 @@ public class NO1306_N_JumpGameIII {
     public boolean canReach(int[] arr, int start) {
         // 2024/2/25 NO.3
         // 2024/2/27 NO.4 还需要复习一下，不是一遍过
+        // 2024/3/4  NO.5 还是没思路，没有时间思考是不行的
+
         return false;
     }
 

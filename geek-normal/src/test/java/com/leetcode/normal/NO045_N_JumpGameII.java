@@ -7,8 +7,9 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     （中等）
+    (重要,面试题)
     45. 跳跃游戏 II
         给你一个非负整数数组nums，你最初位于数组的第一个位置。
         数组中的每个元素代表你在该位置可以跳跃的最大长度。
@@ -36,6 +37,7 @@ public class NO045_N_JumpGameII {
 
     public int jump(int[] nums) {
         // 2024/2/25 NO.3
+        // 2024/3/4  NO.4
         int jump = 0;
         return jump;
     }

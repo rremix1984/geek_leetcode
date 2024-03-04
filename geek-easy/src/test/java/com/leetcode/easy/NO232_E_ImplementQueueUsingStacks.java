@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [STACK]
     (简单)
     232. 用栈实现队列
         请你仅使用两个栈实现先入先出队列。队列应当支持一般队列支持的所有操作（push、pop、peek、empty）：
@@ -24,8 +25,9 @@ import static com.leetcode.util.LogUtil.info;
             [[], [1], [2], [], [], []]
         输出：
             [null, null, null, 1, 1, false]
+
 */
-public class NO232_E_ImplementQueueUsingStacks_x2 {
+public class NO232_E_ImplementQueueUsingStacks {
 
     @Test
     public void test() {
@@ -79,7 +81,8 @@ class MyQueue {
 
 
 
-/**
+/*
+// 方法1：
 class MyQueue {
 
     // 输入栈

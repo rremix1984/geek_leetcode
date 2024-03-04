@@ -4,22 +4,21 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import java.util.PriorityQueue;
+
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2164. 对奇偶下标分别排序
-        给你一个下标从 0 开始的整数数组 nums 。根据下述规则重排 nums 中的值：
-        按 非递增 顺序排列 nums 奇数下标 上的所有值。
-        举个例子，如果排序前 nums = [4,1,2,3] ，对奇数下标的值排序后变为 [4,3,2,1] 。
-
-        奇数下标 1 和 3 的值按照非递增顺序重排。
-            按 非递减 顺序排列 nums 偶数下标 上的所有值。
-            举个例子，如果排序前 nums = [4,1,2,3] ，对偶数下标的值排序后变为 [2,1,4,3] 。
-        偶数下标 0 和 2 的值按照非递减顺序重排。
-            返回重排 nums 的值之后形成的数组。
+        给你一个下标从0开始的整数数组nums。根据下述规则重排nums中的值：
+        按【非递增】顺序排列nums奇数下标上的所有值。
+        举个例子，如果排序前 nums=[4, 1, 2, 3]，对奇数下标的值排序后变为[4, 3, 2, 1]。
+        1）奇数下标1和3的值按照非递增顺序重排。
+           按非递减顺序排列nums偶数下标上的所有值。
+           举个例子，如果排序前 nums=[4,1,2,3]，对偶数下标的值排序后变为[2, 1, 4, 3]。
+        2）偶数下标0和2的值按照非递减顺序重排。
+           返回重排nums的值之后形成的数组。
 
     示例 1：
         输入：nums = {4, 1, 2, 3}
@@ -35,15 +34,19 @@ import static org.junit.Assert.assertArrayEquals;
         解释：由于只有一个奇数下标和一个偶数下标，所以不会发生重排。
              形成的结果数组是 {2, 1} ，和初始数组一样。
 */
-public class NO2164_E_SortEvenOdd_x2 {
+public class NO2164_E_SortEvenOdd {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{2, 3, 4, 1}, sortEvenOdd(new int[]{4, 1, 2, 3}));
-        assertArrayEquals(new int[]{2, 1}, sortEvenOdd(new int[]{2, 1}));
+        assertArrayEquals(new int[]{2, 3, 4, 1},
+            sortEvenOdd(new int[]{4, 1, 2, 3}));
+        assertArrayEquals(new int[]{2, 1},
+            sortEvenOdd(new int[]{2, 1}));
     }
 
     public int[] sortEvenOdd(int[] nums) {
+        // 2024/3/4 NO.1 小根堆，大根堆，比较难想
+
         return nums;
     }
 
@@ -64,10 +67,9 @@ public class NO2164_E_SortEvenOdd_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] sortEvenOdd(int[] nums) {
-
     //小根堆，非递减
     PriorityQueue<Integer> ou = new PriorityQueue<>();
 

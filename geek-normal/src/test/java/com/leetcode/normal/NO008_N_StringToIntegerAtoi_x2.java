@@ -5,6 +5,9 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
+
 /**
     （中等）
     8. 字符串转换整数 (atoi)
@@ -58,10 +61,35 @@ public class NO008_N_StringToIntegerAtoi_x2 {
     }
 
     public int myAtoi(String str) {
-        int sign = 1;
-        int total = 0;
-        return total * sign;
+        if (str == null || str.equals(""))
+            return 0;
+
+        str = str.trim();
+        boolean isNega = false;
+        if (!str.isEmpty() && (str.charAt(0)=='-'||str.charAt(0)=='+')) {
+            isNega=str.charAt(0) == '-';
+            str = str.substring(1);
+        }
+
+        if (str.isEmpty() || '0'>str.charAt(0) || str.charAt(0)>'9')
+            return 0;
+
+        int i = 0, ans = 0;
+        while (i < str.length() && '0' <= str.charAt(i) && str.charAt(i) <= '9') {
+            int temp = str.charAt(i) - '0';
+            if(isNega) temp *= -1;
+            if (ans > MAX_VALUE / 10 || (ans == MAX_VALUE/10 && temp > 7))
+                return MAX_VALUE;
+
+            if (ans < MIN_VALUE / 10 || (ans == MIN_VALUE / 10 && temp < -8))
+                return MIN_VALUE;
+
+            ans = ans * 10 + temp;
+            i++;
+        }
+        return ans;
     }
+
 }
 
 
@@ -78,7 +106,7 @@ public class NO008_N_StringToIntegerAtoi_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int myAtoi(String str) {
     str = str.trim();
