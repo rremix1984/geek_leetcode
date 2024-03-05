@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1784. 检查二进制字符串字段
         给你一个二进制字符串 s ，该字符串 不含前导零 。

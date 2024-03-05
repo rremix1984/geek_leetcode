@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     1518. 换水问题
         超市正在促销，你可以用 numExchange 个空水瓶从超市兑换一瓶水。最开始，你一共购入了 numBottles 瓶水。

@@ -8,6 +8,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (简单)
     1773. 统计匹配检索规则的物品数量
         给你一个数组 items ，其中 items[i] = [typei, colori, namei] ，

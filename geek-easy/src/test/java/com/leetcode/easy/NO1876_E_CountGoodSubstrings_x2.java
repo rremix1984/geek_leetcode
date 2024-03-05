@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1876. 长度为三且各字符不同的子字符串
         如果一个字符串不含有任何重复字符，我们称这个字符串为 好 字符串。

@@ -10,6 +10,7 @@ import java.util.Set;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [STRING]
     (简单)
     1436. 旅行终点站
         给你一份旅游线路图，该线路图中的旅行线路用数组 paths 表示，其中 paths[i] = [cityAi, cityBi]

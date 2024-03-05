@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE]
     (简单)
     671. 二叉树中第二小的节点
         给定一个非空特殊的二叉树，每个节点都是正数，并且每个节点的子节点数量只能为2或0。

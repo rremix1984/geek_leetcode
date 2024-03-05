@@ -13,6 +13,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
 /**
+    [STRING]
     (简单)
     830. 较大分组的位置
         在一个由小写字母构成的字符串s中，包含由一些连续的相同字符所构成的分组。

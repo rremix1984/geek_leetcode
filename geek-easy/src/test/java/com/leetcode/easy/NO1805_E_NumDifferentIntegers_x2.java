@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+    [STRING]
     (简单)
     1805. 字符串中不同整数的数目
         给你一个字符串 word ，该字符串由数字和小写英文字母组成。

@@ -38,11 +38,16 @@ public class NO2347_E_BestHand_x2 {
 
     @Test
     public void test() {
-        assert "Flush".equals(bestHand(new int[]{13, 2, 3, 1, 9}, new char[]{'a', 'a', 'a', 'a', 'a'}));
-        assert "Three of a Kind".equals(bestHand(new int[]{4, 4, 2, 4, 4}, new char[]{'d', 'a', 'a', 'b', 'c'}));
-        assert "Pair".equals(bestHand(new int[]{10, 10, 2, 12, 9}, new char[]{'a', 'b', 'c', 'a', 'd'}));
-        assert "High Card".equals(bestHand(new int[]{7, 6, 4, 12, 13}, new char[]{'b', 'd', 'd', 'd', 'a'}));
-        assert "Three of a Kind".equals(bestHand(new int[]{1, 1, 1, 2, 2}, new char[]{'a', 'b', 'c', 'a', 'd'}));
+        assert "Flush".equals(bestHand(
+                new int[]{13, 2, 3, 1, 9}, new char[]{'a', 'a', 'a', 'a', 'a'}));
+        assert "Three of a Kind".equals(bestHand(
+                new int[]{4, 4, 2, 4, 4}, new char[]{'d', 'a', 'a', 'b', 'c'}));
+        assert "Pair".equals(bestHand(
+                new int[]{10, 10, 2, 12, 9}, new char[]{'a', 'b', 'c', 'a', 'd'}));
+        assert "High Card".equals(bestHand(
+                new int[]{7, 6, 4, 12, 13}, new char[]{'b', 'd', 'd', 'd', 'a'}));
+        assert "Three of a Kind".equals(bestHand(
+                new int[]{1, 1, 1, 2, 2}, new char[]{'a', 'b', 'c', 'a', 'd'}));
     }
 
     public String bestHand(int[] ranks, char[] suits) {

@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [STRING]
     (简单)
     1078. Bigram 分词
         给出第一个词 first 和第二个词 second，考虑在某些文本 text 中可能以 "first second third" 形式出现的情况，其中 second 紧随 first 出现，third 紧随 second 出现。

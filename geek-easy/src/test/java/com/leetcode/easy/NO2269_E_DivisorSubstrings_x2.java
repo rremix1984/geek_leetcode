@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     2269. 找到一个数字的 K 美丽值
         一个整数num的k美丽值定义为num中符合以下条件的子字符串数目：
@@ -70,7 +71,7 @@ public class NO2269_E_DivisorSubstrings_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int divisorSubstrings(int num, int k) {
     int ans = 0;

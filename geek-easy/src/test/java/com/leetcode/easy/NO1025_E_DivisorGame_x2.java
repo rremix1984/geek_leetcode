@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     1025. 除数博弈
         爱丽丝和鲍勃一起玩游戏他们轮流行动。爱丽丝先手开局。

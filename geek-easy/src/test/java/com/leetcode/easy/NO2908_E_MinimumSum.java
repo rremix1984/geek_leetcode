@@ -2,7 +2,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-/*
+/**
     [ARRAY]
     （简单）
     NO.2908 元素和最小的山形三元组 I

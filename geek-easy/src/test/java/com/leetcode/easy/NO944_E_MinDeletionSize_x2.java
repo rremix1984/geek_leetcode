@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     944. 删列造序
         给你由 n 个小写字母字符串组成的数组 strs，其中每个字符串长度相等。

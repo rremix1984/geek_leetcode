@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     1710. 卡车上的最大单元数
         请你将一些箱子装在 一辆卡车 上。给你一个二维数组 boxTypes ，其中 boxTypes[i] = [numberOfBoxesi,  numberOfUnitsPerBoxi] ：

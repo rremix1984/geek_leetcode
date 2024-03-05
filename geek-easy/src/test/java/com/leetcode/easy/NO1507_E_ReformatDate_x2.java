@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1507. 转变日期格式
         给你一个字符串 date ，它的格式为 Day Month Year ，其中：

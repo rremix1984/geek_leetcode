@@ -12,6 +12,7 @@ import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [MATRIX]
     (简单)
     1260. 二维网格迁移
         给你一个 m 行 n 列的二维网格 grid 和一个整数 k。你需要将 grid 迁移 k 次。

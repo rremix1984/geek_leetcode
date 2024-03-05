@@ -9,7 +9,8 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-2194. Excel 表中某个范围内的单元格
+    [ARRAY]
+    2194. Excel 表中某个范围内的单元格
         Excel 表中的一个单元格 (r, c) 会以字符串 "<col><row>" 的形式进行表示，其中：
         <col> 即单元格的列号 c 。用英文字母表中的 字母 标识。
         例如，第 1 列用 'A' 表示，第 2 列用 'B' 表示，第 3 列用 'C' 表示，以此类推。
@@ -35,8 +36,10 @@ public class NO2194_E_CellsInRange_x2 {
 
     @Test
     public void test() {
-        assert getArray("K1", "K2", "L1", "L2").equals(cellsInRange("K1:L2"));
-        assert getArray("A1", "B1", "C1", "D1", "E1", "F1").equals(cellsInRange("A1:F1"));
+        assert getArray("K1", "K2", "L1", "L2").equals(
+                cellsInRange("K1:L2"));
+        assert getArray("A1", "B1", "C1", "D1", "E1", "F1").equals(
+                cellsInRange("A1:F1"));
     }
 
     public List<String> cellsInRange(String s) {

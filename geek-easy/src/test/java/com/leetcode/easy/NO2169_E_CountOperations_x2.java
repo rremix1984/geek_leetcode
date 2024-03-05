@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     2169. 得到 0 的操作数
         给你两个 非负 整数 num1 和 num2 。

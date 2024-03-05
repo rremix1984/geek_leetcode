@@ -8,6 +8,7 @@ import static java.lang.Integer.parseInt;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     1309. 解码字母到整数映射
         给你一个字符串 s，它由数字（'0' - '9'）和 '#' 组成。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     2235. 两整数相加
         给你两个整数 num1 和 num2，返回这两个整数的和。

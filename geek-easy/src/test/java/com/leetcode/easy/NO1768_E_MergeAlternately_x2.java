@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [STRING]
     (简单)
     1768. 交替合并字符串
         给你两个字符串 word1 和 word2 。请你从 word1 开始，通过交替添加字母来合并字符串。

@@ -7,6 +7,7 @@ import org.junit.Test;
 import static java.lang.Integer.MIN_VALUE;
 
 /**
+    [MATRIX]
     (简单)
     1672. 最富有客户的资产总量
         给你一个 m x n 的整数网格 accounts ，

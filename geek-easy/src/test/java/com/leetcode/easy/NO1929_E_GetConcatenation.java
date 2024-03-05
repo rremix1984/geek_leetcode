@@ -34,10 +34,10 @@ public class NO1929_E_GetConcatenation {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1,3,2,1,1,3,2,1},
-            getConcatenation(new int[]{1,3,2,1}));
-        assertArrayEquals(new int[]{1,2,1,1,2,1},
-            getConcatenation(new int[]{1,2,1}));
+        assertArrayEquals(new int[]{1, 3, 2, 1, 1, 3, 2, 1},
+            getConcatenation(new int[]{1, 3, 2, 1}));
+        assertArrayEquals(new int[]{1, 2, 1, 1, 2, 1},
+            getConcatenation(new int[]{1, 2, 1}));
     }
 
     public int[] getConcatenation(int[] nums) {

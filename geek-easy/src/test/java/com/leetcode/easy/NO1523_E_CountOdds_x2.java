@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     1523. 在区间范围内统计奇数数目
         给你两个非负整数 low 和 high 。请你返回 low 和 high 之间（包括二者）奇数的数目。

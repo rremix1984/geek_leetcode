@@ -28,8 +28,8 @@ public class NO876_E_MiddleOfTheLinkedList {
 
     @Test
     public void test() {
-        assert 3 == middleNode(new ListNode(1,2,3,4,5)).val;
-        assert 4 == middleNode(new ListNode(1,2,3,4,5,6)).val;
+        assert 3 == middleNode(new ListNode(1, 2, 3, 4, 5)).val;
+        assert 4 == middleNode(new ListNode(1, 2, 3, 4, 5, 6)).val;
     }
 
     public ListNode middleNode(ListNode head) {

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 
-/*
+/**
     [ARRAY]
     （简单）
     NO.2974 最小数字游戏

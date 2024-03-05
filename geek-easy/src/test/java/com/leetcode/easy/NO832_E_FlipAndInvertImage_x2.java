@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [MATRIX]
     (简单)
     832. 翻转图像
         给定一个 n x n 的二进制矩阵 image ，先水平翻转图像，然后反转图像并返回结果 。

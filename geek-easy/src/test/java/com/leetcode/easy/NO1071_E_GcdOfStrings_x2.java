@@ -10,6 +10,7 @@ import static com.leetcode.util.MathUtils.GCD;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     1071. 字符串的最大公因子
         对于字符串 s 和 t，只有在 s = t + ... + t（t 自身连接 1 次或多次）时，我们才认定 “t 能除尽 s”。

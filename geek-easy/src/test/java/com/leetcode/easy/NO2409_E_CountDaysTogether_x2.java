@@ -12,6 +12,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 /**
+    [STRING]
     (简单)
     2409. 统计共同度过的日子数
         Alice 和 Bob 计划分别去罗马开会。

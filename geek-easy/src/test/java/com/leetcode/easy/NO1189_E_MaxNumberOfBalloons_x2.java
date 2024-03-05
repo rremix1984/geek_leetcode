@@ -9,6 +9,7 @@ import java.util.Arrays;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [STRING]
     (简单)
     1189. “气球” 的最大数量
         给你一个字符串 text，你需要使用 text 中的字母来拼凑尽可能多的单词 "balloon"（气球）。

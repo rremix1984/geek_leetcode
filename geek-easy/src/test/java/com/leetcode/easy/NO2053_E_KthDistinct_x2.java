@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2053. 数组中第 K 个独一无二的字符串
         独一无二的字符串 指的是在一个数组中只出现过 一次 的字符串。
@@ -32,9 +33,12 @@ public class NO2053_E_KthDistinct_x2 {
 
     @Test
     public void test() {
-        assert "a".equals(kthDistinct(new String[]{"d", "b", "c", "b", "c", "a"}, 2));
-        assert "aaa".equals(kthDistinct(new String[]{"aaa", "aa", "a"}, 1));
-        assert "".equals(kthDistinct(new String[]{"a", "b", "a"}, 3));
+        assert "a".equals(kthDistinct(
+                new String[]{"d", "b", "c", "b", "c", "a"}, 2));
+        assert "aaa".equals(kthDistinct(
+                new String[]{"aaa", "aa", "a"}, 1));
+        assert "".equals(kthDistinct(
+                new String[]{"a", "b", "a"}, 3));
     }
 
     public String kthDistinct(String[] arr, int k) {

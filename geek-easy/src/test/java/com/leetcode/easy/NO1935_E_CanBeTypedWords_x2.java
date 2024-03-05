@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1935. 可以输入的最大单词数
         键盘出现了一些故障，有些字母键无法正常工作。而键盘上所有其他键都能够正常工作。

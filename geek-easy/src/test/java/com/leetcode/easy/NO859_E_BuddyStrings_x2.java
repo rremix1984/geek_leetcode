@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     859. 亲密字符串
         给你两个字符串s和goal，只要我们可以通过交换s中的两个字母得到

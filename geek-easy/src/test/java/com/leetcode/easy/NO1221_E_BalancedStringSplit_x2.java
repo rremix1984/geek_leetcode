@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1221. 分割平衡字符串
         在一个 平衡字符串 中，'L' 和 'R' 字符的数量是相同的。

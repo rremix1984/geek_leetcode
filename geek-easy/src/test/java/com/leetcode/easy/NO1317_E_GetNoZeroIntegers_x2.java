@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [NUMBER]
     (简单)
     1317. 将整数转换为两个无零整数的和
         「无零整数」是十进制表示中 不含任何 0 的正整数。

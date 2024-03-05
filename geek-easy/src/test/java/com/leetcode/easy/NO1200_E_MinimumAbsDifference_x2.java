@@ -9,6 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (简单)
     1200. 最小绝对差
         给你个整数数组 arr，其中每个元素都 不相同。

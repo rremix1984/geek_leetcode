@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2011. 执行操作后的变量值
         存在一种仅支持 4 种操作和 1 个变量 X 的编程语言：
@@ -43,9 +44,12 @@ public class NO2011_E_FinalValueAfterOperations_x2 {
 
     @Test
     public void test() {
-        assert 1 == finalValueAfterOperations(new String[]{"--X","X++","X++"});
-        assert 3 == finalValueAfterOperations(new String[]{"++X","++X","X++"});
-        assert 0 == finalValueAfterOperations(new String[]{"X++","++X","--X","X--"});
+        assert 1 == finalValueAfterOperations(
+                new String[]{"--X","X++","X++"});
+        assert 3 == finalValueAfterOperations(
+                new String[]{"++X","++X","X++"});
+        assert 0 == finalValueAfterOperations(
+                new String[]{"X++","++X","--X","X--"});
     }
 
     public int finalValueAfterOperations(String[] operations) {

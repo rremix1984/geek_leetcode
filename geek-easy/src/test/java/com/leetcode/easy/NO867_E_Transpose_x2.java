@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [MATRIX]
     (简单)
     867. 转置矩阵
         给你一个二维整数数组 matrix， 返回 matrix 的 转置矩阵 。

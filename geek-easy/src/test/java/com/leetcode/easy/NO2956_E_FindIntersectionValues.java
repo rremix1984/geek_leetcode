@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-/*
+/**
     [ARRAY]
     （简单）
     NO.2956 找到两个数组中的公共元素

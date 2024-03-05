@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     1897. 重新分配字符使所有字符串都相等
         给你一个字符串数组 words（下标 从 0 开始 计数）。
@@ -55,7 +56,8 @@ public class NO1897_E_MakeEqual_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public boolean makeEqual(String[] words) {
     // 97 - 122 a-z
     int[] charCount = new int[123];

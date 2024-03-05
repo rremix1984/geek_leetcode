@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     1295. 统计位数为偶数的数字
         给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。

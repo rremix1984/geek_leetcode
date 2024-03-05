@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1544. 整理字符串
         给你一个由大小写英文字母组成的字符串 s 。

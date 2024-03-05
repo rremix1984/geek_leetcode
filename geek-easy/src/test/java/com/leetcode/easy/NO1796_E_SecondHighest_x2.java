@@ -6,6 +6,8 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
+    [STRING]
     (简单)
     1796. 字符串中第二大的数字
         给你一个混合字符串 s ，请你返回 s 中 第二大 的数字，如果不存在第二大的数字，请你返回 -1 。
@@ -62,7 +64,8 @@ public class NO1796_E_SecondHighest_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int secondHighest(String s) {
     int n_1 = -1;
     int n_2 = -1;

@@ -32,8 +32,10 @@ public class NO2154_E_FindFinalValue {
 
     @Test
     public void test() {
-        assert 24== findFinalValue(new int[]{5, 3, 6, 1, 12}, 3);
-        assert 4 == findFinalValue(new int[]{2, 7, 9}, 4);
+        assert 24== findFinalValue(
+            new int[]{5, 3, 6, 1, 12}, 3);
+        assert 4 == findFinalValue(
+            new int[]{2, 7, 9}, 4);
     }
 
     public int findFinalValue(int[] nums, int original) {

@@ -9,6 +9,7 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 /**
+    [MATRIX]
     (简单)
     836. 矩形重叠
         矩形以列表 [x1, y1, x2, y2] 的形式表示，其中 (x1, y1) 为左下角的坐标，(x2, y2) 是右上角的坐标。
@@ -63,7 +64,7 @@ public class NO836_E_IsRectangleOverlap_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
     if (rec1[0] == rec1[2] ||

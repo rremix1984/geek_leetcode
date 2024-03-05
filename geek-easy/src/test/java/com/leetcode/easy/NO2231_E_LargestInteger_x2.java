@@ -7,6 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.SwapUtil.swap;
 
 /**
+    [NUMBER]
     (简单)
     2231. 按奇偶性交换后的最大数字
         给你一个正整数 num 。你可以交换 num 中 奇偶性 相同的任意两位数字（即，都是奇数或者偶数）。

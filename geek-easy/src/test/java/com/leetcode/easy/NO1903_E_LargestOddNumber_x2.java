@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     1903. 字符串中的最大奇数
         给你一个字符串 num ，表示一个大整数。请你在字符串 num 的所有 非空子字符串

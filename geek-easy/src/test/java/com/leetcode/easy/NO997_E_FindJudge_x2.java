@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     997. 找到小镇的法官
         小镇里有 n 个人，按从 1 到 n 的顺序编号。传言称，这些人中有一个暗地里是小镇法官。
@@ -29,9 +30,12 @@ public class NO997_E_FindJudge_x2 {
 
     @Test
     public void test() {
-        assert 2 == findJudge(2, new int[][]{{1, 2}});
-        assert 3 == findJudge(3, new int[][]{{1, 3}, {2, 3}});
-        assert -1 == findJudge(3, new int[][]{{1, 3}, {2, 3}, {3, 1}});
+        assert 2 == findJudge(2,
+            new int[][]{{1, 2}});
+        assert 3 == findJudge(3,
+            new int[][]{{1, 3}, {2, 3}});
+        assert -1 == findJudge(3,
+            new int[][]{{1, 3}, {2, 3}, {3, 1}});
     }
 
     public int findJudge(int n, int[][] trust) {
@@ -57,7 +61,8 @@ public class NO997_E_FindJudge_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int findJudge(int n, int[][] trust) {
     int [] trusted = new int[n];
     for (int[] arr : trust) {

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     1009. 十进制整数的反码
         每个非负整数 N 都有其二进制表示。例如，5可以被表示为二进制 "101"，

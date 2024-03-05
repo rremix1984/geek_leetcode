@@ -10,6 +10,7 @@ import static java.lang.Math.min;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     821. 字符的最短距离
         给你一个字符串s和一个字符c，且c是s中出现过的字符。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1941. 检查是否所有字符出现次数相同
         给你一个字符串 s ，如果 s 是一个 好 字符串，请你返回 true ，否则请返回 false 。

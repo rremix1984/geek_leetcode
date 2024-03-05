@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1957. 删除字符使字符串变好
         一个字符串如果没有 三个连续 相同字符，那么它就是一个 好字符串 。

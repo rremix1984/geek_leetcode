@@ -13,6 +13,7 @@ import java.util.Map;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [STRING]
     (简单)
     884. 两句话中的不常见单词
         句子是一串由空格分隔的单词。每个单词仅由小写字母组成。

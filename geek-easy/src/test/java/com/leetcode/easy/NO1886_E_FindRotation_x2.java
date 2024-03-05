@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [MATRIX]
     (简单)
     1886. 判断矩阵经轮转后是否一致
         给你两个大小为 n x n 的二进制矩阵 mat 和 target 。

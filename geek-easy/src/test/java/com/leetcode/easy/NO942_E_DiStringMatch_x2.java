@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-
+    [STRING]
     (简单)
     942. 增减字符串匹配
         由范围 [0,n] 内所有整数组成的 n + 1 个整数的排列序列可以表示为长度为 n 的字符串 s ，其中:

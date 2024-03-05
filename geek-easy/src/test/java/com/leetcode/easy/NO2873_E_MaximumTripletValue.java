@@ -2,7 +2,7 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-/*
+/**
     [ARRAY]
     （简单）
     NO.2873 有序三元组中的最大值 I

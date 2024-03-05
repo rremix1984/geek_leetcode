@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [NUMBER]
     (简单)
     2259. 移除指定数字得到的最大结果
         给你一个表示某个正整数的字符串 number 和一个字符 digit 。
@@ -58,7 +59,8 @@ public class NO2259_E_RemoveDigit_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public String removeDigit(String number, char digit) {
     StringBuilder sb = new StringBuilder();
     int removeIdx = -1;

@@ -8,6 +8,7 @@ import java.time.Year;
 import static com.leetcode.util.MathUtils.*;
 
 /**
+    [STRING]
     (简单)
     1185. 一周中的第几天
         给你一个日期，请你设计一个算法来判断它是对应一周中的哪一天。

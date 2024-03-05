@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2224. 转化时间需要的最少操作数
         给你两个字符串 current 和 correct ，表示两个 24 小时制时间 。

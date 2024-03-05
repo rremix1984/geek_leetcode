@@ -9,6 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [STRING]
     (简单)
     2273. 移除字母异位词后的结果数组
         给你一个下标从0开始的字符串words，其中words[i]由小写英文字符组成。

@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [NUMBER]
     (简单)
     2160. 拆分数位后四位数字的最小和
         给你一个四位 正 整数 num 。请你使用 num 中的 数位 ，将 num 拆成两个新的整数 new1 和 new2 。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1684. 统计一致字符串的数目
         给你一个由不同字符组成的字符串 allowed 和一个字符串数组 words 。
@@ -28,9 +29,12 @@ public class NO1684_E_CountConsistentStrings_x3 {
 
     @Test
     public void test() {
-        assert 2 == countConsistentStrings("ab", new String[]{"ad", "bd", "aaab", "baa", "badab"});
-        assert 7 == countConsistentStrings("abc", new String[]{"a", "b", "c", "ab", "ac", "bc", "abc"});
-        assert 4 == countConsistentStrings("cad", new String[]{"cc","acd","b","ba","bac","bad","ac","d"});
+        assert 2 == countConsistentStrings("ab",
+            new String[]{"ad", "bd", "aaab", "baa", "badab"});
+        assert 7 == countConsistentStrings("abc",
+            new String[]{"a", "b", "c", "ab", "ac", "bc", "abc"});
+        assert 4 == countConsistentStrings("cad",
+            new String[]{"cc","acd","b","ba","bac","bad","ac","d"});
     }
 
     public int countConsistentStrings(String allowed, String[] words) {

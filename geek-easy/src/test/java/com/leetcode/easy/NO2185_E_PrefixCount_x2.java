@@ -6,6 +6,8 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
+    [ARRAY]
     (简单)
     2185. 统计包含给定前缀的字符串
         给你一个字符串数组 words 和一个字符串 pref 。

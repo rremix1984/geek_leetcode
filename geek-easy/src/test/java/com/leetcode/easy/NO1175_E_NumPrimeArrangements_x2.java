@@ -9,6 +9,7 @@ import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.*;
 
 /**
+    [NUMBER]
     (简单)
     1175. 质数排列
         请你帮忙给从 1 到 n 的数设计排列方案，使得所有的「质数」都应该被放在「质数索引」

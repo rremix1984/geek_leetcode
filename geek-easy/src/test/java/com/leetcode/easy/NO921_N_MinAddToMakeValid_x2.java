@@ -8,6 +8,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
+    [STRING]
     (中等)
     921. 使括号有效的最少添加
         只有满足下面几点之一，括号字符串才是有效的：

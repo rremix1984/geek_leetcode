@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1576. 替换所有的问号
         给你一个仅包含小写英文字母和 '?' 字符的字符串 s，请你将所有的 '?'

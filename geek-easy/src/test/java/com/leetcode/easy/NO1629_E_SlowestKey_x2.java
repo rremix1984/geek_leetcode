@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [ARRAY]
     (简单)
     1629. 按键持续时间最长的键
         LeetCode 设计了一款新式键盘，正在测试其可用性。测试人员将会点击一系列键（总计 n 个），每次一个。
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
         注意，测试期间，同一个键可以在不同时刻被多次按下，而每次的持续时间都可能不同。
         请返回单次按键 持续时间最长 的键，如果有多个这样的键，则返回 按字母顺序排列最大 的那个键。
     示例 1：
-        输入：releaseTimes = [9,29,49,50], keysPressed = "cbcd"
+        输入：releaseTimes = [9, 29, 49, 50], keysPressed = "cbcd"
         输出："c"
         解释：按键顺序和持续时间如下：
              按下 'c' ，持续时间 9（时间 0 按下，时间 9 松开）
@@ -28,7 +29,7 @@ import static org.junit.Assert.assertEquals;
              按键持续时间最长的键是 'b' 和 'c'（第二次按下时），持续时间都是 20
              'c' 按字母顺序排列比 'b' 大，所以答案是 'c'
     示例 2：
-        输入：releaseTimes = [12,23,36,46,62], keysPressed = "spuda"
+        输入：releaseTimes = [12, 23, 36, 46, 62], keysPressed = "spuda"
         输出："a"
         解释：按键顺序和持续时间如下：
              按下 's' ，持续时间 12
@@ -69,7 +70,8 @@ public class NO1629_E_SlowestKey_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public char slowestKey(int[] releaseTimes, String keysPressed) {
     char ans = keysPressed.charAt(0);
     int max = releaseTimes[0];

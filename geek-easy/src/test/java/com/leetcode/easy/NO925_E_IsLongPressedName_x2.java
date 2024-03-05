@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     925. 长按键入
         你的朋友正在使用键盘输入他的名字name。偶尔，在键入字符c时，

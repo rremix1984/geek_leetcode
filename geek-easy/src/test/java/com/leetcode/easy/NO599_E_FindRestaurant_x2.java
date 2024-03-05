@@ -12,6 +12,7 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     599. 两个列表的最小索引总和
         假设 Andy 和 Doris 想在晚餐时选择一家餐厅，并且他们都有一个表示最喜爱餐厅的列表，

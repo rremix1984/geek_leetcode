@@ -12,6 +12,7 @@ import static java.util.Arrays.stream;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [ARRAY]
     (简单)
     888. 公平的糖果交换
         爱丽丝和鲍勃拥有不同总数量的糖果。给你两个数组 aliceSizes 和 bobSizes ，

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1598. 文件夹操作日志搜集器
         每当用户执行变更文件夹操作时，LeetCode 文件系统都会保存一条日志记录。

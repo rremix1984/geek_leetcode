@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING] |
     (简单)
     796. 旋转字符串
         给定两个字符串, s 和 goal。如果在若干次旋转操作之后，s 能变成 goal ，那么返回 true 。
@@ -31,6 +32,7 @@ public class NO796_E_RotateString_x2 {
     }
 
     public boolean rotateString(String s, String goal) {
+        // 2024/3/4 NO.1 拼接法
         return false;
     }
 
@@ -51,10 +53,11 @@ public class NO796_E_RotateString_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean rotateString(String s, String goal) {
-    int m = s.length(), n = goal.length();
+    int m = s.length();
+    int n = goal.length();
     if (m != n)
         return false;
 

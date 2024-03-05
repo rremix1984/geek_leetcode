@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     2062. 统计字符串中的元音子字符串
         子字符串是字符串中的一个连续（非空）的字符序列。

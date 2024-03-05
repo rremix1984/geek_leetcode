@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     868. 二进制间距
         给定一个正整数【n】，找到并返回【n】的二进制表示中两个 相邻【1】之间的最长距离。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [MATRIX]
     (简单)
     1232. 缀点成线
         给定一个数组 coordinates ，其中 coordinates[i] = [x, y] ， [x, y]

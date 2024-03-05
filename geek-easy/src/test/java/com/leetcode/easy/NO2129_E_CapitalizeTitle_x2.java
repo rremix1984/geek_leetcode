@@ -11,6 +11,7 @@ import static java.lang.Character.toUpperCase;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     2129. 将标题首字母大写
         给你一个字符串title，它由单个空格连接一个或多个单词组成，

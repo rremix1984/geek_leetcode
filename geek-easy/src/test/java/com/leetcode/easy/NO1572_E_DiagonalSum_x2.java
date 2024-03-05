@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [MATRIX]
     (简单)
     1572. 矩阵对角线元素的和
         给你一个正方形矩阵 mat，请你返回矩阵对角线元素的和。

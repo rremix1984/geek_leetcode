@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [STRING]
     (简单)
     1108. IP 地址无效化
         给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。

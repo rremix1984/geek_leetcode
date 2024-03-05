@@ -6,6 +6,8 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
+    [STRING]
     (简单)
     1662. 检查两个字符串数组是否相等
         给你两个字符串数组 word1 和 word2 。如果两个数组表示的字符串相同，

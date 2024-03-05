@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     1952. 三除数
         给你一个整数 n 。如果 n 恰好有三个正除数 ，返回 true ；否则，返回 false 。

@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     1528. 重新排列字符串
         给你一个字符串 s 和一个 长度相同 的整数数组 indices 。

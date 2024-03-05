@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     2119. 反转两次的数字
         反转 一个整数意味着倒置它的所有位。

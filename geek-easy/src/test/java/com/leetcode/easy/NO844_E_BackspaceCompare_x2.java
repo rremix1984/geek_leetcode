@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [STRING]
     (简单)
     844. 比较含退格的字符串
         给定 s 和 t 两个字符串，当它们分别被输入到空白的文本编辑器后，

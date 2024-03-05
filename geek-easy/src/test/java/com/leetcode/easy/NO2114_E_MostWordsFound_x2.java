@@ -7,6 +7,8 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
+    [ARRAY]
+    [STRING]
     (简单)
     2114. 句子中的最多单词数
         一个 句子 由一些 单词 以及它们之间的单个空格组成，句子的开头和结尾不会有多余空格。

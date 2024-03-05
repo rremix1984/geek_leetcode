@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (简单)
     2303. 计算应缴税款总额
         给你一个下标从 0 开始的二维整数数组 brackets ，其中 brackets[i] = [upperi, percenti] ，
@@ -43,9 +44,12 @@ public class NO2303_E_CalculateTax_x2 {
 
     @Test
     public void test() {
-        assert 2.65d == calculateTax(new int[][]{{3, 50}, {7, 10}, {12, 25}},10);
-        assert 0.25d == calculateTax(new int[][]{{1, 0}, {4, 25}, {5, 50}},2);
-        assert 0.0d == calculateTax(new int[][]{{2, 50}},0);
+        assert 2.65d == calculateTax(
+                new int[][]{{3, 50}, {7, 10}, {12, 25}},10);
+        assert 0.25d == calculateTax(
+                new int[][]{{1, 0}, {4, 25}, {5, 50}},2);
+        assert 0.0d == calculateTax(
+                new int[][]{{2, 50}},0);
     }
 
     public double calculateTax(int[][] brackets, int income) {

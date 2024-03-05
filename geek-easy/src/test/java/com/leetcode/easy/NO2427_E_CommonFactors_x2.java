@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+    [NUMBER]
     (简单)
     2427. 公因子的数目
         给你两个正整数 a 和 b ，返回 a 和 b 的 公 因子的数目。

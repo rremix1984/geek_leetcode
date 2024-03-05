@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
+   [NUMBER]
     (简单)
     1742. 盒子中小球的最大数量
         你在一家生产小球的玩具厂工作，有 n 个小球，编号从 lowLimit 开始，到 highLimit 结束
@@ -67,7 +68,8 @@ public class NO1742_E_CountBalls_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int countBalls(int lowLimit, int highLimit) {
     // 10的5次方，100000 最大值每一位的和是 99999
     // 一共5个9，加在一起是 9 x 5 = 45 算上 0 一共是 46 个值的数组
