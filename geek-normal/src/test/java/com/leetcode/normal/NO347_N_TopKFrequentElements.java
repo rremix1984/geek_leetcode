@@ -5,6 +5,8 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.*;
+
+import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -33,7 +35,7 @@ public class NO347_N_TopKFrequentElements {
 
     public int[] topKFrequent(int[] nums, int k) {
         // 2024/3/4 NO.1
-        // 2024/3/8 NO.2
+        // 2024/3/8 NO.2 用哈希表记录出现频率
         int[] ans = new int[k];
         return ans;
     }
@@ -72,6 +74,8 @@ public int[] topKFrequent(int[] nums, int k) {
 
     for (Integer v : set) {
         queue.add(v);
+        // 大于k个元素后，后面进入，前面出去，
+        // 保持这个优先队列只有k个元素
         if (queue.size() > k)
             queue.poll();
     }

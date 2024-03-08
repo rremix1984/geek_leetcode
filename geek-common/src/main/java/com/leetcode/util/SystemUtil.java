@@ -11,4 +11,10 @@ public class SystemUtil {
         System.out.println();
     }
 
+    public static void printArr(String[] arr) {
+        for (String i : arr)
+            System.out.printf("%s\t", i);
+        System.out.println();
+    }
+
 }
