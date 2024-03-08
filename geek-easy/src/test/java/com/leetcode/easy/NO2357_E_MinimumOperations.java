@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
     2357. 使数组中所有元素都等于零
         给你一个非负整数数组nums。在一步操作中，你必须：
@@ -39,6 +39,7 @@ public class NO2357_E_MinimumOperations {
     public int minimumOperations(int[] nums) {
         // 2024/2/24 NO.3
         // 2024/2/25 NO.4
+        // 2024/3/6  NO.5
         int res = 0;
         return res;
     }
@@ -66,11 +67,13 @@ public int minimumOperations(int[] nums) {
     Arrays.sort(nums);
     int res = 0;
     int sub = 0;
-    for (int j : nums)
-        if (sub < j) {
+    for (int n : nums)
+        if (sub < n) {
             res++;
-            sub = j;
+            sub = n;
         }
+        // 隐含着 sub > n 和 sub == n 两种可能性，
+        // 这两种可能性什么都不需要做
     return res;
 }
 */

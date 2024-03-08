@@ -5,22 +5,21 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
-import static com.leetcode.util.LogUtil.info;
-
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1539. 第k个缺失的正整数
-          给你一个 严格升序排列 的正整数数组 arr 和一个整数 k。
-          请你找到这个数组里第 k 个缺失的正整数。
+          给你一个【严格升序排列】的正整数数组arr和一个整数k。
+          请你找到这个数组里第k个缺失的正整数。
     示例 1：
         输入：arr = [2, 3, 4, 7, 11],  k = 5
         输出：9
-        解释：缺失的正整数包括 [1, 5, 6, 8, 9, 10, 12, 13, ...] 。第 5 个缺失的正整数为 9 。
+        解释：缺失的正整数包括[1, 5, 6, 8, 9, 10, 12, 13, ...]。
+             第 5 个缺失的正整数为 9 。
     示例 2：
         输入：arr = [1, 2, 3, 4],  k = 2
         输出：6
-        解释：缺失的正整数包括 [5, 6, 7, ...] 。第 2 个缺失的正整数为 6 。
+        解释：缺失的正整数包括[5, 6, 7, ...]。第2个缺失的正整数为6。
 */
 public class NO1539_E_FindKthPositive {
 
@@ -31,6 +30,7 @@ public class NO1539_E_FindKthPositive {
     }
 
     public int findKthPositive(int[] arr, int k) {
+        // 2024/3/8 NO.1
         int ans = -1;
         return ans;
     }
@@ -55,7 +55,7 @@ public class NO1539_E_FindKthPositive {
 
 
 
-/**
+/*
 // 方法1：
 public int findKthPositive(int[] arr, int k) {
     int ans = -1;

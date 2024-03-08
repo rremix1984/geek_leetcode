@@ -40,10 +40,9 @@ public class NO594_E_FindLHS {
 
     public int findLHS(int[] nums) {
         // 2024/2/23 NO.3 排序和双指针的方法来寻找最长的和谐子序列
-        // 2024/3/5  NO.4
-        int max = 0;
-
-        return max;
+        // 2024/3/5  NO.4 快慢指针实现
+        int res = 0;
+        return res;
     }
 
 }
@@ -81,5 +80,23 @@ public int findLHS(int[] nums) {
             res = max(res, i - begin + 1);
     }
     return res;
+}
+
+// 方法2：换一种写法而已
+public int findLHS(int[] nums) {
+    int max = 0;
+    int slow = 0;
+    int fast = 1;
+    Arrays.sort(nums);
+    while (fast < nums.length) {
+        while (nums[fast] - nums[slow] > 1)
+            slow++;
+
+        if (nums[fast] - nums[slow] == 1)
+            max = max(max, fast - slow + 1);
+
+        fast++;
+    }
+    return max;
 }
 */

@@ -7,9 +7,10 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
+    [ARRAY] |
     (简单)
     1304. 和为零的N个不同整数
-        给你一个整数 n，请你返回 任意 一个由 n 个 各不相同 的整数组成的数组，并且这 n 个数相加和为 0 。
+        给你一个整数n，请你返回任意一个由n个各不相同的整数组成的数组，并且这n个数相加和为0。
     示例 1：
         输入：n = 5
         输出：{-7, -1, 1, 3, 4}
@@ -28,22 +29,18 @@ public class NO1304_E_SumZero {
         int[] tmp1 = Arrays.stream(sumZero(5)).distinct().toArray();
         assert tmp1.length == 5;
         assert 0 == Arrays.stream(tmp1).sum();
+
         int[] tmp2 = Arrays.stream(sumZero(3)).distinct().toArray();
         assert tmp2.length == 3;
         assert 0 == Arrays.stream(tmp2).sum();
+
         int[] tmp3 = Arrays.stream(sumZero(1)).distinct().toArray();
         assert 0 == Arrays.stream(tmp3).sum();
     }
 
     public int[] sumZero(int n) {
+        // 2024/3/6 NO.1
         int[] ans = new int[n];
-        int idx = n % 2;
-        int tmp = 1;
-        while (idx < n) {
-            ans[idx++] = tmp;
-            ans[idx++] = -tmp;
-            tmp++;
-        }
         return ans;
     }
 

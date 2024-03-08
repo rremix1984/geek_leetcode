@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] ||
+    [ARRAY] ||||
     (简单)
     496. 下一个更大元素 I
         nums1中数字x的下一个更大元素是指x在nums2中对应位置右侧的第一个比x大的元素。
@@ -34,19 +34,26 @@ import static org.junit.Assert.assertArrayEquals;
         nums1和nums2中所有整数 互不相同
         nums1 中的所有整数同样出现在 nums2 中
 */
-public class NO496_E_NextGreaterElement_x3 {
+public class NO496_E_NextGreaterElement {
 
     @Test
     public void test() {
         assertArrayEquals(new int[]{-1, 3, -1},
-                nextGreaterElement(new int[]{4, 1, 2}, new int[]{1, 3, 4, 2}));
+            nextGreaterElement(new int[]{4, 1, 2},
+                        new int[]{1, 3, 4, 2}));
         assertArrayEquals(new int[]{3, -1},
-                nextGreaterElement(new int[]{2, 4}, new int[]{1, 2, 3, 4}));
+            nextGreaterElement(new int[]{2, 4},
+                        new int[]{1, 2, 3, 4}));
+        assertArrayEquals(new int[]{-1, -1},
+                nextGreaterElement(new int[]{2, 4},
+                        new int[]{1, 3}));
     }
 
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         // 2024/2/23 NO.3
         // 2024/2/24 NO.4
+        // 2024/3/5  NO.5
+        // 2024/3/6  NO.6
         int[] res = new int[nums1.length];
         return res;
     }
@@ -79,12 +86,14 @@ public int[] nextGreaterElement(int[] nums1, int[] nums2) {
     int[] res = new int[nums1.length];
     for (int i = 0; i < nums1.length; i++) {
         int j = 0;
+        // 现在数组2中 找数组1的元素，找到之后坐标确定为 j
         while (j < nums2.length && nums2[j] != nums1[i])
             j++;
 
         // 此时 nums2[j] == nums1[i]
         int next = j + 1;
-        // 找到下一个大于 j 的元素
+
+        // 找到下一个大于 j 的元素，注意审题：【没有重复元素】
         while (next < nums2.length && nums2[next] < nums2[j])
             next++;
 

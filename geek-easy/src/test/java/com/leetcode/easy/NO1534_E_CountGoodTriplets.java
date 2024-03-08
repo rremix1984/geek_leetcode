@@ -7,17 +7,16 @@ import org.junit.Test;
 import static java.lang.Math.abs;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1534. 统计好三元组
-        给你一个整数数组 arr ，以及 a、b 、c 三个整数。请你统计其中好三元组的数量。
-        如果三元组 (arr[i], arr[j], arr[k]) 满足下列全部条件，则认为它是一个 好三元组 。
-            0 <= i < j < k < arr.length
-            |arr[i] - arr[j]| <= a
-            |arr[j] - arr[k]| <= b
-            |arr[i] - arr[k]| <= c
-            其中 |x| 表示 x 的绝对值。
-            返回 好三元组的数量 。
+        给你一个整数数组arr，以及 a、b、c 三个整数。请你统计其中好三元组的数量。
+        如果三元组 (arr[i], arr[j], arr[k]) 满足下列全部条件，则认为它是一个好三元组。
+          1）0 <= i < j < k < arr.length
+          2）|arr[i] - arr[j]| <= a
+          3）|arr[j] - arr[k]| <= b
+          4）|arr[i] - arr[k]| <= c
+        其中 |x| 表示 x 的绝对值。返回 好三元组的数量 。
     示例 1：
         输入：arr = {3, 0, 1, 1, 9, 7},  a = 7,  b = 2,  c = 3
         输出：4
@@ -31,9 +30,12 @@ public class NO1534_E_CountGoodTriplets {
 
     @Test
     public void test() {
-        assert 4 == countGoodTriplets(new int[]{3, 0, 1, 1, 9, 7}, 7, 2, 3);
-        assert 0 == countGoodTriplets(new int[]{1, 1, 2, 2, 3}, 0, 0, 1);
-        assert 12 == countGoodTriplets(new int[]{7, 3, 7, 3, 12, 1, 12, 2, 3},5, 8, 1);
+        assert 4 == countGoodTriplets(
+            new int[]{3, 0, 1, 1, 9, 7}, 7, 2, 3);
+        assert 0 == countGoodTriplets(
+            new int[]{1, 1, 2, 2, 3}, 0, 0, 1);
+        assert 12 == countGoodTriplets(
+            new int[]{7, 3, 7, 3, 12, 1, 12, 2, 3},5, 8, 1);
     }
 
     public int countGoodTriplets(int[] arr, int a, int b, int c) {
@@ -72,7 +74,8 @@ public class NO1534_E_CountGoodTriplets {
 
 
 
-/**
+/*
+// 方法1：
 public int countGoodTriplets(int[] arr, int a, int b, int c) {
     int res = 0;
     for (int i = 0; i < arr.length; i++)

@@ -7,16 +7,19 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
+import static java.lang.Math.max;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1431. 拥有最多糖果的孩子
-        给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第i个孩子拥有的糖果数目。
-        对每一个孩子，检查是否存在一种方案，将额外的extraCandies个糖果分配给孩子们之后，此孩子有最多的糖果。注意，允许有多个孩子同时拥有最多的糖果数目。
+        给你一个数组candies和一个整数extraCandies，其中candies[i]代表第i个孩子拥有的糖果数目。
+        对每一个孩子，检查是否存在一种方案，将额外的extraCandies个糖果分配给孩子们之后，
+        此孩子有最多的糖果。
+        注意，允许有多个孩子同时拥有最多的糖果数目。
     示例 1：
         输入：candies = [2, 3, 5, 1, 3], extraCandies = 3
-        输出：[true,true,true,false,true]
+        输出：[true, true, true, false, true]
         解释：
         孩子 1 有 2 个糖果，如果他得到所有额外的糖果（3个），那么他总共有 5 个糖果，他将成为拥有最多糖果的孩子。
         孩子 2 有 3 个糖果，如果他得到至少 2 个额外糖果，那么他将成为拥有最多糖果的孩子。
@@ -44,6 +47,7 @@ public class NO1431_E_KidsWithCandies {
     }
 
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        // 2024/3/8 NO.1
         List<Boolean> ret = new ArrayList<>();
         return ret;
     }
@@ -63,13 +67,14 @@ public class NO1431_E_KidsWithCandies {
 
 
 
-/**
+/*
+// 方法1：
 public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    List<Boolean> ret = new ArrayList<>();
     int max = 0;
     for (int j : candies)
         max = max(max, j);
 
-    List<Boolean> ret = new ArrayList<>();
     for (int candy : candies)
         ret.add(candy + extraCandies >= max);
 

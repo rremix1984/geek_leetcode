@@ -4,14 +4,15 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import java.util.Arrays;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1502. 判断能否形成等差数列
-        给你一个数字数组 arr 。
-        如果一个数列中，任意相邻两项的差总等于同一个常数，那么这个数列就称为 等差数列 。
-        如果可以重新排列数组形成等差数列，请返回 true ；否则，返回 false 。
+        给你一个数字数组arr。
+        如果一个数列中，任意相邻两项的差总等于同一个常数，那么这个数列就称为【等差数列】。
+        如果可以重新排列数组形成等差数列，请返回true；否则，返回false。
     示例 1：
         输入：arr = {3, 5, 1}
         输出：true
@@ -31,6 +32,7 @@ public class NO1502_E_CanMakeArithmeticProgression {
     }
 
     public boolean canMakeArithmeticProgression(int[] arr) {
+        // 2024/3/8 NO.1
         return true;
     }
 
@@ -51,7 +53,8 @@ public class NO1502_E_CanMakeArithmeticProgression {
 
 
 
-/**
+/*
+// 方法1：
 public boolean canMakeArithmeticProgression(int[] arr) {
     Arrays.sort(arr);
     for (int i = 1; i < arr.length - 1; i++)

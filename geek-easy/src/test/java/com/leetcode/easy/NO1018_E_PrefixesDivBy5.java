@@ -3,13 +3,12 @@
  */
 package com.leetcode.easy;
 
-import com.leetcode.util.MathUtils;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1018. 可被5整除的二进制前缀
         给定一个二进制数组 nums ( 索引从0开始 )。
@@ -20,28 +19,25 @@ import static com.leetcode.util.MathUtils.getArray;
         输入：nums = [0, 1, 1]
         输出：[true, false, false]
         解释：
-        输入数字为 0, 01, 011；也就是十进制中的 0, 1, 3 。只有第一个数可以被 5 整除，因此 answer[0] 为 true 。
+        输入数字为 0, 01, 011；也就是十进制中的 0, 1, 3 。
+        只有第一个数可以被 5 整除，因此 answer[0] 为 true 。
     示例 2：
         输入：nums = [1, 1, 1]
         输出：[false, false, false]
 */
-public class NO1018_E_PrefixesDivBy5_x2 {
+public class NO1018_E_PrefixesDivBy5 {
 
     @Test
     public void test() {
         assert getArray(true, false, false).equals(
-                prefixesDivBy5(new int[]{0, 1, 1}));
+            prefixesDivBy5(new int[]{0, 1, 1}));
         assert getArray(false, false, false).equals(
-                prefixesDivBy5(new int[]{1, 1, 1}));
+            prefixesDivBy5(new int[]{1, 1, 1}));
     }
 
     public List<Boolean> prefixesDivBy5(int[] nums) {
+        // 2024/3/6 NO.1
         List<Boolean> ret = new ArrayList<>();
-        int prefix = 0;
-        for (int num : nums) {
-            prefix = (prefix * 2 + num) % 5;
-            ret.add(prefix == 0);
-        }
         return ret;
     }
 
@@ -61,13 +57,25 @@ public class NO1018_E_PrefixesDivBy5_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public List<Boolean> prefixesDivBy5(int[] nums) {
     List<Boolean> ret = new ArrayList<>();
     int prefix = 0;
     for (int num : nums) {
         prefix = (prefix * 2 + num) % 5;
         ret.add(prefix == 0);
+    }
+    return ret;
+}
+
+// 方法2：
+public List<Boolean> prefixesDivBy5(int[] nums) {
+    List<Boolean> ret = new ArrayList<>();
+    int number = 0;
+    for (int num : nums) {
+        number = (number * 2 + num) % 5;
+        ret.add(number == 0);
     }
     return ret;
 }

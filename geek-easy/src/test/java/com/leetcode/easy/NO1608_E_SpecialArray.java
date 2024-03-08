@@ -4,14 +4,18 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import java.util.Arrays;
+import static com.leetcode.util.SwapUtil.swap;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1608. 特殊数组的特征值
-        给你一个非负整数数组 nums 。如果存在一个数 x ，使得 nums 中恰好有 x 个元素 大于或者等于 x ，那么就称 nums 是一个 特殊数组 ，而 x 是该数组的 特征值 。
-        注意： x 不必 是 nums 的中的元素。
-        如果数组 nums 是一个 特殊数组 ，请返回它的特征值 x 。否则，返回 -1 。可以证明的是，如果 nums 是特殊数组，那么其特征值 x 是 唯一的 。
+        给你一个非负整数数组nums。如果存在一个数x，使得nums中恰好有x个元素
+        大于或者等于x，那么就称nums是一个特殊数组，而x是该数组的特征值。
+        注意：x不必是nums的中的元素。
+        如果数组nums是一个特殊数组，请返回它的特征值x。
+        否则，返回-1。可以证明的是，如果nums是特殊数组，那么其特征值x是唯一的。
     示例 1：
         输入：nums = {3, 5}
         输出：2
@@ -36,15 +40,18 @@ public class NO1608_E_SpecialArray {
 
     @Test
     public void test() {
-        assert 2 == specialArray(new int[]{3, 5});
+        assert  2 == specialArray(new int[]{3, 5});
         assert -1 == specialArray(new int[]{0, 0});
-        assert 3 == specialArray(new int[]{0, 4, 3, 0, 4});
+        assert  3 == specialArray(new int[]{0, 4, 3, 0, 4});
         assert -1 == specialArray(new int[]{3, 6, 7, 7, 0});
     }
 
     public int specialArray(int[] nums) {
+        // 2024/3/8 NO.1
         return -1;
     }
+
+
 
 }
 
@@ -63,7 +70,8 @@ public class NO1608_E_SpecialArray {
 
 
 
-/**
+/*
+// 方法1：
 public int specialArray(int[] nums) {
     Arrays.sort(nums);
     int n = nums.length;

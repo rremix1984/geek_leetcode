@@ -18,7 +18,11 @@ import static com.leetcode.util.MathUtils.getArray;
         在「杨辉三角」中，每个数是它左上方和右上方的数的和。
     示例 1:
         输入: numRows = 5
-        输出: {{1}, {1, 1}, {1, 2, 1}, {1, 3, 3, 1}, {1, 4, 6, 4, 1}}
+        输出: {{1},
+             {1, 1},
+            {1, 2, 1},
+           {1, 3, 3, 1},
+          {1, 4, 6, 4, 1}}
     示例 2:
         输入: numRows = 1
         输出: {{1}}
@@ -30,20 +34,25 @@ public class NO118_E_Generate {
     @Test
     public void test() {
         assert getArray(
-                new int[][]{{1}, {1, 1}, {1, 2, 1},
-                    {1, 3, 3, 1}, {1, 4, 6, 4, 1}}).equals(generate(5));
+                new int[][]{ {1},
+                            {1, 1},
+                          {1, 2, 1},
+                        {1, 3, 3, 1},
+                      {1, 4, 6, 4, 1}}).equals(generate(5));
         assert getArray(new int[][]{{1}}).equals(generate(1));
     }
 
     public List<List<Integer>> generate(int numRows) {
+        // 2024/3/6 NO.1
         List<List<Integer>> ret = new ArrayList<>();
-        for (int i = 0; i < numRows; ++i) {
+        for (int i = 0; i < numRows; i++) {
             List<Integer> row = new ArrayList<>();
-            for (int j = 0; j <= i; ++j) {
+            for (int j = 0; j <= i; j++) {
                 if (j == 0 || j == i) {
                     row.add(1);
                 } else {
-                    row.add(ret.get(i - 1).get(j - 1) + ret.get(i - 1).get(j));
+                    row.add(ret.get(i - 1).get(j - 1)
+                          + ret.get(i - 1).get(j));
                 }
             }
             ret.add(row);
@@ -52,3 +61,39 @@ public class NO118_E_Generate {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public List<List<Integer>> generate(int numRows) {
+    List<List<Integer>> ret = new ArrayList<>();
+    for (int i = 0; i < numRows; ++i) {
+        List<Integer> row = new ArrayList<>();
+        for (int j = 0; j <= i; ++j) {
+            if (j == 0 || j == i) {
+                row.add(1);
+            } else {
+                row.add(ret.get(i - 1).get(j - 1) + ret.get(i - 1).get(j));
+            }
+        }
+        ret.add(row);
+    }
+    return ret;
+}
+*/

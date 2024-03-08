@@ -5,15 +5,16 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1299. 将每个元素替换为右侧最大元素
-        给你一个数组 arr ，请你将每个元素用它右边最大的元素替换，
-        如果是最后一个元素，用 -1 替换。完成所有替换操作后，请你返回这个数组。
+        给你一个数组arr，请你将每个元素用它右边最大的元素替换，
+        如果是最后一个元素，用-1替换。完成所有替换操作后，请你返回这个数组。
     示例 1：
         输入：arr = {17, 18, 5, 4, 6, 1}
         输出：{18, 6, 6, 6, 1, -1}
@@ -45,8 +46,8 @@ public class NO1299_E_ReplaceElements {
     }
 
     public int[] replaceElements(int[] arr) {
+        // 2024/3/6 NO.1 做出来了，还有一种方法需要学习
         int[] ans = new int[arr.length];
-        ans[arr.length - 1] = -1;
         return ans;
     }
     
@@ -70,8 +71,8 @@ public class NO1299_E_ReplaceElements {
 
 
 
-/**
-// 方法1：
+/*
+// 方法1：新建一个数组
 public int[] replaceElements(int[] arr) {
     int[] ans = new int[arr.length];
     // 审题可知，最后一个元素一定是 -1
@@ -82,5 +83,21 @@ public int[] replaceElements(int[] arr) {
         ans[i] = max(ans[i + 1], arr[i + 1]);
 
     return ans;
+}
+
+// 方法2：在元素组上面替换
+public int[] replaceElements(int[] arr) {
+    // 2024/3/6 NO.1
+    for (int i = 0; i < arr.length - 1; i++) {
+        int j = i + 1;
+        int rMax = -1;
+        while (j < arr.length) {
+            rMax = max(rMax, arr[j]);
+            j++;
+        }
+        arr[i] = rMax;
+    }
+    arr[arr.length - 1] = -1;
+    return arr;
 }
 */

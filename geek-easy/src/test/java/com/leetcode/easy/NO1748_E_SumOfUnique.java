@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1748. 唯一元素的和
         给你一个整数数组 nums 。数组中唯一元素是那些只出现 恰好一次 的元素。
@@ -34,6 +34,7 @@ public class NO1748_E_SumOfUnique {
     }
 
     public int sumOfUnique(int[] nums) {
+        // 2024/3/8 NO.1
         int ans = 0;
         return ans;
     }
@@ -52,7 +53,7 @@ public class NO1748_E_SumOfUnique {
 
 
 
-/**
+/*
 // 方法1：
 public int sumOfUnique(int[] nums) {
     int[] count = new int[101];

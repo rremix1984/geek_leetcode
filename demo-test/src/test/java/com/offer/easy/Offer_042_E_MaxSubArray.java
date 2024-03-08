@@ -39,6 +39,7 @@ public class Offer_042_E_MaxSubArray {
     public int maxSubArray(int[] nums) {
         // 2024/3/4 NO.1 加了比不加还小，就断开了
         // 2024/3/5 NO.2 还是不会，还要复习
+        // 2024/3/8 NO.3
         int res = nums[0];
         return res;
     }

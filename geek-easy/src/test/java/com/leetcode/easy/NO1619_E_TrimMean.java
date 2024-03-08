@@ -4,13 +4,14 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import java.util.Arrays;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1619. 删除某些元素后的数组均值
-        给你一个整数数组 arr ，请你删除最小 5% 的数字和最大 5% 的数字后，剩余数字的平均值。
-        与 标准答案 误差在 10-5 的结果都被视为正确结果。
+        给你一个整数数组arr，请你删除最小5%的数字和最大5%的数字后，剩余数字的平均值。
+        与标准答案误差在10-5的结果都被视为正确结果。
     示例 1：
         输入：arr = {1, 2, 2, 2, 2, 2, 2, 2, 2, 2,
                     2, 2, 2, 2, 2, 2, 2, 2, 2, 3}
@@ -75,9 +76,8 @@ public class NO1619_E_TrimMean {
     }
 
     public double trimMean(int[] arr) {
-        int n = arr.length;
-        int sum = 0;
-        return sum / (n * 0.9);
+        // 2024/3/6 NO.1 先排序，后对比
+        return 0.0d;
     }
 
 }
@@ -97,7 +97,7 @@ public class NO1619_E_TrimMean {
 
 
 
-/**
+/*
 // 方法1：
 public double trimMean(int[] arr) {
     Arrays.sort(arr);

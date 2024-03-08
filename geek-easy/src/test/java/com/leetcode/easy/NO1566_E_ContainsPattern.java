@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1566. 重复至少K次且长度为M的模式
         给你一个正整数数组 arr，请你找出一个长度为 m 且在数组中至少重复 k 次的模式。
@@ -65,6 +65,7 @@ public class NO1566_E_ContainsPattern {
     // 方法3：双指针法
     public boolean containsPattern(int[] arr, int m, int k) {
         // 2024/3/4 NO.1 双指针
+        // 2024/3/6 NO.2 双指针，不是快慢指针，两个指针间隔为m
         return false;
     }
 

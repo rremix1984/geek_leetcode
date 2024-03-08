@@ -4,12 +4,13 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import static java.lang.Math.log10;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1295. 统计位数为偶数的数字
-        给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。
+        给你一个整数数组nums，请你返回其中位数为【偶数】的数字的个数。
     示例 1：
         输入：nums = {12, 345, 2, 6, 7896}
         输出：2
@@ -24,7 +25,7 @@ import org.junit.Test;
         输出：1
         解释：只有 1771 是位数为偶数的数字。
 */
-public class NO1295_E_FindNumbers_x2 {
+public class NO1295_E_FindNumbers {
 
     @Test
     public void test() {
@@ -33,8 +34,9 @@ public class NO1295_E_FindNumbers_x2 {
     }
 
     public int findNumbers(int[] nums) {
-        int ans = 0;
-        return ans;
+        // 2024/3/6 NO.1 重点在于理解
+        int evenNums = 0;
+        return evenNums;
     }
 
 }
@@ -52,15 +54,15 @@ public class NO1295_E_FindNumbers_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int findNumbers(int[] nums) {
     int evenNums = 0;
-    for (int num : nums) {
-        if((int)(log10(num) + 1) % 2 == 0 ){
+    for (int num : nums)
+        // 偶数位
+        if ((int)(log10(num)) % 2 != 0 )
             evenNums++;
-        }
-    }
+
     return evenNums;
 }
 
@@ -80,11 +82,10 @@ public int findNumbers(int[] nums) {
 // 方法3：
 public int findNumbers(int[] nums) {
     int ans = 0;
-    for (int val : nums) {
-        if ((call(val) & 1) == 0) {
+    for (int val : nums)
+        if ((call(val) & 1) == 0)
             ans++;
-        }
-    }
+
     return ans;
 }
 

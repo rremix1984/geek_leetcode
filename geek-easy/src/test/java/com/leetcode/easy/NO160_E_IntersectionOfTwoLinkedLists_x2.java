@@ -10,12 +10,13 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [LISTNODE]
+    [LISTNODE]  |
     (简单)
     160. 相交链表
-        给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
+        给你两个单链表的头节点headA和headB，请你找出并返回两个单链表相交的起始节点。
+        如果两个链表不存在相交节点，返回null。
         图示两个链表在节点 c1 开始相交：
-        题目数据 保证 整个链式结构中不存在环。
+        题目数据保证整个链式结构中不存在环。
         注意，函数返回结果后，链表必须 保持其原始结构 。
         自定义评测：
             评测系统 的输入如下（你设计的程序 不适用 此输入）：
@@ -63,6 +64,7 @@ public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
 
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // 2024/3/6 NO.1
         if (headA == null || headB == null)
             return null;
         return null;
@@ -88,7 +90,7 @@ public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
 
 
 
-/**
+/*
 // 方法1：双指针法
 public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     // 定义两个指针, 第一轮让两个到达末尾的节点指向另一个链表的头部,

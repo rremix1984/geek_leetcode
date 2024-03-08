@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1700. 无法吃午餐的学生数量
         学校的自助午餐提供圆形和方形的三明治，分别用数字 0 和 1 表示。
@@ -77,8 +77,8 @@ public class NO1700_E_CountStudents {
 
 
 
-/**
-// 方法2：
+/*
+// 方法 1：
 public int countStudents(int[] students, int[] sandwiches) {
     int[] counts = new int[2];
     for (int num : students)
@@ -94,7 +94,7 @@ public int countStudents(int[] students, int[] sandwiches) {
     return 0;
 }
 
-// 方法1：
+// 方法 2：
 public int countStudents(int[] students, int[] sandwiches) {
     int s1 = Arrays.stream(students).sum();
     int s0 = students.length - s1;

@@ -6,7 +6,7 @@ package com.lcp.soeasy;
 import org.junit.Test;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     (太简单，没意义)
     LCP 06. 拿硬币
@@ -42,6 +42,7 @@ public class LCP_06_E_MinCount {
 
     public int minCount(int[] coins) {
         // 2024/3/4 NO.1
+        // 2024/3/8 NO.2
         int ret = 0;
         return ret;
     }

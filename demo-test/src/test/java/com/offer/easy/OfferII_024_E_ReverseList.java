@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
+    [LISTNODE]  |
     (简单)
     剑指 Offer II 024. 反转链表
         给定单链表的头节点 head ，请反转链表，并返回反转后的链表的头节点。
@@ -20,7 +21,7 @@ import org.junit.Test;
         输入：head = {}
         输出：{}
 */
-public class OfferII_024_E_ReverseList_x2 {
+public class OfferII_024_E_ReverseList {
 
 
     @Test
@@ -36,7 +37,9 @@ public class OfferII_024_E_ReverseList_x2 {
     }
 
     public ListNode reverseList(ListNode head) {
-        return null;
+        // 2024/3/6 NO.1 两种做法
+        ListNode pre = null;
+        return pre;
     }
 
 }
