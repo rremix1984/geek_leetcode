@@ -59,7 +59,8 @@ public class LCP_28_E_PurchasePlans_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int purchasePlans(int[] nums, int target) {
     int ans = 0;
     Arrays.sort(nums);

@@ -8,7 +8,7 @@ import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     (重要,面试题,美团)
     剑指 Offer 42. 连续子数组的最大和
@@ -32,6 +32,8 @@ public class Offer_042_E_MaxSubArray {
     public void test() {
         assert 6 == maxSubArray(
             new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
+        assert 25 == maxSubArray(
+                new int[]{1, 2, 3, -10, -2, 5, 6, 7, -1, 8});
         assert -1 == maxSubArray(
             new int[]{-1});
     }
@@ -39,7 +41,7 @@ public class Offer_042_E_MaxSubArray {
     public int maxSubArray(int[] nums) {
         // 2024/3/4 NO.1 加了比不加还小，就断开了
         // 2024/3/5 NO.2 还是不会，还要复习
-        // 2024/3/8 NO.3
+        // 2024/3/8 NO.3 
         int res = nums[0];
         return res;
     }

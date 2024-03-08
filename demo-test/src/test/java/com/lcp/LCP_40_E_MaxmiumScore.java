@@ -60,7 +60,8 @@ public class LCP_40_E_MaxmiumScore {
 
 
 
-/**
+/*
+// 方法1：
 public int maxmiumScore(int[] cards, int cnt) {
     // 排序
     Arrays.sort(cards);
