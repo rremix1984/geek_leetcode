@@ -5,10 +5,13 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     2164. 对奇偶下标分别排序
         给你一个下标从0开始的整数数组nums。根据下述规则重排nums中的值：
@@ -46,7 +49,8 @@ public class NO2164_E_SortEvenOdd {
 
     public int[] sortEvenOdd(int[] nums) {
         // 2024/3/4 NO.1 小根堆，大根堆，比较难想
-
+        // 2024/3/8 NO.2 做出来了
+        int[] res = new int[nums.length];
         return nums;
     }
 
