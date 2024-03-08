@@ -8,7 +8,7 @@ import static com.leetcode.util.LogUtil.info;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
    （简单）
     746. 使用最小花费爬楼梯
         给你一个整数数组cost，其中cost[i]是从楼梯第i个台阶向上爬需要支付的费用。
@@ -44,7 +44,8 @@ public class NO746_E_MinCostClimbingStairs {
     }
 
     public int minCostClimbingStairs(int[] cost) {
-        // 2024/3/4 NO.1 双指针
+        // 2024/3/4 NO.1
+        // 2024/3/8 NO.2 理解不了
         int cur = 0;
         return cur;
     }
@@ -69,6 +70,7 @@ public class NO746_E_MinCostClimbingStairs {
 public int minCostClimbingStairs(int[] cost) {
     int pre = 0;
     int cur = 0;
+    // 爬下一步的代价，就是上一步的和当前一步的代价
     for (int i = 2; i <= cost.length; i++) {
         int next = min(cur + cost[i - 1],
                 pre + cost[i - 2]);

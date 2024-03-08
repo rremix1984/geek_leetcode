@@ -41,6 +41,7 @@ public class LCP_33_E_StoreWater {
     }
 
     public int storeWater(int[] bucket, int[] vat) {
+        // 2024/3/8 NO.1
         int maxVat = 0;
         for (int v : vat)
             maxVat = max(v, maxVat);
