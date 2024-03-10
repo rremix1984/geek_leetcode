@@ -33,21 +33,7 @@ public class Offer_011_E_MinArray_x2 {
 
     public int minArray(int[] nums) {
         // 2024/3/10 NO.1
-        int n = nums.length;
-        int left = -1;
-        int right = n - 1;
-        // 开区间 (-1, n-1)
-        while (left + 1 < right) {
-            // 开区间不为空
-            int mid = left + (right - left) / 2;
-            if (nums[mid] < nums[n - 1])
-                right = mid;
-            // 蓝色
-            else
-                left = mid;
-            // 红色
-        }
-        return nums[right];
+        return -1;
     }
 
 }
