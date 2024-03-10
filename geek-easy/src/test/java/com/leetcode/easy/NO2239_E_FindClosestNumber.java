@@ -4,13 +4,16 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Math.abs;
+import static java.lang.Math.min;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2239. 找到最接近 0 的数字
-        给你一个长度为 n 的整数数组 nums ，请你返回 nums 中最 接近 0 的数字。
-        如果有多个答案，请你返回它们中的 最大值 。
+        给你一个长度为n的整数数组nums，请你返回nums中最接近0的数字。
+        如果有多个答案，请你返回它们中的最大值。
     示例 1：
         输入：nums = [-4, -2, 1, 4, 8]
         输出：1
@@ -29,13 +32,14 @@ public class NO2239_E_FindClosestNumber {
 
     @Test
     public void test() {
-        assert 1 == findClosestNumber(new int[]{-4, -2, 1, 4, 8});
-        assert 1 == findClosestNumber(new int[]{2, -1, 1});
+        assert  1 == findClosestNumber(new int[]{-4, -2, 1, 4, 8});
+        assert  1 == findClosestNumber(new int[]{2, -1, 1});
+        assert -1 == findClosestNumber(new int[]{2, -1, 3});
     }
 
     public int findClosestNumber(int[] nums) {
-        int res = nums[0];
-        return res;
+        // 2024/3/10 NO.1 还是需要思考一下才能做出来
+        return -1;
     }
 
 }
@@ -53,7 +57,7 @@ public class NO2239_E_FindClosestNumber {
 
 
 
-/**
+/*
 // 方法1：
 public int findClosestNumber(int[] nums) {
     int res = nums[0];

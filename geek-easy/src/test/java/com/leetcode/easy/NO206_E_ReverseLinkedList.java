@@ -9,7 +9,7 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [LINKEDLIST] |
+    [LINKEDLIST] ||
     (简单)
     206. 反转链表
         给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -37,6 +37,7 @@ public class NO206_E_ReverseLinkedList {
 
     public ListNode reverseList(ListNode head) {
         // 2024/3/5 NO.1 要练思路，两种解法
+        // 2024/3/10 NO.2 第一种做出来了，第二种错了
         return null;
     }
 

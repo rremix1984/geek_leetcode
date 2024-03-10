@@ -8,7 +8,7 @@ import static com.leetcode.util.LogUtil.info;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
    （简单）
     746. 使用最小花费爬楼梯
         给你一个整数数组cost，其中cost[i]是从楼梯第i个台阶向上爬需要支付的费用。
@@ -25,12 +25,12 @@ import static java.lang.Math.min;
         输入：cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
         输出：6
         解释：你将从下标为 0 的台阶开始。
-            - 支付 1 ，向上爬两个台阶，到达下标为 2 的台阶。
-            - 支付 1 ，向上爬两个台阶，到达下标为 4 的台阶。
-            - 支付 1 ，向上爬两个台阶，到达下标为 6 的台阶。
-            - 支付 1 ，向上爬一个台阶，到达下标为 7 的台阶。
-            - 支付 1 ，向上爬两个台阶，到达下标为 9 的台阶。
-            - 支付 1 ，向上爬一个台阶，到达楼梯顶部。
+            - 支付 1，向上爬两个台阶，到达下标为 2 的台阶。
+            - 支付 1，向上爬两个台阶，到达下标为 4 的台阶。
+            - 支付 1，向上爬两个台阶，到达下标为 6 的台阶。
+            - 支付 1，向上爬一个台阶，到达下标为 7 的台阶。
+            - 支付 1，向上爬两个台阶，到达下标为 9 的台阶。
+            - 支付 1，向上爬一个台阶，到达楼梯顶部。
             总花费为6。
 */
 public class NO746_E_MinCostClimbingStairs {
@@ -46,6 +46,7 @@ public class NO746_E_MinCostClimbingStairs {
     public int minCostClimbingStairs(int[] cost) {
         // 2024/3/4 NO.1
         // 2024/3/8 NO.2 理解不了
+        // 2024/3/10 NO.3 动态规划dp，肌肉记忆了
         int cur = 0;
         return cur;
     }

@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2144. 打折购买糖果的最小开销
         一家商店正在打折销售糖果。每购买两个糖果，商店会免费送一个糖果。
@@ -16,7 +16,7 @@ import java.util.Arrays;
         比方说，总共有 4 个糖果，价格分别为 1 ，2 ，3 和 4 ，一位顾客买了价格为 2 和 3 的糖果，
         那么他可以免费获得价格为 1 的糖果，但不能获得价格为 4 的糖果。
         给你一个下标从 0 开始的整数数组 cost ，其中 cost[i] 表示第 i 个糖果的价格，
-        请你返回获得 所有 糖果的 最小 总开销。
+        请你返回获得所有糖果的最小总开销。
     示例 1：
         输入：cost = {1, 2, 3}
         输出：5
@@ -49,17 +49,8 @@ public class NO2144_E_MinimumCost {
     }
 
     public int minimumCost(int[] cost) {
+        // 2024/3/10 NO.1 滑动窗口法
         int ret = 0;
-        Arrays.sort(cost);
-        int n = cost.length - 1;
-        while (n >= 2) {
-            ret += cost[n] + cost[n - 1];
-            n -= 3;
-        }
-
-        while (n >= 0)
-            ret += cost[n--];
-
         return ret;
     }
 
@@ -79,7 +70,8 @@ public class NO2144_E_MinimumCost {
 
 
 
-/**
+/*
+// 方法1：
 public int minimumCost(int[] cost) {
     int ret = 0;
     Arrays.sort(cost);

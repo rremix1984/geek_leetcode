@@ -10,13 +10,13 @@ import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Collections.emptyList;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2089. 找出数组排序后的目标下标
-        给你一个下标从 0 开始的整数数组 nums 以及一个目标元素 target 。
-        目标下标 是一个满足 nums[i] == target 的下标 i 。
-        将 nums 按 非递减 顺序排序后，返回由 nums 中目标下标组成的列表。
-        如果不存在目标下标，返回一个 空 列表。返回的列表必须按 递增 顺序排列。
+        给你一个下标从0开始的整数数组nums以及一个目标元素target。
+        目标下标是一个满足nums[i] == target的下标i。
+        将nums按【非递减】顺序排序后，返回由nums中目标下标组成的列表。
+        如果不存在目标下标，返回一个【空】列表。返回的列表必须按【递增】顺序排列。
     示例 1：
         输入：nums = {1, 2, 5, 2, 3},  target = 2
         输出：{1, 2}
@@ -52,6 +52,7 @@ public class NO2089_E_TargetIndices {
     }
 
     public List<Integer> targetIndices(int[] nums, int target) {
+        // 2024/3/10 NO.1
         List<Integer> res = new ArrayList<>();
         return res;
     }
@@ -73,7 +74,8 @@ public class NO2089_E_TargetIndices {
 
 
 
-/**
+/*
+// 方法1：
 public List<Integer> targetIndices(int[] nums, int target) {
     List<Integer> res = new ArrayList<>();
 

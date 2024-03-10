@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2078. 两栋颜色不同且距离最远的房子
         街上有n栋房子整齐地排成一列，每栋房子都粉刷上了漂亮的颜色。
@@ -46,6 +46,7 @@ public class NO2078_E_MaxDistance {
     }
 
     public int maxDistance(int[] colors) {
+        // 2024/3/9 NO.1
         int ans1 = 0;
         int ans2 = 0;
         // 从后向前找，计算距离开始位置最远的答案
@@ -85,7 +86,7 @@ public class NO2078_E_MaxDistance {
 
 
 
-/**
+/*
 // 方法1：
 public int maxDistance(int[] colors) {
     int ans1 = 0;

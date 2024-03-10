@@ -4,12 +4,16 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
+import static java.lang.Math.*;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2148. 元素计数
-        给你一个整数数组 nums ，统计并返回在 nums 中同时至少具有一个严格较小元素和一个严格较大元素的元素数目。
+        给你一个整数数组nums，统计并返回在nums中
+        【同时】至少具有一个【严格较小元素】和一个【严格较大元素】的元素数目。
     示例 1：
         输入：nums = {11, 7, 2, 15}
         输出：2
@@ -31,6 +35,7 @@ public class NO2148_E_CountElements {
     }
 
     public int countElements(int[] nums) {
+        // 2024/3/10 NO.1 深度思考就能解决
         int ans = 0;
         return ans;
     }
@@ -51,7 +56,7 @@ public class NO2148_E_CountElements {
 
 
 
-/**
+/*
 // 方法1：
 public int countElements(int[] nums) {
     int ans = 0;
@@ -63,6 +68,7 @@ public int countElements(int[] nums) {
         max = max(max, num);
         min = min(min, num);
     }
+
     for (int num : nums)
         if (num > min && num < max)
             ans++;

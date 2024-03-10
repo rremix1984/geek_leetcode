@@ -4,16 +4,15 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1800. 最大升序子数组和
         给你一个正整数组成的数组nums，返回nums中一个【升序】子数组的最大可能元素和。
         子数组是数组中的一个【连续】数字序列。
-        已知子数组 [numsl, numsl+1, ..., numsr-1, numsr]，若对所有 i（l <= i < r），
+        已知子数组 [numsl, numsl + 1, ..., numsr - 1, numsr]，若对所有 i（l <= i < r），
         numsi<numsi+1都成立，则称这一子数组为【升序子数组】。
         注意，大小为1的子数组也视作升序子数组。
     示例 1：
@@ -48,8 +47,9 @@ public class NO1800_E_MaxAscendingSum {
 
     public int maxAscendingSum(int[] nums) {
         // 2024/3/8 NO.1 不会做
-        int res = 0;
-        return res;
+        // 2024/3/10 NO.2 看懂了
+        int max = 0;
+        return max;
     }
 
 }
@@ -69,15 +69,15 @@ public class NO1800_E_MaxAscendingSum {
 /*
 // 方法1：
 public int maxAscendingSum(int[] nums) {
-    int res = 0;
+    int max = 0;
     int idx = 0;
     while (idx < nums.length) {
-        int cur = nums[idx++];
+        int sum = nums[idx++];
         while (idx < nums.length && nums[idx] > nums[idx - 1])
-            cur += nums[idx++];
+            sum += nums[idx++];
 
-        res = Math.max(res, cur);
+        max = max(max, sum);
     }
-    return res;
+    return max;
 }
 */

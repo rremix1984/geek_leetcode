@@ -6,14 +6,15 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
-    2210. 统计数组中峰和谷的数量
-         给你一个下标从0开始的整数数组nums。如果两侧距i最近的不相等邻居的值均小于nums[i] ，
-         则下标i是nums中，某个峰的一部分。类似地，如果两侧距i最近的不相等邻居的值均大于nums[i]，
-         则下标i是nums中某个谷的一部分。对于相邻下标i和j，如果nums[i]==nums[j]，
-         则认为这两下标属于同一个峰或谷。
-         注意，要使某个下标所做峰或谷的一部分，那么它左右两侧必须 都 存在不相等邻居。
+    2210. 统计数组中【峰】和【谷】的数量
+         给你一个下标从0开始的整数数组nums。
+          1）如果两侧距i最近的不相等邻居的值均小于nums[i]，则下标i是nums中，某个峰的一部分。
+            类似地，
+          2）如果两侧距i最近的不相等邻居的值均大于nums[i]，则下标i是nums中某个谷的一部分。
+          3）对于相邻下标i和j，如果nums[i]==nums[j]，则认为这两下标属于同一个峰或谷。
+         注意，要使某个下标所做峰或谷的一部分，那么它左右两侧必须都存在不相等邻居。
          返回 nums 中峰和谷的数量。
     示例 1：
         输入：nums = {2, 4, 1, 1, 6, 5}
@@ -45,23 +46,8 @@ public class NO2210_E_CountHillValley {
     }
 
     public int countHillValley(int[] nums) {
+        // 2024/3/10 NO.1 看懂了，不会做
         int res = 0;
-        int j = 0;
-        for (int i = 1; i < nums.length - 1; i++) {
-            if (nums[i] == nums[i + 1])
-                continue;
-
-            // 峰
-            if (nums[i] > nums[j] && nums[i] > nums[i + 1])
-                res++;
-
-            // 谷
-            if (nums[i] < nums[j] && nums[i] < nums[i + 1])
-                res++;
-
-            // 跳过谷、峰
-            j = i;
-        }
         return res;
     }
 
@@ -79,7 +65,7 @@ public class NO2210_E_CountHillValley {
 
 
 
-/**
+/*
 // 方法1：
 public int countHillValley(int[] nums) {
     int res = 0;

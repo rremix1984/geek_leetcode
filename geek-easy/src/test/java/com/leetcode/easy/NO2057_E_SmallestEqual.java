@@ -6,8 +6,9 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
+    (太简单没意义)
     2057. 值相等的最小索引
         给你一个下标从0开始的整数数组nums，
         返回nums中满足i % 10 == nums[i]的最小下标i；
@@ -23,10 +24,10 @@ import org.junit.Test;
     示例 2：
         输入：nums = [4, 3, 2, 1]
         输出：2
-        解释：i=0: 0 mod 10 = 0 != nums[0].
-             i=1: 1 mod 10 = 1 != nums[1].
-             i=2: 2 mod 10 = 2 == nums[2].
-             i=3: 3 mod 10 = 3 != nums[3].
+        解释：i = 0: 0 mod 10 = 0 != nums[0].
+             i = 1: 1 mod 10 = 1 != nums[1].
+             i = 2: 2 mod 10 = 2 == nums[2].
+             i = 3: 3 mod 10 = 3 != nums[3].
              2 唯一一个满足 i mod 10 == nums[i] 的下标
     示例 3：
         输入：nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
@@ -48,6 +49,7 @@ public class NO2057_E_SmallestEqual {
     }
 
     public int smallestEqual(int[] nums) {
+        // 2024/3/9 NO.1
         return -1;
     }
 

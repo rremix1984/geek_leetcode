@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] ||
     (简单)
     1995. 统计特殊四元组
         给你一个下标从0开始的整数数组nums，返回满足下述条件的
@@ -24,10 +24,10 @@ import org.junit.Test;
         输入：nums = [1, 1, 1, 3, 5]
         输出：4
         解释：满足要求的 4 个四元组如下：
-        - (0, 1, 2, 3): 1 + 1 + 1 == 3
-        - (0, 1, 3, 4): 1 + 1 + 3 == 5
-        - (0, 2, 3, 4): 1 + 1 + 3 == 5
-        - (1, 2, 3, 4): 1 + 1 + 3 == 5
+            - (0, 1, 2, 3): 1 + 1 + 1 == 3
+            - (0, 1, 3, 4): 1 + 1 + 3 == 5
+            - (0, 2, 3, 4): 1 + 1 + 3 == 5
+            - (1, 2, 3, 4): 1 + 1 + 3 == 5
 */
 public class NO1995_E_CountQuadruplets {
 
@@ -39,7 +39,9 @@ public class NO1995_E_CountQuadruplets {
     }
 
     public int countQuadruplets(int[] nums) {
+        // 2024/3/10 NO.2
         int ans = 0;
+
         return ans;
     }
 
@@ -60,7 +62,7 @@ public class NO1995_E_CountQuadruplets {
 
 
 
-/**
+/*
 // 方法1：暴力破解
 public int countQuadruplets(int[] nums) {
     int ans = 0;

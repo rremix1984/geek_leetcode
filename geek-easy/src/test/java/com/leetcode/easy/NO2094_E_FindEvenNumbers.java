@@ -7,17 +7,20 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import static com.leetcode.util.SystemUtil.arraysAllMatch;
+import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     2094. 找出3位偶数
-        给你一个整数数组 digits ，其中每个元素是一个数字（0 - 9）。数组中可能存在重复元素。
-        你需要找出 所有 满足下述条件且 互不相同 的整数：
-            该整数由 digits 中的三个元素按 任意 顺序 依次连接 组成。
-            该整数不含 前导零
-            该整数是一个 偶数
+        给你一个整数数组digits，其中每个元素是一个数字（0-9）。数组中可能存在重复元素。
+        你需要找出所有满足下述条件且互不相同的整数：
+          1）该整数由digits中的三个元素按任意顺序依次连接组成。
+          2）该整数不含前导零
+          3）该整数是一个偶数
         例如，给定的 digits 是 [1, 2, 3] ，整数 132 和 312 满足上面列出的全部条件。
         将找出的所有互不相同的整数按 递增顺序 排列，并以数组形式返回。
     示例 1：
@@ -42,35 +45,17 @@ public class NO2094_E_FindEvenNumbers {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{102, 120, 130, 132, 210, 230, 302, 310, 312, 320},
+        assert arraysAllMatch(new int[]{102, 120, 130, 132, 210, 230, 302, 310, 312, 320},
                 findEvenNumbers(new int[]{2, 1, 3, 0}));
-        assertArrayEquals(new int[]{222, 228, 282, 288, 822, 828, 882},
+        assert arraysAllMatch(new int[]{222, 228, 282, 288, 822, 828, 882},
                 findEvenNumbers(new int[]{2, 2, 8, 8, 2}));
-        assertArrayEquals(new int[]{},
+        assert arraysAllMatch(new int[]{},
                 findEvenNumbers(new int[]{3, 7, 5}));
     }
 
     public int[] findEvenNumbers(int[] digits) {
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < digits.length; i++)
-            for (int j = 0; j < digits.length; j++)
-                for (int k = 0; k < digits.length; k++)
-                    if (i != j && i != k && k != j && digits[i] != 0) {
-                        // 累计和
-                        int tempAns = digits[i] * 100 + digits[j] * 10 + digits[k];
-
-                        // 是偶数就行
-                        if (tempAns % 2 == 0)
-                            set.add(tempAns);
-                    }
-
-        int index = 0;
-        int[] ans = new int[set.size()];
-        for (int i : set)
-            ans[index++] = i;
-
-        Arrays.sort(ans);
-        return ans;
+        // 2024/3/10 NO.1
+        return null;
     }
 
 }
@@ -137,5 +122,24 @@ public int[] findEvenNumbers(int[] digits) {
 
     Arrays.sort(res);
     return res;
+}
+
+// 方法2：同1，最后优化了一点
+public int[] findEvenNumbers(int[] digits) {
+    // 2024/3/10 NO.1
+    Set<Integer> set = new HashSet<>();
+    for (int i = 0; i < digits.length; i++)
+        for (int j = 0; j < digits.length; j++)
+            for (int k = 0; k < digits.length; k++)
+                if (i != j && i != k && k != j && digits[i] != 0) {
+                    // 累计和
+                    int tempAns = digits[i] * 100 + digits[j] * 10 + digits[k];
+
+                    // 是偶数就行
+                    if (digits[k] % 2 == 0)
+                        set.add(tempAns);
+                }
+
+    return set.stream().mapToInt(a->a).toArray();
 }
 */

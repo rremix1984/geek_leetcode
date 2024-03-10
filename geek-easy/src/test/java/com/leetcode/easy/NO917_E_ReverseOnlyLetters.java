@@ -10,13 +10,13 @@ import static java.lang.Character.isLetter;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [STRING] |
+    [STRING] ||
     （简单）
     917. 仅仅反转字母
         给你一个字符串s，根据下述规则反转字符串：
          1）所有非英文字母保留在原有位置。
          2）所有英文字母（小写或大写）位置反转。
-        返回反转后的 s 。
+        返回反转后的s。
     示例 1：
         输入：s = "ab-cd"
         输出："dc-ba"
@@ -41,6 +41,7 @@ public class NO917_E_ReverseOnlyLetters {
 
     public String reverseOnlyLetters(String s) {
         // 2024/3/4 NO.1
+        // 2024/3/9 NO.2
         char[] arr = s.toCharArray();
         return new String(arr);
     }
@@ -61,7 +62,7 @@ public class NO917_E_ReverseOnlyLetters {
 
 
 
-/**
+/*
 // 方法1：
 public String reverseOnlyLetters(String s) {
     char[] arr = s.toCharArray();
@@ -69,11 +70,11 @@ public String reverseOnlyLetters(String s) {
     int right = s.length() - 1;
     while (true) {
         // 判断左边是否扫描到字母
-        while (left < right && !Character.isLetter(s.charAt(left)))
+        while (left < right && !isLetter(s.charAt(left)))
             left++;
 
         // 判断右边是否扫描到字母
-        while (right > left && !Character.isLetter(s.charAt(right)))
+        while (right > left && !isLetter(s.charAt(right)))
             right--;
 
         if (left >= right)
