@@ -10,7 +10,7 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     347. 前K个高频元素
         给你一个整数数组nums和一个整数k，请你返回其中出现频率前k高的元素。
@@ -36,6 +36,7 @@ public class NO347_N_TopKFrequentElements {
     public int[] topKFrequent(int[] nums, int k) {
         // 2024/3/4 NO.1
         // 2024/3/8 NO.2 用哈希表记录出现频率
+        // 2024/3/10 NO.3
         int[] ans = new int[k];
         return ans;
     }
