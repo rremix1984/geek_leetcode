@@ -4,10 +4,11 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import static java.lang.Math.max;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1629. 按键持续时间最长的键
         LeetCode 设计了一款新式键盘，正在测试其可用性。测试人员将会点击一系列键（总计 n 个），每次一个。
@@ -39,15 +40,18 @@ import static org.junit.Assert.assertEquals;
              按下 'a' ，持续时间 62 - 46 = 16
              按键持续时间最长的键是 'a' ，持续时间 16
 */
-public class NO1629_E_SlowestKey_x2 {
+public class NO1629_E_SlowestKey {
 
     @Test
     public void test() {
-        assertEquals('c', slowestKey(new int[]{9, 29, 49, 50}, "cbcd"));
-        assertEquals('a', slowestKey(new int[]{12, 23, 36, 46, 62}, "spuda"));
+        assertEquals('c', slowestKey(
+                new int[]{9, 29, 49, 50}, "cbcd"));
+        assertEquals('a', slowestKey(
+                new int[]{12, 23, 36, 46, 62}, "spuda"));
     }
 
     public char slowestKey(int[] releaseTimes, String keysPressed) {
+        // 2024/3/11 NO.1 需要复习
         char ans = keysPressed.charAt(0);
         return ans;
     }
@@ -78,7 +82,8 @@ public char slowestKey(int[] releaseTimes, String keysPressed) {
     for (int i = 1; i < releaseTimes.length; i++) {
         // 请返回【单次】按键持续时间最长的键，只看一次按键
         int cost = releaseTimes[i] - releaseTimes[i - 1];
-        if (cost > max || (cost == max && keysPressed.charAt(i) > ans)) {
+        if (cost > max  // 比较最长的时间
+        || (cost == max && keysPressed.charAt(i) > ans)) { // 时间相等的时候，看哪个字符更大
             ans = keysPressed.charAt(i);
             max = cost;
         }

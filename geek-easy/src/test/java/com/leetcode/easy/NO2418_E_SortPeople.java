@@ -10,12 +10,12 @@ import static org.junit.Assert.assertArrayEquals;
 
 /**
     [STRING]
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
     2418. 按身高排序
         给你一个字符串数组names，和一个由互不相同的正整数组成的数组heights。
-        两个数组的长度均为n。
-        对于每个下标 i，names[i]和heights[i]表示第i个人的名字和身高。
+        两个数组的长度均为n。对于每个下标 i，names[i]和heights[i]表示
+        第i个人的名字和身高。
         请按身高【降序】顺序返回对应的名字数组names。
     示例 1：
         输入：names = {"Mary", "John", "Emma"},
@@ -43,6 +43,7 @@ public class NO2418_E_SortPeople {
     public String[] sortPeople(String[] names, int[] heights) {
         // 2024/3/4 NO.1 没做出来
         // 2024/3/8 NO.2
+        // 2024/3/10 NO.3 没做出来，需要深刻理解原理
         return names;
     }
 

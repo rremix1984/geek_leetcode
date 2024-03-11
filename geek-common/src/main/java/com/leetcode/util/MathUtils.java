@@ -15,6 +15,9 @@ import static java.util.Arrays.copyOf;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MathUtils {
 
+    public static final Integer MAX = Integer.MAX_VALUE;
+    public static final Integer MIN = Integer.MIN_VALUE;
+
     /**
      * 三个值取最大
      */
@@ -200,6 +203,12 @@ public class MathUtils {
             res.add(new ArrayList<>(inner));
         }
         return res;
+    }
+
+    public static List<Integer> getLinkedList(int num) {
+        List<Integer> l1 = new LinkedList<>();
+        l1.add(num);
+        return l1;
     }
 
     public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {

@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
     2016. 增量元素之间的最大差值
         给你一个下标从0开始的整数数组nums, 该数组的大小为n，
@@ -41,6 +41,7 @@ public class NO2016_E_MaximumDifference {
     public int maximumDifference(int[] nums) {
         // 2024/3/4 NO.1
         // 2024/3/8 NO.2 还是不会
+        // 2024/3/10 NO.3
         int ans = -1;
         return ans;
     }

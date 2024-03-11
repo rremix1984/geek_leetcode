@@ -7,11 +7,13 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.MathUtils.getArray;
 import static java.lang.Integer.MAX_VALUE;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1200. 最小绝对差
         给你个整数数组arr，其中每个元素都不相同。
@@ -44,6 +46,7 @@ public class NO1200_E_MinimumAbsDifference {
 
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         // 2024/3/6 NO.1 不会做
+        // 2024/3/10 NO.2
         List<List<Integer>> ans = new ArrayList<>();
         return ans;
     }
@@ -71,10 +74,9 @@ public class NO1200_E_MinimumAbsDifference {
 /*
 // 方法1：
 public List<List<Integer>> minimumAbsDifference(int[] arr) {
-    Arrays.sort(arr);
-    int min = Integer.MAX_VALUE;
-
     List<List<Integer>> ans = new ArrayList<>();
+    Arrays.sort(arr);
+    int min = MAX_VALUE;
     for (int i = 1; i < arr.length; i++) {
         int cur = arr[i] - arr[i - 1];
         if (min < cur) {
@@ -83,10 +85,7 @@ public List<List<Integer>> minimumAbsDifference(int[] arr) {
             min = cur;
             ans.clear();
         }
-        List<Integer> tmp = new ArrayList<>();
-        tmp.add(arr[i - 1]);
-        tmp.add(arr[i]);
-        ans.add(tmp);
+        ans.add(getArray(arr[i - 1], arr[i]));
     }
     return ans;
 }

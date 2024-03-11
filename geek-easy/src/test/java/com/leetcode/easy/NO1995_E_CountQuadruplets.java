@@ -5,6 +5,9 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
     [ARRAY] ||
     (简单)
@@ -40,12 +43,19 @@ public class NO1995_E_CountQuadruplets {
 
     public int countQuadruplets(int[] nums) {
         // 2024/3/10 NO.2
+        Map<Integer, Integer> cnts = new HashMap<>();
         int ans = 0;
-
+        for (int i = 1; i < nums.length - 2; i++) {
+            for (int j = 0; j < i; j++)
+                cnts.put(nums[i] + nums[j], cnts.getOrDefault(nums[i] + nums[j], 0) + 1);
+            for (int j = i + 2; j < nums.length; j++)
+                if (cnts.containsKey(nums[j] - nums[i + 1]))
+                    ans += cnts.get(nums[j] - nums[i + 1]);
+        }
         return ans;
     }
-
 }
+
 
 
 
