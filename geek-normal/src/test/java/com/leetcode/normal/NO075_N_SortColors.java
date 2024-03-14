@@ -4,11 +4,14 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
+import java.util.Arrays;
+import static com.leetcode.util.SwapUtil.swap;
+import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
-    (中等)
+    [ARRAY] |
+    (中等,面试题)
     75. 颜色分类
         给定一个包含红色、白色和蓝色、共n个元素的数组nums，
         原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
@@ -51,7 +54,7 @@ import static org.junit.Assert.assertArrayEquals;
         如果nums[i]为0，那么对应着第一种情况；
         如果nums[i]为1，那么就不需要进行任何后续的操作。
 */
-public class NO075_N_SortColors_x2 {
+public class NO075_N_SortColors {
 
     @Test
     public void test() {
@@ -73,7 +76,7 @@ public class NO075_N_SortColors_x2 {
 
     // 方法3：
     public void sortColors(int[] nums) {
-
+        // 2024/3/13 NO.1 双指针法,典型题，有点意思
     }
 
 }
@@ -94,7 +97,7 @@ public class NO075_N_SortColors_x2 {
 
 
 /*
-// 方法2：
+// 方法1：
 public void sortColors(int[] nums) {
     int p0 = 0;
     int p1 = 0;
@@ -112,7 +115,7 @@ public void sortColors(int[] nums) {
     }
 }
 
-// 方法3：
+// 方法2：
 public void sortColors(int[] nums) {
     int p0 = 0;
     int p2 = nums.length - 1;

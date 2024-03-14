@@ -6,9 +6,9 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     （中等）
-    33. 搜索旋转排序数组
+    NO.33 搜索旋转排序数组
         整数数组 nums 按升序排列，数组中的值 互不相同 。
         在传递给函数之前，nums 在预先未知的某个下标 k（0 <= k < nums.length）
         上进行了 旋转，使数组变为 [nums[k], nums[k+1], ..., nums[n-1],
@@ -27,7 +27,7 @@ import org.junit.Test;
         输入：nums = [1], target = 0
         输出：-1
 */
-public class NO033_N_SearchInRotatedSortedArray_x2 {
+public class NO033_N_SearchInRotatedSortedArray {
 
     @Test
     public void test() {
@@ -37,8 +37,11 @@ public class NO033_N_SearchInRotatedSortedArray_x2 {
     }
 
     public int search(int[] nums, int target) {
+        // 2024/3/12 NO.1 二分查找法
+
         return -1;
     }
+
 }
 
 
@@ -58,12 +61,14 @@ public class NO033_N_SearchInRotatedSortedArray_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int search(int[] nums, int target) {
     int lo = 0;
     int hi = nums.length - 1;
     while (lo < hi) {
-        int mid = lo + (hi - lo) / 2;
+        int mid = (lo + hi) >> 1;
+        // 这个逻辑最难想
         if (nums[0] <= nums[mid] && (nums[0] > target || nums[mid] < target))
             lo = mid + 1;
         else if (nums[0] > target && nums[mid] < target)

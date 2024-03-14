@@ -8,9 +8,9 @@ import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
-    (重要,面试题,美团)
+    (重要,面试）
     剑指 Offer 42. 连续子数组的最大和
         输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。
         求所有子数组的和的最大值。
@@ -25,6 +25,7 @@ import static java.lang.Math.max;
         输出: 6
         解释: 连续子数组 [4, -1, 2, 1] 的和最大，为 6。
     Related Topics:数组,
+
 */
 public class Offer_042_E_MaxSubArray {
 
@@ -39,10 +40,16 @@ public class Offer_042_E_MaxSubArray {
     }
 
     public int maxSubArray(int[] nums) {
-        // 2024/3/4 NO.1 加了比不加还小，就断开了
-        // 2024/3/5 NO.2 还是不会，还要复习
-        // 2024/3/8 NO.3 
+        // 2024/3/4  NO.1 加了比不加还小，就断开了
+        // 2024/3/5  NO.2 还是不会，还要复习
+        // 2024/3/8  NO.3
+        // 2024/3/14 NO.4 不能一遍过
         int res = nums[0];
+        int tmp = 0;
+        for (int num : nums) {
+            tmp = max(tmp + num, num);
+            res = max(res, tmp);
+        }
         return res;
     }
 

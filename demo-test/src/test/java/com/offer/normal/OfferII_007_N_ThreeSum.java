@@ -7,12 +7,14 @@ import org.junit.Test;
 import java.util.*;
 
 import static com.leetcode.util.MathUtils.getArray;
+import static java.util.Arrays.asList;
 
 /**
+    [ARRAY] |
     (中等)
     剑指 Offer II 007. 数组中和为 0 的三个数
-        给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足
-        i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
+        给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]]
+        满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
         你返回所有和为 0 且不重复的三元组。
         注意：答案中不可以包含重复的三元组。
     示例 1：
@@ -24,15 +26,15 @@ import static com.leetcode.util.MathUtils.getArray;
              不同的三元组是 [-1,0,1] 和 [-1,-1,2] 。
              注意，输出的顺序和三元组的顺序并不重要。
     示例 2：
-        输入：nums = [0,1,1]
+        输入：nums = [0, 1, 1]
         输出：[]
         解释：唯一可能的三元组和不为 0 。
     示例 3：
-        输入：nums = [0,0,0]
-        输出：[[0,0,0]]
+        输入：nums = [0, 0, 0]
+        输出：[[0, 0, 0]]
         解释：唯一可能的三元组和为 0 。
 */
-public class OfferII_007_N_ThreeSum_x2 {
+public class OfferII_007_N_ThreeSum {
 
     @Test
     public void test() {
@@ -48,6 +50,7 @@ public class OfferII_007_N_ThreeSum_x2 {
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
+        // 2024/3/13 NO.1 先定住一个，再看其他三个
         List<List<Integer>> ans = new ArrayList<>();
         return ans;
     }
@@ -74,7 +77,7 @@ public class OfferII_007_N_ThreeSum_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<List<Integer>> threeSum(int[] nums) {
     int n = nums.length;
@@ -83,6 +86,7 @@ public List<List<Integer>> threeSum(int[] nums) {
     // 枚举 a
     for (int first = 0; first < n; ++first) {
         // 需要和上一次枚举的数不相同
+        // 审题：满足 i != j、i != k 且 j != k
         if (first > 0 && nums[first] == nums[first - 1]) {
             continue;
         }
@@ -126,6 +130,7 @@ public List<List<Integer>> threeSum(int[] nums) {
     for (int i = 0; i < n; i++) {
 
         // 如果前后两个元素相同，就不用判断了，跳过
+        // 题目要求满足 i != j、i != k 且 j != k
         if (i > 0 && nums[i] == nums[i - 1])
             continue;
 
@@ -150,7 +155,7 @@ public List<List<Integer>> threeSum(int[] nums) {
             // 三数求和
             int sum = nums[i] + nums[j] + nums[k];
             if (sum == 0) {
-                ans.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                ans.add(asList(nums[i], nums[j], nums[k]));
                 j++;
             } else if (sum > 0) {
                 k--;

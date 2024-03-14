@@ -3,12 +3,12 @@
  */
 package com.leetcode.easy;
 
-import com.leetcode.util.MathUtils;
 import com.leetcode.util.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
@@ -16,39 +16,41 @@ import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREE]
+    [TREE] |
     (简单)
-    94. 二叉树的中序遍历
+    NO.94 二叉树的中序遍历
     给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。
     示例 1：
         输入：root = [1, null, 2, 3]
         输出：[1, 3, 2]
 */
-public class NO094_E_InorderTraversal_x6 {
+public class NO094_E_InorderTraversal {
 
     @Test
     public void test() {
-//        assertEquals(getArray(1, 3, 2),
-//                inorderTraversal(cTree(1, null, 2, null, null, 3)));
-        Assert.assertEquals(getArray(3, 9, 12, 11, 10),
+        assertEquals(getArray(1, 3, 2),
+                inorderTraversal(cTree( 1,
+                                        null,     2,
+                                    null, null, 3)));
+        assertEquals(getArray(3, 9, 12, 11, 10),
                 inorderTraversal(new TreeNode(3,
                             null, new TreeNode(9,
                                     null, new TreeNode(10,
                                         new TreeNode(11,
-                                new TreeNode(12)))))));// [3, 9, 12, 11, 10]
-//        assertEquals(getArray(9, 3, 15, 20, 7),
-//                inorderTraversal(new TreeNode(3,
-//                            9, new TreeNode(20,
-//                                        15, 7))));// [9, 3, 15, 20, 7]
-//        assertEquals(getArray(0),
-//                inorderTraversal(new TreeNode()));// []
-//        assertEquals(getArray(1),
-//                inorderTraversal(new TreeNode(1)));// [1]
+                                new TreeNode(12)))))));
+        assertEquals(getArray(9, 3, 15, 20, 7),
+                inorderTraversal(new TreeNode(3,
+                            9, new TreeNode(20,
+                                        15, 7))));
+        assertEquals(getArray(0),
+                inorderTraversal(new TreeNode()));
+        assertEquals(getArray(1),
+                inorderTraversal(new TreeNode(1)));
     }
 
-    List<Integer> res = new ArrayList<>();
-
     public List<Integer> inorderTraversal(TreeNode root) {
+        // 2024/3/12 NO.1
+        List<Integer> res = new ArrayList<>();
         return res;
     }
 
@@ -64,7 +66,8 @@ public class NO094_E_InorderTraversal_x6 {
 
 
 
-/**
+/*
+// 方法1：
 public List<Integer> inorderTraversal(TreeNode root) {
     List<Integer> res = new ArrayList<>();
     if (root == null)

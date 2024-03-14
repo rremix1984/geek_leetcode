@@ -12,7 +12,7 @@ import static com.leetcode.util.SystemUtil.arrayAllMatch;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     784. 字母大小写全排列
         给定一个字符串s，通过将字符串s中的每个字母转变大小写，我们可以获得一个新的字符串。
@@ -40,6 +40,7 @@ public class NO784_N_LetterCasePermutation {
     public List<String> letterCasePermutation(String s) {
         // 2024/2/24 NO.3
         // 2024/3/10 NO.4 不会做，但是看懂了
+        // 2024/3/14 NO.5 还是没做出来
         List<String> ans = new ArrayList<>();
         return ans;
     }
@@ -90,18 +91,18 @@ public List<String> letterCasePermutation(String s) {
 // 方法2：
 public List<String> letterCasePermutation(String s) {
     List<String> ans = new ArrayList<>();
-    dfs(s.toCharArray(), 0, ans);
-    return ans;
-}
+        dfs(ans, s.toCharArray(), 0);
+        return ans;
+    }
 
-public void dfs(char[] arr, int pos, List<String> ans) {
+public void dfs(List<String> ans, char[] arr, int pos) {
     // 1. 先跳过所有的数字
     while (pos < arr.length && isDigit(arr[pos]))
         pos++;
 
     // 2. 如果已遍历完了，就把arr加到最终结果集上，并返回
     if (pos == arr.length) {
-        res.add(new String(arr));
+        ans.add(new String(arr));
         return;
     }
 
@@ -110,11 +111,11 @@ public void dfs(char[] arr, int pos, List<String> ans) {
     // 'A' ^ 32 == 'a'
     arr[pos] ^= 32;
     // 3. 先变换大小写，位置往后走一个，然后传入下一层
-    dfs(arr, pos + 1, ans);
+    dfs(ans, arr, pos + 1);
 
     // 再次异或相当于 减法
     arr[pos] ^= 32;
     // 4. 还原回去，位置往后走一个，再传入下一层
-    dfs(arr, pos + 1, ans);
+    dfs(ans, arr, pos + 1);
 }
 */

@@ -1,9 +1,6 @@
 package com.leetcode.util;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class SystemUtil {
 
@@ -13,6 +10,12 @@ public class SystemUtil {
     public static void printArr(int[] arr) {
         for (int i : arr)
             System.out.printf("%d\t", i);
+        System.out.println();
+    }
+
+    public static void printArr(boolean[] arr) {
+        for (boolean i : arr)
+            System.out.printf("%b\t", i);
         System.out.println();
     }
 
@@ -26,7 +29,38 @@ public class SystemUtil {
     }
 
     public static boolean arrayAllMatch(List source, List target) {
-        return new HashSet<>(source).containsAll(target);
+        return new HashSet<>(source).containsAll(target)
+                && target.containsAll(new HashSet<>(source));
+    }
+
+    public static ArrayList<ArrayList<Integer>> getArrayList(int[][] ints) {
+        // 检查输入数组是否为 null 或空，以处理边界条件
+        if (ints == null || ints.length == 0)
+            return new ArrayList<>();
+
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        for (int[] anInt : ints) {
+            // 使用泛型提升类型安全
+            ArrayList<Integer> inner = new ArrayList<>();
+            for (int i : anInt)
+                inner.add(i);
+
+            list.add(inner);
+        }
+        return list;
+    }
+
+    public static void printArrays(List<List<Integer>> lists) {
+        for (List<Integer> list : lists) {
+            printArray(list);
+        }
+    }
+
+    public static void printArray(List<Integer> list) {
+        for (Integer integer : list) {
+            System.out.printf("%d\t", integer);
+        }
+        System.out.println();
     }
 
     public static void printArr(String[] arr) {

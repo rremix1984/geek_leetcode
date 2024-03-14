@@ -5,7 +5,7 @@ import static com.leetcode.util.MathUtils.getArrays;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     （简单）
     NO.2460 对数组执行操作
     给你一个下标从 0 开始的数组 nums ，数组大小为 n ，且由 非负 整数组成。
@@ -20,19 +20,18 @@ import static org.junit.Assert.assertArrayEquals;
         输入：nums = [1,2,2,1,1,0]
         输出：[1,4,2,0,0,0]
         解释：执行以下操作：
-                - i = 0: nums[0] 和 nums[1] 不相等，跳过这步操作。
-                - i = 1: nums[1] 和 nums[2] 相等，nums[1] 的值变成原来的 2 倍，nums[2] 的值变成 0 。数组变成 [1,4,0,1,1,0] 。
-                - i = 2: nums[2] 和 nums[3] 不相等，所以跳过这步操作。
-                - i = 3: nums[3] 和 nums[4] 相等，nums[3] 的值变成原来的 2 倍，nums[4] 的值变成 0 。数组变成 [1,4,0,2,0,0] 。
-                - i = 4: nums[4] 和 nums[5] 相等，nums[4] 的值变成原来的 2 倍，nums[5] 的值变成 0 。数组变成 [1,4,0,2,0,0] 。
+            - i = 0: nums[0] 和 nums[1] 不相等，跳过这步操作。
+            - i = 1: nums[1] 和 nums[2] 相等，nums[1] 的值变成原来的 2 倍，nums[2] 的值变成 0 。数组变成 [1,4,0,1,1,0] 。
+            - i = 2: nums[2] 和 nums[3] 不相等，所以跳过这步操作。
+            - i = 3: nums[3] 和 nums[4] 相等，nums[3] 的值变成原来的 2 倍，nums[4] 的值变成 0 。数组变成 [1,4,0,2,0,0] 。
+            - i = 4: nums[4] 和 nums[5] 相等，nums[4] 的值变成原来的 2 倍，nums[5] 的值变成 0 。数组变成 [1,4,0,2,0,0] 。
         执行完所有操作后，将 0 全部移动到数组末尾，得到结果数组 [1,4,2,0,0,0] 。
     示例 2：
         输入：nums = [0,1]
         输出：[1,0]
         解释：无法执行任何操作，只需要将 0 移动到末尾。
-        提示：
-            2 <= nums.length <= 2000
-            0 <= nums[i] <= 1000
+        提示：2 <= nums.length <= 2000
+             0 <= nums[i] <= 1000
     Related Topics：数组，模拟
 */
 public class NO2460_E_ApplyOperations {
@@ -48,22 +47,8 @@ public class NO2460_E_ApplyOperations {
     }
 
     public int[] applyOperations(int[] nums) {
-        int p = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > 0) {
-                if (i + 1 < nums.length && nums[i] == nums[i + 1]) {
-                    nums[p] = nums[i] + nums[i];
-                    if (i != p) {
-                        nums[i] = 0;
-                    }
-                    nums[i + 1] = 0;
-                } else if (i != p) {
-                    nums[p] = nums[i];
-                    nums[i] = 0;
-                }
-                p++;
-            }
-        }
+
+
         return nums;
     }
 

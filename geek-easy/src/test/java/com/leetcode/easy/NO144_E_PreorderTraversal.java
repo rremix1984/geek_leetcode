@@ -13,8 +13,8 @@ import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Collections.emptyList;
 
 /**
-    [TREE]
-    （简单）
+    [TREE] |
+    (简单，面试）
     144. 二叉树的前序遍历
     给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
     示例 1：
@@ -33,7 +33,7 @@ import static java.util.Collections.emptyList;
         输入：root = [1, null, 2]
         输出：[1, 2]
 */
-public class NO144_E_PreorderTraversal_x5 {
+public class NO144_E_PreorderTraversal {
 
     @Test
     public void test() {
@@ -49,7 +49,8 @@ public class NO144_E_PreorderTraversal_x5 {
                 preorderTraversal(cTree(1, null, 2)));// [1, 2]
     }
 
-    public static List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        // 2024/3/12 NO.1 一共3种方法，递归法出来了
         List<Integer> ans = new ArrayList<>();
         return ans;
     }
@@ -66,7 +67,7 @@ public class NO144_E_PreorderTraversal_x5 {
 
 
 
-/**
+/*
 // 方法1：迭代法
 public List<Integer> preorderTraversal(TreeNode root) {
     List<Integer> res = new ArrayList<>();
@@ -115,5 +116,23 @@ public List<Integer> preorderTraversal(TreeNode root) {
         }
     }
     return ans;
+}
+
+// 方法3：递归法
+public List<Integer> preorderTraversal(TreeNode root) {
+    List<Integer> ans = new ArrayList<>();
+    call(ans, root);
+    return ans;
+}
+
+public void call(List<Integer> ans, TreeNode root) {
+    if (root == null)
+        return;
+
+    ans.add(root.val);
+
+    call(ans, root.left);
+
+    call(ans, root.right);
 }
 */

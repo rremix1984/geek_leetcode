@@ -6,18 +6,18 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
+import static com.leetcode.util.SystemUtil.printArray;
+import static com.leetcode.util.SystemUtil.printArrays;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
    （中等）
-    46.全排列
-        给定一个不含重复数字的数组 nums，
-        返回其所有可能的全排列 。你可以按任意顺序返回答案。
+    NO.46 全排列
+        给定一个不含重复数字的数组nums，
+        返回其所有可能的全排列。你可以按任意顺序返回答案。
     示例1：
         输入：nums = {1, 2, 3}
         输出：{{1, 2, 3}, {1, 3, 2}, {2, 1, 3},
@@ -30,25 +30,35 @@ import static com.leetcode.util.MathUtils.getArray;
         输出：{{1}}
 */
 @SuppressWarnings("all")
-public class NO046_N_Permutations_x6 {
+public class NO046_N_Permutations {
 
     @Test
     public void test() {
         ArrayList<ArrayList<Integer>> target = getArray(
-            new int[][]{{1, 2, 3}, {1, 3, 2}, {2, 3, 1}, {2, 1, 3}, {3, 2, 1}, {3, 1, 2}});
-        List<List<Integer>> source =  permute(new int[]{1, 2, 3});
+                new int[][]{{1, 2, 3},
+                            {1, 3, 2},
+                            {2, 3, 1},
+                            {2, 1, 3},
+                            {3, 2, 1},
+                            {3, 1, 2}});
+        List<List<Integer>> source =  permute(
+                new int[]{1, 2, 3});
         assert target.containsAll(source);
         assert source.containsAll(target);
 
-        ArrayList<ArrayList<Integer>> target2 = getArray(new int[][]{{1}});
-        List<List<Integer>> source2 = permute(new int[]{1});
+        ArrayList<ArrayList<Integer>> target2 = getArray(
+                new int[][]{{1}});
+        List<List<Integer>> source2 = permute(
+                new int[]{1});
         assert target2.containsAll(source2);
         assert source2.containsAll(target2);
     }
 
     private List<List<Integer>> permute(int[] nums) {
         // 2024/2/24 NO.6
+        // 2024/3/13 NO.7 回溯法
         List<List<Integer>> res = new ArrayList<>();
+
         return res;
     }
 

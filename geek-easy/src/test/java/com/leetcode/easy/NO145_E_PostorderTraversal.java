@@ -26,7 +26,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输入：root = [1]
         输出：[1]
 */
-public class NO145_E_PostorderTraversal_x4 {
+public class NO145_E_PostorderTraversal {
 
     @Test
     public void test() {
@@ -40,9 +40,9 @@ public class NO145_E_PostorderTraversal_x4 {
                 postorderTraversal(cTree(1)));
     }
 
-    List<Integer> res = new ArrayList<>();
-
     public List<Integer> postorderTraversal(TreeNode root) {
+        // 2024/3/12 NO.1
+        List<Integer> res = new ArrayList<>();
         return res;
     }
 
@@ -57,8 +57,8 @@ public class NO145_E_PostorderTraversal_x4 {
 
 
 
-/**
-// 方法1
+/*
+// 方法1：递归法
 List<Integer> res = new ArrayList<>();
 public List<Integer> postorderTraversal(TreeNode root) {
     postorder(root);

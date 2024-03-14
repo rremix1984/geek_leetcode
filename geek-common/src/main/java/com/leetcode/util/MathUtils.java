@@ -211,6 +211,13 @@ public class MathUtils {
         return l1;
     }
 
+    public static int[] getDict(int cnt, int[] nums) {
+        int[] dict = new int[cnt];
+        for (int num : nums)
+            dict[num]++;
+        return dict;
+    }
+
     public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         for (int[] ints : arr) {

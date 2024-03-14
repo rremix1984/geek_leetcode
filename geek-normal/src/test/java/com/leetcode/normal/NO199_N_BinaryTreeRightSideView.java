@@ -5,14 +5,16 @@ package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
-
-import static com.leetcode.util.MathUtils.cTree;
-import static com.leetcode.util.MathUtils.getArray;
+import static com.leetcode.util.MathUtils.*;
+import static com.leetcode.util.SystemUtil.arrayAllMatch;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
+    [TREE] |
     (中等)
     199. 二叉树的右视图
         给定一个二叉树的 根节点 root，想象自己站在它的右侧，
@@ -27,15 +29,21 @@ import static com.leetcode.util.MathUtils.getArray;
         输入: {}
         输出: {}
 */
-public class NO199_N_BinaryTreeRightSideView_x2 {
+public class NO199_N_BinaryTreeRightSideView {
 
     @Test
     public void test() {
-        assert getArray(1, 3, 4).equals(
-            rightSideView(cTree(1, 2, 3, null, 5, null, 4)));
+        assert arrayAllMatch(getArray(1, 3, 4),
+            rightSideView(cTree(1,
+                                    2,   3,
+                              null, 5, null, 4)));
+        assert arrayAllMatch(getArray(1, 3),
+            rightSideView(cTree(1,
+                                  null, 3)));
     }
 
     public List<Integer> rightSideView(TreeNode root) {
+        // 2024/3/12 NO.1
         List<Integer> res = new ArrayList<>();
         return res;
     }
@@ -65,7 +73,7 @@ public class NO199_N_BinaryTreeRightSideView_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<Integer> rightSideView(TreeNode root) {
     List<Integer> res = new ArrayList<>();
@@ -115,9 +123,8 @@ public List<Integer> rightSideView(TreeNode root) {
             max_depth = Math.max(max_depth, depth);
 
             // 如果不存在对应深度的节点我们才插入
-            if (!rightmostValueAtDepth.containsKey(depth)) {
+            if (!rightmostValueAtDepth.containsKey(depth))
                 rightmostValueAtDepth.put(depth, node.val);
-            }
 
             nodeStack.push(node.left);
             nodeStack.push(node.right);
@@ -127,9 +134,8 @@ public List<Integer> rightSideView(TreeNode root) {
     }
 
     List<Integer> rightView = new ArrayList<>();
-    for (int depth = 0; depth <= max_depth; depth++) {
+    for (int depth = 0; depth <= max_depth; depth++)
         rightView.add(rightmostValueAtDepth.get(depth));
-    }
 
     return rightView;
 }

@@ -7,7 +7,7 @@ package com.leetcode.util;
 @SuppressWarnings("all")
 public class TreeNode {
 
-    public Integer val;
+    public Integer val = 0;
 
     public TreeNode left;
 

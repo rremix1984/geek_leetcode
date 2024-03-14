@@ -6,16 +6,18 @@ package com.offer.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     剑指 Offer II 069. 山峰数组的顶部
-        符合下列属性的数组 arr 称为 山峰数组（山脉数组） ：
+        符合下列属性的数组arr称为山峰数组（山脉数组）：
           1）arr.length >= 3
           2）存在 i（0 < i < arr.length - 1）使得：
           3）arr[0] < arr[1] < ... arr[i-1] < arr[i]
           4）arr[i] > arr[i+1] > ... > arr[arr.length - 1]
         给定由整数组成的山峰数组arr，返回任何满足
-        arr[0] < arr[1] < ... arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+        arr[0] < arr[1] < ... arr[i - 1] <
+                    arr[i] >
+        arr[i + 1] > ... > arr[arr.length - 1]
         的下标i，即山峰顶部。
     示例 1：
         输入：arr = {0, 1, 0}
@@ -45,18 +47,8 @@ public class OfferII_069_E_PeakIndexInMountainArray {
     }
 
     public int peakIndexInMountainArray(int[] arr) {
-        int left = 1;
-        int right = arr.length - 2;
+        // 2024/3/12 NO.1
         int ans = 0;
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (arr[mid] > arr[mid + 1]) {
-                ans = mid;
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
-        }
         return ans;
     }
 }
@@ -76,9 +68,11 @@ public class OfferII_069_E_PeakIndexInMountainArray {
 
 
 
-/**
+/*
 // 方法1：二分法
 public int peakIndexInMountainArray(int[] arr) {
+    // 因为一定不是最左边 或 最右边的元素
+    // 所以从 1 开始到 n - 2 结束
     int left = 1;
     int right = arr.length - 2;
     int ans = 0;

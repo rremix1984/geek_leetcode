@@ -10,14 +10,14 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [LISTNODE]  |
+    [LISTNODE] |||
     (简单)
     160. 相交链表
         给你两个单链表的头节点headA和headB，请你找出并返回两个单链表相交的起始节点。
         如果两个链表不存在相交节点，返回null。
         图示两个链表在节点 c1 开始相交：
         题目数据保证整个链式结构中不存在环。
-        注意，函数返回结果后，链表必须 保持其原始结构 。
+        注意，函数返回结果后，链表必须保持其原始结构。
         自定义评测：
             评测系统 的输入如下（你设计的程序 不适用 此输入）：
             intersectVal - 相交的起始节点的值。如果不存在相交节点，这一值为 0
@@ -25,7 +25,8 @@ import static org.junit.Assert.assertEquals;
             listB - 第二个链表
             skipA - 在 listA 中（从头节点开始）跳到交叉节点的节点数
             skipB - 在 listB 中（从头节点开始）跳到交叉节点的节点数
-            评测系统将根据这些输入创建链式数据结构，并将两个头节点 headA 和 headB 传递给你的程序。如果程序能够正确返回相交节点，那么你的解决方案将被 视作正确答案 。
+        评测系统将根据这些输入创建链式数据结构，并将两个头节点 headA 和 headB 传递给你的程序。
+        如果程序能够正确返回相交节点，那么你的解决方案将被 视作正确答案 。
     示例 1：
         输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
         输出：Intersected at '8' -> 4 -> 5
@@ -46,7 +47,7 @@ import static org.junit.Assert.assertEquals;
              由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
              这两个链表不相交，因此返回 null 。
 */
-public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
+public class NO160_E_IntersectionOfTwoLinkedLists {
 
     @Test
     public void test() {
@@ -64,9 +65,9 @@ public class NO160_E_IntersectionOfTwoLinkedLists_x2 {
 
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        // 2024/3/6 NO.1
-        if (headA == null || headB == null)
-            return null;
+        // 2024/3/6  NO.1
+        // 2024/3/12 NO.2
+        // 2024/3/14 NO.3
         return null;
     }
 

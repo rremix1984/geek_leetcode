@@ -7,9 +7,9 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     （中等）
-    (重要,面试题)
+    (重要,面试）
     55. 跳跃游戏 I
         给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
         数组中的每个元素代表你在该位置可以跳跃的最大长度。
@@ -30,8 +30,8 @@ public class NO055_N_JumpGame {
 
     @Test
     public void test() {
-        assert canJump(new int[]{2, 3, 1, 1, 4});// true
-        assert !canJump(new int[]{3, 2, 1, 0, 4});// false
+        assert  canJump(new int[]{2,  3, 1,  1, 4});// true
+        assert !canJump(new int[]{3,  2, 1,  0, 4});// false
         assert !canJump(new int[]{1, -1, 1, -1, 1});// false
     }
 
@@ -39,12 +39,7 @@ public class NO055_N_JumpGame {
         // 2024/2/24    NO.4
         // 2024/2/25    NO.5
         // 2024/3/4     NO.6
-        int reach = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i > reach)
-                return false;
-            reach = max(reach, nums[i] + i);
-        }
+        // 2024/3/14    NO.7 还是不会做，想不出来
         return true;
     }
 

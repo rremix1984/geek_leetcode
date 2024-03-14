@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
-    [ARRAY]
+    [ARRAY] ||
     （困难）
     LCP.014 切分数组
         给定一个整数数组nums，小李想将nums切割成若干个非空子数组，使得每个
-        子数组最左边的数和最右边的数的最大公约数大于1。为了减少他的工作量，
+        子数组【最左边的数】和【最右边的数】的最大公约数大于1。为了减少他的工作量，
         请求出【最少】可以切成多少个【子数组】。
     示例 1：
         输入：nums = [2, 3, 3, 2, 3, 3]
@@ -34,6 +34,8 @@ public class LCP_014_SplitArray {
 
     private int splitArray(int[] nums) {
         // 2024/3/1 NO.1
+        // 2024/3/12 NO.2
+
 
         return 0;
     }
