@@ -4,13 +4,12 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY] |
     (中等)
     22. 括号生成
         数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
@@ -21,18 +20,20 @@ import static com.leetcode.util.MathUtils.getArray;
         输入：n = 1
         输出：["()"]
 */
-public class NO022_N_GenerateParentheses_x2 {
+public class NO022_N_GenerateParentheses {
 
     @Test
     public void test() {
-        assert getArray(new String[]{"((()))", "(()())", "(())()", "()(())", "()()()"}).equals(
+        assert getArray("((()))", "(()())", "(())()", "()(())", "()()()").equals(
                 generateParenthesis(3));
-        assert getArray(new String[]{"()"}).equals(
+        assert getArray("()").equals(
                 generateParenthesis(1));
     }
 
     public List<String> generateParenthesis(int n) {
+        // 2024/3/15 NO.2 没做出来...
         List<String> res = new ArrayList<>();
+
         return res;
     }
 
@@ -57,7 +58,7 @@ public class NO022_N_GenerateParentheses_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<String> generateParenthesis(int n) {
     List<String> res = new ArrayList<>();
@@ -86,23 +87,24 @@ private void call(List<String> res, StringBuilder cur, int left, int right, int 
 
 
 // 方法2：递归法
-List<String> res = new ArrayList<>();
 public List<String> generateParenthesis(int n) {
-    generate(n, n,"");
+    List<String> res = new ArrayList<>();
+    generate(res, n, n,"");
     return res;
 }
-private void generate(int left, int right, String cur) {
+
+private void generate(List<String> res, int left, int right, String cur) {
     if (left == 0 && right == 0) {
         res.add(cur);
         return;
     }
 
     if (left > 0) {
-        generate(left - 1, right, cur + "(");
+        generate(res, left - 1, right, cur + "(");
     }
 
     if (right > left) {
-        generate(left, right - 1, cur + ")");
+        generate(res, left, right - 1, cur + ")");
     }
 }
 */

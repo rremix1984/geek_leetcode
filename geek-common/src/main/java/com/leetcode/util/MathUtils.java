@@ -220,10 +220,9 @@ public class MathUtils {
 
     public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        for (int[] ints : arr) {
+        for (int[] ins : arr) {
             ArrayList<Integer> inner = new ArrayList<>();
-            int len = ints.length;
-            for (int anInt : ints)
+            for (int anInt : ins)
                 inner.add(anInt);
 
             res.add(new ArrayList<>(inner));

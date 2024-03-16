@@ -7,9 +7,23 @@ public class SystemUtil {
     /**
      * 打印出arr的元素在一行
      */
+
+
+    public static void printArr(Integer[] arr) {
+        for (int i : arr)
+            System.out.printf("%d\t", i);
+        System.out.println();
+    }
+
     public static void printArr(int[] arr) {
         for (int i : arr)
             System.out.printf("%d\t", i);
+        System.out.println();
+    }
+
+    public static void print(List<String> list) {
+        for (String s : list)
+            System.out.printf("%s", s);
         System.out.println();
     }
 
