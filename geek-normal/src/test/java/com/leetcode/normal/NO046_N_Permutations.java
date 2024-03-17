@@ -13,7 +13,7 @@ import static com.leetcode.util.SystemUtil.printArray;
 import static com.leetcode.util.SystemUtil.printArrays;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
    （中等）
     NO.46 全排列
         给定一个不含重复数字的数组nums，
@@ -57,8 +57,8 @@ public class NO046_N_Permutations {
     private List<List<Integer>> permute(int[] nums) {
         // 2024/2/24 NO.6
         // 2024/3/13 NO.7 回溯法
+        // 2024/3/16 NO.8 虽然没做出来，但是进步很大，就差一点。
         List<List<Integer>> res = new ArrayList<>();
-
         return res;
     }
 
