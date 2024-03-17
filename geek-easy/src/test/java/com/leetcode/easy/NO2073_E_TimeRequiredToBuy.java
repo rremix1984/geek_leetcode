@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     2073. 买票需要的时间
         有n个人前来排队买票，其中第0人站在队伍最前方，第(n-1)人站在队伍最后方。
@@ -27,7 +27,6 @@ import static java.lang.Math.min;
         解释：- 第一轮，队伍中的每个人都买到一张票，队伍变为 {4,  0,  0,  0} 。
              - 接下来的 4 轮，只有位置 0 的人在买票。
              位置 0 的人成功买到 5 张票，用掉 4 + 1 + 1 + 1 + 1 = 8 秒。
-
     思路与算法：
     为了计算第k个人买完票所需的时间，我们可以首先计算在这个过程中每个人买票所需要的时间，再对这些时间求和得到答案。
     我们可以对每个人的下标i分类讨论：
@@ -49,7 +48,8 @@ public class NO2073_E_TimeRequiredToBuy {
     }
 
     public int timeRequiredToBuy(int[] tickets, int k) {
-        // 2024/3/9 NO.1
+        // 2024/3/9  NO.1
+        // 2024/3/17 NO.2 不会做，看懂了一点点
         int min = 0;
         return min;
     }
