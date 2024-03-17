@@ -8,6 +8,7 @@ import java.util.*;
 import static java.lang.Integer.MIN_VALUE;
 import static java.time.LocalTime.now;
 import static java.util.Arrays.copyOf;
+import static java.util.Arrays.fill;
 
 /**
  * 工具类
@@ -218,6 +219,14 @@ public class MathUtils {
         return dict;
     }
 
+    public static Integer[] getDictInteger(int cnt, int[] nums) {
+        Integer[] dict = new Integer[cnt];
+        fill(dict, 0);
+        for (Integer num : nums)
+            dict[num]++;
+        return dict;
+    }
+
     public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         for (int[] ins : arr) {
@@ -310,6 +319,10 @@ public class MathUtils {
         int[] inner = new int[arr.length];
         System.arraycopy(arr, 0, inner, 0, arr.length);
         return inner;
+    }
+
+    public static int[] getArrays() {
+        return new int[]{};
     }
 
     public static String[] getArrays(String... arr) {

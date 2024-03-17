@@ -9,7 +9,6 @@ import java.util.*;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
-import static org.junit.Assert.assertArrayEquals;
 
 /**
     [TREE] |
@@ -42,7 +41,11 @@ public class OfferII_046_N_RightSightView {
 
     public List<Integer> rightSideView(TreeNode root) {
         // 2024/3/12 NO.1
+        // 2024/3/17 NO.2
         List<Integer> res = new ArrayList<>();
+        if (root == null)
+            return res;
+
         return res;
     }
 

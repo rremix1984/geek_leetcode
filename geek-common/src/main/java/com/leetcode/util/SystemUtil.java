@@ -4,11 +4,13 @@ import java.util.*;
 
 public class SystemUtil {
 
+    public static void print(Object o) {
+        System.out.println(o);
+    }
+
     /**
      * 打印出arr的元素在一行
      */
-
-
     public static void printArr(Integer[] arr) {
         for (int i : arr)
             System.out.printf("%d\t", i);
