@@ -1,7 +1,16 @@
+/**
+ * copyright 2019-current year 上海山越信息科技有限公司
+ */
 package com.leetcode.util;
 
 import java.util.*;
 
+import static java.util.Arrays.sort;
+
+/**
+ * 系统工具
+ * @author wangxiaozhe
+ */
 public class SystemUtil {
 
     public static void print(Object o) {
@@ -12,9 +21,23 @@ public class SystemUtil {
      * 打印出arr的元素在一行
      */
     public static void printArr(Integer[] arr) {
-        for (int i : arr)
-            System.out.printf("%d\t", i);
+        for (int n : arr)
+            System.out.printf("%d\t", n);
         System.out.println();
+    }
+
+    public static void printArrs(List<List<Integer>> arr) {
+        for (List<Integer> irr : arr) {
+            for (Integer i : irr) {
+                System.out.printf("%d\t", i);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void printListNode(ListNode listNode) {
+        System.out.println(listNode.toString());
     }
 
     public static void printArr(int[] arr) {
@@ -25,7 +48,7 @@ public class SystemUtil {
 
     public static void print(List<String> list) {
         for (String s : list)
-            System.out.printf("%s", s);
+            System.out.printf("%s\t", s);
         System.out.println();
     }
 
@@ -36,8 +59,8 @@ public class SystemUtil {
     }
 
     public static boolean arraysAllMatch(int[] source, int[] target) {
-        Arrays.sort(source);
-        Arrays.sort(target);
+        sort(source);
+        sort(target);
         for (int i = 0; i < source.length; i++)
             if (source[i] != target[i])
                 return false;
@@ -67,21 +90,21 @@ public class SystemUtil {
     }
 
     public static void printArrays(List<List<Integer>> lists) {
-        for (List<Integer> list : lists) {
+        for (List<Integer> list : lists)
             printArray(list);
-        }
     }
 
     public static void printArray(List<Integer> list) {
-        for (Integer integer : list) {
+        for (Integer integer : list)
             System.out.printf("%d\t", integer);
-        }
+
         System.out.println();
     }
 
     public static void printArr(String[] arr) {
-        for (String i : arr)
-            System.out.printf("%s\t", i);
+        for (String s : arr)
+            System.out.printf("%s\t", s);
+
         System.out.println();
     }
 

@@ -48,13 +48,14 @@ public class MathUtils {
     }
 
     public static int max(int... input) {
-        int max = MIN_VALUE;
-        for (int element : input) {
-            if (element > max) {
-                max = element;
-            }
-        }
-        return max;
+//        int max = MIN_VALUE;
+        return Arrays.stream(input).max().getAsInt();
+//        for (int element : input) {
+//            if (element > max) {
+//                max = element;
+//            }
+//        }
+//        return max;
     }
 
     public static int rand7() {
@@ -206,6 +207,11 @@ public class MathUtils {
         return res;
     }
 
+    public static ArrayList<ArrayList<Object>> getArray() {
+        ArrayList<ArrayList<Object>> res = new ArrayList<>();
+        return res;
+    }
+
     public static List<Integer> getLinkedList(int num) {
         List<Integer> l1 = new LinkedList<>();
         l1.add(num);
@@ -303,7 +309,7 @@ public class MathUtils {
         return inner;
     }
 
-    public static ArrayList<Integer> getArray() {
+    public static ArrayList<Integer> gegetArray() {
         return new ArrayList<>();
     }
 
@@ -419,6 +425,7 @@ public class MathUtils {
     }
 
     public static void main(String[] args) {
+//        System.out.println(max(1,2,3,4,5));
 //        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
 //        System.out.println(mins(0, 6, 3));
 //        System.out.println(maxs(0, -6, -3, -41111, -5, -2, -5, -8, -109));

@@ -1,10 +1,13 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.396 旋转函数
     给定一个长度为n的整数数组nums。
@@ -40,7 +43,9 @@ public class NO396_N_MaxRotateFunction {
 
     public int maxRotateFunction(int[] nums) {
         // 2024/3/12 NO.1
+        // 2024/3/18 NO.2
         int ans = 0;
+
         return ans;
     }
 

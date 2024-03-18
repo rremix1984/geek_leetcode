@@ -9,11 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
-import static com.leetcode.util.SystemUtil.printArray;
-import static com.leetcode.util.SystemUtil.printArrays;
+import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
    （中等）
     NO.46 全排列
         给定一个不含重复数字的数组nums，
@@ -34,30 +33,24 @@ public class NO046_N_Permutations {
 
     @Test
     public void test() {
-        ArrayList<ArrayList<Integer>> target = getArray(
+        arrayAllMatch(getArray(
                 new int[][]{{1, 2, 3},
                             {1, 3, 2},
                             {2, 3, 1},
                             {2, 1, 3},
                             {3, 2, 1},
-                            {3, 1, 2}});
-        List<List<Integer>> source =  permute(
-                new int[]{1, 2, 3});
-        assert target.containsAll(source);
-        assert source.containsAll(target);
-
-        ArrayList<ArrayList<Integer>> target2 = getArray(
-                new int[][]{{1}});
-        List<List<Integer>> source2 = permute(
-                new int[]{1});
-        assert target2.containsAll(source2);
-        assert source2.containsAll(target2);
+                            {3, 1, 2}}),
+                permute(new int[]{1, 2, 3}));
+        arrayAllMatch(getArray(
+                new int[][]{{1}}),
+                permute(new int[]{1}));
     }
 
     private List<List<Integer>> permute(int[] nums) {
         // 2024/2/24 NO.6
         // 2024/3/13 NO.7 回溯法
         // 2024/3/16 NO.8 虽然没做出来，但是进步很大，就差一点。
+        // 2024/3/18 NO.9 一遍过
         List<List<Integer>> res = new ArrayList<>();
         return res;
     }

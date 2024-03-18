@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.Iterator;
 
 /**
-    [LINKEDLIST] |
+    [LINKEDLIST] ||
     (中等)
     NO.61 旋转链表
         给你一个链表的头节点head，旋转链表，
@@ -36,10 +36,13 @@ public class NO061_N_RotateList {
                 rotateRight(new ListNode(1, 2, 3, 4, 5), 2));
         assert new ListNode(2, 0, 1).equals(
                 rotateRight(new ListNode(0, 1, 2), 4));
+        assert new ListNode(0, 1, 2).equals(
+                rotateRight(new ListNode(0, 1, 2), 3));
     }
 
     public ListNode rotateRight(ListNode head, int k) {
         // 2024/3/12 NO.1
+        // 2024/3/18 NO.2 压根没思路。先成环、再拆环
         return null;
     }
 

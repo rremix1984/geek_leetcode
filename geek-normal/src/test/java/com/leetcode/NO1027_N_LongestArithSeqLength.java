@@ -4,7 +4,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.1027 最长等差数列
     给你一个整数数组 nums，返回 nums 中最长等差子序列的长度。
@@ -66,6 +66,7 @@ public class NO1027_N_LongestArithSeqLength {
 
     public int longestArithSeqLength(int[] nums) {
         // 2024/3/17 NO.1 动态规划
+        // 2024/3/18 NO.2 没思路
         int ans = 0;
         return ans + 1;
     }

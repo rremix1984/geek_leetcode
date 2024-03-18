@@ -8,15 +8,16 @@ import java.util.*;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
-import static com.leetcode.util.SystemUtil.arrayAllMatch;
+import static com.leetcode.util.SystemUtil.*;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (中等)
     784. 字母大小写全排列
-        给定一个字符串s，通过将字符串s中的每个字母转变大小写，我们可以获得一个新的字符串。
-        返回 所有可能得到的字符串集合 。以 任意顺序 返回输出。
+        给定一个字符串s，通过将字符串s中的每个字母转变大小写，
+        我们可以获得一个新的字符串。
+        返回所有可能得到的字符串集合 。以任意顺序返回输出。
     示例 1：
         输入：s = "a1b2"
         输出：["a1b2", "a1B2", "A1b2", "A1B2"]
@@ -41,6 +42,7 @@ public class NO784_N_LetterCasePermutation {
         // 2024/2/24 NO.3
         // 2024/3/10 NO.4 不会做，但是看懂了
         // 2024/3/14 NO.5 还是没做出来
+        // 2024/3/18 NO.6 没真的看懂，虽然做出来了，有点坎坷
         List<String> ans = new ArrayList<>();
         return ans;
     }

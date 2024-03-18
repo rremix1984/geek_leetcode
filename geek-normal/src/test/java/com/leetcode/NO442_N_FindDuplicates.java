@@ -1,14 +1,16 @@
 package com.leetcode;
 
 import org.junit.Test;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
+import static com.leetcode.util.MathUtils.getDict;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
 import static com.leetcode.util.SystemUtil.printArr;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等,面试题)
     NO.442 数组中重复的数据
         给你一个长度为n的整数数组nums，其中nums的所有整数都在范围[1, n]内，
@@ -44,7 +46,8 @@ public class NO442_N_FindDuplicates {
 
     public List<Integer> findDuplicates(int[] nums) {
         // 2024/3/16 NO.1 典型题，需要反复学
-        List<Integer> ret = new LinkedList<>();
+        // 2024/3/18 NO.2 不使用额外空间的方法没想出来
+        List<Integer> ret = new ArrayList<>();
         return ret;
     }
 
@@ -68,7 +71,7 @@ public class NO442_N_FindDuplicates {
 /*
 // 方法1：
 public List<Integer> findDuplicates(int[] nums) {
-    List<Integer> ret = new LinkedList<>();
+    List<Integer> ret = new ArrayList<>();
     int len = nums.length;
     for (int i : nums) {
         int j = (i - 1) % len;

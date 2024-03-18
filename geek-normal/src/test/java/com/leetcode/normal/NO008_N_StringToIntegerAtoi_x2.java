@@ -9,7 +9,8 @@ import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 
 /**
-    （中等）
+    [STRING]
+    (中等,面试题)
     8. 字符串转换整数 (atoi)
         请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C/C++ 中的 atoi 函数）。
         函数 myAtoi(string s) 的算法如下：
@@ -61,7 +62,7 @@ public class NO008_N_StringToIntegerAtoi_x2 {
     }
 
     public int myAtoi(String str) {
-        if (str == null || str.equals(""))
+        if (str == null || str.isEmpty())
             return 0;
 
         str = str.trim();
@@ -71,13 +72,16 @@ public class NO008_N_StringToIntegerAtoi_x2 {
             str = str.substring(1);
         }
 
-        if (str.isEmpty() || '0'>str.charAt(0) || str.charAt(0)>'9')
+        if (str.isEmpty() || '0' > str.charAt(0) || str.charAt(0) > '9')
             return 0;
 
-        int i = 0, ans = 0;
+        int i = 0;
+        int ans = 0;
         while (i < str.length() && '0' <= str.charAt(i) && str.charAt(i) <= '9') {
             int temp = str.charAt(i) - '0';
-            if(isNega) temp *= -1;
+            if (isNega)
+                temp *= -1;
+
             if (ans > MAX_VALUE / 10 || (ans == MAX_VALUE/10 && temp > 7))
                 return MAX_VALUE;
 

@@ -57,7 +57,7 @@ public class Offer_034_N_PathSum {
             return;
 
         path.offerLast(root.val);
-        target -= root.val;
+        target = target - root.val;
 
         // 是叶节点且，减到0
         if (root.left == null && root.right == null && target == 0)

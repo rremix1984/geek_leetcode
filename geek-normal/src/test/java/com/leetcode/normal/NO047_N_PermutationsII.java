@@ -8,36 +8,57 @@ import java.util.*;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     （中等）
     NO.47 全排列 II
     给定一个可包含重复数字的序列nums，按任意顺序返回所有不重复的全排列。
     示例 1：
-        输入：nums = [1,1,2]
-        输出：
-        [[1,1,2],
-        [1,2,1],
-        [2,1,1]]
+        输入：nums = [1, 1, 2]
+        输出：      [[1, 1, 2],
+                    [1, 2, 1],
+                    [2, 1, 1]]
+    示例 2：
+        输入：nums = [1, 2, 3]
+        输出：      [[1, 2, 3],
+                    [1, 3, 2],
+                    [2, 1, 3],
+                    [2, 3, 1],
+                    [3, 1, 2],
+                    [3, 2, 1]]
+    提示：
+        1 <= nums.length <= 8
+        -10 <= nums[i] <= 10
+    Related Topics:数组,回溯
 */
 public class NO047_N_PermutationsII {
 
     @Test
     public void test() {
         arrayAllMatch(
-            getArrayList(new int[][]{{1,1,2},
-                                     {1,2,1},
-                                     {2,1,1}}),
-            permuteUnique(new int[]{1, 1, 1, 1, 1, 1, 2}));
+            getArrayList(new int[][]{{1, 2, 3},
+                                     {1, 3, 2},
+                                     {2, 1, 3},
+                                     {2, 3, 1},
+                                     {3, 1, 2},
+                                     {3, 2, 1}}),
+            permuteUnique(new int[]{1, 2, 3}));
         arrayAllMatch(
-            getArrayList(new int[][]{{1,1,2},
-                                     {1,2,1},
-                                     {2,1,1}}),
+            getArrayList(new int[][]{{1, 1, 2},
+                                     {1, 2, 1},
+                                     {2, 1, 1}}),
             permuteUnique(new int[]{1, 1, 2}));
+        arrayAllMatch(
+            getArrayList(new int[][]{{1, 1, 2},
+                                     {1, 2, 1},
+                                     {2, 1, 1}}),
+            permuteUnique(new int[]{1, 1, 1, 1, 1, 1, 2}));
     }
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         // 2024/3/13 NO.1 回溯法
+        // 2024/3/18 NO.2 做出来了，但是犹豫了
         List<List<Integer>> res = new ArrayList<>();
+
         return res;
     }
 
