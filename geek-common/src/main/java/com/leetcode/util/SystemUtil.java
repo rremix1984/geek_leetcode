@@ -13,8 +13,13 @@ import static java.util.Arrays.sort;
  */
 public class SystemUtil {
 
-    public static void print(Object o) {
-        System.out.println(o);
+    public static void print(TreeSet<Long> set) {
+        // 打印一个TreeSet数组的元素
+        Iterator<Long> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        System.out.println("=======");
     }
 
     /**
