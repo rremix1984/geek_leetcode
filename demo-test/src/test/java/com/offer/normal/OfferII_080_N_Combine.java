@@ -9,6 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
+    [ARRAY]
     (中等)
     剑指 Offer II 080. 含有 k 个元素的组合
         给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
@@ -20,18 +21,18 @@ import static com.leetcode.util.MathUtils.getArray;
         输入: n = 1, k = 1
         输出: [[1]]
 */
-public class OfferII_080_N_Combine_x2 {
+public class OfferII_080_N_Combine {
 
     @Test
     public void test() {
         List<List<Integer>> res = combine(4, 2);
-        ArrayList<ArrayList<Integer>> target = getArray(
+        List<List<Integer>> target = getArray(
             new int[][]{{2, 4}, {3, 4}, {2, 3}, {1, 2}, {1, 3}, {1, 4}});
         assert target.containsAll(res);
         assert res.containsAll(target);
 
         List<List<Integer>> res1 = combine(1, 1);
-        ArrayList<ArrayList<Integer>> target1 = getArray(new int[][]{{1}});
+        List<List<Integer>> target1 = getArray(new int[][]{{1}});
         assert target1.containsAll(res1);
         assert res1.containsAll(target1);
     }

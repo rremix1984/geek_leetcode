@@ -36,13 +36,13 @@ public class OfferII_061_N_KSmallestPairs {
 
     @Test
     public void test() {
-        ArrayList<ArrayList<Integer>> arr1 = getArray(new int[][]{{1, 2}, {1, 4}, {1, 6}});
+        List<List<Integer>> arr1 = getArray(new int[][]{{1, 2}, {1, 4}, {1, 6}});
         List<List<Integer>> temp1 = kSmallestPairs(new int[]{1, 7, 11}, new int[]{2, 4, 6}, 3);
         assert arr1.containsAll(temp1) && temp1.containsAll(arr1);
-        ArrayList<ArrayList<Integer>> arr2 = getArray(new int[][]{{1, 3}, {2, 3}});
+        List<List<Integer>> arr2 = getArray(new int[][]{{1, 3}, {2, 3}});
         List<List<Integer>> temp2 = kSmallestPairs(new int[]{1, 2}, new int[]{3}, 3);
         assert arr2.containsAll(temp2) && temp2.containsAll(arr2);
-        ArrayList<ArrayList<Integer>> arr3 = getArray(new int[][]{{1, 1}, {1, 1}});
+        List<List<Integer>> arr3 = getArray(new int[][]{{1, 1}, {1, 1}});
         List<List<Integer>> temp3 = kSmallestPairs(new int[]{1, 1, 2}, new int[]{1, 2, 3}, 2);
         assert temp3.containsAll(arr3) && arr3.containsAll(temp3);
     }

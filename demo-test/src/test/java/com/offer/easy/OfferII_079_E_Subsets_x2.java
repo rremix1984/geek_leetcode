@@ -27,12 +27,12 @@ public class OfferII_079_E_Subsets_x2 {
 
     @Test
     public void test() {
-        ArrayList<ArrayList<Integer>> list = getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}});
+        List<List<Integer>> list = getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}});
         List<List<Integer>> list2 = subsets(new int[]{1, 2, 3});
         assert list.containsAll(list2);
         assert list2.containsAll(list);
 
-        ArrayList<ArrayList<Integer>> list3 = getArray(new int[][]{{}, {0}});
+        List<List<Integer>> list3 = getArray(new int[][]{{}, {0}});
         List<List<Integer>> list4 = subsets(new int[]{0});
         assert list3.containsAll(list4);
         assert list4.containsAll(list3);

@@ -8,16 +8,17 @@ import static java.lang.Math.min;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.2740 找出分区值
-    给你一个 正 整数数组 nums 。
+    给你一个正整数数组 nums。
     将nums分成两个数组：nums1 和 nums2 ，并满足下述条件：
-      1）数组nums中的每个元素都属于数组nums1或数组nums2。
+      1）数组nums中的每个元素都属于数组 nums1 或数组 nums2。
       2）两个数组都非空。
       3）分区值最小。
       4）分区值的计算方法是 |max(nums1) - min(nums2)| 。
-    其中，max(nums1) 表示数组 nums1 中的最大元素，min(nums2) 表示数组 nums2 中的最小元素。
+    其中，max(nums1) 表示数组 nums1 中的最大元素，
+         min(nums2) 表示数组 nums2 中的最小元素。
     返回表示分区值的整数。
     示例 1：
         输入：nums = [1, 3, 2, 4]
@@ -54,6 +55,7 @@ public class NO2740_N_FindValueOfPartition {
 
     public int findValueOfPartition(int[] nums) {
         // 2024/3/14 NO.1
+        // 2024/3/19 NO.2 没思路
         int min = MAX_VALUE;
         return min;
     }
@@ -81,6 +83,7 @@ public class NO2740_N_FindValueOfPartition {
 public int findValueOfPartition(int[] nums) {
     // 从小到大排序
     sort(nums);
+
     // 排序后求相邻两数最小差
     int minDiff = MAX_VALUE;
     for (int i = 1; i < nums.length; i++) {

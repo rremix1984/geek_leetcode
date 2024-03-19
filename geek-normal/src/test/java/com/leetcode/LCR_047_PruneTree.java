@@ -6,7 +6,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.TreeNode.treeEquals;
 
 /**
-    [ARRAY]
+    [TREE]
     (中等)
     LCR.047 二叉树剪枝
     给定一个二叉树 根节点 root ，树的每个节点的值要么是 0，要么是 1。
