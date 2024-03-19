@@ -69,7 +69,6 @@ public class NO1023_N_CamelMatch {
         List<Boolean> res = new ArrayList<>(queries.length);
         for (String query : queries) {
             String other = getOther(query, pattern);
-            print(other);
             if (other.isEmpty())
                 res.add(false);
             else

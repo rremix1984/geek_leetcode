@@ -1,5 +1,7 @@
 package com.leetcode.util;
 
+import java.util.Objects;
+
 /**
  * 树
  * @author wangxiaozhe
@@ -85,4 +87,17 @@ public class TreeNode {
 
         return equalsSub(left.left, right.left) && equalsSub(left.right, right.right);
     }
+
+    public static boolean treeEquals(TreeNode a, TreeNode b) {
+        if (a == null && b == null)
+            return true;
+
+        if (a == null || b == null)
+            return false;
+
+        return Objects.equals(a.val, b.val)
+                && treeEquals(a.left, b.left)
+                && treeEquals(a.right, b.right);
+    }
+
 }

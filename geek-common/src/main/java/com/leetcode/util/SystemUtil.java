@@ -57,6 +57,10 @@ public class SystemUtil {
         System.out.println();
     }
 
+    public static void print(String s) {
+        System.out.println(s);
+    }
+
     public static void printArr(boolean[] arr) {
         for (boolean i : arr)
             System.out.printf("%b\t", i);

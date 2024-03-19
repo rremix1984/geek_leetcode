@@ -233,7 +233,19 @@ public class MathUtils {
         return dict;
     }
 
-    public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
+    public static List<List<Integer>> getArray(int[]... arr) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (int[] ins : arr) {
+            ArrayList<Integer> inner = new ArrayList<>();
+            for (int anInt : ins)
+                inner.add(anInt);
+
+            res.add(new ArrayList<>(inner));
+        }
+        return res;
+    }
+
+    public static ArrayList<ArrayList<Integer>> getArrays(int[]... arr) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         for (int[] ins : arr) {
             ArrayList<Integer> inner = new ArrayList<>();
