@@ -5,15 +5,12 @@ package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.*;
-
 import static com.leetcode.util.MathUtils.*;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
-import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] ||
+    [TREE] |||
     (中等)
     199. 二叉树的右视图
         给定一个二叉树的 根节点 root，想象自己站在它的右侧，
@@ -44,9 +41,8 @@ public class NO199_N_BinaryTreeRightSideView {
     public List<Integer> rightSideView(TreeNode root) {
         // 2024/3/12 NO.1
         // 2024/3/17 NO.2
+        // 2024/3/20 NO.3 没做出来还得练习
         List<Integer> res = new ArrayList<>();
-        if (root == null)
-            return res;
 
         return res;
     }

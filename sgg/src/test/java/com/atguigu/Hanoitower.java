@@ -3,8 +3,9 @@ package com.atguigu;
 import org.junit.Test;
 
 /**
- * (简单）汉诺塔
- * 分治法
+    [NUMBER] |
+    (简单）汉诺塔
+    分治法
  */
 public class Hanoitower {
 
@@ -17,7 +18,17 @@ public class Hanoitower {
     //使用分治算法
     public static void hanoi(int num, char A, char B, char C) {
         // 2024/2/27 NO.3 分治法
+        dfs(num, A, B, C);
+    }
 
+    private static void dfs(int num, char A, char B, char C) {
+        if (1 == num) {
+            System.out.println("第1个元素，从" + A + "移动到" + C);
+        } else {
+            dfs(num - 1, A, C, B);
+            System.out.println("第" + num + "个元素，从" + A + "移动到" + C);
+            dfs(num - 1, B, A, C);
+        }
     }
 
 }

@@ -12,7 +12,7 @@ import static com.leetcode.util.SystemUtil.*;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     (中等)
     784. 字母大小写全排列
         给定一个字符串s，通过将字符串s中的每个字母转变大小写，
@@ -43,6 +43,7 @@ public class NO784_N_LetterCasePermutation {
         // 2024/3/10 NO.4 不会做，但是看懂了
         // 2024/3/14 NO.5 还是没做出来
         // 2024/3/18 NO.6 没真的看懂，虽然做出来了，有点坎坷
+        // 2024/3/20 NO.7
         List<String> ans = new ArrayList<>();
         return ans;
     }
