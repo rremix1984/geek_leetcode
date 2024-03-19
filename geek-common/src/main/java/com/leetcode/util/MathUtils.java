@@ -309,6 +309,14 @@ public class MathUtils {
         return inner;
     }
 
+    public static long[] getArrayL(long... arr) {
+        long[] inner = new long[arr.length];
+        for (int i = 0; i < inner.length; i++) {
+            inner[i] = arr[i];
+        }
+        return inner;
+    }
+
     public static ArrayList<Integer> gegetArray() {
         return new ArrayList<>();
     }

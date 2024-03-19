@@ -2,11 +2,15 @@ package com.leetcode;
 
 import org.junit.Test;
 import java.util.Comparator;
+
+import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.SystemUtil.printArr;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY]
+    [ARRAY] ||
     (中等)
     NO.962 最大宽度坡
     给定一个整数数组 A，坡是元组 (i, j)，其中 i < j 且 A[i] <= A[j]。
@@ -37,30 +41,50 @@ public class NO962_N_MaxWidthRamp {
     }
 
     public int maxWidthRamp(int[] nums) {
-        // 兼容结果为0的场景
-        int ans = 0;
-
-        if (nums == null || nums.length == 0)
-            return 0;
-
-        int n = nums.length;
-        Integer[] dict = new Integer[n];
-
-        for (int i = 0; i < n; i++)
-            dict[i] = i;
-
-        sort(dict, Comparator.comparing(i -> nums[i]));
-
-        printArr(dict);
-
-        int min = n;
-
-        for (int i : dict) {
-            ans = Math.max(ans, i - min);
-            min = Math.min(min, i);
-        }
-
-        return ans;
+        // 2024/3/19 NO.2 挺难想的，需要琢磨
+        int len = 0;
+        return len;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public int maxWidthRamp(int[] nums) {
+    // 2024/3/19 NO.2
+    // 兼容结果为0的场景
+    int ans = 0;
+
+    if (nums == null || nums.length == 0)
+        return 0;
+
+    int n = nums.length;
+    Integer[] dict = new Integer[n];
+
+    for (int i = 0; i < n; i++)
+        dict[i] = i;
+
+    // 这个方法需要看懂
+    sort(dict, Comparator.comparing(i -> nums[i]));
+
+    int min = n;
+    for (int i : dict) {
+        ans = max(ans, i - min);
+        min = min(min, i);
+    }
+
+    return ans;
+}
+*/

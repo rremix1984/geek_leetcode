@@ -13,10 +13,11 @@ import static com.leetcode.util.SystemUtil.arrayAllMatch;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY] |
-    (中等)
+    [ARRAY] ||
+    (中等,面试题)
     NO.39 组合总和
-        给你一个无重复元素的整数数组candidates和一个目标整数target，找出candidates中可以使数字和
+        给你一个无重复元素的整数数组candidates和一个目标整数target，
+        找出candidates中可以使数字和
         为目标数target的所有不同组合，并以列表形式返回。你可以按任意顺序返回这些组合。
         candidates中的同一个数字可以【无限制重复】被选取。
         如果至少一个数字的被选数量不同，则两种组合是不同的。
@@ -54,6 +55,7 @@ public class NO039_N_CombinationSum {
 
     public List<List<Integer>> combinationSum(int[] cand, int target) {
         // 2024/3/12 NO.1 挺难想的，但是不是做不出来
+        // 2024/3/19 NO.2 有点思路了，但是还是做不出来，很经典
         List<List<Integer>> res = new ArrayList<>();
         return res;
     }

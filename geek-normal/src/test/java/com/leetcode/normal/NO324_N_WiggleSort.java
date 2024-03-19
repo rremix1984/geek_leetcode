@@ -2,10 +2,12 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.Arrays;
+
+import static java.util.Arrays.sort;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.324 摆动排序 II
     给你一个整数数组nums，将它重新排列成nums[0]<nums[1]>nums[2]<nums[3]...的顺序。
@@ -48,14 +50,7 @@ public class NO324_N_WiggleSort {
 
     public void wiggleSort(int[] nums) {
         // 2024/3/15 NO.1
-        int[] copy = Arrays.copyOf(nums, nums.length);
-        Arrays.sort(copy);
-        int cur = nums.length - 1;
-        for (int i = 1; i < nums.length; i+=2)
-            nums[i] = copy[cur--];
-
-        for (int i = 0; i < nums.length; i+=2)
-            nums[i] = copy[cur--];
+        // 2024/3/19 NO.2 没做出来，有一点点思路
     }
 
 }

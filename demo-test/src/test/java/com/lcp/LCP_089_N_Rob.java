@@ -1,11 +1,10 @@
 package com.lcp;
 
 import org.junit.Test;
-
 import static java.lang.Math.max;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     LCP.089 打家劫舍
     一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响小偷偷
@@ -37,16 +36,58 @@ public class LCP_089_N_Rob {
     }
 
     public int rob(int[] nums) {
+        // 2024/3/19 NO.1 动态规划，看懂了，但是写不出来
         int n = nums.length;
-        if (n == 0)
-            return 0;
-
         int[] dp = new int[n + 1];
-        dp[1] = nums[0];
-        for (int i = 2; i <= n; i++)
-            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1]);
 
         return dp[n];
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int rob(int[] nums) {
+    int n = nums.length;
+    if (n == 0)
+        return 0;
+
+    int[] dp = new int[n + 1];
+    dp[1] = nums[0];
+    for (int i = 2; i <= n; i++)
+        dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+
+    return dp[n];
+}
+
+// 方法2：两个指针 cur、pre
+private int myRob(int[] nums) {
+    // 同NO.089 打家劫舍 I 的思路
+    int pre = 0;
+    int cur = 0;
+    int tmp;
+    for (int num : nums) {
+        tmp = cur;
+        cur = max(pre + num, cur);
+        pre = tmp;
+    }
+    return cur;
+}
+*/

@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
     2073. 买票需要的时间
         有n个人前来排队买票，其中第0人站在队伍最前方，第(n-1)人站在队伍最后方。
@@ -50,6 +50,7 @@ public class NO2073_E_TimeRequiredToBuy {
     public int timeRequiredToBuy(int[] tickets, int k) {
         // 2024/3/9  NO.1
         // 2024/3/17 NO.2 不会做，看懂了一点点
+        // 2024/3/19 NO.3 还是没思路，有一点点印象,动态规划
         int min = 0;
         return min;
     }

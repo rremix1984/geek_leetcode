@@ -6,7 +6,7 @@ import static java.lang.Math.max;
 import static java.util.Arrays.copyOfRange;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     LCP.090 打家劫舍 II
     一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。
@@ -42,25 +42,55 @@ public class LCP_090_N_Rob {
     }
 
     public int rob(int[] nums) {
-        if(nums.length == 0)
-            return 0;
-
-        if(nums.length == 1)
-            return nums[0];
-
-        return max(myRob(copyOfRange(nums, 0, nums.length - 1)),
-                myRob(copyOfRange(nums, 1, nums.length)));
-    }
-    private int myRob(int[] nums) {
-        int pre = 0;
-        int cur = 0;
-        int tmp;
-        for (int num : nums) {
-            tmp = cur;
-            cur = max(pre + num, cur);
-            pre = tmp;
-        }
-        return cur;
+        // 2024/3/19 动态规划法
+        return 0;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int rob(int[] nums) {
+    if(nums.length == 0)
+        return 0;
+
+    if(nums.length == 1)
+        return nums[0];
+
+    // 两种策略：分别是【从0开始抢劫】和【从1开始抢劫】
+    return max(myRob(copyOfRange(nums, 0, nums.length - 1)),
+               myRob(copyOfRange(nums, 1, nums.length)));
+}
+
+// 具体抢劫过程
+private int myRob(int[] nums) {
+    // 同NO.089 打家劫舍 I 的思路
+    int pre = 0;
+    int cur = 0;
+    int tmp;
+    for (int num : nums) {
+        tmp = cur;
+        cur = max(pre + num, cur);
+        pre = tmp;
+    }
+    return cur;
+}
+*/
