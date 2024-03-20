@@ -27,7 +27,7 @@ import static org.junit.Assert.assertArrayEquals;
              在第 3 次操作中，由于 arr1 的最后一个元素大于 arr2
              的最后一个元素（2 > 1），将 nums[3] 追加到 arr1。
              3 次操作后，arr1 = [2,3] ，arr2 = [1] 。
-             因此，连接形成的数组 result 是 [2,3,1] 。
+             因此，连接形成的数组 result 是 [2, 3, 1] 。
     示例 2：
         输入：nums = [5, 4, 3, 8]
         输出：[5, 3, 4, 8]
@@ -55,8 +55,10 @@ public class NO3069_E_ResultArray {
     }
 
     public int[] resultArray(int[] nums) {
-        // 2024/3/6 NO.1
-        // 2024/3/8 NO.2
+        // 2024/3/6  NO.1
+        // 2024/3/8  NO.2
+        // 2024/3/21 NO.3
+
         return null;
     }
 

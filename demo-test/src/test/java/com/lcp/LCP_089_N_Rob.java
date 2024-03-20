@@ -37,10 +37,20 @@ public class LCP_089_N_Rob {
 
     public int rob(int[] nums) {
         // 2024/3/19 NO.1 动态规划，看懂了，但是写不出来
-        int n = nums.length;
-        int[] dp = new int[n + 1];
+        // 2024/3/21 NO.2
+//        int n = nums.length;
+//        int[] dp = new int[n + 1];
+//
+//        return dp[n];
 
-        return dp[n];
+        int pre = 0;
+        int cur = 0;
+        for (int num : nums) {
+            int tmp = cur;
+            cur = max(pre + num, cur);
+            pre = tmp;
+        }
+        return cur;
     }
 
 }
@@ -82,9 +92,8 @@ private int myRob(int[] nums) {
     // 同NO.089 打家劫舍 I 的思路
     int pre = 0;
     int cur = 0;
-    int tmp;
     for (int num : nums) {
-        tmp = cur;
+        int tmp = cur;
         cur = max(pre + num, cur);
         pre = tmp;
     }

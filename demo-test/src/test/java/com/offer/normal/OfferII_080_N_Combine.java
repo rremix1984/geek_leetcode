@@ -7,9 +7,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
+import static com.leetcode.util.SystemUtil.arrayAllMatch;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     剑指 Offer II 080. 含有 k 个元素的组合
         给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
@@ -25,40 +26,16 @@ public class OfferII_080_N_Combine {
 
     @Test
     public void test() {
-        List<List<Integer>> res = combine(4, 2);
-        List<List<Integer>> target = getArray(
-            new int[][]{{2, 4}, {3, 4}, {2, 3}, {1, 2}, {1, 3}, {1, 4}});
-        assert target.containsAll(res);
-        assert res.containsAll(target);
-
-        List<List<Integer>> res1 = combine(1, 1);
-        List<List<Integer>> target1 = getArray(new int[][]{{1}});
-        assert target1.containsAll(res1);
-        assert res1.containsAll(target1);
+        arrayAllMatch(combine(4, 2),
+                getArray(new int[][]{{2, 4}, {3, 4}, {2, 3}, {1, 2}, {1, 3}, {1, 4}}));
+        arrayAllMatch(combine(1, 1),
+                getArray(new int[][]{{1}}));
     }
 
     public List<List<Integer>> combine(int n, int k) {
+        // 2024/3/20 NO.1
         List<List<Integer>> ans = new ArrayList<>();
-        call(ans, new ArrayList<Integer>(), 1, n, k);
         return ans;
-    }
-
-    private void call(List<List<Integer>> ans, ArrayList<Integer> list, int i, int n, int k) {
-        if (list.size() + (n - i + 1) < k)
-            return;
-
-        if (list.size() == k) {
-            ans.add(new ArrayList<>(list));
-            return;
-        }
-
-        list.add(i);
-
-        call(ans, list, i + 1, n, k);
-
-        list.remove(list.size() - 1);
-
-        call(ans, list, i + 1, n, k);
     }
 
 }
@@ -80,11 +57,11 @@ public class OfferII_080_N_Combine {
 
 
 
-/**
+/*
 // 方法1：深度遍历 dfs
 public List<List<Integer>> combine(int n, int k) {
     List<List<Integer>> ans = new ArrayList<>();
-    dfs(ans, new ArrayList<>(),1, n, k);
+    dfs(ans, new ArrayList<>(), 1, n, k);
     return ans;
 }
 
@@ -103,11 +80,11 @@ public void dfs(List<List<Integer>> ans, List<Integer> temp, int cur, int n, int
     // 考虑选择当前位置
     temp.add(cur);
 
-    dfs(ans, temp,cur + 1, n, k);
+    dfs(ans, temp, cur + 1, n, k);
 
     temp.remove(temp.size() - 1);
 
     // 考虑不选择当前位置
-    dfs(ans, temp,cur + 1, n, k);
+    dfs(ans, temp, cur + 1, n, k);
 }
 */

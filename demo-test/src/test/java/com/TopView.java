@@ -4,13 +4,23 @@ import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.MathUtils.cTree;
+import static com.leetcode.util.SystemUtil.print;
+import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] |
+    [TREE] ||
     (中等,抖音,面试题)
     二叉树顶部视图
-    ChatGPT
+
+    输入：                    1
+                   2                    3
+              4          5         6         7
+           8     9    10    11  12   13    14    15
+        16 17 18 19 20 21 2
+    输出：
+         [16, 8, 4, 2, 1, 3, 7, 15]
+     ChatGPT
     要实现二叉树的顶部视图，我们需要首先理解顶部视图的定义。
     二叉树的顶部视图是从树顶部看下去时能看到的节点的集合。为了实现这一点，
     我们可以使用水平距离的概念，其中根节点的水平距离为0，左子节点的水平距离
@@ -38,7 +48,13 @@ public class TopView {
 
     public int[] topView(TreeNode root) {
         // 2024/3/19 NO.1 看懂了
-        return null;
+        // 2024/3/20 NO.2
+        // 2024/3/21 NO.3
+        if (root == null)
+            return null;
+
+        Map<Integer, Integer> map = new TreeMap<>();
+        return map.values().stream().mapToInt(a->a).toArray();
     }
 
 }
@@ -66,16 +82,17 @@ public int[] topView(TreeNode root) {
         return null;
 
     // 使用TreeMap以保证键值按水平距离排序
+    // 一定要用treeMap
     Map<Integer, Integer> map = new TreeMap<>();
     Queue<TreeNode> queue = new LinkedList<>();
-    Queue<Integer> horizontalDistance = new LinkedList<>();
+    Queue<Integer> distance = new LinkedList<>();
 
     queue.add(root);
-    horizontalDistance.add(0);
+    distance.add(0);
 
     while (!queue.isEmpty()) {
         TreeNode current = queue.remove();
-        int hd = horizontalDistance.remove();
+        int hd = distance.remove();
 
         // 如果这个水平距离还没有被添加到map中，则添加
         if (!map.containsKey(hd))
@@ -83,14 +100,14 @@ public int[] topView(TreeNode root) {
 
         if (current.left != null) {
             queue.add(current.left);
-            horizontalDistance.add(hd - 1);
+            distance.add(hd - 1);
         }
 
         if (current.right != null) {
             queue.add(current.right);
-            horizontalDistance.add(hd + 1);
+            distance.add(hd + 1);
         }
     }
-    return map.values().stream().mapToInt(a -> Integer.parseInt(String.valueOf(a))).toArray();
+    return map.values().stream().mapToInt(a -> a).toArray();
 }
 */

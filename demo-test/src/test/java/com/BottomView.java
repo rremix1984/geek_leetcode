@@ -15,6 +15,14 @@ import static org.junit.Assert.assertArrayEquals;
     (中等，面试题)
     二叉树底部视图
 
+     输入：                    1
+                    2                    3
+              4          5         6         7
+           8     9    10    11  12   13    14    15
+         16 17 18 19 20 21 2
+     输出：
+        [16, 8, 20, 12, 2, 14, 7, 15]
+
     实现二叉树的底部视图与顶部视图类似，但有一个关键的不同：对于每个水平距离，
     我们需要记录在该水平距离上最后遇到的节点，而不是第一个。这意味着在遍历过程中，
     如果我们遇到了相同水平距离的另一个节点，我们将在Map中更新该水平距离对应的节点。
@@ -41,7 +49,33 @@ public class BottomView {
 
     public int[] bottomView(TreeNode root) {
         // 2024/3/19 NO.1
-        return null;
+        // 2024/3/21 NO.2
+        if (root == null)
+            return null;
+
+        Map<Integer, Integer> map = new TreeMap<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Integer> dis = new LinkedList<>();
+        queue.offer(root);
+        dis.add(0);
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.remove();
+            Integer hd = dis.remove();
+
+            map.put(hd, cur.val);
+
+            if (cur.left != null) {
+                queue.offer(cur.left);
+                dis.add(hd - 1);
+            }
+
+            if (cur.right != null) {
+                queue.offer(cur.right);
+                dis.add(hd + 1);
+            }
+        }
+
+        return map.values().stream().mapToInt(a->a).toArray();
     }
 
 }

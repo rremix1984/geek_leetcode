@@ -34,11 +34,12 @@ public class NO206_E_ReverseLinkedList {
     }
 
     public ListNode reverseList(ListNode head) {
-        // 2024/3/5 NO.1 要练思路，两种解法
+        // 2024/3/5  NO.1 要练思路，两种解法
         // 2024/3/10 NO.2 第一种做出来了，第二种错了
         // 2024/3/11 NO.3
-        // 2024/3/17 NO.4 两种都做出来了
-        return null;
+        // 2024/3/17-20 NO.4-5 两种都做出来了
+        ListNode pre = null;
+        return pre;
     }
 
 }

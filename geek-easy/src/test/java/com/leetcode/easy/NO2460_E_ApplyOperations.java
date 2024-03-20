@@ -47,8 +47,23 @@ public class NO2460_E_ApplyOperations {
     }
 
     public int[] applyOperations(int[] nums) {
+        // 2024/3/20 NO.1
+        int p = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] <= 0)
+                continue;
 
-
+            if (i + 1 < nums.length && nums[i] == nums[i + 1]) {
+                nums[p] = nums[i] * 2;
+                if (i != p)
+                    nums[i] = 0;
+                nums[i + 1] = 0;
+            } else if (i != p) {
+                nums[p] = nums[i];
+                nums[i] = 0;
+            }
+            p++;
+        }
         return nums;
     }
 
@@ -74,20 +89,21 @@ public class NO2460_E_ApplyOperations {
 // 方法1：
 public int[] applyOperations(int[] nums) {
     int p = 0;
-    for (int i = 0; i < nums.length; i++)
-        if (nums[i] > 0) {
-            if (i + 1 < nums.length && nums[i] == nums[i + 1]) {
-                nums[p] = nums[i] + nums[i];
-                if (i != p)
-                    nums[i] = 0;
-                nums[i + 1] = 0;
-            } else if (i != p) {
-                nums[p] = nums[i];
-                nums[i] = 0;
-            }
-            p++;
-        }
+    for (int i = 0; i < nums.length; i++) {
+        if (nums[i] <= 0)
+            continue;
 
+        if (i + 1 < nums.length && nums[i] == nums[i + 1]) {
+            nums[p] = nums[i] + nums[i];
+            if (i != p)
+                nums[i] = 0;
+            nums[i + 1] = 0;
+        } else if (i != p) {
+            nums[p] = nums[i];
+            nums[i] = 0;
+        }
+        p++;
+    }
     return nums;
 }
 */

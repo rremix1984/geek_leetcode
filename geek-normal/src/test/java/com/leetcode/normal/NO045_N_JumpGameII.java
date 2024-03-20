@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     （中等）
     (重要,面试）
     45. 跳跃游戏 II
@@ -38,7 +38,17 @@ public class NO045_N_JumpGameII {
     public int jump(int[] nums) {
         // 2024/2/25 NO.3
         // 2024/3/4  NO.4
+        // 2024/3/20 NO.5 还是做不出来...
         int jump = 0;
+        int cur = 0;   // 当前能跳到最远的位置
+        int reach = 0; // 能到达（reach）的边界
+        for (int i = 0; i < nums.length - 1; i++) {
+            cur = max(cur, i + nums[i]);
+            if (i == reach) {
+                reach = cur;
+                jump++;
+            }
+        }
         return jump;
     }
 

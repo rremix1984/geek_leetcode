@@ -10,10 +10,10 @@ import static com.leetcode.util.MathUtils.*;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
 
 /**
-    [TREE] |||
+    [TREE] ||||
     (中等)
     199. 二叉树的右视图
-        给定一个二叉树的 根节点 root，想象自己站在它的右侧，
+        给定一个二叉树的根节点root，想象自己站在它的右侧，
         按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
     示例 1:
         输入: {1, 2, 3, null, 5, null, 4}
@@ -42,8 +42,8 @@ public class NO199_N_BinaryTreeRightSideView {
         // 2024/3/12 NO.1
         // 2024/3/17 NO.2
         // 2024/3/20 NO.3 没做出来还得练习
+        // 2024/3/21 NO.4 早就忘了，用中序遍历思路来做做不出来
         List<Integer> res = new ArrayList<>();
-
         return res;
     }
 

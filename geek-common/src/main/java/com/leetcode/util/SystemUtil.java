@@ -22,6 +22,15 @@ public class SystemUtil {
         System.out.println("=======");
     }
 
+    public static void print(TreeNode node) {
+        // 打印一个TreeSet数组的元素
+//        Iterator<Long> iterator = set.iterator();
+//        while (iterator.hasNext()) {
+            System.out.println(node.toString());
+//        }
+        System.out.println("=======");
+    }
+
     /**
      * 打印出arr的元素在一行
      */
@@ -57,7 +66,7 @@ public class SystemUtil {
         System.out.println();
     }
 
-    public static void print(String s) {
+    public static void print(Object s) {
         System.out.println(s);
     }
 
