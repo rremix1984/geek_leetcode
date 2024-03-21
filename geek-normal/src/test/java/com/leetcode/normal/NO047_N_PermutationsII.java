@@ -8,7 +8,7 @@ import java.util.*;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     （中等）
     NO.47 全排列 II
     给定一个可包含重复数字的序列nums，按任意顺序返回所有不重复的全排列。
@@ -57,8 +57,8 @@ public class NO047_N_PermutationsII {
     public List<List<Integer>> permuteUnique(int[] nums) {
         // 2024/3/13 NO.1 回溯法
         // 2024/3/18 NO.2 做出来了，但是犹豫了
+        // 2024/3/21 NO.3 在提示下，做出来了，死记硬背的题型，并没有理解
         List<List<Integer>> res = new ArrayList<>();
-
         return res;
     }
 

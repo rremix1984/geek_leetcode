@@ -4,15 +4,13 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
    （中等）
     NO.46 全排列
         给定一个不含重复数字的数组nums，
@@ -51,6 +49,7 @@ public class NO046_N_Permutations {
         // 2024/3/13 NO.7 回溯法
         // 2024/3/16 NO.8 虽然没做出来，但是进步很大，就差一点。
         // 2024/3/18 NO.9 一遍过
+        // 2024/3/21 NO.10 在提示下，做出来了，死记硬背的题型，并没有理解
         List<List<Integer>> res = new ArrayList<>();
         return res;
     }
@@ -119,11 +118,8 @@ public void call(List<List<Integer>> res, int[] nums, Deque<Integer> list) {
     for (int num : nums) {
         if (list.contains(num))
             continue;
-
         list.add(num);
-
         call(res, nums, list);
-
         list.removeLast();
     }
 }
