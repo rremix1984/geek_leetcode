@@ -2,11 +2,13 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     NO.378 有序矩阵中第K小的元素
     给你一个 n x n 矩阵 matrix ，其中每行和每列元素均按升序排序，
@@ -49,7 +51,7 @@ public class NO378_N_KthSmallest {
 
     public int kthSmallest(int[][] matrix, int k) {
         // 2024/3/15 NO.1
-        // 2024/3/18 NO.2 做出来了
+        // 2024/3/18-21 NO.2-3 做出来了
         return -1;
     }
 
@@ -81,7 +83,6 @@ public int kthSmallest(int[][] matrix, int k) {
         for (int num : r)
             sorted[index++] = num;
 
-    Arrays.sort(sorted);
     return sorted[k - 1];
 }
 */

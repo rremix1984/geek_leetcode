@@ -1,38 +1,61 @@
+/**
+ * copyright(c) 2021.  All rights reserved.
+ */
 package com.leetcode.normal;
 
+import com.leetcode.util.MathUtils;
 import org.junit.Test;
-
 import static java.lang.Math.max;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     NO.2498 青蛙过河 II
-    给你一个下标从 0 开始的整数数组 stones ，数组中的元素 严格递增 ，表示一条河中石头的位置。
-    一只青蛙一开始在第一块石头上，它想到达最后一块石头，然后回到第一块石头。同时每块石头 至多 到达 一次。
-    一次跳跃的 长度 是青蛙跳跃前和跳跃后所在两块石头之间的距离。
-    更正式的，如果青蛙从 stones[i] 跳到 stones[j] ，跳跃的长度为 |stones[i] - stones[j]| 。
-    一条路径的 代价 是这条路径里的 最大跳跃长度 。
-    请你返回这只青蛙的 最小代价 。
+    给你一个下标从 0 开始的整数数组 stones，数组中的元素严格递增，
+    表示一条河中石头的位置。一只青蛙一开始在第一块石头上，它想到达最后一块石头，
+    然后回到第一块石头。同时每块石头至多到达一次。
+    一次跳跃的长度是青蛙跳跃前和跳跃后所在两块石头之间的距离。
+    更正式的，如果青蛙从 stones[i] 跳到 stones[j]，跳跃的长度为 |stones[i] - stones[j]| 。
+    一条路径的代价是这条路径里的最大跳跃长度。
+    请你返回这只青蛙的最小代价。
     示例 1：
-        输入：stones = [0,2,5,6,7]
+        输入：stones = [0, 2, 5, 6, 7]
         输出：5
-        解释：上图展示了一条最优路径。
+        解释：下图展示了一条最优路径。
+
+              (5)  (1) (1)
+       start----->-->----->
+            |     |  |   |
+          [ 0, 2, 5, 6, 7 ]
+       end |<--|<-------|
+             (2)    (5)
+
         这条路径的代价是 5 ，是这条路径中的最大跳跃长度。
         无法得到一条代价小于 5 的路径，我们返回 5 。
     示例 2：
-        输入：stones = [0,3,9]
+        输入：stones = [0, 3, 9]
         输出：9
         解释：
+                   (9)
+          start----------->
+            |             |
+         [ 0,     3,      9 ]
+         end|<---|<-------|
+              (3)   (6)
+
         青蛙可以直接跳到最后一块石头，然后跳回第一块石头。
         在这条路径中，每次跳跃长度都是 9 。所以路径代价是 max(9, 9) = 9 。
         这是可行路径中的最小代价。
     提示：
-        2 <= stones.length <= 105
-        0 <= stones[i] <= 109
+        2 <= stones.length <= 10 ^ 5
+        0 <= stones[i] <= 10 ^ 9
         stones[0] == 0
         stones 中的元素严格递增。
     Related Topics:贪心,数组,二分查找
+    解释：
+    核心思想是通过追踪两个潜在的起跳点（first 和 second），来确保能够覆盖所有
+    可能的最大跳跃距离情况。最后，它比较了从最后两个起跳点跳到终点的距离，以及之
+    前记录的最大跳跃距离，从而找到并返回整个过程中的最大跳跃距离。
 */
 public class NO2498_N_MaxJump {
 
@@ -43,22 +66,46 @@ public class NO2498_N_MaxJump {
     }
 
     public int maxJump(int[] stones) {
-        int res = 0;
-        int first = 0;
-        int second = 0;
-        int n = stones.length;
-        for (int i = 0; i < n - 1; ++i) {
-            if (first < second) {
-                res = max(res, stones[i] - first);
-                first = stones[i];
-            } else {
-                res = max(res, stones[i] - second);
-                second = stones[i];
-            }
-        }
-        res = max(res, stones[n - 1] - first);
-        res = max(res, stones[n - 1] - second);
-        return res;
+        // 2024/3/21 NO.1 没想出来，动态规划，不容易想
+        int max = 0;
+        return max;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int maxJump(int[] stones) {
+    int max = 0;
+    int first = 0;
+    int second = 0;
+    for (int stone : stones) {
+        if (first < second) {
+            max = max(max, stone - first);
+            first = stone;
+        } else {
+            max = max(max, stone - second);
+            second = stone;
+        }
+    }
+    return MathUtils.max(max,
+             stones[stones.length - 1] - first,
+             stones[stones.length - 1] - second);
+}
+*/

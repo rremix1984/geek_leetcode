@@ -6,14 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.MathUtils.getDict;
-import static com.leetcode.util.SystemUtil.arrayAllMatch;
-import static com.leetcode.util.SystemUtil.printArr;
+import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (中等,面试题)
     NO.442 数组中重复的数据
-        给你一个长度为n的整数数组nums，其中nums的所有整数都在范围[1, n]内，
+      给你一个长度为n的整数数组 nums，其中nums的所有整数都在范围 [1, n] 内，
     且每个整数出现一次或两次。请你找出所有出现两次的整数，并以数组形式返回。你
     必须设计并实现一个时间复杂度为 O(n) 且仅使用常量额外空间的算法解决此问题。
     示例 1：
@@ -48,6 +47,7 @@ public class NO442_N_FindDuplicates {
         // 2024/3/16 NO.1 典型题，需要反复学
         // 2024/3/18 NO.2 不使用额外空间的方法没想出来
         // 2024/3/20 NO.3 还是不会
+        // 2024/3/21 NO.4 还是不会
         List<Integer> ret = new ArrayList<>();
         return ret;
     }
