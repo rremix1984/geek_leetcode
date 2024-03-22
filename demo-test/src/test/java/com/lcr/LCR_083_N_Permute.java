@@ -17,11 +17,16 @@ import static com.leetcode.util.SystemUtil.arrayAllMatch;
     可以 按任意顺序 返回答案。
     示例 1：
         输入：nums = [1, 2, 3]
-        输出：[[1, 2, 3]， [1, 3, 2], [2, 1, 3],
-              [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+        输出：[[1, 2, 3]，
+              [1, 3, 2],
+              [2, 1, 3],
+              [2, 3, 1],
+              [3, 1, 2],
+              [3, 2, 1]]
     示例 2：
         输入：nums = [0, 1]
-        输出：[[0, 1], [1, 0]]
+        输出：[[0, 1],
+              [1, 0]]
     示例 3：
         输入：nums = [1]
         输出：[[1]]
@@ -43,15 +48,17 @@ public class LCR_083_N_Permute {
                                      {3, 1, 2},
                                      {3, 2, 1}}));
         arrayAllMatch(permute(0, 1),
-                getArray(new int[][]{{0, 1}, {1, 0}}));
+                getArray(new int[][]{{0, 1},
+                                     {1, 0}}));
         arrayAllMatch(permute(1),
                 getArray(new int[][]{{1}}));
     }
 
     public List<List<Integer>> permute(int... nums) {
         // 2024/3/18 NO.1
+        // 2024/3/22 NO.2
         List<List<Integer>> res = new ArrayList<>();
-
+        
         return res;
     }
 

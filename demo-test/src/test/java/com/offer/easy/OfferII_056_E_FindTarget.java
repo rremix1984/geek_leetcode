@@ -5,22 +5,35 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
+import java.util.ArrayList;
+import java.util.List;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
+    [TREE] |
     (简单)
     剑指 Offer II 056. 二叉搜索树中两个节点之和
-        给定一个二叉搜索树的 根节点 root 和一个整数 k , 请判断该二叉搜索树中是否存在两个节点它们的值之和等于 k 。假设二叉搜索树中节点的值均唯一。
+        给定一个二叉搜索树的根节点 root 和一个整数 k, 请判断该二叉搜索树
+        中是否存在【两个节点】它们的值之和等于 k。
+        假设二叉搜索树中节点的值均唯一。
     示例 1：
         输入: root = [8, 6, 10, 5, 7, 9, 11], k = 12
         输出: true
         解释: 节点 5 和节点 7 之和等于 12
+
+                    8
+                6       10
+            5     7   9    11
     示例 2：
         输入: root = [8, 6, 10, 5, 7, 9, 11], k = 22
         输出: false
         解释: 不存在两个节点值之和为 22 的节点
+
+                      8
+                6         10
+            5      7   9      11
 */
-public class OfferII_056_E_FindTarget_x2 {
+public class OfferII_056_E_FindTarget {
 
     @Test
     public void test() {
@@ -31,9 +44,31 @@ public class OfferII_056_E_FindTarget_x2 {
     }
 
     public boolean findTarget(TreeNode root, int k) {
+        // 2024/3/22 NO.1 递归法、
+        List<Integer> list = new ArrayList<>();
+        inorderTraversal(list, root);
+        int left = 0;
+        int right = list.size() - 1;
+        while (left < right) {
+            if (list.get(left) + list.get(right) == k)
+                return true;
+
+            if (list.get(left) + list.get(right) < k)
+                left++;
+            else
+                right--;
+        }
         return false;
     }
 
+    public void inorderTraversal(List<Integer> list, TreeNode node) {
+        if (node == null)
+            return;
+
+        inorderTraversal(list, node.left);
+        list.add(node.val);
+        inorderTraversal(list, node.right);
+    }
 }
 
 
@@ -51,7 +86,7 @@ public class OfferII_056_E_FindTarget_x2 {
 
 
 
-/**
+/*
 // 方法1：递归法
 Set<Integer> set = new HashSet<>();
 public boolean findTarget(TreeNode root, int k) {
@@ -88,36 +123,35 @@ public boolean findTarget(TreeNode root, int k) {
     return false;
 }
 
-// 方法3：
-List<Integer> list = new ArrayList<Integer>();
-
+// 方法3：中序遍历法
 public boolean findTarget(TreeNode root, int k) {
-    inorderTraversal(root);
-    int left = 0, right = list.size() - 1;
+    List<Integer> list = new ArrayList<>();
+    inorderTraversal(list, root);
+    int left = 0;
+    int right = list.size() - 1;
     while (left < right) {
-        if (list.get(left) + list.get(right) == k) {
+        if (list.get(left) + list.get(right) == k)
             return true;
-        }
-        if (list.get(left) + list.get(right) < k) {
+
+        if (list.get(left) + list.get(right) < k)
             left++;
-        } else {
+        else
             right--;
-        }
     }
     return false;
 }
 
-public void inorderTraversal(TreeNode node) {
+public void inorderTraversal(List<Integer> list, TreeNode node) {
     if (node == null) {
         return;
     }
-    inorderTraversal(node.left);
+    inorderTraversal(list, node.left);
     list.add(node.val);
-    inorderTraversal(node.right);
+    inorderTraversal(list, node.right);
 }
 
 
-// 方法4：
+// 方法4：二分查找
 public boolean findTarget(TreeNode root, int k) {
     List<Integer> list = new ArrayList<>();
     inorder(root, list);

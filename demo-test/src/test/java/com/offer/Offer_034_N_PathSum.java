@@ -54,8 +54,30 @@ public class Offer_034_N_PathSum {
 
     public List<List<Integer>> pathSum(TreeNode root, int target) {
         // 2024/3/21 NO.1 没做出来，但看懂了
+        // 2024/3/22 NO.2
         List<List<Integer>> ret = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        dfs(ret, list, root, target);
         return ret;
+    }
+
+    private void dfs(List<List<Integer>> ret, ArrayList<Integer> list,
+                     TreeNode root, int target) {
+        if (root == null)
+            return;
+
+        target -= root.val;
+        list.add(root.val);
+
+        if (target == 0 && root.left == null && root.right == null) {
+            ret.add(new ArrayList<>(list));
+        }
+
+        dfs(ret, list, root.left, target);
+
+        dfs(ret, list, root.right, target);
+
+        list.remove(list.size() - 1);
     }
 
 }

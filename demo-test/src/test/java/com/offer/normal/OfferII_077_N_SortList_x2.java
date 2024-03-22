@@ -25,12 +25,16 @@ public class OfferII_077_N_SortList_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 3, 4).equals(sortList(new ListNode(4, 2, 1, 3)));
-        assert new ListNode(-1, 0, 3, 4, 5).equals(sortList(new ListNode(-1, 5, 3, 4, 0)));
-        assert new ListNode().equals(sortList(new ListNode()));
+        assert new ListNode(1, 2, 3, 4).equals(
+                sortList(new ListNode(4, 2, 1, 3)));
+        assert new ListNode(-1, 0, 3, 4, 5).equals(
+                sortList(new ListNode(-1, 5, 3, 4, 0)));
+        assert new ListNode().equals(
+                sortList(new ListNode()));
     }
 
     public ListNode sortList(ListNode head) {
+
         return null;
     }
 

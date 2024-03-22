@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    [STRING] |||||
+    [STRING] ||||||
     （简单）
     680. 验证回文串 II
         给你一个字符串s，最多可以从中删除一个字符。
@@ -28,9 +28,9 @@ public class NO680_E_ValidPalindromeII {
 
     @Test
     public void test() {
-        assert  validPalindrome("aba");// true
+        assert  validPalindrome("aba"); // true
         assert  validPalindrome("abca");// true
-        assert !validPalindrome("abc");// false
+        assert !validPalindrome("abc"); // false
     }
 
     public boolean validPalindrome(String s) {
@@ -39,6 +39,7 @@ public class NO680_E_ValidPalindromeII {
         // 2024/3/11 NO.3
         // 2024/3/17 NO.4 没做出来，很经典的题型
         // 2024/3/18 NO.5 又忘了
+        // 2024/3/22 NO.6 还是不会做，但是能看懂
         return false;
     }
 

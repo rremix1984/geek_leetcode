@@ -444,6 +444,14 @@ public class MathUtils {
         return d2;
     }
 
+    public static int[] frontSum(int[] nums) {
+        int n = nums.length;
+        int[] sums = new int[n + 1];
+        for (int i = 1; i <= n; i++)
+            sums[i] = sums[i - 1] + nums[i - 1];
+        return sums;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(max(1,2,3,4,5));
 //        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));

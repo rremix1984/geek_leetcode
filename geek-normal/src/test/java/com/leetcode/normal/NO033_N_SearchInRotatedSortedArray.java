@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     （中等）
     NO.33 搜索旋转排序数组
         整数数组 nums 按升序排列，数组中的值互不相同。
@@ -39,6 +39,7 @@ public class NO033_N_SearchInRotatedSortedArray {
     public int search(int[] nums, int target) {
         // 2024/3/12 NO.1 二分查找法
         // 2024/3/20 NO.2 没思路，能看懂了
+        // 2024/3/21 NO.3
         return -1;
     }
 

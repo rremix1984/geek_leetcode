@@ -119,6 +119,13 @@ public class SystemUtil {
         System.out.println();
     }
 
+    public static void printArrayStr(List<String> list) {
+        for (String integer : list)
+            System.out.printf("%s\t", integer);
+
+        System.out.println();
+    }
+
     public static void printArr(String[] arr) {
         for (String s : arr)
             System.out.printf("%s\t", s);

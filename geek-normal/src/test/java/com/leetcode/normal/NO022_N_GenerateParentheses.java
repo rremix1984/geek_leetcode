@@ -33,7 +33,7 @@ public class NO022_N_GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         // 2024/3/15 NO.2 没做出来...
         // 2024/3/17 NO.3 有点印象，但是还没做出来
-        // 2024/3/18-19 NO.4-5 一遍过
+        // 2024/3/18-19-22 NO.4-5-6 一遍过
         List<String> res = new ArrayList<>();
         return res;
     }

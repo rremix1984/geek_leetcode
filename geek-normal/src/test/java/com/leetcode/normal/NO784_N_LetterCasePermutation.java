@@ -12,8 +12,8 @@ import static com.leetcode.util.SystemUtil.*;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] |||||
-    (中等)
+    [ARRAY] ||||||
+    (中等,面试题)
     784. 字母大小写全排列
         给定一个字符串s，通过将字符串s中的每个字母转变大小写，
         我们可以获得一个新的字符串。
@@ -44,6 +44,7 @@ public class NO784_N_LetterCasePermutation {
         // 2024/3/14 NO.5 还是没做出来
         // 2024/3/18 NO.6 没真的看懂，虽然做出来了，有点坎坷
         // 2024/3/20 NO.7
+        // 2024/3/22 NO.8 没做出来
         List<String> ans = new ArrayList<>();
         return ans;
     }
@@ -94,9 +95,9 @@ public List<String> letterCasePermutation(String s) {
 // 方法2：
 public List<String> letterCasePermutation(String s) {
     List<String> ans = new ArrayList<>();
-        dfs(ans, s.toCharArray(), 0);
-        return ans;
-    }
+    dfs(ans, s.toCharArray(), 0);
+    return ans;
+}
 
 public void dfs(List<String> ans, char[] arr, int pos) {
     // 1. 先跳过所有的数字

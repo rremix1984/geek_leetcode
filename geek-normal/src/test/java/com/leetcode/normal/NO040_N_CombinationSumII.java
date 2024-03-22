@@ -13,7 +13,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     40. 组合总和 II
         给定一个候选人编号的集合candidates和一个目标数 target，
@@ -23,9 +23,9 @@ import static java.util.Arrays.sort;
     示例 1:
         输入: candidates = {10, 1, 2, 7, 6, 1, 5}, target = 8,
         输出:[[1, 1, 6],
-              [1, 2, 5],
-              [1, 7],
-              [2, 6]]
+             [1, 2, 5],
+             [1, 7],
+             [2, 6]]
     示例 2:
         输入: candidates = {2, 5, 2, 1, 2}, target = 5,
         输出: [[1, 2, 2],
@@ -50,6 +50,7 @@ public class NO040_N_CombinationSumII {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         // 2024/3/12 NO.1
         // 2024/3/21 NO.2 没思路，这类题不能总不会，要研究
+        // 2024/3/22 NO.3 能看懂，但是写不出来
         List<List<Integer>> res = new ArrayList<>();
         return res;
     }

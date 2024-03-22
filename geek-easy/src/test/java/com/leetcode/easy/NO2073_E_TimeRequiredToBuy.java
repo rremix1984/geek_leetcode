@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
     2073. 买票需要的时间
         有n个人前来排队买票，其中第0人站在队伍最前方，第(n-1)人站在队伍最后方。
@@ -28,8 +28,8 @@ import static java.lang.Math.min;
              - 接下来的 4 轮，只有位置 0 的人在买票。
              位置 0 的人成功买到 5 张票，用掉 4 + 1 + 1 + 1 + 1 = 8 秒。
     思路与算法：
-    为了计算第k个人买完票所需的时间，我们可以首先计算在这个过程中每个人买票所需要的时间，再对这些时间求和得到答案。
-    我们可以对每个人的下标i分类讨论：
+        为了计算第k个人买完票所需的时间，我们可以首先计算在这个过程中每个人买票所需要
+    的时间，再对这些时间求和得到答案。我们可以对每个人的下标i分类讨论：
       1）如果这个人初始在第k个人的前方，或者这个人恰好为第k个人，即i ≤ k，
        此时在第k个人买完票之前他最多可以购买tickets[k]张。
        考虑到他想要购买的票数，那么他买票所需时间即为
@@ -51,7 +51,15 @@ public class NO2073_E_TimeRequiredToBuy {
         // 2024/3/9  NO.1
         // 2024/3/17 NO.2 不会做，看懂了一点点
         // 2024/3/19 NO.3 还是没思路，有一点点印象,动态规划
+        // 2024/3/22 NO.4 忘了，不会做了
         int min = 0;
+        int n = tickets.length;
+        for (int i = 0; i < n; i++) {
+            if (i <= k)
+                min += min(tickets[k], tickets[i]);
+            else
+                min += min(tickets[k] - 1, tickets[i]);
+        }
         return min;
     }
 
@@ -76,8 +84,10 @@ public int timeRequiredToBuy(int[] tickets, int k) {
     for (int i = 0; i < tickets.length; i++)
         // 遍历计算每个人所需时间, res里面是每个人的时间的总和
         if (i <= k)
+            // 分支1：在第 k 个人买完票之前，在他（含）前面每个人花掉的时间
             res += min(tickets[i], tickets[k]);
         else
+            // 分支2：在第 k 个人买完票之前，后面每个人花掉的时间
             res += min(tickets[i], tickets[k] - 1);
     return res;
 }

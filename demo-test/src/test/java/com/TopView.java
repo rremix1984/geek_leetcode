@@ -48,8 +48,9 @@ public class TopView {
 
     public int[] topView(TreeNode root) {
         // 2024/3/19 NO.1 看懂了
-        // 2024/3/20 NO.2
-        // 2024/3/21 NO.3
+        // 2024/3/20 NO.2 没做出来
+        // 2024/3/21 NO.3 没做对
+        // 2024/3/22 NO.4 能做出来了
         if (root == null)
             return null;
 
