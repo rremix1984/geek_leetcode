@@ -2,6 +2,7 @@ package com.lcr;
 
 import org.junit.Test;
 
+import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.MathUtils.frontSum;
 import static com.leetcode.util.SystemUtil.print;
 import static com.leetcode.util.SystemUtil.printArr;
@@ -64,7 +65,7 @@ public class LCR_008_N_MinSubArrayLen {
         // 2024/3/1  NO.1 不会
         // 2024/3/13 NO.2 不会
         // 2024/3/22 NO.3 没思路，看不懂
-        int ans = MAX_VALUE;
+        int ans = MAX;
         int[] sums = frontSum(nums);
 
         for (int i = 0; i <= nums.length; i++) {
@@ -76,7 +77,7 @@ public class LCR_008_N_MinSubArrayLen {
             if (bound <= nums.length)
                 ans = min(ans, bound - i);
         }
-        return ans == MAX_VALUE ? 0 : ans;
+        return ans == MAX ? 0 : ans;
     }
 
 }

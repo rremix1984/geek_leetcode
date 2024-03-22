@@ -2,7 +2,6 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.Arrays;
-
 import static com.leetcode.util.MathUtils.getTotal;
 import static java.util.Arrays.stream;
 
@@ -33,9 +32,9 @@ import static java.util.Arrays.stream;
         输出：2
         解释：
         总共有 2 种 nums 的合法分割：
-        - 在下标 1 处分割 nums 。那么第一部分为 [2,3] ，和为 5 。
+        - 在下标 1 处分割 nums 。那么第一部分为 [2, 3] ，和为 5 。
           第二部分为 [1,0] ，和为 1 。因为 5 >= 1 ，所以 i = 1 是一个合法的分割。
-        - 在下标 2 处分割 nums 。那么第一部分为 [2,3,1] ，和为 6 。
+        - 在下标 2 处分割 nums 。那么第一部分为 [2, 3, 1] ，和为 6 。
           第二部分为 [0] ，和为 0 。因为 6 >= 0 ，所以 i = 2 是一个合法的分割。
     提示：
         2 <= nums.length <= 105
@@ -51,14 +50,8 @@ public class NO2270_N_WaysToSplitArray {
     }
 
     public int waysToSplitArray(int[] nums) {
+        // 2024/3/22 NO.1
         int ans = 0;
-        int total = stream(nums).sum();
-        int sum = 0;
-        for (int i = 0; i < nums.length - 1; i++) {
-            sum += nums[i];
-            if (sum >= total - sum)
-                ans++;
-        }
         return ans;
     }
 

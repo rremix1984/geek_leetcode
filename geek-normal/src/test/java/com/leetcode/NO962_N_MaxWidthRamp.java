@@ -10,7 +10,7 @@ import static java.lang.Math.min;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     NO.962 最大宽度坡
     给定一个整数数组 A，坡是元组 (i, j)，其中 i < j 且 A[i] <= A[j]。
@@ -42,6 +42,7 @@ public class NO962_N_MaxWidthRamp {
 
     public int maxWidthRamp(int[] nums) {
         // 2024/3/19 NO.2 挺难想的，需要琢磨
+        // 2024/3/22 NO.3 没思路，琢磨不出来
         int len = 0;
         return len;
     }

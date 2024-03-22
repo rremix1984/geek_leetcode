@@ -4,10 +4,12 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+
+import static com.leetcode.util.MathUtils.MIN;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     [STRING]
     (简单)
     1796. 字符串中第二大的数字
@@ -33,8 +35,8 @@ public class NO1796_E_SecondHighest {
 
     public int secondHighest(String s) {
         // 2024/3/12 NO.1 典型题
-        int n_2 = -1;
-        return n_2;
+        // 2024/3/22 NO.2 没思路，做不出来
+        return -1;
     }
 
 }
