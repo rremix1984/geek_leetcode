@@ -225,6 +225,10 @@ public class MathUtils {
         return dict;
     }
 
+    public static int getTotal(int[] nums) {
+        return Arrays.stream(nums).sum();
+    }
+
     public static Integer[] getDictInteger(int cnt, int[] nums) {
         Integer[] dict = new Integer[cnt];
         fill(dict, 0);

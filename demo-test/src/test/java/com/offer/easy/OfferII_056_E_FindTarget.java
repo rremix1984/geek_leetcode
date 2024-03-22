@@ -24,6 +24,7 @@ import static com.leetcode.util.MathUtils.cTree;
                     8
                 6       10
             5     7   9    11
+
     示例 2：
         输入: root = [8, 6, 10, 5, 7, 9, 11], k = 22
         输出: false
@@ -32,43 +33,24 @@ import static com.leetcode.util.MathUtils.cTree;
                       8
                 6         10
             5      7   9      11
+
 */
 public class OfferII_056_E_FindTarget {
 
     @Test
     public void test() {
         TreeNode node = cTree(8, 6, 10, 5, 7, 9, 11);
-        assert findTarget(node, 12);
+        assert  findTarget(node, 12);
         assert !findTarget(node, 22);
-        assert findTarget(node, 16);
+        assert  findTarget(node, 16);
     }
 
     public boolean findTarget(TreeNode root, int k) {
-        // 2024/3/22 NO.1 递归法、
-        List<Integer> list = new ArrayList<>();
-        inorderTraversal(list, root);
-        int left = 0;
-        int right = list.size() - 1;
-        while (left < right) {
-            if (list.get(left) + list.get(right) == k)
-                return true;
+        // 2024/3/22 NO.1 递归法、二分查找+中序遍历
 
-            if (list.get(left) + list.get(right) < k)
-                left++;
-            else
-                right--;
-        }
         return false;
     }
 
-    public void inorderTraversal(List<Integer> list, TreeNode node) {
-        if (node == null)
-            return;
-
-        inorderTraversal(list, node.left);
-        list.add(node.val);
-        inorderTraversal(list, node.right);
-    }
 }
 
 
@@ -88,8 +70,8 @@ public class OfferII_056_E_FindTarget {
 
 /*
 // 方法1：递归法
-Set<Integer> set = new HashSet<>();
 public boolean findTarget(TreeNode root, int k) {
+    Set<Integer> set = new HashSet<>();
     if (root == null)
         return false;
 
@@ -102,23 +84,22 @@ public boolean findTarget(TreeNode root, int k) {
 }
 
 
-// 方法2：
+// 方法2：层序遍历
 public boolean findTarget(TreeNode root, int k) {
     Set<Integer> set = new HashSet<Integer>();
     Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
     queue.offer(root);
     while (!queue.isEmpty()) {
         TreeNode node = queue.poll();
-        if (set.contains(k - node.val)) {
+        if (set.contains(k - node.val))
             return true;
-        }
+
         set.add(node.val);
-        if (node.left != null) {
+        if (node.left != null)
             queue.offer(node.left);
-        }
-        if (node.right != null) {
+
+        if (node.right != null)
             queue.offer(node.right);
-        }
     }
     return false;
 }
@@ -126,7 +107,7 @@ public boolean findTarget(TreeNode root, int k) {
 // 方法3：中序遍历法
 public boolean findTarget(TreeNode root, int k) {
     List<Integer> list = new ArrayList<>();
-    inorderTraversal(list, root);
+    inorder(list, root);
     int left = 0;
     int right = list.size() - 1;
     while (left < right) {
@@ -141,13 +122,13 @@ public boolean findTarget(TreeNode root, int k) {
     return false;
 }
 
-public void inorderTraversal(List<Integer> list, TreeNode node) {
+public void inorder(List<Integer> list, TreeNode node) {
     if (node == null) {
         return;
     }
-    inorderTraversal(list, node.left);
+    inorder(list, node.left);
     list.add(node.val);
-    inorderTraversal(list, node.right);
+    inorder(list, node.right);
 }
 
 
