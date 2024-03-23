@@ -6,6 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
+    [ARRAY] |
     （中等）
     200. 岛屿数量
     给你一个由 '1'（陆地）和 '0'（水）组成的的二维网格，请你计算网格中岛屿的数量。
@@ -24,7 +25,7 @@ import org.junit.Test;
                      {'0', '0', '0', '1', '1'}}
         输出：3
 */
-public class NO200_N_NumberOfIslands_x2 {
+public class NO200_N_NumberOfIslands {
 
     @Test
     public void test() {
@@ -32,18 +33,17 @@ public class NO200_N_NumberOfIslands_x2 {
                 {'1', '1', '1', '1', '0'},
                 {'1', '1', '0', '1', '0'},
                 {'1', '1', '0', '0', '0'},
-                {'0', '0', '0', '0', '0'}});// 1
+                {'0', '0', '0', '0', '0'}});
         assert 3 == numIslands(new char[][]{
                 {'1', '1', '0', '0', '0'},
                 {'1', '1', '0', '0', '0'},
                 {'0', '0', '1', '0', '0'},
-                {'0', '0', '0', '1', '1'}}); // 3
+                {'0', '0', '0', '1', '1'}});
     }
 
-    int row, col;
     public int numIslands(char[][] grid) {
-        int islands_count = 0;
-        return islands_count;
+        // 2024/3/23 NO.1
+         return 0;
     }
 
 }

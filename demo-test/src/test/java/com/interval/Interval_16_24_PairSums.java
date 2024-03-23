@@ -31,7 +31,7 @@ public class Interval_16_24_PairSums {
 
     @Test
     public void test() {
-        arrayAllMatch(getArray(new int[][]{{5, 6}, {6, 5}}),
+        assert arrayAllMatch(getArray(new int[][]{{5, 6}, {6, 5}}),
                 pairSums(new int[]{5, 6, 5}, 11));
     }
 

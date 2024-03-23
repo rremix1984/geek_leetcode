@@ -51,14 +51,14 @@ public class NO1630_N_CheckArithmeticSubarrays {
 
     @Test
     public void test() {
-        arrayAllMatch(
+        assert arrayAllMatch(
             getArray(false, true, false, false, true, true),
                 checkArithmeticSubarrays(
                 new int[]{-12, -9, -3, -12, -6, 15, 20, -25, -20, -15, -10},
                 new int[]{0, 1, 6, 4, 8, 7},
                 new int[]{4, 4, 9, 7, 9, 10}
                 ));
-        arrayAllMatch(
+        assert arrayAllMatch(
             getArray(true, false, true),
                 checkArithmeticSubarrays(
                 new int[]{4, 6, 5, 9, 3, 7},

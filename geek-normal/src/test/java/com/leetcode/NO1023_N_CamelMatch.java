@@ -52,15 +52,15 @@ public class NO1023_N_CamelMatch {
 
     @Test
     public void test() {
-        arrayAllMatch(
+        assert arrayAllMatch(
            camelMatch(new String[]{"FooBar", "FooBarTest", "FootBall",
                     "FrameBuffer", "ForceFeedBack"}, "FB"),
             asList(true, false, true, true, false));
-        arrayAllMatch(
+        assert arrayAllMatch(
             camelMatch(new String[]{"FooBar", "FooBarTest", "FootBall",
                     "FrameBuffer", "ForceFeedBack"}, "FoBa"),
             asList(true, false, true, false, false));
-        arrayAllMatch(
+        assert arrayAllMatch(
             camelMatch(new String[]{"FooBar","FooBarTest","FootBall",
                     "FrameBuffer", "ForceFeedBack"}, "FoBaT"),
             asList(false, true, false, false, false));

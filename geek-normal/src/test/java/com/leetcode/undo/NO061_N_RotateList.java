@@ -11,7 +11,7 @@ import java.util.Iterator;
 import static com.leetcode.util.SystemUtil.print;
 
 /**
-    [LINKEDLIST] ||||
+    [LINKEDLIST] |||||
     (中等)
     NO.61 旋转链表
         给你一个链表的头节点head，旋转链表，
@@ -47,6 +47,7 @@ public class NO061_N_RotateList {
         // 2024/3/18 NO.2 压根没思路。先成环、再拆环
         // 2024/3/20 NO.3 做不出来，虽然不难，但是想的不够
         // 2024/3/21 NO.4 有点明白了
+        // 2024/3/23 NO.5【闭合成环】做不出来，只能说有印象
         return null;
     }
 

@@ -8,9 +8,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.cTree;
+import static com.leetcode.util.TreeNodeUtil.inorder;
 
 /**
-    [TREE] |
+    [TREE] ||
     (简单)
     剑指 Offer II 056. 二叉搜索树中两个节点之和
         给定一个二叉搜索树的根节点 root 和一个整数 k, 请判断该二叉搜索树
@@ -33,7 +34,6 @@ import static com.leetcode.util.MathUtils.cTree;
                       8
                 6         10
             5      7   9      11
-
 */
 public class OfferII_056_E_FindTarget {
 
@@ -47,7 +47,8 @@ public class OfferII_056_E_FindTarget {
 
     public boolean findTarget(TreeNode root, int k) {
         // 2024/3/22 NO.1 递归法、二分查找+中序遍历
-
+        // 2024/3/23 NO.2 一遍过
+        ArrayList<Integer> res = new ArrayList<>();
         return false;
     }
 
@@ -130,7 +131,6 @@ public void inorder(List<Integer> list, TreeNode node) {
     list.add(node.val);
     inorder(list, node.right);
 }
-
 
 // 方法4：二分查找
 public boolean findTarget(TreeNode root, int k) {

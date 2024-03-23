@@ -9,7 +9,7 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] ||
+    [TREE] |||
     (中等,抖音,面试题)
     二叉树顶部视图
 
@@ -55,6 +55,9 @@ public class TopView {
             return null;
 
         Map<Integer, Integer> map = new TreeMap<>();
+
+
+
         return map.values().stream().mapToInt(a->a).toArray();
     }
 

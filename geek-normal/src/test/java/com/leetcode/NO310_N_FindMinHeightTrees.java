@@ -41,9 +41,9 @@ public class NO310_N_FindMinHeightTrees {
 
     @Test
     public void test() {
-        arrayAllMatch(getArray(1),
+        assert arrayAllMatch(getArray(1),
                 findMinHeightTrees(4, new int[][]{{1, 0}, {1, 2}, {1, 3}}));
-        arrayAllMatch(getArray(3, 4),
+        assert arrayAllMatch(getArray(3, 4),
                 findMinHeightTrees(6, new int[][]{{3, 0}, {3, 1}, {3, 2}, {3, 4}, {5, 4}}));
     }
 

@@ -6,13 +6,10 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 
-import java.util.Deque;
-import java.util.LinkedList;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
-    [TREE]
+    [TREE] |
     (简单)
     101. 对称二叉树
         给你一个二叉树的根节点 root ， 检查它是否轴对称。
@@ -23,17 +20,26 @@ import static com.leetcode.util.MathUtils.cTree;
         输入：root = [1, 2, 2, null, 3, null, 3]
         输出：false
 */
-public class NO101_E_SymmetricTree_x3 {
+public class NO101_E_SymmetricTree {
 
     @Test
     public void test() {
-        assert isSymmetric(cTree(1, 2, 2, 3, 4, 4, 3));
-        assert !isSymmetric(cTree(1, 2, 2, null, 3, null, 3));
-        assert !isSymmetric(cTree(1, 2, 2, 3, 3, 3, 3, 4, 5));
+        assert isSymmetric(cTree(1,
+                                      2, 2,
+                                    3, 4, 4, 3));
+        assert !isSymmetric(cTree(1,
+                                       2, 2,
+                                null, 3, null, 3));
+        assert isSymmetric(cTree(               1,
+                                           2,                   2,
+                                     3,         3,          3,          3,
+                                  4,    5, null, null, null, null,  5,      4));
+        assert isSymmetric(null);
     }
 
     public boolean isSymmetric(TreeNode root) {
-        return true;
+        // 2024/3/23 NO.1 递归法做得不对，需要有思路
+        return false;
     }
 
 }
@@ -55,7 +61,7 @@ public class NO101_E_SymmetricTree_x3 {
 
 
 
-/**
+/*
 // 方法1：递归
 public boolean isSymmetric(TreeNode root) {
     if (root == null)

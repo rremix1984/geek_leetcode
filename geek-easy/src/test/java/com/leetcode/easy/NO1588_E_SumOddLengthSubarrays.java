@@ -48,10 +48,6 @@ public class NO1588_E_SumOddLengthSubarrays {
         // 2024/3/18 NO.2 想不出来
         // 2024/3/21 NO.3 不好想
         int sum = 0;
-        for (int i = 0; i < arr.length; i++)
-            for (int j = 0; i + j - 1 <= arr.length; j += 2)
-                for (int k = i; k < i + j - 1; k++)
-                    sum += arr[k];
 
         return sum;
     }

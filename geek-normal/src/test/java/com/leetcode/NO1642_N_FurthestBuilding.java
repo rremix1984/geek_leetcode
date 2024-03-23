@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.*;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.1642 可以到达的最远建筑
     给你一个整数数组 heights，表示建筑物的高度。另有一些砖块 bricks 和梯子 ladders。
@@ -22,6 +22,21 @@ import java.util.*;
             - 不使用砖块或梯子到达建筑物 3 ，因为 7 >= 6
             - 使用唯一的梯子到达建筑物 4 。你必须使用砖块或梯子，因为 6 < 9
             无法越过建筑物 4 ，因为没有更多砖块或梯子。
+                                    |
+                                    |
+             ∵ 没有砖头和梯子 ∴ 上不去了|   |
+                                    |   |
+                                    |   |
+                               /|   |   |
+                            梯子 |   |   |
+                       /|\   /  |   |   |
+                      / | \ |   |   |   |
+                      / |   |   |   |   |
+                |\ 砖x5 |   |   |   |   |
+                | \  /  |   |   |   |   |
+                |  \|   |   |   |   |   |
+             ___|___|___|___|___|___|___|___
+                4   2   7   6   9   14  12
     示例 2：
         输入：heights = [4, 12, 2, 7, 3, 18, 20, 3, 19], bricks = 10, ladders = 2
         输出：7
@@ -49,7 +64,8 @@ public class NO1642_N_FurthestBuilding {
 
     public int furthestBuilding(int[] heights, int bricks, int ladders) {
         // 2024/3/17 NO.1
-        return heights.length - 1;
+        // 2024/3/22 NO.2 能看懂了
+        return -1;
     }
 
 }
@@ -71,7 +87,7 @@ public class NO1642_N_FurthestBuilding {
 /*
 // 方法1：
 public int furthestBuilding(int[] heights, int bricks, int ladders) {
-    //最大Gap个用梯子上
+    // 最大Gap个用梯子上
     int sum = 0;
     Queue<Integer> queue = new PriorityQueue<>(
             (a, b) -> b - a);
@@ -81,24 +97,54 @@ public int furthestBuilding(int[] heights, int bricks, int ladders) {
         if (diff <= 0)
             continue;
 
-        //记录一下砖头和
+        // 记录一下砖头和
         sum += diff;
+
+        // 将使用的砖头放入优先队列
+        queue.offer(diff);
+
+        // 如果发现砖头和比给的砖头要大了
+        while (sum > bricks) {
+            // 换成使用梯子
+            ladders--;
+
+            // 砖头和减去最大值
+            // 梯子要替换最多的砖头
+            sum = sum - queue.poll();
+        }
+        // 如果循环结束发现梯子为负数，说明上不去了。
+        if (ladders < 0)
+            return i - 1;
+    }
+    return heights.length - 1;
+}
+
+// 方法2：
+public int furthestBuilding(int[] heights, int bricks, int ladders) {
+    int brick_sum = 0;
+    Queue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
+    for (int i = 1; i < heights.length; i++) {
+        int diff = heights[i] - heights[i - 1];
+        if (diff <= 0)
+            continue;
+
+        //记录一下砖头和
+        brick_sum += diff;
 
         //将使用的砖头放入优先队列
         queue.offer(diff);
 
         //如果发现砖头和比给的砖头要大了
-        while (sum > bricks) {
+        while (brick_sum > bricks) {
             //换成使用梯子
             ladders--;
 
-            //砖头和减去最大值
-            sum -= queue.poll();
+            // 砖头和减去最大值
+            // 梯子要替换最多的砖头
+            brick_sum = brick_sum - queue.poll();
         }
-
-        //如果循环结束发现梯子为负数，说明上不去了。
         if (ladders < 0)
-            return i - 1;
+                return i - 1;
     }
     return heights.length - 1;
 }

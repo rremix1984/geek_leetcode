@@ -6,12 +6,12 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (中等)
     (重要,面试）
     1306. 跳跃游戏 III
         这里有一个非负整数数组arr，你最开始位于该数组的起始下标start处。
-        当你位于下标i处时，你可以跳到i+arr[i]或者i-arr[i]。
+        当你位于下标 i 处时，你可以跳到 i + arr[i] 或者 i - arr[i]。
         请你判断自己是否能够跳到对应元素值为0的任一下标处。
         注意，不管是什么情况下，你都无法跳到数组之外。
     示例 1：
@@ -48,8 +48,26 @@ public class NO1306_N_JumpGameIII {
         // 2024/2/25 NO.3
         // 2024/2/27 NO.4 还需要复习一下，不是一遍过
         // 2024/3/4  NO.5 还是没思路，没有时间思考是不行的
+        // 2024/3/22 NO.6 不会做，看答案勉强看懂，写不出来
+        boolean[] visited = new boolean[arr.length];
+        return dfs(arr, start, visited);
+    }
 
-        return false;
+    private boolean dfs(int[] num, int idx, boolean[] visited) {
+        if (idx < 0 || idx >= num.length || visited[idx])
+            return false;
+
+        // 当前坐标能够跳的步幅（+step、-step）值
+        int step = num[idx];
+
+        // 当值等于0，相当于跳到了0值所在的坐标，结束了
+        if (step == 0)
+            return true;
+
+        visited[idx] = true;
+
+        return dfs(num, idx + step, visited)
+            || dfs(num, idx - step, visited);
     }
 
 }

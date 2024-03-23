@@ -9,7 +9,7 @@ import static com.leetcode.util.MathUtils.getDict;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     (中等,面试题)
     NO.442 数组中重复的数据
       给你一个长度为n的整数数组 nums，其中nums的所有整数都在范围 [1, n] 内，
@@ -26,7 +26,7 @@ import static com.leetcode.util.SystemUtil.*;
         输出：[]
     提示：
         n == nums.length
-        1 <= n <= 105
+        1 <= n <= 10 ^ 5
         1 <= nums[i] <= n
         nums 中的每个元素出现 一次 或 两次
     Related Topics:数组,哈希表
@@ -35,11 +35,11 @@ public class NO442_N_FindDuplicates {
 
     @Test
     public void test() {
-        arrayAllMatch(getArray(2, 3),
+        assert arrayAllMatch(getArray(2, 3),
                 findDuplicates(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
-        arrayAllMatch(getArray(1),
+        assert arrayAllMatch(getArray(1),
                 findDuplicates(new int[]{1, 1, 2}));
-        arrayAllMatch(getArray(),
+        assert arrayAllMatch(getArray(),
                 findDuplicates(new int[]{1}));
     }
 
@@ -48,8 +48,8 @@ public class NO442_N_FindDuplicates {
         // 2024/3/18 NO.2 不使用额外空间的方法没想出来
         // 2024/3/20 NO.3 还是不会
         // 2024/3/21 NO.4 还是不会
+        // 2024/3/23 NO.5 能做出一部分，有思路，不熟练
         List<Integer> ret = new ArrayList<>();
-
         return ret;
     }
 

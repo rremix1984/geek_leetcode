@@ -10,7 +10,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
    （中等）
     NO.46 全排列
         给定一个不含重复数字的数组nums，
@@ -31,15 +31,12 @@ public class NO046_N_Permutations {
 
     @Test
     public void test() {
-        arrayAllMatch(getArray(
-                new int[][]{{1, 2, 3},
-                            {1, 3, 2},
-                            {2, 3, 1},
-                            {2, 1, 3},
-                            {3, 2, 1},
-                            {3, 1, 2}}),
+        assert arrayAllMatch(getArray(
+                new int[][]{{1, 2, 3}, {1, 3, 2},
+                            {2, 3, 1}, {2, 1, 3},
+                            {3, 2, 1}, {3, 1, 2}}),
                 permute(new int[]{1, 2, 3}));
-        arrayAllMatch(getArray(
+        assert arrayAllMatch(getArray(
                 new int[][]{{1}}),
                 permute(new int[]{1}));
     }
@@ -50,7 +47,9 @@ public class NO046_N_Permutations {
         // 2024/3/16 NO.8 虽然没做出来，但是进步很大，就差一点。
         // 2024/3/18 NO.9 一遍过
         // 2024/3/21 NO.10 在提示下，做出来了，死记硬背的题型，并没有理解
+        // 2024/3/23 NO.11 一遍过
         List<List<Integer>> res = new ArrayList<>();
+
         return res;
     }
 

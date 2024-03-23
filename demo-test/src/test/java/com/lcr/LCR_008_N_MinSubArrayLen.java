@@ -11,7 +11,6 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static java.util.Arrays.binarySearch;
 
-
 /**
     [ARRAY] |||
     （中等）

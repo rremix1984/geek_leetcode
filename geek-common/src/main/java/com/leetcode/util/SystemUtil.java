@@ -45,7 +45,6 @@ public class SystemUtil {
             for (Integer i : irr) {
                 System.out.printf("%d\t", i);
             }
-            System.out.println();
         }
         System.out.println();
     }
@@ -86,8 +85,30 @@ public class SystemUtil {
     }
 
     public static boolean arrayAllMatch(List source, List target) {
-        return new HashSet<>(source).containsAll(target)
-                && target.containsAll(new HashSet<>(source));
+        if (source == null && target == null)
+            return true;
+
+        if (source == null && target != null)
+            return false;
+
+        if (source != null && target == null)
+            return false;
+
+        if (source.size() != target.size()) {
+            return false;
+        }
+
+        HashMap<Object, Integer> sourceMap = new HashMap<>();
+        for (Object item : source) {
+            sourceMap.put(item, sourceMap.getOrDefault(item, 0) + 1);
+        }
+
+        HashMap<Object, Integer> targetMap = new HashMap<>();
+        for (Object item : target) {
+            targetMap.put(item, targetMap.getOrDefault(item, 0) + 1);
+        }
+
+        return sourceMap.equals(targetMap);
     }
 
     public static ArrayList<ArrayList<Integer>> getArrayList(int[][] ints) {

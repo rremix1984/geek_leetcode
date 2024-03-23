@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
     Interval 08.10 颜色填充
         编写函数，实现许多图片编辑软件都支持的「颜色填充」功能。
@@ -49,7 +49,8 @@ public class Interval_08_10_E_FloodFill {
         // 2024/3/11 NO.1 用递归来做
         // 2024/3/16 NO.2 没思路 重新学的
         // 2024/3/21 NO.3 做出来了
-        return null;
+        // 2024/3/23 NO.4 有思路, 一遍过
+        return image;
     }
 
 }

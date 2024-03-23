@@ -36,12 +36,12 @@ public class LCR_084_PermuteUnique {
 
     @Test
     public void test() {
-        arrayAllMatch(
+        assert arrayAllMatch(
                 getArrayList(new int[][]{{1,1,2},
                                          {1,2,1},
                                          {2,1,1}}),
                 permuteUnique(new int[]{1, 1, 1, 1, 1, 1, 2}));
-        arrayAllMatch(
+        assert arrayAllMatch(
                 getArrayList(new int[][]{{1,1,2},
                                          {1,2,1},
                                          {2,1,1}}),

@@ -8,14 +8,15 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.2498 青蛙过河 II
     给你一个下标从 0 开始的整数数组 stones，数组中的元素严格递增，
     表示一条河中石头的位置。一只青蛙一开始在第一块石头上，它想到达最后一块石头，
     然后回到第一块石头。同时每块石头至多到达一次。
     一次跳跃的长度是青蛙跳跃前和跳跃后所在两块石头之间的距离。
-    更正式的，如果青蛙从 stones[i] 跳到 stones[j]，跳跃的长度为 |stones[i] - stones[j]| 。
+    更正式的，如果青蛙从 stones[i] 跳到 stones[j]，跳跃的长度为
+        |stones[i] - stones[j]| 。
     一条路径的代价是这条路径里的最大跳跃长度。
     请你返回这只青蛙的最小代价。
     示例 1：
@@ -25,7 +26,7 @@ import static java.lang.Math.max;
 
               (5)  (1) (1)
        start----->-->----->
-            |     |  |   |
+            |   |  |      |
           [ 0, 2, 5, 6, 7 ]
        end |<--|<-------|
              (2)    (5)
@@ -37,14 +38,14 @@ import static java.lang.Math.max;
         输出：9
         解释：
                    (9)
-          start----------->
-            |             |
+          start------------>
+           |               |
          [ 0,     3,      9 ]
          end|<---|<-------|
               (3)   (6)
 
         青蛙可以直接跳到最后一块石头，然后跳回第一块石头。
-        在这条路径中，每次跳跃长度都是 9 。所以路径代价是 max(9, 9) = 9 。
+        在这条路径中，每次跳跃长度都是 9。所以路径代价是 max(9,9)=9。
         这是可行路径中的最小代价。
     提示：
         2 <= stones.length <= 10 ^ 5
@@ -67,6 +68,7 @@ public class NO2498_N_MaxJump {
 
     public int maxJump(int[] stones) {
         // 2024/3/21 NO.1 没想出来，动态规划，不容易想
+        // 2024/3/22 NO.2
         int max = 0;
         return max;
     }

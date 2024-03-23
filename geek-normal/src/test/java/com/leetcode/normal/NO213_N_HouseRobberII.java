@@ -6,6 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     （中等）
     213. 打家劫舍 II
         你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。
@@ -36,7 +37,7 @@ import org.junit.Test;
  [1, n - 1] 和 [2, n] 的最大金额值
 
 */
-public class NO213_N_HouseRobberII_x2 {
+public class NO213_N_HouseRobberII {
 
     @Test
     public void test() {

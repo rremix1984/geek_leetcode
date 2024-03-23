@@ -34,7 +34,7 @@ public class NO047_N_PermutationsII {
 
     @Test
     public void test() {
-        arrayAllMatch(
+        assert arrayAllMatch(
             getArrayList(new int[][]{{1, 2, 3},
                                      {1, 3, 2},
                                      {2, 1, 3},
@@ -42,12 +42,12 @@ public class NO047_N_PermutationsII {
                                      {3, 1, 2},
                                      {3, 2, 1}}),
             permuteUnique(new int[]{1, 2, 3}));
-        arrayAllMatch(
+        assert arrayAllMatch(
             getArrayList(new int[][]{{1, 1, 2},
                                      {1, 2, 1},
                                      {2, 1, 1}}),
             permuteUnique(new int[]{1, 1, 2}));
-        arrayAllMatch(
+        assert arrayAllMatch(
             getArrayList(new int[][]{{1, 1, 2},
                                      {1, 2, 1},
                                      {2, 1, 1}}),

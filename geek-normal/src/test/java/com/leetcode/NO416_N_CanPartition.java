@@ -3,6 +3,8 @@ package com.leetcode;
 import org.junit.Test;
 import java.util.Arrays;
 
+import static java.util.Arrays.stream;
+
 /**
     [ARRAY]
     (中等)
@@ -33,8 +35,8 @@ public class NO416_N_CanPartition {
     public boolean canPartition(int[] nums) {
         // 2024/3/12 NO.1
         final int n = nums.length;
-        int target = Arrays.stream(nums).sum();
-        if ((target & 0x01) != 0)
+        int target = stream(nums).sum();
+        if (target % 2 != 0)
             return false;
 
         target = target >> 1;

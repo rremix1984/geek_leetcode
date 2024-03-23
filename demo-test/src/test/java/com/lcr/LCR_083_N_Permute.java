@@ -40,17 +40,17 @@ public class LCR_083_N_Permute {
 
     @Test
     public void test() {
-        arrayAllMatch(permute(1, 2, 3),
+        assert arrayAllMatch(permute(1, 2, 3),
                 getArray(new int[][]{{1, 2, 3},
                                      {1, 3, 2},
                                      {2, 1, 3},
                                      {2, 3, 1},
                                      {3, 1, 2},
                                      {3, 2, 1}}));
-        arrayAllMatch(permute(0, 1),
+        assert arrayAllMatch(permute(0, 1),
                 getArray(new int[][]{{0, 1},
                                      {1, 0}}));
-        arrayAllMatch(permute(1),
+        assert arrayAllMatch(permute(1),
                 getArray(new int[][]{{1}}));
     }
 
@@ -58,7 +58,7 @@ public class LCR_083_N_Permute {
         // 2024/3/18 NO.1
         // 2024/3/22 NO.2
         List<List<Integer>> res = new ArrayList<>();
-        
+
         return res;
     }
 
