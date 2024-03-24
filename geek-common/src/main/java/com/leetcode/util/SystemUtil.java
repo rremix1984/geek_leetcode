@@ -99,14 +99,12 @@ public class SystemUtil {
         }
 
         HashMap<Object, Integer> sourceMap = new HashMap<>();
-        for (Object item : source) {
+        for (Object item : source)
             sourceMap.put(item, sourceMap.getOrDefault(item, 0) + 1);
-        }
 
         HashMap<Object, Integer> targetMap = new HashMap<>();
-        for (Object item : target) {
+        for (Object item : target)
             targetMap.put(item, targetMap.getOrDefault(item, 0) + 1);
-        }
 
         return sourceMap.equals(targetMap);
     }
