@@ -5,9 +5,10 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import static com.leetcode.util.LogUtil.info;
+import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     860. 柠檬水找零
         在柠檬水摊上，每一杯柠檬水的售价为5美元。顾客排队购买你的产品，
@@ -40,12 +41,16 @@ public class NO860_E_LemonadeChange {
 
     @Test
     public void test() {
-        assert (lemonadeChange(new int[]{5, 5, 5, 10, 20}));// true
-        assert !(lemonadeChange(new int[]{5, 5, 10, 10, 20}));// false
+        assert (lemonadeChange(
+                new int[]{5, 5, 5, 10, 20}));// true
+        assert !(lemonadeChange(
+                new int[]{5, 5, 10, 10, 20}));// false
     }
 
     public boolean lemonadeChange(int[] bills) {
         // 2024/2/27 NO.3
+        // 2024/3/25 NO.4 一遍过，虽然过了一个月，还是能做出来
+
         return true;
     }
 

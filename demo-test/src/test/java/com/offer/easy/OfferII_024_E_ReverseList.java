@@ -7,7 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
-    [LISTNODE]  |
+    [LISTNODE] |
     (简单)
     剑指 Offer II 024. 反转链表
         给定单链表的头节点 head ，请反转链表，并返回反转后的链表的头节点。

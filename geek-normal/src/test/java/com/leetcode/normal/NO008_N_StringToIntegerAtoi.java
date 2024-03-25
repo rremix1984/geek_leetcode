@@ -8,7 +8,7 @@ import static com.leetcode.util.SystemUtil.*;
 import static java.lang.Integer.*;
 
 /**
-    [STRING] |
+    [STRING] ||
     (中等,面试题)
     NO.8 字符串转换整数 (atoi)
     请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个32位有符号整数（类似C/C++中的 atoi 函数）。
@@ -64,9 +64,11 @@ public class NO008_N_StringToIntegerAtoi {
         assert  12  == myAtoi(" 12a345b");       // 12
     }
 
-    public int myAtoi(String str) {
+    public int myAtoi(String s) {
         // 2024/3/19 NO.1
+        // 2024/3/25 NO.2 难啃，但是必须啃下来
         int ans = 0;
+
         return ans;
     }
 
@@ -116,7 +118,8 @@ public int myAtoi(String s) {
     char[] arr = s.trim().toCharArray();
     int n = arr.length;
     long ans = 0;
-    boolean isPositive = true, sign = false;
+    boolean isPositive = true;
+    int sign = false;
     for (int i = 0; i < n; i++) {
         char ch = arr[i];
         if (!sign && (ch == '-' || ch == '+')) {
@@ -151,7 +154,7 @@ public int myAtoi(String str) {
     if (index == len)
         return 0;
 
-    // 3、如果出现符号字符，仅第 1 个有效，并记录正负
+    // 3、如果出现符号字符，仅第1个有效，并记录正负
     int sign = 1;
     char firstChar = charArray[index];
     if (firstChar == '+') {

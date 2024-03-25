@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
+    [LISTNODE]
     (困难)
     23. 合并K个升序链表
         给你一个链表数组，每个链表都已经按升序排列。

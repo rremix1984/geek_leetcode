@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
     (简单)
     NO.1800 最大升序子数组和
         给你一个正整数组成的数组 nums，返回nums中一个【升序】子数组
@@ -51,6 +51,7 @@ public class NO1800_E_MaxAscendingSum {
         // 2024/3/17 NO.3 不会做，需要练习多次
         // 2024/3/20 NO.4
         // 2024/3/22 NO.5 没思路, 看答案做出来了
+        // 2024/3/25 NO.6 还是没思路，得动手才行，光看没用
         int max = 0;
         return max;
     }

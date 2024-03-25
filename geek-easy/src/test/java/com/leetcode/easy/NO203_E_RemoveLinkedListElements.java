@@ -6,11 +6,15 @@ package com.leetcode.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.SystemUtil.printListNode;
+import static org.junit.Assert.assertNull;
+
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (简单)
-    203. 移除链表元素
-        给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点 。
+    NO.203. 移除链表元素
+        给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有
+    满足 Node.val == val 的节点，并返回 新的头节点 。
     示例 1：
         输入：head = [1, 2, 6, 3, 4, 5, 6], val = 6
         输出：[1,2,3,4,5]
@@ -21,17 +25,22 @@ import org.junit.Test;
         输入：head = [7, 7, 7, 7], val = 7
         输出：[]
 */
-public class NO203_E_RemoveLinkedListElements_x2 {
+public class NO203_E_RemoveLinkedListElements {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 3, 4, 5).equals(removeElements(new ListNode(1, 2, 6, 3, 4, 5, 6),6));
-        assert new ListNode().equals(removeElements(new ListNode(),1));
-        assert new ListNode().equals(removeElements(new ListNode(7, 7, 7, 7),7));
+        assert new ListNode(1, 2, 3, 4, 5).equals(
+                removeElements(new ListNode(1, 2, 6, 3, 4, 5, 6),6));
+        assert new ListNode().equals(
+                removeElements(new ListNode(),1));
+        assertNull(removeElements(new ListNode(7, 7, 7, 7),7));
     }
 
     public ListNode removeElements(ListNode head, int val) {
-        return null;
+        // 2024/3/25 NO.1 没做对
+        ListNode dummy = new ListNode(-1);
+
+        return dummy.next;
     }
 
 }
@@ -52,7 +61,7 @@ public class NO203_E_RemoveLinkedListElements_x2 {
 
 
 
-/**
+/*
 // 方法1：双指针
 public ListNode removeElements(ListNode head, int val) {
     ListNode dummy = new ListNode(-1);

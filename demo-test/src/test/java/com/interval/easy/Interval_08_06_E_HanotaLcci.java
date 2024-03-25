@@ -9,7 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [LIST] |||||||
+    [LIST] VIII
     (简单)
     面试题 08.06. 汉诺塔问题
         在经典汉诺塔问题中，有3根柱子及N个不同大小的穿孔圆盘，
@@ -41,13 +41,14 @@ public class Interval_08_06_E_HanotaLcci {
         assert c2.equals(getArray(5, 4, 3, 2, 1, 0));
     }
 
-
     public void hanota(List<Integer> A, List<Integer> B, List<Integer> C) {
         // 2024/2/19 NO.2 第一次做
         // 2024/2/29 NO.3 分治法
         // 2024/3/5  NO.4 做出来了
         // 2024/3/6-10-21  NO.5-6-7 做出来了
         // 2024/3/24 No.8 没做出来
+        // 2024/3/25 No.9 一遍过
+
     }
 
 }

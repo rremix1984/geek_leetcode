@@ -40,7 +40,7 @@ public class LCP_057_N_ContainsNearbyAlmostDuplicate {
     }
 
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        // 2024/3/19 NO.1 没看懂
+        // 2024/3/19 NO.1 没看懂，看这个要先了解 TreeSet 数据结构才行
 
         return false;
     }

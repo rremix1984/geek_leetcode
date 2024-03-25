@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [NUMBER] ||
+    [NUMBER] ||||
     (简单）汉诺塔
     分治法
  */
@@ -31,16 +31,12 @@ public class Hanoitower {
     //汉诺塔的移动的方法
     //使用分治算法
     public String hanoi(int num, char A, char B, char C) {
+        // sb.append("第" + 1 + "个盘子，从" + A + "移动到" + C + "\n");
         // 2024/2/27 NO.3 分治法
-        // 2024/3/21 NO.3 忘记了，没做出来
-        // 2024/3/24 NO.4
-        if (num == 1) {
-            sb.append("第1个盘子，从" + A + "移动到" + C + "\n");
-        } else{
-            hanoi(num - 1, A, C, B);
-            sb.append("第" + num + "个盘子，从" + A + "移动到" + C + "\n");
-            hanoi(num - 1, B, A, C);
-        }
+        // 2024/3/21 NO.4 忘记了，没做出来
+        // 2024/3/24 NO.5
+        // 2024/3/25 NO.6 思路都对，就是做错了
+        
         return sb.toString();
     }
 

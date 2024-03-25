@@ -5,7 +5,7 @@ package com.leetcode.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import static com.leetcode.util.ListNode.reverse;
+
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -21,7 +21,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：head = [1, 2]
         输出：false
 */
-public class NO234_E_PalindromeLinkedList_x2 {
+public class NO234_E_PalindromeLinkedList {
 
     @Test
     public void test() {

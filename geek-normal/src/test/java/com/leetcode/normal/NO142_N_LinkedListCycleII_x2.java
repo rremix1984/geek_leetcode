@@ -10,8 +10,9 @@ import static com.leetcode.util.ListNode.newCycle;
 import static org.junit.Assert.assertEquals;
 
 /**
+    [LISTNODE]
     (中等)
-    142. 环形链表 II
+    NO.142. 环形链表 II
         给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，
         则返回 null。如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，
         则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示
@@ -66,7 +67,7 @@ public class NO142_N_LinkedListCycleII_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode detectCycle(ListNode head) {
     ListNode fast = head;

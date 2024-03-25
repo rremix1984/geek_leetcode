@@ -8,7 +8,7 @@ import static com.leetcode.util.SystemUtil.arrayAllMatch;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     NO.1630 等差子数组
     如果一个数列由至少两个元素组成，且每两个连续元素之间的差值都相同，
@@ -68,33 +68,59 @@ public class NO1630_N_CheckArithmeticSubarrays {
     }
 
     public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
+        // 2024/3/25 NO.1
         List<Boolean> list = new ArrayList<>();
-        for (int i = 0; i < l.length; i++) {
-            // copy to a new array
-            int[] arr = new int[r[i] - l[i] + 1];
-            for (int j = 0; j < arr.length; j++)
-                arr[j] = nums[j + l[i]];
 
-            // judge is valid?
-            list.add(isValid(arr));
-        }
         return list;
     }
 
-    // judge is valid
-    public boolean isValid(int[] nums) {
-        // special case
-        if (nums.length < 2)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
+    List<Boolean> list = new ArrayList<>();
+    for (int i = 0; i < l.length; i++) {
+        // copy to a new array
+        int[] arr = new int[r[i] - l[i] + 1];
+        for (int j = 0; j < arr.length; j++)
+            arr[j] = nums[j + l[i]];
+
+        // judge is valid?
+        list.add(isValid(arr));
+    }
+    return list;
+}
+
+// judge is valid
+public boolean isValid(int[] nums) {
+    // special case
+    if (nums.length < 2)
+        return false;
+
+    // sort first
+    sort(nums);
+    int diff = nums[1] - nums[0];
+    for (int i = 2; i < nums.length; i++)
+        if (nums[i] - nums[i - 1] != diff)
             return false;
 
-        // sort first
-        sort(nums);
-        int diff = nums[1] - nums[0];
-        for (int i = 2; i < nums.length; i++)
-            if (nums[i] - nums[i - 1] != diff)
-                return false;
-
-        return true;
-    }
-
+    return true;
 }
+*/
