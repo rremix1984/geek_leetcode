@@ -27,18 +27,18 @@ public class NO001_II_E_TwoSumII {
     @Test
     public void test() {
         assertArrayEquals(new int[]{0, 1},
-                twoSum(new int[]{2, 7, 11, 15}, 9));// [0, 1]
+                twoSum(9,new int[]{2, 7, 11, 15}));// [0, 1]
         assertArrayEquals(new int[]{0, 2},
-                twoSum(new int[]{2, 3, 4}, 6));// [1, 2]
+                twoSum(6, 2, 3, 4));// [1, 2]
         assertArrayEquals(new int[]{3, 5},
-                twoSum(new int[]{1, 2, 3, 4, 5, 6}, 10));// [3, 5]
+                twoSum(10, 1, 2, 3, 4, 5, 6));// [3, 5]
         assertArrayEquals(new int[]{1, 5},
-                twoSum(new int[]{2, 4, 6, 8, 10, 12}, 16));// [1, 5]
+                twoSum(16, 2, 4, 6, 8, 10, 12));// [1, 5]
     }
 
-    public int[] twoSum(int[] numbers, int target) {
+    public int[] twoSum(int target, int... numbers) {
         // 2024/3/25 NO.2 一开始没思路，后来双指针、二分查找出来了
-        return null;
+        return new int[]{0};
     }
 
 }

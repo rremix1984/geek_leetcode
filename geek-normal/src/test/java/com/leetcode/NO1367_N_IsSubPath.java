@@ -1,3 +1,6 @@
+/**
+ * copyright @leetcode
+ */
 package com.leetcode;
 
 import com.leetcode.util.ListNode;
