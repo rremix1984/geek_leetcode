@@ -40,16 +40,52 @@ public class NO416_N_CanPartition {
             return false;
 
         target = target >> 1;
-        boolean[][] partition = new boolean[n][target + 1];
+        boolean[][] dp = new boolean[n][target + 1];
         for (int i = 0; i < n; i++)
-            partition[i][0] = true;
+            dp[i][0] = true;
 
         for (int i = 1; i < n; i++)
             for (int j = 1; j <= target; j++)
-                partition[i][j] = partition[i - 1][j]
-                        || (j >= nums[i] && partition[i - 1][j - nums[i]]);
+                dp[i][j] = dp[i - 1][j]
+                        || (j >= nums[i] && dp[i - 1][j - nums[i]]);
 
-        return partition[n - 1][target];
+        return dp[n - 1][target];
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public boolean canPartition(int[] nums) {
+    final int n = nums.length;
+    int target = stream(nums).sum();
+    if (target % 2 != 0)
+        return false;
+
+    target = target >> 1;
+    boolean[][] partition = new boolean[n][target + 1];
+    for (int i = 0; i < n; i++)
+        partition[i][0] = true;
+
+    for (int i = 1; i < n; i++)
+        for (int j = 1; j <= target; j++)
+            partition[i][j] = partition[i - 1][j]
+                    || (j >= nums[i] && partition[i - 1][j - nums[i]]);
+
+    return partition[n - 1][target];
+}
+*/

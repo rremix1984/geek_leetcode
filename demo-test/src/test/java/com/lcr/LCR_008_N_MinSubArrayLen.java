@@ -1,7 +1,6 @@
 package com.lcr;
 
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.MathUtils.frontSum;
 import static com.leetcode.util.SystemUtil.print;
@@ -12,7 +11,7 @@ import static java.lang.Math.min;
 import static java.util.Arrays.binarySearch;
 
 /**
-    [ARRAY] |||
+    [ARRAY] IV
     （中等）
     LCR.008 长度最小的子数组
         给定一个含有 n 个正整数的数组和一个正整数 target 。
@@ -50,32 +49,26 @@ public class LCR_008_N_MinSubArrayLen {
 
     @Test
     public void test() {
-//        assert 2 == minSubArrayLen(7,
-//                new int[]{2, 3, 1, 2, 4, 3});
-//        assert 1 == minSubArrayLen(4,
-//                new int[]{1, 4, 4});
+        assert 2 == minSubArrayLen(7,
+                new int[]{2, 3, 1, 2, 4, 3});
+        assert 1 == minSubArrayLen(4,
+                new int[]{1, 4, 4});
         assert 0 == minSubArrayLen(11,
                 new int[]{1, 1, 1, 1, 1, 1, 1, 1});
-//        assert 2 == minSubArrayLen(15,
-//                new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
+        assert 2 == minSubArrayLen(15,
+                new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
+        assert 2 == minSubArrayLen(15,
+                new int[]{5, 1, 3, 5, 10, 7, 4, 9, 2, 8});
     }
 
     public int minSubArrayLen(int target, int[] nums) {
         // 2024/3/1  NO.1 不会
         // 2024/3/13 NO.2 不会
         // 2024/3/22 NO.3 没思路，看不懂
+        // 2024/3/25 NO.4 没做出来，思路有一点了，还得再做
         int ans = MAX;
-        int[] sums = frontSum(nums);
-
-        for (int i = 0; i <= nums.length; i++) {
-            int sum = target + sums[i];
-            int bound = binarySearch(sums, sum);
-            if (bound < 0)
-                bound = -(bound + 1);
-
-            if (bound <= nums.length)
-                ans = min(ans, bound - i);
-        }
+        int[] frontSums = frontSum(nums);
+        // TODO
         return ans == MAX ? 0 : ans;
     }
 

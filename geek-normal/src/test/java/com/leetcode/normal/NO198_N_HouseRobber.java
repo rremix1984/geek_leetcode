@@ -6,8 +6,9 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
+    [ARRAY]
     (中等)
-    198. 打家劫舍
+    NO.198. 打家劫舍
         你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，
         影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如
         果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
@@ -25,15 +26,16 @@ import org.junit.Test;
         偷窃到的最高金额 = 2 + 9 + 1 = 12 。
 */
 @SuppressWarnings("all")
-public class NO198_N_HouseRobber_x2 {
+public class NO198_N_HouseRobber {
 
     @Test
     public void test() {
-        assert 4 == rob(new int[]{1, 2, 3, 1});// 4
-        assert 12 == rob(new int[]{2, 7, 9, 3, 1});// 12
+        assert 4  == rob(new int[]{1, 2, 3, 1});
+        assert 12 == rob(new int[]{2, 7, 9, 3, 1});
     }
 
     public int rob(int[] nums) {
+        // 2024/3/25 NO.1
         return -1;
     }
 
@@ -49,21 +51,18 @@ public class NO198_N_HouseRobber_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int rob(int[] nums) {
     // 前者最大值
     int pre = 0;
-
     // 当前最大值
     int cur = 0;
-
     for (int num : nums) {
         int tmp = cur;
-        cur = Math.max(pre + num, cur);
+        cur = max(pre + num, cur);
         pre = tmp;
     }
-
     return cur;
 }
 

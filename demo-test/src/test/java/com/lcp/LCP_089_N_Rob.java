@@ -4,14 +4,13 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     LCP.089 打家劫舍
-    一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响小偷偷
-    窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋
-    在同一晚上被小偷闯入，系统会自动报警。
-    给定一个代表每个房屋存放金额的非负整数数组 nums ，请计算 不触动警报装置
-    的情况下 ，一夜之内能够偷窃到的最高金额。
+       一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响小偷偷
+    窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同
+    一晚上被小偷闯入，系统会自动报警。给定一个代表每个房屋存放金额的非负整数数组
+    nums，请计算不触动警报装置的情况下，一夜之内能够偷窃到的最高金额。
     示例 1：
         输入：nums = [1, 2, 3, 1]
         输出：4
@@ -38,13 +37,10 @@ public class LCP_089_N_Rob {
     public int rob(int[] nums) {
         // 2024/3/19 NO.1 动态规划，看懂了，但是写不出来
         // 2024/3/21 NO.2 没做出来
+        // 2024/3/25 NO.3 有思路，没做出来
         int n = nums.length;
         int[] dp = new int[n + 1];
-
         return dp[n];
-
-//        int cur = 0;
-//        return cur;
     }
 
 }
@@ -83,7 +79,6 @@ public int rob(int[] nums) {
 
 // 方法2：两个指针 cur、pre
 private int myRob(int[] nums) {
-    // 同NO.089 打家劫舍 I 的思路
     int pre = 0;
     int cur = 0;
     for (int num : nums) {

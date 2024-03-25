@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||||
     (中等)
     (重要,面试）
     1306. 跳跃游戏 III
@@ -49,25 +49,8 @@ public class NO1306_N_JumpGameIII {
         // 2024/2/27 NO.4 还需要复习一下，不是一遍过
         // 2024/3/4  NO.5 还是没思路，没有时间思考是不行的
         // 2024/3/22 NO.6 不会做，看答案勉强看懂，写不出来
-        boolean[] visited = new boolean[arr.length];
-        return dfs(arr, start, visited);
-    }
-
-    private boolean dfs(int[] num, int idx, boolean[] visited) {
-        if (idx < 0 || idx >= num.length || visited[idx])
-            return false;
-
-        // 当前坐标能够跳的步幅（+step、-step）值
-        int step = num[idx];
-
-        // 当值等于0，相当于跳到了0值所在的坐标，结束了
-        if (step == 0)
-            return true;
-
-        visited[idx] = true;
-
-        return dfs(num, idx + step, visited)
-            || dfs(num, idx - step, visited);
+        // 2024/3/24 NO.7 会做，但是做不出来，有思路
+        return false;
     }
 
 }

@@ -9,14 +9,21 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] |||
+    [TREE] ||||
     (中等,抖音,面试题)
     二叉树顶部视图
 
     输入：                    1
+                          /     \
+                         /        \
+                        /           \
+                      /               \
                    2                    3
-              4          5         6         7
+
+              4          5         6          7
+
            8     9    10    11  12   13    14    15
+
         16 17 18 19 20 21 2
     输出：
          [16, 8, 4, 2, 1, 3, 7, 15]
@@ -26,9 +33,6 @@ import static org.junit.Assert.assertArrayEquals;
     我们可以使用水平距离的概念，其中根节点的水平距离为0，左子节点的水平距离
     为父节点的水平距离减1，右子节点的水平距离为父节点的水平距离加1。我们遍历树，
     记录每个水平距离上首次遇到的节点，这样就可以生成二叉树的顶部视图。
-
-    以下是使用Java语言实现的步骤：
-
     创建二叉树节点类TreeNode。
     使用队列进行层序遍历（BFS），同时使用一个Map来记录每个水平距离上的节点。
     对于每个遍历到的节点，如果其水平距离在Map中还没有记录，就将其添加到Map中。
@@ -51,14 +55,8 @@ public class TopView {
         // 2024/3/20 NO.2 没做出来
         // 2024/3/21 NO.3 没做对
         // 2024/3/22 NO.4 能做出来了
-        if (root == null)
-            return null;
-
-        Map<Integer, Integer> map = new TreeMap<>();
-
-
-
-        return map.values().stream().mapToInt(a->a).toArray();
+        // 2024/3/24 No.5 一遍过
+        return null;
     }
 
 }

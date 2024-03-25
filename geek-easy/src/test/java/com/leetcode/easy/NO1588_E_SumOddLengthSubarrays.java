@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
     1588. 所有奇数长度子数组的和
         给你一个正整数数组arr，请你计算所有可能的奇数长度子数组的和。
@@ -47,8 +47,8 @@ public class NO1588_E_SumOddLengthSubarrays {
         // 2024/3/7  NO.1
         // 2024/3/18 NO.2 想不出来
         // 2024/3/21 NO.3 不好想
+        // 2024/3/25 NO.4
         int sum = 0;
-
         return sum;
     }
 
@@ -75,11 +75,10 @@ public int sumOddLengthSubarrays(int[] arr) {
     for (int i = 0; i < arr.length; i++)
         // 每次步进为2, 这里之所以用 <= arr.length
         // 是因为步进为2，有可能超过 arr.length - 1
-        for (int j = 1; i + j <= arr.length; j += 2) {
+        for (int STEP = 1; i + STEP <= arr.length; STEP += 2)
             // 子数组求和
-            for (int k = i; k < i + j; k++)
+            for (int k = i; k < i + STEP; k++)
                 sum += arr[k];
-        }
 
     return sum;
 }

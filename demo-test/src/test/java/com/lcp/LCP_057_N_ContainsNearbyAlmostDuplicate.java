@@ -5,7 +5,7 @@ import java.util.TreeSet;
 import static com.leetcode.util.SystemUtil.print;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     LCP.057 存在重复元素的子数组
     给你一个整数数组 nums 和两个整数k和t。请你判断是否存在两个不同下标i和j，
@@ -40,7 +40,7 @@ public class LCP_057_N_ContainsNearbyAlmostDuplicate {
     }
 
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        // 2024/3/19 NO.1
+        // 2024/3/19 NO.1 没看懂
 
         return false;
     }

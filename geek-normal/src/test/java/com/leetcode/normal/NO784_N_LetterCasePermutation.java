@@ -5,14 +5,12 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.*;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.*;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] |||||||
+    [ARRAY] ||||||||
     (中等,面试题)
     784. 字母大小写全排列
         给定一个字符串s，通过将字符串s中的每个字母转变大小写，
@@ -46,6 +44,7 @@ public class NO784_N_LetterCasePermutation {
         // 2024/3/20 NO.7
         // 2024/3/22 NO.8 没做出来
         // 2024/3/23 NO.9 思路对了，但是不熟悉，没做出来
+        // 2024/3/25 NO.10 做出来了，有点坎坷
         List<String> ans = new ArrayList<>();
         return ans;
     }

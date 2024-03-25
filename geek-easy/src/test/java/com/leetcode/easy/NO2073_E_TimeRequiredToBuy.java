@@ -52,14 +52,8 @@ public class NO2073_E_TimeRequiredToBuy {
         // 2024/3/17 NO.2 不会做，看懂了一点点
         // 2024/3/19 NO.3 还是没思路，有一点点印象,动态规划
         // 2024/3/22 NO.4 忘了，不会做了
+        // 2024/3/24 NO.5 有点瑕疵，能做出来
         int min = 0;
-        int n = tickets.length;
-        for (int i = 0; i < n; i++) {
-            if (i <= k)
-                min += min(tickets[k], tickets[i]);
-            else
-                min += min(tickets[k] - 1, tickets[i]);
-        }
         return min;
     }
 

@@ -1,9 +1,12 @@
+/**
+ * copyright (c) 2024 by 501735698@qq.com
+ */
 package com.leetcode.normal;
 
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     NO.2348. 全 0 子数组的数目
     给你一个整数数组 nums，返回全部为 0 的子数组数目。
@@ -13,14 +16,14 @@ import org.junit.Test;
         输出：6
         解释：子数组 [0] 出现了 4 次。
              子数组 [0,0] 出现了 2 次。
-             不存在长度大于 2 的全 0 子数组，所以我们返回 6 。
+             不存在长度大于 2 的全 0 子数组，所以我们返回 6。
     示例 2：
         输入：nums = [0, 0, 0, 2, 0, 0]
         输出：9
         解释：子数组 [0] 出现了 5 次。
              子数组 [0,0] 出现了 3 次。
              子数组 [0,0,0] 出现了 1 次。
-             不存在长度大于 3 的全 0 子数组，所以我们返回 9 。
+             不存在长度大于 3 的全 0 子数组，所以我们返回 9。
     示例 3：
         输入：nums = [2, 10, 2019]
         输出：0
@@ -34,14 +37,18 @@ public class NO2348_N_ZeroFilledSubarray {
 
     @Test
     public void test() {
-        assert 6 == zeroFilledSubarray(new int[]{1, 3, 0, 0, 2, 0, 0, 4});
-        assert 9 == zeroFilledSubarray(new int[]{0, 0, 0, 2, 0, 0});
-        assert 0 == zeroFilledSubarray(new int[]{2, 10, 2019});
+        assert 6 == zeroFilledSubarray(
+                new int[]{1, 3, 0, 0, 2, 0, 0, 4});
+        assert 9 == zeroFilledSubarray(
+                new int[]{0, 0, 0, 2, 0, 0});
+        assert 0 == zeroFilledSubarray(
+                new int[]{2, 10, 2019});
     }
 
     public long zeroFilledSubarray(int[] nums) {
         // 2024/3/21 NO.1
         // 2024/3/22 NO.2 没思路忘了
+        // 2024/3/25 NO.3 没思路忘了，能看懂
         long ans = 0;
         return ans;
     }

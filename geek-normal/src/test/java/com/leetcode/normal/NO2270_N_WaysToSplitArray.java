@@ -6,14 +6,15 @@ import static com.leetcode.util.MathUtils.getTotal;
 import static java.util.Arrays.stream;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.2270 分割数组的方案数
-    给你一个下标从 0 开始长度为 n 的整数数组 nums 。
-    如果以下描述为真，那么 nums 在下标 i 处有一个 合法的分割 ：
+        给你一个下标从 0 开始长度为 n 的整数数组 nums。如果以下描述为真，
+    那么nums在下标 i 处有一个【合法的分割】：
      1）【前 i + 1 个元素的和】大于等于【剩下的 n - i - 1 个元素的和】。
         （即：sum >= total - sum ）
-     2）【下标 i 的右边 至少有一个 元素】，也就是说下标 i 满足 0 <= i < n - 1 。
+     2）【下标 i 的右边至少有一个元素】，也就是说
+         下标 i 满足 0 <= i < n - 1 。
     请你返回 nums 中的【合法分割】方案数。
     示例 1：
         输入：nums = [10, 4, -8, 7]
@@ -51,6 +52,7 @@ public class NO2270_N_WaysToSplitArray {
 
     public int waysToSplitArray(int[] nums) {
         // 2024/3/22 NO.1
+        // 2024/3/25 NO.2 看懂了，做不出来。
         int ans = 0;
         return ans;
     }

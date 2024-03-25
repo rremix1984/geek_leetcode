@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     1863. 找出所有子集的异或总和再求和
         一个数组的 异或总和 定义为数组中所有元素按位 XOR 的结果；如果数组为 空 ，则异或总和为 0 。
@@ -46,12 +46,13 @@ public class NO1863_E_SubsetXORSum {
 
     @Test
     public void test() {
-        assert 6 == subsetXORSum(new int[]{1, 3});
-        assert 28 == subsetXORSum(new int[]{5, 1, 6});
+        assert   6 == subsetXORSum(new int[]{1, 3});
+        assert  28 == subsetXORSum(new int[]{5, 1, 6});
         assert 480 == subsetXORSum(new int[]{3, 4, 5, 6, 7, 8});
     }
 
     public int subsetXORSum(int[] nums) {
+        // 2024/3/25 NO.1 没做出来，但是思路对
         AtomicInteger res = new AtomicInteger(0);
         return res.intValue();
     }
@@ -80,21 +81,22 @@ public int subsetXORSum(int[] nums) {
 
     AtomicInteger res = new AtomicInteger(0);
 
-    dfs(res, nums,0,0);
+    dfs(res, nums, 0, 0);
 
     return res.intValue();
 }
 
-public void dfs(AtomicInteger res, int []nums,int i ,int xor_sum) {
-    if (i == nums.length) {
+public void dfs(AtomicInteger res, int[] nums, int start, int xor_sum) {
+    if (start == nums.length) {
         res.addAndGet(xor_sum);
         return;
     }
 
     //当前位置要
-    dfs(res, nums,i + 1, xor_sum ^ nums[i]);
+    dfs(res, nums, start + 1, xor_sum ^ nums[i]);
 
     //当前位置不要
-    dfs(res, nums,i + 1, xor_sum);
+    dfs(res, nums, start + 1, xor_sum);
+
 }
 */

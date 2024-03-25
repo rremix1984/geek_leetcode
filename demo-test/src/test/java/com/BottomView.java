@@ -1,11 +1,11 @@
 package com;
 
+import com.leetcode.util.ListNode;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.TreeMap;
+
+import java.util.*;
+
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.SystemUtil.*;
 import static org.junit.Assert.assertArrayEquals;
@@ -54,7 +54,8 @@ public class BottomView {
     public int[] bottomView(TreeNode root) {
         // 2024/3/19 NO.1 不会
         // 2024/3/21 NO.2 做不出来
-        // 2024/3/22 NO.3 做出来了了
+        // 2024/3/22 NO.3 做出来了
+        // 2024/3/25 NO.4 做出来了，前提是给了提示
         if (root == null)
             return null;
 
@@ -105,6 +106,8 @@ public int[] bottomView(TreeNode root) {
         // 如果是顶视图，就要加上 if (!map.containsKey(hd)) 的判断
         map.put(hd, current.val);
 
+        // 为什么是先左节点，后右节点？
+        // 因为 TreeMap 是中序遍历，二叉搜索树，从左到右
         if (current.left != null) {
             queue.offer(current.left);
             distance.offer(hd - 1);

@@ -6,6 +6,7 @@ package com.lcp;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 import static com.leetcode.util.MathUtils.getDict;
@@ -14,7 +15,7 @@ import static java.util.Arrays.sort;
 import static java.util.Comparator.reverseOrder;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     LCS 02. 完成一半题目
         有 N 位扣友参加了微软与力扣举办了「以扣会友」线下活动。主办方提供了2 * N道题目，
@@ -32,8 +33,8 @@ import static java.util.Comparator.reverseOrder;
         解释：有 6 位扣友在 12 道题目中选择题目，需要选择 6 题。
         选择完成知识点类型为 3、5 的题目，因此至少包含 2 种知识点类型。
     提示：
-        questions.length == 2*n
-        2 <= questions.length <= 10^5
+        questions.length == 2 * n
+        2 <= questions.length <= 10 ^ 5
         1 <= questions[i] <= 1000
 */
 public class LCS_02_E_HalfQuestions {
@@ -48,17 +49,9 @@ public class LCS_02_E_HalfQuestions {
 
     public int halfQuestions(int[] questions) {
         // 2024/3/12 NO.1
+        // 2024/3/25 NO.2 没思路，看懂了
         int ans = 0;
-        Integer[] dict = getDictInteger(1001, questions);
-
-        int sum = 0;
-        sort(dict, reverseOrder());
-        for (Integer num : dict) {
-            sum += num;
-            ans++;
-            if (sum >= questions.length / 2)
-                break;
-        }
+        
         return ans;
     }
 

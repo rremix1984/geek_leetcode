@@ -11,7 +11,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
 
 /**
-    [TREE] |
+    [TREE] |||
     (中等)
     剑指 Offer II 046. 二叉树的右侧视图
         给定一个二叉树的 根节点 root，想象自己站在它的右侧，
@@ -42,6 +42,7 @@ public class OfferII_046_N_RightSightView {
     public List<Integer> rightSideView(TreeNode root) {
         // 2024/3/12 NO.1
         // 2024/3/17 NO.2
+        // 2024/3/24 NO.3 一遍过
         List<Integer> res = new ArrayList<>();
         if (root == null)
             return res;

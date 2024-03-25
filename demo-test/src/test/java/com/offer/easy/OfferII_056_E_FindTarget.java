@@ -5,8 +5,7 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.TreeNodeUtil.inorder;
 
@@ -14,7 +13,7 @@ import static com.leetcode.util.TreeNodeUtil.inorder;
     [TREE] ||
     (简单)
     剑指 Offer II 056. 二叉搜索树中两个节点之和
-        给定一个二叉搜索树的根节点 root 和一个整数 k, 请判断该二叉搜索树
+        给定一个二叉搜索树的根节点 root 和一个整数k, 请判断该二叉搜索树
         中是否存在【两个节点】它们的值之和等于 k。
         假设二叉搜索树中节点的值均唯一。
     示例 1：
@@ -48,7 +47,7 @@ public class OfferII_056_E_FindTarget {
     public boolean findTarget(TreeNode root, int k) {
         // 2024/3/22 NO.1 递归法、二分查找+中序遍历
         // 2024/3/23 NO.2 一遍过
-        ArrayList<Integer> res = new ArrayList<>();
+        // 2024/3/25 NO.3 没做出来
         return false;
     }
 
@@ -71,8 +70,8 @@ public class OfferII_056_E_FindTarget {
 
 /*
 // 方法1：递归法
+Set<Integer> set = new HashSet<>();
 public boolean findTarget(TreeNode root, int k) {
-    Set<Integer> set = new HashSet<>();
     if (root == null)
         return false;
 
@@ -81,9 +80,8 @@ public boolean findTarget(TreeNode root, int k) {
 
     set.add(root.val);
     return findTarget(root.left, k)
-            || findTarget(root.right, k);
+        || findTarget(root.right, k);
 }
-
 
 // 方法2：层序遍历
 public boolean findTarget(TreeNode root, int k) {

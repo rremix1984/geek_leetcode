@@ -8,8 +8,9 @@ import java.util.Queue;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (中等)
+    (没必要再做了)
     NO.378 有序矩阵中第K小的元素
     给你一个 n x n 矩阵 matrix ，其中每行和每列元素均按升序排序，
     找到矩阵中第 k 小的元素。请注意，它是排序后的第k小元素，
@@ -51,7 +52,7 @@ public class NO378_N_KthSmallest {
 
     public int kthSmallest(int[][] matrix, int k) {
         // 2024/3/15 NO.1
-        // 2024/3/18-21 NO.2-3 做出来了
+        // 2024/3/18-21-25 NO.2-3-4 做出来了
         return -1;
     }
 

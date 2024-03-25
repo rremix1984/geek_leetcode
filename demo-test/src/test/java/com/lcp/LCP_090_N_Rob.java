@@ -6,11 +6,11 @@ import static java.lang.Math.max;
 import static java.util.Arrays.copyOfRange;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     LCP.090 打家劫舍 II
-    一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。
-    这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。
+       一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。
+    这个地方所有的房屋都【围成一圈】，这意味着第一个房屋和最后一个房屋是紧挨着的。
     同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，
     系统会自动报警 。
     给定一个代表每个房屋存放金额的非负整数数组 nums ，请计算 在不触动警报装置的
@@ -39,10 +39,13 @@ public class LCP_090_N_Rob {
         assert 3 == rob(new int[]{2, 3, 2});
         assert 4 == rob(new int[]{1, 2, 3, 1});
         assert 0 == rob(new int[]{0});
+        assert 1 == rob(new int[]{1});
+        assert 0 == rob(new int[]{});
     }
 
     public int rob(int[] nums) {
         // 2024/3/19 动态规划法
+        // 2024/3/25 循环套用【打家劫舍 I】的逻辑
         return 0;
     }
 

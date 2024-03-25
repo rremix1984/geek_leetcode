@@ -65,7 +65,24 @@ public class NO1642_N_FurthestBuilding {
     public int furthestBuilding(int[] heights, int bricks, int ladders) {
         // 2024/3/17 NO.1
         // 2024/3/22 NO.2 能看懂了
-        return -1;
+        // 2024/3/25 NO.3
+        int sum = 0;
+        Queue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
+        for (int i = 1; i < heights.length; i++) {
+            int diff = heights[i] - heights[i - 1];
+            if (diff <= 0)
+                continue;
+
+            sum += diff;
+            queue.offer(diff);
+            while (sum > bricks) {
+                ladders--;
+                sum -= queue.poll();
+            }
+            if (ladders < 0)
+                return i - 1;
+        }
+        return heights.length - 1;
     }
 
 }

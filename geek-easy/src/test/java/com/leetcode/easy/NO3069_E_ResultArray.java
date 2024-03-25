@@ -11,13 +11,13 @@ import static org.junit.Assert.assertArrayEquals;
     [ARRAY] ||
     (简单)
     NO.3069 将元素分配到两个数组中 I
-    给你一个下标从1开始、包含[不同整数]的数组nums，数组长度为n。
+    给你一个下标从 1 开始、包含[不同整数]的数组nums，数组长度为 n。
     你需要通过 n 次操作，将 nums 中的所有元素分配到两个数组arr1和arr2中。
       1）在第一次操作中，将 nums[1] 追加到 arr1 。
       2）在第二次操作中，将 nums[2] 追加到 arr2 。
       3）之后，在第 i 次操作中：
-        如果 arr1 的最后一个元素 大于 arr2 的最后一个元素，就将 nums[i] 追加到 arr1 。
-        否则，将 nums[i] 追加到 arr2 。
+        如果 arr1 的最后一个元素 大于 arr2 的最后一个元素，就将 nums[i] 追加到 arr1。
+        否则，将 nums[i] 追加到 arr2。
     通过【连接数组】arr1和arr2形成数组result。例如，如果 arr1 == [1,2,3] 且 arr2 == [4,5,6] ，那么 result = [1,2,3,4,5,6] 。
     返回数组 result 。
     示例 1：
