@@ -1,3 +1,6 @@
+/**
+ * copyright(c) 2021-2022
+ */
 package com.interval;
 
 import com.leetcode.util.ListNode;
@@ -33,19 +36,39 @@ public class Interval_02_01_E_RemoveDuplicateNodes {
 
     public ListNode removeDuplicateNodes(ListNode head) {
 
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode temp = cur;
-            while (temp.next != null) {
-                if (temp.next.val == cur.val) {
-                    temp.next = temp.next.next;
-                } else {
-                    temp = temp.next;
-                }
-            }
-            cur = cur.next;
-        }
-        return head;
+        return null;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public ListNode removeDuplicateNodes(ListNode head) {
+    ListNode cur = head;
+    while (cur != null) {
+        ListNode temp = cur;
+        while (temp.next != null) {
+            if (temp.next.val == cur.val) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
+        cur = cur.next;
+    }
+    return head;
+}
+*/
