@@ -5,7 +5,6 @@ package com.interval;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
     [LISTNODE]
@@ -38,6 +37,7 @@ public class Interval_02_04_N_Partition {
 
     public ListNode partition(ListNode head, int x) {
         ListNode dummy = new ListNode(0, head);
+
         return dummy.next;
     }
 
