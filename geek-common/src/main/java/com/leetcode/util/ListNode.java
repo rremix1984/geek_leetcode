@@ -70,6 +70,10 @@ public class ListNode {
 
     }
 
+    public static void assertNodeEquals(ListNode node, int... arr) {
+        assert new ListNode(arr).equals(node);
+    }
+
     public ListNode(int... vals) {
         if (vals != null) {
             this.val = vals[0];
