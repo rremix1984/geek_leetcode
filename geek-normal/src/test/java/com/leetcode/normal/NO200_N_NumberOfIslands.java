@@ -42,8 +42,9 @@ public class NO200_N_NumberOfIslands {
     }
 
     public int numIslands(char[][] grid) {
-        // 2024/3/23 NO.1
-         return 0;
+        // 2024/3/23 NO.1 没做出来，Flood Fill法
+
+        return 0;
     }
 
 }
@@ -64,7 +65,7 @@ private int row, col;
 
 public int numIslands(char[][] grid) {
     // 岛屿数量
-    int islands_count = 0;
+    int cnt = 0;
 
     // 初始化行、列数
     row = grid.length;
@@ -73,17 +74,17 @@ public int numIslands(char[][] grid) {
     col = grid[0].length;
 
     // 迭代地图上每一个元素
-    for (int i = 0; i < row; i++){
+    for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++)
             // 发现陆地，就遍历（dfs）每一个周边元素
             if (grid[i][j] == '1') {
                 dfs(grid, i, j);
                 // 当把所有周边元素遍历完成之后
                 // 岛屿数 +1
-                islands_count++;
+                cnt++;
             }
     }
-    return islands_count;
+    return cnt;
 }
 
 // 已知一个节点，遍历他的上、下、左、右所有节点
