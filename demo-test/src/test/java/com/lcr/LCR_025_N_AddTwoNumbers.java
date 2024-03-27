@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
     [LISTNODE] |
@@ -47,33 +48,10 @@ public class LCR_025_N_AddTwoNumbers {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // 2024/3/27 NO.1 不会做
-        Deque<Integer> stack1 = new LinkedList<>();
-        Deque<Integer> stack2 = new LinkedList<>();
-        while (l1 != null) {
-            stack1.push(l1.val);
-            l1 = l1.next;
-        }
+        // 2024/3/27 NO.1 不会做, 答案看懂了
+        ListNode ret = null;
 
-        while (l2 != null) {
-            stack2.push(l2.val);
-            l2 = l2.next;
-        }
-
-        int carry = 0;
-        ListNode ans = null;
-        while (!stack1.isEmpty() || !stack2.isEmpty() || carry != 0) {
-            int a = stack1.isEmpty() ? 0 : stack1.pop();
-            int b = stack2.isEmpty() ? 0 : stack2.pop();
-            int cur = a + b + carry;
-            carry = cur / 10;
-            cur %= 10;
-
-            ListNode node = new ListNode(cur);
-            node.next = ans;
-            ans = node;
-        }
-        return ans;
+        return ret;
     }
 
 }
@@ -104,8 +82,9 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         stack2.push(l2.val);
         l2 = l2.next;
     }
+
     int carry = 0;
-    ListNode ans = null;
+    ListNode ret = null;
     while (!stack1.isEmpty() || !stack2.isEmpty() || carry != 0) {
         int a = stack1.isEmpty() ? 0 : stack1.pop();
         int b = stack2.isEmpty() ? 0 : stack2.pop();
@@ -113,9 +92,9 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         carry = cur / 10;
         cur %= 10;
         ListNode curNode = new ListNode(cur);
-        curNode.next = ans;
-        ans = curNode;
+        curNode.next = ret;
+        ret = curNode;
     }
-    return ans;
+    return ret;
 }
 */
