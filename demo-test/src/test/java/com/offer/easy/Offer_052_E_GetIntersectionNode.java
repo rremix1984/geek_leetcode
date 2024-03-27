@@ -4,11 +4,15 @@
 package com.offer.easy;
 
 import com.leetcode.util.ListNode;
+import org.junit.Assert;
 import org.junit.Test;
+
+import static com.leetcode.util.SystemUtil.printListNode;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (简单)
     剑指 Offer 52. 两个链表的第一个公共节点
         输入两个链表，找出它们的第一个公共节点。
@@ -31,15 +35,27 @@ import static org.junit.Assert.assertNull;
             所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
         解释：这两个链表不相交，因此返回 null。
 */
-public class Offer_052_E_GetIntersectionNode_x2 {
+public class Offer_052_E_GetIntersectionNode {
 
     @Test
     public void test() {
-        assertNull(getIntersectionNode(new ListNode(2,6,4),new ListNode(1,5)));
+        assertNull(getIntersectionNode(
+                new ListNode(2, 6, 4),
+                new ListNode(1, 5)));
+        ListNode eight = new ListNode(8, 4, 5);
+        ListNode two = new ListNode(2, 4);
+        assertEquals(eight, getIntersectionNode(
+                new ListNode(4, 1).next(eight),
+                new ListNode(5, 6, 1).next(eight)));
+        assertEquals(two, getIntersectionNode(
+                new ListNode(1, 9, 1).next(two),
+                new ListNode(3).next(two)));
+
     }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        return null;
+        // 2024/3/27 NO.1 很熟悉的题，但做错了，需要练
+         return null;
     }
 
 }
@@ -61,7 +77,8 @@ public class Offer_052_E_GetIntersectionNode_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     if (headA == null || headB == null)
         return null;

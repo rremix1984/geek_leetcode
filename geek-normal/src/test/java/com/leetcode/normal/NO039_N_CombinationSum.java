@@ -5,15 +5,16 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.MathUtils.getArrays;
 import static com.leetcode.util.MathUtils.getArrays;
-import static com.leetcode.util.SystemUtil.arrayAllMatch;
+import static com.leetcode.util.SystemUtil.*;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (中等,面试题)
     NO.39 组合总和
         给你一个无重复元素的整数数组 candidates 和一个目标整数 target，
@@ -56,6 +57,7 @@ public class NO039_N_CombinationSum {
         // 2024/3/12 NO.1 挺难想的，但是不是做不出来
         // 2024/3/19 NO.2 有点思路了，但是还是做不出来，很经典
         // 2024/3/25 NO.3 没做出来，但是思路接近了
+        // 2024/3/27 NO.4 做出来了，但是有瑕疵，还是不对
         List<List<Integer>> res = new ArrayList<>();
 
         return res;

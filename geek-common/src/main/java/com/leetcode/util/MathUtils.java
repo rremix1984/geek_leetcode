@@ -456,6 +456,15 @@ public class MathUtils {
         return sums;
     }
 
+    public static int gcd(int a, int b) {
+        while (a != 0) {
+            int temp = a;
+            a = b % a;
+            b = temp;
+        }
+        return b;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(max(1,2,3,4,5));
 //        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));

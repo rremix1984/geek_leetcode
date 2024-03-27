@@ -9,7 +9,7 @@ import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [ARRAY] ||||||
+    [ARRAY] ||||||||
     (中等)
     NO.22. 括号生成
         数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
@@ -33,8 +33,9 @@ public class NO022_N_GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         // 2024/3/15 NO.2 没做出来...
         // 2024/3/17 NO.3 有点印象，但是还没做出来
-        // 2024/3/18-19-22-24 NO.4-5-6-7 一遍过
+        // 2024/3/18-19-22-24-26 NO.4-5-6-7-8 一遍过
         List<String> res = new ArrayList<>();
+
         return res;
     }
 

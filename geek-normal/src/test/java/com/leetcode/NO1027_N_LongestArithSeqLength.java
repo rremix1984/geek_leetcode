@@ -70,6 +70,9 @@ public class NO1027_N_LongestArithSeqLength {
         // 2024/3/20 NO.3 没思路
         // 2024/3/25 NO.4 没做出来..
         int ans = 0;
+        int n = nums.length;
+        int[][] dp = new int[n][1001];
+
         return ans + 1;
     }
 

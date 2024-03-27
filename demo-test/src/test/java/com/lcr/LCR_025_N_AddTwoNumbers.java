@@ -9,7 +9,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (中等)
     LCR.025 两数相加 II
     给定两个 非空链表 l1和 l2 来代表两个非负整数。数字最高位位于链表开始位置。
@@ -36,14 +36,18 @@ public class LCR_025_N_AddTwoNumbers {
     @Test
     public void test() {
         assert new ListNode(7, 8, 0, 7).equals(
-                addTwoNumbers(new ListNode(7, 2, 4, 3), new ListNode(5, 6, 4)));
+                addTwoNumbers(new ListNode(7, 2, 4, 3),
+                              new ListNode(5, 6, 4)));
         assert new ListNode(8, 0, 7).equals(
-                addTwoNumbers(new ListNode(2, 4, 3), new ListNode(5, 6, 4)));
+                addTwoNumbers(new ListNode(2, 4, 3),
+                              new ListNode(5, 6, 4)));
         assert new ListNode(0).equals(
-                addTwoNumbers(new ListNode(0), new ListNode(0)));
+                addTwoNumbers(new ListNode(0),
+                              new ListNode(0)));
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 2024/3/27 NO.1 不会做
         Deque<Integer> stack1 = new LinkedList<>();
         Deque<Integer> stack2 = new LinkedList<>();
         while (l1 != null) {
@@ -64,9 +68,10 @@ public class LCR_025_N_AddTwoNumbers {
             int cur = a + b + carry;
             carry = cur / 10;
             cur %= 10;
-            ListNode curNode = new ListNode(cur);
-            curNode.next = ans;
-            ans = curNode;
+
+            ListNode node = new ListNode(cur);
+            node.next = ans;
+            ans = node;
         }
         return ans;
     }

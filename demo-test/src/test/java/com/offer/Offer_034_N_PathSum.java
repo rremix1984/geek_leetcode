@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
-import static com.leetcode.util.SystemUtil.print;
 
 /**
-    [TREE] |
+    [TREE] |||
     (中等)
     剑指 Offer 34. 二叉树中和为某一值的路径
         给你二叉树的根节点root和一个整数目标和targetSum，
@@ -55,29 +54,10 @@ public class Offer_034_N_PathSum {
     public List<List<Integer>> pathSum(TreeNode root, int target) {
         // 2024/3/21 NO.1 没做出来，但看懂了
         // 2024/3/22 NO.2
+        // 2024/3/27 NO.3 思路对，但是没做出来
         List<List<Integer>> ret = new ArrayList<>();
-        ArrayList<Integer> list = new ArrayList<>();
-        dfs(ret, list, root, target);
+
         return ret;
-    }
-
-    private void dfs(List<List<Integer>> ret, ArrayList<Integer> list,
-                     TreeNode root, int target) {
-        if (root == null)
-            return;
-
-        target -= root.val;
-        list.add(root.val);
-
-        if (target == 0 && root.left == null && root.right == null) {
-            ret.add(new ArrayList<>(list));
-        }
-
-        dfs(ret, list, root.left, target);
-
-        dfs(ret, list, root.right, target);
-
-        list.remove(list.size() - 1);
     }
 
 }

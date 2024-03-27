@@ -9,7 +9,8 @@ import java.util.Arrays;
 /**
     [ARRAY] |
     (简单)
-    2154. 将找到的值乘以2
+    (过于简单了)
+    NO.2154. 将找到的值乘以2
         给你一个整数数组nums，另给你一个整数original，这是需要在nums中搜索的第一个数字。
         接下来，你需要按下述步骤操作：
          1）如果在nums中找到original，将 original乘以2，得到新original（即，令original=2*original）。
@@ -32,14 +33,15 @@ public class NO2154_E_FindFinalValue {
 
     @Test
     public void test() {
-        assert 24== findFinalValue(
+        assert 24 == findFinalValue(
             new int[]{5, 3, 6, 1, 12}, 3);
-        assert 4 == findFinalValue(
+        assert  4 == findFinalValue(
             new int[]{2, 7, 9}, 4);
     }
 
     public int findFinalValue(int[] nums, int original) {
         // 2024/2/27 NO.3
+
         return original;
     }
 

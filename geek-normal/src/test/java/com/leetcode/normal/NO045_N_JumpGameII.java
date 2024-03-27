@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] |||||||||
     （中等）
     (重要,面试）
     45. 跳跃游戏 II
@@ -41,7 +41,9 @@ public class NO045_N_JumpGameII {
         // 2024/3/22 NO.6 思路对，但没做出来 挺经典的面试题
         // 2024/3/24 NO.7 思路对，没做出来
         // 2024/3/25 NO.8 思路对，没做出来
+        // 2024/3/26 NO.9 思路对，比上次强一点，还得练习
         int jump = 0;
+
         return jump;
     }
 
@@ -63,20 +65,25 @@ public class NO045_N_JumpGameII {
 /*
 // 方法1：
 public int jump(int[] nums) {
-    int jump = 0;  // 跳的次数
-    int max = 0;   // 当前能跳到最远的位置
+
+    int jump  = 0; // 跳的次数
+    int max   = 0; // 当前能跳到最远的位置
     int reach = 0; // 能到达（reach）的边界
+
     // 因为题目说：总是可以到达数组的最后一个位置。
     // 因此不需要考虑 length - 1 这一位
     for (int i = 0; i < nums.length - 1; i++) {
+
         // 找到能跳到的最远位置
         max = max(max, i + nums[i]);
+
         // 遇到边界，就更新边界 reach = max
         // 而且需要再跳一步 jump++
         if (i == reach) {
             reach = max;
             jump++;
         }
+
     }
     return jump;
 }

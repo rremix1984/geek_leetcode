@@ -9,7 +9,7 @@ import static com.leetcode.util.MathUtils.getDict;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
     (中等,面试题)
     NO.442 数组中重复的数据
       给你一个长度为n的整数数组 nums，其中nums的所有整数都在范围 [1, n] 内，
@@ -49,6 +49,7 @@ public class NO442_N_FindDuplicates {
         // 2024/3/20 NO.3 还是不会
         // 2024/3/21 NO.4 还是不会
         // 2024/3/23 NO.5 能做出一部分，有思路，不熟练
+        // 2024/3/27 NO.6
         List<Integer> ret = new ArrayList<>();
         return ret;
     }

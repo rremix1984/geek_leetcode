@@ -6,11 +6,14 @@ package com.leetcode.easy;
 import com.leetcode.util.ListNode;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
+
+import static com.leetcode.util.ListNode.reverse;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    [LISTNODE]
-    876. 链表的中间结点
+    [LISTNODE] |
+    (简单)
+    NO.876. 链表的中间结点
         给定一个头结点为 head 的非空单链表，返回链表的中间结点。
         如果有两个中间结点，则返回第二个中间结点。
     示例 1：
@@ -33,6 +36,9 @@ public class NO876_E_MiddleOfTheLinkedList {
     }
 
     public ListNode middleNode(ListNode head) {
+        // 2024/3/26 NO.1 没做出来，但是看懂思路了
+        // 2024/3/27 NO.2 做出来了，用的快、慢指针
+
         return null;
     }
 
@@ -54,12 +60,14 @@ public class NO876_E_MiddleOfTheLinkedList {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode middleNode(ListNode head) {
     if (head == null)
         return null;
-    ListNode fast = head, slow = head;
+
+    ListNode fast = head;
+    ListNode slow = head;
     while (fast != null && fast.next != null) {
         fast = fast.next.next;
         slow = slow.next;

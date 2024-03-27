@@ -11,7 +11,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.SystemUtil.print;
 
 /**
-    [TREE] |
+    [TREE] ||
     (中等)
     LCR.050 路径总和 III
     给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和
@@ -29,7 +29,6 @@ import static com.leetcode.util.SystemUtil.print;
                / \       /  \
               /   \     /    \
             3,    -2, null,   1],
-
             targetSum = 8
         输出：3
         解释：和等于 8 的路径有 3 条。[5, 3]、[5, 2, 1]、[-3, 11]
@@ -42,7 +41,6 @@ import static com.leetcode.util.SystemUtil.print;
                   11,    null,         13,   4,
                  /  \    /   \         /  \
                7,   2, null, null,   5,    1],
-
             targetSum = 22
         输出：3
         解释：和等于 22 的路径有 3 条。[4, 11, 7]、[5, 4, 11, 2]、[8, 13, 1]
@@ -57,7 +55,10 @@ public class LCR_050_PathSum {
     @Test
     public void test() {
         assert 3 == pathSum(
-                cTree(10, 5, -3, 3, 2, null, 11, 3, -2, null, 1),
+                cTree(  10,
+                        5,            -3,
+                    3,       2,   null,   11,
+                3,   -2, null,  1),
                 8);
         assert 3 == pathSum(
                 cTree(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1),
@@ -73,8 +74,10 @@ public class LCR_050_PathSum {
 
     public int pathSum(TreeNode root, int targetSum) {
         // 2024/3/25 NO.1 递归没做出来
-        int ans = 0;
-        return ans;
+        // 2024/3/26 NO.2 忘记了，没思路了
+        // 2024/3/27 NO.3 没做出来，但是看答案能做出来了，思路也通了
+
+        return -1;
     }
 
 }
@@ -98,26 +101,23 @@ public class LCR_050_PathSum {
 /*
 // 方法1：
 public int pathSum(TreeNode root, int targetSum) {
-    if(root == null)
+    if (root == null)
         return 0;
 
-    int ret = rootSum(root, targetSum);
-    ret += pathSum(root.left, targetSum);
-    ret += pathSum(root.right, targetSum);
-    return ret;
+    return rootSum(root, targetSum)
+         + pathSum(root.left, targetSum)
+         + pathSum(root.right, targetSum);
 }
 
 public int rootSum(TreeNode root, int targetSum) {
-    if(root == null)
+    if (root == null)
         return 0;
 
-    int ret = 0;
-    if(root.val == targetSum)
-        ret ++;
+    if (root.val == targetSum)
+        return 1;
 
-    ret += rootSum(root.left, targetSum - root.val);
-    ret += rootSum(root.right, targetSum - root.val);
-    return ret;
+    return rootSum(root.left,  targetSum - root.val)
+         + rootSum(root.right, targetSum - root.val);
 }
 
 // 方法2：

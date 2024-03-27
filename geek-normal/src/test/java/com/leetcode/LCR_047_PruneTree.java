@@ -1,3 +1,6 @@
+/**
+ * copyright [2021] [young]
+ */
 package com.leetcode;
 
 import com.leetcode.util.TreeNode;
@@ -6,7 +9,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.TreeNode.treeEquals;
 
 /**
-    [TREE]
+    [TREE] |
     (中等)
     LCR.047 二叉树剪枝
     给定一个二叉树 根节点 root ，树的每个节点的值要么是 0，要么是 1。
@@ -35,16 +38,48 @@ public class LCR_047_PruneTree {
 
     @Test
     public void test() {
-        assert treeEquals(cTree(1, null, 0, null, null, null, 1),
-            pruneTree(cTree(1, null, 0, null, null, 0, 1)));
-        assert treeEquals(cTree(1, null, 1, null, null, null, 1),
-            pruneTree(cTree(1, 0, 1, 0, 0, 0, 1)));
-        assert treeEquals(cTree(1, 1, 0, 1, 1, null, 1),
-            pruneTree(cTree(1, 1, 0, 1, 1, 0, 1, 0)));
+        assert treeEquals(cTree(       1,
+                                    null,           0,
+                              null,       null, null,     1),
+            pruneTree(cTree(1,
+                                null, 0,
+                            null, null, 0, 1)));
+        assert treeEquals(cTree(        1,
+                                    null,            1,
+                            null,       null, null,       1),
+            pruneTree(cTree(    1,
+                                 0,        1,
+                              0,     0, 0,     1)));
+        assert treeEquals(cTree(    1,
+                                    1,         0,
+                                1,     1, null,     1),
+            pruneTree(cTree(   1,
+                                1,         0,
+                            1,      1, 0,       1,
+                        0)));
     }
 
     public TreeNode pruneTree(TreeNode root) {
+        // 2024/3/26 NO.1 没思路
+        if (dfs(root))
+            return null;
+
         return root;
+    }
+
+    public boolean dfs(TreeNode node) {
+        if (node == null)
+            return true;
+
+        boolean left = dfs(node.left);
+        if (left)
+            node.left = null;
+
+        boolean right = dfs(node.right);
+        if (right)
+            node.right = null;
+
+        return node.val == 0 && left && right;
     }
 
 }
@@ -66,8 +101,7 @@ public class LCR_047_PruneTree {
 /*
 // 方法1：
 public TreeNode pruneTree(TreeNode root) {
-    boolean res = dfs(root);
-    if (res)
+    if (dfs(root))
         return null;
 
     return root;

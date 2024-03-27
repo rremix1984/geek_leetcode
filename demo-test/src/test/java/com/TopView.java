@@ -9,7 +9,7 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] ||||
+    [TREE] |||||||
     (中等,抖音,面试题)
     二叉树顶部视图
 
@@ -55,7 +55,7 @@ public class TopView {
         // 2024/3/20 NO.2 没做出来
         // 2024/3/21 NO.3 没做对
         // 2024/3/22 NO.4 能做出来了
-        // 2024/3/24 No.5 一遍过
+        // 2024/3/24-26-27 No.5-6-7 一遍过
         return null;
     }
 

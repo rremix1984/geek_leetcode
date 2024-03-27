@@ -8,9 +8,10 @@ import org.junit.Test;
 
 import static com.leetcode.util.ListNode.newCycle;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (中等)
     NO.142. 环形链表 II
         给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，
@@ -31,17 +32,22 @@ import static org.junit.Assert.assertEquals;
         输出：返回 null
         解释：链表中没有环。
 */
-public class NO142_N_LinkedListCycleII_x2 {
+public class NO142_N_LinkedListCycleII {
 
     @Test
     public void test() {
-        assertEquals(5, detectCycle(newCycle(3, 2, 0, -4, 5, 6, 5)).val);
-        assertEquals(2, detectCycle(newCycle(3,2,0,-4,2)).val);
-        assertEquals(1, detectCycle(ListNode.newCycle(1,2,1)).val);
-        assertEquals(null, detectCycle(ListNode.newCycle(1,-1)));
+        assertEquals(5,
+                detectCycle(newCycle(3, 2, 0, -4, 5, 6, 5)).val);
+        assertEquals(2,
+                detectCycle(newCycle(3, 2, 0, -4, 2)).val);
+        assertEquals(1,
+                detectCycle(newCycle(1, 2, 1)).val);
+        assertNull(
+                detectCycle(newCycle(1, -1)));
     }
 
     public ListNode detectCycle(ListNode head) {
+        // 2024/3/27 NO.1 没做出来 快慢指针
         return null;
     }
 
@@ -69,6 +75,9 @@ public class NO142_N_LinkedListCycleII_x2 {
 
 /*
 // 方法1：
+// 快慢指针一起跑，
+// 第一次相遇是【有环】，
+// 第二次从头（head）跑，相遇是交点
 public ListNode detectCycle(ListNode head) {
     ListNode fast = head;
     ListNode slow = head;

@@ -6,7 +6,7 @@ import static java.lang.Math.max;
 import static java.util.Arrays.copyOfRange;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (中等)
     LCP.090 打家劫舍 II
        一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。
@@ -46,6 +46,14 @@ public class LCP_090_N_Rob {
     public int rob(int[] nums) {
         // 2024/3/19 动态规划法
         // 2024/3/25 循环套用【打家劫舍 I】的逻辑
+        // 2024/3/27 有瑕疵，但是能做出来了。
+        int n = nums.length;
+        if (nums.length == 0)
+            return 0;
+
+        if (nums.length == 1)
+            return 1;
+
         return 0;
     }
 

@@ -35,8 +35,8 @@ public class NO061_N_RotateList {
 
     @Test
     public void test() {
-//        assert new ListNode(4, 5, 1, 2, 3).equals(
-                printListNode(rotateRight(new ListNode(1, 2, 3, 4, 5), 2));
+        assert new ListNode(4, 5, 1, 2, 3).equals(
+                rotateRight(new ListNode(1, 2, 3, 4, 5), 2));
         assert new ListNode(2, 0, 1).equals(
                 rotateRight(new ListNode(0, 1, 2), 4));
         assert new ListNode(0, 1, 2).equals(
@@ -50,6 +50,7 @@ public class NO061_N_RotateList {
         // 2024/3/21 NO.4 有点明白了
         // 2024/3/23 NO.5【闭合成环】做不出来，只能说有印象
         // 2024/3/25 NO.6【闭合成环】几乎已经做出来了，差一点。
+        // 2024/3/27 NO.7【闭合成环】边界条件处理不好，所以每次都差一点
         return null;
     }
 

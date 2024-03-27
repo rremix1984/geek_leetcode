@@ -6,14 +6,16 @@ package com.leetcode.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.reverse;
 import static com.leetcode.util.LogUtil.info;
+import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (简单)
     234. 回文链表
-        给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。
-        如果是，返回 true ；否则，返回 false 。
+        给你一个单链表的头节点 head，请你判断该链表是否为回文链表。
+        如果是，返回 true；否则，返回 false。
     示例 1：
         输入：head = [1, 2, 2, 1]
         输出：true
@@ -30,29 +32,7 @@ public class NO234_E_PalindromeLinkedList {
     }
 
     public boolean isPalindrome(ListNode head) {
-        if (head == null)
-            return false;
-
-        ListNode fast = head, slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-
-        // 如果是奇数个节点，slow向右面移一位
-        if (fast != null)
-            slow = slow.next;
-
-        slow = ListNode.reverse(slow);
-        fast = head;
-        while (slow != null) {
-            if (fast.val != slow.val)
-                return false;
-
-            slow = slow.next;
-            fast = fast.next;
-        }
-
+        // 2024/3/26 NO.1 没做出来，用快慢指针法
         return true;
     }
 
@@ -77,7 +57,7 @@ public class NO234_E_PalindromeLinkedList {
 
 
 
-/**
+/*
 // 方法1：快慢指针 + 栈（stack）法
 public boolean isPalindrome(ListNode head) {
     ListNode fast = head, slow = head;
@@ -95,6 +75,7 @@ public boolean isPalindrome(ListNode head) {
     while (slow!=null) {
         if (stack.peek() != slow.val)
             return false;
+
         stack.pop();
         slow = slow.next;
     }
@@ -103,7 +84,9 @@ public boolean isPalindrome(ListNode head) {
 
 // 方法2：快慢指针法
 public boolean isPalindrome(ListNode head) {
-    ListNode fast = head, slow = head;
+    ListNode fast = head;
+    ListNode slow = head;
+
     // 快指针从左到右遍历到头，慢指针正好到正中间
     while (fast != null && fast.next != null) {
         fast = fast.next.next;
@@ -116,10 +99,15 @@ public boolean isPalindrome(ListNode head) {
 
     slow = ListNode.reverse(slow);
     fast = head;
+
+    // [slow] 1 -> 2 -> null
+    // [fast] 1 -> 2 -> 2 -> null
     while (slow != null) {
+
         // 有一个不相等代表不是回文链表
         if (fast.val != slow.val)
             return false;
+
         fast = fast.next;
         slow = slow.next;
     }

@@ -10,7 +10,7 @@ import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [LISTNODE] ||||
+    [LISTNODE] ||||||
     (简单)
     NO.160. 相交链表
         给你两个单链表的头节点headA和headB，请你找出并返回两个单链表相交的起始节点。
@@ -69,6 +69,7 @@ public class NO160_E_IntersectionOfTwoLinkedLists {
         // 2024/3/12 NO.2
         // 2024/3/14 NO.3
         // 2024/3/20 NO.4 做出来了，不太对
+        // 2024/3/26 NO.5 一遍过，边界条件没做好判断
         return null;
     }
 
