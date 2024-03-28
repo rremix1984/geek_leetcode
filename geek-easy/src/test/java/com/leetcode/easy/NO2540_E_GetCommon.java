@@ -1,15 +1,17 @@
+/**
+ * copyright@rremix
+ */
 package com.leetcode.easy;
 
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     （简单）
     NO.2540 最小公共值
-        给你两个整数数组 nums1 和 nums2，它们已经按非降序排序，请你返回两个
+        给你两个整数数组 nums1 和 nums2，它们已经按【非降序排序】，请你返回两个
     数组的最小公共整数。如果两个数组 nums1 和 nums2 没有公共整数，请你返回-1。
     如果一个整数在两个数组中都至少出现一次，那么这个整数是数组 nums1 和 nums2 公共的。
-
     示例 1：
         输入：nums1 = [1, 2, 3], nums2 = [2, 4]
         输出：2
@@ -39,6 +41,7 @@ public class NO2540_E_GetCommon {
     public int getCommon(int[] nums1, int[] nums2) {
         // 2024/3/13 NO.1 双指针
         // 2024/3/25 NO.2 没思路,双指针
+        // 2024/3/27 NO.3 没思路了。
         int p1 = 0;
         int p2 = 0;
 

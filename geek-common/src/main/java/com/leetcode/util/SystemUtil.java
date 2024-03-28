@@ -53,6 +53,13 @@ public class SystemUtil {
         System.out.println(listNode.toString());
     }
 
+    public static void printListNodes(ListNode[] listNode) {
+        for (ListNode node : listNode) {
+            System.out.println(node.toString());
+        }
+        System.out.println();
+    }
+
     public static void printArr(int[] arr) {
         for (int i : arr)
             System.out.printf("%d\t", i);

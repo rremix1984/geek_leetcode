@@ -9,8 +9,8 @@ import static com.leetcode.util.ListNode.reverse;
 import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
-    [ARRAY] |
-    (中等)
+    [ARRAY] ||
+    (中等,经典题)
     LCR.026.重排链表
     给定一个单链表 L 的头节点 head ，单链表 L 表示为：
     L0 → L1 → … → Ln-1 → Ln
@@ -44,8 +44,8 @@ public class LCR_026_N_ReorderList {
     }
 
     public void reorderList(ListNode head) {
-        // 2024/3/27 NO.1 快慢指针
-        ListNode slow = head, fast = head;
+        // 2024/3/27 NO.1 快慢指针，没做出来
+        // 2024/3/28 NO.2 没做出来，有思路
 
     }
 
@@ -68,7 +68,8 @@ public class LCR_026_N_ReorderList {
 public void reorderList(ListNode head) {
     ListNode fast = head;
     ListNode slow = head;
-    while (fast.next != null && fast.next.next != null) {
+    while (fast.next != null
+        && fast.next.next != null) {
         slow = slow.next;//慢指针找到中间的节点
         fast = fast.next.next;//快指针直接到末尾节点
     }

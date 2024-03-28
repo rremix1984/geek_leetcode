@@ -7,7 +7,7 @@ import static com.leetcode.util.MathUtils.max;
 import org.junit.Test;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (中等)
     NO.2498 青蛙过河 II
         给你一个下标从 0 开始的整数数组 stones，数组中的元素严格递增，
@@ -32,8 +32,8 @@ import org.junit.Test;
         输入：stones = [0, 3, 9]
         输出：9
         解释：         (9)
-            start----------->
-            |               |
+            start------------>
+            |                |
           [ 0,  3,          9 ]
          end|<--|<----------|
              (3)     (6)
@@ -64,8 +64,8 @@ public class NO2498_N_MaxJump {
         // 2024/3/21 NO.1 没想出来，动态规划，不容易想
         // 2024/3/22 NO.2
         // 2024/3/27 NO.3 没思路
+        // 2024/3/28 NO.4 有思路了，但是没做出来
         int max = 0;
-
         return max;
     }
 
@@ -102,8 +102,6 @@ public int maxJump(int[] stones) {
             second = stone;
         }
     }
-    return MathUtils.max(max,
-             stones[stones.length - 1] - first,
-             stones[stones.length - 1] - second);
+    return max;
 }
 */

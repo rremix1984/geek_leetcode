@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.*;
 
 /**
-    [ARRAY] ||
+    [ARRAY] ||||
     (中等)
     NO.1642 可以到达的最远建筑
     给你一个整数数组 heights，表示建筑物的高度。另有一些砖块 bricks 和梯子 ladders。
@@ -62,27 +62,15 @@ public class NO1642_N_FurthestBuilding {
                 new int[]{4, 12, 2, 7, 3, 18, 20, 3, 19}, 10, 2);
     }
 
-    public int furthestBuilding(int[] heights, int bricks, int ladders) {
+    public int furthestBuilding(int[] nums, int bricks, int ladders) {
         // 2024/3/17 NO.1
         // 2024/3/22 NO.2 能看懂了
         // 2024/3/25 NO.3
+        // 2024/3/28 NO.4 做不出来，但是能看懂，有思路。这道题必须多练习
         int sum = 0;
-        Queue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
-        for (int i = 1; i < heights.length; i++) {
-            int diff = heights[i] - heights[i - 1];
-            if (diff <= 0)
-                continue;
+        int n = nums.length;
 
-            sum += diff;
-            queue.offer(diff);
-            while (sum > bricks) {
-                ladders--;
-                sum -= queue.poll();
-            }
-            if (ladders < 0)
-                return i - 1;
-        }
-        return heights.length - 1;
+        return n - 1;
     }
 
 }
@@ -161,7 +149,7 @@ public int furthestBuilding(int[] heights, int bricks, int ladders) {
             brick_sum = brick_sum - queue.poll();
         }
         if (ladders < 0)
-                return i - 1;
+            return i - 1;
     }
     return heights.length - 1;
 }

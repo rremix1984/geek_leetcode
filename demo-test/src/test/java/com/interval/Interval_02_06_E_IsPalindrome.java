@@ -9,7 +9,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (简单)
     Interval.02.06 回文链表
     编写一个函数，检查输入的链表是否是回文的。
@@ -34,7 +34,9 @@ public class Interval_02_06_E_IsPalindrome {
     }
 
     public boolean isPalindrome(ListNode head) {
-
+        // 2024/3/28 NO.1 快慢指针法
+        ListNode slow = head;
+        ListNode fast = head;
         return true;
     }
 

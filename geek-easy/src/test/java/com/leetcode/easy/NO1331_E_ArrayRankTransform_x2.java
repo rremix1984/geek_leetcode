@@ -10,9 +10,9 @@ import java.util.Map;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
-    1331. 数组序号转换
+    NO.1331. 数组序号转换
         给你一个整数数组arr，请你将数组中的每个元素替换为它们排序后的序号。
         序号代表了一个元素有多大。序号编号的规则如下：
         1）序号从1开始编号。
@@ -48,6 +48,7 @@ public class NO1331_E_ArrayRankTransform_x2 {
     public int[] arrayRankTransform(int[] arr) {
         // 2024/2/25 NO.3
         int[] ans = new int[arr.length];
+
         return ans;
     }
 

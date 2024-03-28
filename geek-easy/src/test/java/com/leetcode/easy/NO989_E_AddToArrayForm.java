@@ -6,12 +6,15 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.getArray;
+import static com.leetcode.util.SystemUtil.*;
+import static java.util.Collections.reverse;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     989. 数组形式的整数加法
         整数的数组形式 num 是按照从左到右的顺序表示其数字的数组。
@@ -35,7 +38,7 @@ import static com.leetcode.util.MathUtils.getArray;
         num 不包含任何前导零，除了零本身
         1 <= k <= 104
 */
-public class NO989_E_AddToArrayForm_x3 {
+public class NO989_E_AddToArrayForm {
 
     @Test
     public void test() {
@@ -49,7 +52,9 @@ public class NO989_E_AddToArrayForm_x3 {
 
     public List<Integer> addToArrayForm(int[] nums, int k) {
         // 2024/2/25 NO.3
+        // 2024/3/27 NO.4 没思路，但是能做出来了 ^_^
         List<Integer> res = new ArrayList<>();
+
         return res;
     }
 

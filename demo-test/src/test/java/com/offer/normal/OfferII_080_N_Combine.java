@@ -10,7 +10,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     (中等)
     剑指 Offer II 080. 含有 k 个元素的组合
     给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
@@ -26,6 +26,7 @@ public class OfferII_080_N_Combine {
 
     @Test
     public void test() {
+        printArrays(combine(4, 2));
         assert arrayAllMatch(combine(4, 2),
                 getArray(new int[][]{{2, 4}, {3, 4}, {2, 3},
                                      {1, 2}, {1, 3}, {1, 4}}));
@@ -38,28 +39,10 @@ public class OfferII_080_N_Combine {
         // 2024/3/21 NO.2
         // 2024/3/22 NO.3 没做出来，看懂了
         // 2024/3/25 NO.4 没做出来，思路有了
+        // 2024/3/28 NO.5 没做出来, 看懂了
         List<List<Integer>> ans = new ArrayList<>();
-        dfs(ans, new ArrayList<>(), 1, n, k);
+
         return ans;
-    }
-
-    private void dfs(List<List<Integer>> ans,
-                     ArrayList<Integer> list, int cur, int n, int k) {
-        if (list.size() == k) {
-            ans.add(new ArrayList<>(list));
-            return;
-        }
-
-        if (list.size() + (n - cur + 1) < k)
-            return;
-
-        list.add(cur);
-
-        dfs(ans, list,  cur + 1, n, k);
-
-        list.remove(list.size() - 1);
-
-        dfs(ans, list,  cur + 1, n, k);
     }
 
 }

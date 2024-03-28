@@ -11,7 +11,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.SystemUtil.print;
 
 /**
-    [TREE] ||
+    [TREE] ||||
     (中等)
     LCR.050 路径总和 III
     给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和
@@ -46,7 +46,7 @@ import static com.leetcode.util.SystemUtil.print;
         解释：和等于 22 的路径有 3 条。[4, 11, 7]、[5, 4, 11, 2]、[8, 13, 1]
     提示:
         二叉树的节点个数的范围是 [0, 1000]
-        -109 <= Node.val <= 109
+        -10 ^ 9 <= Node.val <= 10 ^ 9
         -1000 <= targetSum <= 1000
     Related Topics:树,深度优先搜索,二叉树
 */
@@ -61,7 +61,10 @@ public class LCR_050_PathSum {
                 3,   -2, null,  1),
                 8);
         assert 3 == pathSum(
-                cTree(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1),
+                cTree(    5,
+                        4,             8,
+                    11, null,       13,   4,
+                 7,    2,      null, null, 5,  1),
                 22);
         assert 0 == pathSum(
                 cTree(715827882, 715827882, null, 715827882, null, 1,
@@ -76,8 +79,10 @@ public class LCR_050_PathSum {
         // 2024/3/25 NO.1 递归没做出来
         // 2024/3/26 NO.2 忘记了，没思路了
         // 2024/3/27 NO.3 没做出来，但是看答案能做出来了，思路也通了
+        // 2024/3/28 NO.4 差一点点，就做出来了
+        int ret = 0;
 
-        return -1;
+        return ret;
     }
 
 }

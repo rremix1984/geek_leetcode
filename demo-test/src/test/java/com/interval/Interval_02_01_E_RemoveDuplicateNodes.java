@@ -7,10 +7,10 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (简单)
     Interval.02.01 移除重复节点
-    编写代码，移除未排序链表中的重复节点。保留最开始出现的节点。
+    编写代码，移除【未排序】链表中的重复节点。保留最开始出现的节点。
     示例1:
         输入：[1, 2, 3, 3, 2, 1]
         输出：[1, 2, 3]
@@ -35,8 +35,9 @@ public class Interval_02_01_E_RemoveDuplicateNodes {
     }
 
     public ListNode removeDuplicateNodes(ListNode head) {
+        // 2024/3/28 NO.1 没思路，但是答案看懂了
 
-        return null;
+        return head;
     }
 
 }
