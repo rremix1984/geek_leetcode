@@ -43,6 +43,7 @@ public class NO141_E_LinkedListCycle_x3 {
     public boolean hasCycle(ListNode head) {
         return false;
     }
+
 }
 
 

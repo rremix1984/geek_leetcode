@@ -8,6 +8,7 @@ import java.util.*;
 import static java.lang.Integer.MIN_VALUE;
 import static java.time.LocalTime.now;
 import static java.util.Arrays.copyOf;
+import static java.util.Arrays.fill;
 
 /**
  * 工具类
@@ -47,13 +48,14 @@ public class MathUtils {
     }
 
     public static int max(int... input) {
-        int max = MIN_VALUE;
-        for (int element : input) {
-            if (element > max) {
-                max = element;
-            }
-        }
-        return max;
+//        int max = MIN_VALUE;
+        return Arrays.stream(input).max().getAsInt();
+//        for (int element : input) {
+//            if (element > max) {
+//                max = element;
+//            }
+//        }
+//        return max;
     }
 
     public static int rand7() {
@@ -205,6 +207,11 @@ public class MathUtils {
         return res;
     }
 
+    public static ArrayList<ArrayList<Object>> getArray() {
+        ArrayList<ArrayList<Object>> res = new ArrayList<>();
+        return res;
+    }
+
     public static List<Integer> getLinkedList(int num) {
         List<Integer> l1 = new LinkedList<>();
         l1.add(num);
@@ -218,12 +225,35 @@ public class MathUtils {
         return dict;
     }
 
-    public static ArrayList<ArrayList<Integer>> getArray(int[]... arr) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        for (int[] ints : arr) {
+    public static int getTotal(int[] nums) {
+        return Arrays.stream(nums).sum();
+    }
+
+    public static Integer[] getDictInteger(int cnt, int[] nums) {
+        Integer[] dict = new Integer[cnt];
+        fill(dict, 0);
+        for (Integer num : nums)
+            dict[num]++;
+        return dict;
+    }
+
+    public static List<List<Integer>> getArray(int[]... arr) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (int[] ins : arr) {
             ArrayList<Integer> inner = new ArrayList<>();
-            int len = ints.length;
-            for (int anInt : ints)
+            for (int anInt : ins)
+                inner.add(anInt);
+
+            res.add(new ArrayList<>(inner));
+        }
+        return res;
+    }
+
+    public static ArrayList<ArrayList<Integer>> getArrays(int[]... arr) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        for (int[] ins : arr) {
+            ArrayList<Integer> inner = new ArrayList<>();
+            for (int anInt : ins)
                 inner.add(anInt);
 
             res.add(new ArrayList<>(inner));
@@ -295,7 +325,15 @@ public class MathUtils {
         return inner;
     }
 
-    public static ArrayList<Integer> getArray() {
+    public static long[] getArrayL(long... arr) {
+        long[] inner = new long[arr.length];
+        for (int i = 0; i < inner.length; i++) {
+            inner[i] = arr[i];
+        }
+        return inner;
+    }
+
+    public static ArrayList<Integer> gegetArray() {
         return new ArrayList<>();
     }
 
@@ -311,6 +349,10 @@ public class MathUtils {
         int[] inner = new int[arr.length];
         System.arraycopy(arr, 0, inner, 0, arr.length);
         return inner;
+    }
+
+    public static int[] getArrays() {
+        return new int[]{};
     }
 
     public static String[] getArrays(String... arr) {
@@ -406,7 +448,25 @@ public class MathUtils {
         return d2;
     }
 
+    public static int[] frontSum(int[] nums) {
+        int n = nums.length;
+        int[] sums = new int[n + 1];
+        for (int i = 1; i <= n; i++)
+            sums[i] = sums[i - 1] + nums[i - 1];
+        return sums;
+    }
+
+    public static int gcd(int a, int b) {
+        while (a != 0) {
+            int temp = a;
+            a = b % a;
+            b = temp;
+        }
+        return b;
+    }
+
     public static void main(String[] args) {
+//        System.out.println(max(1,2,3,4,5));
 //        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
 //        System.out.println(mins(0, 6, 3));
 //        System.out.println(maxs(0, -6, -3, -41111, -5, -2, -5, -8, -109));

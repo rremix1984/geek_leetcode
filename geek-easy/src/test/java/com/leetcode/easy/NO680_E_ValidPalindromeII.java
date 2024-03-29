@@ -4,12 +4,11 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
 
 /**
-    [STRING] ||
+    [STRING] ||||||||
     （简单）
-    680. 验证回文串 II
+    NO.680. 验证回文串 II
         给你一个字符串s，最多可以从中删除一个字符。
         请你判断s是否能成为回文字符串：
         如果能，返回true；否则，返回false。
@@ -28,18 +27,21 @@ public class NO680_E_ValidPalindromeII {
 
     @Test
     public void test() {
-        assert validPalindrome("aba");// true
-        assert validPalindrome("abca");// true
-        assert !validPalindrome("abc");// false
+        assert  validPalindrome("aba"); // true
+        assert  validPalindrome("abca");// true
+        assert !validPalindrome("abc"); // false
     }
 
     public boolean validPalindrome(String s) {
-        // 2024/3/4 NO.1
-        // 2024/3/8 NO.2
+        // 2024/3/4  NO.1
+        // 2024/3/8  NO.2
         // 2024/3/11 NO.3
+        // 2024/3/17 NO.4 没做出来，很经典的题型
+        // 2024/3/18 NO.5 又忘了
+        // 2024/3/22-23 NO.6-7 还是不会做
+        // 2024/3/26 NO.8 差不多做出来了，但是还是有瑕疵
         return true;
     }
-
 
 }
 
@@ -63,7 +65,7 @@ public class NO680_E_ValidPalindromeII {
 
 
 /*
-// 递归方法：
+// 方法1：剪枝法
 public boolean validPalindrome(String s) {
     //可以【删除】或者【不删除】字符
     return validPalindrome(s, 0, s.length() - 1, 0);
@@ -79,15 +81,12 @@ public boolean validPalindrome(String s, int i, int j, int del) {
         // 两头不相等了
         } else {
             // 如果已经删除过一次字符，就失败了
-            if (del >= 1)
+            if (++del > 1)
                 return false;
-
-            // 没删除过，先删除一个（del++）试试
-            del++;
 
             // 递归：左边删一个、右边删一个看哪个成功了
             return validPalindrome(s,i + 1, j, del)
-                    || validPalindrome(s, i, j - 1, del);
+                || validPalindrome(s, i, j - 1, del);
         }
     }
     return true;

@@ -5,19 +5,15 @@ package com.leetcode.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import static com.leetcode.util.MathUtils.*;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
-import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] |
+    [TREE] ||||||
     (中等)
     199. 二叉树的右视图
-        给定一个二叉树的 根节点 root，想象自己站在它的右侧，
+        给定一个二叉树的根节点root，想象自己站在它的右侧，
         按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
     示例 1:
         输入: {1, 2, 3, null, 5, null, 4}
@@ -34,8 +30,8 @@ public class NO199_N_BinaryTreeRightSideView {
     @Test
     public void test() {
         assert arrayAllMatch(getArray(1, 3, 4),
-            rightSideView(cTree(1,
-                                    2,   3,
+            rightSideView(cTree( 1,
+                                    2,    3,
                               null, 5, null, 4)));
         assert arrayAllMatch(getArray(1, 3),
             rightSideView(cTree(1,
@@ -44,6 +40,11 @@ public class NO199_N_BinaryTreeRightSideView {
 
     public List<Integer> rightSideView(TreeNode root) {
         // 2024/3/12 NO.1
+        // 2024/3/17 NO.2
+        // 2024/3/20 NO.3 没做出来还得练习
+        // 2024/3/21 NO.4 早就忘了，用中序遍历思路来做做不出来
+        // 2024/3/22 NO.5 做出来了
+        // 2024/3/27 NO.6 做出来了
         List<Integer> res = new ArrayList<>();
         return res;
     }

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    [ARRAY] |||
+    [ARRAY] |||||||
     (简单)
     面试题 17.10. 主要元素
         数组中占比【超过一半】的元素称之为主要元素。给你一个【整数】数组，
@@ -41,9 +41,11 @@ public class Interval_17_10_E_FindMajorityElementLcci {
     }
 
     public int majorityElement(int[] nums) {
-        // 2024/3/4 NO.1 此类问题有固定模式
-        // 2024/3/6 NO.2 做出来了
+        // 2024/3/4  NO.1 此类问题有固定模式
+        // 2024/3/6  NO.2 做出来了
         // 2024/3/10 NO.3 有瑕疵，做出来了
+        // 2024/3/16-18-20 NO.4-5-6 做出来了
+        // 2024/3/24 NO.7 做错了，但是思路对
         return -1;
     }
 

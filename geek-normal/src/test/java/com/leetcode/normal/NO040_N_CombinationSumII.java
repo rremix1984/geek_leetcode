@@ -4,30 +4,30 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import static com.leetcode.util.MathUtils.getArray;
+import static com.leetcode.util.SystemUtil.*;
+import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||||
     (中等)
     40. 组合总和 II
-        给定一个候选人编号的集合candidates和一个目标数target，
+        给定一个候选人编号的集合candidates和一个目标数 target，
         找出 candidates 中所有可以使数字和为 target 的组合。
         candidates 中的每个数字在每个组合中只能使用一次。
         注意：解集不能包含重复的组合。
     示例 1:
         输入: candidates = {10, 1, 2, 7, 6, 1, 5}, target = 8,
-        输出:[[1,1,6],
-              [1,2,5],
-              [1,7],
-              [2,6]]
+        输出:[[1, 1, 6],
+             [1, 2, 5],
+             [1, 7],
+             [2, 6]]
     示例 2:
         输入: candidates = {2, 5, 2, 1, 2}, target = 5,
-        输出: [[1,2,2],
+        输出: [[1, 2, 2],
               [5]]
 */
 public class NO040_N_CombinationSumII {
@@ -48,6 +48,9 @@ public class NO040_N_CombinationSumII {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         // 2024/3/12 NO.1
+        // 2024/3/21 NO.2 没思路，这类题不能总不会，要研究
+        // 2024/3/22 NO.3 能看懂，但是写不出来
+        // 2024/3/25 NO.4 思路对，但是没做对
         List<List<Integer>> res = new ArrayList<>();
         return res;
     }
@@ -78,7 +81,7 @@ public class NO040_N_CombinationSumII {
 public List<List<Integer>> combinationSum2(int[] candidates, int target) {
     List<List<Integer>> res = new ArrayList<>();
     Arrays.sort(candidates);
-    backtrack(res, new ArrayList<>(), candidates, target,0,0);
+    backtrack(res, new ArrayList<>(), candidates, target, 0, 0);
     return res;
 }
 
@@ -109,11 +112,13 @@ private void backtrack(List<List<Integer>> res, List<Integer> path, int[] cands,
 public List<List<Integer>> combinationSum2(int[] candidates, int target) {
     List<List<Integer>> res = new ArrayList<>();
     Arrays.sort(candidates);
-    backTrack(res, candidates, target, 0, new ArrayList<>(), new boolean[candidates.length]);
+    backTrack(res, new ArrayList<>(),
+            candidates, target, 0, new boolean[candidates.length]);
     return res;
 }
 
-public void backTrack(List<List<Integer>> res, int[] nums, int target, int start, List<Integer> path, boolean[] visit) {
+public void backTrack(List<List<Integer>> res, List<Integer> path,
+            int[] nums, int target, int start, boolean[] visit) {
     if (target == 0) {
         res.add(new ArrayList<>(path));
         return;
@@ -130,7 +135,7 @@ public void backTrack(List<List<Integer>> res, int[] nums, int target, int start
         visit[i] = true;
         path.add(nums[i]);
 
-        backTrack(res, nums, target - nums[i], i + 1, path, visit);
+        backTrack(res, path, nums, target - nums[i], i + 1, visit);
 
         path.remove(path.size() - 1);
         visit[i] = false;

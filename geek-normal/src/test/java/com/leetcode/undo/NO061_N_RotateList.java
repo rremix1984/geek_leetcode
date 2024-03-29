@@ -8,8 +8,11 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
+import static com.leetcode.util.SystemUtil.print;
+import static com.leetcode.util.SystemUtil.printListNode;
+
 /**
-    [LINKEDLIST] |
+    [LINKEDLIST] |||||||
     (中等)
     NO.61 旋转链表
         给你一个链表的头节点head，旋转链表，
@@ -21,8 +24,8 @@ import java.util.Iterator;
         输入：head = {0, 1, 2}, k = 4
         输出：[2, 0, 1]
     参考官方题解思路：闭合为环
-    记给定链表的长度为n，到当向右移动的次数 k≥n 时，仅需要向右移动 k%n 次即可。
-    因为每 n 次移动都会让链表变为原状。
+    记给定链表的长度为n，到当向右移动的次数 k ≥ n 时，仅需要向右移
+    动 k % n 次即可。因为每 n 次移动都会让链表变为原状。
     这样新链表的最后一个节点为原链表的第 n - (k mod n）节点。
     首先计算出链表的长度n，并找到该链表的末尾节点，将其与头节点相连。
     这样就得到了闭合为环的链表。然后我们找到新链表的最后一个节点，
@@ -36,10 +39,18 @@ public class NO061_N_RotateList {
                 rotateRight(new ListNode(1, 2, 3, 4, 5), 2));
         assert new ListNode(2, 0, 1).equals(
                 rotateRight(new ListNode(0, 1, 2), 4));
+        assert new ListNode(0, 1, 2).equals(
+                rotateRight(new ListNode(0, 1, 2), 3));
     }
 
     public ListNode rotateRight(ListNode head, int k) {
         // 2024/3/12 NO.1
+        // 2024/3/18 NO.2 压根没思路。先成环、再拆环
+        // 2024/3/20 NO.3 做不出来，虽然不难，但是想的不够
+        // 2024/3/21 NO.4 有点明白了
+        // 2024/3/23 NO.5【闭合成环】做不出来，只能说有印象
+        // 2024/3/25 NO.6【闭合成环】几乎已经做出来了，差一点。
+        // 2024/3/27 NO.7【闭合成环】边界条件处理不好，所以每次都差一点
         return null;
     }
 

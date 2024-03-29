@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
-    1995. 统计特殊四元组
+    NO.1995. 统计特殊四元组
         给你一个下标从0开始的整数数组nums，返回满足下述条件的
         不同四元组 (a, b, c, d) 的数目：
         nums[a] + nums[b] + nums[c] == nums[d]，且 a < b < c < d
@@ -43,11 +43,13 @@ public class NO1995_E_CountQuadruplets {
 
     public int countQuadruplets(int[] nums) {
         // 2024/3/10 NO.2
-        Map<Integer, Integer> cnts = new HashMap<>();
+        // 2024/3/25 No.3 没思路
         int ans = 0;
+        Map<Integer, Integer> cnts = new HashMap<>();
         for (int i = 1; i < nums.length - 2; i++) {
             for (int j = 0; j < i; j++)
                 cnts.put(nums[i] + nums[j], cnts.getOrDefault(nums[i] + nums[j], 0) + 1);
+
             for (int j = i + 2; j < nums.length; j++)
                 if (cnts.containsKey(nums[j] - nums[i + 1]))
                     ans += cnts.get(nums[j] - nums[i + 1]);
@@ -84,7 +86,6 @@ public int countQuadruplets(int[] nums) {
                         ans++;
     return ans;
 }
-
 
 // 方法2：
 public int countQuadruplets(int[] nums) {

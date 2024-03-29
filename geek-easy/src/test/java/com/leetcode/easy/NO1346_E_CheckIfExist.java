@@ -7,14 +7,14 @@ import org.junit.Test;
 import java.util.*;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
-    1346. 检查整数及其两倍数是否存在
-        给你一个整数数组arr，请你检查是否存在两个整数N和M，满足N是M的两倍
-        （即，N=2*M。更正式地，检查是否存在两个下标i和j满足：
-          1）i != j
-          2）0 <= i, j < arr.length
-          3）arr[i] == 2 * arr[j]
+    NO.1346. 检查整数及其两倍数是否存在
+    给你一个整数数组arr，请你检查是否存在两个整数N和M，满足N是M的两倍
+    （即，N = 2 * M）。更正式地，检查是否存在两个下标 i 和 j 满足：
+      1）i != j
+      2）0 <= i, j < arr.length
+      3）arr[i] == 2 * arr[j]
     示例 1：
         输入：arr = {10, 2, 5, 3}
         输出：true
@@ -39,6 +39,7 @@ public class NO1346_E_CheckIfExist {
 
     public boolean checkIfExist(int[] arr) {
         // 2024/2/27 NO.3
+        // 2024/3/25 NO.4
         return false;
     }
 

@@ -3,8 +3,8 @@ package com.leetcode;
 import org.junit.Test;
 import java.util.Arrays;
 import static java.lang.Integer.MAX_VALUE;
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
+import static java.util.Arrays.fill;
 
 /**
     [ARRAY]
@@ -67,11 +67,11 @@ public class NO164_N_MaximumGap {
         // 用于存放每个桶的最小值
         int[] bucketMax = new int[len - 1];
 
-        Arrays.fill(bucketMax, -1);
-        Arrays.fill(bucketMin, MAX_VALUE);
+        fill(bucketMax, -1);
+        fill(bucketMin, MAX_VALUE);
 
         // 确定桶的间距
-        int interval = (int)Math.ceil((double)(max - min) / (len - 1));
+        int interval = (int) ceil((double)(max - min) / (len - 1));
 
         for (int num : nums) {
             // 找到每一个值所对应桶的索引

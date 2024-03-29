@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] ||||
     (简单)
     Interval 08.10 颜色填充
         编写函数，实现许多图片编辑软件都支持的「颜色填充」功能。
@@ -18,9 +18,9 @@ import static org.junit.Assert.assertArrayEquals;
                  [1, 1, 0],
                  [1, 0, 1]]
         sr = 1, sc = 1, newColor = 2
-        输出：[[2,2,2],
-              [2,2,0],
-              [2,0,1]]
+        输出：[[2, 2, 2],
+              [2, 2, 0],
+              [2, 0, 1]]
         解释:
         初始坐标点位于图像的正中间，坐标 (sr,sc)=(1,1) 。
         初始坐标点周围区域上所有符合条件的像素点的颜色都被更改成2。
@@ -36,17 +36,20 @@ public class Interval_08_10_E_FloodFill {
     @Test
     public void test() {
         assertArrayEquals(
-            new int[][]{{2,2,2},
-                        {2,2,0},
-                        {2,0,1}},
-        floodFill(new int[][]{{1, 1, 1},
-                              {1, 1, 0},
-                              {1, 0, 1}},
-                1, 1, 2));
+            new int[][]{{2, 2, 2},
+                        {2, 2, 0},
+                        {2, 0, 1}},
+        floodFill(
+            new int[][]{{1, 1, 1},
+                        {1, 1, 0},
+                        {1, 0, 1}}, 1, 1, 2));
     }
 
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         // 2024/3/11 NO.1 用递归来做
+        // 2024/3/16 NO.2 没思路 重新学的
+        // 2024/3/21 NO.3 做出来了
+        // 2024/3/23 NO.4 有思路, 一遍过
         return image;
     }
 

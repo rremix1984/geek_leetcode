@@ -47,8 +47,6 @@ public class ListNode {
     }
 
     public static ListNode reverse(ListNode head) {
-        if (head == null)
-            return null;
         ListNode pre = null;
         ListNode cur = head;
         while (cur != null) {
@@ -56,6 +54,17 @@ public class ListNode {
             cur.next = pre;
             pre = cur;
             cur = next;
+        }
+        return pre;
+    }
+
+    public static ListNode reverse(ListNode head, ListNode tail) {
+        ListNode pre = null;
+        while (head != tail) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
         }
         return pre;
     }
@@ -68,6 +77,10 @@ public class ListNode {
 
     public ListNode() {
 
+    }
+
+    public static void assertNodeEquals(ListNode node, int... arr) {
+        assert new ListNode(arr).equals(node);
     }
 
     public ListNode(int... vals) {
@@ -108,6 +121,15 @@ public class ListNode {
             cur = cur.next;
         }
         return sb.append(cur.val).append(" -> null").toString();
+    }
+
+    public static int getListNodeLength(ListNode head) {
+        int length = 0;
+        while (head != null) {
+            length++;
+            head = head.next;
+        }
+        return length;
     }
 
 }

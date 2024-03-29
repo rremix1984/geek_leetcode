@@ -1,23 +1,43 @@
+/**
+ * copyright (c) 2024 by 501735698@qq.com
+ */
 package com.atguigu;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
- * (简单）汉诺塔
- * 分治法
+    [NUMBER] ||||
+    (简单）汉诺塔
+    分治法
  */
 public class Hanoitower {
 
     @Test
     public void test() {
-        hanoi(3, 'A', 'B', 'C');
+        assertEquals(
+        "第1个盘子，从A移动到C\n" +
+                "第2个盘子，从A移动到B\n" +
+                "第1个盘子，从C移动到B\n" +
+                "第3个盘子，从A移动到C\n" +
+                "第1个盘子，从B移动到A\n" +
+                "第2个盘子，从B移动到C\n" +
+                "第1个盘子，从A移动到C\n",
+            hanoi(3, 'A', 'B', 'C'));
     }
+
+    StringBuilder sb = new StringBuilder();
 
     //汉诺塔的移动的方法
     //使用分治算法
-    public static void hanoi(int num, char A, char B, char C) {
+    public String hanoi(int num, char A, char B, char C) {
+        // sb.append("第" + 1 + "个盘子，从" + A + "移动到" + C + "\n");
         // 2024/2/27 NO.3 分治法
-
+        // 2024/3/21 NO.4 忘记了，没做出来
+        // 2024/3/24 NO.5
+        // 2024/3/25 NO.6 思路都对，就是做错了
+        
+        return sb.toString();
     }
 
 }

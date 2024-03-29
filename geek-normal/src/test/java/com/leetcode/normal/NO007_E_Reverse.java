@@ -1,15 +1,19 @@
 package com.leetcode.normal;
 
+import com.leetcode.util.MathUtils;
 import org.junit.Test;
+
+import static com.leetcode.util.MathUtils.MAX;
+import static com.leetcode.util.MathUtils.MIN;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||||
     （中等）
     NO.7 整数反转
     给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
-    如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+    如果反转后整数超过 32 位的有符号整数的范围 [−2 ^ 31,  2 ^ 31 − 1] ，就返回 0。
     假设环境不允许存储 64 位整数（有符号或无符号）。
     示例 1：
         输入：x = 123
@@ -24,7 +28,7 @@ import static java.lang.Integer.MIN_VALUE;
         输入：x = 0
         输出：0
     提示：
-        -231 <= x <= 231 - 1
+        -2 ^ 31 <= x <= 2 ^ 31 - 1
     Related Topics:数学
 */
 public class NO007_E_Reverse {
@@ -42,7 +46,11 @@ public class NO007_E_Reverse {
 
     public int reverse(int x) {
         // 2024/3/13 NO.1
+        // 2024/3/22 NO.2 还是没思路啊
+        // 2024/3/23 NO.3 有思路，但是有问题，做不出来
+        // 2024/3/25 NO.4
         int ans = 0;
+
         return ans;
     }
 

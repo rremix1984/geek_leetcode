@@ -7,13 +7,13 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
     2016. 增量元素之间的最大差值
-        给你一个下标从0开始的整数数组nums, 该数组的大小为n，
-        请你计算nums[j] - nums[i]能求得的最大差值，
+        给你一个下标从 0 开始的整数数组 nums, 该数组的大小为 n，
+        请你计算 nums[j] - nums[i] 能求得的最大差值，
         其中0 <= i < j < n 且nums[i] < nums[j]。
-        返回最大差值。如果不存在满足要求的 i 和 j，返回-1。
+        返回最大差值。如果不存在满足要求的 i 和 j，返回 -1。
     示例 1：
         输入：nums = {7, 1, 5, 4}
         输出：4
@@ -42,6 +42,7 @@ public class NO2016_E_MaximumDifference {
         // 2024/3/4 NO.1
         // 2024/3/8 NO.2 还是不会
         // 2024/3/10 NO.3
+        // 2024/3/25 NO.4 能理解了，没做出来
         int ans = -1;
         return ans;
     }
@@ -65,12 +66,12 @@ public class NO2016_E_MaximumDifference {
 // 方法1：
 public int maximumDifference(int[] nums) {
     int ans = -1;
-    int pre = nums[0];
+    int min = nums[0];
     for (int num : nums) {
-        if (num > pre)
-            ans = max(ans, num - pre);
+        if (num > min)
+            ans = max(ans, num - min);
         else
-            pre = num;
+            min = num;
     }
     return ans;
 }

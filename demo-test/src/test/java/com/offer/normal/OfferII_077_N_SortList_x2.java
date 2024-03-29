@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
+    [LINKEDLIST]
     (中等)
     剑指 Offer II 077. 链表排序
         给定链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。
@@ -24,12 +25,16 @@ public class OfferII_077_N_SortList_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 3, 4).equals(sortList(new ListNode(4, 2, 1, 3)));
-        assert new ListNode(-1, 0, 3, 4, 5).equals(sortList(new ListNode(-1, 5, 3, 4, 0)));
-        assert new ListNode().equals(sortList(new ListNode()));
+        assert new ListNode(1, 2, 3, 4).equals(
+                sortList(new ListNode(4, 2, 1, 3)));
+        assert new ListNode(-1, 0, 3, 4, 5).equals(
+                sortList(new ListNode(-1, 5, 3, 4, 0)));
+        assert new ListNode().equals(
+                sortList(new ListNode()));
     }
 
     public ListNode sortList(ListNode head) {
+
         return null;
     }
 

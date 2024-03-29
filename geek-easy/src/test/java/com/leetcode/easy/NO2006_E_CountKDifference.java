@@ -4,9 +4,10 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import static com.leetcode.util.MathUtils.getDict;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     2006. 差的绝对值为 K 的数对数目
         给你一个【整数】数组nums和一个整数 k，请你返回数对 (i, j) 的数目，
@@ -49,6 +50,7 @@ public class NO2006_E_CountKDifference {
 
     public int countKDifference(int[] nums, int k) {
         // 2024/3/12 NO.1
+        // 2024/3/23 NO.2 能看懂，不熟练
         int ans = 0;
         return ans;
     }

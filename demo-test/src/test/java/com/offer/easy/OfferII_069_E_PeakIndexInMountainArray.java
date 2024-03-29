@@ -6,7 +6,7 @@ package com.offer.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     剑指 Offer II 069. 山峰数组的顶部
         符合下列属性的数组arr称为山峰数组（山脉数组）：
@@ -39,15 +39,21 @@ public class OfferII_069_E_PeakIndexInMountainArray {
 
     @Test
     public void test() {
-        assert 1 == peakIndexInMountainArray(new int[]{0, 1, 0});
-        assert 2 == peakIndexInMountainArray(new int[]{1, 3, 5, 4, 2});
-        assert 1 == peakIndexInMountainArray(new int[]{0, 10, 5, 2});
-        assert 2 == peakIndexInMountainArray(new int[]{3, 4, 5, 1});
-        assert 2 == peakIndexInMountainArray(new int[]{24, 69, 100, 99, 79, 78, 67, 36, 26, 19});
+        assert 1 == peakIndexInMountainArray(
+                new int[]{ 0,  1,  0});
+        assert 2 == peakIndexInMountainArray(
+                new int[]{ 1,  3,  5,  4,  2});
+        assert 1 == peakIndexInMountainArray(
+                new int[]{ 0, 10,  5,  2});
+        assert 2 == peakIndexInMountainArray(
+                new int[]{ 3,  4,  5,  1});
+        assert 2 == peakIndexInMountainArray(
+                new int[]{24, 69, 100, 99, 79, 78, 67, 36, 26, 19});
     }
 
     public int peakIndexInMountainArray(int[] arr) {
         // 2024/3/12 NO.1
+        // 2024/3/20 NO.2
         int ans = 0;
         return ans;
     }
@@ -73,9 +79,9 @@ public class OfferII_069_E_PeakIndexInMountainArray {
 public int peakIndexInMountainArray(int[] arr) {
     // 因为一定不是最左边 或 最右边的元素
     // 所以从 1 开始到 n - 2 结束
+    int ans = 0;
     int left = 1;
     int right = arr.length - 2;
-    int ans = 0;
     while (left <= right) {
         int mid = (left + right) / 2;
         if (arr[mid] > arr[mid + 1]) {

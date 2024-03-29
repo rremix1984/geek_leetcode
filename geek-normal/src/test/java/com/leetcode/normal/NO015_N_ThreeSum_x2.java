@@ -47,7 +47,8 @@ public class NO015_N_ThreeSum_x2 {
 
 
 
-/**
+/*
+// 方法1：
  public List<List<Integer>> threeSum(int[] nums) {
      Arrays.sort(nums);
      List<List<Integer>> res = new LinkedList<>();

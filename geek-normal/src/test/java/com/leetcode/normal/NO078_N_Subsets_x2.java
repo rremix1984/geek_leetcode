@@ -28,11 +28,11 @@ public class NO078_N_Subsets_x2 {
 
     @Test
     public void test() {
-        ArrayList<ArrayList<Integer>> target = getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}});
+        List<List<Integer>> target = getArray(new int[][]{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}});
         List<List<Integer>> source = subsets(new int[]{1, 2, 3});
         assert target.containsAll(source);
         assert source.containsAll(target);
-        ArrayList<ArrayList<Integer>> target2 = getArray(new int[][]{{}, {0}});
+        List<List<Integer>> target2 = getArray(new int[][]{{}, {0}});
         List<List<Integer>> source2 = subsets(new int[]{0});
         assert target2.containsAll(source2);
         assert source2.containsAll(target2);

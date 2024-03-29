@@ -5,10 +5,12 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 import java.util.Arrays;
+import static com.leetcode.util.MathUtils.MIN;
 import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1464. 数组中两元素的最大乘积
         给你一个【正整数数组】nums，请你选择数组的两个不同下标i和j，
@@ -34,13 +36,13 @@ public class NO1464_E_MaxProduct {
     public void test() {
         assert 12 == maxProduct(new int[]{3, 4, 5, 2});
         assert 16 == maxProduct(new int[]{1, 5, 4, 5});
-        System.out.println(maxProduct(new int[]{-4, -5, 3, 5}));
+        assert  8 == maxProduct(new int[]{-4, -5, 3, 5});
         assert 12 == maxProduct(new int[]{3, 7});
     }
 
     public int maxProduct(int[] nums) {
         // 2024/2/27 NO.3 不要用排序算法
-
+        // 2024/3/27 NO.4 其实很简单，就找前两大的元素
         return -1;
     }
 

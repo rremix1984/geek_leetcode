@@ -7,15 +7,14 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||||||||
     （中等）
     (重要,面试）
     45. 跳跃游戏 II
         给你一个非负整数数组nums，你最初位于数组的第一个位置。
-        数组中的每个元素代表你在该位置可以跳跃的最大长度。
-        你的目标是使用【最少的跳跃次数】到达数组的最后一个位置。
-        假设你总是可以到达数组的最后一个位置。
-        （因此不需要考虑 length - 1 这一位）
+    数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标
+    是使用【最少的跳跃次数】到达数组的最后一个位置。假设你总是
+    可以到达数组的最后一个位置。（因此不需要考虑 length - 1 这一位）
     示例 1:
         输入: nums = [2, 3, 1, 1, 4]
         输出: 2
@@ -30,7 +29,7 @@ public class NO045_N_JumpGameII {
 
     @Test
     public void test() {
-        assert 2 == jump(new int[]{2, 3, 0, 1, 4});// 2
+        assert 2 == jump(new int[]{2, 3, 0, 1, 4});
         assert 2 == jump(new int[]{2, 3, 1, 1, 4});// 2
         assert 6 == jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4});// 6
     }
@@ -38,7 +37,13 @@ public class NO045_N_JumpGameII {
     public int jump(int[] nums) {
         // 2024/2/25 NO.3
         // 2024/3/4  NO.4
+        // 2024/3/20 NO.5 还是做不出来...
+        // 2024/3/22 NO.6 思路对，但没做出来 挺经典的面试题
+        // 2024/3/24 NO.7 思路对，没做出来
+        // 2024/3/25 NO.8 思路对，没做出来
+        // 2024/3/26 NO.9 思路对，比上次强一点，还得练习
         int jump = 0;
+
         return jump;
     }
 
@@ -60,20 +65,25 @@ public class NO045_N_JumpGameII {
 /*
 // 方法1：
 public int jump(int[] nums) {
-    int jump = 0;// 跳的次数
-    int max = 0;   // 当前能跳到最远的位置
+
+    int jump  = 0; // 跳的次数
+    int max   = 0; // 当前能跳到最远的位置
     int reach = 0; // 能到达（reach）的边界
+
     // 因为题目说：总是可以到达数组的最后一个位置。
     // 因此不需要考虑 length - 1 这一位
     for (int i = 0; i < nums.length - 1; i++) {
+
         // 找到能跳到的最远位置
         max = max(max, i + nums[i]);
+
         // 遇到边界，就更新边界 reach = max
         // 而且需要再跳一步 jump++
         if (i == reach) {
             reach = max;
             jump++;
         }
+
     }
     return jump;
 }
