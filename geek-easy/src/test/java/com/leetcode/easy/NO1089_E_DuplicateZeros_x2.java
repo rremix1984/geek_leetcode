@@ -24,15 +24,15 @@ public class NO1089_E_DuplicateZeros_x2 {
 
     @Test
     public void test() {
-        int[] target = new int[]{1, 0, 2, 3, 0, 4, 5, 0};
+        int[] target = {1, 0, 2, 3, 0, 4, 5, 0};
         duplicateZeros(target);
         assertArrayEquals(new int[]{1, 0, 0, 2, 3, 0, 0, 4}, target);
 
-        int[] target2 = new int[]{1, 2, 3};
+        int[] target2 = {1, 2, 3};
         duplicateZeros(target2);
         assertArrayEquals(new int[]{1, 2, 3}, target2);
 
-        int[] target3 = new int[]{0, 0, 0, 0, 0, 0, 0};
+        int[] target3 = {0, 0, 0, 0, 0, 0, 0};
         duplicateZeros(target3);
         assertArrayEquals(new int[]{0, 0, 0, 0, 0, 0, 0}, target3);
     }

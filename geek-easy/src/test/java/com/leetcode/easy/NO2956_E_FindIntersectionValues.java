@@ -40,7 +40,7 @@ public class NO2956_E_FindIntersectionValues {
     }
 
     public int[] findIntersectionValues(int[] nums1, int[] nums2) {
-        int[] result = new int[]{0, 0};
+        int[] result = {0, 0};
         if (nums1.length == 0 || nums2.length == 0) {
             return result;
         }

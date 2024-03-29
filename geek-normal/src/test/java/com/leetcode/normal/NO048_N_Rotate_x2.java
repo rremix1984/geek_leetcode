@@ -38,9 +38,9 @@ public class NO048_N_Rotate_x2 {
 
     @Test
     public void test() {
-        int[][] array1 = new int[][]{{1, 2, 3},
-                                     {4, 5, 6},
-                                     {7, 8, 9}};
+        int[][] array1 = {{1, 2, 3},
+                         {4, 5, 6},
+                         {7, 8, 9}};
         rotate(array1);
         assertArrayEquals(
                 new int[][]{{7, 4, 1},

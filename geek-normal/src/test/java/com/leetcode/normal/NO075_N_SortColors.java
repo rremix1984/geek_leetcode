@@ -58,18 +58,18 @@ public class NO075_N_SortColors {
 
     @Test
     public void test() {
-        int[] source = new int[]{2, 0, 2, 1, 1, 0};
-        int[] target = new int[]{0, 0, 1, 1, 2, 2};
+        int[] source = {2, 0, 2, 1, 1, 0};
+        int[] target = {0, 0, 1, 1, 2, 2};
         sortColors(source);
         assertArrayEquals(source, target);
 
-        int[] source2 = new int[]{2, 0, 1};
-        int[] target2 = new int[]{0, 1, 2};
+        int[] source2 = {2, 0, 1};
+        int[] target2 = {0, 1, 2};
         sortColors(source2);
         assertArrayEquals(source2, target2);
 
-        int[] source3 = new int[]{2, 1, 2};
-        int[] target3 = new int[]{1, 2, 2};
+        int[] source3 = {2, 1, 2};
+        int[] target3 = {1, 2, 2};
         sortColors(source3);
         assertArrayEquals(source3, target3);
     }

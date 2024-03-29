@@ -36,13 +36,13 @@ public class NO073_N_SetZeroes_x2 {
 
     @Test
     public void test() {
-        int[][] source = new int[][]{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
-        int[][] target = new int[][]{{1, 0, 1}, {0, 0, 0}, {1, 0, 1}};
+        int[][] source = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+        int[][] target = {{1, 0, 1}, {0, 0, 0}, {1, 0, 1}};
         setZeroes(source);
         assertArrayEquals(target,  source);
 
-        int[][] source2 = new int[][]{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
-        int[][] target2 = new int[][]{{0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0}};
+        int[][] source2 = {{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
+        int[][] target2 = {{0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0}};
         setZeroes(source2);
         assertArrayEquals(target2, source2);
     }

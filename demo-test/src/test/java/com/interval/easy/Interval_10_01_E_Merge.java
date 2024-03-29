@@ -25,7 +25,7 @@ public class Interval_10_01_E_Merge {
 
     @Test
     public void test() {
-        int[] target = new int[]{1, 2, 3, 0, 0, 0};
+        int[] target = {1, 2, 3, 0, 0, 0};
         merge(target, 3, new int[]{2, 5, 6}, 3);
         assertArrayEquals(new int[]{1, 2, 2, 3, 5, 6}, target);
     }

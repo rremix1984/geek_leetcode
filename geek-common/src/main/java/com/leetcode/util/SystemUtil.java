@@ -2,7 +2,7 @@ package com.leetcode.util;
 
 import java.util.*;
 
-public class SystemUtil {
+public class SystemUtil<E> {
 
     /**
      * 打印出arr的元素在一行
@@ -69,4 +69,30 @@ public class SystemUtil {
         System.out.println();
     }
 
+    public static void preOrder(TreeNode root, List res) {
+        if (root == null)
+            return;
+
+        res.add(root.val);
+        preOrder(root.left, res);
+        preOrder(root.right, res);
+    }
+
+    public static void postOrder(TreeNode root, List res) {
+        if (root == null)
+            return;
+
+        preOrder(root.left, res);
+        preOrder(root.right, res);
+        res.add(root.val);
+    }
+
+    public static void inOrder(TreeNode root, List res) {
+        if (root == null)
+            return;
+
+        preOrder(root.left, res);
+        res.add(root.val);
+        preOrder(root.right, res);
+    }
 }

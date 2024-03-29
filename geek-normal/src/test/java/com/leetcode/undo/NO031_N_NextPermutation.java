@@ -59,15 +59,15 @@ public class NO031_N_NextPermutation {
 
     @Test
     public void test() {
-        int[] target = new int[]{1, 2, 3};
+        int[] target = {1, 2, 3};
         nextPermutation(target);
         assertArrayEquals(new int[]{1, 3, 2},  target);
 
-        int[] target2 = new int[]{3, 2, 1};
+        int[] target2 = {3, 2, 1};
         nextPermutation(target2);
         assertArrayEquals(new int[]{1, 2, 3},  target2);
 
-        int[] target3 = new int[]{1, 1, 5};
+        int[] target3 = {1, 1, 5};
         nextPermutation(target3);
         assertArrayEquals(new int[]{1, 5, 1},  target3);
     }

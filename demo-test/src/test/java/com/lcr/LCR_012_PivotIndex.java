@@ -2,7 +2,7 @@ package com.lcr;
 
 import org.junit.Test;
 
-/*
+/**
     [ARRAY]
     （简单）
     LCR.012 寻找数组的中心下标

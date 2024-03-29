@@ -39,15 +39,15 @@ public class NO088_E_MergeSortedArray {
 
     @Test
     public void test() {
-        int[] target = new int[]{1, 2, 3, 0, 0, 0};
+        int[] target = {1, 2, 3, 0, 0, 0};
         merge(target, 3, new int[]{2, 5, 6}, 3);// [1, 2, 2, 3, 5, 6]
         assertArrayEquals(new int[]{1,2,2,3,5,6}, target);
 
-        int[] target1 = new int[]{1};
+        int[] target1 = {1};
         merge(target1, 1, new int[]{}, 0);
         assertArrayEquals(new int[]{1}, target1);// [1]
 
-        int[] target2 = new int[]{0};
+        int[] target2 = {0};
         merge(target2, 0, new int[]{1}, 1);
         assertArrayEquals(new int[]{1}, target2);// [1]
     }
@@ -55,6 +55,16 @@ public class NO088_E_MergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         // 2024/2/21 NO.3 双指针法
         // 2024/3/5  NO.4 双指针法 隔了一个月，居然没做出来
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int tail = m + n - 1;
+        while (p1 >= 0 || p2 >= 0) {
+            // 如果p1到头了
+            if (p1 == -1 || (p2 != -1 && nums1[p1] < nums2[p2]))
+                nums1[tail--] = nums2[p2--];
+            else
+                nums1[tail--] = nums1[p1--];
+        }
     }
 
 }

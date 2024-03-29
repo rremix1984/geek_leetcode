@@ -34,7 +34,7 @@ public class NO806_E_NumberOfLines_x2 {
 
     @Test
     public void test() {
-        int[] dict = new int[]{4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
+        int[] dict = {4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10};
         assertArrayEquals(new int[]{3, 60}, numberOfLines(dict,"abcdefghijklmnopqrstuvwxyz"));
         assertArrayEquals(new int[]{2, 4}, numberOfLines(dict,"bbbcccdddaaa"));
     }

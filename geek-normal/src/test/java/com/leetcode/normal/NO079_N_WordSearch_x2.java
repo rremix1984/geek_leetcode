@@ -44,8 +44,8 @@ public class NO079_N_WordSearch_x2 {
                                    {'B','C','D'}}, "AAB");
     }
 
-    int[] dx = new int[]{-1, 0, 1, 0};
-    int[] dy = new int[]{ 0, 1, 0,-1};
+    int[] dx = {-1, 0, 1, 0};
+    int[] dy = { 0, 1, 0,-1};
 
     public boolean exist(char[][] board, String word) {
         return false;
