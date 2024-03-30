@@ -4,10 +4,6 @@
 package com.leetcode.util;
 
 import java.util.*;
-
-<<<<<<< HEAD
-public class SystemUtil<E> {
-=======
 import static java.util.Arrays.sort;
 
 /**
@@ -15,7 +11,6 @@ import static java.util.Arrays.sort;
  * @author wangxiaozhe
  */
 public class SystemUtil {
->>>>>>> 4046bbaadaf51632de80d623968b7a1f57ebf284
 
     public static void print(TreeSet<Long> set) {
         // 打印一个TreeSet数组的元素

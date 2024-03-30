@@ -11,7 +11,7 @@ import static com.leetcode.util.SystemUtil.*;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] |
+    [TREE] |||||
     (中等，面试题)
     二叉树底部视图
 
@@ -56,11 +56,11 @@ public class BottomView {
         // 2024/3/21 NO.2 做不出来
         // 2024/3/22 NO.3 做出来了
         // 2024/3/25 NO.4 做出来了，前提是给了提示
+        // 2024/3/30 NO.5 做出来了
         if (root == null)
             return null;
 
-        Map<Integer, Integer> map = new TreeMap<>();
-        return map.values().stream().mapToInt(a->a).toArray();
+        return null;
     }
 
 }
