@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [NUMBER] ||||
+    [NUMBER] |||||||
     (简单）汉诺塔
     分治法
  */
@@ -36,7 +36,7 @@ public class Hanoitower {
         // 2024/3/21 NO.4 忘记了，没做出来
         // 2024/3/24 NO.5
         // 2024/3/25 NO.6 思路都对，就是做错了
-
+        // 2024/3/30 NO.7
         return sb.toString();
     }
 

@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     （中等）
     NO.33 搜索旋转排序数组
         整数数组 nums 按升序排列，数组中的值互不相同。
@@ -41,6 +41,10 @@ public class NO033_N_SearchInRotatedSortedArray {
         // 2024/3/20 NO.2 没思路，能看懂了
         // 2024/3/21 NO.3
         // 2024/3/24 NO.4
+        // 2024/3/30 NO.5 有思路，没做出来，边界条件不好想
+        int l = 0;
+        int r = nums.length - 1;
+        // TODO
         return -1;
     }
 
@@ -71,13 +75,13 @@ public int search(int[] nums, int target) {
     while (lo < hi) {
         int mid = (lo + hi) >> 1;
         // 这个逻辑最难想 (要区分为单调、非单调两种情况)
-        // 情况1：前半段单调递增
+        // 情况1【target在右侧区间】前半段单调递增
         if (nums[0] <= nums[mid] && (nums[0] > target || nums[mid] < target))
             lo = mid + 1;
-        // 情况2：前半段非单调，说明中间有旋转
+        // 情况2【target在右侧区间】前半段非单调（说明中间有旋转）
         else if (nums[0] > target && nums[mid] < target)
             lo = mid + 1;
-        // 其他情况：都要在后半段去查找
+        // 其他：【target在左侧区间】前半段去查找
         else
             hi = mid;
     }
