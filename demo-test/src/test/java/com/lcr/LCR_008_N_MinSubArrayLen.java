@@ -1,17 +1,18 @@
+/**
+ *
+ */
 package com.lcr;
 
 import org.junit.Test;
 import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.MathUtils.frontSum;
-import static com.leetcode.util.SystemUtil.print;
-import static com.leetcode.util.SystemUtil.printArr;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static java.util.Arrays.binarySearch;
 
 /**
-    [ARRAY] IV
+    [ARRAY] |||||
     （中等）
     LCR.008 长度最小的子数组
         给定一个含有 n 个正整数的数组和一个正整数 target 。
@@ -66,10 +67,13 @@ public class LCR_008_N_MinSubArrayLen {
         // 2024/3/13 NO.2 不会
         // 2024/3/22 NO.3 没思路，看不懂
         // 2024/3/25 NO.4 没做出来，思路有一点了，还得再做
-        int ans = MAX;
-        int[] frontSums = frontSum(nums);
+        // 2024/3/30 NO.5 没做出来,肯定能理解了
+        int ans = MAX_VALUE;
+        int[] sums = frontSum(nums);
+        int n = nums.length;
+
         // TODO
-        return ans == MAX ? 0 : ans;
+        return ans == MAX_VALUE ? 0 : ans;
     }
 
 }
@@ -112,9 +116,16 @@ public int minSubArrayLen(int target, int[] nums) {
 
         // 大于0 说明找到了元素位置 bound
         if (bound <= n)
-            ans = min(ans, bound - (i - 1));
-
+            ans = min(ans, bound - i + 1);
     }
     return ans == MAX_VALUE ? 0 : ans;
+}
+
+public static int[] frontSum(int[] nums) {
+    int n = nums.length;
+    int[] sums = new int[n + 1];
+    for (int i = 1; i <= n; i++)
+        sums[i] = sums[i - 1] + nums[i - 1];
+    return sums;
 }
 */

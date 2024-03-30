@@ -5,12 +5,15 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1460. 通过翻转子数组使两个数组相等
-        给你两个长度相同的整数数组 target 和 arr 。每一步中，你可以选择 arr 的任意 非空子数组 并将它翻转。你可以执行此过程任意次。
-        如果你能让 arr 变得与 target 相同，返回 True；否则，返回 False 。
+        给你两个长度相同的整数数组 target 和 arr 。每一步中，你可以选择 arr 的任意
+        非空子数组 并将它翻转。你可以执行此过程任意次。
+        如果你能让 arr 变得与 target 相同，返回 True；否则，返回 False。
     示例 1：
         输入：target = {1, 2, 3, 4},  arr = {2, 4, 1, 3}
         输出：true
@@ -62,6 +65,7 @@ public class NO1460_E_CanBeEqual {
 
     public boolean canBeEqual(int[] target, int[] source) {
         // 2024/2/25 NO.3
+        // 2024/3/29 NO.4 没思路，但是看懂了
         return false;
     }
 
@@ -105,11 +109,11 @@ public boolean canBeEqual(int[] target, int[] arr) {
 }
 
 // 方法3：
-public boolean canBeEqual(int[] target, int[] arr) {
+public boolean canBeEqual(int[] target, int[] source) {
     int[] count = new int[1001];
     for (int i = 0; i < target.length; i++) {
         count[target[i]]++;
-        count[arr[i]]--;
+        count[source[i]]--;
     }
     return Arrays.equals(count, new int[1001]);
 }

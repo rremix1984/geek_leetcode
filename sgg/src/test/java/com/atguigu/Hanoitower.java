@@ -36,7 +36,7 @@ public class Hanoitower {
         // 2024/3/21 NO.4 忘记了，没做出来
         // 2024/3/24 NO.5
         // 2024/3/25 NO.6 思路都对，就是做错了
-        
+
         return sb.toString();
     }
 

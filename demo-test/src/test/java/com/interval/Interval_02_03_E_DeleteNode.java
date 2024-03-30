@@ -6,8 +6,10 @@ package com.interval;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.SystemUtil.printListNode;
+
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (简单)
     Interval.02.03 删除中间节点
         若链表中的某个节点，既不是链表头节点，也不是链表尾节点，则称其为该链表的
@@ -29,14 +31,13 @@ public class Interval_02_03_E_DeleteNode {
     public void test() {
         ListNode node = new ListNode(4, 5, 1, 9);
         deleteNode(node);
+        printListNode(node);
         assert new ListNode(4, 1, 9).equals(node);
     }
 
     public void deleteNode(ListNode node) {
-        // 把要删除节点的下一个节点的值赋给要删除的结点
-        node.val = node.next.val;
-        // 然后删除下一个节点
-        node.next = node.next.next;
+        // 2024/3/29 NO.1
+
     }
 
 }
@@ -58,9 +59,12 @@ public class Interval_02_03_E_DeleteNode {
 /*
 // 方法1：
 public void deleteNode(ListNode node) {
-    // 把要删除节点的下一个节点的值赋给要删除的结点
-    node.val = node.next.val;
-    // 然后删除下一个节点
-    node.next = node.next.next;
+    while (node.next != null) {
+        if (node.next.val == 5) {
+            // 然后删除下一个节点
+            node.next = node.next.next;
+        }
+        node = node.next;
+    }
 }
 */

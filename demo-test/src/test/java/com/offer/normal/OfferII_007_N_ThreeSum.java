@@ -5,7 +5,6 @@ package com.offer.normal;
 
 import org.junit.Test;
 import java.util.*;
-
 import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.sort;
@@ -57,7 +56,7 @@ public class OfferII_007_N_ThreeSum {
         // 2024/3/20 NO.4
         // 2024/3/22 NO.5
         // 2024/3/25 NO.6 这题不好做，思路对，但是边界条件很难判断
-        // 2024/3/29 NO.7 不好做，没做出来
+        // 2024/3/29 NO.7 不好做，没做出来，要处理很多细节
         List<List<Integer>> ans = new ArrayList<>();
         int n = nums.length;
 

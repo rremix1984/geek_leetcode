@@ -6,7 +6,7 @@ import java.util.Arrays;
 import static java.util.Arrays.stream;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     NO.416 分割等和子集
     给你一个只包含正整数的非空数组nums。请你判断是否可以将这个数组分割成两个子集，
@@ -34,12 +34,13 @@ public class NO416_N_CanPartition {
 
     public boolean canPartition(int[] nums) {
         // 2024/3/12 NO.1
+        // 2024/3/30 NO.2
         final int n = nums.length;
         int target = stream(nums).sum();
         if (target % 2 != 0)
             return false;
 
-        target = target >> 1;
+        target = target / 2;
         boolean[][] dp = new boolean[n][target + 1];
         for (int i = 0; i < n; i++)
             dp[i][0] = true;

@@ -6,13 +6,13 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     （中等）
     213. 打家劫舍 II
         你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。
         这个地方所有的房屋都围成一圈 ，这意味着第一个房屋和最后一个房屋
         是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻
-        的房屋在同一晚上被小偷闯入，系统会自动报警 。
+        的房屋在同一晚上被小偷闯入，系统会自动报警。
         给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装
         置的情况下 ，今晚能够偷窃到的最高金额。
     示例 1：
@@ -23,7 +23,7 @@ import org.junit.Test;
         输入：nums = [1, 2, 3, 1]
         输出：4
         解释：你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。
-        偷窃到的最高金额 = 1 + 3 = 4 。
+        偷窃到的最高金额 = 1 + 3 = 4。
     示例 3：
         输入：nums = [1, 2, 3]
         输出：3
@@ -47,6 +47,8 @@ public class NO213_N_HouseRobberII {
     }
 
     public int rob(int[] nums) {
+        // 2024/3/30 NO.1
+
         return -1;
     }
 
@@ -63,7 +65,7 @@ public class NO213_N_HouseRobberII {
 
 
 
-/**
+/*
 // 方法1：
 public int rob(int[] nums) {
     int n = nums.length;
@@ -83,10 +85,10 @@ public int rob(int[] nums) {
     g[2] = nums[1];// 潜台词 g[0] = 0
 
     for (int i = 2; i <= n - 1; i++)
-        f[i] = Math.max(f[i - 1], f[i - 2] + nums[i - 1]);
+        f[i] = max(f[i - 1], f[i - 2] + nums[i - 1]);
 
     for (int i = 3; i <= n; i++)
-        g[i] = Math.max(g[i - 1], g[i - 2] + nums[i - 1]);
+        g[i] = max(g[i - 1], g[i - 2] + nums[i - 1]);
 
     return Math.max(f[n - 1], g[n]);
 }

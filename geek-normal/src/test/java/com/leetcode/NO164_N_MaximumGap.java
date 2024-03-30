@@ -26,7 +26,6 @@ import static java.util.Arrays.fill;
         1 <= nums.length <= 105
         0 <= nums[i] <= 109
     Related Topics:数组,桶排序,基数排序,排序
-
     解题思路：
         以nums = [0, 3, 5, 6, 23, 28, 29, 33, 40]为例
         由于题目要求为线性时间复杂度 所以不能用Arrays.sort
@@ -72,7 +71,6 @@ public class NO164_N_MaximumGap {
 
         // 确定桶的间距
         int interval = (int) ceil((double)(max - min) / (len - 1));
-
         for (int num : nums) {
             // 找到每一个值所对应桶的索引
             int index = (num - min) / interval;

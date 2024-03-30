@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||||||||
+    [ARRAY] |||||||||
     (中等)
     (重要,面试）
     1306. 跳跃游戏 III
@@ -51,7 +51,8 @@ public class NO1306_N_JumpGameIII {
         // 2024/3/22 NO.6 不会做，看答案勉强看懂，写不出来
         // 2024/3/24 NO.7 会做，但是做不出来，有思路
         // 2024/3/26 NO.8 几乎做对了，思路也对，有进步
-
+        // 2024/3/29 NO.9 做对了...
+        int n = arr.length;
         return false;
     }
 
