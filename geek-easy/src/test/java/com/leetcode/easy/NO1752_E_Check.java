@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
     1752. 检查数组是否经排序和轮转得到
         给你一个数组nums。nums的源数组中，所有元素与nums相同，但按非递减顺序排列。
@@ -36,12 +36,22 @@ public class NO1752_E_Check {
         assert check(new int[]{3, 4, 5, 1, 2});
         assert !check(new int[]{2, 1, 3, 4});
         assert check(new int[]{1, 2, 3});
+        assert check(new int[]{6, 10, 6});
+        assert !check(new int[]{3, 2, 1});
     }
 
     public boolean check(int[] nums) {
         // 2024/3/1 NO.3
         // 2024/3/10 NO.4
-        return false;
+        // 2024/3/30 NO.5
+        int cnt = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] > nums[i + 1]) {
+                if (cnt++ > 0)
+                    return false;
+            }
+        }
+        return cnt == 0 || nums[0] >= nums[nums.length - 1];
     }
 
 }
@@ -72,5 +82,17 @@ public boolean check(int[] nums) {
         }
     }
     return cnt == 0 || nums[0] > nums[n - 1];
+}
+
+// 方法2：
+public boolean check(int[] nums) {
+    int cnt = 0;
+    for (int i = 0; i < nums.length - 1; i++) {
+        if (nums[i] > nums[i + 1]) {
+            if (cnt++ > 0)
+                return false;
+        }
+    }
+    return cnt == 0 || nums[0] >= nums[nums.length - 1];
 }
 */

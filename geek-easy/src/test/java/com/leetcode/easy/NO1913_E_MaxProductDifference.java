@@ -3,11 +3,13 @@
  */
 package com.leetcode.easy;
 
+import com.leetcode.util.MathUtils;
 import org.junit.Test;
-import static java.lang.Integer.*;
+import static com.leetcode.util.MathUtils.MAX;
+import static com.leetcode.util.MathUtils.MIN;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1913. 两个数对之间的最大乘积差
         两个数对(a, b)和(c, d)之间的乘积差定义为(a * b)-(c * d)。
@@ -36,7 +38,11 @@ public class NO1913_E_MaxProductDifference {
 
     public int maxProductDifference(int[] nums) {
         // 2024/2/27 NO.3 辣两头儿
-        return 0;
+        // 2024/3/30 NO.4 有思路,
+        int max1 = MIN, max2 = MIN;
+        int min1 = MAX, min2 = MAX;
+
+        return (max1 * max2- min1 * min2);
     }
 
 }
@@ -62,8 +68,10 @@ public int maxProductDifference(int[] nums) {
 
 // 方法2：推荐
 public int maxProductDifference(int[] nums) {
-    int max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE;
-    int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+    int max1 = MIN;
+    int max2 = MIN;
+    int min1 = MAX;
+    int min2 = MAX;
 
     for (int x : nums) {
         if (x > max1) {
