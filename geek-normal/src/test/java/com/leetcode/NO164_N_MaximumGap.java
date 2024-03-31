@@ -7,7 +7,7 @@ import static java.lang.Math.*;
 import static java.util.Arrays.fill;
 
 /**
-    [ARRAY]
+    [ARRAY] ||
     (中等)
     NO.164 最大间距
         给定一个无序的数组 nums，返回数组在排序之后，相邻元素之间最大的差值。
@@ -44,12 +44,11 @@ public class NO164_N_MaximumGap {
     // 线性时间复杂度和空间复杂度 不能用Arrays.sort
     public int maximumGap(int[] nums) {
         // 2024/3/12 NO.1
+        // 2024/3/31 NO.2
         if (nums.length < 2)
             return 0;
 
         int len = nums.length;
-
-        // 找出最大值和最小值 为了方便后面确定桶的数量
         int max = -1;
         int min = MAX_VALUE;
         for (int num : nums) {
@@ -57,43 +56,35 @@ public class NO164_N_MaximumGap {
             min = min(num, min);
         }
 
-        // 排除nums全部为一样的数字，nums = [1,1,1,1,1,1];
         if (max - min == 0)
             return 0;
 
-        // 用于存放每个桶的最大值
         int[] bucketMin = new int[len - 1];
-        // 用于存放每个桶的最小值
         int[] bucketMax = new int[len - 1];
 
         fill(bucketMax, -1);
         fill(bucketMin, MAX_VALUE);
 
-        // 确定桶的间距
         int interval = (int) ceil((double)(max - min) / (len - 1));
         for (int num : nums) {
-            // 找到每一个值所对应桶的索引
             int index = (num - min) / interval;
             if (num == min || num == max)
                 continue;
 
-            // 更新每个桶的数据
             bucketMax[index] = max(bucketMax[index], num);
             bucketMin[index] = min(bucketMin[index], num);
         }
 
-        // maxGap 表示桶之间最大的差距
         int maxGap = 0;
-        // preMax 表示前一个桶的最大值
         int preMax = min;
         for (int i = 0; i < len - 1; i++) {
-            // 表示某一个桶为空
-            // 但凡某一个桶不为空，都会在前面的数据中更新掉bucketMax的值
-            if (bucketMax[i] == -1) continue;
+            if (bucketMax[i] == -1)
+                continue;
+
             maxGap = max(bucketMin[i] - preMax, maxGap);
             preMax = bucketMax[i];
         }
-        // [1, 10000000]
+
         maxGap = max(maxGap, max - preMax);
         return maxGap;
     }
