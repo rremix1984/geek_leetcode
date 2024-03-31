@@ -9,15 +9,15 @@ import static java.lang.Math.max;
 import static java.util.Arrays.copyOfRange;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     LCR.090 打家劫舍 II
-    一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。
-    这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。
-    同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，
-    系统会自动报警。
-    给定一个代表每个房屋存放金额的非负整数数组nums，请计算在不触动警报装置的情况下，
-    今晚能够偷窃到的最高金额。
+        一个专业的小偷，计划偷窃一个环形街道上沿街的房屋，每间房内都藏有一定的现金。
+    这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时
+    ，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统
+    会自动报警。
+        给定一个代表每个房屋存放金额的非负整数数组nums，请计算在不触动警报装置的情况
+    下，今晚能够偷窃到的最高金额。
     示例 1：
         输入：nums = [2, 3, 2]
         输出：3
@@ -45,28 +45,9 @@ public class LCR_090_N_Rob {
     }
 
     public int rob(int[] nums) {
-        if (nums.length == 0)
-            return 0;
+        // 2024/3/31 NO.1 有思路，没做出来
 
-        if (nums.length == 1)
-            return nums[0];
-
-        return max(
-                myRob(copyOfRange(nums, 0, nums.length - 1)),
-                myRob(copyOfRange(nums, 1, nums.length))
-        );
-    }
-
-    private int myRob(int[] nums) {
-        int pre = 0;
-        int cur = 0;
-        int tmp;
-        for (int num : nums) {
-            tmp = cur;
-            cur = max(pre + num, cur);
-            pre = tmp;
-        }
-        return cur;
+        return 0;
     }
 
 }

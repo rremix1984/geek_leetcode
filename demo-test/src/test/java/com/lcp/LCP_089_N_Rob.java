@@ -4,7 +4,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
     (中等)
     LCP.089 打家劫舍
        一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响小偷偷
@@ -40,6 +40,7 @@ public class LCP_089_N_Rob {
         // 2024/3/25 NO.3 有思路，没做出来
         // 2024/3/27 NO.4 差不多已经做对了，但是有瑕疵
         // 2024/3/30 NO.5 思路对了，但是没做出来
+        // 2024/3/31 NO.6 一遍过
         int n = nums.length;
         int[] dp = new int[n + 1];
 

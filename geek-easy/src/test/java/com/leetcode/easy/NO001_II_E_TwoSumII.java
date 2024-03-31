@@ -7,13 +7,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
-    1. 两数之和
+    NO.1. 两数之和
         给定一个【升序】排列的整数数组 nums 和一个整数目标值 target，请你在
-        该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
-        你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能
-        重复出现。你可以按任意顺序返回答案。
+    该数组中找出 和为目标值 target 的那两个整数，并返回它们的数组下标。
+    你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能
+    重复出现。你可以按任意顺序返回答案。
     示例 1：
         输入：nums = [2, 7, 11, 15], target = 9
         输出：[0, 1]
@@ -38,7 +38,7 @@ public class NO001_II_E_TwoSumII {
 
     public int[] twoSum(int target, int... numbers) {
         // 2024/3/25 NO.2 一开始没思路，后来双指针、二分查找出来了
-        // 2024/3/27 NO.3 一遍过
+        // 2024/3/27-31 NO.3-4 一遍过
         return new int[]{0};
     }
 

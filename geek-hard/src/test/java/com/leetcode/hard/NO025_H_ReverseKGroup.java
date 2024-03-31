@@ -5,10 +5,12 @@ package com.leetcode.hard;
 
 import com.leetcode.util.ListNode;
 import static com.leetcode.util.ListNode.reverse;
+import static com.leetcode.util.SystemUtil.printListNode;
+
 import org.junit.Test;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (中等)
     NO.025 K 个一组翻转链表
     给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
@@ -32,13 +34,16 @@ public class NO025_H_ReverseKGroup {
 
     @Test
     public void test() {
-        new ListNode(2, 1, 4, 3, 5).equals(
+        assert new ListNode(2, 1, 4, 3, 5).equals(
                 reverseKGroup(new ListNode(1, 2, 3, 4, 5), 2));
-        new ListNode(3, 2, 1, 4, 5).equals(
+        assert new ListNode(3, 2, 1, 4, 5).equals(
                 reverseKGroup(new ListNode(1, 2, 3, 4, 5), 3));
+        assert new ListNode(2,1,4,3,5).equals(
+                reverseKGroup(new ListNode(1,2,3,4,5), 2));
     }
 
     public ListNode reverseKGroup(ListNode head, int k) {
+        // 2024/3/31 NO.1 没思路，不会做。看懂答案了
         if (head == null || head.next == null)
             return head;
 

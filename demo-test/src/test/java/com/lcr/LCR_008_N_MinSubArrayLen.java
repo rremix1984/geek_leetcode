@@ -12,7 +12,7 @@ import static java.lang.Math.min;
 import static java.util.Arrays.binarySearch;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
     （中等）
     LCR.008 长度最小的子数组
         给定一个含有 n 个正整数的数组和一个正整数 target 。
@@ -68,12 +68,14 @@ public class LCR_008_N_MinSubArrayLen {
         // 2024/3/22 NO.3 没思路，看不懂
         // 2024/3/25 NO.4 没做出来，思路有一点了，还得再做
         // 2024/3/30 NO.5 没做出来,肯定能理解了
-        int ans = MAX_VALUE;
+        // 2024/3/31 NO.6 有思路了，没做出来
+        int ans = MAX;
         int[] sums = frontSum(nums);
         int n = nums.length;
 
         // TODO
-        return ans == MAX_VALUE ? 0 : ans;
+
+        return ans == MAX ? 0 : ans;
     }
 
 }
