@@ -10,7 +10,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.*;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
     (中等)
     剑指 Offer II 080. 含有 k 个元素的组合
     给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。

@@ -1,11 +1,9 @@
 package com.lcp;
 
 import org.junit.Test;
-import java.util.Map;
-import java.util.HashMap;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     （困难）
     LCP.014 切分数组
         给定一个整数数组nums，小李想将nums切割成若干个非空子数组，使得每个
@@ -24,7 +22,7 @@ import java.util.HashMap;
             1 <= nums.length <= 10^5
             2 <= nums[i] <= 10^6
 */
-public class LCP_014_SplitArray {
+public class LCP_014_H_SplitArray {
 
     @Test
     public void test() {
@@ -33,9 +31,9 @@ public class LCP_014_SplitArray {
     }
 
     private int splitArray(int[] nums) {
-        // 2024/3/1 NO.1
+        // 2024/3/1  NO.1
         // 2024/3/12 NO.2
-
+        // 2024/3/31 NO.3
 
         return 0;
     }

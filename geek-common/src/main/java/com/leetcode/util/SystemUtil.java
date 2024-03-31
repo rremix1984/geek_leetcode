@@ -65,6 +65,15 @@ public class SystemUtil {
         System.out.println();
     }
 
+    public static void printArr(int[][] arr) {
+        for (int[] i : arr) {
+            for (int j = 0; j < i.length; j++) {
+                System.out.printf("%d\t", j);
+            }
+            System.out.println();
+        }
+    }
+
     public static void print(List<String> list) {
         for (String s : list)
             System.out.printf("%s\t", s);
@@ -79,6 +88,21 @@ public class SystemUtil {
         for (boolean i : arr)
             System.out.printf("%b\t", i);
         System.out.println();
+    }
+
+    public static void printArr(boolean[][] arr) {
+//        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.printf("%d\t\t", j);
+            }
+            System.out.println();
+//        }
+        for (boolean[] i : arr) {
+            for (boolean b : i) {
+                System.out.printf("%b\t", b);
+            }
+            System.out.println();
+        }
     }
 
     public static boolean arraysAllMatch(int[] source, int[] target) {
