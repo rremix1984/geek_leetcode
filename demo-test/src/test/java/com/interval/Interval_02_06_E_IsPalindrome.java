@@ -38,6 +38,7 @@ public class Interval_02_06_E_IsPalindrome {
     public boolean isPalindrome(ListNode head) {
         // 2024/3/28 NO.1 快慢指针法
         // 2024/3/29 NO.2 没做出来，但是思路对了
+        // 2024/3/30 NO.3 一遍过
         ListNode slow = head;
         ListNode fast = head;
 

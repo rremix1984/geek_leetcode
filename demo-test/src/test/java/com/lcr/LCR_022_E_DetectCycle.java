@@ -6,13 +6,11 @@ package com.lcr;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.ListNode.newCycle;
-import static com.leetcode.util.SystemUtil.print;
-import static com.leetcode.util.SystemUtil.printListNode;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 /**
-    [LISTNODE] |
+    [LISTNODE] ||
     (简单)
     LCR.022 环形链表 II
         给定一个链表，返回链表开始入环的第一个节点。 从链表的头节点开始沿着
@@ -55,6 +53,7 @@ public class LCR_022_E_DetectCycle {
 
     public ListNode detectCycle(ListNode head) {
         // 2024/3/30 NO.1 没做出来，看懂了，有思路
+        // 2024/3/31 NO.2 思路对，没做对
         ListNode fast = head;
         ListNode slow = head;
         return slow;

@@ -7,7 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (中等)
     Interval.02.04 分割链表
     给你一个链表的头节点 head 和一个特定值 x，请你对链表进行分隔，

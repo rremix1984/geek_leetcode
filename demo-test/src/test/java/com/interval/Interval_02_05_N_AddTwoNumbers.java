@@ -6,7 +6,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
-    [LISTNODE]
+    [LISTNODE] ||
     (中等)
     Interval.02.05 链表求和
     给定两个用链表表示的整数，每个节点包含一个数位。
@@ -40,29 +40,13 @@ public class Interval_02_05_N_AddTwoNumbers {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 2024/3/30 NO.1 没思路，没做出来
+        // 2024/3/31 NO.2 思路有，没做出来
+        ListNode ret = null;
+        ListNode cur = null;
         int carry = 0;
-        ListNode head = null;
-        ListNode tail = null;
-        while (l1 != null || l2 != null || carry != 0) {
-            int v1 = l1 != null ? l1.val : 0;
-            int v2 = l2 != null ? l2.val : 0;
-            int value = v1 + v2 + carry;
-            carry = (v1 + v2 + carry) / 10;
-            if (head == null) {
-                head = new ListNode(value % 10);
-                tail = head;
-            } else {
-                tail.next = new ListNode(value % 10);
-                tail = tail.next;
-            }
 
-            if (l1 != null)
-                l1 = l1.next;
-
-            if (l2 != null)
-                l2 = l2.next;
-        }
-        return head;
+        return ret;
     }
 
 }
@@ -111,5 +95,32 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ret = curNode;
     }
     return ret;
+}
+
+// 方法2：
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    int carry = 0;
+    ListNode head = null;
+    ListNode tail = null;
+    while (l1 != null || l2 != null || carry != 0) {
+        int v1 = l1 != null ? l1.val : 0;
+        int v2 = l2 != null ? l2.val : 0;
+        int value = v1 + v2 + carry;
+        carry = (v1 + v2 + carry) / 10;
+        if (head == null) {
+            head = new ListNode(value % 10);
+            tail = head;
+        } else {
+            tail.next = new ListNode(value % 10);
+            tail = tail.next;
+        }
+
+        if (l1 != null)
+            l1 = l1.next;
+
+        if (l2 != null)
+            l2 = l2.next;
+    }
+    return head;
 }
 */

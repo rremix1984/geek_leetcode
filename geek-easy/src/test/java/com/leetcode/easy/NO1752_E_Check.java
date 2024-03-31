@@ -44,14 +44,7 @@ public class NO1752_E_Check {
         // 2024/3/1 NO.3
         // 2024/3/10 NO.4
         // 2024/3/30 NO.5
-        int cnt = 0;
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] > nums[i + 1]) {
-                if (cnt++ > 0)
-                    return false;
-            }
-        }
-        return cnt == 0 || nums[0] >= nums[nums.length - 1];
+        return false;
     }
 
 }

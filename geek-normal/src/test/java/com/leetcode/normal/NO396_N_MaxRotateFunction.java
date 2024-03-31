@@ -11,7 +11,7 @@ import static java.lang.Math.max;
 import static java.util.Arrays.stream;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     (中等)
     NO.396 旋转函数
     给定一个长度为n的整数数组nums。
@@ -44,6 +44,7 @@ public class NO396_N_MaxRotateFunction {
     public void test() {
         assert 26 == maxRotateFunction(new int[]{4, 3, 2, 6});
         assert 0 == maxRotateFunction(new int[]{100});
+        assert 330 == maxRotateFunction(new int[]{1,2,3,4,5,6,7,8,9,10});
     }
 
     public int maxRotateFunction(int[] nums) {
@@ -51,8 +52,8 @@ public class NO396_N_MaxRotateFunction {
         // 2024/3/18 NO.2
         // 2024/3/21 NO.3 没思路
         // 2024/3/25 NO.4 思路对，但是没做出来
+        // 2024/3/30 NO.5 思路差点，没做出来
         int ans = 0;
-
         return ans;
     }
 
@@ -73,7 +74,7 @@ public class NO396_N_MaxRotateFunction {
 
 
 /*
-// 方法1：
+// 方法1：不对
 public int maxRotateFunction(int[] nums) {
     int front = 0;
     int n = nums.length;
@@ -87,6 +88,23 @@ public int maxRotateFunction(int[] nums) {
     for (int i = n - 1; i > 0; i--) {
         front = front - n * nums[i] + sum;
         ans = max(ans, front);
+    }
+    return ans;
+}
+
+// 方法2：推荐
+public int maxRotateFunction(int[] nums) {
+    int ans = 0;
+    int sum = 0, curSum = 0;
+    for (int i = 0; i < nums.length; ++i) {
+        sum += nums[i];
+        curSum += i * nums[i];
+    }
+
+    ans = curSum;
+    for (int i = nums.length - 1; i > 0; --i) {
+        curSum += sum - nums.length * nums[i];
+        ans = Math.max(ans, curSum);
     }
     return ans;
 }
