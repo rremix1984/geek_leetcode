@@ -21,6 +21,7 @@ import static com.leetcode.util.SystemUtil.*;
     示例 2:
         输入: n = 1, k = 1
         输出: [[1]]
+    Related Topics:数组
 */
 public class OfferII_080_N_Combine {
 
@@ -40,6 +41,7 @@ public class OfferII_080_N_Combine {
         // 2024/3/22 NO.3 没做出来，看懂了
         // 2024/3/25 NO.4 没做出来，思路有了
         // 2024/3/28 NO.5 没做出来, 看懂了
+        // 2024/3/31 NO.6 思路对了，差点做出来
         List<List<Integer>> ans = new ArrayList<>();
 
         return ans;

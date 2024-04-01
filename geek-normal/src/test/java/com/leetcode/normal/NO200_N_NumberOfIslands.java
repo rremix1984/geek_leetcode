@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     （中等）
     200. 岛屿数量
     给你一个由 '1'（陆地）和 '0'（水）组成的的二维网格，请你计算网格中岛屿的数量。
@@ -45,7 +45,13 @@ public class NO200_N_NumberOfIslands {
     public int numIslands(char[][] grid) {
         // 2024/3/23 NO.1 没做出来，Flood Fill法
         // 2024/3/27 NO.2 有思路，没做出来，再试试看
+        // 2024/4/1  NO.3 思路对，但是没写出来
         int ret = 0;
+        int row = grid.length;
+        if (row == 0)
+            return 0;
+        int col = grid[0].length;
+        // TODO
 
         return ret;
     }

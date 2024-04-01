@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 /**
-    [LISTNODE] |
+    [LISTNODE] ||
     (中等)
     LCR.025 两数相加 II
     给定两个 非空链表 l1和 l2 来代表两个非负整数。数字最高位位于链表开始位置。
@@ -49,7 +49,19 @@ public class LCR_025_N_AddTwoNumbers {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // 2024/3/27 NO.1 不会做, 答案看懂了
+        // 2024/4/1  NO.2 没思路，看懂答案了
         ListNode ret = null;
+        Stack<Integer> stack1 = new Stack<>();
+        Stack<Integer> stack2 = new Stack<>();
+        while (l1 != null) {
+            stack1.push(l1.val);
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            stack2.push(l2.val);
+            l2 = l2.next;
+        }
+        // TODO
 
         return ret;
     }
@@ -72,12 +84,13 @@ public class LCR_025_N_AddTwoNumbers {
 /*
 // 方法1：
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    Deque<Integer> stack1 = new LinkedList<>();
-    Deque<Integer> stack2 = new LinkedList<>();
+    Stack<Integer> stack1 = new Stack<>();
+    Stack<Integer> stack2 = new Stack<>();
     while (l1 != null) {
         stack1.push(l1.val);
         l1 = l1.next;
     }
+
     while (l2 != null) {
         stack2.push(l2.val);
         l2 = l2.next;

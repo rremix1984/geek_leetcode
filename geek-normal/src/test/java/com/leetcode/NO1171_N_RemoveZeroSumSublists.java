@@ -8,7 +8,6 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 import static com.leetcode.util.ListNode.assertNodeEquals;
-import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
     [LISTNODE] |
@@ -41,27 +40,37 @@ import static com.leetcode.util.SystemUtil.printListNode;
     你决定删去这部分路程，直接从之前的点跳到当前点的下一个点，继续你
     的旅程。这样，当你完成整个旅程时，你确保了你的“旅程”中没有徒劳的
     部分，每一步都是有意义的，就像在链表中移除和为零的子列表一样。
+
+                    __     __          连续和为0的元素
+              __   | |    |x|   __      相互抵消了
+             | |   | |   |x|   |x|   __    ====>          __
+        __   | |   | |   |x|   |x|  | |              __  | |
+    ___|_|__|_|___|_|___|x|___|x|___|_|____      ___|_|__|_|____
+       1 -> 3 -> 4 -> -4 -> -3 -> 2                  1 -> 2
+            |_________________|
+                     |
+    因为是连续和为0的元素，所以抵消掉了就相当于 0
 */
 public class NO1171_N_RemoveZeroSumSublists {
 
     @Test
     public void test() {
         assertNodeEquals(removeZeroSumSublists(
-                new ListNode(1,2,3,-3,-2)), 1);
-//        assertNodeEquals(removeZeroSumSublists(
-//                new ListNode(1,2,-3,3,1)), 3,1);
-//        assertNodeEquals(removeZeroSumSublists(
-//                new ListNode(1,2,3,-3,4)), 1,2,4);
+                new ListNode(1, 2, 3, -3, -2)), 1);
+        assertNodeEquals(removeZeroSumSublists(
+                new ListNode(1, 2, -3, 3, 1)), 3, 1);
+        assertNodeEquals(removeZeroSumSublists(
+                new ListNode(1, 2, 3, -3, 4)), 1, 2, 4);
     }
 
     public ListNode removeZeroSumSublists(ListNode head) {
         // 2024/3/28 NO.1
         // 2024/3/31 NO.2 没思路，没看懂...
+        // 2024/4/1  NO.3 没思路，能看懂答案
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         Map<Integer, ListNode> map = new HashMap<>();
         // TODO
-
         return dummy.next;
     }
 
@@ -87,18 +96,18 @@ public class NO1171_N_RemoveZeroSumSublists {
 public ListNode removeZeroSumSublists(ListNode head) {
     ListNode dummy = new ListNode(0);
     dummy.next = head;
-    Map<Integer, ListNode> seen = new HashMap<>();
+    Map<Integer, ListNode> map = new HashMap<>();
 
     int prefix = 0;
     for (ListNode node = dummy; node != null; node = node.next) {
         prefix += node.val;
-        seen.put(prefix, node);
+        map.put(prefix, node);
     }
 
     prefix = 0;
     for (ListNode node = dummy; node != null; node = node.next) {
         prefix += node.val;
-        node.next = seen.get(prefix).next;
+        node.next = map.get(prefix).next;
     }
     return dummy.next;
 }

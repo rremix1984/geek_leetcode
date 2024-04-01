@@ -45,14 +45,14 @@ public class NO1995_E_CountQuadruplets {
         // 2024/3/10 NO.2
         // 2024/3/25 No.3 没思路
         int ans = 0;
-        Map<Integer, Integer> cnts = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 1; i < nums.length - 2; i++) {
             for (int j = 0; j < i; j++)
-                cnts.put(nums[i] + nums[j], cnts.getOrDefault(nums[i] + nums[j], 0) + 1);
+                map.put(nums[i] + nums[j],
+                    map.getOrDefault(nums[i] + nums[j], 0) + 1);
 
             for (int j = i + 2; j < nums.length; j++)
-                if (cnts.containsKey(nums[j] - nums[i + 1]))
-                    ans += cnts.get(nums[j] - nums[i + 1]);
+                ans += map.getOrDefault(nums[j] - nums[i + 1], 0);
         }
         return ans;
     }
@@ -75,19 +75,7 @@ public class NO1995_E_CountQuadruplets {
 
 
 /*
-// 方法1：暴力破解
-public int countQuadruplets(int[] nums) {
-    int ans = 0;
-    for (int a = 0; a < nums.length; a++)
-        for (int b = a + 1; b < nums.length; b++)
-            for (int c = b + 1; c < nums.length; c++)
-                for (int d = c + 1; d < nums.length; d++)
-                    if (nums[a] + nums[b] + nums[c] == nums[d])
-                        ans++;
-    return ans;
-}
-
-// 方法2：
+// 方法1:
 public int countQuadruplets(int[] nums) {
     int ans = 0;
     Map<Integer, Integer> map = new HashMap<>();
@@ -97,6 +85,23 @@ public int countQuadruplets(int[] nums) {
             for (int b = a + 1; b < i; b++)
                 ans += map.getOrDefault(nums[a] + nums[b] + nums[i], 0);
 
+    }
+    return ans;
+}
+
+// 方法2：最优解
+public int countQuadruplets(int[] nums) {
+    int ans = 0;
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 1; i < nums.length - 2; i++) {
+        for (int j = 0; j < i; j++) {
+            int pre = nums[i] + nums[j];
+            map.put(pre, map.getOrDefault(pre, 0) + 1);
+        }
+
+        for (int j = i + 2; j < nums.length; j++) {
+            ans += map.getOrDefault(nums[j] - nums[i + 1], 0);
+        }
     }
     return ans;
 }

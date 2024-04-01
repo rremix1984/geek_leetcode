@@ -4,10 +4,13 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.leetcode.util.SystemUtil.printArray;
+import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (中等)
     NO.1390 四因数
     给你一个整数数组 nums，请你返回该数组中恰有四个因数的这些整数的各因数之和。
@@ -41,29 +44,59 @@ public class NO1390_N_SumFourDivisors {
     }
 
     public int sumFourDivisors(int[] nums) {
-        int result = 0;
+        // 2024/4/1 NO.1
+        int res = 0;
         for (int item : nums)
-            result += sum(item);
+            res += sum(item);
 
-        return result;
+        return res;
     }
 
     private int sum(int num) {
-        List<Integer> list = new ArrayList<>();
-        int count = (int) sqrt(Math.abs(num));
-        for (int i = 1; i <= count; i++)
-            if (num % i == 0 && !list.contains(i)) {
-                list.add(i);
-                list.add(num / i);
-            }
+        // TODO
 
-        List<Integer> result =
-            list.stream().distinct().collect(
-                Collectors.toList());
-
-        if (result.size() == 4)
-            return list.stream().distinct().mapToInt(o -> o).sum();
-
-        return 0;
+        return -1;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int sumFourDivisors(int[] nums) {
+    int result = 0;
+    for (int item : nums)
+        result += sum(item);
+
+    return result;
+}
+
+private int sum(int num) {
+    List<Integer> list = new ArrayList<>();
+    int count = (int) sqrt(num);
+    for (int i = 1; i <= count; i++)
+        if (num % i == 0 && !list.contains(i) && !list.contains(num / i)) {
+            list.add(i);
+            if (!list.contains(num / i))
+                list.add(num / i);
+        }
+
+    if (list.size() == 4)
+        return list.stream().distinct().mapToInt(o -> o).sum();
+
+    return 0;
+}
+*/

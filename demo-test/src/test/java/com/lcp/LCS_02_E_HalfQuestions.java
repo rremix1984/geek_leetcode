@@ -15,7 +15,7 @@ import static java.util.Arrays.sort;
 import static java.util.Comparator.reverseOrder;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
     LCS 02. 完成一半题目
         有 N 位扣友参加了微软与力扣举办了「以扣会友」线下活动。主办方提供了2 * N道题目，
@@ -51,6 +51,7 @@ public class LCS_02_E_HalfQuestions {
         // 2024/3/12 NO.1
         // 2024/3/25 NO.2 没思路，看懂了
         // 2024/3/31 NO.3 没思路，能看懂
+        // 2024/4/1  NO.4
         int ans = 0;
         int n = questions.length;
         int people = n / 2;

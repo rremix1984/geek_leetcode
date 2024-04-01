@@ -48,14 +48,9 @@ public class MathUtils {
     }
 
     public static int max(int... input) {
-//        int max = MIN_VALUE;
+        if (input.length == 1)
+            throw new IllegalArgumentException("至少两个参数！");
         return Arrays.stream(input).max().getAsInt();
-//        for (int element : input) {
-//            if (element > max) {
-//                max = element;
-//            }
-//        }
-//        return max;
     }
 
     public static int rand7() {

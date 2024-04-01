@@ -5,11 +5,10 @@ package com.lcp;
 
 import org.junit.Test;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     LCP 33. 蓄水
         给定N个无限容量且初始均空的水缸，每个水缸配有一个水桶用来打水，
@@ -43,8 +42,29 @@ public class LCP_33_E_StoreWater {
     }
 
     public int storeWater(int[] bucket, int[] vat) {
-        // 2024/3/8 NO.1
+        // 2024/3/8  NO.1
+        // 2024/3/31 NO.2 发烧，头疼根本没耐心看
+        int maxVat = 0;
+        for (int v : vat)
+            maxVat = max(v, maxVat);
+
+        if (maxVat == 0)
+            return 0; //最大容量为0，代表不需蓄水，直接返回0
+
         int ans = 10001;
+        for (int pour = 1; pour <= 10000; pour++) { //枚举倒水次数1-10000
+            if (pour >= ans)
+                break;
+
+            int upgrade = 0;
+            for (int i = 0; i < vat.length; i++) { //枚举每个水桶，计算总升级次数
+                int cur = (int) ceil((double)vat[i] / pour - bucket[i]); //容量/倒水次数-初始蓄水量=升级次数
+                upgrade += max(cur, 0);
+                if (upgrade >= ans)
+                    break;
+            }
+            ans = min(ans, upgrade + pour); //倒水次数 + 总升级次数 = 总次数
+        }
         return ans;
     }
 
