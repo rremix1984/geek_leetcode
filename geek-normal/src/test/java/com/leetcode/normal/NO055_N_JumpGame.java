@@ -7,23 +7,23 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||||||||||||
+    [ARRAY] |||||||||||||
     （中等）
     (重要,面试）
     55. 跳跃游戏 I
-        给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
-        数组中的每个元素代表你在该位置可以跳跃的最大长度。
-        判断你是否能够到达最后一个下标。
+        给定一个非负整数数组 nums ，你最初位于数组的 第一个下标。
+    数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能
+    够到达最后一个下标。
     示例 1：
         输入：nums = [2, 3, 1, 1, 4]
         输出：true
-        解释：可以先跳1步，从下标0到达下标1,
-            然后再从下标1跳3步到达最后一个下标。
+        解释：可以先跳1步，从下标0到达下标1,然后再从下标1跳3步到
+             达最后一个下标。
     示例 2：
         输入：nums = [3, 2, 1, 0, 4]
         输出：false
         解释：无论怎样，总会到达下标为3的位置。但该下标的最大跳跃
-            长度是0， 所以永远不可能到达最后一个下标。
+             长度是0， 所以永远不可能到达最后一个下标。
 */
 @SuppressWarnings("all")
 public class NO055_N_JumpGame {
@@ -36,13 +36,13 @@ public class NO055_N_JumpGame {
     }
 
     public boolean canJump(int[] nums) {
-        // 2024/2/24    NO.4
-        // 2024/2/25    NO.5
-        // 2024/3/4     NO.6
-        // 2024/3/14    NO.7 还是不会做，想不出来
+        // 2024/2/24-25 NO.4-5
+        // 2024/3/4-14  NO.6-7 还是不会做，想不出来
         // 2024/3/17-20-22-24 NO.8 - 12 都做出来了
         // 2024/3/25    NO.13 发烧没做出来。但是思路清楚
         // 2024/3/29    NO.14 忘了怎么做了，思路大概对
+        // 2024/4/2     NO.15 一遍过
+
         return true;
     }
 
@@ -82,7 +82,7 @@ public boolean canJump(int[] nums) {
     for (int i = 0; i < nums.length; i++) {
         if (i > reach)
             return false;
-        reach = Math.max(reach, i + nums[i]);
+        reach = max(reach, i + nums[i]);
     }
     return true;
 }

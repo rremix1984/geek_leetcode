@@ -1,3 +1,6 @@
+/**
+ * copyright 2020-09-01 by fzq
+ */
 package com.leetcode.normal;
 
 import org.junit.Test;
@@ -5,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.leetcode.util.SystemUtil.print;
 import static com.leetcode.util.SystemUtil.printArray;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.1390 四因数
     给你一个整数数组 nums，请你返回该数组中恰有四个因数的这些整数的各因数之和。
@@ -44,7 +48,8 @@ public class NO1390_N_SumFourDivisors {
     }
 
     public int sumFourDivisors(int[] nums) {
-        // 2024/4/1 NO.1
+        // 2024/4/1 NO.1 没做出来
+        // 2024/4/2 NO.2 还是不会，看懂答案了
         int res = 0;
         for (int item : nums)
             res += sum(item);
@@ -53,9 +58,21 @@ public class NO1390_N_SumFourDivisors {
     }
 
     private int sum(int num) {
+        int sum = 0;
+        List<Integer> list = new ArrayList<>();
         // TODO
+        for (int i = 1; i <= sqrt(num); i++) {
+            if (num % i == 0 && !list.contains(i)) {
+                list.add(i);
+                if (!list.contains(num / i))
+                    list.add(num / i);
 
-        return -1;
+                sum = sum + i + num / i;
+                if (list.size() == 4)
+                    return sum;
+            }
+        }
+        return 0;
     }
 
 }
@@ -95,8 +112,34 @@ private int sum(int num) {
         }
 
     if (list.size() == 4)
-        return list.stream().distinct().mapToInt(o -> o).sum();
+        return list.stream().mapToInt(o -> o).sum();
 
+    return 0;
+}
+
+// 方法2：简化的方法1
+public int sumFourDivisors(int[] nums) {
+    int res = 0;
+    for (int item : nums)
+        res += sum(item);
+
+    return res;
+}
+
+private int sum(int num) {
+    int sum = 0;
+    List<Integer> list = new ArrayList<>();
+    for (int i = 1; i <= sqrt(num); i++) {
+        if (num % i == 0 && !list.contains(i)) {
+            list.add(i);
+            if (!list.contains(num / i))
+                list.add(num / i);
+
+            sum = sum + i + num / i;
+            if (list.size() == 4)
+                return sum;
+        }
+    }
     return 0;
 }
 */

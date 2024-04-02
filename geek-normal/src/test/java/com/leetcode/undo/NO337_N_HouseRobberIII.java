@@ -5,15 +5,13 @@ package com.leetcode.undo;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import static com.leetcode.util.MathUtils.cTree;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (中等)
     NO.337. 打家劫舍 III
         小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为 root 。
@@ -47,15 +45,16 @@ public class NO337_N_HouseRobberIII {
 
     public int rob(TreeNode root) {
         // 2024/4/1 NO.1
-        Map<TreeNode, Integer> f = new HashMap<>(),
-                               g = new HashMap<>();
-        dfs(f, g, root);
+        // 2024/4/2 NO.2 不会做，能看懂
+        Map<TreeNode, Integer> rob = new HashMap<>(),
+                               noRob = new HashMap<>();
+        dfs(rob, noRob, root);
 
-        return max(f.getOrDefault(root, 0),
-                   g.getOrDefault(root, 0));
+        return max(rob.getOrDefault(root, 0),
+                   noRob.getOrDefault(root, 0));
     }
 
-    public void dfs(Map<TreeNode, Integer> f, Map<TreeNode, Integer> g,
+    public void dfs(Map<TreeNode, Integer> rob, Map<TreeNode, Integer> noRob,
                     TreeNode node) {
         // TODO
         if (node == null)
@@ -86,33 +85,34 @@ public class NO337_N_HouseRobberIII {
 /*
 // 方法1：
 public int rob(TreeNode root) {
-    Map<TreeNode, Integer> f = new HashMap<>(),
-                           g = new HashMap<>();
-    dfs(f, g, root);
-    return max(f.getOrDefault(root, 0),
-               g.getOrDefault(root, 0));
+    Map<TreeNode, Integer> rob = new HashMap<>(),
+                               noRob = new HashMap<>();
+    dfs(rob, noRob, root);
+
+    return max(rob.getOrDefault(root, 0),
+               noRob.getOrDefault(root, 0));
 }
 
-public void dfs(Map<TreeNode, Integer> f, Map<TreeNode, Integer> g,
+public void dfs(Map<TreeNode, Integer> rob, Map<TreeNode, Integer> noRob,
                 TreeNode node) {
     if (node == null)
         return;
 
     // 在处理root节点之前，先把左右节点处理掉
-    dfs(f, g, node.left);
+    dfs(rob, noRob, node.left);
 
-    dfs(f, g, node.right);
+    dfs(rob, noRob, node.right);
 
     // 只偷根节点，左、右子树都不偷
-    f.put(node, node.val
-            + g.getOrDefault(node.left, 0)
-            + g.getOrDefault(node.right, 0));
+    rob.put(node, node.val
+                + noRob.getOrDefault(node.left, 0)
+                + noRob.getOrDefault(node.right, 0));
 
     // 不偷根节点，左、右子树都偷
-    g.put(node, 0
-          + max(f.getOrDefault(node.left, 0),
-                g.getOrDefault(node.left, 0))
-          + max(f.getOrDefault(node.right, 0),
-                g.getOrDefault(node.right, 0)));
+    noRob.put(node,
+            max(noRob.getOrDefault(node.left, 0)
+                , rob.getOrDefault(node.left, 0)) +
+            max(noRob.getOrDefault(node.right, 0)
+                , rob.getOrDefault(node.right, 0)));
 }
 */

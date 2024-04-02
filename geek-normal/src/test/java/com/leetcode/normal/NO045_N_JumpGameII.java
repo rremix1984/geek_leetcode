@@ -7,10 +7,10 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] ||||||||||
+    [ARRAY] |||||||||||
     （中等）
-    (重要,面试）
-    45. 跳跃游戏 II
+    (重要,美团,面试）
+    NO.45. 跳跃游戏 II
         给你一个非负整数数组nums，你最初位于数组的第一个位置。
     数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标
     是使用【最少的跳跃次数】到达数组的最后一个位置。假设你总是
@@ -31,8 +31,8 @@ public class NO045_N_JumpGameII {
     @Test
     public void test() {
         assert 2 == jump(new int[]{2, 3, 0, 1, 4});
-        assert 2 == jump(new int[]{2, 3, 1, 1, 4});// 2
-        assert 6 == jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4});// 6
+        assert 2 == jump(new int[]{2, 3, 1, 1, 4});
+        assert 6 == jump(new int[]{2, 3, 1, 1, 1, 1, 1, 1, 4});
     }
 
     public int jump(int[] nums) {
@@ -44,7 +44,9 @@ public class NO045_N_JumpGameII {
         // 2024/3/25 NO.8 思路对，没做出来
         // 2024/3/26 NO.9 思路对，比上次强一点，还得练习
         // 2024/3/29 NO.10 没做出来，有点思路
+        // 2024/4/2  NO.11 思路对，没做出来
         int jump = 0;
+
         return jump;
     }
 
