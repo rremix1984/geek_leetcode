@@ -8,7 +8,7 @@ import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||||
+    [ARRAY] ||||||
     (简单)
     (重要,面试）
     剑指 Offer 42. 连续子数组的最大和
@@ -44,7 +44,9 @@ public class Offer_042_E_MaxSubArray {
         // 2024/3/8  NO.3
         // 2024/3/14 NO.4 不能一遍过
         // 2024/3/30 NO.5 一遍过，但是不理解
+        // 2024/4/1  NO.6 一遍过
         int res = -1;
+
         return res;
     }
 

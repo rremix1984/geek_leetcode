@@ -8,13 +8,14 @@ import static com.leetcode.util.SwapUtil.swap;
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1184. 公交站间的距离
-        环形公交路线上有n个站，按次序从0到n - 1进行编号。我们已知每一对相邻公交站之间的距离，
-        distance[i] 表示编号为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。
-        环线上的公交车都可以按顺时针和逆时针的方向行驶。
-        返回乘客从出发点start到目的地destination之间的最短距离。
+       环形公交路线上有n个站，按次序从 0 到 n - 1 进行编号。
+    我们已知每一对相邻公交站之间的距离，distance[i] 表示编号
+    为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。环线上
+    的公交车都可以按顺时针和逆时针的方向行驶。
+      返回乘客从出发点start到目的地destination之间的最短距离。
     示例 1：
         输入：distance = {1, 2, 3, 4}, start = 0, destination = 1
         输出：1
@@ -32,13 +33,22 @@ import static java.lang.Math.min;
     记数组 distance 的长度为 n。假设 start ≤ destination，那么我们可以：
     1）顺时针走：从 start 到 destination，距离为
             destination − 1
-             ∑ distance[i]；
+          ∑   distance[i]；
             i = start
     2）逆时针走：从 start 到 0，再从 0 到 destination，距离为
-            start − 1              n − 1
-             ∑ distance[i]    +     ∑ distance[i]
+            start − 1               n − 1
+          ∑   distance[i]   +     ∑   distance[i]
             i = 0                  i = destination
     答案为这两个距离（顺时针、逆时针）的最小值。
+
+    [0,  1,  2,  3,  4,  5]        [0,  1,  2,  3,  4,  5]
+         |           |             |    |           |   |
+        start       end    =>     0   start       end  n-1
+         |__________|             |____|           |___|
+              |                     |_____sum()______|
+              |____________________________|
+            max1           |               max2
+                    min(max1, max2)
 */
 public class NO1184_E_DistanceBetweenBusStops {
 
@@ -56,6 +66,7 @@ public class NO1184_E_DistanceBetweenBusStops {
 
     public int distanceBetweenBusStops(int[] distance, int start, int dest) {
         // 2024/3/6 NO.1 不会做
+        // 2024/4/1 NO.2 没思路，看懂了
         return -1;
     }
 
@@ -79,6 +90,8 @@ public class NO1184_E_DistanceBetweenBusStops {
 /*
 // 方法1：
 public int distanceBetweenBusStops(int[] distance, int start, int dest) {
+    // 大，小互换一下，有的人写【1,5】
+    // 有的人就个性一点写【5, 1】，其实是一个意思
     if (start > dest) {
         int temp = start;
         start = dest;

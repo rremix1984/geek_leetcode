@@ -9,7 +9,7 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static java.lang.Math.abs;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     (中等)
     NO.041 缺失的第一个正整数
     给你一个未排序的整数数组 nums，请你找出其中没有出现的最小的正整数。
@@ -45,6 +45,7 @@ public class NO041_N_FirstMissingPositive {
         // 2024/3/20 NO.2 理解不了，脑子不转了
         // 2024/3/27 NO.3 终于看懂了，能做出来了
         // 2024/4/1  NO.4 没思路，看懂了
+        // 2024/4/2  NO.5 没思路，看懂了
         int n = nums.length;
 
         return n + 1;
