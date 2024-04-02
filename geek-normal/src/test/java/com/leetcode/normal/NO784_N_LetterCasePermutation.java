@@ -10,7 +10,7 @@ import static com.leetcode.util.SystemUtil.*;
 import static java.lang.Character.isDigit;
 
 /**
-    [ARRAY] ||||||||||||
+    [ARRAY] |||||||||||||
     (中等,面试题)
     NO.784. 字母大小写全排列
         给定一个字符串s，通过将字符串s中的每个字母转变大小写，
@@ -48,8 +48,9 @@ public class NO784_N_LetterCasePermutation {
         // 2024/3/27 NO.11 不能一遍过，能做出来
         // 2024/3/29 NO.12 没做对
         // 2024/4/1  NO.13 做出来了，磕磕绊绊，但是有思路，做的也对
+        // 2024/4/2  NO.14 思路对，还是没有一遍过，看了答案才做出来。还要多练
         List<String> ans = new ArrayList<>();
-
+        // TODO
         return ans;
     }
 
