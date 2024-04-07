@@ -8,7 +8,7 @@ import static com.leetcode.util.LogUtil.info;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     (简单)
     860. 柠檬水找零
         在柠檬水摊上，每一杯柠檬水的售价为5美元。顾客排队购买你的产品，
@@ -51,6 +51,8 @@ public class NO860_E_LemonadeChange {
         // 2024/2/27 NO.3
         // 2024/3/25 NO.4 一遍过，虽然过了一个月，还是能做出来
         // 2024/3/27 NO.5 忘了怎么做，需要练习
+        // 2024/4/7  NO.6 思路对了，几乎做出来了，还是不对
+
         return true;
     }
 

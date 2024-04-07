@@ -41,13 +41,10 @@ public class LCP_089_N_Rob {
         // 2024/3/27 NO.4 差不多已经做对了，但是有瑕疵
         // 2024/3/30 NO.5 思路对了，但是没做出来
         // 2024/3/31 NO.6 一遍过
-        int n = nums.length;
-        int[] dp = new int[n + 1];
+        // 2024/4/5  NO.7 一遍过（两种方法）
 
-        return dp[n];
+        return 0;
     }
-
-
 
 }
 
