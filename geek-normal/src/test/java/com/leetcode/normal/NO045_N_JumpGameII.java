@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||||||||||
+    [ARRAY] ||||||||||||
     （中等）
     (重要,美团,面试）
     NO.45. 跳跃游戏 II
@@ -45,8 +45,8 @@ public class NO045_N_JumpGameII {
         // 2024/3/26 NO.9 思路对，比上次强一点，还得练习
         // 2024/3/29 NO.10 没做出来，有点思路
         // 2024/4/2  NO.11 思路对，没做出来
+        // 2024/4/7  NO.12 思路对，没做出来
         int jump = 0;
-
         return jump;
     }
 

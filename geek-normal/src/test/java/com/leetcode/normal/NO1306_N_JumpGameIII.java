@@ -4,9 +4,10 @@
 package com.leetcode.normal;
 
 import org.junit.Test;
+import java.util.Arrays;
 
 /**
-    [ARRAY] ||||||||||
+    [ARRAY] ||||||||||||
     (中等)
     (重要,面试）
     1306. 跳跃游戏 III
@@ -53,8 +54,8 @@ public class NO1306_N_JumpGameIII {
         // 2024/3/26 NO.8 几乎做对了，思路也对，有进步
         // 2024/3/29 NO.9 做对了...
         // 2024/4/2  NO.10 基本上对了，没处理好 '0' 和 0 的关系
+        // 2024/4/7  NO.11 一遍过
         int n = arr.length;
-
         return false;
     }
 

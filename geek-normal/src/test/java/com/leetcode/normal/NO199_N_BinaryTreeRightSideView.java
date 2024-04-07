@@ -47,8 +47,8 @@ public class NO199_N_BinaryTreeRightSideView {
         // 2024/3/27 NO.6 做出来了
         // 2024/3/30 NO.7 思路对,但是没做出来
         // 2024/4/2  NO.8 一遍过
+        // 2024/4/7  NO.9
         List<Integer> res = new ArrayList<>();
-
         return res;
     }
 
@@ -107,7 +107,6 @@ public List<Integer> rightSideView(TreeNode root) {
     return res;
 }
 
-
 // 方法2：
 public List<Integer> rightSideView(TreeNode root) {
     Map<Integer, Integer> rightmostValueAtDepth = new HashMap<>();
@@ -124,7 +123,7 @@ public List<Integer> rightSideView(TreeNode root) {
 
         if (node != null) {
             // 维护二叉树的最大深度
-            max_depth = Math.max(max_depth, depth);
+            max_depth = max(max_depth, depth);
 
             // 如果不存在对应深度的节点我们才插入
             if (!rightmostValueAtDepth.containsKey(depth))
