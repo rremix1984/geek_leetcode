@@ -1,3 +1,6 @@
+/**
+ * @copyright wangxiaozhe
+ */
 package com.lonch;
 
 import java.util.LinkedList;
@@ -31,73 +34,16 @@ public class NO9_SnakeGame {
         char[][] board;
 
         public SnakeGame() {
-            snake = new LinkedList<>();
-            snake.add(new int[]{0, 0}); // 初始位置
-            food = new int[]{3, 3}; // 初始食物位置
-            score = 0;
-            board = new char[ROWS][COLS];
-            init();
+            // TODO
         }
 
-        // 初始化游戏界面
         private void init() {
-            for (int i = 0; i < ROWS; i++)
-                for (int j = 0; j < COLS; j++)
-                    board[i][j] = '-';
-
-            snake.forEach( p ->
-                board[p[0]][p[1]] = '*'
-            );
-
-            board[food[0]][food[1]] = 'F';
-
-            for (int i = 0; i < ROWS; i++) {
-                for (int j = 0; j < COLS; j++)
-                    System.out.print(board[i][j]);
-                System.out.println();
-            }
-            System.out.println();
+            // TODO
         }
 
         // 移动
         public int move(String dir) {
             // TODO
-            int[] head = snake.getFirst();
-            int[] newHead = new int[]{head[0], head[1]};
-
-            switch (dir) {
-                case "W":
-                    newHead[0]--;
-                    break;
-                case "S":
-                    newHead[0]++;
-                    break;
-                case "A":
-                    newHead[1]--;
-                    break;
-                case "D":
-                    newHead[1]++;
-                    break;
-            }
-
-            if (newHead[0] < 0 || newHead[0] >= ROWS ||
-                newHead[1] < 0 || newHead[1] >= COLS)
-                return -1;
-
-            if (newHead[0] == food[0] && newHead[1] == food[1]) {
-                score++;
-                food = new int[]{new Random().nextInt(ROWS),
-                                 new Random().nextInt(COLS)};
-            } else {
-                snake.removeLast();
-            }
-
-            for (int[] part : snake)
-                if (part[0] == newHead[0] && part[1] == newHead[1])
-                    return -1;
-
-            snake.addFirst(newHead);
-            init();
             return score;
         }
 
