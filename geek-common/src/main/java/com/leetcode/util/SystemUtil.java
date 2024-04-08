@@ -53,9 +53,9 @@ public class SystemUtil {
     }
 
     public static void printListNodes(ListNode[] listNode) {
-        for (ListNode node : listNode) {
+        for (ListNode node : listNode)
             System.out.println(node.toString());
-        }
+
         System.out.println();
     }
 
