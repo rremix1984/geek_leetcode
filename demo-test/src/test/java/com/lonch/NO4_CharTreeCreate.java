@@ -20,9 +20,8 @@ public class NO4_CharTreeCreate {
 
     @Test
     public void test() {
-        TreeNode<Character> node = cTree(4);
         List<Character> res2 = new ArrayList<>();
-        levelOrder(node, res2);
+        levelOrder(cTree(4), res2);
         res2.forEach(out::print);
     }
 
@@ -57,11 +56,8 @@ public class NO4_CharTreeCreate {
 
 
 /*
-// 方法1：层序遍历
 int c = 0;
 public TreeNode<Character> cTree(int depth) {
-    // 2024/4/7 NO.1 没思路，能看懂
-    // 2024/4/8 NO.2 还是没思路，能看懂
     if (depth <= 0)
         return null;
 

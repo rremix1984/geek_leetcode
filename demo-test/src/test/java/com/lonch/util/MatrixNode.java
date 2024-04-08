@@ -64,25 +64,25 @@ public class MatrixNode<T> {
         return neighbors;
     }
 
-    public static MatrixNode init(int row, int col) {
-        MatrixNode dummy = new MatrixNode(0);
-        MatrixNode row1 = dummy;
+    public static MatrixNode<Integer> init(int row, int col) {
+        MatrixNode<Integer> dummy = new MatrixNode<>(0);
+        MatrixNode<Integer> row1 = dummy;
         for (int j = 1; j < col; j++) {
-            row1.right = new MatrixNode(j);
+            row1.right = new MatrixNode<>(j);
             row1.right.left = row1;
             row1 = row1.right;
         }
 
-        MatrixNode pre = dummy;
+        MatrixNode<Integer> pre = dummy;
         for (int i = 1; i < row; i++) {
-            MatrixNode rowHead = new MatrixNode(i);
+            MatrixNode<Integer> rowHead = new MatrixNode<>(i);
             rowHead.up = pre;
             pre.down = rowHead;
 
-            MatrixNode up = pre;
-            MatrixNode right = rowHead;
+            MatrixNode<Integer> up = pre;
+            MatrixNode<Integer> right = rowHead;
             for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode(j);
+                right.right = new MatrixNode<>(j);
                 right.right.left = right;
 
                 right = right.right;

@@ -9,20 +9,26 @@ import java.util.*;
 import static com.leetcode.util.MathUtils.getArray;
 import static com.lonch.util.MatrixNode.init;
 import static com.lonch.util.MatrixNode.printMatrix;
+import static java.lang.System.out;
 import static java.util.Collections.emptyList;
 
 /**
- * NO.10 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
+    [MATRIXLINKED] |
+    (简单)
+    NO.10 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
+
  */
+@SuppressWarnings("all")
 public class NO6_MatrixLinkedListShortestPath {
 
     @Test
     public void test() {
-        MatrixNode mnode = init(5, 5);
+        MatrixNode<Integer> mnode = init(5, 5);
         findShortestPaths(mnode.right.right.right,
-                          mnode.down.right.right).forEach(path -> {
-            path.forEach(node -> System.out.print(node.val + " -> "));
-            System.out.println();
+                          mnode.down.right.right).forEach(
+          path -> {
+                path.forEach(out::print);
+                out.println();
         });
     }
 

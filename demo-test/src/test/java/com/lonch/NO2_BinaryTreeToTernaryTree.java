@@ -16,10 +16,6 @@ import static org.junit.Assert.assertEquals;
     (简单)
     NO.2 定义泛型二叉树节点，然后二叉转三叉。
 
-            1                       1
-        2       3               2       3
-    4     5  6      7
-
  */
 @SuppressWarnings("all")
 public class NO2_BinaryTreeToTernaryTree {
@@ -38,11 +34,7 @@ public class NO2_BinaryTreeToTernaryTree {
             return null;
 
         // TODO
-        TernaryTreeNode<T> node = new TernaryTreeNode<>(root.val);
-        node.left = convert(root.left);
-        node.right = convert(root.right);
-        node.middle = null;
-        return node;
+        return null;
     }
 
 //    static class TernaryTreeNode<T> {
@@ -98,6 +90,5 @@ static class TernaryTreeNode<T> {
         this.middle = null;
         this.right = null;
     }
-
 }
 */
