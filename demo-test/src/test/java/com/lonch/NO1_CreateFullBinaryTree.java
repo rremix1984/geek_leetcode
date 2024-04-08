@@ -1,24 +1,32 @@
 package com.lonch;
 
 import com.lonch.util.TreeNode;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * 写一个根据传入的整数n，生成深度为n的满二插树。用泛型。
+    [ARRAY] |
+    (简单)
+    NO.1 写一个根据传入的整数n，生成深度为 n 的满二插树（用泛型）
+
  */
 public class NO1_CreateFullBinaryTree<T> {
 
     @Test
     public void test() {
-        NO1_CreateFullBinaryTree<Integer> t = new NO1_CreateFullBinaryTree<>();
-        TreeNode<Integer> root = t.createFullBinaryTree(3,1);
-        assertEquals("[1, [1, [1, [1, [1], [1, [1, [1]], [1, [1, [1, [1], [1, [1, [1]]]", root.toString());
+        TreeNode<Integer> root = cTree(3,1);
+        assertEquals("[1, [1, [1, [1, [1], [1, [1, [1]], [1," +
+                " [1, [1, [1], [1, [1, [1]]]", root.toString());
     }
 
     // 创建深度为n的满二叉树
-    public TreeNode createFullBinaryTree(int depth, T t) {
+    public TreeNode<Integer> cTree(int depth, Integer value) {
         // 2024/3/29 NO.1
+        // 2024/4/7  NO.2 没思路，看答案做出来了
+        // 2024/4/8  NO.3
 
         return null;
     }
@@ -46,7 +54,7 @@ public class NO1_CreateFullBinaryTree<T> {
 
 /*
 // 解决方案1：
-public TreeNode<T> createFullBinaryTree(int depth, T value) {
+public TreeNode<T> cTree(int depth, T value) {
     // 基准情况
     if (depth < 0)
         return null;
@@ -54,8 +62,8 @@ public TreeNode<T> createFullBinaryTree(int depth, T value) {
     // 创建当前节点
     TreeNode<T> node = new TreeNode<>(value);
     // 递归创建左右子树
-    node.left = createFullBinaryTree(depth - 1, value);
-    node.right = createFullBinaryTree(depth - 1, value);
+    node.left = cTree(depth - 1, value);
+    node.right = cTree(depth - 1, value);
     return node;
 }
 
@@ -74,6 +82,5 @@ class TreeNode<T> {
     public String toString() {
         return "[" + val + ((left==null&&right==null)?"":", " + left + ", "+ right +"]") ;
     }
-
 }
 */

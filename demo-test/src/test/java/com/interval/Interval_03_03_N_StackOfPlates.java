@@ -46,7 +46,45 @@ public class Interval_03_03_N_StackOfPlates {
     }
 
 }
+class StackOfPlates {
 
+    public StackOfPlates(int cap) {
+
+    }
+
+    public void push(int val) {
+
+    }
+
+    public int pop() {
+        return -1;
+    }
+
+    public int popAt(int index) {
+
+        return -1;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 class StackOfPlates {
 
     private List<Stack<Integer>> stackList;
@@ -87,4 +125,6 @@ class StackOfPlates {
         }
         return res;
     }
+
 }
+*/

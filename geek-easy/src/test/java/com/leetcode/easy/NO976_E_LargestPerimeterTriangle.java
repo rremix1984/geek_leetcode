@@ -4,10 +4,13 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+
 import java.util.Arrays;
 
+import static java.util.Arrays.sort;
+
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     976. 三角形的最大周长
         给定由一些正数（代表长度）组成的数组nums，返回由其中三个长度
@@ -20,7 +23,7 @@ import java.util.Arrays;
         输入：nums = [1, 2, 1]
         输出：0
 */
-public class NO976_E_LargestPerimeterTriangle_x3 {
+public class NO976_E_LargestPerimeterTriangle {
 
     @Test
     public void test() {
@@ -31,6 +34,8 @@ public class NO976_E_LargestPerimeterTriangle_x3 {
 
     public int largestPerimeter(int[] nums) {
         // 2024/2/25 NO.3
+        // 2024/3/29 NO.4 没做出来，能看懂
+
         return 0;
     }
 

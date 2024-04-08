@@ -9,7 +9,7 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
-    [ARRAY] V
+    [ARRAY] ||||||
     (简单)
     冒泡排序
         是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，
@@ -44,7 +44,7 @@ public class BubbleSort {
         // 2024/3/21 NO.3
         // 2024/3/23 NO.4 一遍过
         // 2024/3/25 No.5 一遍过
-
+        // 2024/4/1  NO.6 忘了怎么做了
         return arr;
     }
 

@@ -8,9 +8,9 @@ import java.util.Arrays;
 import static java.lang.Math.abs;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
-    2037. 使每位学生都有座位的最少移动次数
+    NO.2037. 使每位学生都有座位的最少移动次数
         一个房间里有n个座位和n名学生，房间用一个数轴表示。
         1）给你一个长度为n的数组seats，其中seats[i]是第i个座位的位置。
         2）同时给你一个长度为n的数组students，其中students[j]是第j位学生的位置。
@@ -56,7 +56,7 @@ public class NO2037_E_MinMovesToSeat {
     @Test
     public void test() {
         assert 4 == minMovesToSeat(
-            new int[]{3, 1, 5}, new int[]{2, 7, 4});
+            new int[]{3, 1, 5},    new int[]{2, 7, 4});
         assert 7 == minMovesToSeat(
             new int[]{4, 1, 5, 9}, new int[]{1, 3, 2, 6});
         assert 4 == minMovesToSeat(
@@ -65,6 +65,7 @@ public class NO2037_E_MinMovesToSeat {
 
     public int minMovesToSeat(int[] seats, int[] students) {
         // 2024/2/27 NO.3 用了排序算法
+        // 2024/3/30 NO.4 没思路，能看懂
         int ans = 0;
         return ans;
     }

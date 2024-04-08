@@ -10,9 +10,9 @@ import static com.leetcode.util.MathUtils.*;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
 
 /**
-    [TREE] ||||||
+    [TREE] ||||||||
     (中等)
-    199. 二叉树的右视图
+    NO.199. 二叉树的右视图
         给定一个二叉树的根节点root，想象自己站在它的右侧，
         按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
     示例 1:
@@ -45,6 +45,9 @@ public class NO199_N_BinaryTreeRightSideView {
         // 2024/3/21 NO.4 早就忘了，用中序遍历思路来做做不出来
         // 2024/3/22 NO.5 做出来了
         // 2024/3/27 NO.6 做出来了
+        // 2024/3/30 NO.7 思路对,但是没做出来
+        // 2024/4/2  NO.8 一遍过
+        // 2024/4/7  NO.9
         List<Integer> res = new ArrayList<>();
         return res;
     }
@@ -104,7 +107,6 @@ public List<Integer> rightSideView(TreeNode root) {
     return res;
 }
 
-
 // 方法2：
 public List<Integer> rightSideView(TreeNode root) {
     Map<Integer, Integer> rightmostValueAtDepth = new HashMap<>();
@@ -121,7 +123,7 @@ public List<Integer> rightSideView(TreeNode root) {
 
         if (node != null) {
             // 维护二叉树的最大深度
-            max_depth = Math.max(max_depth, depth);
+            max_depth = max(max_depth, depth);
 
             // 如果不存在对应深度的节点我们才插入
             if (!rightmostValueAtDepth.containsKey(depth))

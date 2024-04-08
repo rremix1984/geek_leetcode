@@ -11,7 +11,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (中等)
     NO.1367 二叉树中的链表
     给你一棵以 root 为根的二叉树和一个 head 为第一个节点的链表。
@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
     首的链表中每个节点的值，那么请你返回 True ，否则返回 False 。
     一直向下的路径的意思是：从树中某个节点开始，一直连续向下的路径。
     示例 1：
-        输入：head = [4,2,8], root = [1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3]
+        输入：head = [1, 4, 2, 6], root = [1,4,4,null,2,2,null,1,null,6,8,
+                                            null,null,null,null,1,3]
         输出：true
         解释：树中蓝色的节点构成了与链表对应的子路径。
                       【1】,
@@ -27,20 +28,21 @@ import static org.junit.Assert.assertTrue;
                   /           \
                 /               \
               4,                 【4】,
-           /    \               /      \
-          /      \             /        \
-      null,       2,       【2】,       null,
+            /   \               /    \
+          /      \             /      \
+      null,       2,       【2】,      null,
                 /  \        /  \
               /     \     /      \
             1,     null,【6】,     8,
           /   \         /  \     /  \
         null, null,  null, null, 1,   3
-
     示例 2：
-        输入：head = [1,4,2,6], root = [1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3]
+        输入：head = [4, 2, 8], root = [1,4,4,null,2,2,null,1,null,6,8,null,
+                                        null,null,null,1,3]
         输出：true
     示例 3：
-        输入：head = [1,4,2,6,8], root = [1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3]
+        输入：head = [1, 4, 2, 6, 8], root = [1,4,4,null,2,2,null,1,null,6,8,
+                                            null,null,null,null,1,3]
         输出：false
         解释：二叉树中不存在一一对应链表的路径。
     提示：
@@ -65,6 +67,13 @@ public class NO1367_N_IsSubPath {
     }
 
     public boolean isSubPath(ListNode head, TreeNode root) {
+        // 2024/3/29 NO.1
+        if (root == null)
+            return false;
+
+        if (head == null)
+            return true;
+
         return false;
     }
 

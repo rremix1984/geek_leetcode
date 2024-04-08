@@ -6,9 +6,10 @@ package com.leetcode;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.ListNode.assertNodeEquals;
+import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |
     (中等)
     NO.1721 交换链表中的节点
     给你链表的头节点 head 和一个整数 k 。
@@ -51,42 +52,18 @@ public class NO1721_N_SwapNodes {
     }
 
     public ListNode swapNodes(ListNode head, int k) {
+        // 2024/3/30 NO.1 没做出来，看懂答案了，不容易
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode left = dummy;
         ListNode right = dummy;
-        while (head != null) {
-            k--;
-            if (k > 0) {
-                left = left.next;
-            } else if (k < 0) {
-                right = right.next;
-            }
-            head = head.next;
-        }
 
-        if (right.next == left) {
-            swap(right, left);
-        } else {
-            swap(left, right);
-        }
         return dummy.next;
     }
 
+
     public void swap(ListNode left, ListNode right) {
-        if (left.next == right) {
-            ListNode tmp = right.next;
-            left.next.next = tmp.next;
-            tmp.next = right;
-            left.next = tmp;
-        } else {
-            ListNode tmp = left.next.next;
-            left.next.next = right.next.next;
-            right.next.next = tmp;
-            tmp = left.next;
-            left.next = right.next;
-            right.next = tmp;
-        }
+        // TODO
     }
 
 }
@@ -137,14 +114,25 @@ public ListNode swapNodes(ListNode head, int k) {
 
 // 交换链表中两个节点的位置
 public void swap(ListNode left, ListNode right) {
-    // 两个节点相邻，left节点在right节点前面
+//           ————————>————————
+//          |                 |
+//         left     right <- tmp     null
+//                      |______>______|
+//
     if (left.next == right) {
         ListNode tmp = right.next;
         left.next.next = tmp.next;
         tmp.next = right;
         left.next = tmp;
+//
+//                      _____________(1)_ > __________
+//                     |       ____<___ _(2)__        |
+//                     |      |               |       |
+//  dummy ->  left    tmp     n0  -> right    n1     n2 -> null
+//             |       |______<_(4)_____|     |
+//             |_________________(3)___ > ____|
+//
     } else {
-        // 两个节点不相邻
         ListNode tmp = left.next.next;
         left.next.next = right.next.next;
         right.next.next = tmp;

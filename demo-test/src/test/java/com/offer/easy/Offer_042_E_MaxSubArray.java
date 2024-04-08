@@ -8,7 +8,7 @@ import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||||
     (简单)
     (重要,面试）
     剑指 Offer 42. 连续子数组的最大和
@@ -21,11 +21,10 @@ import static java.lang.Math.max;
       |
       3
     示例1:
-        输入: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        输入: nums = [-2, 1, -3, 【4, -1, 2, 1】, -5, 4]
         输出: 6
         解释: 连续子数组 [4, -1, 2, 1] 的和最大，为 6。
     Related Topics:数组,
-
 */
 public class Offer_042_E_MaxSubArray {
 
@@ -44,12 +43,10 @@ public class Offer_042_E_MaxSubArray {
         // 2024/3/5  NO.2 还是不会，还要复习
         // 2024/3/8  NO.3
         // 2024/3/14 NO.4 不能一遍过
-        int res = nums[0];
-        int tmp = 0;
-        for (int num : nums) {
-            tmp = max(tmp + num, num);
-            res = max(res, tmp);
-        }
+        // 2024/3/30 NO.5 一遍过，但是不理解
+        // 2024/4/1  NO.6 一遍过
+        int res = -1;
+
         return res;
     }
 
@@ -78,9 +75,9 @@ public int maxSubArray(int[] nums) {
     for (int num : nums) {
         // 如果加了TA这个元素，比不加TA还小，那就说明前面的元素和已经是最大的了
         // 即：到这里就断开了
-        tmp = Math.max(num, num + tmp);
+        tmp = max(num, num + tmp);
         // 把找到的每个段落，做一个比较留下最大的 max
-        max = Math.max(max, tmp);
+        max = max(max, tmp);
     }
     return max;
 }

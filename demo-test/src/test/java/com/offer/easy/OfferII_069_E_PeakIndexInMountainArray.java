@@ -6,7 +6,7 @@ package com.offer.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] ||
+    [ARRAY] |||
     (简单)
     剑指 Offer II 069. 山峰数组的顶部
         符合下列属性的数组arr称为山峰数组（山脉数组）：
@@ -54,7 +54,9 @@ public class OfferII_069_E_PeakIndexInMountainArray {
     public int peakIndexInMountainArray(int[] arr) {
         // 2024/3/12 NO.1
         // 2024/3/20 NO.2
+        // 2024/3/31 NO.3 没做出来，但是看懂了。
         int ans = 0;
+
         return ans;
     }
 }

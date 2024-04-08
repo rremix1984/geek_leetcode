@@ -9,7 +9,7 @@ import static com.leetcode.util.ListNode.assertNodeEquals;
 import static com.leetcode.util.MathUtils.gcd;
 
 /**
-    [LISTNODE] ||
+    [LISTNODE] |||
     (中等)
     NO.2807 在链表中插入最大公约数
         给你一个链表的头 head ，每个结点包含一个整数值。在相邻结点之间，请你
@@ -48,6 +48,8 @@ public class NO2807_N_InsertGreatestCommonDivisors {
     public ListNode insertGreatestCommonDivisors(ListNode head) {
         // 2024/3/26 NO.1 没思路，gcd() 方法早忘了
         // 2024/3/27 NO.2 没做出来，有一点思路
+        // 2024/3/31 NO.3 没做出来，有思路，但不对
+
         return head;
     }
 

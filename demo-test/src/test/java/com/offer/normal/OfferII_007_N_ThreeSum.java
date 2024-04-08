@@ -5,13 +5,11 @@ package com.offer.normal;
 
 import org.junit.Test;
 import java.util.*;
-
 import static com.leetcode.util.MathUtils.getArray;
-import static java.util.Arrays.asList;
 import static java.util.Arrays.sort;
 
 /**
-    [ARRAY] ||||||
+    [ARRAY] |||||||||
     (中等)
     剑指 Offer II 007. 数组中和为 0 的三个数
         给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]]
@@ -57,9 +55,13 @@ public class OfferII_007_N_ThreeSum {
         // 2024/3/20 NO.4
         // 2024/3/22 NO.5
         // 2024/3/25 NO.6 这题不好做，思路对，但是边界条件很难判断
-        // 2024/3/29 NO.7 不好做，没做出来
+        // 2024/3/29 NO.7 不好做，没做出来，要处理很多细节
+        // 2024/3/30 NO.8 思路对,细节处理的不好
+        // 2024/3/31 NO.9 思路对，比前几次强，没做出来
+        // 2024/4/3  NO.10
         List<List<Integer>> ans = new ArrayList<>();
-        int n = nums.length;
+        Arrays.sort(nums);
+        // TODO
 
         return ans;
     }

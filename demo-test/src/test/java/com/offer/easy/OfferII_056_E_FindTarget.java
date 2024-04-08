@@ -10,7 +10,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.TreeNodeUtil.inorder;
 
 /**
-    [TREE] ||||
+    [TREE] ||||||
     (简单)
     剑指 Offer II 056. 二叉搜索树中两个节点之和
         给定一个二叉搜索树的根节点 root 和一个整数k, 请判断该二叉搜索树
@@ -38,17 +38,18 @@ public class OfferII_056_E_FindTarget {
 
     @Test
     public void test() {
-        TreeNode node = cTree(8, 6, 10, 5, 7, 9, 11);
-        assert  findTarget(node, 12);
-        assert !findTarget(node, 22);
-        assert  findTarget(node, 16);
+        assert  findTarget(cTree(8, 6, 10, 5, 7, 9, 11), 12);
+        assert !findTarget(cTree(8, 6, 10, 5, 7, 9, 11), 22);
+        assert  findTarget(cTree(8, 6, 10, 5, 7, 9, 11), 16);
     }
 
     public boolean findTarget(TreeNode root, int k) {
-        // 2024/3/22 NO.1 递归法、二分查找 + 中序遍历
+        // 2024/3/22 NO.1 没思路，看懂了
         // 2024/3/23 NO.2 一遍过
         // 2024/3/25 NO.3 没做出来
-        // 2024/3/27 NO.4 中序遍历法，一遍过
+        // 2024/3/27 NO.4 一遍过
+        // 2024/3/31 NO.5 一遍过
+        // 2024/4/2  NO.6 一遍过
         List<Integer> res = new ArrayList<>();
 
         return false;

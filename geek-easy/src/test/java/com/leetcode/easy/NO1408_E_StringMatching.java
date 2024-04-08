@@ -12,6 +12,7 @@ import static com.leetcode.util.MathUtils.getArray;
 /**
     [ARRAY] |
     (简单)
+    (太简单,没意义了)
     1408. 数组中的字符串匹配
         给你一个字符串数组words，数组中的每个字符串都可以看作是一个单词。
         请你按任意顺序返回words中是其他单词的子字符串的所有单词。
@@ -44,6 +45,7 @@ public class NO1408_E_StringMatching {
 
     public List<String> stringMatching(String[] words) {
         // 2024/2/27 NO.3 双层循环
+        // 2024/3/31 NO.4
         List<String> ret = new ArrayList<>();
         for (int i = 0; i < words.length; i++) {
             for (int j = 0; j < words.length; j++) {

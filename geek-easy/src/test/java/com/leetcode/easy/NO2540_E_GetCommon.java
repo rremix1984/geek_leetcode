@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [ARRAY] |||
+    [ARRAY] ||||
     （简单）
     NO.2540 最小公共值
         给你两个整数数组 nums1 和 nums2，它们已经按【非降序排序】，请你返回两个
@@ -42,8 +42,7 @@ public class NO2540_E_GetCommon {
         // 2024/3/13 NO.1 双指针
         // 2024/3/25 NO.2 没思路,双指针
         // 2024/3/27 NO.3 没思路了。
-        int p1 = 0;
-        int p2 = 0;
+        // 2024/4/2  NO.4 没思路，看答案能做出来
 
         return -1;
     }

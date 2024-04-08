@@ -3,18 +3,16 @@
  */
 package com.leetcode.easy;
 
-import com.leetcode.util.MathUtils;
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Collections.emptyList;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
-    2248. 多个数组求交集
+    NO.2248. 多个数组求交集
         给你一个二维整数数组nums，其中nums[i]是由不同正整数组成的一个非空数组，
         按升序排列返回一个数组，数组中的每个元素在nums所有数组中都出现过。
     示例 1：
@@ -34,7 +32,7 @@ import static java.util.Collections.emptyList;
         1 <= nums[i][j] <= 1000
         nums[i] 中的所有值 互不相同
 */
-public class NO2248_E_Intersection_x2 {
+public class NO2248_E_Intersection {
 
     @Test
     public void test() {
@@ -51,7 +49,9 @@ public class NO2248_E_Intersection_x2 {
     // 所以搞一个长度为1000的数组记录每个数字出现的次数
     public List<Integer> intersection(int[][] nums) {
         // 2024/2/27 NO.3
+        // 2024/3/31 NO.4 没思路，没做出来
         ArrayList<Integer> list = new ArrayList<>();
+        int[] dict = new int[1001];
         return list;
     }
     

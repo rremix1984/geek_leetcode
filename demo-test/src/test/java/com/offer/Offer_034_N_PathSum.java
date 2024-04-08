@@ -11,7 +11,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 
 /**
-    [TREE] |||
+    [TREE] ||||
     (中等)
     剑指 Offer 34. 二叉树中和为某一值的路径
         给你二叉树的根节点root和一个整数目标和targetSum，
@@ -55,9 +55,18 @@ public class Offer_034_N_PathSum {
         // 2024/3/21 NO.1 没做出来，但看懂了
         // 2024/3/22 NO.2
         // 2024/3/27 NO.3 思路对，但是没做出来
+        // 2024/4/1  NO.4 思路都不对，得多练习
         List<List<Integer>> ret = new ArrayList<>();
-
+        dfs(ret, new ArrayList<>(), root, target);
         return ret;
+    }
+
+    private void dfs(List<List<Integer>> ret, ArrayList<Integer> list,
+                     TreeNode root, int target) {
+        // TODO
+        if (root == null)
+            return;
+
     }
 
 }

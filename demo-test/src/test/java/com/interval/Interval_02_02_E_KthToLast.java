@@ -4,7 +4,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
-    [LISTNODE]
+    [LISTNODE] ||
     (简单)
     Interval.02.02 返回倒数第 K 个节点
     实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。
@@ -25,8 +25,11 @@ public class Interval_02_02_E_KthToLast {
     }
 
     public int kthToLast(ListNode head, int k) {
-        ListNode l = head;
-        return l.val;
+        // 2024/3/29 NO.1 双指针做出来了
+        // 2024/3/31 NO.2 一遍过，双指针
+        ListNode fast = head;
+
+        return fast.val;
     }
 
 }

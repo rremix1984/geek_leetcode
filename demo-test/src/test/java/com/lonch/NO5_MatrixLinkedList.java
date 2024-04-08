@@ -1,99 +1,51 @@
+/**
+ * @copyright @lonch
+ */
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
 import org.junit.Test;
-
 import java.util.*;
-
+import static com.leetcode.util.SystemUtil.print;
+import static com.lonch.util.MatrixNode.getMatrix;
 import static com.lonch.util.MatrixNode.printMatrix;
+import static org.junit.Assert.assertEquals;
 
 /**
-   定义链表来表示 N * N 的矩阵，节点内包括数值和四个指针分别为上下左右
+    [MATRIXLINKED] |
+    (简单)
+    NO.5 定义链表来表示 N * N 的矩阵，节点内包括数值和
+         四个指针分别为上、下、左、右
  */
 public class NO5_MatrixLinkedList {
 
     @Test
     public void test() {
-        MatrixNode head = init(5);
+        MatrixNode head = init(5, 5);
         printMatrix(head);
-
-        MatrixNode start = head.right.right.down;
-        MatrixNode end = head.down.down.down;
-
-        List<MatrixNode> list = findShortestPath(start, end);
-        list.stream().forEach(node -> System.out.print(node.val + " "));
+        assertEquals("2\t3\t4\t2\t3\t4\t",
+            getMatrix(head.down.right.down.right.down));
     }
 
-    // 示例方法，用于找到一条最短路径（仅供参考，未完全实现所有最短路径的查找）
-    public List<MatrixNode> findShortestPath(MatrixNode start, MatrixNode end) {
-        // 使用广度优先搜索找到一条最短路径
-        // 注意：这个示例代码未完全实现功能，仅为思路说明
-        Queue<MatrixNode> queue = new LinkedList<>();
-        Map<MatrixNode, MatrixNode> prev = new HashMap<>();
-        Set<MatrixNode> visited = new HashSet<>();
+    public MatrixNode init(int row, int col) {
+        // 2024/4/7 NO.1 没思路，可以看懂。4月18日 20:00 面试
+        // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行
+        MatrixNode dummy = new MatrixNode(0);
+        // TODO 你能做出来的，相信自己
 
-        queue.offer(start);
-        visited.add(start);
-        prev.put(start, null); // 起始节点的前一个节点设置为null
-
-        while (!queue.isEmpty()) {
-            MatrixNode current = queue.poll();
-            if (current == end) {
-                break; // 找到终点
-            }
-
-            // 遍历当前节点的所有邻居节点
-            for (MatrixNode neighbor : Arrays.asList(current.up, current.down, current.left, current.right)) {
-                if (neighbor != null && !visited.contains(neighbor)) {
-                    queue.offer(neighbor);
-                    visited.add(neighbor);
-                    prev.put(neighbor, current);
-                }
-            }
-        }
-
-        // 回溯路径
-        List<MatrixNode> path = new ArrayList<>();
-        for (MatrixNode at = end; at != null; at = prev.get(at)) {
-            path.add(at);
-        }
-        Collections.reverse(path);
-        return path; // 返回路径列表
+        return dummy;
     }
 
-    // 构造方法，用于初始化矩阵
-    public MatrixNode init(int n) {
-        MatrixNode head = new MatrixNode(0); // 创建头节点
-        // 初始化第一行
-        MatrixNode row1 = head;
-        for (int j = 1; j < n; j++) {
-            row1.right = new MatrixNode(j);
-            row1.right.left = row1;
-            row1 = row1.right;
+    /*
+    static class MatrixNode {
+        private int val;
+        private MatrixNode left, right, up, down;
+        public MatrixNode(int val) {
+            this.val = val;
+            this.left = this.right = this.up = this.down = null;
         }
-
-        // 初始化剩余行
-        MatrixNode preRow = head;
-        for (int i = 1; i < n; i++) {
-            MatrixNode rowHead = new MatrixNode(i);
-            rowHead.up = preRow;
-            preRow.down = rowHead;
-
-            MatrixNode up = preRow; // 用于连接上下节点的临时节点
-            MatrixNode right = rowHead;
-            for (int j = 1; j < n; j++) {
-                right.right = new MatrixNode(j);
-                right.right.left = right;
-                right = right.right;
-
-                up = up.right; // 移动tempUp到下一个节点
-                right.up = up;
-                up.down = right;
-            }
-            preRow = rowHead; // 更新当前行的头节点，以便下一次迭代
-        }
-        return head;
     }
+    */
 
 }
 
@@ -117,36 +69,50 @@ public class NO5_MatrixLinkedList {
 
 
 
+
 /*
-public void init(int n) {
-    MatrixNode head = new MatrixNode(0); // 创建头节点
-    // 初始化第一行
-    MatrixNode row1 = head;
-    for (int j = 1; j < n; j++) {
+public static MatrixNode init(int row, int col) {
+    MatrixNode dummy = new MatrixNode(0);
+    MatrixNode row1 = dummy;
+    for (int j = 1; j < col; j++) {
         row1.right = new MatrixNode(j);
         row1.right.left = row1;
         row1 = row1.right;
     }
 
-    // 初始化剩余行
-    MatrixNode preRow = head;
-    for (int i = 1; i < n; i++) {
+    MatrixNode pre = dummy;
+    for (int i = 1; i < row; i++) {
         MatrixNode rowHead = new MatrixNode(i);
-        rowHead.up = preRow;
-        preRow.down = rowHead;
+        rowHead.up = pre;
+        pre.down = rowHead;
 
-        MatrixNode up = preRow; // 用于连接上下节点的临时节点
+        MatrixNode up = pre;
         MatrixNode right = rowHead;
-        for (int j = 1; j < n; j++) {
+        for (int j = 1; j < col; j++) {
             right.right = new MatrixNode(j);
             right.right.left = right;
-            right = right.right;
 
-            up = up.right; // 移动tempUp到下一个节点
+            right = right.right;
+            up = up.right;
+
             right.up = up;
             up.down = right;
         }
-        preRow = rowHead; // 更新当前行的头节点，以便下一次迭代
+        pre = rowHead; // 更新当前行的头节点，以便下一次迭代
+    }
+    return dummy;
+}
+
+static class MatrixNode {
+    public int val;
+    public MatrixNode left, right, up, down;
+
+    public MatrixNode(int val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+        this.up = null;
+        this.down = null;
     }
 }
 */

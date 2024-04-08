@@ -14,7 +14,7 @@ import static com.leetcode.util.SystemUtil.*;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY] ||||
+    [ARRAY] |||||
     (中等,面试题)
     NO.39 组合总和
         给你一个无重复元素的整数数组 candidates 和一个目标整数 target，
@@ -44,7 +44,7 @@ public class NO039_N_CombinationSum {
     public void test() {
         assert arrayAllMatch(
             getArray(new int[][]{{2, 2, 3}, {7}}),
-            combinationSum(getArrays(2, 3, 6, 7), 7));
+            combinationSum(getArrays(1, 2, 3, 6, 7), 13));
         assert arrayAllMatch(
             getArray(new int[][]{{2, 2, 2, 2}, {2, 3, 3}, {3, 5}}),
             combinationSum(getArrays(2, 3, 5), 8));
@@ -58,9 +58,33 @@ public class NO039_N_CombinationSum {
         // 2024/3/19 NO.2 有点思路了，但是还是做不出来，很经典
         // 2024/3/25 NO.3 没做出来，但是思路接近了
         // 2024/3/27 NO.4 做出来了，但是有瑕疵，还是不对
+        // 2024/3/29 NO.5
         List<List<Integer>> res = new ArrayList<>();
-
+        int pos = 0;
+        dfs(res, new ArrayList<>(), pos, cand, target);
         return res;
+    }
+
+    private void dfs(List<List<Integer>> res, ArrayList<Integer> list,
+                     int pos, int[] cand, int target) {
+        // target 为负数和 0 的时候不再产生新的孩子结点
+        if (target < 0) {
+            return;
+        }
+
+        if (target == 0) {
+            res.add(new ArrayList<>(list));
+            return;
+        }
+
+        for (int i = pos; i < cand.length; i++) {
+
+            list.add(cand[i]);
+
+            dfs(res, list, i, cand, target - cand[i]);
+
+            list.remove(list.size() - 1);
+        }
     }
 
 }

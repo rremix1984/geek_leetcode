@@ -6,7 +6,7 @@ import java.util.Comparator;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [ARRAY]
+    [ARRAY] |
     (简单)
     NO.436 寻找右区间
     给你一个区间数组 intervals ，其中 intervals[i] = [starti, endi] ，
@@ -56,7 +56,9 @@ public class NO436_N_FindRightInterval {
             start[i][0] = intervals[i][0];
             start[i][1] = i;
         }
+
         Arrays.sort(start, Comparator.comparingInt(a -> a[0]));
+
         for (int i = 0; i < n; i++) {
             int left = 0;
             int right = n - 1;

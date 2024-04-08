@@ -11,7 +11,7 @@ import static com.leetcode.util.ListNode.reverse;
 import static com.leetcode.util.LogUtil.info;
 
 /**
-    [LISTNODE] |
+    [LISTNODE] ||||
     (简单)
     NO.876. 链表的中间结点
         给定一个头结点为 head 的非空单链表，返回链表的中间结点。
@@ -38,7 +38,8 @@ public class NO876_E_MiddleOfTheLinkedList {
     public ListNode middleNode(ListNode head) {
         // 2024/3/26 NO.1 没做出来，但是看懂思路了
         // 2024/3/27 NO.2 做出来了，用的快、慢指针
-
+        // 2024/3/31 NO.3 做出来了，...
+        // 2024/4/1  NO.4 做出来了
         return null;
     }
 

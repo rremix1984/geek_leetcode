@@ -6,7 +6,7 @@ package com.leetcode.easy;
 import org.junit.Test;
 
 /**
-    [STRING] ||||||||
+    [STRING] |||||||||
     （简单）
     NO.680. 验证回文串 II
         给你一个字符串s，最多可以从中删除一个字符。
@@ -40,6 +40,24 @@ public class NO680_E_ValidPalindromeII {
         // 2024/3/18 NO.5 又忘了
         // 2024/3/22-23 NO.6-7 还是不会做
         // 2024/3/26 NO.8 差不多做出来了，但是还是有瑕疵
+        // 2024/3/31 NO.9 没思路啊
+        int del = 0;
+        return dfs(s.toCharArray(), 0, s.length() - 1, del);
+    }
+
+    private boolean dfs(char[] chars, int left, int right, int del) {
+        while (left < right) {
+            if (chars[left] == chars[right]) {
+                left++;
+                right--;
+            } else {
+                if (del++ > 0) {
+                    return false;
+                }
+                return dfs(chars, left + 1, right, del)
+                    || dfs(chars, left, right - 1, del);
+            }
+        }
         return true;
     }
 

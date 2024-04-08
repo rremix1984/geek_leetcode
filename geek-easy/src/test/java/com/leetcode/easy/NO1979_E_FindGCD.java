@@ -4,11 +4,10 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-
 import static java.lang.Math.min;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     1979. 找出数组的最大公约数
         给你一个整数数组nums，返回数组中【最大数】和【最小数】的

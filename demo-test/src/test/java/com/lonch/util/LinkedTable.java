@@ -1,13 +1,21 @@
 package com.lonch.util;
 
+import com.lonch.NO8_LinkedTable;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class LinkedTable<T> {
-    private T value;
-    private LinkedTable father;
-    private LinkedTable leftChild;
-    private LinkedTable rightChild;
+    public T value;
+    public LinkedTable<T> parent;
+    public LinkedTable<T> left;
+    public LinkedTable<T> right;
+
+    public LinkedTable() {
+
+    }
 
     public T getValue() {
         return value;
@@ -17,73 +25,63 @@ public class LinkedTable<T> {
         this.value = value;
     }
 
-    public LinkedTable getFather() {
-        return father;
+    public LinkedTable<T> getParent() {
+        return parent;
     }
 
-    public LinkedTable setFather(LinkedTable father) {
-        this.father = father;
+    public LinkedTable<T> setParent(LinkedTable<T> parent) {
+        this.parent = parent;
         return this;
     }
 
-    public LinkedTable getLeftChild() {
-        return leftChild;
+    public LinkedTable<T> getLeft() {
+        return left;
     }
 
-    public void setLeftChild(LinkedTable leftChild) {
-        this.leftChild = leftChild;
+    public void setLeft(LinkedTable<T> left) {
+        this.left = left;
     }
 
-    public LinkedTable getRightChild() {
-        return rightChild;
+    public LinkedTable<T> getRight() {
+        return right;
     }
 
-    public void setRightChild(LinkedTable rightChild) {
-        this.rightChild = rightChild;
+    public void setRight(LinkedTable<T> right) {
+        this.right = right;
     }
 
-    public static LinkedTable createFullTree(int depth) {
-        if (depth <= 0) {
-            return null;
+    public static void printLinkedTable(LinkedTable<Integer> root) {
+        printLinkedTableHelper(root, "", true);
+    }
+
+
+    private static void printLinkedTableHelper(LinkedTable<Integer> node, String prefix, boolean isTail) {
+        if (node == null) {
+            return;
         }
-        LinkedTable linkedTable = new LinkedTable();
-// todo, set CHIldren
-        setChildren(linkedTable, depth - 1);
-        return linkedTable;
-    }
 
-    public static void setValue(LinkedTable node, int[] value) {
-        Queue<LinkedTable> queue = new LinkedList<>();
-        queue.offer(node);
-        int i = 0;
-        while (!queue.isEmpty() && i < value.length) {
-            LinkedTable currentNode = queue.poll();
-            currentNode.setValue(value[i++]);
-            if (currentNode.leftChild != null) {
-                queue.offer(currentNode.leftChild);
-            }
-            if (currentNode.rightChild != null) {
-                queue.offer(currentNode.rightChild);
-            }
+        if (node.getParent() != null) {
+            String pointer = isTail ? "└── " : "├── ";
+            System.out.println(prefix + pointer + node.getValue());
+        } else {
+            System.out.println(node.getValue());
         }
-    }
 
-    public static void setChildren(LinkedTable father, int depth) {
-        if (depth > 0) {
-            father.leftChild = new LinkedTable().setFather(father);
-            father.rightChild = new LinkedTable().setFather(father);
-            setChildren(father.leftChild, depth - 1);
-            setChildren(father.rightChild, depth - 1);
+        if (node.getRight() != null) {
+            printLinkedTableHelper(node.getRight(), prefix + (isTail ? "    " : "│   "), false);
+        }
+
+        if (node.getLeft() != null) {
+            printLinkedTableHelper(node.getLeft(), prefix + (isTail ? "    " : "│   "), true);
         }
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[15];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = i + 1;
+    private void printNodeValue(LinkedTable<Integer> node, int depth) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            sb.append("  "); // 缩进两个空格
         }
-        LinkedTable fullTree = createFullTree(3);
-        setValue(fullTree, arr);
-        System.out.println(fullTree);
+        sb.append(node.getValue());
+        System.out.println(sb);
     }
 }

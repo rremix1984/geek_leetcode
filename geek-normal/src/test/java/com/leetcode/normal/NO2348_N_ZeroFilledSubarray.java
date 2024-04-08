@@ -6,7 +6,7 @@ package com.leetcode.normal;
 import org.junit.Test;
 
 /**
-    [ARRAY] |||
+    [ARRAY] |||||
     (中等)
     NO.2348. 全 0 子数组的数目
     给你一个整数数组 nums，返回全部为 0 的子数组数目。
@@ -50,7 +50,9 @@ public class NO2348_N_ZeroFilledSubarray {
         // 2024/3/22 NO.2 没思路忘了
         // 2024/3/25 NO.3 没思路忘了，能看懂
         // 2024/3/27 NO.4 做出来了，一遍过
+        // 2024/3/30 NO.5 做出来了，思路也对
         long ans = 0;
+
         return ans;
     }
 

@@ -8,10 +8,9 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 import static com.leetcode.util.MathUtils.cTree;
-import static com.leetcode.util.SystemUtil.print;
 
 /**
-    [TREE] ||||
+    [TREE] |||||
     (中等)
     LCR.050 路径总和 III
     给定一个二叉树的根节点 root ，和一个整数 targetSum ，求该二叉树里节点值之和
@@ -22,13 +21,13 @@ import static com.leetcode.util.SystemUtil.print;
         输入：root = [         10,
                            /      \
                          /          \
-                      5,             -3,
-                    /   \           /   \
-                  /      \         /     \
-                3,        2,     null,    11,
+                    「【5】」,        [-3],
+                    /   \           /    \
+                  /      \         /      \
+              【3】,     「2」,     null,  [11],
                / \       /  \
               /   \     /    \
-            3,    -2, null,   1],
+            3,    -2, null,  「1」],
             targetSum = 8
         输出：3
         解释：和等于 8 的路径有 3 条。[5, 3]、[5, 2, 1]、[-3, 11]
@@ -80,9 +79,20 @@ public class LCR_050_PathSum {
         // 2024/3/26 NO.2 忘记了，没思路了
         // 2024/3/27 NO.3 没做出来，但是看答案能做出来了，思路也通了
         // 2024/3/28 NO.4 差一点点，就做出来了
+        // 2024/4/1  NO.5 没做出来，思路没有。
         int ret = 0;
+        if (root == null)
+            return 0;
 
-        return ret;
+        return rootSum(root, targetSum)
+                + pathSum(root.left, targetSum)
+                + pathSum(root.right, targetSum);
+//        return ret;
+    }
+
+    public int rootSum(TreeNode root, int targetSum) {
+        // TODO
+        return 0;
     }
 
 }

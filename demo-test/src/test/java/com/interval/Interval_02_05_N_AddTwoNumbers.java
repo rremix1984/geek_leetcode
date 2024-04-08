@@ -4,9 +4,12 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
+
+import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
-    [LISTNODE]
+    [LISTNODE] |||
     (中等)
     Interval.02.05 链表求和
     给定两个用链表表示的整数，每个节点包含一个数位。
@@ -40,28 +43,14 @@ public class Interval_02_05_N_AddTwoNumbers {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // 2024/3/30 NO.1 没思路，没做出来
+        // 2024/3/31 NO.2 思路有，没做出来
+        // 2024/4/1  NO.3 没思路，能看懂
         int carry = 0;
         ListNode head = null;
         ListNode tail = null;
-        while (l1 != null || l2 != null || carry != 0) {
-            int v1 = l1 != null ? l1.val : 0;
-            int v2 = l2 != null ? l2.val : 0;
-            int value = v1 + v2 + carry;
-            carry = (v1 + v2 + carry) / 10;
-            if (head == null) {
-                head = new ListNode(value % 10);
-                tail = head;
-            } else {
-                tail.next = new ListNode(value % 10);
-                tail = tail.next;
-            }
+        // TODO
 
-            if (l1 != null)
-                l1 = l1.next;
-
-            if (l2 != null)
-                l2 = l2.next;
-        }
         return head;
     }
 
@@ -87,29 +76,28 @@ public class Interval_02_05_N_AddTwoNumbers {
 /*
 // 方法1：
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    Deque<Integer> stack1 = new LinkedList<>();
-    Deque<Integer> stack2 = new LinkedList<>();
-    while (l1 != null) {
-        stack1.push(l1.val);
-        l1 = l1.next;
-    }
-    while (l2 != null) {
-        stack2.push(l2.val);
-        l2 = l2.next;
-    }
-
     int carry = 0;
-    ListNode ret = null;
-    while (!stack1.isEmpty() || !stack2.isEmpty() || carry != 0) {
-        int a = stack1.isEmpty() ? 0 : stack1.pop();
-        int b = stack2.isEmpty() ? 0 : stack2.pop();
-        int cur = a + b + carry;
-        carry = cur / 10;
-        cur %= 10;
-        ListNode curNode = new ListNode(cur);
-        curNode.next = ret;
-        ret = curNode;
+    ListNode head = null;
+    ListNode tail = null;
+    while (l1 != null || l2 != null || carry != 0) {
+        int v1 = l1 != null ? l1.val : 0;
+        int v2 = l2 != null ? l2.val : 0;
+        int value = v1 + v2 + carry;
+        carry = (v1 + v2 + carry) / 10;
+        if (head == null) {
+            head = new ListNode(value % 10);
+            tail = head;
+        } else {
+            tail.next = new ListNode(value % 10);
+            tail = tail.next;
+        }
+
+        if (l1 != null)
+            l1 = l1.next;
+
+        if (l2 != null)
+            l2 = l2.next;
     }
-    return ret;
+    return head;
 }
 */
