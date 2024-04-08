@@ -10,8 +10,7 @@ import static java.lang.Math.pow;
 /**
     [DOUBLELINKED] |
     (简单)
-    NO.7 双向链表的定义，范型定义。
-    根据二叉树高度，生成满二叉树
+    NO.7 双向链表的定义，范型定义。根据二叉树高度，生成满二叉树
  */
 public class NO7_DoubleLinked {
 
@@ -29,7 +28,8 @@ public class NO7_DoubleLinked {
     }
 
     public DoubleLinked<String> cLink(String[] arr, int idx) {
-        // 2024/4/8 NO.1
+        // 2024/4/8 NO.1 没思路，能做出来
+        // TODO
         if (idx >= arr.length || idx < 0)
             return null;
 

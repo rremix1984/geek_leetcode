@@ -64,4 +64,36 @@ public class MatrixNode {
         return neighbors;
     }
 
+    public static MatrixNode init(int row, int col) {
+        MatrixNode dummy = new MatrixNode(0);
+        MatrixNode row1 = dummy;
+        for (int j = 1; j < col; j++) {
+            row1.right = new MatrixNode(j);
+            row1.right.left = row1;
+            row1 = row1.right;
+        }
+
+        MatrixNode pre = dummy;
+        for (int i = 1; i < row; i++) {
+            MatrixNode rowHead = new MatrixNode(i);
+            rowHead.up = pre;
+            pre.down = rowHead;
+
+            MatrixNode up = pre;
+            MatrixNode right = rowHead;
+            for (int j = 1; j < col; j++) {
+                right.right = new MatrixNode(j);
+                right.right.left = right;
+
+                right = right.right;
+                up = up.right;
+
+                right.up = up;
+                up.down = right;
+            }
+            pre = rowHead; // 更新当前行的头节点，以便下一次迭代
+        }
+        return dummy;
+    }
+
 }

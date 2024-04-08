@@ -33,10 +33,6 @@ public class NO4_CharTreeCreate {
         return null;
     }
 
-    private char nextChar() {
-        return (char) ('a' + (c++ % 26));
-    }
-
 }
 
 

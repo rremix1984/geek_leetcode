@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 import static com.lonch.util.LinkedTable.printLinkedTable;
+import static java.lang.Math.pow;
 
 /**
     [LINKEDTABLE] |
@@ -18,58 +19,56 @@ public class NO8_LinkedTable {
 
     @Test
     public void test() {
-        int[] arr = new int[15];
-        for (int i = 0; i < arr.length; i++)
-            arr[i] = i + 1;
-
-        LinkedTable<Integer> fullTree = createFullTree(3, arr);
+        LinkedTable<Integer> fullTree = createFullTree(3);
         printLinkedTable(fullTree);
     }
 
-    public LinkedTable<Integer> createFullTree(int depth, int[] arr) {
+    public LinkedTable<Integer> createFullTree(int depth) {
         // 2024/4/8 NO.1 没思路，看答案看懂了
         if (depth <= 0)
             return null;
 
-        // TODO
-        LinkedTable<Integer> table = new LinkedTable<>();
-        setParent(table, depth - 1);
-        setVal(table, arr);
-        return table;
+        // TODO 能做出来的 4月18日面试，加油吧💪🏻
+        int start = (int) pow(2, depth);
+        LinkedTable<Integer> root = new LinkedTable<>();
+        setParent(root, depth - 1);
+        setVal(root, start);
+        return root;
     }
 
-    public void setVal(LinkedTable<Integer> node, int[] value) {
+    public void setVal(LinkedTable<Integer> root, int start) {
+        // TODO
         Deque<LinkedTable<Integer>> queue = new LinkedList<>();
-        queue.offer(node);
-        int i = 0;
-        while (!queue.isEmpty() && i < value.length) {
-            LinkedTable<Integer> cur = queue.poll();
-            cur.setValue(value[i]);
-            if (cur.left != null)
-                queue.offer(cur.left);
+        queue.offer(root);
+        int i = 1;
+        while (!queue.isEmpty() && i < start) {
+            LinkedTable<Integer> node = queue.poll();
+            node.setValue(i++);
 
-            if (cur.right != null)
-                queue.offer(cur.right);
+            if (node.left != null)
+                queue.offer(node.left);
 
-            i++;
+            if (node.right != null)
+                queue.offer(node.right);
         }
     }
 
-    public static void setParent(LinkedTable<Integer> parent, int depth) {
+    public static void setParent(LinkedTable<Integer> root, int depth) {
+        // TODO
         if (depth <= 0)
             return;
 
         LinkedTable<Integer> left = new LinkedTable<>();
         LinkedTable<Integer> right = new LinkedTable<>();
 
-        left.setParent(parent);
-        right.setParent(parent);
+        left.setParent(root);
+        right.setParent(root);
 
-        parent.left = left;
-        parent.right = right;
+        root.left = left;
+        root.right = right;
 
-        setParent(parent.left, depth - 1);
-        setParent(parent.right, depth - 1);
+        setParent(root.left, depth - 1);
+        setParent(root.right, depth - 1);
     }
 
     /*static class LinkedTable<T> {
@@ -80,3 +79,65 @@ public class NO8_LinkedTable {
     }*/
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public LinkedTable<Integer> createFullTree(int depth) {
+    if (depth <= 0)
+        return null;
+
+    int start = (int) pow(2, depth);
+    LinkedTable<Integer> root = new LinkedTable<>();
+    setParent(root, depth - 1);
+    setVal(root, start);
+    return root;
+}
+
+public void setVal(LinkedTable<Integer> root, int start) {
+    Deque<LinkedTable<Integer>> queue = new LinkedList<>();
+    queue.offer(root);
+    int i = 1;
+    while (!queue.isEmpty() && i < start) {
+        LinkedTable<Integer> node = queue.poll();
+        node.setValue(i++);
+
+        if (node.left != null)
+            queue.offer(node.left);
+
+        if (node.right != null)
+            queue.offer(node.right);
+    }
+}
+
+public static void setParent(LinkedTable<Integer> root, int depth) {
+    if (depth <= 0)
+        return;
+
+    LinkedTable<Integer> left = new LinkedTable<>();
+    LinkedTable<Integer> right = new LinkedTable<>();
+
+    left.setParent(root);
+    right.setParent(root);
+
+    root.left = left;
+    root.right = right;
+
+    setParent(root.left, depth - 1);
+    setParent(root.right, depth - 1);
+}
+*/
