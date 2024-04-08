@@ -11,9 +11,6 @@ import static org.junit.Assert.assertEquals;
 /**
     根据二叉树高度，生成满二叉树
 */
-@Setter
-@Getter
-@NoArgsConstructor
 public class TreeNode<E> {
 
     public E val;
@@ -22,6 +19,34 @@ public class TreeNode<E> {
 
     public TreeNode(E e) {
         this.val = e;
+    }
+
+    public TreeNode() {
+
+    }
+
+    public E getVal() {
+        return val;
+    }
+
+    public void setVal(E val) {
+        this.val = val;
+    }
+
+    public TreeNode<E> getLeft() {
+        return left;
+    }
+
+    public void setLeft(TreeNode<E> left) {
+        this.left = left;
+    }
+
+    public TreeNode<E> getRight() {
+        return right;
+    }
+
+    public void setRight(TreeNode<E> right) {
+        this.right = right;
     }
 
     @Override
@@ -52,10 +77,24 @@ public class TreeNode<E> {
         if (root == null)
             return;
 
-        preOrder(root.left, res);
+        inOrder(root.left, res);
         res.add(root.val);
-        preOrder(root.right, res);
+        inOrder(root.right, res);
     }
+
+    public static TreeNode cTree(int depth, Integer value) {
+        // 基准情况
+        if (depth < 0)
+            return null;
+
+        // 创建当前节点
+        TreeNode node = new TreeNode<>(value);
+        // 递归创建左右子树
+        node.left = cTree(depth - 1, value);
+        node.right = cTree(depth - 1, value);
+        return node;
+    }
+
 }
 
 
