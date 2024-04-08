@@ -16,6 +16,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：head = [1, 3, 2]
         输出：[2, 3, 1]
 */
+@SuppressWarnings("all")
 public class Offer_006_E_ReversePrint_x2 {
 
     @Test

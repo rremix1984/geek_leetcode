@@ -37,6 +37,7 @@ import static org.junit.Assert.assertArrayEquals;
     对于每个遍历到的节点，更新其水平距离在Map中对应的节点。
     最后，根据水平距离的顺序输出Map中的节点，这就是二叉树的底部视图。
 */
+@SuppressWarnings("all")
 public class BottomView {
 
     @Test

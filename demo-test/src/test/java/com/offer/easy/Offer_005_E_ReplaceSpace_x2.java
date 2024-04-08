@@ -14,6 +14,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "We are happy."
         输出："We%20are%20happy."
 */
+@SuppressWarnings("all")
 public class Offer_005_E_ReplaceSpace_x2 {
 
     @Test

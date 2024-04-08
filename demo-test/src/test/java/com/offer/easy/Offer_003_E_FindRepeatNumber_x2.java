@@ -16,6 +16,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：{2, 3, 1, 0, 2, 5, 3}
         输出：2 或 3
 */
+@SuppressWarnings("all")
 public class Offer_003_E_FindRepeatNumber_x2 {
 
     @Test

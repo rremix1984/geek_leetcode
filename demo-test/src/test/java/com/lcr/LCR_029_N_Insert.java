@@ -44,6 +44,7 @@ import static org.junit.Assert.assertEquals;
         后两种情况都是边界跳跃情况，且都满足：cur.val >= cur.next.val。
         此外，就是当head为空的情况，直接创建新节点，并将其next指向自己即可。
 */
+@SuppressWarnings("all")
 public class LCR_029_N_Insert {
 
     @Test
