@@ -17,11 +17,12 @@ import static org.junit.Assert.assertEquals;
     NO.5 定义链表来表示 N * N 的矩阵，节点内包括数值和
          四个指针分别为上、下、左、右
  */
+@SuppressWarnings("all")
 public class NO5_MatrixLinkedList {
 
     @Test
     public void test() {
-        MatrixNode head = init(5, 5);
+        MatrixNode<Integer> head = init(5, 5);
         printMatrix(head);
         assertEquals("2\t3\t4\t2\t3\t4\t",
             getMatrix(head.down.right.down.right.down));
