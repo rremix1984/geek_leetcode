@@ -3,7 +3,6 @@ package com.lonch;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
-import static java.util.Arrays.copyOf;
 
 /**
  * 贪吃蛇游戏
@@ -46,14 +45,15 @@ public class NO9_SnakeGame {
                 for (int j = 0; j < COLS; j++)
                     board[i][j] = '-';
 
-            for (int[] part : snake)
-                board[part[0]][part[1]] = '*';
+            snake.forEach( p ->
+                board[p[0]][p[1]] = '*'
+            );
 
             board[food[0]][food[1]] = 'F';
 
             for (int i = 0; i < ROWS; i++) {
                 for (int j = 0; j < COLS; j++)
-                    System.out.print(board[i][j] + " ");
+                    System.out.print(board[i][j]);
                 System.out.println();
             }
             System.out.println();

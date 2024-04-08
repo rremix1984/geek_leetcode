@@ -5,8 +5,6 @@ package com.lonch;
 
 import com.lonch.util.TreeNode;
 import org.junit.Test;
-import sun.reflect.generics.tree.Tree;
-
 import static org.junit.Assert.assertEquals;
 
 /**
