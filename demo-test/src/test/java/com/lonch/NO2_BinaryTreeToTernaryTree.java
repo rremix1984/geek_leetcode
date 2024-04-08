@@ -12,8 +12,16 @@ import static com.lonch.util.TreeNode.cTree;
 import static org.junit.Assert.assertEquals;
 
 /**
- * NO.2 定义泛型二叉树节点，然后二叉转三叉。
+    [TREENODE] |
+    (简单)
+    NO.2 定义泛型二叉树节点，然后二叉转三叉。
+
+            1                       1
+        2       3               2       3
+    4     5  6      7
+
  */
+@SuppressWarnings("all")
 public class NO2_BinaryTreeToTernaryTree {
 
     @Test
@@ -25,9 +33,11 @@ public class NO2_BinaryTreeToTernaryTree {
 
     public static <T> TernaryTreeNode<T> convert(TreeNode<T> root) {
         // 2024/4/7 NO.1 没思路，看答案看懂了
+        // 2024/4/8 NO.2
         if (root == null)
             return null;
 
+        // TODO
         TernaryTreeNode<T> node = new TernaryTreeNode<>(root.val);
         node.left = convert(root.left);
         node.right = convert(root.right);

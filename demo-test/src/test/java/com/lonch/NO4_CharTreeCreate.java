@@ -2,10 +2,12 @@ package com.lonch;
 
 import com.lonch.util.TreeNode;
 import org.junit.Test;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 
 import static com.lonch.util.TreeNode.*;
+import static java.lang.Math.pow;
 import static java.lang.System.out;
 
 /**
@@ -13,11 +15,12 @@ import static java.lang.System.out;
     (简单)
     NO.4 指定深度（depth）的满二叉树赋值，从a到z循环赋值。
  */
+@SuppressWarnings("all")
 public class NO4_CharTreeCreate {
 
     @Test
     public void test() {
-        TreeNode<Character> node = cTree(5);
+        TreeNode<Character> node = cTree(4);
         List<Character> res2 = new ArrayList<>();
         levelOrder(node, res2);
         res2.forEach(out::print);
@@ -54,23 +57,7 @@ public class NO4_CharTreeCreate {
 
 
 /*
-// 方法1：前序遍历
-int cur = 0;
-public TreeNode<Character> cTree(int depth) {
-    if (depth <= 0)
-        return null;
-
-    TreeNode<Character> node = new TreeNode<>(nextChar());
-    node.left = cTree(depth - 1);
-    node.right = cTree(depth - 1);
-    return node;
-}
-
-private char nextChar() {
-    return (char) ('a' + cur++ % 26);
-}
-
-// 方法2：层序遍历
+// 方法1：层序遍历
 int c = 0;
 public TreeNode<Character> cTree(int depth) {
     // 2024/4/7 NO.1 没思路，能看懂

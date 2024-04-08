@@ -6,11 +6,11 @@ import java.util.List;
 /**
     四方向链表
  */
-public class MatrixNode {
-    public int val;
-    public MatrixNode left, right, up, down;
+public class MatrixNode<T> {
+    public T val;
+    public MatrixNode<T> left, right, up, down;
 
-    public MatrixNode(int val) {
+    public MatrixNode(T val) {
         this.val = val;
         this.left = null;
         this.right = null;

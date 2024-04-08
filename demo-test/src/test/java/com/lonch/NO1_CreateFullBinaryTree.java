@@ -1,35 +1,50 @@
+/**
+ * @copyright 2024
+ */
 package com.lonch;
 
 import com.lonch.util.TreeNode;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import org.junit.Test;
+import sun.reflect.generics.tree.Tree;
+
 import static org.junit.Assert.assertEquals;
 
 /**
     [ARRAY] |
     (简单)
     NO.1 写一个根据传入的整数n，生成深度为 n 的满二插树（用泛型）
-
- */
-public class NO1_CreateFullBinaryTree<T> {
+*/
+@SuppressWarnings("all")
+public class NO1_CreateFullBinaryTree {
 
     @Test
     public void test() {
-        TreeNode<Integer> root = cTree(3,1);
+        TreeNode<Integer> root = cTree(3);
         assertEquals("[1, [1, [1, [1, [1], [1, [1, [1]], [1," +
                 " [1, [1, [1], [1, [1, [1]]]", root.toString());
     }
 
-    // 创建深度为n的满二叉树
-    public TreeNode<Integer> cTree(int depth, Integer value) {
+    private TreeNode<Integer> cTree(int depth) {
         // 2024/3/29 NO.1
         // 2024/4/7  NO.2 没思路，看答案做出来了
-        // 2024/4/8  NO.3
-
+        // 2024/4/8  NO.3 没思路，能做出来了
+        // TODO
         return null;
     }
+
+    /*
+    class TreeNode<T> {
+        T value;
+        TreeNode<T> left;
+        TreeNode<T> right;
+
+        public TreeNode(T value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+    }
+    */
 
 }
 

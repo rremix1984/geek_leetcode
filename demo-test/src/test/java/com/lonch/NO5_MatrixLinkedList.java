@@ -27,7 +27,7 @@ public class NO5_MatrixLinkedList {
             getMatrix(head.down.right.down.right.down));
     }
 
-    public MatrixNode init(int row, int col) {
+    public MatrixNode<Integer> init(int row, int col) {
         // 2024/4/7 NO.1 没思路，可以看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行
         MatrixNode dummy = new MatrixNode(0);

@@ -54,6 +54,10 @@ public class LinkedTable<T> {
         printLinkedTableHelper(root, "", true);
     }
 
+    public void printLinkedTable() {
+        printLinkedTableHelper( "", true);
+    }
+
 
     private static void printLinkedTableHelper(LinkedTable<Integer> node, String prefix, boolean isTail) {
         if (node == null) {
@@ -73,6 +77,23 @@ public class LinkedTable<T> {
 
         if (node.getLeft() != null) {
             printLinkedTableHelper(node.getLeft(), prefix + (isTail ? "    " : "│   "), true);
+        }
+    }
+
+    private void printLinkedTableHelper(String prefix, boolean isTail) {
+        if (getParent() != null) {
+            String pointer = isTail ? "└── " : "├── ";
+            System.out.println(prefix + pointer + getValue());
+        } else {
+            System.out.println(getValue());
+        }
+
+        if (getRight() != null) {
+            printLinkedTableHelper(prefix + (isTail ? "    " : "│   "), false);
+        }
+
+        if (getLeft() != null) {
+            printLinkedTableHelper(prefix + (isTail ? "    " : "│   "), true);
         }
     }
 

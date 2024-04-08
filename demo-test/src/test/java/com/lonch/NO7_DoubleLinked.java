@@ -16,34 +16,31 @@ public class NO7_DoubleLinked {
 
     @Test
     public void test() {
-        int height = 4;
-        int length = (int) pow(2, height) - 1;
-        String[] arr = new String[length];
-        for (int i = 0; i < length; i++)
-            arr[i] = "" + i;
-
-        DoubleLinked<String> res = cLink(arr, 0);
+        int depth = 4;
+        DoubleLinked<String> res = cLink(depth, 0);
         setParents(res, null);
         res.printDoubleLinked();
     }
 
-    public DoubleLinked<String> cLink(String[] arr, int idx) {
+    public DoubleLinked<String> cLink(int depth, int idx) {
         // 2024/4/8 NO.1 没思路，能做出来
-        // TODO
-        if (idx >= arr.length || idx < 0)
+        // TODO 
+        if (idx >= pow(2, depth) - 1 || idx < 0)
             return null;
 
-        DoubleLinked<String> root = new DoubleLinked<>(arr[idx]);
-        DoubleLinked<String> left = cLink(arr, 2 * idx + 1);
-        DoubleLinked<String> right = cLink(arr, 2 * idx + 2);
+        DoubleLinked<String> root = new DoubleLinked<>(idx + "");
+        DoubleLinked<String> left = cLink(depth, 2 * idx + 1);
+        DoubleLinked<String> right = cLink(depth, 2 * idx + 2);
         root.setLeft(left);
         root.setRight(right);
         return root;
     }
 
-    public void setParents(DoubleLinked<String> node, DoubleLinked<String> parent) {
+    public void setParents(DoubleLinked<String> node,
+                           DoubleLinked<String> parent) {
         if (node == null)
             return;
+
         node.setParent(parent);
         setParents(node.getLeft(), node);
         setParents(node.getRight(), node);
