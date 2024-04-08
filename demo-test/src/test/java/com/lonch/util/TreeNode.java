@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -93,6 +96,33 @@ public class TreeNode<E> {
         node.left = cTree(depth - 1, value);
         node.right = cTree(depth - 1, value);
         return node;
+    }
+
+    public static void levelOrder(TreeNode<Character> root,
+                                  List<Character> list) {
+        if (root == null)
+            return;
+
+        // TODO
+        Deque<TreeNode<Character>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            Character val = null;
+            while (size > 0) {
+                TreeNode<Character> node = queue.poll();
+                val = node.val;
+                if (node.left != null)
+                    queue.offer(node.left);
+
+                if (node.right != null)
+                    queue.offer(node.right);
+
+                size--;
+                list.add(val);
+            }
+        }
+
     }
 
 }

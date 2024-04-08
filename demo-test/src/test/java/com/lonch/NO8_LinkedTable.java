@@ -13,7 +13,6 @@ import static com.lonch.util.LinkedTable.printLinkedTable;
     [LINKEDTABLE] |
     (简单)
     NO.7 双向链表里添加第三个指针，变成三向链表。
-
  */
 public class NO8_LinkedTable {
 
