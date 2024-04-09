@@ -24,10 +24,12 @@ public class NO8_LinkedTable {
 
     public LinkedTable<Integer> createFullTree(int depth) {
         // 2024/4/8 NO.1 没思路，看答案看懂了
+        // 2024/4/9 NO.2 有思路
         if (depth <= 0)
             return null;
 
         // TODO 能做出来的 4月18日面试，加油吧💪🏻
+
         return null;
     }
 

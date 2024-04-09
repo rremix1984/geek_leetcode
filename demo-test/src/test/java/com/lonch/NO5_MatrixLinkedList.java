@@ -6,13 +6,12 @@ package com.lonch;
 import com.lonch.util.MatrixNode;
 import org.junit.Test;
 import java.util.*;
-import static com.leetcode.util.SystemUtil.print;
 import static com.lonch.util.MatrixNode.getMatrix;
 import static com.lonch.util.MatrixNode.printMatrix;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [MATRIXLINKED] |
+    [MATRIXLINKED] ||
     (简单)
     NO.5 定义链表来表示 N * N 的矩阵，节点内包括数值和
          四个指针分别为上、下、左、右
@@ -31,6 +30,7 @@ public class NO5_MatrixLinkedList {
     public MatrixNode<Integer> init(int row, int col) {
         // 2024/4/7 NO.1 没思路，可以看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行
+        // 2024/4/9 NO.3 一遍过，做了几遍都是一遍过
         MatrixNode dummy = new MatrixNode(0);
         // TODO 你能做出来的，相信自己
 

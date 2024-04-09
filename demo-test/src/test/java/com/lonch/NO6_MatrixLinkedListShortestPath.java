@@ -6,16 +6,14 @@ package com.lonch;
 import com.lonch.util.MatrixNode;
 import org.junit.Test;
 import java.util.*;
-import static com.leetcode.util.MathUtils.getArray;
 import static com.lonch.util.MatrixNode.init;
-import static com.lonch.util.MatrixNode.printMatrix;
 import static java.lang.System.out;
 import static java.util.Collections.emptyList;
 
 /**
-    [MATRIXLINKED] |
+    [MATRIXLINKED] ||
     (简单)
-    NO.10 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
+    NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
 
  */
 @SuppressWarnings("all")
@@ -27,8 +25,8 @@ public class NO6_MatrixLinkedListShortestPath {
         findShortestPaths(mnode.right.right.right,
                           mnode.down.right.right).forEach(
           path -> {
-                path.forEach(out::print);
-                out.println();
+            path.forEach(s -> out.print(s.val + " -> "));
+            out.println();
         });
     }
 
@@ -36,6 +34,7 @@ public class NO6_MatrixLinkedListShortestPath {
     public List<List<MatrixNode>> findShortestPaths(MatrixNode start, MatrixNode end) {
         // 2024/4/7 NO.1 没思路，但能看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 有思路了，没写出来。
+        // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
         // TODO 剪枝法
         List<List<MatrixNode>> res = new ArrayList<>();
 

@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [ARRAY] |
+    [ARRAY] ||
     (简单)
     NO.1 写一个根据传入的整数n，生成深度为 n 的满二插树（用泛型）
 */
@@ -17,7 +17,7 @@ public class NO1_CreateFullBinaryTree {
 
     @Test
     public void test() {
-        TreeNode<Integer> root = cTree(3);
+        TreeNode<Integer> root = cTree(4);
         assertEquals("[1, [1, [1, [1, [1], [1, [1, [1]], [1," +
                 " [1, [1, [1], [1, [1, [1]]]", root.toString());
     }
@@ -26,7 +26,9 @@ public class NO1_CreateFullBinaryTree {
         // 2024/3/29 NO.1
         // 2024/4/7  NO.2 没思路，看答案做出来了
         // 2024/4/8  NO.3 没思路，能做出来了
+        // 2024/4/9  NO.4 能做出来了
         // TODO
+
         return null;
     }
 
