@@ -21,24 +21,33 @@ public class NO9_SnakeGame {
     public static void main(String[] args) {
         // 2024/4/9 NO.1 能看懂，做不出来
         // TODO
-
+        SnakeGame snakeGame = new SnakeGame();
+        while (true) {
+            System.out.print("Enter direction (W/S/A/D): ");
+            String cmd = new Scanner(System.in).nextLine().substring(0, 1);
+            int score = snakeGame.move(cmd.toUpperCase().charAt(0));
+            if (score == -1) {
+                System.out.println("Game Over! Final Score: " + snakeGame.score);
+                break;
+            }
+        }
     }
 
     static class SnakeGame {
         // TODO 成员变量
+        int score;
 
-
+        // TODO 初始化成员变量，画屏幕
         public SnakeGame() {
-            // TODO 初始化成员变量，画屏幕
 
         }
 
+        // TODO 初始化屏幕
         private void init() {
-            // TODO 初始化屏幕
 
         }
 
-        // 移动
+        // TODO 移动
         public int move(char dir) {
             // TODO 定义一个新的蛇头
 
@@ -52,6 +61,7 @@ public class NO9_SnakeGame {
 
             // TODO 更新蛇头位置、更新游戏界面、返回当前得分
 
+            return score;
         }
 
     }
@@ -86,6 +96,18 @@ public class NO9_SnakeGame {
 
 
 /*
+public static void main(String[] args) {
+    SnakeGame snakeGame = new SnakeGame();
+    while (true) {
+        out.print("Enter direction (W/S/A/D): ");
+        String cmd = new Scanner(System.in).nextLine().substring(0, 1);
+        if (snakeGame.move(cmd.toUpperCase().charAt(0)) == -1) {
+            out.println("Game Over! Final Score: " + snakeGame.score);
+            break;
+        }
+    }
+}
+
 static class SnakeGame {
     // TODO 成员变量
     int ROWS = 10, COLS = 10;
@@ -121,23 +143,23 @@ static class SnakeGame {
         }
     }
 
-    // 移动
-    public int move(String dir) {
+    // TODO 移动
+    public int move(char dir) {
         int[] head = snake.getFirst();
         int[] newHead = new int[]{head[0], head[1]};
 
         // TODO 根据方向更新新头部的位置
         switch (dir) {
-            case "W":
+            case 'W':
                 newHead[0]--;
                 break;
-            case "S":
+            case 'S':
                 newHead[0]++;
                 break;
-            case "A":
+            case 'A':
                 newHead[1]--;
                 break;
-            case "D":
+            case 'D':
                 newHead[1]++;
                 break;
         }
