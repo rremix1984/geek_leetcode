@@ -6,7 +6,6 @@ package com.lonch;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
-
 import static java.lang.System.out;
 
 /**
@@ -25,8 +24,7 @@ public class NO9_SnakeGame {
         while (true) {
             System.out.print("Enter direction (W/S/A/D): ");
             String cmd = new Scanner(System.in).nextLine().substring(0, 1);
-            int score = snakeGame.move(cmd.toUpperCase().charAt(0));
-            if (score == -1) {
+            if (snakeGame.move(cmd.toUpperCase().charAt(0)) == -1) {
                 System.out.println("Game Over! Final Score: " + snakeGame.score);
                 break;
             }
@@ -188,6 +186,5 @@ static class SnakeGame {
         init();
         return score;
     }
-
 }
 */

@@ -65,24 +65,24 @@ public class MatrixNode<T> {
     }
 
     public static MatrixNode<Integer> init(int row, int col) {
-        MatrixNode<Integer> dummy = new MatrixNode<>(0);
-        MatrixNode<Integer> row1 = dummy;
-        for (int j = 1; j < col; j++) {
-            row1.right = new MatrixNode<>(j);
+        MatrixNode dummy = new MatrixNode(nextChar());
+        MatrixNode row1 = dummy;
+        for (int i = 1; i < row; i++) {
+            row1.right = new MatrixNode(nextChar());
             row1.right.left = row1;
             row1 = row1.right;
         }
 
-        MatrixNode<Integer> pre = dummy;
+        MatrixNode pre = dummy;
         for (int i = 1; i < row; i++) {
-            MatrixNode<Integer> rowHead = new MatrixNode<>(i);
-            rowHead.up = pre;
-            pre.down = rowHead;
+            MatrixNode newHead = new MatrixNode(nextChar());
+            newHead.up = pre;
+            pre.down = newHead;
 
-            MatrixNode<Integer> up = pre;
-            MatrixNode<Integer> right = rowHead;
+            MatrixNode up = pre;
+            MatrixNode right = newHead;
             for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode<>(j);
+                right.right = new MatrixNode(nextChar());
                 right.right.left = right;
 
                 right = right.right;
@@ -91,9 +91,13 @@ public class MatrixNode<T> {
                 right.up = up;
                 up.down = right;
             }
-            pre = rowHead; // 更新当前行的头节点，以便下一次迭代
+            pre = newHead;
         }
         return dummy;
+    }
+    static int c;
+    private static char nextChar() {
+        return (char) ('a' + (c++ % 26));
     }
 
 }

@@ -7,6 +7,7 @@ import com.lonch.util.MatrixNode;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.init;
+import static com.lonch.util.MatrixNode.printMatrix;
 import static java.lang.System.out;
 import static java.util.Collections.emptyList;
 
@@ -22,6 +23,7 @@ public class NO6_MatrixLinkedListShortestPath {
     @Test
     public void test() {
         MatrixNode<Integer> mnode = init(5, 5);
+        printMatrix(mnode);
         findShortestPaths(mnode.right.right.right,
                           mnode.down.right.right).forEach(
           path -> {
@@ -37,7 +39,6 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
         // TODO 剪枝法
         List<List<MatrixNode>> res = new ArrayList<>();
-
         return res;
     }
 
@@ -71,7 +72,7 @@ private void dfs(List<List<MatrixNode>> res, List<MatrixNode> list,
                  MatrixNode start, MatrixNode end,
                  Set<MatrixNode> visited) {
 
-    if (!visited.contains(start))
+    if (visited.contains(start))
         return;
 
     // 加入当前节点到路径中
@@ -95,22 +96,5 @@ private void dfs(List<List<MatrixNode>> res, List<MatrixNode> list,
     // 回溯，移除当前节点，继续搜索其他可能的路径
     list.remove(start);
     visited.remove(start);
-}
-
-public List<MatrixNode> getNeighbors() {
-    List<MatrixNode> neighbors = new ArrayList<>();
-    if (this.left != null)
-        neighbors.add(this.left);
-
-    if (this.right != null)
-        neighbors.add(this.right);
-
-    if (this.up != null)
-        neighbors.add(this.up);
-
-    if (this.down != null)
-        neighbors.add(this.down);
-
-    return neighbors;
 }
 */
