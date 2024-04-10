@@ -108,17 +108,20 @@ public class TreeNode<E> {
         queue.offer(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            Character val = null;
+            Character val;
             while (size > 0) {
                 TreeNode<Character> node = queue.poll();
                 val = node.val;
+                System.out.print(node.val + " ");
                 if (node.left != null)
                     queue.offer(node.left);
 
                 if (node.right != null)
                     queue.offer(node.right);
 
-                size--;
+                if (--size == 0)
+                    System.out.println();
+
                 list.add(val);
             }
         }

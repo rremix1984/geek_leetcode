@@ -6,10 +6,11 @@ package com.lonch;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
+import static java.lang.System.in;
 import static java.lang.System.out;
 
 /**
-    [SNAKE] |
+    [SNAKE] ||
     (困难)
     NO.9 贪吃蛇游戏
 
@@ -18,14 +19,15 @@ import static java.lang.System.out;
 public class NO9_SnakeGame {
 
     public static void main(String[] args) {
-        // 2024/4/9 NO.1 能看懂，做不出来
-        // TODO
-        SnakeGame snakeGame = new SnakeGame();
+        // 2024/4/9  NO.1 能看懂，做不出来
+        // 2024/4/10 NO.2 一遍过
+        // TODO 这里要熟练使用：new Scanner(System.in).nextLine() 获取命令行输入
+        SnakeGame g = new SnakeGame();
         while (true) {
-            System.out.print("Enter direction (W/S/A/D): ");
-            String cmd = new Scanner(System.in).nextLine().substring(0, 1);
-            if (snakeGame.move(cmd.toUpperCase().charAt(0)) == -1) {
-                System.out.println("Game Over! Final Score: " + snakeGame.score);
+            char cmd = new Scanner(in).nextLine().charAt(0);
+            out.println("当前得分：" + g.score + ", (W/S/A/D):");
+            if (g.move(cmd) == -1) {
+                out.println("game over! score:" + g.score);
                 break;
             }
         }
@@ -41,23 +43,12 @@ public class NO9_SnakeGame {
         }
 
         // TODO 初始化屏幕
-        private void init() {
+        private void init(char dir) {
 
         }
 
         // TODO 移动
         public int move(char dir) {
-            // TODO 定义一个新的蛇头
-
-            // TODO 根据方向更新新头部的位置
-
-            // TODO 判断是否出界
-
-            // TODO 判断是否吃到食物
-
-            // TODO 判断是否碰到自己
-
-            // TODO 更新蛇头位置、更新游戏界面、返回当前得分
 
             return score;
         }
@@ -95,11 +86,11 @@ public class NO9_SnakeGame {
 
 /*
 public static void main(String[] args) {
-    SnakeGame snakeGame = new SnakeGame();
+    SnakeGame g = new SnakeGame();
     while (true) {
         out.print("Enter direction (W/S/A/D): ");
-        String cmd = new Scanner(System.in).nextLine().substring(0, 1);
-        if (snakeGame.move(cmd.toUpperCase().charAt(0)) == -1) {
+        char cmd = new Scanner(in).nextLine().charAt(0);
+        if (g.move(cmd) == -1) {
             out.println("Game Over! Final Score: " + snakeGame.score);
             break;
         }
