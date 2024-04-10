@@ -22,19 +22,20 @@ public class NO9_SnakeGame {
         // 2024/4/9  NO.1 能看懂，做不出来
         // 2024/4/10 NO.2 一遍过
         // TODO 这里要熟练使用：new Scanner(System.in).nextLine() 获取命令行输入
-        while (true)
-            if (new SnakeGame().move(
-                    new Scanner(in).nextLine().charAt(0)) == -1)
-                break;
+        SnakeGame g = new SnakeGame();
+        while (g.move(new Scanner(in).nextLine().charAt(0)) != -1)
+            out.println("W/S/D/A");
+        out.println("game over! socre:" + g.score);
     }
 
     static class SnakeGame {
         int score;
         public SnakeGame() {
-
         }
+
         private void init(char dir) {
         }
+
         public int move(char dir) {
             return score;
         }
@@ -72,14 +73,9 @@ public class NO9_SnakeGame {
 /*
 public static void main(String[] args) {
     SnakeGame g = new SnakeGame();
-    while (true) {
-        out.print("Enter direction (W/S/A/D): ");
-        char cmd = new Scanner(in).nextLine().charAt(0);
-        if (g.move(cmd) == -1) {
-            out.println("Game Over! Final Score: " + snakeGame.score);
-            break;
-        }
-    }
+    while (g.move(new Scanner(in).nextLine().charAt(0)) != -1)
+        out.println("W/S/D/A");
+    out.println("game over! score:" + g.score);
 }
 
 static class SnakeGame {

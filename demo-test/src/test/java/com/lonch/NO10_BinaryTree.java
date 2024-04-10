@@ -9,7 +9,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
-    [TREENODE] |
+    [TREENODE] ||
     (中等)
     NO.10 先定义 Node 节点，创建 n 阶满二叉树，数据值按顺序 A-Z 循环赋值
     public class Node<E> {
@@ -90,7 +90,7 @@ public static void printTree(Node<Character> root) {
         int size = queue.size();
         while (size > 0) {
             Node<Character> node = queue.poll();
-            System.out.print(node.data + " ");
+            out.print(node.data + " ");
             if (node.left != null)
                 queue.offer(node.left);
 
@@ -98,9 +98,8 @@ public static void printTree(Node<Character> root) {
                 queue.offer(node.right);
 
             if (--size == 0)
-                System.out.println();
+                out.println();
         }
-
     }
     System.out.println();
 }
