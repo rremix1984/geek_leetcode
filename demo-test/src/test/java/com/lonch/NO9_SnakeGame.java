@@ -22,37 +22,22 @@ public class NO9_SnakeGame {
         // 2024/4/9  NO.1 能看懂，做不出来
         // 2024/4/10 NO.2 一遍过
         // TODO 这里要熟练使用：new Scanner(System.in).nextLine() 获取命令行输入
-        SnakeGame g = new SnakeGame();
-        while (true) {
-            char cmd = new Scanner(in).nextLine().charAt(0);
-            out.println("当前得分：" + g.score + ", (W/S/A/D):");
-            if (g.move(cmd) == -1) {
-                out.println("game over! score:" + g.score);
+        while (true)
+            if (new SnakeGame().move(
+                    new Scanner(in).nextLine().charAt(0)) == -1)
                 break;
-            }
-        }
     }
 
     static class SnakeGame {
-        // TODO 成员变量
         int score;
-
-        // TODO 初始化成员变量，画屏幕
         public SnakeGame() {
 
         }
-
-        // TODO 初始化屏幕
         private void init(char dir) {
-
         }
-
-        // TODO 移动
         public int move(char dir) {
-
             return score;
         }
-
     }
 
 }

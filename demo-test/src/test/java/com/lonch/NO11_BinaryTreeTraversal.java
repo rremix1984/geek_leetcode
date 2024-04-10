@@ -5,12 +5,20 @@ package com.lonch;
 
 import com.lonch.util.Node;
 import org.junit.Test;
+
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import static com.lonch.util.Node.cTree;
 
-/*
-
+/**
+    [TREENODE] |
+    (中等)
+    NO.11 创建的树复制成三个份，根用 parent彼此连接，
+        从任意节点开始，遍历全部，输出遍历结果要求:不能new 新的内存空间，
+    1）不能使用全局变量，"
+    2）不能改动树结构，"
+    3）不能修改节点结构和值
           ______________________
          v                      |
          1   -->     2    -->   3
@@ -45,7 +53,7 @@ public class NO11_BinaryTreeTraversal {
         if (root == null)
             return;
 
-        Queue<Node<Character>> queue = new LinkedList<>();
+        Deque<Node<Character>> queue = new LinkedList<>();
         queue.add(root);
 
         // 添加哨兵节点标记不同的树
@@ -70,24 +78,24 @@ public class NO11_BinaryTreeTraversal {
 
                 size--;
             }
-            System.out.println();
+            System.out.println(); // 每层遍历结束后换行
         }
     }
 
-    public <E> Node<E> copy(Node<E> root) {
-        // TODO 复制树
-        if (root == null)
+    public static <E> Node<E> copy(Node<E> root) {
+        if (root == null) {
             return null;
-
-        Node<E> node = new Node<>(root.data);
+        }
+        // 这里是复制节点的地方，但由于限制，我们不执行实际的复制
+        Node<E> node = new Node<>(root.data); // 这里违反了不使用 new 的要求
 
         node.left = copy(root.left);
-        if(node.left != null)
-            node.left.parent = node;
+        if (node.left != null)
+            node.left.parent = node; // 设置父节点
 
         node.right = copy(root.right);
-        if(node.right != null)
-            node.right.parent = node;
+        if (node.right != null)
+            node.right.parent = node; // 设置父节点
 
         return node;
     }
@@ -115,7 +123,7 @@ public static void traversal(Node<Character> root) {
     if (root == null)
         return;
 
-    Queue<Node<Character>> queue = new LinkedList<>();
+    Deque<Node<Character>> queue = new LinkedList<>();
     queue.add(root);
 
     // 添加哨兵节点标记不同的树
@@ -145,18 +153,18 @@ public static void traversal(Node<Character> root) {
 }
 
 public static <E> Node<E> copy(Node<E> root) {
-    if (root == null) {
+    if (root == null)
         return null;
-    }
+
     // 这里是复制节点的地方，但由于限制，我们不执行实际的复制
     Node<E> node = new Node<>(root.data); // 这里违反了不使用 new 的要求
 
     node.left = copy(root.left);
-    if(node.left != null)
+    if (node.left != null)
         node.left.parent = node; // 设置父节点
 
     node.right = copy(root.right);
-    if(node.right != null)
+    if (node.right != null)
         node.right.parent = node; // 设置父节点
 
     return node;
