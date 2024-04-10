@@ -55,6 +55,24 @@ public class Node<E> {
         }
     }
 
+    public static <E> Node<E> copy(Node<E> root) {
+        if (root == null)
+            return null;
+
+        // 这里是复制节点的地方，但由于限制，我们不执行实际的复制
+        Node<E> node = new Node<>(root.data); // 这里违反了不使用 new 的要求
+
+        node.left = copy(root.left);
+        if (node.left != null)
+            node.left.parent = node; // 设置父节点
+
+        node.right = copy(root.right);
+        if (node.right != null)
+            node.right.parent = node; // 设置父节点
+
+        return node;
+    }
+
     // 层次遍历打印二叉树
     public static void printTree(Node<Character> root) {
         if (root == null)

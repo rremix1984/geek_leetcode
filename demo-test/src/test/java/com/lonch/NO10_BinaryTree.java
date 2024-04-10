@@ -5,6 +5,8 @@ package com.lonch;
 
 import com.lonch.util.Node;
 import org.junit.Test;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
     [TREENODE] |
@@ -27,16 +29,18 @@ public class NO10_BinaryTree {
     }
 
     public Node<Character> cTree(int depth, int cur) {
-        // 2024/4/10 NO.1 没思路，看答案了
         if (depth == 0)
             return null;
 
-        // TODO
+        // TODO 2024/4/10 NO.1 没思路，看答案做出来了
+        // TODO 2024/4/11 NO.2 没做对，思路对了
+
         return null;
     }
 
     public void printTree(Node<Character> root) {
-        // TODO
+        // TODO 2024/4/10 NO.1 一遍过
+        // TODO 2024/4/11 NO.2 一遍过
 
     }
 
