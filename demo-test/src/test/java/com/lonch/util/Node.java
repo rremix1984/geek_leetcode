@@ -3,7 +3,9 @@ package com.lonch.util;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings("all")
 public class Node<E> {
+
     public E data;
     public Node<E> parent;
     public Node<E> left;

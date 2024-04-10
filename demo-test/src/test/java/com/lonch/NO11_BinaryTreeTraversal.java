@@ -10,6 +10,7 @@ import java.util.Queue;
 import static com.lonch.util.Node.cTree;
 
 /*
+
           ______________________
          v                      |
          1   -->     2    -->   3
@@ -19,23 +20,28 @@ import static com.lonch.util.Node.cTree;
     10 11 12 13 14 15 16 17 18 19 20 21
 
  */
+@SuppressWarnings("all")
 public class NO11_BinaryTreeTraversal {
 
     @Test
     public void test() {
         // 假设这里有三棵树的根节点，并且它们通过parent相互连接
         Node<Character> root1 = cTree(4, 0);
+
+        // TODO 复制一棵树
         Node<Character> root2 = copy(root1);
         Node<Character> root3 = copy(root2);
         root1.parent = root3;
         root3.parent = root2;
         root2.parent = root1;
 
-        // 执行特殊的层序遍历
+        // TODO 遍历所有的树
         traversal(root1);
     }
 
     public void traversal(Node<Character> root) {
+        // 2024/4/10 没思路，看答案了
+        // TODO 遍历树
         if (root == null)
             return;
 
@@ -69,20 +75,21 @@ public class NO11_BinaryTreeTraversal {
     }
 
     public <E> Node<E> copy(Node<E> root) {
+        // TODO 复制树
         if (root == null)
             return null;
 
-        Node<E> newRoot = new Node<>(root.data);
+        Node<E> node = new Node<>(root.data);
 
-        newRoot.left = copy(root.left);
-        if(newRoot.left != null)
-            newRoot.left.parent = newRoot;
+        node.left = copy(root.left);
+        if(node.left != null)
+            node.left.parent = node;
 
-        newRoot.right = copy(root.right);
-        if(newRoot.right != null)
-            newRoot.right.parent = newRoot;
+        node.right = copy(root.right);
+        if(node.right != null)
+            node.right.parent = node;
 
-        return newRoot;
+        return node;
     }
 
 }
@@ -142,16 +149,16 @@ public static <E> Node<E> copy(Node<E> root) {
         return null;
     }
     // 这里是复制节点的地方，但由于限制，我们不执行实际的复制
-    Node<E> newRoot = new Node<>(root.data); // 这里违反了不使用 new 的要求
+    Node<E> node = new Node<>(root.data); // 这里违反了不使用 new 的要求
 
-    newRoot.left = copy(root.left);
-    if(newRoot.left != null)
-        newRoot.left.parent = newRoot; // 设置父节点
+    node.left = copy(root.left);
+    if(node.left != null)
+        node.left.parent = node; // 设置父节点
 
-    newRoot.right = copy(root.right);
-    if(newRoot.right != null)
-        newRoot.right.parent = newRoot; // 设置父节点
+    node.right = copy(root.right);
+    if(node.right != null)
+        node.right.parent = node; // 设置父节点
 
-    return newRoot;
+    return node;
 }
 */

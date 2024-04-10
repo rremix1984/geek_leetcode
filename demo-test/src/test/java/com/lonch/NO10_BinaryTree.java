@@ -27,7 +27,7 @@ public class NO10_BinaryTree {
     }
 
     public Node<Character> cTree(int depth, int cur) {
-        // 2024/4/10 NO.1 没思路，能看懂
+        // 2024/4/10 NO.1 没思路，看答案了
         if (depth == 0)
             return null;
 
@@ -37,6 +37,7 @@ public class NO10_BinaryTree {
 
     public void printTree(Node<Character> root) {
         // TODO
+
     }
 
 }
