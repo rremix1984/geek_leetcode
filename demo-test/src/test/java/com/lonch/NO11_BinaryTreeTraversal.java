@@ -5,9 +5,16 @@ package com.lonch;
 
 import com.lonch.util.Node;
 import org.junit.Test;
-import java.util.*;
-import static com.lonch.util.Node.*;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import static com.lonch.util.Node.cTree;
+import static com.lonch.util.Node.copy;
+import static com.lonch.util.Node.travel;
+import static com.lonch.util.Node.printTree;
+import static java.lang.System.arraycopy;
 import static java.lang.System.out;
+import static org.junit.Assert.assertEquals;
 
 /**
     [TREENODE] ||
@@ -18,8 +25,9 @@ import static java.lang.System.out;
         2）不能使用全局变量，
         3）不能改动树结构，
         4）不能修改节点结构和值
-          ________________________
-         v                       |
+           ________________________
+          |                       |
+         V                       |
          1 --------> 2 --------> 3
        /   \       /   \       /   \
       4     5     6     7     8     9
@@ -44,21 +52,23 @@ public class NO11_BinaryTreeTraversal {
         root2.parent = root1;
 
         // TODO 从任意节点开始遍历整棵树
-        traval(root1.left.right.left);
-    }
-
-    public void traval(Node<?> node) {
-        // TODO 2024/4/10 NO.1 从任意节点开始遍历树
-        // TODO 2024/4/11 NO.2 还是不会做，能看懂
-
+        String res = travel(root1.left.right.left);
+        out.println(res);
+        assertEquals("JEKBDHIACFLMGNOABDHIEJKCFLMGNOABDHIEJKCFLMGNO", res);
+        printTree(root1);
     }
 
     public static <E> Node<E> copy(Node<E> root) {
-        if (root == null)
-            return null;
-
         // TODO 2024/4/10 NO.1 没做出来
+        // TODO 2024/4/11 NO.2 没做出来，思路对
         return null;
+    }
+
+
+    public String travel(Node<?> node) {
+        // TODO 2024/4/10 NO.1 从任意节点开始遍历树
+        // TODO 2024/4/11 NO.2 还是不会做，能看懂
+        return "";
     }
 
 }
@@ -98,52 +108,24 @@ public static <E> Node<E> copy(Node<E> root) {
     return node;
 }
 
-public void traverseFrom(Node<?> node) {
-    dfs(node, new HashSet<Node<?>>());
+public String travel(Node<?> node) {
+    if (node == null)
+        return "";
+
+    StringBuilder sb = new StringBuilder();
+    dfs(node, new HashSet<>(), sb);
+    return sb.toString();
 }
 
-private void dfs(Node<?> node, Set<Node<?>> visit) {
+private void dfs(Node node, HashSet visit, StringBuilder sb) {
     if (node == null || visit.contains(node))
         return;
 
+    sb.append(node.data);
     visit.add(node);
-    out.print(node.data);
 
-    dfs(node.left, visit);
-    dfs(node.right, visit);
-    dfs(node.parent, visit);
-}
-
-public static void traversal(Node<Character> root) {
-    if (root == null)
-        return;
-
-    Deque<Node<Character>> queue = new LinkedList<>();
-    queue.add(root);
-
-    // 添加哨兵节点标记不同的树
-    Node<Character> next = root.parent;
-    while (next != root) {
-        queue.offer(next);
-        next = next.parent;
-    }
-
-    while (!queue.isEmpty()) {
-        // 当前层的节点数量
-        int size = queue.size();
-        while (size > 0) {
-            Node<Character> node = queue.poll();
-            System.out.print(node.data + " ");
-
-            if (node.left != null)
-                queue.add(node.left);
-
-            if (node.right != null)
-                queue.add(node.right);
-
-            size--;
-        }
-        System.out.println(); // 每层遍历结束后换行
-    }
+    dfs(node.left, visit, sb);
+    dfs(node.right, visit, sb);
+    dfs(node.parent, visit, sb);
 }
 */

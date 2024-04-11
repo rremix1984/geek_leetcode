@@ -7,7 +7,10 @@ import lombok.Setter;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@Setter
+@SuppressWarnings("unused")
 public class LinkedTable<T> {
+
     public T value;
     public LinkedTable<T> parent;
     public LinkedTable<T> left;
@@ -19,10 +22,6 @@ public class LinkedTable<T> {
 
     public T getValue() {
         return value;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
     }
 
     public LinkedTable<T> getParent() {
@@ -38,16 +37,8 @@ public class LinkedTable<T> {
         return left;
     }
 
-    public void setLeft(LinkedTable<T> left) {
-        this.left = left;
-    }
-
     public LinkedTable<T> getRight() {
         return right;
-    }
-
-    public void setRight(LinkedTable<T> right) {
-        this.right = right;
     }
 
     public static void printLinkedTable(LinkedTable<Integer> root) {
@@ -60,24 +51,20 @@ public class LinkedTable<T> {
 
 
     private static void printLinkedTableHelper(LinkedTable<Integer> node, String prefix, boolean isTail) {
-        if (node == null) {
+        if (node == null)
             return;
-        }
 
         if (node.getParent() != null) {
             String pointer = isTail ? "└── " : "├── ";
             System.out.println(prefix + pointer + node.getValue());
-        } else {
+        } else
             System.out.println(node.getValue());
-        }
 
-        if (node.getRight() != null) {
+        if (node.getRight() != null)
             printLinkedTableHelper(node.getRight(), prefix + (isTail ? "    " : "│   "), false);
-        }
 
-        if (node.getLeft() != null) {
+        if (node.getLeft() != null)
             printLinkedTableHelper(node.getLeft(), prefix + (isTail ? "    " : "│   "), true);
-        }
     }
 
     private void printLinkedTableHelper(String prefix, boolean isTail) {

@@ -22,7 +22,7 @@ public class NO6_MatrixLinkedListShortestPath {
 
     @Test
     public void test() {
-        MatrixNode<Integer> mnode = init(5, 5);
+        MatrixNode<Character> mnode = init(5, 5);
         printMatrix(mnode);
         findShortestPaths(mnode.right.right.right,
                           mnode.down.right.right).forEach(
@@ -37,6 +37,7 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/4/7 NO.1 没思路，但能看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 有思路了，没写出来。
         // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
+        // 2024/4/11 NO.4 一遍过
         // TODO 剪枝法
         List<List<MatrixNode>> res = new ArrayList<>();
         return res;

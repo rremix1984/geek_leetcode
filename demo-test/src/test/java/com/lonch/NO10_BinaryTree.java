@@ -7,6 +7,7 @@ import com.lonch.util.Node;
 import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
     [TREENODE] ||
@@ -24,8 +25,7 @@ public class NO10_BinaryTree {
     @Test
     public void test() {
         Node<Character> root = cTree(3, 0); // 创建3阶满二叉树
-        // 这里可以添加代码来遍历和显示树的结构
-        printTree(root);
+        printTree(root);// 这里可以添加代码来遍历和显示树的结构
     }
 
     public Node<Character> cTree(int depth, int cur) {
@@ -34,7 +34,6 @@ public class NO10_BinaryTree {
 
         // TODO 2024/4/10 NO.1 没思路，看答案做出来了
         // TODO 2024/4/11 NO.2 没做对，思路对了
-
         return null;
     }
 

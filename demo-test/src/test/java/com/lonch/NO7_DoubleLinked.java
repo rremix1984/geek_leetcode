@@ -8,22 +8,25 @@ import org.junit.Test;
 import static java.lang.Math.pow;
 
 /**
-    [DOUBLELINKED] |
+    [DOUBLELINKED] ||
     (简单)
     NO.7 双向链表的定义，范型定义。根据二叉树高度，生成满二叉树
  */
+@SuppressWarnings("unused")
 public class NO7_DoubleLinked {
 
     @Test
     public void test() {
         int depth = 4;
         DoubleLinked<String> res = cLink(depth, 0);
+        res.setData(1);
 //        setParents(res, null);
         res.printDoubleLinked();
     }
 
     public DoubleLinked<String> cLink(int depth, int idx) {
         // 2024/4/8 NO.1 没思路，能做出来
+        // 20204/4/11 NO.2
         // TODO
 
         return null;

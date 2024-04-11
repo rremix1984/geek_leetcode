@@ -1,5 +1,6 @@
 package com.lonch.util;
 
+@SuppressWarnings("unused")
 public class TernaryTreeNode<T> {
     public T value;
     public TernaryTreeNode<T> left;
@@ -13,14 +14,13 @@ public class TernaryTreeNode<T> {
         this.right = null;
     }
 
-    public static StringBuilder preOrder(TernaryTreeNode root, StringBuilder sb) {
+    public static <T> void preOrder(TernaryTreeNode<T> root, StringBuilder sb) {
         if (root == null)
-            return sb;
+            return;
 
         sb.append(root.value);
         preOrder(root.left, sb);
         preOrder(root.right, sb);
-        return sb;
     }
 
     // 打印三叉树的方法

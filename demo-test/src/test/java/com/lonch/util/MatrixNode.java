@@ -6,7 +6,9 @@ import java.util.List;
 /**
     四方向链表
  */
+@SuppressWarnings("unused")
 public class MatrixNode<T> {
+
     public T val;
     public MatrixNode<T> left, right, up, down;
 
@@ -18,11 +20,11 @@ public class MatrixNode<T> {
         this.down = null;
     }
 
-    public static void printMatrix(MatrixNode head) {
-        MatrixNode col = head;
+    public static <T> void printMatrix(MatrixNode<T> head) {
+        MatrixNode<T> col = head;
         StringBuilder sb = new StringBuilder();
         while (col != null) {
-            MatrixNode row = col;
+            MatrixNode<T> row = col;
             while (row != null) {
                 sb.append(row.val).append("\t");
                 row = row.right;
@@ -33,11 +35,11 @@ public class MatrixNode<T> {
         System.out.println(sb);
     }
 
-    public static String getMatrix(MatrixNode head) {
+    public static <T> String getMatrix(MatrixNode<T> head) {
         StringBuilder sb = new StringBuilder();
-        MatrixNode col = head;
+        MatrixNode<T> col = head;
         while (col != null) {
-            MatrixNode row = col;
+            MatrixNode<T> row = col;
             while (row != null) {
                 sb.append(row.val).append("\t");
                 row = row.right;
@@ -47,8 +49,8 @@ public class MatrixNode<T> {
         return sb.toString();
     }
 
-    public List<MatrixNode> getNeighbors() {
-        List<MatrixNode> neighbors = new ArrayList<>();
+    public List<MatrixNode<T>> getNeighbors() {
+        List<MatrixNode<T>> neighbors = new ArrayList<>();
         if (this.left != null)
             neighbors.add(this.left);
 
@@ -64,25 +66,25 @@ public class MatrixNode<T> {
         return neighbors;
     }
 
-    public static MatrixNode<Integer> init(int row, int col) {
-        MatrixNode dummy = new MatrixNode(nextChar());
-        MatrixNode row1 = dummy;
+    public static MatrixNode<Character> init(int row, int col) {
+        MatrixNode<Character> dummy = new MatrixNode<>(nextChar());
+        MatrixNode<Character> row1 = dummy;
         for (int i = 1; i < row; i++) {
-            row1.right = new MatrixNode(nextChar());
+            row1.right = new MatrixNode<>(nextChar());
             row1.right.left = row1;
             row1 = row1.right;
         }
 
-        MatrixNode pre = dummy;
+        MatrixNode<Character> pre = dummy;
         for (int i = 1; i < row; i++) {
-            MatrixNode newHead = new MatrixNode(nextChar());
+            MatrixNode<Character> newHead = new MatrixNode<>(nextChar());
             newHead.up = pre;
             pre.down = newHead;
 
-            MatrixNode up = pre;
-            MatrixNode right = newHead;
+            MatrixNode<Character> up = pre;
+            MatrixNode<Character> right = newHead;
             for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode(nextChar());
+                right.right = new MatrixNode<>(nextChar());
                 right.right.left = right;
 
                 right = right.right;

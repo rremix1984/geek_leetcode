@@ -10,7 +10,7 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 /**
-    [SNAKE] ||
+    [SNAKE] |||
     (困难)
     NO.9 贪吃蛇游戏
 
@@ -21,24 +21,13 @@ public class NO9_SnakeGame {
     public static void main(String[] args) {
         // 2024/4/9  NO.1 能看懂，做不出来
         // 2024/4/10 NO.2 一遍过
-        // TODO 这里要熟练使用：new Scanner(System.in).nextLine() 获取命令行输入
+        // 2024/4/11 NO.3 一遍过
         SnakeGame g = new SnakeGame();
-        while (g.move(new Scanner(in).nextLine().charAt(0)) != -1)
-            out.println("W/S/D/A");
-        out.println("game over! socre:" + g.score);
+        // TODO 这里要熟练使用：new Scanner(System.in).nextLine() 获取命令行输入
     }
 
     static class SnakeGame {
-        int score;
-        public SnakeGame() {
-        }
-
-        private void init(char dir) {
-        }
-
-        public int move(char dir) {
-            return score;
-        }
+        // TODO 这次什么都不提示了，能做出来么？
     }
 
 }
