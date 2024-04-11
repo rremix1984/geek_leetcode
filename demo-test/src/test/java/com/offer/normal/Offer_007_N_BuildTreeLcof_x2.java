@@ -32,7 +32,7 @@ public class Offer_007_N_BuildTreeLcof_x2 {
             ));
     }
 
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    public TreeNode<Integer> buildTree(int[] preorder, int[] inorder) {
         return null;
     }
 
@@ -56,7 +56,7 @@ public class Offer_007_N_BuildTreeLcof_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public TreeNode buildTree(int[] preorder, int[] inorder) {
     if (preorder == null || preorder.length == 0) {

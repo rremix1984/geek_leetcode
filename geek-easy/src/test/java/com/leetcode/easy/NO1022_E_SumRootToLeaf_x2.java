@@ -6,7 +6,6 @@ package com.leetcode.easy;
 import com.leetcode.util.MathUtils;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 
@@ -34,7 +33,7 @@ public class NO1022_E_SumRootToLeaf_x2 {
         assert 0 == sumRootToLeaf(cTree(0));
     }
 
-    public int sumRootToLeaf(TreeNode root) {
+    public int sumRootToLeaf(TreeNode<Integer> root) {
         return -1;
     }
 
@@ -54,7 +53,7 @@ public class NO1022_E_SumRootToLeaf_x2 {
 
 
 
-/**
+/*
 // 方法1：递归：深度遍历dfs
 public int sumRootToLeaf(TreeNode root) {
     return dfs(root, 0);

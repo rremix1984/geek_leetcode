@@ -59,7 +59,7 @@ public class OfferII_044_N_LargestValues_x2 {
         assert largestValues(cTree(new Integer[]{})).isEmpty();
     }
 
-    public List<Integer> largestValues(TreeNode root) {
+    public List<Integer> largestValues(TreeNode<Integer> root) {
         List<Integer> res = new ArrayList<>();
         return res;
     }

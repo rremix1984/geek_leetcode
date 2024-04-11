@@ -37,7 +37,7 @@ public class Interval_04_03_N_ListOfDepth {
                 listOfDepth(cTree(1, 2, 3, 4, 5, null, 7, 8)));
     }
 
-    public ListNode[] listOfDepth(TreeNode root) {
+    public ListNode[] listOfDepth(TreeNode<Integer> root) {
         // 2024/3/28 NO.1 没做出来，层序遍历经典题
         // 2024/3/31 NO.2 没做出来，思路对了。还要多练习啊
         if (root == null)

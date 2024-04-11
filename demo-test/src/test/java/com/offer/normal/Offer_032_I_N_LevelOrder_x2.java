@@ -35,7 +35,7 @@ public class Offer_032_I_N_LevelOrder_x2 {
                 levelOrder(cTree(3, 9, 20, null, null, 15, 7)));
     }
 
-    public int[] levelOrder(TreeNode root) {
+    public int[] levelOrder(TreeNode<Integer> root) {
         return new int[0];
     }
 

@@ -32,7 +32,7 @@ public class Interval_04_12_N_PathSum_x2 {
         assert 3 == pathSum(cTree(5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1), 22);
     }
 
-    public int pathSum(TreeNode root, int sum) {
+    public int pathSum(TreeNode<Integer> root, int sum) {
         return 0;
     }
 

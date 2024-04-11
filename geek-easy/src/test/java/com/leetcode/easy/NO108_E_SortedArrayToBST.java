@@ -5,7 +5,6 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -35,18 +34,18 @@ public class NO108_E_SortedArrayToBST {
         assert cTree(3, 1).equals(sortedArrayToBST(new int[]{1, 3}));
     }
 
-    public TreeNode sortedArrayToBST(int[] nums) {
+    public TreeNode<Integer> sortedArrayToBST(int[] nums) {
         return call(nums, 0, nums.length - 1);
     }
 
-    public TreeNode call(int[] nums, int left, int right) {
+    public TreeNode<Integer> call(int[] nums, int left, int right) {
         if (left > right)
             return null;
 
         // 总是选择中间位置左边的数字作为根节点
         int mid = (left + right) / 2;
 
-        TreeNode root = new TreeNode(nums[mid]);
+        TreeNode<Integer> root = new TreeNode<>(nums[mid]);
         root.left = call(nums, left, mid - 1);
         root.right = call(nums, mid + 1, right);
         return root;

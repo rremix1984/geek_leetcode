@@ -8,8 +8,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -26,40 +24,40 @@ public class Offer_037_H_Codec {
 
     @Test
     public void test() {
-        TreeNode tree = cTree(1, 2, 3, null, null, 4, 5);
+        TreeNode<Integer> tree = cTree(1, 2, 3, null, null, 4, 5);
         String ser = Codec.serialize(tree);
         assert tree.equals(Codec.deserialize(ser));
     }
 
     static class Codec {
 
-        public static String serialize(TreeNode root) {
+        public static String serialize(TreeNode<Integer> root) {
             return rserialize(root, "");
         }
 
-        public static TreeNode deserialize(String data) {
+        public static TreeNode<Integer> deserialize(String data) {
             String[] dataArray = data.split(",");
             List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
             return rdeserialize(dataList);
         }
 
-        public static String rserialize(TreeNode root, String str) {
+        public static String rserialize(TreeNode<Integer> root, String str) {
             if (root == null) {
                 str += "None,";
             } else {
-                str += str.valueOf(root.val) + ",";
+                str += root.val + ",";
                 str = rserialize(root.left, str);
                 str = rserialize(root.right, str);
             }
             return str;
         }
 
-        public static TreeNode rdeserialize(List<String> dataList) {
+        public static TreeNode<Integer> rdeserialize(List<String> dataList) {
             if (dataList.get(0).equals("None")) {
                 dataList.remove(0);
                 return null;
             }
-            TreeNode root = new TreeNode(Integer.valueOf(dataList.get(0)));
+            TreeNode<Integer> root = new TreeNode<>(Integer.valueOf(dataList.get(0)));
             dataList.remove(0);
             root.left = rdeserialize(dataList);
             root.right = rdeserialize(dataList);

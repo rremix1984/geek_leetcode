@@ -5,7 +5,6 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -37,7 +36,7 @@ public class NO101_E_SymmetricTree {
         assert isSymmetric(null);
     }
 
-    public boolean isSymmetric(TreeNode root) {
+    public boolean isSymmetric(TreeNode<Integer> root) {
         // 2024/3/23 NO.1 递归法做得不对，需要有思路
         return false;
     }

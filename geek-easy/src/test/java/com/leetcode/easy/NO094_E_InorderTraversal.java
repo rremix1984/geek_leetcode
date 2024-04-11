@@ -4,14 +4,11 @@
 package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
-import lombok.val;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
@@ -34,22 +31,22 @@ public class NO094_E_InorderTraversal {
                                         null,     2,
                                     null, null, 3)));
         assertEquals(getArray(3, 9, 12, 11, 10),
-                inorderTraversal(new TreeNode(3,
-                            null, new TreeNode(9,
-                                    null, new TreeNode(10,
-                                        new TreeNode(11,
-                                new TreeNode(12)))))));
+                inorderTraversal(new TreeNode<>(3,
+                            null, new TreeNode<>(9,
+                                    null, new TreeNode<>(10,
+                                        new TreeNode<>(11,
+                                new TreeNode<>(12)))))));
         assertEquals(getArray(9, 3, 15, 20, 7),
-                inorderTraversal(new TreeNode(3,
-                            9, new TreeNode(20,
+                inorderTraversal(new TreeNode<>(3,
+                            9, new TreeNode<>(20,
                                         15, 7))));
         assertEquals(getArray(0),
-                inorderTraversal(new TreeNode()));
+                inorderTraversal(new TreeNode<>()));
         assertEquals(getArray(1),
-                inorderTraversal(new TreeNode(1)));
+                inorderTraversal(new TreeNode<>(1)));
     }
 
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> inorderTraversal(TreeNode<Integer> root) {
         // 2024/3/12 NO.1
         // 2024/3/16 NO.2 迭代法、递归法 需要复习一下
         // 2024/3/19 NO.3 迭代法 还是不熟悉，要看答案才能做出来

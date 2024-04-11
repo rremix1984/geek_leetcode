@@ -38,7 +38,7 @@ public class Offer_032_II_E_LevelOrder_x2 {
                 levelOrder(cTree(1)));// [1]
     }
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder(TreeNode<Integer> root) {
         List<List<Integer>> res = new ArrayList<>();
         return res;
     }

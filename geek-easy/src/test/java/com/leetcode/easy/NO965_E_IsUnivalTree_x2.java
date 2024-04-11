@@ -31,7 +31,7 @@ public class NO965_E_IsUnivalTree_x2 {
         assert !isUnivalTree(cTree(2, 2, 2, 5, 2));
     }
 
-    public boolean isUnivalTree(TreeNode root) {
+    public boolean isUnivalTree(TreeNode<Integer> root) {
         return true;
     }
 
@@ -53,7 +53,7 @@ public class NO965_E_IsUnivalTree_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean isUnivalTree(TreeNode root) {
     if (root == null)

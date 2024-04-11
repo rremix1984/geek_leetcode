@@ -2,9 +2,9 @@ package com.lcp;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.Set;
 import java.util.TreeSet;
 import static com.leetcode.util.MathUtils.cTree;
+import static org.junit.Assert.assertEquals;
 
 /**
     [ARRAY]
@@ -54,15 +54,15 @@ public class LCP_052_N_GetNumber {
 //        assert 2 == getNumber(
 //                cTree(1, null, 2, null, 3, null, 4, null, 5),
 //                new int[][]{{1, 2, 4}, {1, 1, 3}, {0, 3, 5}});
-        assert 5 == getNumber(
+        assertEquals(5, getNumber(
                 cTree(4, 2, 7, 1, null, 5, null, null, null, null, 6),
-                new int[][]{{0, 2, 2}, {1, 1, 5}, {0, 4, 5}, {1, 5, 7}});
+                new int[][]{{0, 2, 2}, {1, 1, 5}, {0, 4, 5}, {1, 5, 7}}));
     }
 
     // 保存的是没有操作过的节点
     TreeSet<Integer> set;
 
-    public int getNumber(TreeNode root, int[][] ops) {
+    public int getNumber(TreeNode<Integer> root, int[][] ops) {
         if(root == null)
             return 0;
 
@@ -87,7 +87,7 @@ public class LCP_052_N_GetNumber {
         return res;
     }
 
-    private void build(TreeNode root){
+    private void build(TreeNode<Integer> root){
         if(root == null) return;
         build(root.left);
         set.add(root.val);

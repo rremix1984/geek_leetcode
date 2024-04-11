@@ -51,7 +51,7 @@ public class Offer_034_N_PathSum {
                 pathSum(cTree(1, 2),  0));
     }
 
-    public List<List<Integer>> pathSum(TreeNode root, int target) {
+    public List<List<Integer>> pathSum(TreeNode<Integer> root, int target) {
         // 2024/3/21 NO.1 没做出来，但看懂了
         // 2024/3/22 NO.2
         // 2024/3/27 NO.3 思路对，但是没做出来
@@ -62,7 +62,7 @@ public class Offer_034_N_PathSum {
     }
 
     private void dfs(List<List<Integer>> ret, ArrayList<Integer> list,
-                     TreeNode root, int target) {
+                     TreeNode<Integer> root, int target) {
         // TODO
         if (root == null)
             return;

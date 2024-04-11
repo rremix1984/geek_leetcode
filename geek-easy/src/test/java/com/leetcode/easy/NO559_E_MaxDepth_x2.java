@@ -28,22 +28,24 @@ import static java.lang.Math.max;
         树的深度不会超过 1000 。
         树的节点数目位于 [0, 104] 之间。
 */
+@SuppressWarnings("unused")
 public class NO559_E_MaxDepth_x2 {
 
     @Test
     public void test() {
-        List<Node> list = new ArrayList<>();
-        List<Node> inner = new ArrayList<>();
-        inner.add(new Node(5));
-        inner.add(new Node(6));
-        list.add(new Node(3, inner));
-        list.add(new Node(2));
-        list.add(new Node(4));
-        assert 3 == maxDepth(new Node(1, list));
+        List<Node<Integer>> list = new ArrayList<>();
+        List<Node<Integer>> inner = new ArrayList<>();
+        inner.add(new Node<>(5));
+        inner.add(new Node<>(6));
+        list.add(new Node<>(3, inner));
+        list.add(new Node<>(2));
+        list.add(new Node<>(4));
+        assert 3 == maxDepth(new Node<>(1, list));
 //        assert 5 == maxDepth(new Node(1,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14));
     }
 
-    public int maxDepth(Node root) {
+    public int maxDepth(Node<Integer> root) {
+        // TODO
         return 0;
     }
 
@@ -66,7 +68,7 @@ public class NO559_E_MaxDepth_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int maxDepth(Node root) {
     if (root == null)

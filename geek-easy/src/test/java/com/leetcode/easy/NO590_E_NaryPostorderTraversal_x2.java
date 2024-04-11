@@ -4,14 +4,10 @@
 package com.leetcode.easy;
 
 import com.leetcode.util.Node;
-import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
@@ -29,13 +25,16 @@ public class NO590_E_NaryPostorderTraversal_x2 {
 
     @Test
     public void test() {
-        Assert.assertEquals(getArray(5, 6, 3, 2, 4, 1),
-            postorder(new Node(1,
-                new Node(3,
-                        new Node(5), new Node(6)), new Node(2), new Node(4))));
+        assertEquals(getArray(5, 6, 3, 2, 4, 1),
+            postorder(new Node<>(1,
+                new Node<>(3,
+                new Node<>(5),
+                new Node<>(6)),
+                new Node<>(2),
+                new Node<>(4))));
     }
 
-    public List<Integer> postorder(Node root) {
+    public List<Integer> postorder(Node<Integer> root) {
         List<Integer> res = new ArrayList<>();
         return res;
     }
@@ -58,7 +57,7 @@ public class NO590_E_NaryPostorderTraversal_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<Integer> postorder(Node root) {
     List<Integer> res = new ArrayList<>();

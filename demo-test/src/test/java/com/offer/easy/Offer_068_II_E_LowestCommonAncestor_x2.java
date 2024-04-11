@@ -26,13 +26,14 @@ public class Offer_068_II_E_LowestCommonAncestor_x2 {
 
     @Test
     public void test() {
-        TreeNode t1 = cTree(3,  5,  1,  6,  2,  0,  8,  null,  null,  7,  4);
+        TreeNode<Integer> t1 = cTree(3,  5,  1,  6,  2,  0,  8,  null,  null,  7,  4);
         assert t1 == lowestCommonAncestor(t1,  t1.left,  t1.right);
-        TreeNode t2 = cTree(3,  5,  1,  6,  2,  0,  8,  null,  null,  7,  4);
+        TreeNode<Integer> t2 = cTree(3,  5,  1,  6,  2,  0,  8,  null,  null,  7,  4);
         assert t2.left == lowestCommonAncestor(t2,  t2.left,  t2.left.right.right);
     }
 
-    public TreeNode lowestCommonAncestor(TreeNode root,  TreeNode p,  TreeNode q) {
+    public TreeNode<Integer> lowestCommonAncestor(TreeNode<Integer> root,
+                                                  TreeNode<Integer> p,  TreeNode<Integer> q) {
         return root;
     }
 

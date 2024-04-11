@@ -5,12 +5,10 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 import static java.lang.Math.min;
@@ -36,14 +34,14 @@ public class NO111_E_MinimumDepthOfBinaryTree_x3 {
     public void test() {
         assert 2 == minDepth(cTree(3, 9, 20, null, null, 15, 7));
         assert 3 == minDepth(cTree(1, 2, 3, 4, null, null, 5));
-        assert 5 == minDepth(new TreeNode(2,
-                            null, new TreeNode(3,
-                                    null, new TreeNode(4,
-                                            null, new TreeNode(5,
-                                                    null, new TreeNode(6)))))); // 5
+        assert 5 == minDepth(new TreeNode<>(2,
+                            null, new TreeNode<>(3,
+                                    null, new TreeNode<>(4,
+                                            null, new TreeNode<>(5,
+                                                    null, new TreeNode<Integer>(6)))))); // 5
     }
 
-    public int minDepth(TreeNode root) {
+    public int minDepth(TreeNode<Integer> root) {
         return -1;
     }
 

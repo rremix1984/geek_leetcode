@@ -6,9 +6,7 @@ package com.lonch.util;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
-import static java.lang.System.out;
 
-@SuppressWarnings("all")
 @Setter
 @Getter
 public class Node<E> {
@@ -71,7 +69,7 @@ public class Node<E> {
         return node;
     }
 
-    public static String travel(Node<?> node) {
+    public static String travel(Node<String> node) {
         if (node == null)
             return "";
 
@@ -80,7 +78,7 @@ public class Node<E> {
         return sb.toString();
     }
 
-    private static void dfs(Node node, HashSet visit, StringBuilder sb) {
+    private static void dfs(Node<String> node, HashSet<Node<String>> visit, StringBuilder sb) {
         if (node == null || visit.contains(node))
             return;
 
@@ -109,6 +107,9 @@ public class Node<E> {
             int size = queue.size();
             while (size > 0) {
                 Node<T> node = queue.poll();
+                if (node == null)
+                    continue;
+
                 System.out.print(node.data + " ");
 
                 if (node.left != null)

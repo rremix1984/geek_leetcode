@@ -5,10 +5,8 @@ package com.leetcode.normal;
 
 import com.leetcode.util.Node;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
@@ -27,12 +25,16 @@ public class NO429_N_NaryLeverOrderTraversal_x2 {
     @Test
     public void test() {
         assertEquals(getArray(new int[][]{{1}, {3, 2, 4}, {5, 6}}),
-            levelOrder(new Node(1,
-                    new Node(3,
-            new Node(5), new Node(6)), new Node(2), new Node(4))));//[[1], [3, 2, 4], [5, 6]]
+            levelOrder(new Node<>(1,
+                    new Node<>(3,
+                    new Node<>(5),
+                    new Node<>(6)),
+                    new Node<>(2),
+                    new Node<>(4))));//[[1], [3, 2, 4], [5, 6]]
     }
 
-    public List<List<Integer>> levelOrder(Node root) {
+    public List<List<Integer>> levelOrder(Node<Integer> root) {
+        // TODO
         List<List<Integer>> ans = new ArrayList<>();
         return ans;
     }

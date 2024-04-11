@@ -293,7 +293,7 @@ public class MathUtils {
     }
 
     // 中序遍历
-    public static void inOrder(TreeNode root, List<Integer> lst) {
+    public static void inOrder(TreeNode<Integer> root, List<Integer> lst) {
         if (root == null)
             return;
 
@@ -362,18 +362,18 @@ public class MathUtils {
         return inner;
     }
 
-    public static TreeNode cTree(Integer... args) {
+    public static TreeNode<Integer> cTree(Integer... args) {
         int rootIndex = 0;
         List<Integer> arr = Arrays.asList(args);
         return cTreeList(rootIndex, arr);
     }
 
-    public static TreeNode cTreeList(int rootIndex, List<Integer> values) {
+    public static TreeNode<Integer> cTreeList(int rootIndex, List<Integer> values) {
         if (rootIndex >= values.size())
             return null;
 
         if (values.get(rootIndex) != null) {
-            TreeNode rootNode = new TreeNode();
+            TreeNode<Integer> rootNode = new TreeNode<>();
             rootNode.val = values.get(rootIndex);
             rootNode.left = cTreeList(2 * rootIndex + 1, values);
             rootNode.right = cTreeList(2 * rootIndex + 2, values);

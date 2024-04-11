@@ -5,7 +5,6 @@ package com.interval.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -35,11 +34,11 @@ public class Interval_04_05_N_IsValidBST_x2 {
         assert !isValidBST(cTree(5, 1, 4, null, null, 3, 6));
     }
 
-    public boolean isValidBST(TreeNode root) {
+    public boolean isValidBST(TreeNode<Integer> root) {
         return dfs(root, null, null);
     }
 
-    private boolean dfs(TreeNode root, Integer lo, Integer hi) {
+    private boolean dfs(TreeNode<Integer> root, Integer lo, Integer hi) {
         if (root == null)
             return true;
 
@@ -68,7 +67,7 @@ public class Interval_04_05_N_IsValidBST_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean isValidBST(TreeNode root) {
     return dfs(root, null, null);

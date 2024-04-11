@@ -32,7 +32,7 @@ public class Interval_04_10_N_CheckSubTree {
         assert !checkSubTree(cTree(1, null, 2, 4), cTree(3, 2));
     }
 
-    public boolean checkSubTree(TreeNode t1, TreeNode t2) {
+    public boolean checkSubTree(TreeNode<Integer> t1, TreeNode<Integer> t2) {
         StringBuilder s1 = new StringBuilder();
         StringBuilder s2 = new StringBuilder();
         travesal(t1, s1);
@@ -40,7 +40,7 @@ public class Interval_04_10_N_CheckSubTree {
         return s1.toString().contains(s2.toString());
     }
 
-    public void travesal(TreeNode node, StringBuilder s) {
+    public void travesal(TreeNode<Integer> node, StringBuilder s) {
         if (node == null)
             return;
 

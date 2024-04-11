@@ -13,7 +13,6 @@ import static java.lang.System.out;
     [SNAKE] |||
     (困难)
     NO.9 贪吃蛇游戏
-
  */
 @SuppressWarnings("all")
 public class NO9_SnakeGame {

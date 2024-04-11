@@ -5,10 +5,8 @@ package com.offer.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import java.util.Deque;
 import java.util.LinkedList;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -31,7 +29,7 @@ public class OfferII_045_N_FindBottomLeftValue_x2 {
         assert 7 == findBottomLeftValue(cTree(1, 2, 3, 4, null, 5, 6, null, null, null, null, 7));
     }
 
-    public int findBottomLeftValue(TreeNode root) {
+    public int findBottomLeftValue(TreeNode<Integer> root) {
         int ret = 0;
         return ret;
     }
@@ -61,7 +59,7 @@ public class OfferII_045_N_FindBottomLeftValue_x2 {
 
 
 
-/**
+/*
 // 方法1：层序遍历
 public int findBottomLeftValue(TreeNode root) {
     int ret = 0;

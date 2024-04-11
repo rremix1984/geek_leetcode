@@ -25,10 +25,11 @@ public class Interval_17_12_E_ConvertBiNode {
     @Test
     public void test() {
         assert cTree(1, null, 2, null, null, null, 3).equals(
-                convertBiNode(new TreeNode(2,1,3)));
+                convertBiNode(new TreeNode<>(2,1,3)));
     }
 
-    public TreeNode convertBiNode(TreeNode root) {
+    public TreeNode<Integer> convertBiNode(TreeNode<Integer> root) {
+        // TODO
         return root;
     }
 
@@ -51,7 +52,7 @@ public class Interval_17_12_E_ConvertBiNode {
 
 
 
-/**
+/*
 // 方法1：中序遍历
 public TreeNode convertBiNode(TreeNode root) {
     List<Integer> res = new ArrayList<>();

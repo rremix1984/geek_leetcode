@@ -40,7 +40,7 @@ public class OfferII_055_E_IsBalanced_x2 {
         assert !isBalanced(cTree(1, 2, 2, 3, 3, null, null, 4, 4));
     }
     
-    public boolean isBalanced(TreeNode root) {
+    public boolean isBalanced(TreeNode<Integer> root) {
         return true;
     }
 

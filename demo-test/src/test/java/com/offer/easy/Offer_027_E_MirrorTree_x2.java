@@ -5,8 +5,6 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -33,16 +31,16 @@ public class Offer_027_E_MirrorTree_x2 {
 
     @Test
     public void test() {
-        TreeNode source = cTree(4, 2, 7, 1, 3, 6, 9);
-        TreeNode target = cTree(4, 7, 2, 9, 6, 3, 1);
+        TreeNode<Integer> source = cTree(4, 2, 7, 1, 3, 6, 9);
+        TreeNode<Integer> target = cTree(4, 7, 2, 9, 6, 3, 1);
         assert mirrorTree(source).equals(target);
 
-        TreeNode source2 = cTree(2, 1, null, 3);
-        TreeNode target2 = cTree(2, null, 1, null, null, null, 3);
+        TreeNode<Integer> source2 = cTree(2, 1, null, 3);
+        TreeNode<Integer> target2 = cTree(2, null, 1, null, null, null, 3);
         assert mirrorTree(source2).equals(target2);
     }
 
-    public TreeNode mirrorTree(TreeNode root) {
+    public TreeNode<Integer> mirrorTree(TreeNode<Integer> root) {
         if (root == null)
             return null;
 
@@ -69,7 +67,7 @@ public class Offer_027_E_MirrorTree_x2 {
 
 
 
-/**
+/*
 // 方法1：递归法
 public TreeNode mirrorTree(TreeNode root) {
     if (root == null)

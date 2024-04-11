@@ -25,7 +25,7 @@ public class OfferII_052_E_IncreasingBST_x2 {
         assert cTree(1, null, 5, null, null, null, 7).equals(increasingBST(cTree(5, 1, 7)));
     }
 
-    public TreeNode increasingBST(TreeNode root) {
+    public TreeNode<Integer> increasingBST(TreeNode<Integer> root) {
         return null;
     }
 

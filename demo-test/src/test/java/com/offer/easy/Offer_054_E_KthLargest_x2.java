@@ -5,7 +5,6 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -42,7 +41,7 @@ public class Offer_054_E_KthLargest_x2 {
         assert 2 == kthLargest(cTree(3, 1, 4, null, 2), 3);
     }
 
-    public int kthLargest(TreeNode root, int k) {
+    public int kthLargest(TreeNode<Integer> root, int k) {
         return -1;
     }
 }
@@ -69,7 +68,7 @@ public class Offer_054_E_KthLargest_x2 {
 
 
 
-/**
+/*
 int res, k;
 public int kthLargest(TreeNode root, int k) {
     this.k = k;

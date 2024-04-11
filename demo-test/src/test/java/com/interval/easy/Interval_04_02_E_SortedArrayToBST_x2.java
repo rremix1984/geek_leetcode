@@ -30,7 +30,7 @@ public class Interval_04_02_E_SortedArrayToBST_x2 {
                 sortedArrayToBST(new int[]{-10, -3, 0, 5, 9}));
     }
 
-    public TreeNode sortedArrayToBST(int[] nums) {
+    public TreeNode<Integer> sortedArrayToBST(int[] nums) {
         return null;
     }
 

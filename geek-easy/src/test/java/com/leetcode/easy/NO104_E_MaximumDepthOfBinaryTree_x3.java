@@ -6,7 +6,6 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.max;
 import static org.junit.Assert.assertEquals;
@@ -38,7 +37,7 @@ public class NO104_E_MaximumDepthOfBinaryTree_x3 {
         assertEquals(4, maxDepth(cTree(3, null, 9, null, null, null, 10, null, null, null, null, null, null, 11, null)));
     }
 
-    public int maxDepth(TreeNode root) {
+    public int maxDepth(TreeNode<Integer> root) {
         int depth = 0;
         if (root == null)
             return depth;
@@ -54,7 +53,7 @@ public class NO104_E_MaximumDepthOfBinaryTree_x3 {
 
 
 
-/**
+/*
 // 方法1 递归法
 public int maxDepth(TreeNode root) {
     if (root == null)

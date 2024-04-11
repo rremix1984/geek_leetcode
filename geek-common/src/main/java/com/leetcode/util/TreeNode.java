@@ -7,48 +7,48 @@ import java.util.Objects;
  * @author wangxiaozhe
  */
 @SuppressWarnings("all")
-public class TreeNode {
+public class TreeNode<T> {
 
-    public Integer val = 0;
+    public T val;
 
-    public TreeNode left;
+    public TreeNode<T> left;
 
-    public TreeNode right;
+    public TreeNode<T> right;
 
     public TreeNode(){
 
     }
 
-    public TreeNode(int x) { val = x; }
+    public TreeNode(T x) { val = x; }
 
-    public TreeNode(int x, int left) { val = x; this.left = new TreeNode(left); }
+    public TreeNode(T x, T left) { val = x; this.left = new TreeNode(left); }
 
-    public TreeNode(int x, TreeNode left, TreeNode right) {
+    public TreeNode(T x, TreeNode<T> left, TreeNode<T> right) {
         val = x;
         this.left = left;
         this.right = right;
     }
 
-    public TreeNode(int x, TreeNode left) {
+    public TreeNode(T x, TreeNode<T> left) {
         val = x;
         this.left = left;
     }
 
-    public TreeNode(int x, int left, int right) {
+    public TreeNode(T x, T left, T right) {
         val = x;
-        this.left = new TreeNode(left);
-        this.right = new TreeNode(right);
+        this.left = new TreeNode<>(left);
+        this.right = new TreeNode<>(right);
     }
 
-    public TreeNode(int x, TreeNode left, int right) {
+    public TreeNode(T x, TreeNode<T> left, T right) {
         val = x;
         this.left = left;
-        this.right = new TreeNode(right);
+        this.right = new TreeNode<>(right);
     }
 
-    public TreeNode(int x, int left, TreeNode right) {
+    public TreeNode(T x, T left, TreeNode<T> right) {
         val = x;
-        this.left = new TreeNode(left);
+        this.left = new TreeNode<>(left);
         this.right = right;
     }
 
@@ -57,28 +57,24 @@ public class TreeNode {
         return "[" + val + ((left==null&&right==null)?"":", " + left + ", "+ right +"]") ;
     }
 
-    public int val() {
-        return this==null?0:val;
-    }
-
-    public static String printRight(TreeNode tn) {
+    public static <T> String printRight(TreeNode<T> tn) {
         StringBuilder sb = new StringBuilder();
         sb.append(tn.val);
-        while (tn.right!=null) {
+        while (tn.right != null) {
             tn = tn.right;
             sb.append(" -> " + tn.val);
         }
         return sb.toString();
     }
 
-    public boolean equals(TreeNode node) {
+    public boolean equals(TreeNode<T> node) {
         if (node == null)
             return false;
 
         return equalsSub(node, this);
     }
 
-    private boolean equalsSub(TreeNode left, TreeNode right) {
+    private boolean equalsSub(TreeNode<T> left, TreeNode<T> right) {
         if (left == null && right == null)
             return true;
 
@@ -88,7 +84,7 @@ public class TreeNode {
         return equalsSub(left.left, right.left) && equalsSub(left.right, right.right);
     }
 
-    public static boolean treeEquals(TreeNode a, TreeNode b) {
+    public static <T> boolean treeEquals(TreeNode<T> a, TreeNode<T> b) {
         if (a == null && b == null)
             return true;
 

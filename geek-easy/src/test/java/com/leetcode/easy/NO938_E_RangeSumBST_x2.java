@@ -40,7 +40,7 @@ public class NO938_E_RangeSumBST_x2 {
                 6, 10);
     }
 
-    public int rangeSumBST(TreeNode root, int low, int high) {
+    public int rangeSumBST(TreeNode<Integer> root, int low, int high) {
         return 0;
     }
 

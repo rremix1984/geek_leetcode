@@ -13,34 +13,34 @@ import java.util.List;
  */
 @SuppressWarnings("all")
 @NoArgsConstructor
-public class Node {
+public class Node<E> {
 
     // val
-    public int val;
+    public E val;
 
     // children
-    public List<Node> children;
+    public List<Node<E>> children;
 
-    public Node(int val) {
+    public Node(E val) {
         this.val = val;
         this.children = new ArrayList<>();
     }
 
-    public Node(int... vals) {
+    public Node(E... vals) {
         this.val = vals[0];
         this.children = new ArrayList<>();
         for (int i = 1; i < vals.length; i++) {
-            int t = vals[i];
+            E t = vals[i];
             this.children.add(new Node(t));
         }
     }
 
-    public Node(int val, Node... nodes) {
+    public Node(E val, Node... nodes) {
         this.val = val;
         this.children = Arrays.asList(nodes);
     }
 
-    public Node(int val, List<Node> children) {
+    public Node(E val, List<Node<E>> children) {
         this.val = val;
         this.children = children;
     }

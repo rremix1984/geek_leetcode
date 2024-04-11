@@ -35,7 +35,7 @@ public class NO100_E_IsSameTree_x3 {
             cTree(1, 2, 1), cTree(1, 1, 2));
     }
 
-    public boolean isSameTree(TreeNode p, TreeNode q) {
+    public boolean isSameTree(TreeNode<Integer> p, TreeNode<Integer> q) {
         return false;
     }
 

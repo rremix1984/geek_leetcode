@@ -6,7 +6,6 @@ package com.offer.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
-
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.*;
 
@@ -37,7 +36,7 @@ public class Offer_032_III_N_LevelOrder_x2 {
                 levelOrder(cTree(1, 2, 3, 4, null, null, 5)));
     }
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder(TreeNode<Integer> root) {
         List<List<Integer>> ans = new LinkedList<>();
         return ans;
     }
@@ -65,7 +64,7 @@ public class Offer_032_III_N_LevelOrder_x2 {
 
 
 
-/**
+/*
 // 方法1：双链表
 public List<List<Integer>> levelOrder(TreeNode root) {
     List<List<Integer>> ans = new LinkedList<>();

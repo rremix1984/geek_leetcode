@@ -38,7 +38,7 @@ public class Interval_04_04_E_IsBalanced_x2 {
         assert !isBalanced(cTree(1, 2, 2, 3, null, null, 3, 4, null, null, 4));
     }
 
-    public boolean isBalanced(TreeNode root) {
+    public boolean isBalanced(TreeNode<Integer> root) {
         return true;
     }
 
@@ -59,7 +59,7 @@ public class Interval_04_04_E_IsBalanced_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean isBalanced(TreeNode root) {
     if (root == null)

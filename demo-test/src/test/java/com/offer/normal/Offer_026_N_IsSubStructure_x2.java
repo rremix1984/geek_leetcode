@@ -5,7 +5,6 @@ package com.offer.normal;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -40,7 +39,7 @@ public class Offer_026_N_IsSubStructure_x2 {
         assert isSubStructure(cTree(3, 4, 5, 1, 2), cTree(4, 1));
     }
 
-    public boolean isSubStructure(TreeNode A, TreeNode B) {
+    public boolean isSubStructure(TreeNode<Integer> A, TreeNode<Integer> B) {
         return false;
     }
 

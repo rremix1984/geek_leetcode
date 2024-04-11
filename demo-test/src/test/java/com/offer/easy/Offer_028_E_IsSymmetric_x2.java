@@ -5,7 +5,6 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -46,7 +45,7 @@ public class Offer_028_E_IsSymmetric_x2 {
                                  null, 3, null, 3));
     }
 
-    public boolean isSymmetric(TreeNode root) {
+    public boolean isSymmetric(TreeNode<Integer> root) {
         // 2024/3/23 NO.1
         return false;
     }
@@ -74,7 +73,7 @@ public class Offer_028_E_IsSymmetric_x2 {
 
 
 
-/**
+/*
 // 方法1：递归法
 public boolean isSymmetric(TreeNode root) {
     if (root == null)

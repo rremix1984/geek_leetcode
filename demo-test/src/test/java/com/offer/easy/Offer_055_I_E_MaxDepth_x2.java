@@ -5,7 +5,6 @@ package com.offer.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
 
@@ -29,7 +28,7 @@ public class Offer_055_I_E_MaxDepth_x2 {
         assert 3 == maxDepth(cTree(3, 9, 20, null, null, 15, 7));
     }
 
-    public int maxDepth(TreeNode root) {
+    public int maxDepth(TreeNode<Integer> root) {
         return -1;
     }
 
@@ -54,7 +53,7 @@ public class Offer_055_I_E_MaxDepth_x2 {
 
 
 
-/**
+/*
 // 方法1：迭代法
 public int maxDepth(TreeNode root) {
     if (root == null)

@@ -34,14 +34,14 @@ public class Interval_04_06_N_InorderSuccessor_x2 {
 
     @Test
     public void test() {
-        TreeNode left = new TreeNode(1);
-        TreeNode t1 = new TreeNode(2, left, 3);
+        TreeNode<Integer> left = new TreeNode<>(1);
+        TreeNode<Integer> t1 = new TreeNode<>(2, left, 3);
         assert t1.equals(inorderSuccessor(t1, left));
-        TreeNode t2 = cTree(5, 3, 6, 2, 4, null, null, 1);
+        TreeNode<Integer> t2 = cTree(5, 3, 6, 2, 4, null, null, 1);
         assert null == inorderSuccessor(t2, t2.right);
     }
 
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+    public TreeNode<Integer> inorderSuccessor(TreeNode<Integer> root, TreeNode<Integer> p) {
         return null;
     }
 
