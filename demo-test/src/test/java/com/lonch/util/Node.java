@@ -1,14 +1,24 @@
+/**
+ * @copyright wxz
+ */
 package com.lonch.util;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.util.*;
 import static java.lang.System.out;
 
 @SuppressWarnings("all")
+@Setter
+@Getter
 public class Node<E> {
 
     public E data;
+
     public Node<E> parent;
+
     public Node<E> left;
+
     public Node<E> right;
 
     // 构造器
@@ -16,35 +26,10 @@ public class Node<E> {
         this.data = data;
     }
 
-    // getter 和 setter 方法
-    public E getData() {
-        return data;
-    }
-
-    public void setData(E data) {
-        this.data = data;
-    }
-
-    public Node<E> getParent() {
-        return parent;
-    }
-
-    public void setParent(Node<E> parent) {
-        this.parent = parent;
-    }
-
-    public Node<E> getLeft() {
-        return left;
-    }
-
     public void setLeft(Node<E> left) {
         this.left = left;
         if (left != null)
             left.setParent(this);
-    }
-
-    public Node<E> getRight() {
-        return right;
     }
 
     public void setRight(Node<E> right) {
@@ -57,8 +42,7 @@ public class Node<E> {
         if (root == null)
             return null;
 
-        // 这里是复制节点的地方，但由于限制，我们不执行实际的复制
-        Node<E> node = new Node<>(root.data); // 这里违反了不使用 new 的要求
+        Node<E> node = new Node<>(root.data);
 
         node.left = copy(root.left);
         if (node.left != null)
@@ -71,46 +55,19 @@ public class Node<E> {
         return node;
     }
 
-    // 层次遍历打印二叉树
-//    public static void printTree(Node<Character> root) {
-//        if (root == null)
-//            return;
-//
-//        Queue<Node<Character>> queue = new LinkedList<>();
-//        queue.offer(root);
-//
-//        while (!queue.isEmpty()) {
-//            int size = queue.size();
-//            while (size > 0) {
-//                Node<Character> node = queue.poll();
-//                out.print(node.data + " ");
-//                if (node.left != null)
-//                    queue.offer(node.left);
-//
-//                if (node.right != null)
-//                    queue.offer(node.right);
-//
-//                if (--size == 0)
-//                    out.println();
-//            }
-//
-//        }
-//        out.println();
-//    }
-
     public static Node<Character> cTree(int depth, int currentIndex) {
         if (depth == 0)
             return null;
 
         Node<Character> node = new Node<>((char) ('A' + currentIndex % 26));
         node.left = cTree(depth - 1, 2 * currentIndex + 1);
-        if (node.left != null) {
+        if (node.left != null)
             node.left.parent = node;
-        }
+
         node.right = cTree(depth - 1, 2 * currentIndex + 2);
-        if (node.right != null) {
+        if (node.right != null)
             node.right.parent = node;
-        }
+
         return node;
     }
 
@@ -135,25 +92,23 @@ public class Node<E> {
         dfs(node.parent, visit, sb);
     }
 
-    public static void printTree(Node<Character> root) {
+    public static <T> void printTree(Node<T> root) {
         if (root == null)
             return;
 
-        Deque<Node<Character>> queue = new LinkedList<>();
+        Deque<Node<T>> queue = new LinkedList<>();
         queue.add(root);
 
-        // 添加哨兵节点标记不同的树
-        Node<Character> next = root.parent;
+        Node<T> next = root.parent;
         while (next != null && next != root) {
             queue.offer(next);
             next = next.parent;
         }
 
         while (!queue.isEmpty()) {
-            // 当前层的节点数量
             int size = queue.size();
             while (size > 0) {
-                Node<Character> node = queue.poll();
+                Node<T> node = queue.poll();
                 System.out.print(node.data + " ");
 
                 if (node.left != null)

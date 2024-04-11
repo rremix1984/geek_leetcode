@@ -1,5 +1,8 @@
 package com.lonch.util;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +10,8 @@ import java.util.List;
     四方向链表
  */
 @SuppressWarnings("unused")
+@Setter
+@Getter
 public class MatrixNode<T> {
 
     public T val;
@@ -97,7 +102,9 @@ public class MatrixNode<T> {
         }
         return dummy;
     }
+
     static int c;
+
     private static char nextChar() {
         return (char) ('a' + (c++ % 26));
     }

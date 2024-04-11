@@ -1,3 +1,6 @@
+/**
+ * @copyright wxz
+ */
 package com.lonch.util;
 
 import lombok.Getter;
@@ -14,6 +17,9 @@ import static org.junit.Assert.assertEquals;
 /**
     根据二叉树高度，生成满二叉树
 */
+@Getter
+@Setter
+@SuppressWarnings("unused")
 public class TreeNode<E> {
 
     public E val;
@@ -28,37 +34,13 @@ public class TreeNode<E> {
 
     }
 
-    public E getVal() {
-        return val;
-    }
-
-    public void setVal(E val) {
-        this.val = val;
-    }
-
-    public TreeNode<E> getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode<E> left) {
-        this.left = left;
-    }
-
-    public TreeNode<E> getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode<E> right) {
-        this.right = right;
-    }
-
     @Override
     public String toString() {
         return "[" + val + (
                 (left == null && right == null) ? "" : ", " + left + ", "+ right +"]") ;
     }
 
-    public static void preOrder(TreeNode root, List res) {
+    public static <E> void preOrder(TreeNode<E> root, List<E> res) {
         if (root == null)
             return;
 
@@ -67,7 +49,7 @@ public class TreeNode<E> {
         preOrder(root.right, res);
     }
 
-    public static void postOrder(TreeNode root, List res) {
+    public static <E> void postOrder(TreeNode<E> root, List<E> res) {
         if (root == null)
             return;
 
@@ -76,7 +58,7 @@ public class TreeNode<E> {
         res.add(root.val);
     }
 
-    public static void inOrder(TreeNode root, List res) {
+    public static <E> void inOrder(TreeNode<E> root, List<E> res) {
         if (root == null)
             return;
 
@@ -85,32 +67,31 @@ public class TreeNode<E> {
         inOrder(root.right, res);
     }
 
-    public static TreeNode cTree(int depth, Integer value) {
+    public static <E> TreeNode<E> cTree(int depth, E value) {
         // 基准情况
         if (depth < 0)
             return null;
 
         // 创建当前节点
-        TreeNode node = new TreeNode<>(value);
+        TreeNode<E> node = new TreeNode<>(value);
         // 递归创建左右子树
         node.left = cTree(depth - 1, value);
         node.right = cTree(depth - 1, value);
         return node;
     }
 
-    public static void levelOrder(TreeNode<Character> root,
-                                  List<Character> list) {
+    public static <E> void levelOrder(TreeNode<E> root,
+                                  List<E> list) {
         if (root == null)
             return;
 
-        // TODO
-        Deque<TreeNode<Character>> queue = new LinkedList<>();
+        Deque<TreeNode<E>> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            Character val;
+            E val;
             while (size > 0) {
-                TreeNode<Character> node = queue.poll();
+                TreeNode<E> node = queue.poll();
                 val = node.val;
                 System.out.print(node.val + " ");
                 if (node.left != null)

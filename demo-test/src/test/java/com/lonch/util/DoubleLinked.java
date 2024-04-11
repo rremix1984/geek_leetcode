@@ -3,10 +3,14 @@
  */
 package com.lonch.util;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @SuppressWarnings("unused")
 @Setter
+@Getter
+@NoArgsConstructor
 public class DoubleLinked<E> {
 
     public E data;
@@ -16,30 +20,9 @@ public class DoubleLinked<E> {
     public DoubleLinked<E> left;
 
     public DoubleLinked<E> right;
-    // 4 个属性get set 代码省略
-
-    public DoubleLinked() {
-
-    }
 
     public DoubleLinked(E data) {
         this.data = data;
-    }
-
-    public E getData() {
-        return data;
-    }
-
-    public DoubleLinked<E> getParent() {
-        return parent;
-    }
-
-    public DoubleLinked<E> getLeft() {
-        return left;
-    }
-
-    public DoubleLinked<E> getRight() {
-        return right;
     }
 
     public void printDoubleLinked(DoubleLinked<E> head) {

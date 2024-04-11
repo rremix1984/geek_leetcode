@@ -2,11 +2,11 @@ package com.lonch.util;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
 @Setter
+@Getter
 @SuppressWarnings("unused")
 public class LinkedTable<T> {
 
@@ -16,28 +16,11 @@ public class LinkedTable<T> {
     public LinkedTable<T> right;
 
     public LinkedTable() {
-
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public LinkedTable<T> getParent() {
-        return parent;
     }
 
     public LinkedTable<T> setParent(LinkedTable<T> parent) {
         this.parent = parent;
         return this;
-    }
-
-    public LinkedTable<T> getLeft() {
-        return left;
-    }
-
-    public LinkedTable<T> getRight() {
-        return right;
     }
 
     public static void printLinkedTable(LinkedTable<Integer> root) {
@@ -74,20 +57,18 @@ public class LinkedTable<T> {
             System.out.println(getValue());
         }
 
-        if (getRight() != null) {
+        if (getRight() != null)
             printLinkedTableHelper(prefix + (isTail ? "    " : "│   "), false);
-        }
 
-        if (getLeft() != null) {
+        if (getLeft() != null)
             printLinkedTableHelper(prefix + (isTail ? "    " : "│   "), true);
-        }
     }
 
     private void printNodeValue(LinkedTable<Integer> node, int depth) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < depth; i++) {
+        for (int i = 0; i < depth; i++)
             sb.append("  "); // 缩进两个空格
-        }
+
         sb.append(node.getValue());
         System.out.println(sb);
     }

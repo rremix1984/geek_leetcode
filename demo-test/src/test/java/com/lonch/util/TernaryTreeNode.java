@@ -1,10 +1,21 @@
+/**
+ * @copyright wxz
+ */
 package com.lonch.util;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 @SuppressWarnings("unused")
+@Data
 public class TernaryTreeNode<T> {
+
     public T value;
+
     public TernaryTreeNode<T> left;
+
     public TernaryTreeNode<T> middle;
+
     public TernaryTreeNode<T> right;
 
     public TernaryTreeNode(T value) {
@@ -25,9 +36,8 @@ public class TernaryTreeNode<T> {
 
     // 打印三叉树的方法
     public static <T> void printTernaryTree(TernaryTreeNode<T> node) {
-        if (node == null) {
+        if (node == null)
             return;
-        }
 
         // 打印当前节点值
         System.out.print(node.value + " ");
