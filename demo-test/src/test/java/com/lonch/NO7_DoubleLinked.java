@@ -19,7 +19,6 @@ public class NO7_DoubleLinked {
     public void test() {
         int depth = 4;
         DoubleLinked<String> res = cLink(depth, 0);
-        res.setData(1);
 //        setParents(res, null);
         res.printDoubleLinked();
     }

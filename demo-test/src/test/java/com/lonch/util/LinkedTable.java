@@ -1,6 +1,5 @@
 package com.lonch.util;
 
-import com.lonch.NO8_LinkedTable;
 import lombok.Getter;
 import lombok.Setter;
 
