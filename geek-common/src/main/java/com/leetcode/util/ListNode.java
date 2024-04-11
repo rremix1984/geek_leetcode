@@ -1,6 +1,7 @@
+/**
+ * @copyright wxz
+ */
 package com.leetcode.util;
-
-import lombok.ToString;
 
 import java.util.Arrays;
 
@@ -9,48 +10,50 @@ import java.util.Arrays;
  *
  * @author wangxiaozhe
  */
-@ToString
-public class ListNode {
-    public int val;
-    public ListNode next;
+@SuppressWarnings("unused")
+public class ListNode<E> {
+    public E val;
+    public ListNode<E> next;
 
-    public static int toInt(ListNode node, int defaultValue) {
-        if (node == null) {
+    public static <E> E toInt(ListNode<E> node, E defaultValue) {
+        if (node == null)
             return defaultValue;
-        }
         return node.val;
     }
 
-    public static int toInt(ListNode node) {
+    public static int toInt(ListNode<Integer> node) {
         if (node == null) {
             return 0;
         }
         return node.val;
     }
 
-    public static ListNode newCycle(int... vals) {
+    @SafeVarargs
+    public static <E> ListNode<E> newCycle(E... vals) {
         int max = vals.length - 1;
-        ListNode head = new ListNode(Arrays.copyOf(vals, vals.length - 1));
-        ListNode cur = head;
-        ListNode pre = null;
+        ListNode<E> head = new ListNode<>(Arrays.copyOf(vals, vals.length - 1));
+        ListNode<E> cur = head;
+        ListNode<E> pre = null;
         for (int i = 0; i < vals.length - 1; i++) {
+            if (cur == null)
+                continue;
+
             if (i == vals.length - 2) {
                 cur.next = pre;
             } else {
-                if (cur.val == vals[max]) {
+                if (cur.val == vals[max])
                     pre = cur;
-                }
                 cur = cur.next;
             }
         }
         return head;
     }
 
-    public static ListNode reverse(ListNode head) {
-        ListNode pre = null;
-        ListNode cur = head;
+    public static <E> ListNode<E> reverse(ListNode<E> head) {
+        ListNode<E> pre = null;
+        ListNode<E> cur = head;
         while (cur != null) {
-            ListNode next = cur.next;
+            ListNode<E> next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -58,10 +61,10 @@ public class ListNode {
         return pre;
     }
 
-    public static ListNode reverse(ListNode head, ListNode tail) {
-        ListNode pre = null;
+    public static <E> ListNode<E> reverse(ListNode<E> head, ListNode<E> tail) {
+        ListNode<E> pre = null;
         while (head != tail) {
-            ListNode next = head.next;
+            ListNode<E> next = head.next;
             head.next = pre;
             pre = head;
             head = next;
@@ -70,7 +73,7 @@ public class ListNode {
     }
 
     @SuppressWarnings("all")
-    public ListNode next(ListNode next) {
+    public ListNode<E> next(ListNode<E> next) {
         this.next = next;
         return this;
     }
@@ -79,29 +82,30 @@ public class ListNode {
 
     }
 
-    public static void assertNodeEquals(ListNode node, int... arr) {
-        assert new ListNode(arr).equals(node);
+    public static <E> void assertNodeEquals(ListNode<E> node, int... arr) {
+        assert new ListNode<>(arr).equals(node);
     }
 
-    public ListNode(int... vals) {
+    @SafeVarargs
+    public ListNode(E... vals) {
         if (vals != null) {
             this.val = vals[0];
-            ListNode cur = this;
+            ListNode<E> cur = this;
             for (int i = 1; i < vals.length; i++) {
-                cur.next = new ListNode(vals[i]);
+                cur.next = new ListNode<>(vals[i]);
                 cur = cur.next;
             }
         }
     }
 
-    public ListNode(int val, ListNode next) {
+    public ListNode(E val, ListNode<E> next) {
         this.val = val;
         this.next = next;
     }
 
-    public boolean equals(ListNode listNode) {
-        ListNode p1 = this;
-        ListNode p2 = listNode;
+    public boolean equals(ListNode<E> listNode) {
+        ListNode<E> p1 = this;
+        ListNode<E> p2 = listNode;
         if (p2 == null)
             return false;
 
@@ -114,7 +118,7 @@ public class ListNode {
 
     @Override
     public String toString() {
-        ListNode cur = this;
+        ListNode<E> cur = this;
         StringBuilder sb = new StringBuilder();
         while (cur.next != null) {
             sb.append(cur.val).append(" -> ");
@@ -123,7 +127,7 @@ public class ListNode {
         return sb.append(cur.val).append(" -> null").toString();
     }
 
-    public static int getListNodeLength(ListNode head) {
+    public static <E> int getListNodeLength(ListNode<E> head) {
         int length = 0;
         while (head != null) {
             length++;

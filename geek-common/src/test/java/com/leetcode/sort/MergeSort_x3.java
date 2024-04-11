@@ -24,7 +24,7 @@ public class MergeSort_x3 {
 
     @Test
     public void test() {
-        assertArrayEquals(range(1, 7).toArray(),
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6},
                 mergeSort(new int[]{1, 3, 5, 2, 4, 6}, 0, 5));
         assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
                 mergeSort(new int[]{1, 2, 5, 5, 3, 6}, 0, 5));

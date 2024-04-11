@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TreeNodeUtil {
 
-    public static void inorder(TreeNode node, List<Integer> res) {
+    public static <E> void inorder(TreeNode<E> node, List<E> res) {
         if (node == null)
             return;
 

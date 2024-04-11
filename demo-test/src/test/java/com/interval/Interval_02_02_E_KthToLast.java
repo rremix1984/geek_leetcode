@@ -21,13 +21,13 @@ public class Interval_02_02_E_KthToLast {
     @Test
     public void test() {
         assert 4 == kthToLast(
-            new ListNode(1, 2, 3, 4, 5), 2);
+            new ListNode<>(1, 2, 3, 4, 5), 2);
     }
 
-    public int kthToLast(ListNode head, int k) {
+    public int kthToLast(ListNode<Integer> head, int k) {
         // 2024/3/29 NO.1 双指针做出来了
         // 2024/3/31 NO.2 一遍过，双指针
-        ListNode fast = head;
+        ListNode<Integer> fast = head;
 
         return fast.val;
     }

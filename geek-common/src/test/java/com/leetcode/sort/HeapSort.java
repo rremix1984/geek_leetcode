@@ -64,7 +64,7 @@ public class HeapSort {
 }
 
 
-/** 方法2：
+/* 方法2：
 public int[] sortArray(int[] nums) {
     heapSort(nums);
     return nums;

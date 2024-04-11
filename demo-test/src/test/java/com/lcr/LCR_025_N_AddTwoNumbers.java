@@ -36,21 +36,21 @@ public class LCR_025_N_AddTwoNumbers {
 
     @Test
     public void test() {
-        assert new ListNode(7, 8, 0, 7).equals(
-                addTwoNumbers(new ListNode(7, 2, 4, 3),
-                              new ListNode(5, 6, 4)));
-        assert new ListNode(8, 0, 7).equals(
-                addTwoNumbers(new ListNode(2, 4, 3),
-                              new ListNode(5, 6, 4)));
-        assert new ListNode(0).equals(
-                addTwoNumbers(new ListNode(0),
-                              new ListNode(0)));
+        assert new ListNode<>(7, 8, 0, 7).equals(
+                addTwoNumbers(new ListNode<>(7, 2, 4, 3),
+                              new ListNode<>(5, 6, 4)));
+        assert new ListNode<>(8, 0, 7).equals(
+                addTwoNumbers(new ListNode<>(2, 4, 3),
+                              new ListNode<>(5, 6, 4)));
+        assert new ListNode<>(0).equals(
+                addTwoNumbers(new ListNode<>(0),
+                              new ListNode<>(0)));
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
         // 2024/3/27 NO.1 不会做, 答案看懂了
         // 2024/4/1  NO.2 没思路，看懂答案了
-        ListNode ret = null;
+        ListNode<Integer> ret = null;
         Stack<Integer> stack1 = new Stack<>();
         Stack<Integer> stack2 = new Stack<>();
         while (l1 != null) {

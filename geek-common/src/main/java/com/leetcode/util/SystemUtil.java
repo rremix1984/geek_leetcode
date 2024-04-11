@@ -91,16 +91,12 @@ public class SystemUtil {
     }
 
     public static void printArr(boolean[][] arr) {
-//        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                System.out.printf("%d\t\t", j);
-            }
-            System.out.println();
-//        }
+        for (int j = 0; j < arr[0].length; j++)
+            System.out.printf("%d\t\t", j);
+        System.out.println();
         for (boolean[] i : arr) {
-            for (boolean b : i) {
+            for (boolean b : i)
                 System.out.printf("%b\t", b);
-            }
             System.out.println();
         }
     }

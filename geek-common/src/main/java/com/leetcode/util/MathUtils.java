@@ -1,10 +1,11 @@
+/**
+ * @copyright
+ */
 package com.leetcode.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
 import java.util.*;
-
 import static java.lang.Integer.MIN_VALUE;
 import static java.time.LocalTime.now;
 import static java.util.Arrays.copyOf;
@@ -23,13 +24,11 @@ public class MathUtils {
      * 三个值取最大
      */
     public static int maxs(int... a) {
-        if (a == null || a.length == 0) {
+        if (a == null || a.length == 0)
             return -1;
-        }
 
-        if (a.length == 1) {
+        if (a.length == 1)
             return a[0];
-        }
 
         return getmax(a);
     }
@@ -69,7 +68,7 @@ public class MathUtils {
      * 递归方法 找最大值
      */
     private static int getmax(int[] a, int max) {
-        int lastindex = a.length-1;
+        int lastindex = a.length - 1;
         int last = a[lastindex];
         if (a.length == 1)
             return max(last, max);
@@ -92,34 +91,18 @@ public class MathUtils {
     }
 
     private static int max(int i, int j) {
-        if (i >= j)
-            return i;
-        return j;
+        return Math.max(i, j);
     }
 
     private static int min(int i, int j) {
-        if (i <= j)
-            return i;
-        return j;
-    }
-
-    private static long max(long i, long j) {
-        if (i >= j)
-            return i;
-        return j;
-    }
-
-    private static long min(long i, long j) {
-        if (i <= j)
-            return i;
-        return j;
+        return Math.min(i, j);
     }
 
     public static int bin2Dec(String binaryString){
         int sum = 0;
-        for(int i = 0;i < binaryString.length();i++){
+        for (int i = 0; i < binaryString.length(); i++) {
             char ch = binaryString.charAt(i);
-            if(ch > '2' || ch < '0')
+            if (ch > '2' || ch < '0')
                 throw new NumberFormatException(String.valueOf(i));
             sum = sum * 2 + (binaryString.charAt(i) - '0');
         }
@@ -203,8 +186,7 @@ public class MathUtils {
     }
 
     public static ArrayList<ArrayList<Object>> getArray() {
-        ArrayList<ArrayList<Object>> res = new ArrayList<>();
-        return res;
+        return new ArrayList<>();
     }
 
     public static List<Integer> getLinkedList(int num) {
@@ -322,9 +304,7 @@ public class MathUtils {
 
     public static long[] getArrayL(long... arr) {
         long[] inner = new long[arr.length];
-        for (int i = 0; i < inner.length; i++) {
-            inner[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, inner, 0, inner.length);
         return inner;
     }
 
@@ -382,17 +362,17 @@ public class MathUtils {
         return null;
     }
 
-    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    public static ListNode<Integer> mergeTwoLists(ListNode<Integer> list1, ListNode<Integer> list2) {
         if (list1 == null)
             return list2;
 
         if (list2 == null)
             return list1;
 
-        ListNode dummy = new ListNode(-1);
-        ListNode temp = dummy;
-        ListNode l1 = list1;
-        ListNode l2 = list2;
+        ListNode<Integer> dummy = new ListNode<>(-1);
+        ListNode<Integer> temp = dummy;
+        ListNode<Integer> l1 = list1;
+        ListNode<Integer> l2 = list2;
         while (l1 != null && l2 != null) {
             if (l1.val <= l2.val) {
                 temp.next = l1;
@@ -407,18 +387,18 @@ public class MathUtils {
         return dummy.next;
     }
 
-    public static ListNode[] getListNodes() {
-        return new ListNode[]{new ListNode()};
+    public static ListNode<Integer>[] getListNodes() {
+        return new ListNode[]{new ListNode<>()};
     }
 
-    public static ListNode[] getListNodes(int[][] arr) {
+    public static ListNode<Integer>[] getListNodes(int[][] arr) {
         if (arr == null ||arr.length == 0 || arr[0] == null)
-            return new ListNode[]{new ListNode()};
+            return new ListNode[]{new ListNode<>()};
 
-        ListNode[] res = new ListNode[arr.length];
+        ListNode<Integer>[] res = new ListNode[arr.length];
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].length == 0)
-                res[i] = new ListNode();
+                res[i] = new ListNode<>();
             else
                 res[i] = new ListNode(arr[i]);
         }
@@ -460,10 +440,4 @@ public class MathUtils {
         return b;
     }
 
-    public static void main(String[] args) {
-//        System.out.println(max(1,2,3,4,5));
-//        System.out.println(maxs(0, 6, 3, 41111, 5, 2, 5, 8, 109));
-//        System.out.println(mins(0, 6, 3));
-//        System.out.println(maxs(0, -6, -3, -41111, -5, -2, -5, -8, -109));
-    }
 }

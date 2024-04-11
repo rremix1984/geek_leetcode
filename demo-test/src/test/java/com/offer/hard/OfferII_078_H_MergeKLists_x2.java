@@ -33,29 +33,29 @@ public class OfferII_078_H_MergeKLists_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(1, 1, 2, 3, 4, 4, 5, 6).equals(
+        assert new ListNode<>(1, 1, 2, 3, 4, 4, 5, 6).equals(
                 mergeKLists(getListNodes(new int[][]{{1, 4, 5}, {1, 3, 4}, {2, 6}})));
-        assert new ListNode().equals(
+        assert new ListNode<>().equals(
                 mergeKLists(getListNodes()));
     }
 
-    public ListNode mergeKLists(ListNode[] lists) {
-        ListNode ans = null;
+    public ListNode<Integer> mergeKLists(ListNode<Integer>[] lists) {
+        ListNode<Integer> ans = null;
 
-        for (ListNode list : lists)
+        for (ListNode<Integer> list : lists)
             ans = mergeTwoLists(ans, list);
 
         return ans;
     }
 
-    public ListNode mergeTwoLists(ListNode a, ListNode b) {
+    public ListNode<Integer> mergeTwoLists(ListNode<Integer> a, ListNode<Integer> b) {
         if (a == null || b == null)
             return a != null ? a : b;
 
-        ListNode head = new ListNode(-1);
-        ListNode tail = head;
-        ListNode p1 = a;
-        ListNode p2 = b;
+        ListNode<Integer> head = new ListNode<>(-1);
+        ListNode<Integer> tail = head;
+        ListNode<Integer> p1 = a;
+        ListNode<Integer> p2 = b;
 
         while (p1 != null && p2 != null) {
             if (p1.val < p2.val) {
@@ -91,7 +91,7 @@ public class OfferII_078_H_MergeKLists_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode mergeKLists(ListNode[] lists) {
     ListNode ans = null;

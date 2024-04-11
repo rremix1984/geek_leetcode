@@ -5,71 +5,69 @@ package com.leetcode.util;
  * 2019-03-31 1:00 PM
  **/
 @SuppressWarnings("all")
-public class SwapUtil {
+public class SwapUtil<E> {
 
     @SuppressWarnings("all")
+    public static <E> void swap(E[] nums, int i, int j) {
+        E temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void swap(char[] nums, int i, int j) {
+        char temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
     public static void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
 
-    public static void swap(Integer[] nums, Integer i, Integer j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
-    public static void swap(String[] nums, int i, int j) {
-        String temp = nums[i];
+    public static <E> void swap(E[] nums, Integer i, Integer j) {
+        E temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
 
     @SuppressWarnings("all")
-    public static void swap(int[] pre, int[] cur) {
-        int[] tmp = pre;
+    public static <E> void swap(E[] pre, E[] cur) {
+        E[] tmp = pre;
         pre = cur;
         cur = tmp;
     }
 
     @SuppressWarnings("all")
-    public static void swap(char[] c, int i, int j) {
-        char temp = c[i];
-        c[i] = c[j];
-        c[j] = temp;
-    }
-
-    @SuppressWarnings("all")
-    public static void swap(TreeNode root) {
-        TreeNode tmp = root.left;
+    public static <E> void swap(TreeNode<E> root) {
+        TreeNode<E> tmp = root.left;
         root.left = root.right;
         root.right = tmp;
     }
 
     @SuppressWarnings("all")
-    public static void swap(TreeNode t1, TreeNode t2) {
-        int temp = t1.val;
+    public static <E> void swap(TreeNode<E> t1, TreeNode<E> t2) {
+        E temp = t1.val;
         t1.val = t2.val;
         t2.val = temp;
     }
 
-    public static void swapLR(TreeNode root) {
-        TreeNode temp = root.left;
+    public static <E> void swapLR(TreeNode<E> root) {
+        TreeNode<E> temp = root.left;
         root.left = root.right;
         root.right = temp;
     }
 
     @SuppressWarnings("all")
-    public static void swap(int t1, int t2) {
-        int temp = t1;
+    public static <E> void swap(E t1, E t2) {
+        E temp = t1;
         t1 = t2;
         t2 = temp;
     }
 
-    @SuppressWarnings("all")
-    public static void swap(ListNode left, ListNode right) {
-        int tmp = left.val;
+    public static <E> void swap(ListNode<E> left, ListNode<E> right) {
+        E tmp = left.val;
         left.val = right.val;
         right.val = tmp;
     }

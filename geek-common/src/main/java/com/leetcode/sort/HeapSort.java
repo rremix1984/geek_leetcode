@@ -6,16 +6,16 @@ package com.leetcode.sort;
 import static com.leetcode.util.SwapUtil.swap;
 
 /**
- * 7. 堆排序
- *
- * 创建一个堆 H[0……n-1]；
- * 把堆首（最大值）和堆尾互换；
- * 把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置；
- * 重复步骤 2，直到堆的尺寸为 1。
+   7. 堆排序
+
+   创建一个堆 H[0……n-1]；
+   把堆首（最大值）和堆尾互换；
+   把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置；
+   重复步骤 2，直到堆的尺寸为 1。
  */
 public class HeapSort {
 
-    public static int[] heapSort(int[] arr) {
+    public static Integer[] heapSort(Integer[] arr) {
         int len = arr.length;
         int high = len / 2;
 
@@ -31,7 +31,7 @@ public class HeapSort {
         return arr;
     }
 
-    private static void heapify(int[] arr, int max, int len) {
+    private static void heapify(Integer[] arr, int max, int len) {
         int left = 2 * max + 1;
         int right = 2 * max + 2;
         int largest = max;
@@ -51,7 +51,7 @@ public class HeapSort {
 }
 
 
-/** 方法2：
+/* 方法2：
 public int[] sortArray(int[] nums) {
     heapSort(nums);
     return nums;
