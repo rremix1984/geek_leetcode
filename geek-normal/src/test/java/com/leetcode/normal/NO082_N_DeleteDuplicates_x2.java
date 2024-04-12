@@ -26,13 +26,13 @@ public class NO082_N_DeleteDuplicates_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 5).equals(
-                deleteDuplicates(new ListNode(1, 2, 3, 3, 4, 4, 5)));
-        assert new ListNode(2, 3).equals(
-                deleteDuplicates(new ListNode(1, 1, 1, 2, 3)));
+        assert new ListNode<>(1, 2, 5).equals(
+                deleteDuplicates(new ListNode<>(1, 2, 3, 3, 4, 4, 5)));
+        assert new ListNode<>(2, 3).equals(
+                deleteDuplicates(new ListNode<>(1, 1, 1, 2, 3)));
     }
 
-    public ListNode deleteDuplicates(ListNode head) {
+    public ListNode<Integer> deleteDuplicates(ListNode<Integer> head) {
         return null;
     }
 
@@ -51,7 +51,7 @@ public class NO082_N_DeleteDuplicates_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode deleteDuplicates(ListNode head) {
     if (head == null)

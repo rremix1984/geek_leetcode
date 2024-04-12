@@ -45,7 +45,7 @@ public class NO501_E_FindMode {
             findMode(cTree(0)));
     }
 
-    public int[] findMode(TreeNode root) {
+    public int[] findMode(TreeNode<Integer> root) {
         List<Integer> list = new ArrayList<>();
         inOrder(root, list);
         int pre = list.get(0);

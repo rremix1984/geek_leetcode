@@ -25,20 +25,20 @@ public class NO206_E_ReverseLinkedList {
 
     @Test
     public void test() {
-        assert new ListNode(5, 4, 3, 2, 1).equals(
-            reverseList(new ListNode(1, 2, 3, 4, 5)));// [5, 4, 3, 2, 1]
-        assert new ListNode(2, 1).equals(
-            reverseList(new ListNode(1,2)));// [2, 1]
-        assert new ListNode().equals(
-            reverseList(new ListNode()));// []
+        assert new ListNode<>(5, 4, 3, 2, 1).equals(
+            reverseList(new ListNode<>(1, 2, 3, 4, 5)));// [5, 4, 3, 2, 1]
+        assert new ListNode<>(2, 1).equals(
+            reverseList(new ListNode<>(1,2)));// [2, 1]
+        assert new ListNode<>().equals(
+            reverseList(new ListNode<>()));// []
     }
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode<Integer> reverseList(ListNode<Integer> head) {
         // 2024/3/5  NO.1 要练思路，两种解法
         // 2024/3/10 NO.2 第一种做出来了，第二种错了
         // 2024/3/11 NO.3
         // 2024/3/17-20 NO.4-5 两种都做出来了
-        ListNode pre = null;
+        ListNode<Integer> pre = null;
         return pre;
     }
 

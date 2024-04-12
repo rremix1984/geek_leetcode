@@ -36,7 +36,7 @@ public class NO700_E_SearchBST_x2 {
         assertNull(searchBST(cTree(4, 2, 7, 1, 3),5));
     }
 
-    public TreeNode searchBST(TreeNode root, int val) {
+    public TreeNode<Integer> searchBST(TreeNode<Integer> root, int val) {
         if (root == null || val == root.val)
             return root;
 

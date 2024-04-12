@@ -6,6 +6,7 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
 import static com.leetcode.util.MathUtils.cTree;
+import static org.junit.Assert.assertEquals;
 
 /**
     [TREE]
@@ -34,18 +35,18 @@ public class NO671_E_FindSecondMinimumValue_x2 {
 
     @Test
     public void test() {
-        assert 5 == findSecondMinimumValue(cTree(2,2,5,null,null,5,7));
-        assert -1 == findSecondMinimumValue(cTree(2,2,2));
+        assertEquals(5, findSecondMinimumValue(cTree(2,2,5,null,null,5,7)));
+        assertEquals(-1, findSecondMinimumValue(cTree(2,2,2)));
     }
 
     int ans;
-    public int findSecondMinimumValue(TreeNode root) {
+    public int findSecondMinimumValue(TreeNode<Integer> root) {
         ans = -1;
         dfs(root, root.val);
         return ans;
     }
 
-    public void dfs(TreeNode node, int rootValue) {
+    public void dfs(TreeNode<Integer> node, int rootValue) {
         if (node == null)
             return;
 

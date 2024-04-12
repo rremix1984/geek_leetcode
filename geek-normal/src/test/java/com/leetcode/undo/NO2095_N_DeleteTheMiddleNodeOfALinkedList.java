@@ -37,18 +37,18 @@ public class NO2095_N_DeleteTheMiddleNodeOfALinkedList {
 
     @Test
     public void test() {
-        assert new ListNode(1, 3, 4, 1, 2, 6).equals(deleteMiddle(new ListNode(1, 3, 4, 7, 1, 2, 6)));
-        assert new ListNode(1, 2, 4).equals(deleteMiddle(new ListNode(1, 2, 3, 4)));
-        assert new ListNode(2).equals(deleteMiddle(new ListNode(2, 1)));
+        assert new ListNode<>(1, 3, 4, 1, 2, 6).equals(deleteMiddle(new ListNode<>(1, 3, 4, 7, 1, 2, 6)));
+        assert new ListNode<>(1, 2, 4).equals(deleteMiddle(new ListNode<>(1, 2, 3, 4)));
+        assert new ListNode<>(2).equals(deleteMiddle(new ListNode<>(2, 1)));
     }
 
-    public ListNode deleteMiddle(ListNode head) {
+    public ListNode<Integer> deleteMiddle(ListNode<Integer> head) {
         if (head.next == null)
             return null;
 
-        ListNode slow = head;
-        ListNode fast = head;
-        ListNode pre = null;
+        ListNode<Integer> slow = head;
+        ListNode<Integer> fast = head;
+        ListNode<Integer> pre = null;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             pre = slow;
@@ -78,7 +78,7 @@ public class NO2095_N_DeleteTheMiddleNodeOfALinkedList {
 
 
 
-/**
+/*
 // 方法1：双指针法
 public ListNode deleteMiddle(ListNode head) {
     if (head.next == null)

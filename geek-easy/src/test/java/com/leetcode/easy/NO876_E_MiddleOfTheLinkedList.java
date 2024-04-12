@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import static com.leetcode.util.ListNode.reverse;
 import static com.leetcode.util.LogUtil.info;
+import static org.junit.Assert.assertEquals;
 
 /**
     [LISTNODE] ||||
@@ -31,11 +32,11 @@ public class NO876_E_MiddleOfTheLinkedList {
 
     @Test
     public void test() {
-        assert 3 == middleNode(new ListNode(1, 2, 3, 4, 5)).val;
-        assert 4 == middleNode(new ListNode(1, 2, 3, 4, 5, 6)).val;
+        assert 3 == middleNode(new ListNode<>(1, 2, 3, 4, 5)).val;
+        assert 4 == middleNode(new ListNode<>(1, 2, 3, 4, 5, 6)).val;
     }
 
-    public ListNode middleNode(ListNode head) {
+    public ListNode<Integer> middleNode(ListNode<Integer> head) {
         // 2024/3/26 NO.1 没做出来，但是看懂思路了
         // 2024/3/27 NO.2 做出来了，用的快、慢指针
         // 2024/3/31 NO.3 做出来了，...

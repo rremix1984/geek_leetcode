@@ -25,16 +25,16 @@ public class NO143_N_ReorderList_x2 {
 
     @Test
     public void test() {
-        ListNode tmp = new ListNode(1, 2, 3, 4);
+        ListNode<Integer> tmp = new ListNode<>(1, 2, 3, 4);
         reorderList(tmp);
-        assert new ListNode(1, 4, 2, 3).equals(tmp);
+        assert new ListNode<>(1, 4, 2, 3).equals(tmp);
 
-        ListNode tmp2 = new ListNode(1, 2, 3, 4, 5);
+        ListNode<Integer> tmp2 = new ListNode<>(1, 2, 3, 4, 5);
         reorderList(tmp2);
-        assert new ListNode(1, 5, 2, 4, 3).equals(tmp2);
+        assert new ListNode<>(1, 5, 2, 4, 3).equals(tmp2);
     }
 
-    public void reorderList(ListNode head) {
+    public void reorderList(ListNode<Integer> head) {
 
     }
 

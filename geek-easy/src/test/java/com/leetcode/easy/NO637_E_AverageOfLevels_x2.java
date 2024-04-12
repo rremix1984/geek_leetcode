@@ -40,15 +40,18 @@ public class NO637_E_AverageOfLevels_x2 {
                 averageOfLevels(cTree(3, 9, 20, 15, 7)));
     }
 
-    public List<Double> averageOfLevels(TreeNode root) {
+    public List<Double> averageOfLevels(TreeNode<Integer> root) {
         List<Double> res = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<TreeNode<Integer>> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             double sum = 0;
             int size = queue.size();
             for (int i = 0; i < size; i++) {
-                TreeNode node = queue.poll();
+                TreeNode<Integer> node = queue.poll();
+                if (node == null)
+                    continue;
+
                 sum += node.val;
                 if (node.left != null)
                     queue.offer(node.left);
@@ -79,7 +82,7 @@ public class NO637_E_AverageOfLevels_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<Double> averageOfLevels(TreeNode root) {
     List<Integer> counts = new ArrayList<>();

@@ -5,7 +5,8 @@ package com.leetcode.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
+
+import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
     (简单)
@@ -26,29 +27,30 @@ public class NO021_E_MergeTwoSortedLists_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(1, 1, 2, 3, 4, 4).equals(mergeTwoLists(
-            new ListNode(1, 2, 4), new ListNode(1, 3, 4)));//[1, 1, 2, 3, 4, 4]
-        assert new ListNode(0, 0).equals(mergeTwoLists(
-            new ListNode(),new ListNode()));//[]
-        assert new ListNode(0, 0).equals(mergeTwoLists(
-            new ListNode(),new ListNode(0)));//[0]
+        assert new ListNode<>(0, 0).equals(
+            mergeTwoLists(new ListNode<>(), new ListNode<>()));//[]
+        assert new ListNode<>(0, 0).equals(
+            mergeTwoLists(new ListNode<>(), new ListNode<>(0)));//[0]
+        assert new ListNode<>(1, 1, 2, 3, 4, 4).equals(
+            mergeTwoLists(new ListNode<>(1, 2, 4), new ListNode<>(1, 3, 4))
+        );//[1, 1, 2, 3, 4, 4]
     }
 
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    private ListNode<Integer> mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2) {
         if (l1 == null)
             return l2;
 
         if (l2 == null)
             return l1;
 
-        ListNode dummy = new ListNode(-1);
-        ListNode cur = dummy;
+        ListNode<Integer> dummy = new ListNode<>(-1);
+        ListNode<Integer> cur = dummy;
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
-                cur.next = new ListNode(l1.val);
+                cur.next = new ListNode<>(l1.val);
                 l1 = l1.next;
             } else {
-                cur.next = new ListNode(l2.val);
+                cur.next = new ListNode<>(l2.val);
                 l2 = l2.next;
             }
             cur = cur.next;
@@ -75,7 +77,7 @@ public class NO021_E_MergeTwoSortedLists_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
     if (l1 == null)

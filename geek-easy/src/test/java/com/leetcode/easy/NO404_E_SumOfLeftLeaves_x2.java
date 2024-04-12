@@ -31,7 +31,7 @@ public class NO404_E_SumOfLeftLeaves_x2 {
         assert 0 == sumOfLeftLeaves(cTree(1));
     }
 
-    public int sumOfLeftLeaves(TreeNode root) {
+    public int sumOfLeftLeaves(TreeNode<Integer> root) {
         int res = 0;
         return res;
     }

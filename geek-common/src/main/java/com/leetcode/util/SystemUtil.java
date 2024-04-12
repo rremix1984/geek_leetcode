@@ -4,6 +4,8 @@
 package com.leetcode.util;
 
 import java.util.*;
+
+import static java.lang.System.out;
 import static java.util.Arrays.sort;
 
 /**
@@ -15,19 +17,18 @@ public class SystemUtil {
     public static void print(TreeSet<Long> set) {
         // 打印一个TreeSet数组的元素
         Iterator<Long> iterator = set.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-        System.out.println("=======");
+        while (iterator.hasNext())
+            out.println(iterator.next());
+        out.println("=======");
     }
 
     public static void print(TreeNode node) {
         // 打印一个TreeSet数组的元素
 //        Iterator<Long> iterator = set.iterator();
 //        while (iterator.hasNext()) {
-            System.out.println(node.toString());
+            out.println(node.toString());
 //        }
-        System.out.println("=======");
+        out.println("=======");
     }
 
     /**
@@ -35,69 +36,68 @@ public class SystemUtil {
      */
     public static void printArr(Integer[] arr) {
         for (int n : arr)
-            System.out.printf("%d\t", n);
-        System.out.println();
+            out.printf("%d\t", n);
+        out.println();
     }
 
     public static void printArrs(List<List<Integer>> arr) {
         for (List<Integer> irr : arr) {
             for (Integer i : irr) {
-                System.out.printf("%d\t", i);
+                out.printf("%d\t", i);
             }
         }
-        System.out.println();
+        out.println();
     }
 
     public static void printListNode(ListNode listNode) {
-        System.out.println(listNode.toString());
+        out.println(listNode.toString());
     }
 
     public static void printListNodes(ListNode[] listNode) {
         for (ListNode node : listNode)
-            System.out.println(node.toString());
+            out.println(node.toString());
 
-        System.out.println();
+        out.println();
     }
 
     public static void printArr(int[] arr) {
         for (int i : arr)
-            System.out.printf("%d\t", i);
-        System.out.println();
+            out.printf("%d\t", i);
+        out.println();
     }
 
     public static void printArr(int[][] arr) {
         for (int[] i : arr) {
-            for (int j = 0; j < i.length; j++) {
-                System.out.printf("%d\t", j);
-            }
-            System.out.println();
+            for (int j = 0; j < i.length; j++)
+                out.printf("%d\t", j);
+            out.println();
         }
     }
 
     public static void print(List<String> list) {
         for (String s : list)
-            System.out.printf("%s\t", s);
-        System.out.println();
+            out.printf("%s\t", s);
+        out.println();
     }
 
     public static void print(Object s) {
-        System.out.println(s);
+        out.println(s);
     }
 
     public static void printArr(boolean[] arr) {
         for (boolean i : arr)
-            System.out.printf("%b\t", i);
-        System.out.println();
+            out.printf("%b\t", i);
+        out.println();
     }
 
     public static void printArr(boolean[][] arr) {
         for (int j = 0; j < arr[0].length; j++)
-            System.out.printf("%d\t\t", j);
-        System.out.println();
+            out.printf("%d\t\t", j);
+        out.println();
         for (boolean[] i : arr) {
             for (boolean b : i)
-                System.out.printf("%b\t", b);
-            System.out.println();
+                out.printf("%b\t", b);
+            out.println();
         }
     }
 
@@ -159,23 +159,23 @@ public class SystemUtil {
 
     public static void printArray(List<Integer> list) {
         for (Integer integer : list)
-            System.out.printf("%d\t", integer);
+            out.printf("%d\t", integer);
 
-        System.out.println();
+        out.println();
     }
 
     public static void printArrayStr(List<String> list) {
         for (String integer : list)
-            System.out.printf("%s\t", integer);
+            out.printf("%s\t", integer);
 
-        System.out.println();
+        out.println();
     }
 
     public static void printArr(String[] arr) {
         for (String s : arr)
-            System.out.printf("%s\t", s);
+            out.printf("%s\t", s);
 
-        System.out.println();
+        out.println();
     }
 
     public static void preOrder(TreeNode root, List res) {

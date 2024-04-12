@@ -44,7 +44,7 @@ public class NO543_E_DiameterOfBinaryTree_x2 {
     }
 
     int ans = 0;
-    public int diameterOfBinaryTree(TreeNode root) {
+    public int diameterOfBinaryTree(TreeNode<Integer> root) {
         return ans;
     }
 
@@ -68,7 +68,7 @@ public class NO543_E_DiameterOfBinaryTree_x2 {
 
 
 
-/**
+/*
 // 方法1：
 int ans;
 public int diameterOfBinaryTree(TreeNode root) {

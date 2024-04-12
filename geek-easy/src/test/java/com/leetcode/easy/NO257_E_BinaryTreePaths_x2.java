@@ -34,7 +34,7 @@ public class NO257_E_BinaryTreePaths_x2 {
                 binaryTreePaths(cTree(1)));
     }
 
-    public List<String> binaryTreePaths(TreeNode root) {
+    public List<String> binaryTreePaths(TreeNode<Integer> root) {
         List<String> res = new ArrayList<>();
         return res;
     }
@@ -58,7 +58,7 @@ public class NO257_E_BinaryTreePaths_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<String> binaryTreePaths(TreeNode root) {
     List<String> paths = new ArrayList<>();

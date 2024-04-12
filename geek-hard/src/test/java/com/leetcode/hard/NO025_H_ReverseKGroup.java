@@ -34,15 +34,15 @@ public class NO025_H_ReverseKGroup {
 
     @Test
     public void test() {
-        assert new ListNode(2, 1, 4, 3, 5).equals(
-                reverseKGroup(new ListNode(1, 2, 3, 4, 5), 2));
-        assert new ListNode(3, 2, 1, 4, 5).equals(
-                reverseKGroup(new ListNode(1, 2, 3, 4, 5), 3));
-        assert new ListNode(2,1,4,3,5).equals(
-                reverseKGroup(new ListNode(1,2,3,4,5), 2));
+        assert new ListNode<>(2, 1, 4, 3, 5).equals(
+                reverseKGroup(new ListNode<>(1, 2, 3, 4, 5), 2));
+        assert new ListNode<>(3, 2, 1, 4, 5).equals(
+                reverseKGroup(new ListNode<>(1, 2, 3, 4, 5), 3));
+        assert new ListNode<>(2,1,4,3,5).equals(
+                reverseKGroup(new ListNode<>(1,2,3,4,5), 2));
     }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode<Integer> reverseKGroup(ListNode<Integer> head, int k) {
         // 2024/3/31 NO.1 没思路，不会做。看懂答案了
         // 2024/4/2  NO.2
         if (head == null || head.next == null)

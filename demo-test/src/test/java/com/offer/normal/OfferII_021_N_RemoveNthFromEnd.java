@@ -29,18 +29,18 @@ public class OfferII_021_N_RemoveNthFromEnd {
 
     @Test
     public void test() {
-        assert new ListNode(1,2,3,5).equals(
-                removeNthFromEnd(new ListNode(1,2,3,4,5), 2));
-        assert new ListNode().equals(
-                removeNthFromEnd(new ListNode(1),1));
-        assert new ListNode(1).equals(
-                removeNthFromEnd(new ListNode(1,2),1));
+        assert new ListNode<>(1,2,3,5).equals(
+                removeNthFromEnd(new ListNode<>(1,2,3,4,5), 2));
+        assert new ListNode<>().equals(
+                removeNthFromEnd(new ListNode<>(1),1));
+        assert new ListNode<>(1).equals(
+                removeNthFromEnd(new ListNode<>(1,2),1));
     }
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode();
+    public ListNode<Integer> removeNthFromEnd(ListNode<Integer> head, int n) {
+        ListNode<Integer> dummy = new ListNode<>();
         dummy.next = head;
-        ListNode cur = dummy;
+        ListNode<Integer> cur = dummy;
 
         for (int i = 1; i < getLength(head) - n + 1; i++)
             cur = cur.next;
@@ -50,7 +50,7 @@ public class OfferII_021_N_RemoveNthFromEnd {
         return dummy.next;
     }
 
-    public int getLength(ListNode head) {
+    public int getLength(ListNode<Integer> head) {
         int len = 0;
         while (head != null) {
             head = head.next;
@@ -76,7 +76,7 @@ public class OfferII_021_N_RemoveNthFromEnd {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode removeNthFromEnd(ListNode head, int n) {
     ListNode dummy = new ListNode();

@@ -5,7 +5,6 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -62,7 +61,7 @@ public class NO938_E_RangeSumBST_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int rangeSumBST(TreeNode root, int low, int high) {
     if (root == null)

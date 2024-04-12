@@ -42,7 +42,7 @@ public class NO572_E_IsSubtree_x2 {
                 cTree(4, 1, 2));
     }
 
-    public boolean isSubtree(TreeNode s, TreeNode t) {
+    public boolean isSubtree(TreeNode<Integer> s, TreeNode<Integer> t) {
         return false;
     }
 

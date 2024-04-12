@@ -3,7 +3,10 @@
  */
 package com.leetcode.util;
 
-import java.util.Arrays;
+import lombok.Getter;
+import lombok.Setter;
+
+import static java.util.Arrays.copyOf;
 
 /**
  * listNode
@@ -11,8 +14,14 @@ import java.util.Arrays;
  * @author wangxiaozhe
  */
 @SuppressWarnings("unused")
+@Getter
+@Setter
 public class ListNode<E> {
-    public E val;
+
+    public E val = (E) Integer.valueOf(0);
+
+    public int data;
+
     public ListNode<E> next;
 
     public static <E> E toInt(ListNode<E> node, E defaultValue) {
@@ -22,16 +31,16 @@ public class ListNode<E> {
     }
 
     public static int toInt(ListNode<Integer> node) {
-        if (node == null) {
+        if (node == null)
             return 0;
-        }
         return node.val;
     }
 
     @SafeVarargs
     public static <E> ListNode<E> newCycle(E... vals) {
         int max = vals.length - 1;
-        ListNode<E> head = new ListNode<>(Arrays.copyOf(vals, vals.length - 1));
+        ListNode<E> head = new ListNode<>(
+                copyOf(vals, vals.length - 1));
         ListNode<E> cur = head;
         ListNode<E> pre = null;
         for (int i = 0; i < vals.length - 1; i++) {

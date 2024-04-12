@@ -29,22 +29,22 @@ public class NO1379_E_GetTargetCopy_x2 {
 
     @Test
     public void test() {
-        TreeNode no4 = new TreeNode(4, null, new TreeNode(3, null, new TreeNode(2, null, new TreeNode(1))));
+        TreeNode<Integer> no4 = new TreeNode<>(4, null, new TreeNode<>(3, null, new TreeNode<>(2, null, new TreeNode<>(1))));
         assert no4.equals(getTargetCopy(
-                          new TreeNode(8,
+                          new TreeNode<>(8,
                             null, new TreeNode(6,
                                         null, new TreeNode(5,
                                                             null, no4))),
-                          new TreeNode(8,
+                          new TreeNode<>(8,
                             null, new TreeNode(6,
                                         null, new TreeNode(5,
                                                             null, no4))), no4));
     }
 
-    public TreeNode getTargetCopy(final TreeNode original,
-                                  final TreeNode cloned,
-                                  final TreeNode target) {
-        TreeNode ans = null;
+    public TreeNode<Integer> getTargetCopy(final TreeNode<Integer> original,
+                                           final TreeNode<Integer> cloned,
+                                           final TreeNode<Integer> target) {
+        TreeNode<Integer> ans = null;
         return ans;
     }
 

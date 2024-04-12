@@ -30,15 +30,15 @@ public class NO1669_N_MergeInBetween_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(0, 1, 2, 1000000, 1000001, 1000002, 5).equals(
-            mergeInBetween(new ListNode(0, 1, 2, 3, 4, 5), 3, 4,
-                           new ListNode(1000000, 1000001, 1000002)));
-        assert new ListNode(0, 1, 1000000, 1000001, 1000002, 1000003, 1000004, 6).equals(
-            mergeInBetween(new ListNode(0, 1, 2, 3, 4, 5, 6), 2, 5,
-                           new ListNode(1000000, 1000001, 1000002, 1000003, 1000004)));
+        assert new ListNode<>(0, 1, 2, 1000000, 1000001, 1000002, 5).equals(
+            mergeInBetween(new ListNode<>(0, 1, 2, 3, 4, 5), 3, 4,
+                           new ListNode<>(1000000, 1000001, 1000002)));
+        assert new ListNode<>(0, 1, 1000000, 1000001, 1000002, 1000003, 1000004, 6).equals(
+            mergeInBetween(new ListNode<>(0, 1, 2, 3, 4, 5, 6), 2, 5,
+                           new ListNode<>(1000000, 1000001, 1000002, 1000003, 1000004)));
     }
 
-    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+    public ListNode<Integer> mergeInBetween(ListNode<Integer> list1, int a, int b, ListNode<Integer> list2) {
         return list1;
     }
 
@@ -56,7 +56,7 @@ public class NO1669_N_MergeInBetween_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
     ListNode p1 = list1;

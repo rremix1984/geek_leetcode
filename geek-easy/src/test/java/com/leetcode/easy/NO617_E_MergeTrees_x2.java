@@ -38,14 +38,14 @@ public class NO617_E_MergeTrees_x2 {
                 mergeTrees(cTree(1), cTree(1,2)));
     }
 
-    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+    public TreeNode<Integer> mergeTrees(TreeNode<Integer> t1, TreeNode<Integer> t2) {
         if (t1 == null)
             return t2;
 
         if (t2 == null)
             return t1;
 
-        TreeNode merged = new TreeNode(t1.val + t2.val);
+        TreeNode<Integer> merged = new TreeNode<>(t1.val + t2.val);
         merged.left = mergeTrees(t1.left, t2.left);
         merged.right = mergeTrees(t1.right, t2.right);
         return merged;

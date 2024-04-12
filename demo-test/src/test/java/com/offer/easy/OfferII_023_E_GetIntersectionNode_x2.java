@@ -36,14 +36,14 @@ public class OfferII_023_E_GetIntersectionNode_x2 {
 
     @Test
     public void test() {
-        ListNode eight = new ListNode(8, 4, 5);
-        assert eight.equals(getIntersectionNode(new ListNode(4, 1).next(eight), new ListNode(5, 0, 1).next(eight)));
-        ListNode two = new ListNode(2, 4);
-        assert two.equals(getIntersectionNode(new ListNode(0, 9, 1).next(two), new ListNode(3).next(two)));
-        assertNull(getIntersectionNode(new ListNode(2, 6, 4), new ListNode(1, 5)));
+        ListNode<Integer> eight = new ListNode<>(8, 4, 5);
+        assert eight.equals(getIntersectionNode(new ListNode<>(4, 1).next(eight), new ListNode<>(5, 0, 1).next(eight)));
+        ListNode<Integer> two = new ListNode<>(2, 4);
+        assert two.equals(getIntersectionNode(new ListNode<>(0, 9, 1).next(two), new ListNode<>(3).next(two)));
+        assertNull(getIntersectionNode(new ListNode<>(2, 6, 4), new ListNode<>(1, 5)));
     }
 
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public ListNode<Integer> getIntersectionNode(ListNode<Integer> headA, ListNode<Integer> headB) {
         return null;
     }
 

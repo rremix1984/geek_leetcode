@@ -51,7 +51,7 @@ public class NO144_E_PreorderTraversal {
                 preorderTraversal(cTree(1, null, 2)));// [1, 2]
     }
 
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> preorderTraversal(TreeNode<Integer> root) {
         // 2024/3/12 NO.1 一共3种方法，递归法出来了
         // 2024/3/16-19-22-23 NO.2-3-4-5 迭代法做出来了
         List<Integer> res = new ArrayList<>();

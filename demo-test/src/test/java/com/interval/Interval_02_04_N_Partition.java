@@ -29,14 +29,14 @@ public class Interval_02_04_N_Partition {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 2, 4, 3, 5).equals(
-                partition(new ListNode(1, 4, 3, 2, 5, 2), 3));
-        assert new ListNode(1, 2).equals(
-                partition(new ListNode(2, 1), 2));
+        assert new ListNode<>(1, 2, 2, 4, 3, 5).equals(
+                partition(new ListNode<>(1, 4, 3, 2, 5, 2), 3));
+        assert new ListNode<>(1, 2).equals(
+                partition(new ListNode<>(2, 1), 2));
     }
 
-    public ListNode partition(ListNode head, int x) {
-        ListNode dummy = new ListNode(0, head);
+    public ListNode<Integer> partition(ListNode<Integer> head, int x) {
+        ListNode<Integer> dummy = new ListNode<>(0, head);
 
         return dummy.next;
     }

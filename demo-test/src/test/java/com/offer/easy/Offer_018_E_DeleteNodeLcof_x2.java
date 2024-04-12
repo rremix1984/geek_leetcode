@@ -26,15 +26,15 @@ public class Offer_018_E_DeleteNodeLcof_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(4, 1, 9).equals(
-                deleteNode(new ListNode(4, 5, 1, 9), 5));
-        assert new ListNode(4, 5, 9).equals(
-                deleteNode(new ListNode(4, 5, 1, 9), 1));
-        assert new ListNode(5, -99).equals(
-                deleteNode(new ListNode(-3, 5, -99), -3));
+        assert new ListNode<>(4, 1, 9).equals(
+                deleteNode(new ListNode<>(4, 5, 1, 9), 5));
+        assert new ListNode<>(4, 5, 9).equals(
+                deleteNode(new ListNode<>(4, 5, 1, 9), 1));
+        assert new ListNode<>(5, -99).equals(
+                deleteNode(new ListNode<>(-3, 5, -99), -3));
     }
 
-    public ListNode deleteNode(ListNode head, int val) {
+    public ListNode<Integer> deleteNode(ListNode<Integer> head, int val) {
         return null;
     }
 

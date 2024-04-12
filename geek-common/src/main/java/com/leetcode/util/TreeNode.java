@@ -36,20 +36,15 @@ public class TreeNode<T> {
 
     public TreeNode(T x, T left, T right) {
         val = x;
-        this.left = new TreeNode<>(left);
-        this.right = new TreeNode<>(right);
-    }
+        if (left instanceof TreeNode)
+            this.left = (TreeNode) left;
+        else
+            this.left = new TreeNode<>(left);
 
-    public TreeNode(T x, TreeNode<T> left, T right) {
-        val = x;
-        this.left = left;
-        this.right = new TreeNode<>(right);
-    }
-
-    public TreeNode(T x, T left, TreeNode<T> right) {
-        val = x;
-        this.left = new TreeNode<>(left);
-        this.right = right;
+        if (right instanceof TreeNode)
+            this.right = (TreeNode) right;
+        else
+            this.right = new TreeNode<>(right);
     }
 
     @Override

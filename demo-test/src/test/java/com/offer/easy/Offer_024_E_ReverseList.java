@@ -20,13 +20,13 @@ public class Offer_024_E_ReverseList {
 
     @Test
     public void test() {
-        assert new ListNode(5, 4, 3, 2, 1).equals(
-                reverseList(new ListNode(1, 2, 3, 4, 5)));
-        assert new ListNode(3, 4, 5, 1, 2).equals(
-                reverseList(new ListNode(2, 1, 5, 4, 3)));
+        assert new ListNode<>(5, 4, 3, 2, 1).equals(
+                reverseList(new ListNode<>(1, 2, 3, 4, 5)));
+        assert new ListNode<>(3, 4, 5, 1, 2).equals(
+                reverseList(new ListNode<>(2, 1, 5, 4, 3)));
     }
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode<Integer> reverseList(ListNode<Integer> head) {
         // 2024/3/16 NO.1
         // 2024/3/23 NO.2 一遍过
         // 2024/3/25 NO.3 一遍过

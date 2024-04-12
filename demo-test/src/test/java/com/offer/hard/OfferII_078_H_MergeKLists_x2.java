@@ -5,8 +5,6 @@ package com.offer.hard;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-
-import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.getListNodes;
 
 /**

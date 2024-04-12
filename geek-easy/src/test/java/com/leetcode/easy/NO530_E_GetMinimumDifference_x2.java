@@ -35,7 +35,7 @@ public class NO530_E_GetMinimumDifference_x2 {
         assert 1 == getMinimumDifference(cTree(1, 0, 48, null, null, 12, 49));
     }
 
-    public int getMinimumDifference(TreeNode root) {
+    public int getMinimumDifference(TreeNode<Integer> root) {
         int ans = MAX_VALUE;
         return ans;
     }

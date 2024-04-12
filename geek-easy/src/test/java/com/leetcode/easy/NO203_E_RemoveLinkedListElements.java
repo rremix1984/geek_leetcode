@@ -5,8 +5,6 @@ package com.leetcode.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-
-import static com.leetcode.util.SystemUtil.printListNode;
 import static org.junit.Assert.assertNull;
 
 /**
@@ -29,16 +27,16 @@ public class NO203_E_RemoveLinkedListElements {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 3, 4, 5).equals(
-                removeElements(new ListNode(1, 2, 6, 3, 4, 5, 6),6));
-        assert new ListNode().equals(
-                removeElements(new ListNode(),1));
-        assertNull(removeElements(new ListNode(7, 7, 7, 7),7));
+        assert new ListNode<>(1, 2, 3, 4, 5).equals(
+                removeElements(new ListNode<>(1, 2, 6, 3, 4, 5, 6),6));
+        assert new ListNode<>().equals(
+                removeElements(new ListNode<>(),1));
+        assertNull(removeElements(new ListNode<>(7, 7, 7, 7),7));
     }
 
-    public ListNode removeElements(ListNode head, int val) {
+    public ListNode<Integer> removeElements(ListNode<Integer> head, int val) {
         // 2024/3/25 NO.1 没做对
-        ListNode dummy = new ListNode(-1);
+        ListNode<Integer> dummy = new ListNode<>(-1);
 
         return dummy.next;
     }

@@ -35,12 +35,12 @@ public class NO061_N_RotateList {
 
     @Test
     public void test() {
-        assert new ListNode(4, 5, 1, 2, 3).equals(
-                rotateRight(new ListNode(1, 2, 3, 4, 5), 2));
-        assert new ListNode(2, 0, 1).equals(
-                rotateRight(new ListNode(0, 1, 2), 4));
-        assert new ListNode(0, 1, 2).equals(
-                rotateRight(new ListNode(0, 1, 2), 3));
+        assert new ListNode<>(4, 5, 1, 2, 3).equals(
+                rotateRight(new ListNode<>(1, 2, 3, 4, 5), 2));
+        assert new ListNode<>(2, 0, 1).equals(
+                rotateRight(new ListNode<>(0, 1, 2), 4));
+        assert new ListNode<>(0, 1, 2).equals(
+                rotateRight(new ListNode<>(0, 1, 2), 3));
     }
 
     public ListNode rotateRight(ListNode head, int k) {

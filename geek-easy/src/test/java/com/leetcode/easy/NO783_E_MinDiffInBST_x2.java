@@ -5,8 +5,8 @@ package com.leetcode.easy;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-
 import static java.lang.Math.min;
+import static org.junit.Assert.assertEquals;
 
 /**
     [TREE]
@@ -32,18 +32,18 @@ public class NO783_E_MinDiffInBST_x2 {
 //                cTree(4, 2, 6, 1, 3));
 //        assert 1 == minDiffInBST(
 //                cTree(1, 0, 48, null, null, 12, 49));
-        assert 6 == minDiffInBST(
-                new TreeNode(27,
-                null, new TreeNode(34,
-                        null, new TreeNode(58,
-                        new TreeNode(50,
-                                44,null)))));
+        assertEquals(6, minDiffInBST(
+                new TreeNode<>(27,
+                null, new TreeNode<>(34,
+                        null, new TreeNode<>(58,
+                        new TreeNode<>(50,
+                                44,null))))));
     }
 
     int pre = -1;
     int ans;
     // 方法1：
-    public int minDiffInBST(TreeNode root) {
+    public int minDiffInBST(TreeNode<Integer> root) {
         ans = Integer.MAX_VALUE;
         return ans;
     }

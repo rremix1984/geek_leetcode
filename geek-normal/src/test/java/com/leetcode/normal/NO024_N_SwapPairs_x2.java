@@ -26,12 +26,12 @@ public class NO024_N_SwapPairs_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(2, 1, 4, 3).equals(swapPairs(new ListNode(1, 2, 3, 4)));
-        assert new ListNode().equals(swapPairs(new ListNode()));
-        assert new ListNode(1).equals(swapPairs(new ListNode(1)));
+        assert new ListNode<>(2, 1, 4, 3).equals(swapPairs(new ListNode<>(1, 2, 3, 4)));
+        assert new ListNode<>().equals(swapPairs(new ListNode<>()));
+        assert new ListNode<>(1).equals(swapPairs(new ListNode<>(1)));
     }
 
-    public ListNode swapPairs(ListNode head) {
+    public ListNode<Integer> swapPairs(ListNode<Integer> head) {
         return head;
     }
 

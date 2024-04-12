@@ -40,7 +40,7 @@ public class NO872_E_LeafSimilar_x2 {
                 cTree(1, 3, 2));
     }
 
-    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+    public boolean leafSimilar(TreeNode<Integer> root1, TreeNode<Integer> root2) {
         return false;
     }
 

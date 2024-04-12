@@ -29,15 +29,14 @@ public class NO2487_N_RemoveNodes {
 
     @Test
     public void test() {
-        assert new ListNode(13, 8).equals(
-                removeNodes(new ListNode(5, 2, 13, 3, 8)));
-        assert new ListNode(1, 1, 1, 1).equals(
-                removeNodes(new ListNode(1, 1, 1, 1)));
+        assert new ListNode<>(13, 8).equals(
+                removeNodes(new ListNode<>(5, 2, 13, 3, 8)));
+        assert new ListNode<>(1, 1, 1, 1).equals(
+                removeNodes(new ListNode<>(1, 1, 1, 1)));
     }
 
     // 递归
-    public ListNode removeNodes(ListNode head) {
-
+    public ListNode<Integer> removeNodes(ListNode<Integer> head) {
         if (head == null)
             return null;
 

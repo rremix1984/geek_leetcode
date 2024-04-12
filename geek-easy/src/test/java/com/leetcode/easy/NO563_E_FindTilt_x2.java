@@ -52,7 +52,7 @@ public class NO563_E_FindTilt_x2 {
     }
 
     int ans = 0;
-    public int findTilt(TreeNode root) {
+    public int findTilt(TreeNode<Integer> root) {
         return ans;
     }
 
@@ -74,7 +74,7 @@ public class NO563_E_FindTilt_x2 {
 
 
 
-/**
+/*
 // 方法1：
 int ans = 0;
 public int findTilt(TreeNode root) {

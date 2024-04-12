@@ -25,14 +25,14 @@ public class NO445_N_AddTwoNumbersII_x2 {
 
     @Test
     public void test() {
-        assert new ListNode(1,9,9,8).equals(addTwoNumbers(new ListNode(9,9,9), new ListNode(9,9,9)));
-        assert new ListNode(7,8,0,7).equals(addTwoNumbers(new ListNode(7,2,4,3), new ListNode(5,6,4)));
-        assert new ListNode(8,0,7).equals(addTwoNumbers(new ListNode(2,4,3), new ListNode(5,6,4)));
-        assert new ListNode(0).equals(addTwoNumbers(new ListNode(0), new ListNode(0)));
+        assert new ListNode<>(1,9,9,8).equals(addTwoNumbers(new ListNode<>(9,9,9), new ListNode<>(9,9,9)));
+        assert new ListNode<>(7,8,0,7).equals(addTwoNumbers(new ListNode<>(7,2,4,3), new ListNode<>(5,6,4)));
+        assert new ListNode<>(8,0,7).equals(addTwoNumbers(new ListNode<>(2,4,3), new ListNode<>(5,6,4)));
+        assert new ListNode<>(0).equals(addTwoNumbers(new ListNode<>(0), new ListNode<>(0)));
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode ans = null;
+    public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
+        ListNode<Integer> ans = null;
         return ans;
     }
 
@@ -55,7 +55,7 @@ public class NO445_N_AddTwoNumbersII_x2 {
 
 
 
-/**
+/*
 public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
     ListNode ans = null;
     Deque<Integer> stack1 = new ArrayDeque<>();

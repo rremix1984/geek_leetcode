@@ -43,10 +43,10 @@ public class NO337_N_HouseRobberIII {
         assert 9 == rob(cTree(3, 4, 5, 1, 3, null, 1));
     }
 
-    public int rob(TreeNode root) {
+    public int rob(TreeNode<Integer> root) {
         // 2024/4/1 NO.1
         // 2024/4/2 NO.2 不会做，能看懂
-        Map<TreeNode, Integer> rob = new HashMap<>(),
+        Map<TreeNode<Integer>, Integer> rob = new HashMap<>(),
                                noRob = new HashMap<>();
         dfs(rob, noRob, root);
 
@@ -54,8 +54,9 @@ public class NO337_N_HouseRobberIII {
                    noRob.getOrDefault(root, 0));
     }
 
-    public void dfs(Map<TreeNode, Integer> rob, Map<TreeNode, Integer> noRob,
-                    TreeNode node) {
+    public void dfs(Map<TreeNode<Integer>, Integer> rob,
+                    Map<TreeNode<Integer>, Integer> noRob,
+                    TreeNode<Integer> node) {
         // TODO
         if (node == null)
             return;

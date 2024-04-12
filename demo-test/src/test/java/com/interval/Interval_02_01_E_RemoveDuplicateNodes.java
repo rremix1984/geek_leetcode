@@ -28,13 +28,13 @@ public class Interval_02_01_E_RemoveDuplicateNodes {
 
     @Test
     public void test() {
-        assert new ListNode(1, 2, 3).equals(
-                removeDuplicateNodes(new ListNode(1, 2, 3, 3, 2, 1)));
-        assert new ListNode(1, 2).equals(
-                removeDuplicateNodes(new ListNode(1, 1, 1, 1, 2)));
+        assert new ListNode<>(1, 2, 3).equals(
+                removeDuplicateNodes(new ListNode<>(1, 2, 3, 3, 2, 1)));
+        assert new ListNode<>(1, 2).equals(
+                removeDuplicateNodes(new ListNode<>(1, 1, 1, 1, 2)));
     }
 
-    public ListNode removeDuplicateNodes(ListNode head) {
+    public ListNode<Integer> removeDuplicateNodes(ListNode<Integer> head) {
         // 2024/3/28 NO.1 没思路，但是答案看懂了
 
         return head;

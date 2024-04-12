@@ -30,7 +30,7 @@ public class NO897_E_IncreasingBST_x2 {
 
     @Test
     public void test() {
-        assert new TreeNode(1, 
+        assert new TreeNode(1,
             null, new TreeNode(2, 
                     null, new TreeNode(3, 
                             null, new TreeNode(4, 
@@ -45,7 +45,7 @@ public class NO897_E_IncreasingBST_x2 {
             increasingBST(cTree(5, 1, 7)));
     }
 
-    public TreeNode increasingBST(TreeNode root) {
+    public TreeNode<Integer> increasingBST(TreeNode<Integer> root) {
         return null;
     }
 

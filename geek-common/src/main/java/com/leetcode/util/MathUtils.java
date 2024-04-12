@@ -6,19 +6,21 @@ package com.leetcode.util;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import java.util.*;
+
+import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 import static java.time.LocalTime.now;
-import static java.util.Arrays.copyOf;
-import static java.util.Arrays.fill;
+import static java.util.Arrays.*;
 
 /**
  * 工具类
  */
+@SuppressWarnings({ "unused", "rawtypes" })
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MathUtils {
 
-    public static final Integer MAX = Integer.MAX_VALUE;
-    public static final Integer MIN = Integer.MIN_VALUE;
+    public static final Integer MAX = MAX_VALUE;
+    public static final Integer MIN = MIN_VALUE;
 
     /**
      * 三个值取最大
@@ -61,7 +63,7 @@ public class MathUtils {
     }
 
     private static int getmin(int[] a) {
-        return getmin(a, Integer.MAX_VALUE);
+        return getmin(a, MAX_VALUE);
     }
 
     /**
@@ -81,13 +83,13 @@ public class MathUtils {
      * 递归方法 找最小值
      */
     private static int getmin(int[] a, int min) {
-        int lastindex = a.length - 1;
-        int last = a[lastindex];
+        int lastIndex = a.length - 1;
+        int last = a[lastIndex];
         if (a.length == 1)
             return min(last, min);
 
         //每次数组缩短一个元素，最后一个元素与缩短的数组进行 getmax 操作
-        return getmin(copyOf(a, lastindex), min(min, last));
+        return getmin(copyOf(a, lastIndex), min(min, last));
     }
 
     private static int max(int i, int j) {
@@ -177,9 +179,9 @@ public class MathUtils {
 
     public static ArrayList<ArrayList<Object>> getArray(Object[]... arr) {
         ArrayList<ArrayList<Object>> res = new ArrayList<>();
-        for (Object[] ints : arr) {
-            int len = ints.length;
-            ArrayList<Object> inner = new ArrayList<>(Arrays.asList(ints).subList(0, len));
+        for (Object[] p : arr) {
+            int len = p.length;
+            ArrayList<Object> inner = new ArrayList<>(asList(p).subList(0, len));
             res.add(new ArrayList<>(inner));
         }
         return res;
@@ -344,7 +346,7 @@ public class MathUtils {
 
     public static TreeNode<Integer> cTree(Integer... args) {
         int rootIndex = 0;
-        List<Integer> arr = Arrays.asList(args);
+        List<Integer> arr = asList(args);
         return cTreeList(rootIndex, arr);
     }
 

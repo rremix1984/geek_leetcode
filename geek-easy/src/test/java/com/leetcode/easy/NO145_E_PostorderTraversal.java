@@ -43,7 +43,7 @@ public class NO145_E_PostorderTraversal {
                 postorderTraversal(cTree(1)));
     }
 
-    public List<Integer> postorderTraversal(TreeNode root) {
+    public List<Integer> postorderTraversal(TreeNode<Integer> root) {
         // 2024/3/12 NO.1
         // 2024/3/16 NO.2 递归法很简单，迭代法没有真正理解
         // 2024/3/17 NO.3

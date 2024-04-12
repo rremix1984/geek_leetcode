@@ -37,7 +37,7 @@ public class NO653_E_FindTarget_x2 {
     }
 
     Set<Integer> set = new HashSet<>();
-    public boolean findTarget(TreeNode root, int k) {
+    public boolean findTarget(TreeNode<Integer> root, int k) {
         if (root == null)
             return false;
 

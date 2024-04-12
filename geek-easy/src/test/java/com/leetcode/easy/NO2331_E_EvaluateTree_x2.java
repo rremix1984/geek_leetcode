@@ -37,10 +37,10 @@ public class NO2331_E_EvaluateTree_x2 {
     @Test
     public void test() {
         assert evaluateTree(cTree(2, 1, 3, null, null, 0, 1));
-        assert !evaluateTree(new TreeNode(0));
+        assert !evaluateTree(new TreeNode<>(0));
     }
 
-    public boolean evaluateTree(TreeNode root) {
+    public boolean evaluateTree(TreeNode<Integer> root) {
         return false;
     }
 

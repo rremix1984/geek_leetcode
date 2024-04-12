@@ -32,36 +32,36 @@ public class NO023_H_MergeKSortedLists {
 
     @Test
     public void test() {
-        assert new ListNode(1, 1, 2, 3, 4, 4, 5, 6).equals(
+        assert new ListNode<>(1, 1, 2, 3, 4, 4, 5, 6).equals(
                 mergeKLists(new ListNode[]{
-                        new ListNode(1, 4, 5),
-                        new ListNode(1, 3, 4),
-                        new ListNode(2, 6)}));
-        assert new ListNode().equals(
+                        new ListNode<>(1, 4, 5),
+                        new ListNode<>(1, 3, 4),
+                        new ListNode<>(2, 6)}));
+        assert new ListNode<>().equals(
                 mergeKLists(
                         new ListNode[]{}));
-        assert new ListNode().equals(
+        assert new ListNode<>().equals(
                 mergeKLists(new ListNode[]{
-                        new ListNode()}));
-        assert new ListNode(0, 1, 2, 3, 4, 4, 5, 6).equals(
+                        new ListNode<>()}));
+        assert new ListNode<>(0, 1, 2, 3, 4, 4, 5, 6).equals(
                 mergeKLists(new ListNode[]{
-                        new ListNode(1, 4, 5, 6),
-                        new ListNode(2, 3, 4),
-                        new ListNode()}));
+                        new ListNode<>(1, 4, 5, 6),
+                        new ListNode<>(2, 3, 4),
+                        new ListNode<>()}));
     }
 
-    public ListNode mergeKLists(ListNode[] lists) {
+    public ListNode<Integer> mergeKLists(ListNode[] lists) {
         // 2024/3/26 NO.1 合并K个有序链表
         return merge(lists, 0, lists.length - 1);
     }
 
-    public ListNode merge(ListNode[] lists, int l, int r) {
+    public ListNode<Integer> merge(ListNode[] lists, int l, int r) {
         // 2024/3/26 NO.1
         return mergeTwoLists(null, null);
     }
 
-    public ListNode mergeTwoLists(ListNode a, ListNode b) {
-        ListNode dummy = new ListNode(0);
+    public ListNode<Integer> mergeTwoLists(ListNode<Integer> a, ListNode<Integer> b) {
+        ListNode<Integer> dummy = new ListNode<>(0);
         return dummy.next;
     }
 

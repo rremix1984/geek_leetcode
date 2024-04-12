@@ -26,19 +26,19 @@ public class OfferII_024_E_ReverseList {
 
     @Test
     public void test() {
-        assert new ListNode(5, 4, 3, 2, 1).equals(
-            reverseList(new ListNode(1, 2, 3, 4, 5)));
-        assert new ListNode(2, 1).equals(
-            reverseList(new ListNode(1, 2)));
-        assert new ListNode(1).equals(
-                reverseList(new ListNode(1)));
-        assert new ListNode().equals(
-                reverseList(new ListNode()));
+        assert new ListNode<>(5, 4, 3, 2, 1).equals(
+            reverseList(new ListNode<>(1, 2, 3, 4, 5)));
+        assert new ListNode<>(2, 1).equals(
+            reverseList(new ListNode<>(1, 2)));
+        assert new ListNode<>(1).equals(
+                reverseList(new ListNode<>(1)));
+        assert new ListNode<>().equals(
+                reverseList(new ListNode<>()));
     }
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode<Integer> reverseList(ListNode<Integer> head) {
         // 2024/3/6 NO.1 两种做法
-        ListNode pre = null;
+        ListNode<Integer> pre = null;
         return pre;
     }
 
@@ -58,7 +58,7 @@ public class OfferII_024_E_ReverseList {
 
 
 
-/**
+/*
 // 方法1：递归法
 public ListNode reverseList(ListNode head) {
     if (head == null || head.next == null)

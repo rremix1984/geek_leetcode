@@ -37,8 +37,8 @@ public class NO094_E_InorderTraversal {
                                         new TreeNode<>(11,
                                 new TreeNode<>(12)))))));
         assertEquals(getArray(9, 3, 15, 20, 7),
-                inorderTraversal(new TreeNode<>(3,
-                            9, new TreeNode<>(20,
+                inorderTraversal(new TreeNode(3,
+                            9, new TreeNode(20,
                                         15, 7))));
         assertEquals(getArray(0),
                 inorderTraversal(new TreeNode<>()));

@@ -28,27 +28,27 @@ public class Interval_02_05_N_AddTwoNumbers {
 
     @Test
     public void test() {
-        assert new ListNode(7, 0, 8, 7).equals(
-                addTwoNumbers(new ListNode(3, 4, 2, 7),
-                        new ListNode(4, 6, 5)));
-        assert new ListNode(7, 0, 8).equals(
-                addTwoNumbers(new ListNode(3, 4, 2),
-                        new ListNode(4, 6, 5)));
-        assert new ListNode(0).equals(
-                addTwoNumbers(new ListNode(0),
-                        new ListNode(0)));
-        assert new ListNode(2, 1, 9).equals(
-                addTwoNumbers(new ListNode(7, 1, 6),
-                        new ListNode(5, 9, 2)));
+        assert new ListNode<>(7, 0, 8, 7).equals(
+                addTwoNumbers(new ListNode<>(3, 4, 2, 7),
+                        new ListNode<>(4, 6, 5)));
+        assert new ListNode<>(7, 0, 8).equals(
+                addTwoNumbers(new ListNode<>(3, 4, 2),
+                        new ListNode<>(4, 6, 5)));
+        assert new ListNode<>(0).equals(
+                addTwoNumbers(new ListNode<>(0),
+                        new ListNode<>(0)));
+        assert new ListNode<>(2, 1, 9).equals(
+                addTwoNumbers(new ListNode<>(7, 1, 6),
+                        new ListNode<>(5, 9, 2)));
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
         // 2024/3/30 NO.1 没思路，没做出来
         // 2024/3/31 NO.2 思路有，没做出来
         // 2024/4/1  NO.3 没思路，能看懂
         int carry = 0;
-        ListNode head = null;
-        ListNode tail = null;
+        ListNode<Integer> head = null;
+        ListNode<Integer> tail = null;
         // TODO
 
         return head;

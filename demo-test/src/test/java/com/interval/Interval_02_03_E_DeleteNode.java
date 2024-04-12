@@ -29,13 +29,13 @@ public class Interval_02_03_E_DeleteNode {
 
     @Test
     public void test() {
-        ListNode node = new ListNode(4, 5, 1, 9);
+        ListNode<Integer> node = new ListNode<>(4, 5, 1, 9);
         deleteNode(node);
         printListNode(node);
-        assert new ListNode(4, 1, 9).equals(node);
+        assert new ListNode<>(4, 1, 9).equals(node);
     }
 
-    public void deleteNode(ListNode node) {
+    public void deleteNode(ListNode<Integer> node) {
         // 2024/3/29 NO.1
 
     }

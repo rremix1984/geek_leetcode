@@ -32,16 +32,16 @@ public class LCR_026_N_ReorderList {
 
     @Test
     public void test() {
-        ListNode src = new ListNode(1, 2, 3, 4);
+        ListNode<Integer> src = new ListNode<>(1, 2, 3, 4);
         reorderList(src);
-        assert src.equals(new ListNode(1, 4, 2, 3));
+        assert src.equals(new ListNode<>(1, 4, 2, 3));
 
-        ListNode src1 = new ListNode(1, 2, 3, 4, 5);
+        ListNode<Integer> src1 = new ListNode<>(1, 2, 3, 4, 5);
         reorderList(src1);
-        assert src1.equals(new ListNode(1, 5, 2, 4, 3));
+        assert src1.equals(new ListNode<>(1, 5, 2, 4, 3));
     }
 
-    public void reorderList(ListNode head) {
+    public void reorderList(ListNode<Integer> head) {
         // 2024/3/27 NO.1 快慢指针，没做出来
         // 2024/3/28 NO.2 没做出来，有思路
         // 2024/3/31 NO.3 没做出来，有思路

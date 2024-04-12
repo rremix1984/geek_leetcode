@@ -32,7 +32,7 @@ public class NO2236_E_CheckTree_x2 {
         assert !checkTree(cTree(5, 3, 1));
     }
 
-    public boolean checkTree(TreeNode root) {
+    public boolean checkTree(TreeNode<Integer> root) {
         return root.val == root.left.val + root.right.val;
     }
 

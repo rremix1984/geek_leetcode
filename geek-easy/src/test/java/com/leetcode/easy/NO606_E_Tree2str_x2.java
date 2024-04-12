@@ -40,7 +40,7 @@ public class NO606_E_Tree2str_x2 {
                 tree2str(cTree(1, 2, 3, null, 4)));
     }
 
-    public String tree2str(TreeNode root) {
+    public String tree2str(TreeNode<Integer> root) {
         return null;
     }
 
