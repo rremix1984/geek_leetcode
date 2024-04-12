@@ -9,8 +9,10 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import static java.lang.System.out;
+
 /**
-    [TREENODE] ||
+    [TREENODE] |||
     (中等)
     NO.10 先定义 Node 节点，创建 n 阶满二叉树，数据值按顺序 A-Z 循环赋值
     public class Node<E> {
@@ -34,13 +36,14 @@ public class NO10_BinaryTree {
 
         // TODO 2024/4/10 NO.1 没思路，看答案做出来了
         // TODO 2024/4/11 NO.2 没做对，思路对了
+        // TODO 2024/4/12 NO.3 一遍过
         return null;
     }
 
     public void printTree(Node<Character> root) {
         // TODO 2024/4/10 NO.1 一遍过
         // TODO 2024/4/11 NO.2 一遍过
-
+        // TODO 2024/4/12 NO.3 一遍过
     }
 
 }

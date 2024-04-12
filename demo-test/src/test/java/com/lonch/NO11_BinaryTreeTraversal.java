@@ -17,7 +17,7 @@ import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] ||
+    [TREENODE] |||
     (中等)
     NO.11 创建的树复制成三个份，根用 parent彼此连接，
         从任意节点开始，遍历全部，输出遍历结果要求:
@@ -40,35 +40,12 @@ public class NO11_BinaryTreeTraversal {
 
     @Test
     public void test() {
-        // 假设这里有三棵树的根节点，并且它们通过parent相互连接
         Node<Character> root1 = cTree(4, 0);
+        // 2024/4/10 NO.1 没做出来
+        // 2024/4/11 NO.2 没做出来，思路对
+        // 2024/4/12 NO.3 一遍过
+        // TODO 复制 3 棵树，从任意节点开始遍历整棵树
 
-        // TODO 复制 3 棵树
-        // TODO 2024/4/11 NO.1 没做出来
-        Node<Character> root2 = copy(root1);
-        Node<Character> root3 = copy(root2);
-        root1.parent = root3;
-        root3.parent = root2;
-        root2.parent = root1;
-
-        // TODO 从任意节点开始遍历整棵树
-        String res = travel(root1.left.right.left);
-        out.println(res);
-        assertEquals("JEKBDHIACFLMGNOABDHIEJKCFLMGNOABDHIEJKCFLMGNO", res);
-        printTree(root1);
-    }
-
-    public static <E> Node<E> copy(Node<E> root) {
-        // TODO 2024/4/10 NO.1 没做出来
-        // TODO 2024/4/11 NO.2 没做出来，思路对
-        return null;
-    }
-
-
-    public String travel(Node<?> node) {
-        // TODO 2024/4/10 NO.1 从任意节点开始遍历树
-        // TODO 2024/4/11 NO.2 还是不会做，能看懂
-        return "";
     }
 
 }
@@ -127,5 +104,24 @@ private void dfs(Node node, HashSet visit, StringBuilder sb) {
     dfs(node.left, visit, sb);
     dfs(node.right, visit, sb);
     dfs(node.parent, visit, sb);
+}
+
+@Test
+public void test() {
+    // 假设这里有三棵树的根节点，并且它们通过parent相互连接
+    Node<Character> root1 = cTree(4, 0);
+
+    // 复制 3 棵树
+    Node<Character> root2 = copy(root1);
+    Node<Character> root3 = copy(root2);
+    root1.parent = root3;
+    root3.parent = root2;
+    root2.parent = root1;
+
+    // 从任意节点开始遍历整棵树
+    String res = travel(root1.left.right.left);
+    out.println(res);
+    assertEquals("JEKBDHIACFLMGNOABDHIEJKCFLMGNOABDHIEJKCFLMGNO", res);
+    printTree(root1);
 }
 */

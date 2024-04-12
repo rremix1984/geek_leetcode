@@ -4,11 +4,13 @@
 package com.lonch.util;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.*;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class Node<E> {
 
     public E data;
@@ -69,7 +71,7 @@ public class Node<E> {
         return node;
     }
 
-    public static String travel(Node<String> node) {
+    public static <E> String travel(Node<E> node) {
         if (node == null)
             return "";
 
@@ -78,7 +80,7 @@ public class Node<E> {
         return sb.toString();
     }
 
-    private static void dfs(Node<String> node, HashSet<Node<String>> visit, StringBuilder sb) {
+    private static <E> void dfs(Node<E> node, HashSet<Node<E>> visit, StringBuilder sb) {
         if (node == null || visit.contains(node))
             return;
 
@@ -90,14 +92,14 @@ public class Node<E> {
         dfs(node.parent, visit, sb);
     }
 
-    public static <T> void printTree(Node<T> root) {
+    public static <E> void printTree(Node<E> root) {
         if (root == null)
             return;
 
-        Deque<Node<T>> queue = new LinkedList<>();
+        Deque<Node<E>> queue = new LinkedList<>();
         queue.add(root);
 
-        Node<T> next = root.parent;
+        Node<E> next = root.parent;
         while (next != null && next != root) {
             queue.offer(next);
             next = next.parent;
@@ -106,7 +108,7 @@ public class Node<E> {
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size > 0) {
-                Node<T> node = queue.poll();
+                Node<E> node = queue.poll();
                 if (node == null)
                     continue;
 

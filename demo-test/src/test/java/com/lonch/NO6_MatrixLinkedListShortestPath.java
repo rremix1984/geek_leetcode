@@ -12,7 +12,7 @@ import static java.lang.System.out;
 import static java.util.Collections.emptyList;
 
 /**
-    [MATRIXLINKED] ||
+    [MATRIXLINKED] |||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
 
@@ -25,11 +25,11 @@ public class NO6_MatrixLinkedListShortestPath {
         MatrixNode<Character> mnode = init(5, 5);
         printMatrix(mnode);
         findShortestPaths(mnode.right.right.right,
-                          mnode.down.right.right).forEach(
-          path -> {
-            path.forEach(s -> out.print(s.val + " -> "));
-            out.println();
-        });
+                mnode.down.right.right).forEach(
+                path -> {
+                    path.forEach(s -> out.print(s.val + " -> "));
+                    out.println();
+                });
     }
 
     // 搜索所有可能的最短路径
@@ -38,6 +38,7 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/4/8 NO.2 有思路了，没写出来。
         // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
         // 2024/4/11 NO.4 一遍过
+        // 2024/4/12 NO.5 一遍过
         // TODO 剪枝法
         List<List<MatrixNode>> res = new ArrayList<>();
         return res;
@@ -61,6 +62,7 @@ public class NO6_MatrixLinkedListShortestPath {
 
 
 /*
+// 方法1：剪枝法
 public List<List<MatrixNode>> findShortestPaths(MatrixNode start, MatrixNode end) {
     List<List<MatrixNode>> res = new ArrayList<>();
     // 剪枝法
