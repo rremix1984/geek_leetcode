@@ -26,13 +26,13 @@ public class NO226_E_InvertBinaryTree_x3 {
 
     @Test
     public void test() {
-        TreeNode tmp = cTree(4, 2, 7, 1, 3, 6, 9);
+        TreeNode<Integer> tmp = cTree(4, 2, 7, 1, 3, 6, 9);
         assert invertTree(tmp).equals(cTree(4, 7, 2, 9, 6, 3, 1));
-        TreeNode tmp2 = cTree(2, 1, 3);
+        TreeNode<Integer> tmp2 = cTree(2, 1, 3);
         assert invertTree(tmp2).equals(cTree(2, 3, 1));
     }
 
-    public TreeNode invertTree(TreeNode root) {
+    public TreeNode<Integer> invertTree(TreeNode<Integer> root) {
         return null;
     }
 
@@ -48,7 +48,7 @@ public class NO226_E_InvertBinaryTree_x3 {
 
 
 
-/**
+/*
 // 方法2  迭代法（前序遍历）
 public TreeNode invertTree(TreeNode root) {
     if (root==null)

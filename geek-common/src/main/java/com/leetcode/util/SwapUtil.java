@@ -1,3 +1,6 @@
+/**
+ * @copyright wxz
+ */
 package com.leetcode.util;
 
 /**

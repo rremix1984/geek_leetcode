@@ -43,29 +43,29 @@ public class NO109_N_SortedListToBST {
     @Test
     public void test() {
         assert cTree(0,-3,9,-10,null,5).equals(
-                sortedListToBST(new ListNode(-10,-3,0,5,9)));
+                sortedListToBST(new ListNode<>(-10,-3,0,5,9)));
         assert cTree(0).equals(
-                sortedListToBST(new ListNode()));
+                sortedListToBST(new ListNode<>()));
     }
 
-    public TreeNode sortedListToBST(ListNode head) {
+    public TreeNode<Integer> sortedListToBST(ListNode<Integer> head) {
         return buildTree(head, null);
     }
 
-    public TreeNode buildTree(ListNode left, ListNode right) {
+    public TreeNode<Integer> buildTree(ListNode<Integer> left, ListNode<Integer> right) {
         if (left == right)
             return null;
 
-        ListNode mid = getMedian(left, right);
-        TreeNode root = new TreeNode(mid.val);
+        ListNode<Integer> mid = getMedian(left, right);
+        TreeNode<Integer> root = new TreeNode<>(mid.val);
         root.left = buildTree(left, mid);
         root.right = buildTree(mid.next, right);
         return root;
     }
 
-    public ListNode getMedian(ListNode left, ListNode right) {
-        ListNode fast = left;
-        ListNode slow = left;
+    public ListNode<Integer> getMedian(ListNode<Integer> left, ListNode<Integer> right) {
+        ListNode<Integer> fast = left;
+        ListNode<Integer> slow = left;
         while (fast != right && fast.next != right) {
             fast = fast.next;
             fast = fast.next;

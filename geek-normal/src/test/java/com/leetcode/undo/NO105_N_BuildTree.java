@@ -43,7 +43,7 @@ public class NO105_N_BuildTree {
             buildTree(new int[]{-1},  new int[]{-1}));
     }
 
-    public TreeNode myBuildTree(Map<Integer, Integer> map, int[] preorder,
+    public TreeNode<Integer> myBuildTree(Map<Integer, Integer> map, int[] preorder,
                                 int preLeft, int preRight, int inLeft) {
         if (preLeft > preRight)
             return null;
@@ -53,7 +53,7 @@ public class NO105_N_BuildTree {
         int inRootVal = map.get(preorder[preLeft]);
 
         // 先把根节点建立出来
-        TreeNode root = new TreeNode(preorder[preLeft]);
+        TreeNode<Integer> root = new TreeNode<>(preorder[preLeft]);
 
         // 得到左子树中的节点数目
         int size_left_subtree = inRootVal - inLeft;
@@ -73,7 +73,7 @@ public class NO105_N_BuildTree {
         return root;
     }
 
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    public TreeNode<Integer> buildTree(int[] preorder, int[] inorder) {
         // 构造哈希映射，帮助我们快速定位根节点
         Map<Integer, Integer> map = new HashMap<>();
 

@@ -22,8 +22,8 @@ public class NO9_SnakeGame {
         // 2024/4/10 NO.2 一遍过
         // 2024/4/11 NO.3 一遍过
         // 2024/4/12 NO.4 一遍过
-        // TODO 这里要熟练使用：new Scanner(System.in).nextLine() 获取命令行输入
-
+        // TODO 这里要熟练使用：
+        // new Scanner(System.in).nextLine() 获取命令行输入
     }
 
 }

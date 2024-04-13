@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import static com.lonch.util.Node.cTree;
 //import static com.lonch.util.Node.copy;
-import static com.lonch.util.Node.travel;
+//import static com.lonch.util.Node.travel;
 import static com.lonch.util.Node.printTree;
 import static java.lang.System.arraycopy;
 import static java.lang.System.out;
@@ -45,23 +45,7 @@ public class NO11_BinaryTreeTraversal {
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12 NO.3 一遍过
         // TODO 复制 3 棵树，从任意节点开始遍历整棵树
-        Node<Character> root2 = copy(root1);
-    }
 
-    private Node<Character> copy(Node<Character> root1) {
-        if (root1 == null)
-            return null;
-
-        Node node = new Node<>(root1.data);
-        node.left = copy(root1.left);
-        if (node.left != null)
-            node.left.parent = node;
-
-        node.right = copy(root1.right);
-        if (node.right != null)
-            node.right.parent = node;
-
-        return node;
     }
 
 }

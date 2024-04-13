@@ -41,7 +41,7 @@ public class NO106_N_BuildTree {
                 buildTree(new int[]{-1}, new int[]{-1}));
     }
 
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
+    public TreeNode<Integer> buildTree(int[] inorder, int[] postorder) {
         Map<Integer,Integer> memo = new HashMap<>();
         for (int i = 0; i < inorder.length; i++)
             memo.put(inorder[i], i);
@@ -51,14 +51,14 @@ public class NO106_N_BuildTree {
                 0,postorder.length - 1);
     }
 
-    public TreeNode buildTree(Map<Integer,Integer> memo, int[] post, int inStart, int inEnd, int postStart, int postEnd) {
+    public TreeNode<Integer> buildTree(Map<Integer,Integer> memo, int[] post, int inStart, int inEnd, int postStart, int postEnd) {
         if(inEnd < inStart || postEnd < postStart)
             return null;
 
         int rootVal = post[postEnd];
         int ri = memo.get(rootVal);
 
-        TreeNode node = new TreeNode(rootVal);
+        TreeNode<Integer> node = new TreeNode<>(rootVal);
         node.left = buildTree(memo, post,
                 inStart, ri - 1,
                 postStart, postStart + ri - inStart - 1);
@@ -85,7 +85,7 @@ public class NO106_N_BuildTree {
 
 
 
-/**
+/*
 // 方法1：
 int post_idx;
 int[] postorder;

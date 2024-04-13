@@ -8,7 +8,6 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
-
 import static java.lang.System.out;
 
 /**

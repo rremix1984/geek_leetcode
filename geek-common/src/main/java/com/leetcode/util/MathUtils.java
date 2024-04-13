@@ -9,6 +9,7 @@ import java.util.*;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
+import static java.lang.System.arraycopy;
 import static java.time.LocalTime.now;
 import static java.util.Arrays.*;
 
@@ -306,7 +307,7 @@ public class MathUtils {
 
     public static long[] getArrayL(long... arr) {
         long[] inner = new long[arr.length];
-        System.arraycopy(arr, 0, inner, 0, inner.length);
+        arraycopy(arr, 0, inner, 0, inner.length);
         return inner;
     }
 
@@ -324,7 +325,7 @@ public class MathUtils {
 
     public static int[] getArrays(int... arr) {
         int[] inner = new int[arr.length];
-        System.arraycopy(arr, 0, inner, 0, arr.length);
+        arraycopy(arr, 0, inner, 0, arr.length);
         return inner;
     }
 
@@ -334,7 +335,7 @@ public class MathUtils {
 
     public static String[] getArrays(String... arr) {
         String[] inner = new String[arr.length];
-        System.arraycopy(arr, 0, inner, 0, arr.length);
+        arraycopy(arr, 0, inner, 0, arr.length);
         return inner;
     }
 

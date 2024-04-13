@@ -31,11 +31,13 @@ public class NO236_N_LowestCommonAncestorOfABinaryTree_x2 {
 
     @Test
     public void test() {
-        TreeNode node = cTree(2, 5, 1, 6, 2, 0, 8, null, null, 7, 4);
+        TreeNode<Integer> node = cTree(2, 5, 1, 6, 2, 0, 8, null, null, 7, 4);
         assertEquals(node, lowestCommonAncestor(node, 5, 1));// 3
     }
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode<Integer> lowestCommonAncestor(TreeNode<Integer> root,
+                                                  TreeNode<Integer> p,
+                                                  TreeNode<Integer> q) {
         return null;
     }
 
@@ -75,7 +77,7 @@ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 }
 */
 
-public TreeNode lowestCommonAncestor(TreeNode root, int p, int q) {
-    return lowestCommonAncestor(root, new TreeNode(p), new TreeNode(q));
+public TreeNode<Integer> lowestCommonAncestor(TreeNode<Integer> root, int p, int q) {
+    return lowestCommonAncestor(root, new TreeNode<>(p), new TreeNode<>(q));
 }
 }

@@ -41,11 +41,9 @@ public class SystemUtil {
     }
 
     public static void printArrs(List<List<Integer>> arr) {
-        for (List<Integer> irr : arr) {
-            for (Integer i : irr) {
+        for (List<Integer> irr : arr)
+            for (Integer i : irr)
                 out.printf("%d\t", i);
-            }
-        }
         out.println();
     }
 
@@ -56,7 +54,6 @@ public class SystemUtil {
     public static void printListNodes(ListNode[] listNode) {
         for (ListNode node : listNode)
             out.println(node.toString());
-
         out.println();
     }
 
@@ -120,9 +117,8 @@ public class SystemUtil {
         if (source != null && target == null)
             return false;
 
-        if (source.size() != target.size()) {
+        if (source.size() != target.size())
             return false;
-        }
 
         HashMap<Object, Integer> sourceMap = new HashMap<>();
         for (Object item : source)
@@ -204,4 +200,5 @@ public class SystemUtil {
         res.add(root.val);
         preOrder(root.right, res);
     }
+
 }

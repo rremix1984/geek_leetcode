@@ -78,7 +78,7 @@ public class LCP_44_E_NumColor_x2 {
 
 /*
 // 方法1：
-public int numColor(TreeNode root) {
+public int numColor(TreeNode<Integer> root) {
     Set<Integer> set = new HashSet<>();
     call(set, root);
     return set.size();
@@ -93,16 +93,18 @@ public void call(Set<Integer> set, TreeNode root) {
     call(set, root.right);
 }
 
-
 // 方法2：
-public int numColor(TreeNode root) {
+public int numColor(TreeNode<Integer> root) {
     Set<Integer> set = new HashSet<>();
-    Deque<TreeNode> queue = new LinkedList<>();
+    Deque<TreeNode<Integer>> queue = new LinkedList<>();
     queue.addLast(root);
     while (!queue.isEmpty()) {
         int size = queue.size();
         while (size>0) {
-            TreeNode cur = queue.pollFirst();
+            TreeNode<Integer> cur = queue.pollFirst();
+            if (cur == null)
+                continue;
+
             set.add(cur.val);
             if (cur.left != null)
                 queue.addLast(cur.left);

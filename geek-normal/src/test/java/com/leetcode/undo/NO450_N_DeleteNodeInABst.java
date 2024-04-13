@@ -39,7 +39,7 @@ public class NO450_N_DeleteNodeInABst {
             deleteNode(cTree(5, 3, 6, 2, 4, null, 7),0));
     }
 
-    public TreeNode deleteNode(TreeNode root, int key) {
+    public TreeNode<Integer> deleteNode(TreeNode<Integer> root, int key) {
         return null;
     }
 
@@ -61,7 +61,7 @@ public class NO450_N_DeleteNodeInABst {
 
 
 
-/**
+/*
 // 方法1：
 public TreeNode deleteNode(TreeNode root, int key) {
     TreeNode cur = root, curParent = null;

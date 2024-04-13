@@ -35,7 +35,7 @@ public class Interval_04_06_N_InorderSuccessor_x2 {
     @Test
     public void test() {
         TreeNode<Integer> left = new TreeNode<>(1);
-        TreeNode<Integer> t1 = new TreeNode<>(2, left, 3);
+        TreeNode<Integer> t1 = new TreeNode<>(2, left, new TreeNode<>(3));
         assert t1.equals(inorderSuccessor(t1, left));
         TreeNode<Integer> t2 = cTree(5, 3, 6, 2, 4, null, null, 1);
         assert null == inorderSuccessor(t2, t2.right);

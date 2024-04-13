@@ -30,7 +30,7 @@ public class NO897_E_IncreasingBST_x2 {
 
     @Test
     public void test() {
-        assert new TreeNode(1,
+        assert new TreeNode<Integer>(1,
             null, new TreeNode(2, 
                     null, new TreeNode(3, 
                             null, new TreeNode(4, 
