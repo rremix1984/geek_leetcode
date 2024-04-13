@@ -33,15 +33,6 @@ public class NO8_LinkedTable {
         return null;
     }
 
-    /*
-    static class LinkedTable<T> {
-        private T value;
-        private LinkedTable<T> father;
-        private LinkedTable<T> leftChild;
-        private LinkedTable<T> rightChild;
-    }
-    */
-
 }
 
 

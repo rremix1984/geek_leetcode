@@ -17,7 +17,7 @@ import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] |||
+    [TREENODE] ||||
     (中等)
     NO.11 创建的树复制成三个份，根用 parent彼此连接，
         从任意节点开始，遍历全部，输出遍历结果要求:
@@ -44,8 +44,55 @@ public class NO11_BinaryTreeTraversal {
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12 NO.3 一遍过
+        // 2024/4/13 NO.4 一遍过
         // TODO 复制 3 棵树，从任意节点开始遍历整棵树
+        Node<Character> root2 = copy(root1);
+        Node<Character> root3 = copy(root2);
+        root1.parent = root2;
+        root2.parent = root3;
+        root3.parent = root1;
+        printTree(root1);
+        out.println(travel(root1.right.left));
+    }
 
+    private String travel(Node<Character> root) {
+        if (root == null)
+            return "";
+
+        StringBuilder sb = new StringBuilder();
+        HashSet<Node<Character>> visit = new HashSet<>();
+        dfs(root, visit, sb);
+        return sb.toString();
+    }
+
+    private void dfs(Node<Character> root,
+                     HashSet<Node<Character>> visit,
+                     StringBuilder sb) {
+        if (visit.contains(root) || root == null)
+            return;
+
+        visit.add(root);
+        sb.append(root.data + " ");
+
+        dfs(root.left, visit, sb);
+        dfs(root.right, visit, sb);
+        dfs(root.parent, visit, sb);
+    }
+
+    private Node<Character> copy(Node<Character> root) {
+        if (root == null)
+            return root;
+
+        Node<Character> node = new Node<>(root.data);
+        node.left = copy(root.left);
+        if (node.left != null)
+            node.left.parent = node;
+
+        node.right = copy(root.right);
+        if (node.right != null)
+            node.right.parent = node;
+
+        return node;
     }
 
 }

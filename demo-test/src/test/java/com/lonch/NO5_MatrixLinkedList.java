@@ -4,6 +4,9 @@
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
+import com.lonch.util.MatrixNode;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.getMatrix;
@@ -37,17 +40,6 @@ public class NO5_MatrixLinkedList {
         // TODO 你能做出来的，相信自己
         return null;
     }
-
-    /*
-    static class MatrixNode {
-        private int val;
-        private MatrixNode left, right, up, down;
-        public MatrixNode(int val) {
-            this.val = val;
-            this.left = this.right = this.up = this.down = null;
-        }
-    }
-    */
 
 }
 

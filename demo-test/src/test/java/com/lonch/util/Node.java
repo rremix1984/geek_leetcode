@@ -4,13 +4,12 @@
 package com.lonch.util;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.*;
 
 @Setter
 @Getter
-@NoArgsConstructor
+@SuppressWarnings("unused")
 public class Node<E> {
 
     public E data;
@@ -26,16 +25,20 @@ public class Node<E> {
         this.data = data;
     }
 
+    public Node() {
+
+    }
+
     public void setLeft(Node<E> left) {
         this.left = left;
         if (left != null)
-            left.setParent(this);
+            left.parent = this;
     }
 
     public void setRight(Node<E> right) {
         this.right = right;
         if (right != null)
-            right.setParent(this);
+            right.parent = this;
     }
 
     public static <E> Node<E> copy(Node<E> root) {
