@@ -5,9 +5,8 @@ package com.leetcode.sort;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static com.leetcode.sort.BaseTest.generateRandomArray;
+import static java.util.Arrays.stream;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -24,7 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
         将新元素插入到该位置后；
         重复步骤2~5。
 */
-public class InsertionSort_x3 {
+public class InsertionSort {
 
     @Test
     public void test() {
@@ -35,13 +34,36 @@ public class InsertionSort_x3 {
 //        assertArrayEquals(new int[]{1, 2, 3, 5, 5, 6},
 //                insertionSort(new int[]{1, 2, 5, 5, 3, 6}));
         int[] origin = generateRandomArray(100, 100);
-        assertArrayEquals(Arrays.stream(origin).sorted().toArray(),
-                insertionSort(origin));
+        for (int i : stream(origin).sorted().toArray()) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        for (int i : insertionSort(origin)) {
+            System.out.print(i + " ");
+        }
     }
 
     public static int[] insertionSort(int[] arr) {
+        // 从第一个元素之后查找
+        for (int i = 1; i < arr.length; i++) {
+            int j = i - 1;
+            int cur = arr[i];
+            // 当找到的元素小于pre时，插入前面
+            // 挨个【向后】 "挪" 动
+            // 最后把 j + 1 这个位置让出来
+            while (j >= 0 && arr[j] > cur) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            // j + 1 这个位置让出来之后，把 cur 放进去
+            arr[j + 1] = cur;
+        }
         return arr;
     }
+
+//    public static int[] insertionSort(int[] arr) {
+//        return arr;
+//    }
 }
 
 
@@ -59,7 +81,7 @@ public class InsertionSort_x3 {
 
 
 
-/**
+/*
 // 方法1：
 public static int[] insertionSort(int[] arr) {
     // 从第一个元素之后查找

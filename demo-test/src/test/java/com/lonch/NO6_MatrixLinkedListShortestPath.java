@@ -9,10 +9,9 @@ import java.util.*;
 import static com.lonch.util.MatrixNode.init;
 import static com.lonch.util.MatrixNode.printMatrix;
 import static java.lang.System.out;
-import static java.util.Collections.emptyList;
 
 /**
-    [MATRIXLINKED] |||||
+    [MATRIXLINKED] ||||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
 
@@ -24,8 +23,8 @@ public class NO6_MatrixLinkedListShortestPath {
     public void test() {
         MatrixNode<Character> mnode = init(5, 5);
         printMatrix(mnode);
-        findShortestPaths(mnode.right.right.right,
-                mnode.down.right.right).forEach(
+        findShortestPaths(mnode,
+                mnode.down.down.down.down.right.right.right.right).forEach(
                 path -> {
                     path.forEach(s -> out.print(s.val + " -> "));
                     out.println();
@@ -39,6 +38,7 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
         // 2024/4/11 NO.4 一遍过
         // 2024/4/12 NO.5 一遍过
+        // 2024/4/13 NO.6 一遍过
         // TODO 剪枝法
         List<List<MatrixNode>> res = new ArrayList<>();
         return res;

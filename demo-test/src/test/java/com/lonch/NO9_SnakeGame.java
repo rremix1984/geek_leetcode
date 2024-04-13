@@ -10,7 +10,7 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 /**
-    [SNAKE] ||||
+    [SNAKE] |||||
     (困难)
     NO.9 贪吃蛇游戏
  */
@@ -22,6 +22,7 @@ public class NO9_SnakeGame {
         // 2024/4/10 NO.2 一遍过
         // 2024/4/11 NO.3 一遍过
         // 2024/4/12 NO.4 一遍过
+        // 2024/4/13 NO.5 一遍过
         // TODO 这里要熟练使用：
         // new Scanner(System.in).nextLine() 获取命令行输入
     }

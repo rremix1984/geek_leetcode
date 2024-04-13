@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
+    面试题：
     1. 首先了解、单链表、双链表概念，了解二叉树、完全二叉树和满二叉树的概念
     2. 写一个双链表，用泛型
     3. 增加一个子节点改为三链表
@@ -34,6 +35,7 @@ public class NO12_TwoLinkedList {
         Node<Integer> right = cTree(n - 1,2 *  i + 1);
         if (right != null)
             right.parent = node;
+
         node.left = left;
         node.right = right;
         return node;

@@ -6,11 +6,8 @@ package com.leetcode.util;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class BoardUtil {
-//
-//    public static void main(String[] args) {
-//        System.out.println("1");
-//    }
 
     public static void printBoard(char[][] board) {
         System.out.println("-----------------------");
@@ -80,7 +77,7 @@ public class BoardUtil {
 
 
 
-/**
+/*
 public static class Trie {
 
     public String word;
