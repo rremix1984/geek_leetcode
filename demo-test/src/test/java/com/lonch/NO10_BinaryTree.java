@@ -13,7 +13,7 @@ import static java.lang.System.out;
 /**
     [TREENODE] |||
     (中等)
-    NO.10 先定义 Node 节点，创建 n 阶满二叉树，数据值按顺序 A-Z 循环赋值
+    NO.10 先定义 Node 节点，创建 n 阶满二叉树，数据值按顺序 A - Z 循环赋值
     public class Node<E> {
         E data;
         Node<E> parent;
@@ -25,24 +25,53 @@ public class NO10_BinaryTree {
 
     @Test
     public void test() {
-        Node<Character> root = cTree(3, 0); // 创建3阶满二叉树
-        printTree(root);// 这里可以添加代码来遍历和显示树的结构
+        // 2024/4/10 NO.1 没思路，看答案做出来了
+        // 2024/4/11 NO.2 没做对，思路对了
+        // 2024/4/12 NO.3 一遍过
+        // 2024/4/13 NO.4
+        Node<Character> node = cTree(4, 0);
+        printTree(node);
     }
 
-    public Node<Character> cTree(int depth, int cur) {
+    private Node<Character> cTree(int depth, int c) {
         if (depth == 0)
             return null;
 
-        // TODO 2024/4/10 NO.1 没思路，看答案做出来了
-        // TODO 2024/4/11 NO.2 没做对，思路对了
-        // TODO 2024/4/12 NO.3 一遍过
-        return null;
+        Node<Character> node = new Node<>((char) ('A' + c % 26));
+        node.left = cTree(depth - 1, 2 * c + 1);
+        if (node.left != null)
+            node.left.parent = node;
+
+        node.right = cTree(depth - 1, 2 * c + 2);
+        if (node.right != null)
+            node.right.parent = node;
+
+        return node;
     }
 
-    public void printTree(Node<Character> root) {
-        // TODO 2024/4/10 NO.1 一遍过
-        // TODO 2024/4/11 NO.2 一遍过
-        // TODO 2024/4/12 NO.3 一遍过
+    public void printTree(Node<Character> node) {
+        if (node == null)
+            return;
+
+        Deque<Node<Character>> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size > 0) {
+                Node<Character> root = queue.poll();
+                if (root == null)
+                    continue;
+                out.print(root.data + " ");
+                if (root.left != null)
+                    queue.offer(root.left);
+
+                if (root.right != null)
+                    queue.offer(root.right);
+
+                size--;
+            }
+        }
+
     }
 
 }
