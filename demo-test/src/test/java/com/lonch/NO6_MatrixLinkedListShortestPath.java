@@ -11,7 +11,7 @@ import static com.lonch.util.MatrixNode.printMatrix;
 import static java.lang.System.out;
 
 /**
-    [MATRIXLINKED] ||||||
+    [MATRIXLINKED] |||||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
 
@@ -23,25 +23,11 @@ public class NO6_MatrixLinkedListShortestPath {
     public void test() {
         MatrixNode<Character> mnode = init(5, 5);
         printMatrix(mnode);
-        findShortestPaths(mnode,
-                mnode.down.down.down.down.right.right.right.right).forEach(
-                path -> {
-                    path.forEach(s -> out.print(s.val + " -> "));
-                    out.println();
-                });
-    }
-
-    // 搜索所有可能的最短路径
-    public List<List<MatrixNode>> findShortestPaths(MatrixNode start, MatrixNode end) {
         // 2024/4/7 NO.1 没思路，但能看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 有思路了，没写出来。
         // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
-        // 2024/4/11 NO.4 一遍过
-        // 2024/4/12 NO.5 一遍过
-        // 2024/4/13 NO.6 一遍过
-        // TODO 剪枝法
-        List<List<MatrixNode>> res = new ArrayList<>();
-        return res;
+        // 2024/4/11-12-13-14 NO.4-5-6-7 一遍过
+
     }
 
 }
@@ -99,5 +85,19 @@ private void dfs(List<List<MatrixNode>> res, List<MatrixNode> list,
     // 回溯，移除当前节点，继续搜索其他可能的路径
     list.remove(start);
     visited.remove(start);
+}
+
+@Test
+public void test() {
+    MatrixNode<Character> mnode = init(5, 5);
+    printMatrix(mnode);
+    find(mnode.down.right.right,
+        mnode.down.down.right.right.right).forEach(
+        path -> {
+            path.forEach(
+                s -> out.print(s.val + " -> ")
+            );
+            out.println();
+        });
 }
 */

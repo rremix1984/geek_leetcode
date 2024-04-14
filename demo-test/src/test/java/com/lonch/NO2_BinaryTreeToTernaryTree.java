@@ -15,7 +15,6 @@ import static org.junit.Assert.assertEquals;
     [TREENODE] ||
     (简单)
     NO.2 定义泛型二叉树节点，然后二叉转三叉。
-
  */
 @SuppressWarnings("all")
 public class NO2_BinaryTreeToTernaryTree {

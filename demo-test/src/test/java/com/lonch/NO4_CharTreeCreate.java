@@ -10,7 +10,7 @@ import static com.lonch.util.TreeNode.*;
 import static java.lang.System.out;
 
 /**
-    [TREE] |||
+    [TREE] ||||
     (简单)
     NO.4 指定深度（depth）的满二叉树赋值，从a到z循环赋值。
 
@@ -25,10 +25,10 @@ public class NO4_CharTreeCreate {
     }
 
     public TreeNode<Character> cTree(int depth, int cur) {
-        // 2024/4/7 NO.1 没思路，能看懂
-        // 2024/4/8 NO.2 还是没思路，能看懂。层序遍历算法
-        // 2024/4/9 NO.3 思路还是不太清晰，看答案做出来了
-        // TODO
+        // 2024/4/7  NO.1 没思路，能看懂
+        // 2024/4/8  NO.2 还是没思路，能看懂。层序遍历算法
+        // 2024/4/9  NO.3 思路还是不太清晰，看答案做出来了
+        // 2024/4/14 NO.4 一遍过
         return null;
     }
 

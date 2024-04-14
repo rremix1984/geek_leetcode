@@ -8,10 +8,11 @@ import org.junit.Test;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
+import static com.lonch.util.Node.printTree;
 import static java.lang.System.out;
 
 /**
-    [TREENODE] |||
+    [TREENODE] ||||
     (中等)
     NO.10 先定义 Node 节点，创建 n 阶满二叉树，数据值按顺序 A - Z 循环赋值
     public class Node<E> {
@@ -28,49 +29,7 @@ public class NO10_BinaryTree {
         // 2024/4/10 NO.1 没思路，看答案做出来了
         // 2024/4/11 NO.2 没做对，思路对了
         // 2024/4/12 NO.3 一遍过
-        // 2024/4/13 NO.4
-        Node<Character> node = cTree(4, 0);
-        printTree(node);
-    }
-
-    private Node<Character> cTree(int depth, int c) {
-        if (depth == 0)
-            return null;
-
-        Node<Character> node = new Node<>((char) ('A' + c % 26));
-        node.left = cTree(depth - 1, 2 * c + 1);
-        if (node.left != null)
-            node.left.parent = node;
-
-        node.right = cTree(depth - 1, 2 * c + 2);
-        if (node.right != null)
-            node.right.parent = node;
-
-        return node;
-    }
-
-    public void printTree(Node<Character> node) {
-        if (node == null)
-            return;
-
-        Deque<Node<Character>> queue = new LinkedList<>();
-        queue.offer(node);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            while (size > 0) {
-                Node<Character> root = queue.poll();
-                if (root == null)
-                    continue;
-                out.print(root.data + " ");
-                if (root.left != null)
-                    queue.offer(root.left);
-
-                if (root.right != null)
-                    queue.offer(root.right);
-
-                size--;
-            }
-        }
+        // 2024/4/14 NO.4 没做对，还需要练习
 
     }
 

@@ -92,6 +92,9 @@ public class TreeNode<E> {
             E val;
             while (size > 0) {
                 TreeNode<E> node = queue.poll();
+                if (node == null)
+                    continue;
+
                 val = node.val;
                 System.out.print(node.val + " ");
                 if (node.left != null)
