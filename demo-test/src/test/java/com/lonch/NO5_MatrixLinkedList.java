@@ -4,12 +4,10 @@
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
-import com.lonch.util.MatrixNode;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.Test;
 import java.util.*;
-
 import static com.lonch.util.MatrixNode.*;
 import static org.junit.Assert.assertEquals;
 
@@ -30,9 +28,7 @@ public class NO5_MatrixLinkedList {
         // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行
         // 2024/4/9 NO.3 一遍过，做了几遍都是一遍过
         // 2024/4/11 NO.4 没做对，思路全对，但是忘了细节
-        // 2024/4/12 NO.5 一遍过
-        // 2024/4/13 NO.6 一遍过
-        // 2024/4/14 NO.7 一遍过
+        // 2024/4/12-13-14-15 NO.5-6-7-8 一遍过
     }
 
 }
@@ -102,5 +98,20 @@ static class MatrixNode {
         this.up = null;
         this.down = null;
     }
+}
+
+public static <T> void printMatrix(MatrixNode<T> head) {
+    MatrixNode<T> col = head;
+    StringBuilder sb = new StringBuilder();
+    while (col != null) {
+        MatrixNode<T> row = col;
+        while (row != null) {
+            sb.append(row.val).append("\t");
+            row = row.right;
+        }
+        sb.append("\n");
+        col = col.down;
+    }
+    System.out.println(sb);
 }
 */

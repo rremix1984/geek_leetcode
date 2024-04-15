@@ -17,7 +17,7 @@ import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] |||||
+    [TREENODE] ||||||
     (中等)
     NO.11 创建的树复制成三个份，根用 parent彼此连接，
         从任意节点开始，遍历全部，输出遍历结果要求:
@@ -43,9 +43,7 @@ public class NO11_BinaryTreeTraversal {
         Node<Character> root1 = cTree(4, 0);
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
-        // 2024/4/12 NO.3 一遍过
-        // 2024/4/13 NO.4 一遍过
-        // 2024/4/14 NO.5 一遍过
+        // 2024/4/12-13-14-15 NO.3-4-5-6 一遍过
 
     }
 

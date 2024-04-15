@@ -11,7 +11,7 @@ import static com.lonch.util.MatrixNode.printMatrix;
 import static java.lang.System.out;
 
 /**
-    [MATRIXLINKED] |||||||
+    [MATRIXLINKED] ||||||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
 
@@ -26,8 +26,7 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/4/7 NO.1 没思路，但能看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 有思路了，没写出来。
         // 2024/4/9 NO.3 一遍过，做了两遍都是一遍过
-        // 2024/4/11-12-13-14 NO.4-5-6-7 一遍过
-
+        // 2024/4/11-12-13-14-15 NO.4-5-6-7-8 一遍过
     }
 
 }

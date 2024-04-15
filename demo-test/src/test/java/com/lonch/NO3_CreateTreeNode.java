@@ -12,7 +12,7 @@ import static java.lang.Math.pow;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] ||
+    [TREENODE] |||
     (简单)
     NO.3 指定深度（depth）从 1 到 n 层序遍历赋值
                             0
