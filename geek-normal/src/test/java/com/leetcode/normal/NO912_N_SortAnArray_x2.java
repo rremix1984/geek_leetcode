@@ -25,14 +25,14 @@ public class NO912_N_SortAnArray_x2 {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 2, 3, 5},
-                sortArray(new int[]{5, 2, 3, 1}));
+        assertArrayEquals(new Integer[]{1, 2, 3, 5},
+                sortArray(new Integer[]{5, 2, 3, 1}));
 
-        assertArrayEquals(new int[]{0, 0, 1, 1, 2, 5},
-                sortArray(new int[]{5, 1, 1, 2, 0, 0}));
+        assertArrayEquals(new Integer[]{0, 0, 1, 1, 2, 5},
+                sortArray(new Integer[]{5, 1, 1, 2, 0, 0}));
     }
 
-    public int[] sortArray(int[] nums) {
+    public Integer[] sortArray(Integer[] nums) {
         return heapSort(nums);
     }
 

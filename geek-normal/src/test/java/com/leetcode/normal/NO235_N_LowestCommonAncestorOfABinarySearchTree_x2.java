@@ -45,7 +45,9 @@ public class NO235_N_LowestCommonAncestorOfABinarySearchTree_x2 {
             , cTree(2), cTree(4)).val; // 2
     }
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode<Integer> lowestCommonAncestor(TreeNode<Integer> root,
+                                                  TreeNode<Integer> p,
+                                                  TreeNode<Integer> q) {
         return root;
     }
 
