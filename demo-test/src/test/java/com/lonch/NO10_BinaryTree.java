@@ -12,7 +12,7 @@ import static com.lonch.util.Node.printTree;
 import static java.lang.System.out;
 
 /**
-    [TREENODE] ||||
+    [TREENODE] |||||
     (中等)
     NO.10 先定义 Node 节点，创建 n 阶满二叉树，数据值按顺序 A - Z 循环赋值
     public class Node<E> {
@@ -30,6 +30,7 @@ public class NO10_BinaryTree {
         // 2024/4/11 NO.2 没做对，思路对了
         // 2024/4/12 NO.3 一遍过
         // 2024/4/14 NO.4 没做对，还需要练习
+        // 2024/4/15 NO.5 一遍过
 
     }
 
