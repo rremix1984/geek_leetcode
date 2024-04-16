@@ -13,9 +13,10 @@ import java.util.Stack;
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static java.util.Collections.emptyList;
+import static org.junit.Assert.assertEquals;
 
 /**
-    [TREE] |||||
+    [TREE] ||||||
     (简单，面试）
     144. 二叉树的前序遍历
     给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
@@ -39,23 +40,23 @@ public class NO144_E_PreorderTraversal {
 
     @Test
     public void test() {
-        Assert.assertEquals(getArray(1, 2, 3),
+        assertEquals(getArray(1, 2, 3),
                 preorderTraversal(cTree(1, null, 2, null, null, 3)));
-        Assert.assertEquals(emptyList(),
+        assertEquals(emptyList(),
                 preorderTraversal(cTree()));// []
-        Assert.assertEquals(getArray(1),
+        assertEquals(getArray(1),
                 preorderTraversal(cTree(1)));// [1]
-        Assert.assertEquals(getArray(1, 2),
+        assertEquals(getArray(1, 2),
                 preorderTraversal(cTree(1, 2, null)));// [1, 2]
-        Assert.assertEquals(getArray(1, 2),
+        assertEquals(getArray(1, 2),
                 preorderTraversal(cTree(1, null, 2)));// [1, 2]
     }
 
     public List<Integer> preorderTraversal(TreeNode<Integer> root) {
         // 2024/3/12 NO.1 一共3种方法，递归法出来了
         // 2024/3/16-19-22-23 NO.2-3-4-5 迭代法做出来了
-        List<Integer> res = new ArrayList<>();
-        return res;
+        // 2024/4/16 NO.6 犯了个小错误，思路对
+        return null;
     }
 
 }
@@ -134,9 +135,7 @@ public void call(List<Integer> ans, TreeNode root) {
         return;
 
     ans.add(root.val);
-
     call(ans, root.left);
-
     call(ans, root.right);
 }
 */

@@ -14,7 +14,7 @@ import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREE] |||||||
+    [TREE] ||||||||
     (简单)
     NO.94 二叉树的中序遍历
     给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。
@@ -56,9 +56,8 @@ public class NO094_E_InorderTraversal {
         // 2024/3/30 NO.7 居然忘了怎么做了...
         // 2024/4/1  NO.8 一遍过
         // 2024/4/15 NO.9 没做对，但是思路对了，忘了一部分了
-        List<Integer> res = new ArrayList<>();
-
-        return res;
+        // 2024/4/16 NO.10 做对了，能回忆起来
+        return null;
     }
 
 }

@@ -7,7 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 /**
-    [LINKEDLIST] ||||
+    [LINKEDLIST] ||||||
     (简单)
     206. 反转链表
         给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -26,11 +26,11 @@ public class NO206_E_ReverseLinkedList {
     @Test
     public void test() {
         assert new ListNode<>(5, 4, 3, 2, 1).equals(
-            reverseList(new ListNode<>(1, 2, 3, 4, 5)));// [5, 4, 3, 2, 1]
+            reverseList(new ListNode<>(1, 2, 3, 4, 5)));
         assert new ListNode<>(2, 1).equals(
-            reverseList(new ListNode<>(1,2)));// [2, 1]
-        assert new ListNode<>().equals(
-            reverseList(new ListNode<>()));// []
+            reverseList(new ListNode<>(1,2)));
+        assert new ListNode<Integer>().equals(
+            reverseList(new ListNode<>()));
     }
 
     public ListNode<Integer> reverseList(ListNode<Integer> head) {
@@ -38,8 +38,8 @@ public class NO206_E_ReverseLinkedList {
         // 2024/3/10 NO.2 第一种做出来了，第二种错了
         // 2024/3/11 NO.3
         // 2024/3/17-20 NO.4-5 两种都做出来了
-        ListNode<Integer> pre = null;
-        return pre;
+        // 2024/4/16 NO.6 迭代法能做出来了，递归法做错了，需要反复练习
+        return null;
     }
 
 }
@@ -63,6 +63,7 @@ public class NO206_E_ReverseLinkedList {
 public ListNode reverseList(ListNode head) {
     if (head == null || head.next == null)
         return head;
+
     ListNode newHead = reverseList(head.next);
     head.next.next = head;
     head.next = null;

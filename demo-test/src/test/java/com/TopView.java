@@ -9,7 +9,7 @@ import static com.leetcode.util.SystemUtil.printArr;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
-    [TREE] ||||||||||
+    [TREE] |||||||||||
     (中等,抖音,面试题)
     二叉树顶部视图
 
@@ -41,6 +41,8 @@ public class TopView {
 
     @Test
     public void test() {
+        printArr(topView(cTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+                12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 2)));
         assertArrayEquals(new Integer[]{16, 8, 4, 2, 1, 3, 7, 15},
                 topView(cTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
                         12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 2)));
@@ -49,13 +51,14 @@ public class TopView {
                         12, 13, 14, 15)));
     }
 
-    private Integer[] topView(TreeNode<Integer> integerTreeNode) {
+    private Integer[] topView(TreeNode<Integer> root) {
         // 2024/3/19 NO.1 看懂了
         // 2024/3/20 NO.2 没做出来
         // 2024/3/21 NO.3 没做对
         // 2024/3/22 NO.4 能做出来了
         // 2024/3/24-26-27-29 No.5-6-7-8 一遍过
         // 2024/4/15 NO.9 忘差不多了，总也不写就是会忘，也说明没有从根本上了解原理
+        // 2024/4/16 NO.10 做错了，思路对，做得快容易错，因为太有把握了所以敲代码不过脑子，低级错误
         return null;
     }
 

@@ -4,6 +4,7 @@
 package com.leetcode.util;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import static java.util.Arrays.copyOf;
@@ -16,6 +17,7 @@ import static java.util.Arrays.copyOf;
 @SuppressWarnings("unused")
 @Getter
 @Setter
+@NoArgsConstructor
 public class ListNode<E> {
 
     public E val = (E) Integer.valueOf(0);
@@ -85,10 +87,6 @@ public class ListNode<E> {
     public ListNode<E> next(ListNode<E> next) {
         this.next = next;
         return this;
-    }
-
-    public ListNode() {
-
     }
 
     public static <E> void assertNodeEquals(ListNode<E> node, int... arr) {
