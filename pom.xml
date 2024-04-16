@@ -14,6 +14,7 @@
         <module>geek-easy</module>
         <module>geek-normal</module>
         <module>geek-hard</module>
+        <module>geek-multithread</module>
         <module>geek-common</module>
         <module>itcast-zookeeper-study</module>
         <module>curator-api-example</module>
