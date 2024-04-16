@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import interview.designpattern.task.CodingTask;
+import com.interview.designpattern.task.CodingTask;
 
 public class ExecutorTester {
 
