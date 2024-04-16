@@ -1,49 +1,49 @@
 package com.interview.tree;
 
 public class TreeNode {
-  private final char value;
-  private TreeNode left;
-  private TreeNode right;
-  private TreeNode parent;
+    private final char value;
+    private TreeNode left;
+    private TreeNode right;
+    private TreeNode parent;
 
-  public TreeNode(char value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-    this.parent = null;
-  }
-
-  public char getValue() {
-    return value;
-  }
-
-  public TreeNode getLeft() {
-    return left;
-  }
-
-  public void setLeft(TreeNode left) {
-    this.left = left;
-    if (this.left != null) {
-      this.left.setParent(this);
+    public TreeNode(char value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+        this.parent = null;
     }
-  }
 
-  public TreeNode getRight() {
-    return right;
-  }
-
-  public void setRight(TreeNode right) {
-    this.right = right;
-    if (this.right != null) {
-      this.right.setParent(this);
+    public char getValue() {
+        return value;
     }
-  }
 
-  public TreeNode getParent() {
-    return parent;
-  }
+    public TreeNode getLeft() {
+        return left;
+    }
 
-  private void setParent(TreeNode parent) {
-    this.parent = parent;
-  }
+    public void setLeft(TreeNode left) {
+        this.left = left;
+        if (this.left != null) {
+            this.left.setParent(this);
+        }
+    }
+
+    public TreeNode getRight() {
+        return right;
+    }
+
+    public void setRight(TreeNode right) {
+        this.right = right;
+        if (this.right != null) {
+            this.right.setParent(this);
+        }
+    }
+
+    public TreeNode getParent() {
+        return parent;
+    }
+
+    private void setParent(TreeNode parent) {
+        this.parent = parent;
+    }
 }
