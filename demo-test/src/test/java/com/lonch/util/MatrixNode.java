@@ -140,7 +140,7 @@ public class MatrixNode<T> {
 
     static int c;
 
-    private static char nextChar() {
+    public static char nextChar() {
         return (char) ('a' + (c++ % 26));
     }
 

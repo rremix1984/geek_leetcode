@@ -4,17 +4,14 @@
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
-import com.lonch.util.MatrixNode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.junit.Test;
 import java.util.*;
-import static com.lonch.util.MatrixNode.getMatrix;
-import static com.lonch.util.MatrixNode.printMatrix;
+import static com.lonch.util.MatrixNode.*;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [MATRIXLINKED] ||||||
+    [MATRIXLINKED] |||||||
     (简单)
     NO.5 定义链表来表示 N * N 的矩阵，节点内包括数值和
          四个指针分别为上、下、左、右
@@ -24,21 +21,14 @@ public class NO5_MatrixLinkedList {
 
     @Test
     public void test() {
-        MatrixNode<Integer> head = init(5, 5);
+        MatrixNode<Character> head = init(5, 5);
         printMatrix(head);
-        assertEquals("2\t3\t4\t2\t3\t4\t",
-            getMatrix(head.down.right.down.right.down));
-    }
-
-    public MatrixNode<Integer> init(int rows, int cols) {
         // 2024/4/7 NO.1 没思路，可以看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行
         // 2024/4/9 NO.3 一遍过，做了几遍都是一遍过
         // 2024/4/11 NO.4 没做对，思路全对，但是忘了细节
-        // 2024/4/12 NO.5 一遍过
-        // 2024/4/13 NO.6 一遍过
-        // TODO 你能做出来的，相信自己
-        return null;
+        // 2024/4/12-13-14-15 NO.5-6-7-8 一遍过
+
     }
 
 }
@@ -108,5 +98,20 @@ static class MatrixNode {
         this.up = null;
         this.down = null;
     }
+}
+
+public static <T> void printMatrix(MatrixNode<T> head) {
+    MatrixNode<T> col = head;
+    StringBuilder sb = new StringBuilder();
+    while (col != null) {
+        MatrixNode<T> row = col;
+        while (row != null) {
+            sb.append(row.val).append("\t");
+            row = row.right;
+        }
+        sb.append("\n");
+        col = col.down;
+    }
+    System.out.println(sb);
 }
 */

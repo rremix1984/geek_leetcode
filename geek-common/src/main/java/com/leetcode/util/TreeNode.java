@@ -9,7 +9,7 @@ import java.util.Objects;
 @SuppressWarnings("all")
 public class TreeNode<T> {
 
-    public T val;
+    public T val = (T) Integer.valueOf(0);
 
     public TreeNode<T> left;
 

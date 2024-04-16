@@ -128,4 +128,12 @@ public class Node<E> {
             System.out.println(); // 每层遍历结束后换行
         }
     }
+
+    @Override
+    public String toString() {
+        return "[" + data + (
+            (left == null && right == null) ?
+                "" : ", " + left + ", "+ right +"]") ;
+    }
+
 }

@@ -4,6 +4,11 @@ import com.lonch.util.Node;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
+import static java.lang.System.out;
+
 /**
     面试题：
     1. 首先了解、单链表、双链表概念，了解二叉树、完全二叉树和满二叉树的概念
@@ -19,28 +24,51 @@ import lombok.Setter;
 public class NO12_TwoLinkedList {
 
     public static void main(String[] args) {
-        Node<Integer> node = cTree(4, 1);
-        Node.printTree(node);
-    }
-
-    private static Node<Integer> cTree(int n, int i) {
-        if (n == 0)
-            return null;
-
-        Node<Integer> node = new Node<>(i);
-        Node<Integer> left = cTree(n - 1,2 * i);
-        if (left != null)
-            left.parent = node;
-
-        Node<Integer> right = cTree(n - 1,2 *  i + 1);
-        if (right != null)
-            right.parent = node;
-
-        node.left = left;
-        node.right = right;
-        return node;
+        // 2024/4/14 NO.1
     }
 
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public static void main(String[] args) {
+    Node node = createBinaryTree(4, null, 1);
+}
+
+public static Node createBinaryTree(int n, Node parent, int i) {
+    if (n <= 0)
+        return null;
+    
+    Node node = new Node();
+    n --;
+    node.setValue(i);
+
+    node.setLeft(createBinaryTree(n, parent, 2 * i));
+
+    node.setRight(createBinaryTree(n, parent, 2 * i + 1));
+    node.setParent(parent);
+    return node;
+}
+
+static class Node<T> {
+
+    private T value;
+    private Node parent;
+    private Node<T> left;
+    private Node<T> right;
+}
+*/

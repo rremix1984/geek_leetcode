@@ -37,8 +37,8 @@ public class NO094_E_InorderTraversal {
                                         new TreeNode<>(11,
                                 new TreeNode<>(12)))))));
         assertEquals(getArray(9, 3, 15, 20, 7),
-                inorderTraversal(new TreeNode(3,
-                            9, new TreeNode(20,
+                inorderTraversal(new TreeNode<>(3,
+                            new TreeNode<>(9), new TreeNode<>(20,
                                         15, 7))));
         assertEquals(getArray(0),
                 inorderTraversal(new TreeNode<>()));
@@ -55,8 +55,9 @@ public class NO094_E_InorderTraversal {
         // 2024/3/27 NO.6 一遍过
         // 2024/3/30 NO.7 居然忘了怎么做了...
         // 2024/4/1  NO.8 一遍过
+        // 2024/4/15 NO.9 没做对，但是思路对了，忘了一部分了
         List<Integer> res = new ArrayList<>();
-        // TODO
+
         return res;
     }
 

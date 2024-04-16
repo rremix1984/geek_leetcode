@@ -3,6 +3,7 @@
  */
 package com.lonch;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
@@ -19,11 +20,7 @@ public class NO9_SnakeGame {
 
     public static void main(String[] args) {
         // 2024/4/9  NO.1 能看懂，做不出来
-        // 2024/4/10 NO.2 一遍过
-        // 2024/4/11 NO.3 一遍过
-        // 2024/4/12 NO.4 一遍过
-        // 2024/4/13 NO.5 一遍过
-        // 2024/4/14 NO.6 一遍过
+        // 2024/4/10-11-12-13-14-15 NO.2-3-4-5-6-7 一遍过
 
     }
 
@@ -129,7 +126,7 @@ static class SnakeGame {
         if (newHead[0] == food[0] && newHead[1] == food[1]) {
             score++;
             food = new int[]{new Random().nextInt(ROWS),
-                    new Random().nextInt(COLS)};
+                             new Random().nextInt(COLS)};
         } else {
             snake.removeLast(); // 移动后删除尾部，相当于向前移动
         }
