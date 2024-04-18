@@ -1,24 +1,25 @@
 package com.sgg.aqs;
 
 import lombok.val;
-
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
+import org.junit.Test;
+import java.util.concurrent.locks.*;
 import static java.lang.System.out;
-import static java.lang.Thread.currentThread;
+import static java.lang.Thread.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+/**
+ * 通过 Condition 实现
+ */
 public class ConditionWaitNotifyDemo {
 
     static final Lock lock = new ReentrantLock();
     static final Condition condition = lock.newCondition();
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         new Thread(() -> {
             try {
-                SECONDS.sleep(3);
+                sleep(3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -47,7 +48,6 @@ public class ConditionWaitNotifyDemo {
                 lock.unlock();
             }
         }, "B").start();
-
     }
 
     public static void synchronizedWaitNotify() {
@@ -58,7 +58,6 @@ public class ConditionWaitNotifyDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             val tName = currentThread().getName();
             synchronized (lock) {
                 out.println(tName + "\t--come in");
@@ -72,7 +71,7 @@ public class ConditionWaitNotifyDemo {
         }, "A").start();
 
         new Thread(() -> {
-            String tName = currentThread().getName();
+            val tName = currentThread().getName();
             synchronized (lock) {
                 lock.notify();
                 out.println(tName + "\t-----通知");
