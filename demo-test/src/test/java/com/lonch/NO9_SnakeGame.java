@@ -91,7 +91,7 @@ static class SnakeGame {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++)
                 System.out.print(board[i][j] + " ");
-            System.out.println();
+            out.println();
         }
     }
 

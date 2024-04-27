@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
 
+import static java.lang.System.out;
+
 @Setter
 @Getter
 @SuppressWarnings("unused")
@@ -115,7 +117,7 @@ public class Node<E> {
                 if (node == null)
                     continue;
 
-                System.out.print(node.data + " ");
+                out.print(node.data + " ");
 
                 if (node.left != null)
                     queue.add(node.left);
@@ -125,7 +127,7 @@ public class Node<E> {
 
                 size--;
             }
-            System.out.println(); // 每层遍历结束后换行
+            out.println(); // 每层遍历结束后换行
         }
     }
 

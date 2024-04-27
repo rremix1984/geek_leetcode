@@ -39,12 +39,11 @@ public class LockSupportDemo {
         }, "a");
         a.start();
 
-        Thread b = new Thread(() -> {
+        new Thread(() -> {
             unpark(a);
             // unpark(a);
             out.println(tName() + "\t------通知了");
-        }, "b");
-        b.start();
+        }, "b").start();
     }
 
     private static void sleep(long i) {
@@ -58,6 +57,5 @@ public class LockSupportDemo {
     private static String tName() {
         return currentThread().getName();
     }
-
 
 }

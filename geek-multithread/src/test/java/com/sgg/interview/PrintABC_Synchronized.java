@@ -2,6 +2,8 @@ package com.sgg.interview;
 
 import org.junit.Test;
 
+import static java.lang.System.out;
+
 public class PrintABC_Synchronized {
     //锁住的对象
     private final static Object lock = new Object();
@@ -21,7 +23,7 @@ public class PrintABC_Synchronized {
 
     public static void printA() {
         synchronized (lock) {
-            System.out.print("A");
+            out.print("A");
             flagA = true;
             //唤醒所有等待线程
             lock.notifyAll();
@@ -34,7 +36,7 @@ public class PrintABC_Synchronized {
             while (!flagA)
                 lock.wait();
 
-            System.out.print("B");
+            out.print("B");
             flagB = true;
             lock.notifyAll();
         }
@@ -46,7 +48,7 @@ public class PrintABC_Synchronized {
             while (!flagB)
                 lock.wait();
 
-            System.out.print("C");
+            out.print("C");
         }
     }
 

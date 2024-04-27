@@ -3,6 +3,7 @@ package com.lonch;
 import com.lonch.util.Node;
 
 import static com.lonch.util.Node.printTree;
+import static java.lang.System.out;
 
 public class NO15_TreeNodeTest {
 
@@ -61,7 +62,7 @@ public class NO15_TreeNodeTest {
 
         recursiveChild(node.left);
         recursiveChild(node.right);
-        System.out.print(node.data + " ");
+        out.print(node.data + " ");
     }
 
     //向上遍历
@@ -70,15 +71,15 @@ public class NO15_TreeNodeTest {
         while(node.parent != null && node.parent.parent != null ){
             Node<Integer> father = node.parent;
             if(node == father.right){
-                System.out.print(father.data + " ");
+                out.print(father.data + " ");
                 recursiveChild(father.left);
             }
             if(node == father.left){
-                System.out.print(father.data + " ");
+                out.print(father.data + " ");
                 recursiveChild(father.right);
             }
             if(node != father.left && node != father.right){ //说明本颗树遍历完成
-                System.out.println();
+                out.println();
                 recursiveChild(father);
                 node.parent = null;
             }

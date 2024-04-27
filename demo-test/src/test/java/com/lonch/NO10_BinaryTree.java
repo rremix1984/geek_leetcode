@@ -91,6 +91,6 @@ public static void printTree(Node<Character> root) {
                 out.println();
         }
     }
-    System.out.println();
+    out.println();
 }
 */

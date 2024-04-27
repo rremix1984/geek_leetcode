@@ -43,6 +43,4 @@ public class ReEnterLockDemo1 {
         }, "t2").start();
     }
 
-
-
 }

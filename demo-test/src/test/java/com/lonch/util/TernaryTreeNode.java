@@ -6,6 +6,8 @@ package com.lonch.util;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import static java.lang.System.out;
+
 @SuppressWarnings("unused")
 @Data
 public class TernaryTreeNode<T> {
@@ -40,7 +42,7 @@ public class TernaryTreeNode<T> {
             return;
 
         // 打印当前节点值
-        System.out.print(node.value + " ");
+        out.print(node.value + " ");
 
         // 递归打印左子树
         printTernaryTree(node.left);

@@ -113,6 +113,6 @@ public static <T> void printMatrix(MatrixNode<T> head) {
         sb.append("\n");
         col = col.down;
     }
-    System.out.println(sb);
+    out.println(sb);
 }
 */

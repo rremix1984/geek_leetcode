@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.lang.System.out;
+
 public class Manager implements Role {
     private final List<Employee> reporters;
 
@@ -14,7 +16,7 @@ public class Manager implements Role {
 
     @Override
     public void doWork() {
-        System.out.println("Dispatching work");
+        out.println("Dispatching work");
         Employee worker = selectReporter();
         worker.doWork();
     }

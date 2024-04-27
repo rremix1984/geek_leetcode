@@ -9,6 +9,8 @@ import org.junit.Before;
 
 import java.util.concurrent.CountDownLatch;
 
+import static java.lang.System.out;
+
 @Slf4j
 public class BaseTest {
 
@@ -20,7 +22,7 @@ public class BaseTest {
 
     @Before
     public void before() throws Exception {
-        System.out.println("before --> 进行资源的创建...");
+        out.println("before --> 进行资源的创建...");
         try {
             // 计数器对象
             CountDownLatch countDownLatch = new CountDownLatch(1);
@@ -32,7 +34,7 @@ public class BaseTest {
             // 当客户端连接成功后，会收到一条watch信息
             zooKeeper = new ZooKeeper(ZK_IP_ADDRESS, TIMEOUT, event -> {
                 if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
-                    System.out.println("连接创建成功！");
+                    out.println("连接创建成功！");
                     countDownLatch.countDown();
                 }
             });

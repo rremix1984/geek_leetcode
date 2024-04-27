@@ -2,6 +2,8 @@ package com.atguigu.queue;
 
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 /**
  * 用数组来模拟队列
  */
@@ -16,11 +18,11 @@ public class ArrayQueueDemo {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while (loop) {
-            System.out.println("s(show): 显示队列");
-            System.out.println("e(exit): 退出程序");
-            System.out.println("a(add): 添加数据到队列");
-            System.out.println("g(get): 从队列取出数据");
-            System.out.println("h(head): 查看队列头的数据");
+            out.println("s(show): 显示队列");
+            out.println("e(exit): 退出程序");
+            out.println("a(add): 添加数据到队列");
+            out.println("g(get): 从队列取出数据");
+            out.println("h(head): 查看队列头的数据");
 
             key = scanner.next().charAt(0);// 接收一个字符
             switch (key) {
@@ -28,24 +30,24 @@ public class ArrayQueueDemo {
                     queue.showQeue();
                     break;
                 case 'a':
-                    System.out.println("输出一个数");
+                    out.println("输出一个数");
                     int value = scanner.nextInt();
                     queue.addQueue(value);
                     break;
                 case 'g':
                     try {
                         int res = queue.getQueue();
-                        System.out.printf("取出的数据是：%d\n", res);
+                        out.printf("取出的数据是：%d\n", res);
                     } catch(Exception e) {
-                        System.out.println(e.getMessage());
+                        out.println(e.getMessage());
                     }
                     break;
                 case 'h':
                     try {
                         int res = queue.headQueue();
-                        System.out.printf("队列头的数据是%d \n", res);
+                        out.printf("队列头的数据是%d \n", res);
                     }catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        out.println(e.getMessage());
                     }
                     break;
                 case 'e':
@@ -56,7 +58,7 @@ public class ArrayQueueDemo {
                     break;
             }
         }
-        System.out.println("程序退出！");
+        out.println("程序退出！");
     }
 
 }
@@ -97,7 +99,7 @@ class ArrayQueue {
     public void addQueue(int n) {
         // 添加的时候首先判断队列是否满，如果满了就加不进去了
         if (isFull()) {
-            System.out.println("队列满，不能加入数据");
+            out.println("队列满，不能加入数据");
             return;
         }
         // 尾指针后移
@@ -123,12 +125,12 @@ class ArrayQueue {
     // 显示队列所有元素
     public void showQeue() {
         if (isEmpty()) {
-            System.out.println("队列空，没有数据！");
+            out.println("队列空，没有数据！");
             return;
         }
 
         for (int i = front + 1; i <= rear; i++) {
-            System.out.printf("arr[%d]=%d\n", i, arr[i]);
+            out.printf("arr[%d]=%d\n", i, arr[i]);
         }
     }
 

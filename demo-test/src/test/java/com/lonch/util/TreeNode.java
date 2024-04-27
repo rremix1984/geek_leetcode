@@ -12,6 +12,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
+import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -96,7 +97,7 @@ public class TreeNode<E> {
                     continue;
 
                 val = node.val;
-                System.out.print(node.val + " ");
+                out.print(node.val + " ");
                 if (node.left != null)
                     queue.offer(node.left);
 
@@ -104,7 +105,7 @@ public class TreeNode<E> {
                     queue.offer(node.right);
 
                 if (--size == 0)
-                    System.out.println();
+                    out.println();
 
                 list.add(val);
             }

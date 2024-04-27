@@ -3,13 +3,15 @@ package com.atguigu;
 import java.util.LinkedList;
 import java.util.List;
 
+import static java.lang.System.out;
+
 public class JosephusProblem {
 
     public static void main(String[] args) {
         int n = 10; // 总人数
         int m = 3;  // 报数到m的人被排除
         List<Integer> eliminationOrder = josephus(n, m);
-        System.out.println("被淘汰的人的顺序是：" + eliminationOrder);
+        out.println("被淘汰的人的顺序是：" + eliminationOrder);
     }
 
     public static List<Integer> josephus(int n, int m) {

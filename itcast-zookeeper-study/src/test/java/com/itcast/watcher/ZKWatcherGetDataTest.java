@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 @Slf4j
 public class ZKWatcherGetDataTest extends BaseTest {
 
@@ -34,7 +36,7 @@ public class ZKWatcherGetDataTest extends BaseTest {
     @Test
     public void watcherGetData1() throws InterruptedException, KeeperException {
         zooKeeper.getData( "/watcher2", true, null);
-        TimeUnit.SECONDS.sleep(50000);
+        SECONDS.sleep(50000);
         info("结束");
     }
 
@@ -50,7 +52,7 @@ public class ZKWatcherGetDataTest extends BaseTest {
                 info("eventType -> {}", event.getType());
             }
         }, null);
-        TimeUnit.SECONDS.sleep(50000);
+        SECONDS.sleep(50000);
         info("结束");
     }
 
@@ -77,7 +79,7 @@ public class ZKWatcherGetDataTest extends BaseTest {
         // arg1: 节点路径
         // arg2: 自定义watcher对象
         zooKeeper.getData("/watcher2", watcher, null);
-        TimeUnit.SECONDS.sleep(50000);
+        SECONDS.sleep(50000);
         info("结束");
     }
 

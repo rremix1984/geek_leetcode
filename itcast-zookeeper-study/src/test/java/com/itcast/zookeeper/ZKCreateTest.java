@@ -7,6 +7,8 @@ import org.apache.zookeeper.data.Id;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.System.out;
 import static org.apache.zookeeper.CreateMode.PERSISTENT;
 import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
 import static org.apache.zookeeper.ZooDefs.Ids.READ_ACL_UNSAFE;
@@ -18,7 +20,7 @@ public class ZKCreateTest extends BaseTest {
 
     @Test
     public void create1() throws Exception {
-        System.out.println("test --> 创建节点... ");
+        out.println("test --> 创建节点... ");
         // arg1: 创建节点的路径
         // arg2: 节点的数据（byte数组）
         // arg3: 权限列表 world:anyone:cdrwa
@@ -32,7 +34,7 @@ public class ZKCreateTest extends BaseTest {
 
 //    @Test
     public void create2() throws Exception {
-        System.out.println("create2 --> 创建节点... ");
+        out.println("create2 --> 创建节点... ");
         // arg1: 创建节点的路径
         // arg2: 节点的数据（byte数组）
         // arg3: 权限列表 world:anyone:cdrwa
@@ -46,7 +48,7 @@ public class ZKCreateTest extends BaseTest {
 
 //    @Test
     public void create3() throws Exception {
-        System.out.println("create3 --> 创建节点... ");
+        out.println("create3 --> 创建节点... ");
         List<ACL> acls = new ArrayList<>();
         Id id = new Id("world", "anyone");
         acls.add(new ACL(READ, id));
@@ -133,14 +135,14 @@ public class ZKCreateTest extends BaseTest {
                 PERSISTENT, new AsyncCallback.StringCallback() {
                     @Override
                     public void processResult(int rc, String path, Object ctx, String name) {
-                        System.out.println(rc);
-                        System.out.println(path);
-                        System.out.println(ctx);
-                        System.out.println(name);
+                        out.println(rc);
+                        out.println(path);
+                        out.println(ctx);
+                        out.println(name);
                     }
                 }, "I am context");
         Thread.sleep(10000);
-        System.out.println("结束");
+        out.println("结束");
     }
 
 }

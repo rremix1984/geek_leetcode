@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static java.lang.System.out;
+
 @SuppressWarnings("unused")
 @Setter
 @Getter
@@ -37,7 +39,7 @@ public class DoubleLinked<E> {
         if (node == null)
             return;
 
-        System.out.println(prefix + "├── " + node.data);
+        out.println(prefix + "├── " + node.data);
 
         if (node.left != null)
             printDoubleLinkedHelper(node.left, prefix + "│   ");

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.System.out;
+
 public class Combinations {
 
     /**
@@ -15,10 +17,10 @@ public class Combinations {
         if (n == 0) {
             // output all selected elements
             for (Integer i : selected) {
-                System.out.print(i);
-                System.out.print(" ");
+                out.print(i);
+                out.print(" ");
             }
-            System.out.println();
+            out.println();
             return;
         }
 
@@ -38,28 +40,28 @@ public class Combinations {
     public static void main(String[] args) {
         Combinations comb = new Combinations();
 
-        System.out.println("Testing normal data.");
+        out.println("Testing normal data.");
         comb.combinations(
                 new ArrayList<>(), Arrays.asList(1, 2, 3, 4), 2);
-        System.out.println("==========");
+        out.println("==========");
 
-        System.out.println("Testing empty source data.");
+        out.println("Testing empty source data.");
         comb.combinations(
                 new ArrayList<>(), new ArrayList<>(), 2);
-        System.out.println("==========");
+        out.println("==========");
         comb.combinations(
                 new ArrayList<>(), new ArrayList<>(), 0);
-        System.out.println("==========");
+        out.println("==========");
 
-        System.out.println("Selecting 1 and 0 elements.");
+        out.println("Selecting 1 and 0 elements.");
         comb.combinations(
                 new ArrayList<>(), Arrays.asList(1, 2, 3, 4), 1);
-        System.out.println("==========");
+        out.println("==========");
         comb.combinations(
                 new ArrayList<>(), Arrays.asList(1, 2, 3, 4), 0);
-        System.out.println("==========");
+        out.println("==========");
 
-        System.out.println("Testing large data");
+        out.println("Testing large data");
         comb.combinations(
                 new ArrayList<>(),
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 4);

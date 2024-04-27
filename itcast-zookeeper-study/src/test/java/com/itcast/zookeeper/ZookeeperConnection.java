@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
 
+import static java.lang.System.out;
+
 /**
  * 用zk客户端创建连接
  * @author rremix
@@ -29,7 +31,7 @@ public class ZookeeperConnection {
             // 当客户端连接成功后，会收到一条watch信息
             ZooKeeper zooKeeper = new ZooKeeper(ZK_IP_ADDRESS, TIMEOUT, event -> {
                 if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
-                    System.out.println("连接创建成功！");
+                    out.println("连接创建成功！");
                     countDownLatch.countDown();
                 }
             });
@@ -37,7 +39,7 @@ public class ZookeeperConnection {
             // 主线程阻塞等待连接对象，等待创建成功
             countDownLatch.await();
             // 打印会话编号
-            System.out.println(zooKeeper.getSessionId());
+            out.println(zooKeeper.getSessionId());
             zooKeeper.close();
         } catch (Exception ex) {
             ex.printStackTrace();

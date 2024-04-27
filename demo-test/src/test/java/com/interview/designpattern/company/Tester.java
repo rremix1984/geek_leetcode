@@ -3,6 +3,8 @@ package com.interview.designpattern.company;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import static java.lang.System.out;
+
 public class Tester {
     public static void main(String[] args) {
         Employee employee1 = new Employee("John", 10000,
@@ -14,21 +16,21 @@ public class Tester {
         employees.add(employee1);
         employees.add(employee2);
 
-        System.out.println("Print using for each");
+        out.println("Print using for each");
         for (Employee employee : employees) {
-            System.out.println(employee);
+            out.println(employee);
         }
 
-        System.out.println("Testing managers");
+        out.println("Testing managers");
         employee2.setRole(new Manager(Arrays.asList(employee1)));
         for (Employee employee : employees) {
-            System.out.println(employee);
+            out.println(employee);
         }
 
-        System.out.println("Testing doWork");
-        System.out.println("Employee1");
+        out.println("Testing doWork");
+        out.println("Employee1");
         employee1.doWork();
-        System.out.println("Employee2");
+        out.println("Employee2");
         employee2.doWork();
     }
 }

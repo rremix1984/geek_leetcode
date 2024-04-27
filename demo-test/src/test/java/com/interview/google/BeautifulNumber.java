@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 public class BeautifulNumber {
 
     public static void main(String[] args) {
@@ -12,7 +14,7 @@ public class BeautifulNumber {
         int cases = in.nextInt();
         for (int i = 1; i <= cases; ++i) {
             long n = in.nextLong();
-            System.out.println("Case #" + i + ": "
+            out.println("Case #" + i + ": "
                     + beautiful(n));
         }
     }

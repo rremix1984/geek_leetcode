@@ -6,21 +6,23 @@ package com.leetcode.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.System.out;
+
 @SuppressWarnings("unused")
 public class BoardUtil {
 
     public static void printBoard(char[][] board) {
-        System.out.println("-----------------------");
+        out.println("-----------------------");
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (j % 3 == 0)
-                    System.out.print("| ");
-                System.out.print(board[i][j] + " ");
+                    out.print("| ");
+                out.print(board[i][j] + " ");
             }
-            System.out.print("| ");
-            System.out.println();
+            out.print("| ");
+            out.println();
             if (i % 3 == 2)
-                System.out.println("-------------------------");
+                out.println("-------------------------");
         }
     }
 

@@ -1,5 +1,7 @@
 package com.interview.tree;
 
+import static java.lang.System.out;
+
 public class InOrder {
 
     public TreeNode next(TreeNode node) {
@@ -10,8 +12,7 @@ public class InOrder {
         if (node.getRight() != null) {
             return first(node.getRight());
         } else {
-            while (node.getParent() != null
-                    && node.getParent().getRight() == node) {
+            while (node.getParent() != null && node.getParent().getRight() == node) {
                 node = node.getParent();
             }
             // now we have:
@@ -34,12 +35,10 @@ public class InOrder {
     }
 
     public void traverse(TreeNode root) {
-        for (TreeNode node = first(root);
-             node != null;
-             node = next(node)) {
-            System.out.print(node.getValue());
+        for (TreeNode node = first(root); node != null; node = next(node)) {
+            out.print(node.getValue());
         }
-        System.out.println();
+        out.println();
     }
 
     public static void main(String[] args) {

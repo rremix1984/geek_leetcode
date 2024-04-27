@@ -6,6 +6,8 @@ import java.util.Arrays;
 import com.interview.common.Node;
 import com.interview.recursion.LinkedListCreator;
 
+import static java.lang.System.out;
+
 public class LinkedListReverser {
 
     public <T> Node<T> reverseLinkedList(Node<T> head) {
@@ -43,6 +45,6 @@ public class LinkedListReverser {
 
         reverser.reverseLinkedList(
                 creator.createLargeLinkedList(1000000));
-        System.out.println("done");
+        out.println("done");
     }
 }

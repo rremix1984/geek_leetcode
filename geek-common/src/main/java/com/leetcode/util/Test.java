@@ -5,6 +5,8 @@ package com.leetcode.util;
 
 import java.util.PriorityQueue;
 
+import static java.lang.System.out;
+
 public class Test {
 
     public static void main(String[] args) {
@@ -20,7 +22,7 @@ public class Test {
         pq.add(7);
         pq.add(4);
         while(!pq.isEmpty()) {
-            System.out.println(pq.remove());
+            out.println(pq.remove());
         }
     }
 

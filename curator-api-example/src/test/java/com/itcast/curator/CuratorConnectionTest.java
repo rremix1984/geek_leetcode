@@ -9,6 +9,9 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.List;
 
+import static java.lang.System.out;
+import static java.util.Collections.sort;
+
 @Slf4j
 public class CuratorConnectionTest {
 
@@ -46,8 +49,8 @@ public class CuratorConnectionTest {
         log.info("######################");
         GetChildrenBuilder gcb = client.getChildren();
         List<String> list = gcb.forPath("");
-        Collections.sort(list);
-        list.forEach(System.out::println);
+        sort(list);
+        list.forEach(out::println);
 
         // 关闭连接
         client.close();

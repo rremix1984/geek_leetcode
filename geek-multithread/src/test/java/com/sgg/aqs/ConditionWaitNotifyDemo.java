@@ -10,6 +10,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 /**
  * 通过 Condition 实现
  */
+@SuppressWarnings("all")
 public class ConditionWaitNotifyDemo {
 
     static final Lock lock = new ReentrantLock();

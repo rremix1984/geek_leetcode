@@ -5,6 +5,8 @@ import lombok.Setter;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import static java.lang.System.out;
+
 @Setter
 @Getter
 @SuppressWarnings("unused")
@@ -38,9 +40,9 @@ public class LinkedTable<T> {
 
         if (node.getParent() != null) {
             String pointer = isTail ? "└── " : "├── ";
-            System.out.println(prefix + pointer + node.getValue());
+            out.println(prefix + pointer + node.getValue());
         } else
-            System.out.println(node.getValue());
+            out.println(node.getValue());
 
         if (node.getRight() != null)
             printLinkedTableHelper(node.getRight(), prefix + (isTail ? "    " : "│   "), false);
@@ -52,9 +54,9 @@ public class LinkedTable<T> {
     private void printLinkedTableHelper(String prefix, boolean isTail) {
         if (getParent() != null) {
             String pointer = isTail ? "└── " : "├── ";
-            System.out.println(prefix + pointer + getValue());
+            out.println(prefix + pointer + getValue());
         } else {
-            System.out.println(getValue());
+            out.println(getValue());
         }
 
         if (getRight() != null)
@@ -70,6 +72,6 @@ public class LinkedTable<T> {
             sb.append("  "); // 缩进两个空格
 
         sb.append(node.getValue());
-        System.out.println(sb);
+        out.println(sb);
     }
 }

@@ -1,5 +1,7 @@
 package com.interview.oop.linkedlist;
 
+import static java.lang.System.out;
+
 public class Tester {
 
     public static void main(String[] args) {
@@ -9,7 +11,7 @@ public class Tester {
         }
 
         for (Integer value : list) {
-            System.out.println(value);
+            out.println(value);
         }
 
         LinkedList<String> stringList = LinkedList.newEmptyList();
@@ -20,7 +22,7 @@ public class Tester {
         }
 
         for (String value : stringList) {
-            System.out.println(value);
+            out.println(value);
         }
     }
 }

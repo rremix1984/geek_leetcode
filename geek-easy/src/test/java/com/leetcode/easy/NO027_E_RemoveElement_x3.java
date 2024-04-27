@@ -6,6 +6,8 @@ package com.leetcode.easy;
 import org.junit.Test;
 import java.util.stream.IntStream;
 
+import static java.lang.System.out;
+
 /**
     [ARRAY] |
     (简单)
@@ -58,8 +60,8 @@ public class NO027_E_RemoveElement_x3 {
     public void print(int[] nums, int left) {
         IntStream.range(0, left)
             .mapToObj(i -> nums[i] + "\t")
-            .forEach(System.out::print);
-        System.out.println("=====");
+            .forEach(out::print);
+        out.println("=====");
     }
 
 }

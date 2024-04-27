@@ -1,12 +1,14 @@
 package com.interview.tree;
 
+import static java.lang.System.out;
+
 public class TreeTraversal {
 
     public void preOrder(TreeNode root) {
         if (root == null) {
             return;
         }
-        System.out.print(root.getValue());
+        out.print(root.getValue());
         preOrder(root.getLeft());
         preOrder(root.getRight());
     }
@@ -16,7 +18,7 @@ public class TreeTraversal {
             return;
         }
         inOrder(root.getLeft());
-        System.out.print(root.getValue());
+        out.print(root.getValue());
         inOrder(root.getRight());
     }
 
@@ -26,7 +28,7 @@ public class TreeTraversal {
         }
         postOrder(root.getLeft());
         postOrder(root.getRight());
-        System.out.print(root.getValue());
+        out.print(root.getValue());
     }
 
     public String postOrder(String preOrder, String inOrder) {
@@ -51,39 +53,39 @@ public class TreeTraversal {
         TreeCreator creator = new TreeCreator();
         TreeTraversal traversal = new TreeTraversal();
 
-        System.out.println("Sample tree traversal");
-        System.out.println("=====");
+        out.println("Sample tree traversal");
+        out.println("=====");
         TreeNode sampleTree = creator.createSampleTree();
         traversal.preOrder(sampleTree);
-        System.out.println();
+        out.println();
         traversal.inOrder(sampleTree);
-        System.out.println();
+        out.println();
         traversal.postOrder(sampleTree);
-        System.out.println();
+        out.println();
 
-        System.out.println("=====");
-        System.out.println("Creating tree from preOrder and inOrder");
-        System.out.println("=====");
+        out.println("=====");
+        out.println("Creating tree from preOrder and inOrder");
+        out.println("=====");
         TreeNode tree = creator.createTree("ABDEGCF", "DBGEACF");
         traversal.postOrder(tree);
-        System.out.println();
+        out.println();
         traversal.postOrder(creator.createTree("", ""));
-        System.out.println();
+        out.println();
         traversal.postOrder(creator.createTree("A", "A"));
-        System.out.println();
+        out.println();
         traversal.postOrder(creator.createTree("AB", "BA"));
-        System.out.println();
+        out.println();
 
-        System.out.println("=====");
-        System.out.println("Generating postOrder directly");
-        System.out.println("=====");
-        System.out.println(
+        out.println("=====");
+        out.println("Generating postOrder directly");
+        out.println("=====");
+        out.println(
                 traversal.postOrder("ABDEGCF", "DBGEACF"));
-        System.out.println(
+        out.println(
                 traversal.postOrder("", ""));
-        System.out.println(
+        out.println(
                 traversal.postOrder("A", "A"));
-        System.out.println(
+        out.println(
                 traversal.postOrder("AB", "BA"));
     }
 }

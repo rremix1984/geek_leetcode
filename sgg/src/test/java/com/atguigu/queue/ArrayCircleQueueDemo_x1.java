@@ -2,6 +2,8 @@ package com.atguigu.queue;
 
 import org.junit.Test;
 
+import static java.lang.System.out;
+
 /**
     [ARRAY] |
     用数组实现队列（需要用环形数组）
@@ -19,8 +21,8 @@ public class ArrayCircleQueueDemo_x1 {
         queue.enqueue(30);
 
         // 出队
-        System.out.println("Dequeued element: " + queue.dequeue()); // 应该为10
-        System.out.println("Next element (peek): " + queue.peek()); // 应该为20
+        out.println("Dequeued element: " + queue.dequeue()); // 应该为10
+        out.println("Next element (peek): " + queue.peek()); // 应该为20
 
         // 继续入队
         queue.enqueue(40);
@@ -30,21 +32,21 @@ public class ArrayCircleQueueDemo_x1 {
         try {
             queue.enqueue(70); // 尝试入队更多元素，应该抛出异常
         } catch (IllegalStateException e) {
-            System.out.println("Caught exception: " + e.getMessage()); // 应该显示队列已满的消息
+            out.println("Caught exception: " + e.getMessage()); // 应该显示队列已满的消息
         }
 
         // 出队直到队列为空
         while (!queue.isEmpty()) {
-            System.out.println("Dequeued: " + queue.dequeue());
+            out.println("Dequeued: " + queue.dequeue());
         }
 
         // 检查队列是否为空
-        System.out.println("Queue empty?" + queue.isEmpty()); // 应该为true
+        out.println("Queue empty?" + queue.isEmpty()); // 应该为true
 
         try {
             queue.dequeue(); // 尝试从空队列中出队，应该抛出异常
         } catch (IllegalStateException e) {
-            System.out.println("queue dequeue " + e.getMessage()); // 应该显示队列为空的消息
+            out.println("queue dequeue " + e.getMessage()); // 应该显示队列为空的消息
         }
     }
 
@@ -156,7 +158,7 @@ class ArrayCircleQueue {
 
     public void showQueue() {
         if (isEmpty()) {
-            System.out.println("queue is empty");
+            out.println("queue is empty");
             return;
         }
         // 从front开始遍历多少个元素

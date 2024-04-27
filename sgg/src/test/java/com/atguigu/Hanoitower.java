@@ -71,10 +71,10 @@ public class Hanoitower {
 public static void hanoiTower(int num, char a, char b, char c) {
     // 如果只有一个 元素
     if (num == 1) {
-        System.out.println("第[1]个盘子，从" + a + "移动到" + c);
+        out.println("第[1]个盘子，从" + a + "移动到" + c);
     } else {
         hanoiTower(num - 1, a, c, b);
-        System.out.println("第" + num + "个盘子，从" + a + "移动到" + c);
+        out.println("第" + num + "个盘子，从" + a + "移动到" + c);
         hanoiTower(num - 1, b, a, c);
     }
 }

@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 public class Node {
@@ -56,7 +57,7 @@ public class Node {
 
             // 遍历当前层，同时找到下一层的起点
             while (cur != null) {
-                System.out.print(cur.val + " ");
+                out.print(cur.val + " ");
                 // 设置下一层的起始点
                 if (nextLevelStart == null)
                     nextLevelStart = (cur.left != null) ? cur.left : cur.right;
@@ -69,7 +70,7 @@ public class Node {
                 levelStart = nextLevelStart;
             }
             // 每层的结束标志
-            System.out.println("#");
+            out.println("#");
         }
     }
 
