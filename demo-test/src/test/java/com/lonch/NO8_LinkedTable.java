@@ -19,8 +19,7 @@ public class NO8_LinkedTable {
 
     @Test
     public void test() {
-//        cTree(3)
-//            .printLinkedTable();
+        // cTree(3).printLinkedTable();
         // 2024/4/8 NO.1 没思路，看答案看懂了
         // 2024/4/9 NO.2 有思路
 

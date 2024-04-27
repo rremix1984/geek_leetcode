@@ -4,6 +4,7 @@
 package com.lonch;
 
 import com.lonch.util.Node;
+import lombok.val;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.Node.cTree;
@@ -41,7 +42,8 @@ public class NO11_BinaryTreeTraversal {
         Node<Character> root1 = cTree(4, 0);
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
-        // 2024/4/12-13-14-15-16 NO.3-4-5-6-7 一遍过
+        // 2024/4/12-13-14-15-16-18 NO.3-4-5-6-7-8 一遍过
+        printTree(root1);
     }
 
 }

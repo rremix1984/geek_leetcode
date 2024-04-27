@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import static java.lang.System.out;
 
 /**
     四方向链表
@@ -40,7 +43,7 @@ public class MatrixNode<T> {
             sb.append("\n");
             col = col.down;
         }
-        System.out.println(sb);
+        out.println(sb);
     }
 
     public static <T> String getMatrix(MatrixNode<T> head) {
@@ -142,6 +145,15 @@ public class MatrixNode<T> {
 
     public static char nextChar() {
         return (char) ('a' + (c++ % 26));
+    }
+
+    public static void printAllPaths(Set<List<MatrixNode<Integer>>> allPaths) {
+        out.println("All paths from start to end:");
+        for (List<MatrixNode<Integer>> path : allPaths) {
+            for (MatrixNode<Integer> node : path)
+                out.print("(" + node.val + ") -> ");
+            out.println("end");
+        }
     }
 
 }

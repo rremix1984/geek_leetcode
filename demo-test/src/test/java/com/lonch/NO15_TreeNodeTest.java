@@ -15,18 +15,18 @@ public class NO15_TreeNodeTest {
         printTree(root2);
         Node<Integer> root3 = genRecursiveTree(head, 4, headVal); // root
         Node<Integer> root4 = genRecursiveTree(head, 4, headVal); // root
-        if (root1 != null) {
+        if (root1 != null)
             root1.parent = root3;
-        }
-        if (root2 != null) {
+
+        if (root2 != null)
             root2.parent = root1;
-        }
-        if (root3 != null) {
+
+        if (root3 != null)
             root3.parent = root4;
-        }
-        if (root4 != null) {
+
+        if (root4 != null)
             root4.parent = root2;
-        }
+
         Node<Integer> start = null;
         if (root1 != null) {
             start = root1.right.left.right;

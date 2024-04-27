@@ -11,7 +11,7 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 /**
-    [SNAKE] ||||||||
+    [SNAKE] |||||||||
     (困难)
     NO.9 贪吃蛇游戏
  */
@@ -20,8 +20,7 @@ public class NO9_SnakeGame {
 
     public static void main(String[] args) {
         // 2024/4/9  NO.1 能看懂，做不出来
-        // 2024/4/10-11-12-13-14-15-16 NO.2-3-4-5-6-7-8 一遍过
-
+        // 2024/4/10-11-12-13-14-15-16-18 NO.2-3-4-5-6-7-8-9 一遍过
     }
 
 }
