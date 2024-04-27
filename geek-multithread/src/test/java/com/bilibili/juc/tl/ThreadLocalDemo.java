@@ -8,6 +8,7 @@
  */
 package com.bilibili.juc.tl;
 
+import com.bilibili.juc.tl.util.House;
 import org.junit.Test;
 
 import java.util.Random;
@@ -47,61 +48,3 @@ public class ThreadLocalDemo {
     }
 
 }
-
-class House {//资源类
-
-    int saleCount = 0;
-
-    public synchronized void saleHouse() {
-        ++saleCount;
-    }
-
-    /*ThreadLocal<Integer> saleVolume = new ThreadLocal<Integer>(){
-        @Override
-        protected Integer initialValue()
-        {
-            return 0;
-        }
-    };*/
-    ThreadLocal<Integer> saleVolume = ThreadLocal.withInitial(() -> 0);
-
-    public void saleVolumeByThreadLocal() {
-        saleVolume.set(1 + saleVolume.get());
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

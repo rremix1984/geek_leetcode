@@ -1,3 +1,7 @@
+/**
+ * @auther zzyy
+ * @create 2022-02-26 18:51
+ */
 package com.bilibili.juc.atomics;
 
 import java.util.concurrent.atomic.LongAccumulator;
@@ -6,9 +10,8 @@ import java.util.function.LongBinaryOperator;
 
 import static java.lang.System.out;
 
-/**
- * @auther zzyy
- * @create 2022-02-26 18:51
+/*
+
  */
 public class LongAdderAPIDemo {
 

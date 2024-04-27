@@ -6,6 +6,7 @@
  */
 package com.bilibili.juc.tl;
 
+import com.bilibili.juc.tl.util.MyData;
 import lombok.val;
 
 import java.util.concurrent.ExecutorService;
@@ -38,14 +39,6 @@ public class ThreadLocalDemo2 {
         } finally {
             threadPool.shutdown();
         }
-
     }
-}
 
-class MyData {
-    ThreadLocal<Integer> threadLocalField = ThreadLocal.withInitial(() -> 0);
-
-    public void add() {
-        threadLocalField.set(1 + threadLocalField.get());
-    }
 }

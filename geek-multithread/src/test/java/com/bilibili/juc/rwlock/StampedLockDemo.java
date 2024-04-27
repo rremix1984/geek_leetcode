@@ -7,11 +7,11 @@ import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
- * @auther zzyy
  * <p>
  * StampedLock = ReentrantReadWriteLock + 读的过程中也允许获取写锁介入
  */
 public class StampedLockDemo {
+
     static int number = 37;
     static StampedLock stampedLock = new StampedLock();
 

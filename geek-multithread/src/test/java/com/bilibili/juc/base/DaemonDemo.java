@@ -1,25 +1,33 @@
+/**
+ * @auther zzyy
+ * @create 2022-01-12 16:23
+ */
 package com.bilibili.juc.base;
+
+import lombok.val;
+import org.junit.Test;
 
 import java.util.concurrent.*;
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * @auther zzyy
- * @create 2022-01-12 16:23
- */
+@SuppressWarnings("all")
 public class DaemonDemo {
 
-    public static void main(String[] args) {//一切方法运行的入口
+    @Test
+    public void test() {
         Thread t1 = new Thread(() -> {
-            out.println(Thread.currentThread().getName() + "\t 开始运行, " +
-                    (Thread.currentThread().isDaemon() ? "守护线程" : "用户线程"));
-            while (true) {
-
+            val thrd = Thread.currentThread();
+            out.println(thrd.getName() + "\t 开始运行, " +
+                    (thrd.isDaemon() ? "守护线程" : "用户线程"));
+            try {
+                SECONDS.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }, "t1");
+        t1.setDaemon(true);// 必须在start方法之前设置，否则不合法
         t1.start();
-        t1.setDaemon(true);
 
         //暂停几秒钟线程
         try {

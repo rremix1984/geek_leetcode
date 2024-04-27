@@ -1,35 +1,28 @@
-package com.bilibili.juc.objecthead;
-
-import org.openjdk.jol.info.ClassLayout;
-import org.openjdk.jol.vm.VM;
-
-import static java.lang.System.out;
-
 /**
  * @auther zzyy
  * @create 2022-03-06 16:48
+ */
+package com.bilibili.juc.objecthead;
+
+import com.bilibili.juc.objecthead.util.Customer;
+import org.openjdk.jol.info.ClassLayout;
+import static java.lang.System.out;
+
+/**
+ *
  */
 public class JOLDemo {
 
     public static void main(String[] args) {
         Object o = new Object();//16 bytes
-
         //out.println(ClassLayout.parseInstance(o).toPrintable());
-
-        Customer c1 = new Customer();//16 bytes
-        out.println(ClassLayout.parseInstance(c1).toPrintable());
+        out.println(
+            ClassLayout.parseInstance(
+                new Customer()
+            ).toPrintable()
+        );
     }
 
-}
-
-
-class Customer {//只有一个对象头的实例对象，16字节（忽略压缩指针的影响）+4字节+1字节=21字节----》对其填充，24字节
-    //1 第一种情况，只有对象头，没有其它任何实例数据
-
-    //2 第二种情况，int + boolean，默认满足对其填充，24 bytes
-    /*int id;
-    boolean flag = false;
-    boolean flag2 = false;*/
 }
 
 /*

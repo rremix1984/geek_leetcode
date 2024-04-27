@@ -1,3 +1,7 @@
+/**
+ * @auther zzyy
+ * @create 2022-01-21 12:48
+ */
 package com.bilibili.juc.base;
 
 import org.omg.PortableInterceptor.ACTIVE;
@@ -8,16 +12,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * @auther zzyy
- * @create 2022-01-21 12:48
- */
-public class TestDemo
-{
+public class TestDemo {
+
     volatile int age;
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
     }
 

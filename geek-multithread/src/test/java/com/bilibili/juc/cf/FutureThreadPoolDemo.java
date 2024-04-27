@@ -4,61 +4,52 @@
  */
 package com.bilibili.juc.cf;
 
+import org.junit.Test;
 import java.util.concurrent.*;
-
-import static java.lang.System.currentTimeMillis;
-import static java.lang.System.out;
+import static java.lang.System.*;
 import static java.lang.Thread.currentThread;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
-
+/**
+ * 假设：有3个任务，目前开启多个异步任务线程来处理，请问耗时多少？
+ */
+@SuppressWarnings("all")
 public class FutureThreadPoolDemo {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        //3个任务，目前开启多个异步任务线程来处理，请问耗时多少？
-
+    @Test
+    public void test() throws ExecutionException, InterruptedException {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
         long startTime = currentTimeMillis();
 
-        FutureTask<String> futureTask1 = new FutureTask<String>(() -> {
-            try {
-                MILLISECONDS.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        // 线程1：
+        FutureTask<String> fTask1 = new FutureTask<String>(() -> {
+            try {MILLISECONDS.sleep(500);} catch (InterruptedException e) {e.printStackTrace();}
             return "task1 over";
         });
-        threadPool.submit(futureTask1);
+        threadPool.submit(fTask1);
 
-        FutureTask<String> futureTask2 = new FutureTask<String>(() -> {
-            try {
-                MILLISECONDS.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        // 线程2：
+        FutureTask<String> fTask2 = new FutureTask<String>(() -> {
+            try {MILLISECONDS.sleep(300);} catch (InterruptedException e) {e.printStackTrace();}
             return "task2 over";
         });
-        threadPool.submit(futureTask2);
+        threadPool.submit(fTask2);
 
-        out.println(futureTask1.get());
-        out.println(futureTask2.get());
+        // 通过future 获取返回值
+        out.println(fTask1.get());
+        out.println(fTask2.get());
+        try {MILLISECONDS.sleep(300);} catch (InterruptedException e) {e.printStackTrace();}
 
-        try {
-            MILLISECONDS.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        long endTime = currentTimeMillis();
-        out.println("----costTime: " + (endTime - startTime) + " 毫秒");
-
-        out.println(currentThread().getName() + "\t -----end");
+        out.println("----costTime: " + (currentTimeMillis() - startTime) + " 毫秒 \n" +
+                    currentThread().getName() + "\t -----end");
         threadPool.shutdown();
     }
 
+    /**
+     * 3个任务，目前只有一个线程main来处理，请问耗时多少？
+     */
     private static void m1() {
-        //3个任务，目前只有一个线程main来处理，请问耗时多少？
         long startTime = currentTimeMillis();
         //暂停毫秒
         try {
@@ -78,9 +69,7 @@ public class FutureThreadPoolDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        long endTime = currentTimeMillis();
-        out.println("----costTime: " + (endTime - startTime) + " 毫秒" +
+        out.println("----costTime: " + (currentTimeMillis() - startTime) + " 毫秒" +
                     currentThread().getName() + "\t -----end");
     }
 

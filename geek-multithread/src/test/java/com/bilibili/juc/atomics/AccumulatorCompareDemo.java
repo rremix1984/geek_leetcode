@@ -1,4 +1,10 @@
+/**
+ * @auther zzyy
+ *
+ */
 package com.bilibili.juc.atomics;
+
+import com.bilibili.juc.atomics.util.ClickNumber;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
@@ -7,36 +13,7 @@ import java.util.concurrent.atomic.LongAdder;
 
 import static java.lang.System.out;
 
-class ClickNumber {//资源类
-
-    int number = 0;
-
-    public synchronized void clickBySynchronized() {
-        number++;
-    }
-
-    AtomicLong atomicLong = new AtomicLong(0);
-
-    public void clickByAtomicLong() {
-        atomicLong.getAndIncrement();
-    }
-
-    LongAdder longAdder = new LongAdder();
-
-    public void clickByLongAdder() {
-        longAdder.increment();
-    }
-
-    LongAccumulator longAccumulator = new LongAccumulator((x, y) -> x + y, 0);
-
-    public void clickByLongAccumulator() {
-        longAccumulator.accumulate(1);
-    }
-
-}
-
 /**
- * @auther zzyy
  * 需求： 50个线程，每个线程100W次，总点赞数出来
  */
 public class AccumulatorCompareDemo {
@@ -85,7 +62,6 @@ public class AccumulatorCompareDemo {
         endTime = System.currentTimeMillis();
         out.println("----costTime: " + (endTime - startTime) + " 毫秒" + "\t clickByAtomicLong: " + clickNumber.atomicLong.get());
 
-
         startTime = System.currentTimeMillis();
         for (int i = 1; i <= threadNumber; i++) {
             new Thread(() -> {
@@ -117,9 +93,6 @@ public class AccumulatorCompareDemo {
         countDownLatch4.await();
         endTime = System.currentTimeMillis();
         out.println("----costTime: " + (endTime - startTime) + " 毫秒" + "\t clickByLongAccumulator: " + clickNumber.longAccumulator.get());
-
     }
+
 }
-
-
-

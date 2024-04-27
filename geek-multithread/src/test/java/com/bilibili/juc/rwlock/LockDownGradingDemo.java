@@ -1,9 +1,3 @@
-package com.bilibili.juc.rwlock;;
-
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import static java.lang.System.out;
-
 /**
  * @auther zzyy
  * 锁降级：遵循获取写锁→再获取读锁→再释放写锁的次序，写锁能够降级成为读锁。
@@ -12,12 +6,21 @@ import static java.lang.System.out;
  * <p>
  * 读没有完成时候写锁无法获得锁，必须要等着读锁读完后才有机会写
  */
-public class LockDownGradingDemo {
-    public static void main(String[] args) {
-        ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+package com.bilibili.juc.rwlock;
 
-        ReentrantReadWriteLock.ReadLock readLock = readWriteLock.readLock();
-        ReentrantReadWriteLock.WriteLock writeLock = readWriteLock.writeLock();
+import lombok.val;
+import org.junit.Test;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import static java.lang.System.out;
+
+@SuppressWarnings("all")
+public class LockDownGradingDemo {
+
+    @Test
+    public void test() {
+        ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+        val readLock = readWriteLock.readLock();
+        val writeLock = readWriteLock.writeLock();
 
         //正常 A B两个线程
         // A
@@ -30,9 +33,7 @@ public class LockDownGradingDemo {
         out.println("----写入");
         writeLock.unlock();*/
 
-
         //本例，only one 同一个线程
-
 
         readLock.lock();
         out.println("----读取");
@@ -41,15 +42,10 @@ public class LockDownGradingDemo {
         writeLock.lock();
         out.println("----写入");
 
-
         /**
          * biz
          *  .....
          */
-
-
         writeLock.unlock();
-
-
     }
 }
