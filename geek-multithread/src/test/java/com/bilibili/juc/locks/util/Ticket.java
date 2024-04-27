@@ -8,7 +8,7 @@ import static java.lang.System.out;
 public class Ticket {
 
     private int number = 50;
-    final Object lockObject = new Object();
+    Object lockObject = new Object();
 
     public void sale() {
         synchronized (lockObject) {
