@@ -1,18 +1,19 @@
 /**
- * @auther zzyy
+ * @auther zy
  * @create 2022-01-18 18:09
  */
 package com.bilibili.juc.locks;
 
 import org.junit.Test;
-
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-
 import static java.lang.System.out;
+import static java.lang.Thread.currentThread;
 
 @SuppressWarnings("all")
 public class ReEntryLockDemo {
+
+    static Lock lock = new ReentrantLock();
 
     @Test
     public void test() {
@@ -22,11 +23,10 @@ public class ReEntryLockDemo {
             reEntryLockDemo.m1();
         },"t1").start();
         */
-
         new Thread(() -> {
             lock.lock();
             try {
-                String name = Thread.currentThread().getName();
+                String name = currentThread().getName();
                 out.println(name + "\t ----come in外层调用");
                 lock.lock();
                 try {
@@ -34,7 +34,6 @@ public class ReEntryLockDemo {
                 } finally {
                     lock.unlock();
                 }
-
             } finally {
                 // 由于加锁次数和释放次数不一样，第二个线程始终无法获取到锁，导致一直在等待。
                 //lock.unlock();// 正常情况，加锁几次就要解锁几次
@@ -44,18 +43,16 @@ public class ReEntryLockDemo {
         new Thread(() -> {
             lock.lock();
             try {
-                String name = Thread.currentThread().getName();
+                String name = currentThread().getName();
                 out.println(name + "\t ----come in外层调用");
             } finally {
                 lock.unlock();
             }
         }, "t2").start();
-
-
     }
 
     public synchronized void m1() {
-        String name = Thread.currentThread().getName();
+        String name = currentThread().getName();
         //指的是可重复可递归调用的锁，在外层使用锁之后，在内层仍然可以使用，并且不发生死锁，这样的锁就叫做可重入锁。
         out.println(name + "\t ----come in");
         m2();
@@ -63,28 +60,24 @@ public class ReEntryLockDemo {
     }
 
     public synchronized void m2() {
-        String name = Thread.currentThread().getName();
+        String name = currentThread().getName();
         out.println(name + "\t ----come in");
         m3();
     }
 
     public synchronized void m3() {
-        String name = Thread.currentThread().getName();
-        out.println(name + "\t ----come in");
+        out.printf("%s \t ----come in \n", currentThread().getName());
     }
-
-    static Lock lock = new ReentrantLock();
 
     private static void reEntryM1() {
         final Object object = new Object();
-
         new Thread(() -> {
             synchronized (object) {
-                out.println(Thread.currentThread().getName() + "\t ----外层调用");
+                out.println(currentThread().getName() + "\t ----外层调用");
                 synchronized (object) {
-                    out.println(Thread.currentThread().getName() + "\t ----中层调用");
+                    out.println(currentThread().getName() + "\t ----中层调用");
                     synchronized (object) {
-                        out.println(Thread.currentThread().getName() + "\t ----内层调用");
+                        out.println(currentThread().getName() + "\t ----内层调用");
                     }
                 }
             }
