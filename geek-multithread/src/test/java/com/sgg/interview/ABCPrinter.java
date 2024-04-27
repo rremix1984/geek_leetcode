@@ -14,6 +14,7 @@ import static java.lang.Thread.sleep;
  * 面试题1：三个线程顺序打印 A,B,C
  * 使用ReentrantLock
  */
+@SuppressWarnings("all")
 public class ABCPrinter {
 
     @Test

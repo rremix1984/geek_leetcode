@@ -9,6 +9,8 @@ import java.util.concurrent.Future;
 
 import com.interview.designpattern.task.CodingTask;
 
+import static java.lang.System.out;
+
 public class ExecutorTester {
 
     public static void main(String[] args)
@@ -16,16 +18,15 @@ public class ExecutorTester {
         ExecutorService executor = Executors.newFixedThreadPool(3);
 
         List<Future<?>> taskResults = new LinkedList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++)
             taskResults.add(executor.submit(new CodingTask(i)));
-        }
-        System.out.println("10 tasks dispatched successfully.");
 
-        for (Future<?> taskResult : taskResults) {
+        out.println("10 tasks dispatched successfully.");
+
+        for (Future<?> taskResult : taskResults)
             taskResult.get();
-        }
 
-        System.out.println("All tasks finished.");
+        out.println("All tasks finished.");
         executor.shutdown();
     }
 }

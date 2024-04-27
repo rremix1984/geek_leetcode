@@ -3,22 +3,25 @@ package com.sgg.aqs;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.lang.System.out;
+
 /**
  * ReEnterLock
  */
 public class ReEnterLockDemo1 {
 
     static final Lock lock = new ReentrantLock();
+
     public static void main(String[] args) {
         new Thread(() -> {
             lock.lock();
             lock.lock();
             String tName = Thread.currentThread().getName();
             try {
-                System.out.println(tName + "\t————————外部");
+                out.println(tName + "\t————————外部");
                 lock.lock();
                 try {
-                    System.out.println(tName + "\t————————内部");
+                    out.println(tName + "\t————————内部");
                 } finally {
                     lock.unlock();
                 }
@@ -33,7 +36,7 @@ public class ReEnterLockDemo1 {
             lock.lock();
             String tName = Thread.currentThread().getName();
             try {
-                System.out.println(tName + "\t——————————调用开始");
+                out.println(tName + "\t——————————调用开始");
             } finally {
                 lock.unlock();
             }

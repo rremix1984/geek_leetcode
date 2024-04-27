@@ -1,6 +1,8 @@
 package com.atguigu;
 
 
+import static java.lang.System.out;
+
 public class AVLTreeDemo {
 
 	public static void main(String[] args) {
@@ -15,14 +17,14 @@ public class AVLTreeDemo {
 		}
 		
 		//遍历
-		System.out.println("中序遍历");
+		out.println("中序遍历");
 		avlTree.infixOrder();
 		
-		System.out.println("在平衡处理~~");
-		System.out.println("树的高度=" + avlTree.getRoot().height()); //3
-		System.out.println("树的左子树高度=" + avlTree.getRoot().leftHeight()); // 2
-		System.out.println("树的右子树高度=" + avlTree.getRoot().rightHeight()); // 2
-		System.out.println("当前的根结点=" + avlTree.getRoot());//8
+		out.println("在平衡处理~~");
+		out.println("树的高度=" + avlTree.getRoot().height()); //3
+		out.println("树的左子树高度=" + avlTree.getRoot().leftHeight()); // 2
+		out.println("树的右子树高度=" + avlTree.getRoot().rightHeight()); // 2
+		out.println("当前的根结点=" + avlTree.getRoot());//8
 		
 		
 	}
@@ -152,7 +154,7 @@ class AVLTree {
 		if (root != null) {
 			root.infixOrder();
 		} else {
-			System.out.println("二叉排序树为空，不能遍历");
+			out.println("二叉排序树为空，不能遍历");
 		}
 	}
 }
@@ -333,7 +335,7 @@ class Node {
 		if (this.left != null) {
 			this.left.infixOrder();
 		}
-		System.out.println(this);
+		out.println(this);
 		if (this.right != null) {
 			this.right.infixOrder();
 		}

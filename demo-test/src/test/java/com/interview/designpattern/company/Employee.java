@@ -1,9 +1,15 @@
 package com.interview.designpattern.company;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 import java.util.Objects;
 
+@Setter
+@Getter
 public class Employee {
+
     public static List<Employee> allEmployees;
 
     private final String name;
@@ -59,19 +65,4 @@ public class Employee {
                 + ", role=" + role + "]";
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }

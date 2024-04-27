@@ -1,6 +1,14 @@
 package com.interview.common;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import static java.lang.System.out;
+
+@Setter
+@Getter
 public class Node<T> {
+
     private final T value;
     private Node<T> next;
 
@@ -9,24 +17,13 @@ public class Node<T> {
         this.next = null;
     }
 
-    public T getValue() {
-        return value;
-    }
-
-    public Node<T> getNext() {
-        return next;
-    }
-
-    public void setNext(Node<T> next) {
-        this.next = next;
-    }
-
     public static <T> void printLinkedList(Node<T> head) {
         while (head != null) {
-            System.out.print(head.getValue());
-            System.out.print(" ");
+            out.print(head.getValue());
+            out.print(" ");
             head = head.getNext();
         }
-        System.out.println();
+        out.println();
     }
+
 }

@@ -6,6 +6,7 @@ package com.leetcode.sort;
 import org.junit.Test;
 
 import static com.leetcode.sort.BaseTest.generateRandomArray;
+import static java.lang.System.out;
 import static java.util.Arrays.stream;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -35,11 +36,11 @@ public class InsertionSort {
 //                insertionSort(new int[]{1, 2, 5, 5, 3, 6}));
         int[] origin = generateRandomArray(100, 100);
         for (int i : stream(origin).sorted().toArray()) {
-            System.out.print(i + " ");
+            out.print(i + " ");
         }
-        System.out.println();
+        out.println();
         for (int i : insertionSort(origin)) {
-            System.out.print(i + " ");
+            out.print(i + " ");
         }
     }
 

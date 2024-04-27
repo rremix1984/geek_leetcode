@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 
+import static java.lang.System.out;
+
 public class ExternalSort {
 
     private class ResultEntry<T extends Comparable<T>>
@@ -91,17 +93,17 @@ public class ExternalSort {
 
         ExternalSort sort = new ExternalSort();
 
-        System.out.println("Testing small data set.");
+        out.println("Testing small data set.");
         Iterable<Long> resultSmall = sort.merge(
                 Arrays.asList(smallData1, smallData2));
         printInitialResults(resultSmall, 100);
 
-        System.out.println("Testing normal data set.");
+        out.println("Testing normal data set.");
         Iterable<Long> result = sort.merge(
                 Arrays.asList(data1, data2, data3, data4, data5));
         printInitialResults(result, 100);
 
-        System.out.println("Testing normal data set again.");
+        out.println("Testing normal data set again.");
         Iterable<Long> anotherResult =
                 sort.merge(Arrays.asList(
                         sort.merge(Arrays.asList(data1, data2)),
@@ -114,13 +116,13 @@ public class ExternalSort {
             Iterable<Long> resultSmall, int resultsToPrint) {
         int count = 0;
         for (Long value : resultSmall) {
-            System.out.print(value);
-            System.out.print(" ");
+            out.print(value);
+            out.print(" ");
             count++;
             if (count >= resultsToPrint) {
                 break;
             }
         }
-        System.out.println();
+        out.println();
     }
 }

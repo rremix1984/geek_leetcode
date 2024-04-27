@@ -29,6 +29,7 @@ public class NO3_CreateTreeNode {
     @Test
     public void test() {
         int depth = 4;
+        // 快速排序
         Node node = null;
         assertEquals("[0, " +
                         "[1, [3, [7, [8], [4, [9, [10]], " +
@@ -41,7 +42,6 @@ public class NO3_CreateTreeNode {
     }
 
 }
-
 
 
 

@@ -5,8 +5,8 @@ public class Accounting {
 
     void payAll() {
         Employee.loadAllEmployees();
-        for (Employee employee : Employee.allEmployees) {
+        for (Employee employee : Employee.allEmployees)
             employee.getPaid(bank);
-        }
     }
+
 }

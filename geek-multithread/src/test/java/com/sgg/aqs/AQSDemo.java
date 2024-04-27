@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
 /**
@@ -31,7 +32,7 @@ public class AQSDemo {
         new Thread (() -> {
             lock.lock();
             try {
-                System.out.println("-----A thread come in");
+                out.println("-----A thread come in");
             //暂停几秘钟线程
             } finally {
                 lock.unlock();
@@ -50,7 +51,7 @@ public class AQSDemo {
         new Thread (() -> {
             lock.lock();
             try {
-                System.out.println("-----B thread come in");
+                out.println("-----B thread come in");
                 //暂停几秘钟线程
             } finally {
                 lock.unlock();
@@ -67,7 +68,7 @@ public class AQSDemo {
         new Thread (() -> {
             lock. lock();
             try {
-                System.out.println("-----C thread come in");
+                out.println("-----C thread come in");
             } finally {
                 lock.unlock();
 //                lock.unlock();

@@ -9,9 +9,8 @@ import com.interview.recursion.LinkedListCreator;
 public class LinkedListDeletor {
 
     public <T> Node<T> deleteIfEquals(Node<T> head, T value) {
-        while (head != null && head.getValue() == value) {
+        while (head != null && head.getValue() == value)
             head = head.getNext();
-        }
 
         if (head == null) {
             return null;
