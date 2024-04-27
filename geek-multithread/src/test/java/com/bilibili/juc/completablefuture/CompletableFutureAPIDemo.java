@@ -2,12 +2,10 @@
  * @auther zzyy
  * @create 2022-01-17 15:20
  */
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -42,7 +40,6 @@ public class CompletableFutureAPIDemo {
 
         //暂停几秒钟线程
         //try { SECONDS.sleep(2); } catch (InterruptedException e) { e.printStackTrace(); }
-
         //out.println(completableFuture.getNow("xxx"));
         out.println(completableFuture.complete("completeValue") + "\t" + completableFuture.get());
     }

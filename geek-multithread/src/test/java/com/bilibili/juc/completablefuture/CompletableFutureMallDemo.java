@@ -1,21 +1,16 @@
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
 
-import com.bilibili.juc.cf.util.NetMall;
-import lombok.*;
+import com.bilibili.juc.completablefuture.util.NetMall;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static com.bilibili.juc.cf.util.NetMall.netMalls;
+import static com.bilibili.juc.completablefuture.util.NetMall.netMalls;
 import static java.lang.String.format;
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.out;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
     案例说明：电商比价需求，模拟如下情况：

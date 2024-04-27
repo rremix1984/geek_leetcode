@@ -2,10 +2,11 @@
  * @auther zzyy
  * @create 2022-01-17 18:44
  */
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
+
+import org.junit.Test;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -13,9 +14,11 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 /**
  *
  */
+@SuppressWarnings("all")
 public class CompletableFutureFastDemo {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         CompletableFuture<String> playA = CompletableFuture.supplyAsync(() -> {
             out.println("A come in");
             try {

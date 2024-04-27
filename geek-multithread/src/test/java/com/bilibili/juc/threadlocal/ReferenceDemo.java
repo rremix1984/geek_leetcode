@@ -1,15 +1,14 @@
 /**
  * @auther zzyy
  */
-package com.bilibili.juc.tl;
+package com.bilibili.juc.threadlocal;
 
-import com.bilibili.juc.tl.util.MyObject;
+import com.bilibili.juc.threadlocal.util.MyObject;
 import org.junit.Test;
 
 import java.lang.ref.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;

@@ -2,7 +2,7 @@
  * @auther zzyy
  * @create 2022-01-17 17:18
  */
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
 
 import java.util.concurrent.CompletableFuture;
 

@@ -1,4 +1,4 @@
-package com.bilibili.juc.cf.util;
+package com.bilibili.juc.completablefuture.util;
 
 import lombok.Getter;
 

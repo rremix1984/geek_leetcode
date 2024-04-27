@@ -2,9 +2,10 @@
  * @auther zzyy
  * @create 2022-01-14 11:02
  */
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
 
-import com.bilibili.juc.cf.util.MyThread;
+import com.bilibili.juc.completablefuture.util.MyThread;
+import org.junit.Test;
 
 import java.util.concurrent.*;
 
@@ -13,9 +14,11 @@ import static java.lang.System.out;
 /**
  * CompletableFuture
  */
+@SuppressWarnings("all")
 public class CompletableFutureDemo {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    @Test
+    public void test() throws ExecutionException, InterruptedException {
         FutureTask<String> task = new FutureTask<>(new MyThread());
         new Thread(task, "t1").start();
         

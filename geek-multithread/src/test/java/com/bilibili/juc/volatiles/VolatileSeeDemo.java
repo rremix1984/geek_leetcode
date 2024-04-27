@@ -4,7 +4,6 @@
  */
 package com.bilibili.juc.volatiles;
 
-import java.util.concurrent.TimeUnit;
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 

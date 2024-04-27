@@ -4,15 +4,19 @@
  */
 package com.bilibili.juc.interrupt;
 
-import java.util.concurrent.TimeUnit;
+import org.junit.Test;
 
 import static java.lang.System.out;
 import static java.lang.Thread.currentThread;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
+/**
+ *
+ */
 public class InterruptDemo2 {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         //实例方法interrupt()仅仅是设置线程的中断状态位设置为true，不会停止线程
         Thread t1 = new Thread(() -> {
             for (int i = 1; i <= 300; i++)
@@ -29,6 +33,7 @@ public class InterruptDemo2 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         t1.interrupt();//true
         out.println("t1线程调用interrupt()后的的中断标识01：" + t1.isInterrupted());//true
 

@@ -2,16 +2,16 @@
  * @auther zzyy
  * @create 2022-01-17 18:59
  */
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
 public class CompletableFutureCombineDemo {
+
     public static void main(String[] args) {
         CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(() -> {
             out.println(Thread.currentThread().getName() + "\t ---启动");
@@ -41,6 +41,6 @@ public class CompletableFutureCombineDemo {
         });
 
         out.println(result.join());
-
     }
+
 }

@@ -12,6 +12,16 @@ import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+
+/**
+    1 中断标志位，默认false
+    2 t2 ----> t1发出了中断协商，t2调用t1.interrupt()，中断标志位true
+    3 中断标志位true，正常情况，程序停止，^_^
+    4 中断标志位true，异常情况，InterruptedException，将会把中断状态将被清除，并且将收到InterruptedException 。中断标志位false
+    导致无限循环
+    <p>
+    5 在catch块中，需要再次给中断标志位设置为true，2次调用停止程序才OK
+ */
 public class InterruptDemo3 {
 
     public static void main(String[] args) {
@@ -45,13 +55,3 @@ public class InterruptDemo3 {
         new Thread(() -> t1.interrupt(), "t2").start();
     }
 }
-
-/**
- * 1 中断标志位，默认false
- * 2 t2 ----> t1发出了中断协商，t2调用t1.interrupt()，中断标志位true
- * 3 中断标志位true，正常情况，程序停止，^_^
- * 4 中断标志位true，异常情况，InterruptedException，将会把中断状态将被清除，并且将收到InterruptedException 。中断标志位false
- * 导致无限循环
- * <p>
- * 5 在catch块中，需要再次给中断标志位设置为true，2次调用停止程序才OK
- */

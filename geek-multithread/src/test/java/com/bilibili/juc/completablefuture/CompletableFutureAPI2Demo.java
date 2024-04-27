@@ -1,9 +1,8 @@
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;

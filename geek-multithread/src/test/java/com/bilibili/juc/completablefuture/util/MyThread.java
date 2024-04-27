@@ -1,4 +1,4 @@
-package com.bilibili.juc.cf.util;
+package com.bilibili.juc.completablefuture.util;
 
 import java.util.concurrent.Callable;
 

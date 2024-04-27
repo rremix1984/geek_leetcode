@@ -2,19 +2,23 @@
  * @auther zzyy
  * @create 2022-01-17 17:45
  */
-package com.bilibili.juc.cf;
+package com.bilibili.juc.completablefuture;
+
+import org.junit.Test;
 
 import java.util.concurrent.*;
 
 import static java.lang.System.out;
+import static java.util.concurrent.Executors.newFixedThreadPool;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+@SuppressWarnings("all")
 public class CompletableFutureWithThreadPoolDemo {
 
-    public static void main(String[] args) {
-        ExecutorService threadPool = Executors.newFixedThreadPool(5);
-
+    @Test
+    public void test() {
+        ExecutorService threadPool = newFixedThreadPool(5);
         try {
             CompletableFuture<Void> completableFuture = CompletableFuture.supplyAsync(() -> {
                 try {

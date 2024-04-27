@@ -1,4 +1,4 @@
-package com.bilibili.juc.tl.util;
+package com.bilibili.juc.threadlocal.util;
 
 public class MyData {
 

@@ -6,13 +6,12 @@
  * <p>
  * 需求2： 5个销售卖完随机数房子，各自独立销售额度，自己业绩按提成走，分灶吃饭，各个销售自己动手，丰衣足食
  */
-package com.bilibili.juc.tl;
+package com.bilibili.juc.threadlocal;
 
-import com.bilibili.juc.tl.util.House;
+import com.bilibili.juc.threadlocal.util.House;
 import org.junit.Test;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;

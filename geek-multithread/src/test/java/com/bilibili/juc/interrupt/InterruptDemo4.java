@@ -13,13 +13,15 @@ import static java.lang.System.out;
 import static java.lang.Thread.currentThread;
 import static java.lang.Thread.interrupted;
 
+/**
+    测试当前线程是否被中断（检查中断标志），返回一个boolean并清除中断状态，
+    第二次再调用时中断状态已经被清除，将返回一个false。
+ */
 @SuppressWarnings("all")
 public class InterruptDemo4 {
 
     @Test
     public void test() {
-        //测试当前线程是否被中断（检查中断标志），返回一个boolean并清除中断状态，
-        // 第二次再调用时中断状态已经被清除，将返回一个false。
         val thrd = currentThread();
         val name = thrd.getName();
         out.println(name + "\t" + interrupted());
@@ -36,4 +38,5 @@ public class InterruptDemo4 {
 
         thrd.isInterrupted();//实例方法
     }
+
 }

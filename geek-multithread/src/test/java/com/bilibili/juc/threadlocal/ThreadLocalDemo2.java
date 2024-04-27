@@ -4,13 +4,12 @@
  * 自定义的 ThreadLocal 变量，可能会影响后续业务逻辑和造成内存泄露等问题。尽量在代理中使用
  * try-finally 块进行回收。
  */
-package com.bilibili.juc.tl;
+package com.bilibili.juc.threadlocal;
 
-import com.bilibili.juc.tl.util.MyData;
+import com.bilibili.juc.threadlocal.util.MyData;
 import lombok.val;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import static java.lang.System.out;
 import static java.util.concurrent.Executors.newFixedThreadPool;
