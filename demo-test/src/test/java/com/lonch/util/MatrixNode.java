@@ -5,21 +5,28 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
+import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
 
 /**
     四方向链表
  */
-@SuppressWarnings("unused")
 @Setter
 @Getter
+@SuppressWarnings({"all", "unused"})
 public class MatrixNode<T> {
 
     public T val;
-    public int dist = Integer.MAX_VALUE;  // 默认距离为最大值，代表未访问
-    public List<MatrixNode<T>> prevs; // 存储所有可能的前置节点
+
+    // 默认距离为最大值，代表未访问
+    public int dist = MAX_VALUE;
+
+    // 存储所有可能的前置节点
+    public List<MatrixNode<T>> prevs;
+
     public MatrixNode<T> left, right, up, down;
 
     public MatrixNode(T val) {
@@ -37,7 +44,7 @@ public class MatrixNode<T> {
         while (col != null) {
             MatrixNode<T> row = col;
             while (row != null) {
-                sb.append(row.val).append("\t");
+                sb.append(row.val + "\t");
                 row = row.right;
             }
             sb.append("\n");
@@ -128,6 +135,38 @@ public class MatrixNode<T> {
             MatrixNode<Integer> right = newHead;
             for (int j = 1; j < col; j++) {
                 right.right = new MatrixNode<>(1);
+                right.right.left = right;
+
+                right = right.right;
+                up = up.right;
+
+                right.up = up;
+                up.down = right;
+            }
+            pre = newHead;
+        }
+        return dummy;
+    }
+
+    public static MatrixNode<Integer> initIntRandom(int row, int col) {
+        MatrixNode<Integer> dummy = new MatrixNode<>(new Random().nextInt(10));
+        MatrixNode<Integer> row1 = dummy;
+        for (int i = 1; i < row; i++) {
+            row1.right = new MatrixNode<>(i);
+            row1.right.left = row1;
+            row1 = row1.right;
+        }
+
+        MatrixNode<Integer> pre = dummy;
+        for (int i = 1; i < row; i++) {
+            MatrixNode<Integer> newHead = new MatrixNode<>(new Random().nextInt(10));
+            newHead.up = pre;
+            pre.down = newHead;
+
+            MatrixNode<Integer> up = pre;
+            MatrixNode<Integer> right = newHead;
+            for (int j = 1; j < col; j++) {
+                right.right = new MatrixNode<>(new Random().nextInt(10));
                 right.right.left = right;
 
                 right = right.right;
