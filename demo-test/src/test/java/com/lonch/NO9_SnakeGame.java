@@ -21,6 +21,7 @@ public class NO9_SnakeGame {
     public static void main(String[] args) {
         // 2024/4/9  NO.1 能看懂，做不出来
         // 2024/4/10-11-12-13-14-15-16-18 NO.2-3-4-5-6-7-8-9 一遍过
+
     }
 
 }
