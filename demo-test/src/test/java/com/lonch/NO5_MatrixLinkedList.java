@@ -12,7 +12,7 @@ import static com.lonch.util.MatrixNode.printMatrix;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [MATRIXLINKED] |||||||||
+    [MATRIXLINKED] ||||||||||
     (中等)
     NO.5 定义链表来表示 N * N 的矩阵，节点内包括数值和
          四个指针分别为上、下、左、右
@@ -29,7 +29,7 @@ public class NO5_MatrixLinkedList {
         // 2024/4/9 NO.3 一遍过，做了几遍都是一遍过
         // 2024/4/11 NO.4 没做对，思路全对，但是忘了细节
         // 2024/4/12-13-14-15-16-18 NO.5-6-7-8-9-10 一遍过
-
+        // 2024/4/30 NO.11 大部分做对了，还是有些细节没记住
     }
 
 }

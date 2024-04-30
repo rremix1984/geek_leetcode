@@ -5,6 +5,7 @@ package com.leetcode.util;
 
 import java.util.*;
 
+import static java.lang.Integer.parseInt;
 import static java.lang.System.out;
 import static java.util.Arrays.sort;
 
@@ -20,6 +21,14 @@ public class SystemUtil {
         while (iterator.hasNext())
             out.println(iterator.next());
         out.println("=======");
+    }
+
+    public static char[] int2char(int num) {
+        return ("" + num).toCharArray();
+    }
+
+    public static int char2int(char[] s) {
+        return parseInt(new String(s));
     }
 
     public static void print(TreeNode node) {

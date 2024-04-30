@@ -7,10 +7,9 @@ import com.lonch.util.Node;
 import lombok.val;
 import org.junit.Test;
 import java.util.*;
-import static com.lonch.util.Node.cTree;
 //import static com.lonch.util.Node.copy;
 //import static com.lonch.util.Node.travel;
-import static com.lonch.util.Node.printTree;
+import static com.lonch.util.Node.*;
 import static java.lang.System.arraycopy;
 import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
@@ -43,7 +42,8 @@ public class NO11_BinaryTreeTraversal {
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12-13-14-15-16-18 NO.3-4-5-6-7-8 一遍过
-        printTree(root1);
+        // 2024/4/30 NO.9 一遍过
+
     }
 
 }

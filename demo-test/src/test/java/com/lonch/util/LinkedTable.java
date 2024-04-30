@@ -74,4 +74,5 @@ public class LinkedTable<T> {
         sb.append(node.getValue());
         out.println(sb);
     }
+
 }
