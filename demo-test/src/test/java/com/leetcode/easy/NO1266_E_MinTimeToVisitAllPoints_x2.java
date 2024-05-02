@@ -39,8 +39,10 @@ public class NO1266_E_MinTimeToVisitAllPoints_x2 {
 
     @Test
     public void test() {
-        assert 7 == minTimeToVisitAllPoints(new int[][]{{1, 1}, {3, 4}, {-1, 0}});
-        assert 5 == minTimeToVisitAllPoints(new int[][]{{3, 2}, {-2, 2}});
+        assert 7 == minTimeToVisitAllPoints(
+                new int[][]{{1, 1}, {3, 4}, {-1, 0}});
+        assert 5 == minTimeToVisitAllPoints(
+                new int[][]{{3, 2}, {-2, 2}});
     }
 
     public int minTimeToVisitAllPoints(int[][] points) {

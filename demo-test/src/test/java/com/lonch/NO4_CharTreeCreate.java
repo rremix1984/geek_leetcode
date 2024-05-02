@@ -15,7 +15,6 @@ import static java.lang.System.out;
     [TREE] ||||||
     (简单)
     NO.4 指定深度（depth）的满二叉树赋值，从a到z循环赋值。
-
  */
 @SuppressWarnings("all")
 public class NO4_CharTreeCreate {
@@ -28,8 +27,8 @@ public class NO4_CharTreeCreate {
         // 2024/4/8  NO.2 还是没思路，能看懂。层序遍历算法
         // 2024/4/9  NO.3 思路还是不太清晰，看答案做出来了
         // 2024/4/14-15-18 NO.4-5-6 一遍过
-
     }
+
 }
 
 

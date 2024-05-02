@@ -1,6 +1,8 @@
 package com.atguigu;
 
 
+import lombok.Getter;
+
 import static java.lang.System.out;
 
 public class AVLTreeDemo {
@@ -32,12 +34,10 @@ public class AVLTreeDemo {
 }
 
 // 创建AVLTree
+@Getter
 class AVLTree {
-	private Node root;
 
-	public Node getRoot() {
-		return root;
-	}
+	private Node root;
 
 	// 查找要删除的结点
 	public Node search(int value) {

@@ -12,7 +12,7 @@ import static java.lang.Math.pow;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] |||
+    [TREENODE] |||||
     (简单)
     NO.3 指定深度（depth）从 1 到 n 层序遍历赋值
                    0
@@ -30,7 +30,7 @@ public class NO3_CreateTreeNode {
     public void test() {
         int depth = 4;
         // 快速排序
-        Node node = null;
+        Node node = dfs(depth, 0);
         assertEquals("[0, " +
                         "[1, [3, [7, [8], [4, [9, [10]], " +
                         "[2, [5, [11, [12], [6, [13, [14]]]",
@@ -39,6 +39,19 @@ public class NO3_CreateTreeNode {
         // 2024/4/9  NO.2 没思路，看答案做出来了，题不难
         // 2024/4/14 NO.3 做出来了，有点瑕疵
         // 2024/4/15 NO.4 一遍过
+        // 2024/4/30 NO.5 没做出来，没思路了
+        printTree(node);
+    }
+
+    private Node dfs(int depth, int idx) {
+        if (depth == 0 || idx < 0) {
+            return null;
+        }
+
+        Node node = new Node(idx);
+        node.left = dfs(depth - 1,2 * idx + 1);
+        node.right = dfs(depth - 1,2 * idx + 2);
+        return node;
     }
 
 }
