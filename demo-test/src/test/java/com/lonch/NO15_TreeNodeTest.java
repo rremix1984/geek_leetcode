@@ -46,6 +46,7 @@ public class NO15_TreeNodeTest {
             cur.parent = father;
 
         cur.data = val;
+
         //左子的值为父亲x2， 右子的值为父亲x2+1
         cur.left = genRecursiveTree(cur, size - 1, val * 2);
         cur.right = genRecursiveTree(cur, size - 1, val * 2 + 1);

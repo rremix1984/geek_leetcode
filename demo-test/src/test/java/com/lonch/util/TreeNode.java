@@ -88,15 +88,15 @@ public class TreeNode<E> {
 
         Deque<TreeNode<E>> queue = new LinkedList<>();
         queue.offer(root);
+
         while (!queue.isEmpty()) {
             int size = queue.size();
-            E val;
             while (size > 0) {
                 TreeNode<E> node = queue.poll();
                 if (node == null)
                     continue;
 
-                val = node.val;
+                E val = node.val;
                 out.print(node.val + " ");
                 if (node.left != null)
                     queue.offer(node.left);

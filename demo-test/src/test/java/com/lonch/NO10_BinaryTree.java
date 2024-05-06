@@ -5,9 +5,10 @@ package com.lonch;
 
 import com.lonch.util.Node;
 import org.junit.Test;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+
+import java.util.*;
+
+import static com.lonch.util.Node.cTree;
 import static com.lonch.util.Node.printTree;
 import static java.lang.System.out;
 
@@ -32,6 +33,37 @@ public class NO10_BinaryTree {
         // 2024/4/12 NO.3 一遍过
         // 2024/4/14 NO.4 没做对，还需要练习
         // 2024/4/15-16-18 NO.5-6-7 一遍过
+        // 2024/5/6  NO.8
+        Node node = cTree(6, 0);
+        Node root1 = copy(node);
+        Node root2 = copy(root1);
+        Node root3 = copy(root2);
+        root1.parent = root2;
+        root2.parent = root3;
+        root3.parent = root1;
+        List<String> res = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        travel(res, root1.left.right.left, sb);
+    }
+
+    private void travel(List<String> res, Node left, StringBuilder sb) {
+
+    }
+
+    private Node copy(Node node) {
+        if (node == null)
+            return null;
+        Node root = new Node(node.data);
+
+        root.left = copy(node.left);
+        if (root.left != null)
+            root.left.parent = root;
+
+        root.right = copy(node.right);
+        if (root.right != null)
+            root.right.parent = root;
+
+        return root;
     }
 }
 
