@@ -183,6 +183,15 @@ public class SystemUtil {
         out.println();
     }
 
+    public static void printArr(char[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                out.print(arr[i][j] + " ");
+            }
+            out.println();
+        }
+    }
+
     public static void preOrder(TreeNode root, List res) {
         if (root == null)
             return;
