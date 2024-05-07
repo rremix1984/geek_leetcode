@@ -15,7 +15,7 @@ import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] |||||||
+    [TREENODE] ||||||||||
     (中等)
     NO.11 创建的树复制成三个份，根用 parent 彼此连接，
         从任意节点开始，遍历全部，输出遍历结果要求:
@@ -38,11 +38,12 @@ public class NO11_BinaryTreeTraversal {
 
     @Test
     public void test() {
-        Node<Character> root1 = cTree(4, 0);
+        Node<Character> root1 = cTree(3, 0);
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12-13-14-15-16-18 NO.3-4-5-6-7-8 一遍过
         // 2024/4/30 NO.9 一遍过
+        // 2024/5/7  NO.10 一遍过
 
     }
 
@@ -102,6 +103,38 @@ private void dfs(Node node, HashSet visit, StringBuilder sb) {
     dfs(node.left, visit, sb);
     dfs(node.right, visit, sb);
     dfs(node.parent, visit, sb);
+}
+
+private void levelOrderTraversal(Node root, StringBuilder sb) {
+    if (root == null)
+        return;
+
+    Queue<Node> queue = new LinkedList<>();
+    queue.add(root);
+
+    HashSet<Node> visited = new HashSet<>();
+    visited.add(root);
+
+    while (!queue.isEmpty()) {
+        Node currentNode = queue.poll();
+        sb.append(currentNode.data + " ");
+
+        if (currentNode.left != null && !visited.contains(currentNode.left)) {
+            queue.add(currentNode.left);
+            visited.add(currentNode.left);
+        }
+
+        // 添加父节点的检查，避免无限循环
+        if (currentNode.parent != null && !visited.contains(currentNode.parent)) {
+            queue.add(currentNode.parent);
+            visited.add(currentNode.parent);
+        }
+
+        if (currentNode.right != null && !visited.contains(currentNode.right)) {
+            queue.add(currentNode.right);
+            visited.add(currentNode.right);
+        }
+    }
 }
 
 @Test
