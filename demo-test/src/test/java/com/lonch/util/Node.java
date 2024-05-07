@@ -19,6 +19,7 @@ public class Node<E> {
 
     public E data;
     public Node<E> parent, left, right;
+    boolean visit;
 
     // 构造器
     public Node(E data) {
@@ -89,7 +90,7 @@ public class Node<E> {
         if (node == null || visit.contains(node))
             return;
 
-        sb.append(node.data + " ");
+        sb.append(node.data).append(" ");
         visit.add(node);
 
         dfs(node.left, visit, sb);

@@ -23,6 +23,8 @@ import static org.junit.Assert.assertEquals;
         2）不能使用全局变量，
         3）不能改动树结构，
         4）不能修改节点结构和值
+        5）只能从给定的节点开始变遍历，而且不能使用任何中间介质做排重或存储.
+           《也就是不能使用 HashSet 做判断》
            ______________________
           |                      |
          V                       |
@@ -44,7 +46,95 @@ public class NO11_BinaryTreeTraversal {
         // 2024/4/12-13-14-15-16-18 NO.3-4-5-6-7-8 一遍过
         // 2024/4/30 NO.9 一遍过
         // 2024/5/7  NO.10 一遍过
+        // 假设这里有三棵树的根节点，并且它们通过parent相互连接
 
+        // 复制 3 棵树
+        Node<Character> root2 = copy(root1);
+        Node<Character> root3 = copy(root2);
+
+        root1.parent = root3;
+        root3.parent = root2;
+        root2.parent = root1;
+
+        // 从任意节点开始遍历整棵树
+        String res = travel(root1.left.right.left);
+        out.println(res);
+        assertEquals("J E K B D H I A C F L M G N O" +
+                " A B D H I E J K C F L M G N O A B D H I E J K" +
+                " C F L M G N O ", res);
+        printTree(root1);
+    }
+
+    public static <E> Node<E> copy(Node<E> root) {
+        if (root == null)
+            return null;
+
+        Node<E> node = new Node<>(root.data);
+
+        // 设置父节点
+        node.left = copy(root.left);
+        if (node.left != null)
+            node.left.parent = node;
+
+        // 设置父节点
+        node.right = copy(root.right);
+        if (node.right != null)
+            node.right.parent = node;
+
+        return node;
+    }
+
+    public String travel(Node<?> node) {
+        if (node == null)
+            return "";
+
+        StringBuilder sb = new StringBuilder();
+        dfs(node, sb);
+        return sb.toString();
+    }
+
+    private void dfs(Node node, StringBuilder sb) {
+        if (node == null || node.isVisit())
+            return;
+
+        sb.append(node.data + " ");
+        node.setVisit(true);
+
+        dfs(node.left, sb);
+        dfs(node.right, sb);
+        dfs(node.parent, sb);
+    }
+
+    private void levelOrderTraversal(Node root, StringBuilder sb) {
+        if (root == null)
+            return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        HashSet<Node> visited = new HashSet<>();
+        visited.add(root);
+
+        while (!queue.isEmpty()) {
+            Node currentNode = queue.poll();
+            sb.append(currentNode.data + " ");
+
+            if (currentNode.left != null && !visited.contains(currentNode.left)) {
+                queue.add(currentNode.left);
+                visited.add(currentNode.left);
+            }
+
+            // 添加父节点的检查，避免无限循环
+            if (currentNode.parent != null && !visited.contains(currentNode.parent)) {
+                queue.add(currentNode.parent);
+                visited.add(currentNode.parent);
+            }
+
+            if (currentNode.right != null && !visited.contains(currentNode.right)) {
+                queue.add(currentNode.right);
+                visited.add(currentNode.right);
+            }
+        }
     }
 
 }
