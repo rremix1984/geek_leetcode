@@ -7,6 +7,7 @@ import com.lonch.util.Node;
 import com.lonch.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
+import static com.lonch.util.MatrixNode.nextChar;
 import static com.lonch.util.Node.printTree;
 import static com.lonch.util.TreeNode.*;
 import static java.lang.System.out;
@@ -28,6 +29,8 @@ public class NO4_CharTreeCreate {
         // 2024/4/9  NO.3 思路还是不太清晰，看答案做出来了
         // 2024/4/14-15-18 NO.4-5-6 一遍过
         // 2024/5/6  NO.7 一遍过
+        // 2024/5/7  NO.8
+
     }
 
 }

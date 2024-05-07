@@ -3,111 +3,31 @@
  */
 package com.lonch;
 
-import com.lonch.util.MatrixNode;
 import lombok.val;
-
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 import static java.lang.System.in;
-import static java.lang.System.out;
 
 /**
-    [SNAKE] |||||||||||
+    [SNAKE] ||||||||||||
     (困难)
     NO.9 贪吃蛇游戏
  */
 @SuppressWarnings("all")
 public class NO9_SnakeGame {
 
-    public static MatrixNode first;
-    public static MatrixNode last;
-
     public static void main(String[] args) {
         // 2024/4/9  NO.1 能看懂，做不出来
-        // 2024/4/10-11-12-13-14-15-16-18 NO.2-3-4-5-6-7-8-9 一遍过
-        // 2024/4/30-5/2 NO.10-11 一遍过
-        Game g = new Game();
-        while (g.move(new Scanner(in).nextLine().charAt(0)) != -1) {
-            out.println("W/S/A/D");
-        }
-        out.println("score:" + g.score);
+        // 2024/4/10-11-12-13-14-15-16-18
+        //           NO.2-3-4-5-6-7-8-9 一遍过
+        // 2024/4/30-5/2
+        //           NO.10-11 一遍过
+        // 2024/5/7  NO.12 一遍过
+
     }
 
-    static class Game {
-        int score;
-        int ROWS = 10, COLS = 10;
-        LinkedList<int[]> snake = new LinkedList<>();
-        char[][] board = new char[ROWS][COLS];
-        int[] food = new int[]{3, 3};
-        public Game() {
-            score = 0;
-            snake.addFirst(new int[]{0, 0});
-            init();
-        }
-
-        public void init() {
-            for (int i = 0; i < ROWS; i++) {
-                for (int j = 0; j < COLS; j++) {
-                    board[i][j] = '-';
-                }
-            }
-
-            board[food[0]][food[1]] = 'F';
-            for (int[] p : snake) {
-                board[p[0]][p[1]] = '*';
-            }
-
-            for (int i = 0; i < COLS; i++) {
-                for (int j = 0; j < COLS; j++) {
-                    out.print(board[i][j] + " ");
-                }
-                out.println();
-            }
-        }
-
-        public int move(char dir) {
-            int[] head = snake.getFirst();
-            int[] nHead = new int[]{head[0], head[1]};
-
-            switch(dir) {
-                case 'W':
-                    nHead[0]--;
-                    break;
-                case 'S':
-                    nHead[0]++;
-                    break;
-                case 'A':
-                    nHead[1]--;
-                    break;
-                case 'D':
-                    nHead[1]++;
-                    break;
-            }
-
-            if (nHead[0] < 0 || nHead[0] >= ROWS || nHead[1] < 0 || nHead[1] >= COLS) {
-                return -1;
-            }
-
-            if (nHead[0] == food[0] && nHead[1] == food[1]) {
-                score++;
-                food = new int[]{new Random().nextInt(ROWS), new Random().nextInt(COLS)};
-            } else {
-                snake.removeLast();
-            }
-
-            for (int[] p : snake) {
-                if (p[0] == nHead[0] && p[1] == nHead[1]) {
-                    return -1;
-                }
-            }
-
-            snake.addFirst(nHead);
-            init();
-            return score;
-        }
-    }
 }
 
 

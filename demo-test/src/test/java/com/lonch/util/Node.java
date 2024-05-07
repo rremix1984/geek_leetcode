@@ -89,7 +89,7 @@ public class Node<E> {
         if (node == null || visit.contains(node))
             return;
 
-        sb.append(node.data);
+        sb.append(node.data + " ");
         visit.add(node);
 
         dfs(node.left, visit, sb);

@@ -9,10 +9,11 @@ import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.*;
 import static com.lonch.util.MatrixNode.printMatrix;
+import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [MATRIXLINKED] |||||||||||
+    [MATRIXLINKED] ||||||||||||
     (中等)
     NO.5 定义链表来表示 N * N 的矩阵，节点内包括数值和
          四个指针分别为上、下、左、右
@@ -22,7 +23,7 @@ public class NO5_MatrixLinkedList {
 
     @Test
     public void test() {
-        MatrixNode<Character> head = init(5, 5);
+        MatrixNode<Character> head = init(6, 6);
         printMatrix(head);
         // 2024/4/7 NO.1 没思路，可以看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行
@@ -31,11 +32,11 @@ public class NO5_MatrixLinkedList {
         // 2024/4/12-13-14-15-16-18 NO.5-6-7-8-9-10 一遍过
         // 2024/4/30 NO.11 大部分做对了，还是有些细节没记住
         // 2024/5/6  NO.12 大致思路对，忘了怎么做了，手生了。
+        // 2024/5/7  NO.13 一遍过
+
     }
 
 }
-
-
 
 
 

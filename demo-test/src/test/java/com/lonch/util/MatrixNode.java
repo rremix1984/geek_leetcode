@@ -21,6 +21,10 @@ public class MatrixNode<T> {
 
     public T val;
 
+    public int col;
+
+    public int row;
+
     // 默认距离为最大值，代表未访问
     public int dist = MAX_VALUE;
 
@@ -36,6 +40,14 @@ public class MatrixNode<T> {
         this.right = null;
         this.up = null;
         this.down = null;
+    }
+
+    public MatrixNode(T val, MatrixNode left, MatrixNode right, int row, int col) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+        this.col = col;
+        this.row = row;
     }
 
     public static <T> void printMatrix(MatrixNode<T> head) {

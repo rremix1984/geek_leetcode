@@ -30,7 +30,7 @@ public class NO3_CreateTreeNode {
     public void test() {
         int depth = 4;
         // 快速排序
-        Node node = dfs(depth, 0);
+        Node<Integer> node = dfs(depth, 0);
         assertEquals("[0, " +
                         "[1, [3, [7, [8], [4, [9, [10]], " +
                         "[2, [5, [11, [12], [6, [13, [14]]]",
@@ -43,14 +43,16 @@ public class NO3_CreateTreeNode {
         printTree(node);
     }
 
-    private Node dfs(int depth, int idx) {
-        if (depth == 0 || idx < 0) {
+    private Node<Integer> dfs(int depth, int val) {
+        if (depth == 0)
             return null;
-        }
 
-        Node node = new Node(idx);
-        node.left = dfs(depth - 1,2 * idx + 1);
-        node.right = dfs(depth - 1,2 * idx + 2);
+        Node<Integer> node = new Node<>(val);
+        node.left = dfs(depth - 1, 2 * val + 1);
+        node.left.parent = node;
+
+        node.right = dfs(depth - 1, 2 * val + 2);
+        node.right.parent = node;
         return node;
     }
 

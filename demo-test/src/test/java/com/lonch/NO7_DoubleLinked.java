@@ -24,8 +24,8 @@ public class NO7_DoubleLinked {
     }
 
     public DoubleLinked<String> cLink(int depth, int idx) {
-        // 2024/4/8 NO.1 没思路，能做出来
-        // 20204/4/11 NO.2
+        // 2024/4/8  NO.1 没思路，能做出来
+        // 2024/4/11 NO.2
 
         return null;
     }
