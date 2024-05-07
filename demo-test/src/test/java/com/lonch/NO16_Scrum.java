@@ -93,8 +93,8 @@ static class Game {
 
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++)
-                System.out.print(board[i][j] + " ");
-            System.out.println();
+                out.print(board[i][j] + " ");
+            out.println();
         }
     }
 
@@ -164,7 +164,7 @@ static class MatrixNode<E> {
 public static void main(String[] args) {
     Game g = new Game();
     while (g.move(new Scanner(in).nextLine().charAt(0)) != -1)
-        System.out.println("W/S/A/D");
-    System.out.println("game over! score" + g.score);
+        out.println("W/S/A/D");
+    out.println("game over! score" + g.score);
 }
 */

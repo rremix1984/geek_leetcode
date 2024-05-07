@@ -1,23 +1,30 @@
+/**
+ * copyright 2020-2025
+ * author: wangxiaozhe
+ */
 package com.lonch.util;
 
 import lombok.Getter;
 import lombok.Setter;
 import java.util.LinkedList;
 import java.util.Queue;
-
 import static java.lang.System.out;
 
+/**
+ * LinkedTable
+ * @author wangxiaozhe
+ * @param <T>
+ */
 @Setter
 @Getter
 @SuppressWarnings("unused")
 public class LinkedTable<T> {
 
     public T value;
-    public LinkedTable<T> parent;
-    public LinkedTable<T> left;
-    public LinkedTable<T> right;
+    public LinkedTable<T> parent, left, right;
 
     public LinkedTable() {
+
     }
 
     public LinkedTable<T> setParent(LinkedTable<T> parent) {
@@ -33,7 +40,6 @@ public class LinkedTable<T> {
         printLinkedTableHelper( "", true);
     }
 
-
     private static void printLinkedTableHelper(LinkedTable<Integer> node, String prefix, boolean isTail) {
         if (node == null)
             return;
@@ -41,8 +47,9 @@ public class LinkedTable<T> {
         if (node.getParent() != null) {
             String pointer = isTail ? "└── " : "├── ";
             out.println(prefix + pointer + node.getValue());
-        } else
+        } else {
             out.println(node.getValue());
+        }
 
         if (node.getRight() != null)
             printLinkedTableHelper(node.getRight(), prefix + (isTail ? "    " : "│   "), false);

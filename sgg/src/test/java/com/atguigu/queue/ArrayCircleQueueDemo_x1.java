@@ -164,7 +164,7 @@ class ArrayCircleQueue {
         // 从front开始遍历多少个元素
         for (int i = front; i < front + size(); i++) {
             // 因为是环形的，所以要 i % size
-            System.out.printf("arr[%d]=%d\n", i % size, queue[i % size]);
+            out.printf("arr[%d]=%d\n", i % size, queue[i % size]);
         }
     }
 

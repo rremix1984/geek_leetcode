@@ -16,7 +16,7 @@ import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
 /**
-    根据二叉树高度，生成满二叉树
+ 根据二叉树高度，生成满二叉树
 */
 @Getter
 @Setter

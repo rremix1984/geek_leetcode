@@ -28,24 +28,24 @@ public class DoubleLinked<E> {
     }
 
     public void printDoubleLinked(DoubleLinked<E> head) {
-        printDoubleLinkedHelper(head, "");
+        printHelper(head, "");
     }
 
     public void printDoubleLinked() {
-        printDoubleLinkedHelper(this, "");
+        printHelper(this, "");
     }
 
-    private void printDoubleLinkedHelper(DoubleLinked<E> node, String prefix) {
+    private void printHelper(DoubleLinked<E> node, String prefix) {
         if (node == null)
             return;
 
         out.println(prefix + "├── " + node.data);
 
         if (node.left != null)
-            printDoubleLinkedHelper(node.left, prefix + "│   ");
+            printHelper(node.left, prefix + "│   ");
 
         if (node.right != null)
-            printDoubleLinkedHelper(node.right, prefix + "    ");
+            printHelper(node.right, prefix + "    ");
     }
 
 }

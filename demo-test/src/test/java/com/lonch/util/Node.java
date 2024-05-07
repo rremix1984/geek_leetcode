@@ -1,26 +1,24 @@
 /**
- * @copyright wxz
+ * copyright 2024-2025
  */
 package com.lonch.util;
 
 import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
-
 import static java.lang.System.out;
 
+/**
+ * Node
+ * @author wangxiaozhe
+ */
 @Setter
 @Getter
 @SuppressWarnings("unused")
 public class Node<E> {
 
     public E data;
-
-    public Node<E> parent;
-
-    public Node<E> left;
-
-    public Node<E> right;
+    public Node<E> parent, left, right;
 
     // 构造器
     public Node(E data) {
@@ -49,27 +47,29 @@ public class Node<E> {
 
         Node<E> node = new Node<>(root.data);
 
+        // 设置父节点
         node.left = copy(root.left);
         if (node.left != null)
-            node.left.parent = node; // 设置父节点
+            node.left.parent = node;
 
+        // 设置父节点
         node.right = copy(root.right);
         if (node.right != null)
-            node.right.parent = node; // 设置父节点
+            node.right.parent = node;
 
         return node;
     }
 
-    public static Node<Character> cTree(int depth, int currentIndex) {
+    public static Node<Character> cTree(int depth, int idx) {
         if (depth == 0)
             return null;
 
-        Node<Character> node = new Node<>((char) ('A' + currentIndex % 26));
-        node.left = cTree(depth - 1, 2 * currentIndex + 1);
+        Node<Character> node = new Node<>((char) ('A' + idx % 26));
+        node.left = cTree(depth - 1, 2 * idx + 1);
         if (node.left != null)
             node.left.parent = node;
 
-        node.right = cTree(depth - 1, 2 * currentIndex + 2);
+        node.right = cTree(depth - 1, 2 * idx + 2);
         if (node.right != null)
             node.right.parent = node;
 
