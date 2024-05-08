@@ -202,7 +202,7 @@ public class MatrixNode<T> {
     }
 
     public static <T> void printAllPaths(List<List<MatrixNode<T>>> allPaths) {
-        out.println("All paths from start to end:");
+        out.println("All paths from start to end: " + allPaths.size());
         for (List<MatrixNode<T>> path : allPaths) {
             for (MatrixNode<T> node : path)
                 out.printf("(%2s) -> ", node.val);

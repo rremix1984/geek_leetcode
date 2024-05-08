@@ -11,7 +11,7 @@ import static com.lonch.util.MatrixNode.*;
 import static java.lang.System.out;
 
 /**
-    [MATRIXLINKED] ||||||||||||||
+    [MATRIXLINKED] |||||||||||||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
  */
@@ -22,7 +22,7 @@ public class NO6_MatrixLinkedListShortestPath {
     public void test() {
         MatrixNode<Character> start = initC(6);
         printMatrix(start);
-        MatrixNode<Character> end = start.pos(2, 3);
+        MatrixNode<Character> end = start.pos(6, 6);
         List<List<MatrixNode<Character>>> res = new ArrayList<>();
         // 2024/4/7   NO.1 没思路，但能看懂。
         // 2024/4/8   NO.2 有思路了，没写出来。
@@ -32,15 +32,68 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/4/30  NO.11 做错了，但是大致思路对，写的差不多，要化【定式】为【棋力】
         // 2024/5/6-7 NO.12-13 一遍过
         // 2024/5/8   NO.14 Dijkstra算法看懂了，下次争取独立做出来
+        // 2024/5/9   NO.15 Dijkstra算法能独立做出来了
         // TODO
         // 方法1：剪枝法
-        // List<List<MatrixNode<Character>>> res = findShortestPaths(mnode,
-        //      mnode.right.right.right.down.down.down);
+        // List<List<MatrixNode<Character>>> res = findShortestPaths(start, end);
+        //
         // 方法2：迪杰克斯拉算法
-
+        // dijkstra(res, start, end);
         printAllPaths(res);
     }
 
+    private void dijkstra(List<List<MatrixNode<Character>>> res,
+                          MatrixNode<Character> start,
+                          MatrixNode<Character> end) {
+        // 1. init
+        Queue<MatrixNode<Character>> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a.dist));
+        start.dist = 0;
+        queue.offer(start);
+
+        // 2. update
+        while(!queue.isEmpty()) {
+            MatrixNode<Character> cur = queue.poll();
+            if (cur.dist > end.dist)
+                break;
+            update(queue, cur, cur.up);
+            update(queue, cur, cur.down);
+            update(queue, cur, cur.left);
+            update(queue, cur, cur.right);
+        }
+
+        // 3. dfs
+        dfs(res, new LinkedList<>(), end);
+    }
+
+    private void dfs(List<List<MatrixNode<Character>>> res,
+                      LinkedList<MatrixNode<Character>> list,
+                      MatrixNode<Character> end) {
+        list.addFirst(end);
+        if (end.prevs.isEmpty()) {
+            res.add(new LinkedList<>(list));
+        } else {
+            end.prevs.forEach(cur -> dfs(res, list, cur));
+        }
+        list.removeFirst();
+    }
+
+    private void update(Queue<MatrixNode<Character>> queue,
+                        MatrixNode<Character> cur, MatrixNode<Character> next) {
+        if (next == null)
+            return;
+
+        int dist = cur.dist + 1;
+        if (dist < next.dist) {
+            next.dist = dist;
+            next.prevs.clear();
+            next.prevs.add(cur);
+            queue.offer(next);
+        } else if (dist == next.dist) {
+            if (!next.prevs.contains(cur))
+                next.prevs.add(cur);
+            queue.offer(next);
+        }
+    }
 
 
 }
