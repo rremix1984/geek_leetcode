@@ -106,13 +106,12 @@ public class MatrixNode<T> {
         while (col != null) {
             MatrixNode<T> row = col;
             while (row != null) {
-                sb.append(row.val).append("\t");
+                out.printf("%4s", row.val);
                 row = row.right;
             }
-            sb.append("\n");
+            out.println();
             col = col.down;
         }
-        out.println(sb);
     }
 
     public static MatrixNode<Integer> initI(int n) {
@@ -197,9 +196,8 @@ public class MatrixNode<T> {
     public static <T> void printAllPaths(List<List<MatrixNode<T>>> allPaths) {
         out.println("All paths from start to end:");
         for (List<MatrixNode<T>> path : allPaths) {
-            for (MatrixNode<T> node : path) {
-                out.print("(" + node.val + ") -> ");
-            }
+            for (MatrixNode<T> node : path)
+                out.printf("(%2s) -> ", node.val);
             out.println();
         }
     }

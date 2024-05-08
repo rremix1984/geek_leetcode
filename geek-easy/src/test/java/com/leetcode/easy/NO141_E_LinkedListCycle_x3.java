@@ -31,6 +31,7 @@ import static com.leetcode.util.LogUtil.info;
         输出：false
         解释：链表中没有环。
 */
+@SuppressWarnings("all")
 public class NO141_E_LinkedListCycle_x3 {
 
     @Test

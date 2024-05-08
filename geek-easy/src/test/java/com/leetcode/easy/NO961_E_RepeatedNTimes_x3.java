@@ -36,6 +36,7 @@ import org.junit.Test;
     因此我们可以对数组进行一次遍历，并使用哈希集合存储已经出现过的元素。如果遍历到了哈
     希集合中的元素，那么返回该元素作为答案。
 */
+@SuppressWarnings("all")
 public class NO961_E_RepeatedNTimes_x3 {
 
     @Test

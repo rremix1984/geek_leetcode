@@ -25,6 +25,7 @@ import java.util.Queue;
              接着是 2 和 1，得到 1，所以数组转换为 {1, 1, 1}，
             最后选出 1 和 1，得到 0，最终数组转换为 {1}，这就是最后剩下那块石头的重量。
 */
+@SuppressWarnings("all")
 public class NO1046_E_LastStoneWeight {
 
     @Test

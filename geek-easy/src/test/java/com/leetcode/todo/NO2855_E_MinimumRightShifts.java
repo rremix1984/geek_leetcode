@@ -32,6 +32,7 @@ import static com.leetcode.util.MathUtils.getArray;
         nums 中的整数互不相同。
     Related Topics:数组
 */
+@SuppressWarnings("all")
 public class NO2855_E_MinimumRightShifts {
 
     @Test
@@ -74,3 +75,60 @@ public class NO2855_E_MinimumRightShifts {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int minimumRightShifts(List<Integer> nums) {
+    int size = nums.size();
+    // 一次遍历，找到最小值对应索引
+    int minValIndex = 0;
+    int preVal = nums.get(0);
+    // 条件1：列表最多只有两段递增
+    boolean changeFlag = false;
+    for (int i = 1; i < size; i++) {
+        int val = nums.get(i);
+        if (val > preVal) {
+            // do not thing
+        } else {
+            if (changeFlag) {
+                return -1;
+            }
+            minValIndex = i;
+            changeFlag = true;
+        }
+        preVal = val;
+    }
+
+    if (minValIndex == 0) {
+        return 0;
+    }
+    // 条件2：头>尾值，才能相连后递增
+    if (nums.get(0) < nums.get(size - 1)) {
+        return -1;
+    }
+    // 通过求差来求操作次数
+    return size - minValIndex;
+}
+*/

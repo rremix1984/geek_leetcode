@@ -19,6 +19,7 @@ import org.junit.Test;
         输入：nums = [2, 2, 1, 1, 1, 2, 2]
         输出：2
 */
+@SuppressWarnings("all")
 public class NO169_E_MajorityElement {
 
     @Test

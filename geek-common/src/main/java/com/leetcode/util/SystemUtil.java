@@ -4,7 +4,6 @@
 package com.leetcode.util;
 
 import java.util.*;
-
 import static java.lang.Integer.parseInt;
 import static java.lang.System.out;
 import static java.util.Arrays.sort;
@@ -17,9 +16,8 @@ public class SystemUtil {
 
     public static void print(TreeSet<Long> set) {
         // 打印一个TreeSet数组的元素
-        Iterator<Long> iterator = set.iterator();
-        while (iterator.hasNext())
-            out.println(iterator.next());
+        for (Long aLong : set)
+            out.println(aLong);
         out.println("=======");
     }
 
@@ -31,7 +29,7 @@ public class SystemUtil {
         return parseInt(new String(s));
     }
 
-    public static void print(TreeNode node) {
+    public static <T> void print(TreeNode<T> node) {
         // 打印一个TreeSet数组的元素
 //        Iterator<Long> iterator = set.iterator();
 //        while (iterator.hasNext()) {
@@ -56,12 +54,12 @@ public class SystemUtil {
         out.println();
     }
 
-    public static void printListNode(ListNode listNode) {
+    public static <T> void printListNode(ListNode<T> listNode) {
         out.println(listNode.toString());
     }
 
-    public static void printListNodes(ListNode[] listNode) {
-        for (ListNode node : listNode)
+    public static <T> void printListNodes(ListNode<T>[] listNode) {
+        for (ListNode<T> node : listNode)
             out.println(node.toString());
         out.println();
     }
@@ -116,14 +114,14 @@ public class SystemUtil {
         return true;
     }
 
-    public static boolean arrayAllMatch(List source, List target) {
+    public static <T> boolean arrayAllMatch(List<T> source, List<T> target) {
         if (source == null && target == null)
             return true;
 
-        if (source == null && target != null)
+        if (source == null)
             return false;
 
-        if (source != null && target == null)
+        if (target == null)
             return false;
 
         if (source.size() != target.size())
@@ -184,15 +182,14 @@ public class SystemUtil {
     }
 
     public static void printArr(char[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                out.print(arr[i][j] + " ");
-            }
+        for (char[] chars : arr) {
+            for (int j = 0; j < arr[0].length; j++)
+                out.printf("%s ", chars[j]);
             out.println();
         }
     }
 
-    public static void preOrder(TreeNode root, List res) {
+    public static <T> void preOrder(TreeNode<T> root, List<T> res) {
         if (root == null)
             return;
 
@@ -201,7 +198,7 @@ public class SystemUtil {
         preOrder(root.right, res);
     }
 
-    public static void postOrder(TreeNode root, List res) {
+    public static <T> void postOrder(TreeNode<T> root, List<T> res) {
         if (root == null)
             return;
 
@@ -210,7 +207,7 @@ public class SystemUtil {
         res.add(root.val);
     }
 
-    public static void inOrder(TreeNode root, List res) {
+    public static <T> void inOrder(TreeNode<T> root, List<T> res) {
         if (root == null)
             return;
 

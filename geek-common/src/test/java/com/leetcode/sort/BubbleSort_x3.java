@@ -23,6 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
         后的元素应该会是最大的数；针对所有的元素重复以上的步骤，除了最后一个；
         重复步骤1~3，直到排序完成。
 */
+@SuppressWarnings("all")
 public class BubbleSort_x3 {
 
     @Test

@@ -32,6 +32,7 @@ import org.junit.Test;
         1 <= m, n <= 50
         1 <= indices.length <= 100
 */
+@SuppressWarnings("all")
 public class NO1252_E_OddCells_x2 {
 
     @Test

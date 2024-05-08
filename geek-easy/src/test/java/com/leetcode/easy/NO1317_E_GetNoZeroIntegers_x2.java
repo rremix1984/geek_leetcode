@@ -33,6 +33,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入：n = 1010
         输出：{11, 999}
 */
+@SuppressWarnings("all")
 public class NO1317_E_GetNoZeroIntegers_x2 {
 
     @Test

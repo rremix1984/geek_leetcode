@@ -16,6 +16,7 @@ import static org.junit.Assert.assertArrayEquals;
         输入: nums = {0, 1, 0, 3, 12}
         输出: [1, 3, 12, 0, 0]
  */
+@SuppressWarnings("all")
 public class NO283_E_MoveZeroes_x3 {
 
     @Test

@@ -33,9 +33,13 @@ import java.util.Arrays;
         3 <= n <= 50
         1 <= nums[i] <= 50
     Related Topics:数组,枚举,排序
-解题方法:
-首先我们知道要分成三个数组，无论第一个数组怎么分都是第一个数据，所以我们先保留第一个，后面二个数组又因为要满足最小代价总和，所以我们直接找最小的二个数，这样一来是不是简单多了，我用的是在定义一个数组，把除了第一个数据以外的其他数据加到数组中，在进行从小到大排列，取前面二个，最后把数据相加就可以了
+    解题方法:
+        首先我们知道要分成三个数组，无论第一个数组怎么分都是第一个数据，所以我们先保留第一个，
+    后面二个数组又因为要满足最小代价总和，所以我们直接找最小的二个数，这样一来是不是简单多了，
+    我用的是在定义一个数组，把除了第一个数据以外的其他数据加到数组中，在进行从小到大排列，
+    取前面二个，最后把数据相加就可以了
 */
+@SuppressWarnings("all")
 public class NO3010_E_MinimumCost {
 
     @Test
@@ -46,12 +50,39 @@ public class NO3010_E_MinimumCost {
     }
 
     public int minimumCost(int[] nums) {
-        int[] text = new int[nums.length - 1];
-        for (int i = 1; i < nums.length; i++)
-            text[i - 1] = nums[i];
-
-        Arrays.sort(text);
-        return nums[0] + text[0] + text[1];
+        return -1;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int minimumCost(int[] nums) {
+    int[] text = new int[nums.length - 1];
+    for (int i = 1; i < nums.length; i++)
+        text[i - 1] = nums[i];
+
+    Arrays.sort(text);
+    return nums[0] + text[0] + text[1];
+}
+*/

@@ -31,6 +31,7 @@ import static java.lang.Character.*;
         输出：false
         解释：密码不符合长度要求。所以我们返回 false 。
 */
+@SuppressWarnings("all")
 public class NO2299_E_StrongPasswordCheckerII_x2 {
 
     @Test

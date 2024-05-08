@@ -26,6 +26,7 @@ import static java.lang.Math.abs;
         输出：0
         解释：不存在满足所有条件的三元组。
 */
+@SuppressWarnings("all")
 public class NO1534_E_CountGoodTriplets {
 
     @Test

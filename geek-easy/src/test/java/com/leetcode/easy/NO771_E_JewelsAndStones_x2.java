@@ -17,6 +17,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：jewels = "z", stones = "ZZ"
         输出：0
 */
+@SuppressWarnings("all")
 public class NO771_E_JewelsAndStones_x2 {
 
     @Test

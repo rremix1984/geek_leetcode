@@ -24,6 +24,7 @@ import static org.junit.Assert.assertEquals;
         1 <= s.length <= 3 * 105
         s 由 可打印的 ASCII 字符组成
 */
+@SuppressWarnings("all")
 public class NO345_E_ReverseVowels_x2 {
 
     @Test
@@ -58,7 +59,7 @@ public class NO345_E_ReverseVowels_x2 {
 
 
 
-/**
+/*
 public String reverseVowels(String s) {
     char[] arr = s.toCharArray();
     int i = 0;

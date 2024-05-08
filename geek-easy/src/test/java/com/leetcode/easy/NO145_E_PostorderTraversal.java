@@ -29,6 +29,7 @@ import static org.junit.Assert.assertEquals;
         输入：root = [1]
         输出：[1]
 */
+@SuppressWarnings("all")
 public class NO145_E_PostorderTraversal {
 
     @Test

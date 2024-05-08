@@ -32,6 +32,7 @@ import org.junit.Test;
         -1 <= forts[i] <= 1
     Related Topics: 数组,双指针
 */
+@SuppressWarnings("all")
 public class NO2511_E_CaptureForts {
 
     @Test

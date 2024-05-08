@@ -36,6 +36,7 @@ import static java.lang.Math.min;
              - [9, 4, 1, 7] 最高分和最低分之间的差值是 7 - 1 = 6
              可能的最小差值是 2
 */
+@SuppressWarnings("all")
 public class NO1984_E_MinimumDifference {
 
     @Test

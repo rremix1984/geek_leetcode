@@ -2,7 +2,7 @@ package com.leetcode.todo;
 
 import org.junit.Test;
 
-/*
+/**
     [ARRAY]
     （简单）
     NO.2733 既不是最小值也不是最大值
@@ -26,6 +26,7 @@ import org.junit.Test;
         nums 中的所有数字互不相同
     Related Topics:数组,排序
 */
+@SuppressWarnings("all")
 public class NO2733_E_FindNonMinOrMax {
 
     @Test
@@ -36,22 +37,50 @@ public class NO2733_E_FindNonMinOrMax {
     }
 
     public int findNonMinOrMax(int[] nums) {
-        if (nums.length <= 2)
-            // 不存在
-            return -1;
-
-        // 结果任一，只需取前三个元素比较
-        if (nums[0] > nums[1]) {
-            if (nums[0] > nums[2])
-                return Math.max(nums[1], nums[2]);
-            else
-                return nums[0];
-        } else {
-            if (nums[0] > nums[2])
-                return nums[0];
-            else
-                return Math.min(nums[1], nums[2]);
-        }
+        return -1;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int findNonMinOrMax(int[] nums) {
+    if (nums.length <= 2)
+        // 不存在
+        return -1;
+
+    // 结果任一，只需取前三个元素比较
+    if (nums[0] > nums[1]) {
+        if (nums[0] > nums[2])
+            return Math.max(nums[1], nums[2]);
+        else
+            return nums[0];
+    } else {
+        if (nums[0] > nums[2])
+            return nums[0];
+        else
+            return Math.min(nums[1], nums[2]);
+    }
+}
+*/

@@ -30,6 +30,7 @@ import static com.leetcode.util.LogUtil.info;
             由于空字符串正着反着读都一样，所以是回文串。
 */
 @Slf4j
+@SuppressWarnings("all")
 public class NO125_E_ValidPalindrome_x2 {
 
     @Test

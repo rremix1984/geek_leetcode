@@ -35,38 +35,66 @@ import static org.junit.Assert.assertArrayEquals;
         数据均按 id 以严格递增顺序排列
     Related Topics:数组,哈希表,双指针
 */
+@SuppressWarnings("all")
 public class NO2570_E_MergeArrays {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[][]{{1,6},{2,3},{3,2},{4,6}},
-            mergeArrays(new int[][]{{1,2},{2,3},{4,5}}, new int[][]{{1,4},{3,2},{4,1}}));
+        assertArrayEquals(new int[][]{{1, 6}, {2, 3}, {3, 2}, {4, 6}},
+                mergeArrays(new int[][]{{1, 2}, {2, 3}, {4, 5}}, new int[][]{{1, 4}, {3, 2}, {4, 1}}));
     }
 
     public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
-        int [] temp = new int[1001];
-        int res = 0;
-        for (int[] ints : nums1) {
-            if (temp[ints[0]] == 0) res++;
-            temp[ints[0]] += ints[1];
-        }
-
-        for (int[] ints : nums2) {
-            if (temp[ints[0]] == 0)
-                res++;
-            temp[ints[0]] += ints[1];
-        }
-
-        int[][] ans = new int[res][2];
-        int j = 0;
-        for (int i = 0; i < temp.length; i++) {
-            if (temp[i]!=0) {
-                ans[j][0]=i;
-                ans[j][1]=temp[i];
-                j++;
-            }
-        }
-        return ans;
+        return null;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
+    int [] temp = new int[1001];
+    int res = 0;
+    for (int[] ints : nums1) {
+        if (temp[ints[0]] == 0) res++;
+        temp[ints[0]] += ints[1];
+    }
+
+    for (int[] ints : nums2) {
+        if (temp[ints[0]] == 0)
+            res++;
+        temp[ints[0]] += ints[1];
+    }
+
+    int[][] ans = new int[res][2];
+    int j = 0;
+    for (int i = 0; i < temp.length; i++) {
+        if (temp[i]!=0) {
+            ans[j][0]=i;
+            ans[j][1]=temp[i];
+            j++;
+        }
+    }
+    return ans;
+}
+*/

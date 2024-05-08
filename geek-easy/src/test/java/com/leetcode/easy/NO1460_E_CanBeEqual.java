@@ -54,6 +54,7 @@ import java.util.Arrays;
         通过翻转操作使得它们相等，归结为判断两个数组是否有相同的元素
         和相同的元素数量，即两个数组的元素及其数量是否完全相同。
 */
+@SuppressWarnings("all")
 public class NO1460_E_CanBeEqual {
 
     @Test

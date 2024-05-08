@@ -29,6 +29,7 @@ import org.junit.Test;
         1 <= s.length <= 1000
         s[i] 为 'A'、'L' 或 'P'
 */
+@SuppressWarnings("all")
 public class NO551_E_CheckRecord_x2 {
 
     @Test
@@ -60,7 +61,7 @@ public class NO551_E_CheckRecord_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public boolean checkRecord(String s) {
     int A = 0;

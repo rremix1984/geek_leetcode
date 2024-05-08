@@ -24,6 +24,7 @@ import static java.lang.Math.max;
         输入：nums = [-1, -2, -3]
         输出：-6
 */
+@SuppressWarnings("all")
 public class NO628_E_MaximumProductOfThreeNumbers {
 
     @Test

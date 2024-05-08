@@ -31,6 +31,7 @@ import org.junit.Test;
         1 <= k <= 50
     Related Topics:数组,数学,矩阵,模拟
 */
+@SuppressWarnings("all")
 public class NO2946_E_AreSimilar {
 
     @Test

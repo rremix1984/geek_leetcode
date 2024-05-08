@@ -40,6 +40,7 @@ import org.junit.Test;
         words[i] 仅由小写英文字母组成。
     Related Topics:字典树,数组,字符串,字符串匹配,哈希函数,滚动哈希
 */
+@SuppressWarnings("all")
 public class NO3042_E_CountPrefixSuffixPairs {
 
     @Test
@@ -51,24 +52,52 @@ public class NO3042_E_CountPrefixSuffixPairs {
 
     public int countPrefixSuffixPairs(String[] words) {
         int res = 0;
-        for (int i = 0; i < words.length; i++) {
-            for (int j = i + 1; j < words.length; j++) {
-                if (isPrefixAndSuffix(words[i], words[j])) res++;
-            }
-        }
+
         return res;
     }
 
-    public boolean isPrefixAndSuffix(String str1, String str2) {
-        // 这里判断即是前缀也是后缀
-        // 最快就是数组
-        if (str1.length() > str2.length())
-            return false;
-
-        if (!str2.endsWith(str1))
-            return false;
-
-        return str2.startsWith(str1);
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int countPrefixSuffixPairs(String[] words) {
+    int res = 0;
+    for (int i = 0; i < words.length; i++) {
+        for (int j = i + 1; j < words.length; j++) {
+            if (isPrefixAndSuffix(words[i], words[j])) res++;
+        }
+    }
+    return res;
+}
+
+public boolean isPrefixAndSuffix(String str1, String str2) {
+    // 这里判断即是前缀也是后缀
+    // 最快就是数组
+    if (str1.length() > str2.length())
+        return false;
+
+    if (!str2.endsWith(str1))
+        return false;
+
+    return str2.startsWith(str1);
+}
+*/

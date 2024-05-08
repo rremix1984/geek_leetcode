@@ -40,6 +40,7 @@ import static com.leetcode.util.LogUtil.info;
         对于取模的语言，结果的正负和右操作数相同，则 num−1 对 9 取模的结果为 8，
         加 1 后得到结果 9，无法得到正确的结果，此时需要对 num=0 的情况专门做处理。
 */
+@SuppressWarnings("all")
 public class NO258_E_AddDigits_x2 {
 
     @Test
@@ -69,7 +70,7 @@ public class NO258_E_AddDigits_x2 {
 
 
 
-/**
+/*
 public int addDigits(int num) {
     while (num >= 10) {
         int sum = 0;

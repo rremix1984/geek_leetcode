@@ -23,6 +23,7 @@ import java.util.Arrays;
         1 <= money <= 100
     Related Topics:数组,排序
 */
+@SuppressWarnings("all")
 public class NO2706_E_BuyChoco {
 
     @Test
@@ -32,9 +33,7 @@ public class NO2706_E_BuyChoco {
     }
 
     public int buyChoco(int[] prices, int money) {
-        Arrays.sort(prices);
-        int sum = prices[0] + prices[1];
-        return sum <= money ? money - sum : money;
+        return -1;
     }
 
 }

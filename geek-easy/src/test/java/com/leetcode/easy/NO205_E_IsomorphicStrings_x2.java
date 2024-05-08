@@ -26,6 +26,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：s = "paper", t = "title"
         输出：true
 */
+@SuppressWarnings("all")
 public class NO205_E_IsomorphicStrings_x2 {
 
     @Test

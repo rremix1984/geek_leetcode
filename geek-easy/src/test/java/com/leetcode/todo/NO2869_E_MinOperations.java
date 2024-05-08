@@ -30,6 +30,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输入保证你可以收集到元素 1, 2, ..., k 。
     Related Topics:位运算,数组,哈希表
 */
+@SuppressWarnings("all")
 public class NO2869_E_MinOperations {
 
     @Test

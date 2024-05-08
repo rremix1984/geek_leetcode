@@ -30,6 +30,7 @@ import org.junit.Test;
     Related Topics:
         数组,模拟
 */
+@SuppressWarnings("all")
 public class NO3038_E_MaxOperations {
 
     @Test
@@ -40,14 +41,6 @@ public class NO3038_E_MaxOperations {
 
     public int maxOperations(int[] nums) {
         int res = 0;
-        int sum = nums[0] + nums[1];
-        for (int i = 2; i <= nums.length - 2; i += 2) {
-            if (nums[i] + nums[i + 1] == sum) {
-                res++;
-            } else {
-                break;
-            }
-        }
         return res + 1;
     }
 

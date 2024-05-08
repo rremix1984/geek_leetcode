@@ -43,6 +43,7 @@ import static org.junit.Assert.assertArrayEquals;
         nums中的所有元素都互不相同。
     Related Topics:数组,模拟
 */
+@SuppressWarnings("all")
 public class NO3069_E_ResultArray {
 
     @Test

@@ -28,6 +28,7 @@ import org.junit.Test;
         输出：-1
         解释：数组中所有值的乘积是-1，且 signFunc(-1) = -1
 */
+@SuppressWarnings("all")
 public class NO1822_E_ArraySign {
 
     @Test

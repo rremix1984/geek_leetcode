@@ -30,6 +30,7 @@ import org.junit.Test;
              - 翻转右边起第三位：000 -> 100 。
              我们无法在 3 步内将 3 变成 4 。所以我们返回 3 。
 */
+@SuppressWarnings("all")
 public class NO2220_E_MinBitFlips_x2 {
 
     @Test
@@ -61,7 +62,7 @@ public class NO2220_E_MinBitFlips_x2 {
 
 
 
-/**
+/*
 public int minBitFlips(int start, int goal) {
     int res = 0;
     int tmp = start ^ goal;

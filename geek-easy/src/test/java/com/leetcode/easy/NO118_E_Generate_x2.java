@@ -25,6 +25,7 @@ import static com.leetcode.util.MathUtils.getArray;
     提示:
         1 <= numRows <= 30
 */
+@SuppressWarnings("all")
 public class NO118_E_Generate_x2 {
 
     @Test
@@ -37,6 +38,7 @@ public class NO118_E_Generate_x2 {
 
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ret = new ArrayList<>();
+
         return ret;
     }
 

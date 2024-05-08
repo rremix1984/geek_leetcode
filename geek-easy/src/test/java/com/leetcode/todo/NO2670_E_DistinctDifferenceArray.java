@@ -35,32 +35,61 @@ import static org.junit.Assert.assertArrayEquals;
         1 <= nums[i] <= 50
     Related Topics:数组,哈希表
 */
+@SuppressWarnings("all")
 public class NO2670_E_DistinctDifferenceArray {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{-3,-1,1,3,5},
-            distinctDifferenceArray(new int[]{1,2,3,4,5}));
-        assertArrayEquals(new int[]{-2,-1,0,2,3},
-            distinctDifferenceArray(new int[]{3,2,3,4,2}));
+        assertArrayEquals(new int[]{-3, -1, 1, 3, 5},
+                distinctDifferenceArray(new int[]{1, 2, 3, 4, 5}));
+        assertArrayEquals(new int[]{-2, -1, 0, 2, 3},
+                distinctDifferenceArray(new int[]{3, 2, 3, 4, 2}));
     }
 
     public int[] distinctDifferenceArray(int[] nums) {
         int n = nums.length;
         int[] ans = new int[n];
-        int[] prefix = new int[n]; // 前缀
-        HashSet<Integer> cnt = new HashSet<>();
-        for (int i = 0; i < n; i++) {
-            cnt.add(nums[i]);
-            prefix[i] = cnt.size();
-        }
-        cnt.clear();
-        ans[n - 1] = prefix[n - 1];
-        for (int i = n - 1; i > 0; i--) {
-            cnt.add(nums[i]);
-            ans[i - 1] = prefix[i - 1] - cnt.size();
-        }
+
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int[] distinctDifferenceArray(int[] nums) {
+    int n = nums.length;
+    int[] ans = new int[n];
+    int[] prefix = new int[n]; // 前缀
+    HashSet<Integer> cnt = new HashSet<>();
+    for (int i = 0; i < n; i++) {
+        cnt.add(nums[i]);
+        prefix[i] = cnt.size();
+    }
+    cnt.clear();
+    ans[n - 1] = prefix[n - 1];
+    for (int i = n - 1; i > 0; i--) {
+        cnt.add(nums[i]);
+        ans[i - 1] = prefix[i - 1] - cnt.size();
+    }
+    return ans;
+}
+*/

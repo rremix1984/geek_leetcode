@@ -24,6 +24,7 @@ import static java.lang.Math.max;
         输出：1
         解释：最长连续递增序列是 [2], 长度为1。
 */
+@SuppressWarnings("all")
 public class NO674_E_LongestContinuousIncreasingSubsequence_x2 {
 
     @Test
@@ -59,7 +60,7 @@ public class NO674_E_LongestContinuousIncreasingSubsequence_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int lengthOfLIS(int[] nums) {
     // 最短序列从哪里开始

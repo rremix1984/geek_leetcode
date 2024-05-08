@@ -36,6 +36,7 @@ import org.junit.Test;
         解释：函数应该返回新的长度5，并且原数组nums的前五个元素被修改为0, 1, 2, 3, 4。
              不需要考虑数组中超出新长度后面的元素。
 */
+@SuppressWarnings("all")
 public class NO026_E_RemoveDuplicatesFromSortedArray {
 
     @Test

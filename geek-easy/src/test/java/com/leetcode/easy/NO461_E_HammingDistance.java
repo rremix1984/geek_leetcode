@@ -25,6 +25,7 @@ import static org.junit.Assert.assertEquals;
              1   (0 0 0 1)
                       ↑
 */
+@SuppressWarnings("all")
 public class NO461_E_HammingDistance {
 
     @Test
@@ -54,7 +55,7 @@ public class NO461_E_HammingDistance {
 
 
 
-/**
+/*
 public int hammingDistance(int x, int y) {
     int s = x ^ y, ret = 0;
     while (s != 0) {
@@ -63,7 +64,6 @@ public int hammingDistance(int x, int y) {
     }
     return ret;
 }
-
 
 public int hammingDistance(int x, int y) {
     int s = x ^ y, ret = 0;

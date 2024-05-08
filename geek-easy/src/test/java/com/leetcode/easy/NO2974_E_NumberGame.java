@@ -32,6 +32,7 @@ import static org.junit.Assert.assertArrayEquals;
     Related Topics:
         数组,排序,模拟,堆（优先队列）
 */
+@SuppressWarnings("all")
 public class NO2974_E_NumberGame {
 
     @Test

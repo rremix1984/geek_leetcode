@@ -40,6 +40,7 @@ import org.junit.Test;
     我们将 ans 增加 1，这样 ans 变为奇数，在后面发现其它出现奇数次的字符时，
     我们就不改变 ans 的值了。
 */
+@SuppressWarnings("all")
 public class NO409_E_LongestPalindrome_x2 {
 
     @Test
@@ -82,7 +83,7 @@ public class NO409_E_LongestPalindrome_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int longestPalindrome(String s) {
     int ans = 0;

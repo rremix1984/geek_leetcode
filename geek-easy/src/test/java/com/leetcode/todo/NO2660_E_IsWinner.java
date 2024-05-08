@@ -40,6 +40,7 @@ import org.junit.Test;
         0 <= player1[i], player2[i] <= 10
     Related Topics:数组,模拟
 */
+@SuppressWarnings("all")
 public class NO2660_E_IsWinner {
 
     @Test

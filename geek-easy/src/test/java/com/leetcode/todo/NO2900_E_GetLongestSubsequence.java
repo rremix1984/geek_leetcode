@@ -41,6 +41,7 @@ import static com.leetcode.util.MathUtils.getArray;
         words[i] 只包含小写英文字母。
     Related Topics:贪心,数组,字符串,动态规划
 */
+@SuppressWarnings("all")
 public class NO2900_E_GetLongestSubsequence {
 
     @Test
@@ -53,14 +54,43 @@ public class NO2900_E_GetLongestSubsequence {
 
     public List<String> getLongestSubsequence(int n, String[] words, int[] groups) {
         List<String> ans = new ArrayList<>();
-        int last = -1;      // 记录上一个group值
-        for (int i = 0; i < n; ++i) {
-            if (groups[i] != last) {
-                last = groups[i];
-                ans.add(words[i]);
-            }
-        }
+
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public List<String> getLongestSubsequence(int n, String[] words, int[] groups) {
+    List<String> ans = new ArrayList<>();
+    int last = -1;      // 记录上一个group值
+    for (int i = 0; i < n; ++i) {
+        if (groups[i] != last) {
+            last = groups[i];
+            ans.add(words[i]);
+        }
+    }
+    return ans;
+}
+*/

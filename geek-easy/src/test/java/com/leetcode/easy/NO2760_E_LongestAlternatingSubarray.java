@@ -39,6 +39,7 @@ import org.junit.Test;
     Related Topics：
         数组,滑动窗口
 */
+@SuppressWarnings("all")
 public class NO2760_E_LongestAlternatingSubarray {
 
 

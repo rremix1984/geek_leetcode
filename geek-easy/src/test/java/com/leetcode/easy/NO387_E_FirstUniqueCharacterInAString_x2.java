@@ -22,6 +22,7 @@ import static com.leetcode.util.LogUtil.info;
         输入: s = "aabb"
         输出: -1
 */
+@SuppressWarnings("all")
 public class NO387_E_FirstUniqueCharacterInAString_x2 {
 
     @Test

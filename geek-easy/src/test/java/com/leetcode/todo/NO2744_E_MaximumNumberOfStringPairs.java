@@ -2,7 +2,7 @@ package com.leetcode.todo;
 
 import org.junit.Test;
 
-/*
+/**
     [ARRAY]
     （简单）
     NO.2744 最大字符串配对数目
@@ -36,6 +36,7 @@ import org.junit.Test;
         words[i] 只包含小写英文字母。
     Related Topics:数组,哈希表,字符串,模拟
 */
+@SuppressWarnings("all")
 public class NO2744_E_MaximumNumberOfStringPairs {
 
     @Test

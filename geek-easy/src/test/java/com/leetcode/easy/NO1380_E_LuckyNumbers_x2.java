@@ -28,6 +28,7 @@ import static com.leetcode.util.MathUtils.getArray;
         输出：{7}
         解释：7是唯一的幸运数字，因为它是行中的最小值，列中的最大值。
 */
+@SuppressWarnings("all")
 public class NO1380_E_LuckyNumbers_x2 {
 
     @Test
@@ -57,7 +58,7 @@ public class NO1380_E_LuckyNumbers_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public List<Integer> luckyNumbers(int[][] matrix) {
     List<Integer> ret = new ArrayList<>();

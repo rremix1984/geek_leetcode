@@ -35,24 +35,52 @@ public class NO2614_E_DiagonalPrime {
 
     public int diagonalPrime(int[][] nums) {
         int max = 0;
-        for (int i=0; i < nums.length; i++) {
-            if (cheak(nums[i][i]))
-                max = max(max, nums[i][i]);
-
-            if (cheak(nums[i][nums.length - i - 1]))
-                max = max(max, nums[i][nums.length - i - 1]);
-        }
         return max;
     }
-    public boolean cheak(int n){
-        if (n <= 1)
-            return false;
 
-        for (int i = 2; i * i <= n; i++)
-            if (n % i == 0)
-                return false;
-
-        return true;
-    }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1
+public int diagonalPrime(int[][] nums) {
+    int max = 0;
+    for (int i=0; i < nums.length; i++) {
+        if (cheak(nums[i][i]))
+            max = max(max, nums[i][i]);
+
+        if (cheak(nums[i][nums.length - i - 1]))
+            max = max(max, nums[i][nums.length - i - 1]);
+    }
+    return max;
+}
+
+public boolean cheak(int n){
+    if (n <= 1)
+        return false;
+
+    for (int i = 2; i * i <= n; i++)
+        if (n % i == 0)
+            return false;
+
+    return true;
+}
+*/

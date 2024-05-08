@@ -23,6 +23,7 @@ import static com.leetcode.util.MathUtils.cTree;
         输入：p = {1, 2, 1},  q = {1, 1, 2}
         输出：false
 */
+@SuppressWarnings("all")
 public class NO100_E_IsSameTree_x3 {
 
     @Test

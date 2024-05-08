@@ -41,6 +41,7 @@ import static org.junit.Assert.assertArrayEquals;
         1 <= k <= n <= 50
     Related Topics:数组,哈希表,模拟
 */
+@SuppressWarnings("all")
 public class NO2682_E_CircularGameLosers {
 
     @Test
@@ -50,26 +51,54 @@ public class NO2682_E_CircularGameLosers {
     }
 
     public int[] circularGameLosers(int n, int k) {
-        //输家可以是多个人，如何判断谁没有接过球、如果判断谁接过2次球,用set存储所有人，接球删除，二次接球就不在set中结束  30% 89%
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < n; i++)
-            set.add(i);
-
-        int index = 0; //首先为1，第一个朋友
-        int count = 1; //游戏次数
-        while (set.contains(index)) { //如果set中还包含该人，则进行下一次
-            set.remove(index); //删除掉这个位置，并寻找下一个位置
-            index = ((index + (count*k)) % n); //当前位置加上传递位置，最后取模一下
-            count++;
-        }
-
-        int [] result = new int[set.size()];
-        count = 0;
-        Iterator<Integer> iterator = set.iterator();
-        while (iterator.hasNext())
-            result[count++] = iterator.next() + 1;
-
-        return result;
+        return null;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int[] circularGameLosers(int n, int k) {
+    //输家可以是多个人，如何判断谁没有接过球、如果判断谁接过2次球,用set存储所有人，接球删除，二次接球就不在set中结束  30% 89%
+    Set<Integer> set = new HashSet<>();
+    for (int i = 0; i < n; i++)
+        set.add(i);
+
+    int index = 0; //首先为1，第一个朋友
+    int count = 1; //游戏次数
+    while (set.contains(index)) { //如果set中还包含该人，则进行下一次
+        set.remove(index); //删除掉这个位置，并寻找下一个位置
+        index = ((index + (count*k)) % n); //当前位置加上传递位置，最后取模一下
+        count++;
+    }
+
+    int [] result = new int[set.size()];
+    count = 0;
+    Iterator<Integer> iterator = set.iterator();
+    while (iterator.hasNext())
+        result[count++] = iterator.next() + 1;
+
+    return result;
+}
+*/

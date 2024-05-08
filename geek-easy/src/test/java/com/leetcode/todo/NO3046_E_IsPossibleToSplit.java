@@ -25,6 +25,7 @@ import org.junit.Test;
         1 <= nums[i] <= 100
     Related Topics:数组,哈希表,计数
 */
+@SuppressWarnings("all")
 public class NO3046_E_IsPossibleToSplit {
 
     @Test
@@ -34,15 +35,40 @@ public class NO3046_E_IsPossibleToSplit {
     }
 
     public boolean isPossibleToSplit(int[] nums) {
-        // 使用数组统计元素出现次数，1 <= nums[i] <= 100
-        int[] nCntArray = new int[101];
-        for (int num : nums) {
-            if (++nCntArray[num] > 2)
-                // 要保证两个子数组内的元素都互不相同
-                return false;
-
-        }
         return true;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public boolean isPossibleToSplit(int[] nums) {
+    // 使用数组统计元素出现次数，1 <= nums[i] <= 100
+    int[] nCntArray = new int[101];
+    for (int num : nums) {
+        if (++nCntArray[num] > 2)
+            // 要保证两个子数组内的元素都互不相同
+            return false;
+
+    }
+    return true;
+}
+*/

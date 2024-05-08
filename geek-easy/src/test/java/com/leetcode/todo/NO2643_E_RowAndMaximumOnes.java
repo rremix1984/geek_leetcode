@@ -31,8 +31,8 @@ import static org.junit.Assert.assertArrayEquals;
         mat[i][j] 为 0 或 1
     Related Topics:数组,矩阵
 */
+@SuppressWarnings("all")
 public class NO2643_E_RowAndMaximumOnes {
-
 
     @Test
     public void test() {
@@ -60,3 +60,39 @@ public class NO2643_E_RowAndMaximumOnes {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1
+public int[] rowAndMaximumOnes(int[][] mat) {
+    int[]res=new int[2];
+    for(int i=0;i<mat.length;i++){
+        int n=0;
+        for(int j=0;j<mat[0].length;j++){
+            if(mat[i][j]==1) n++;
+        }
+        if(n>res[1]){
+            res[1]=n;
+            res[0]=i;
+        }
+    }
+    return res;
+}
+*/

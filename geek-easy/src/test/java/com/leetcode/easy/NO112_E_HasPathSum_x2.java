@@ -40,6 +40,7 @@ import static com.leetcode.util.MathUtils.cTree;
         -1000 <= Node.val <= 1000
         -1000 <= targetSum <= 1000
 */
+@SuppressWarnings("all")
 public class NO112_E_HasPathSum_x2 {
 
     @Test

@@ -42,6 +42,7 @@ import static com.leetcode.util.MathUtils.getArray;
     解法一的时间复杂度与下标值无关，对于任意整数都需要遍历其二进制表示的全部数位。一种时间复杂度更低的解法是 Brian Kernighan 算法。
     Brian Kernighan 算法的原理是：对于任意整数 i，i & (i−1) 的结果是将 i 的二进制表示的最后一个 1 变成 0 之后的整数，即 i & (i−1) 的置位数比 i 的置位数少 1 个。对于给定的整数 i，计算 i & (i−1) 的值并将 i 的值更新为该值，直到 i 变成 0，则操作次数为 i 的置位数。
 */
+@SuppressWarnings("all")
 public class NO2859_E_SumIndicesWithKSetBits {
 
     @Test
@@ -52,19 +53,45 @@ public class NO2859_E_SumIndicesWithKSetBits {
 
     public int sumIndicesWithKSetBits(List<Integer> nums, int k) {
         int sum = 0;
-        int n = nums.size();
-        for (int i = 0; i < n; i++) {
-            int ones = 0;
-            int temp = i;
-            while (temp != 0) {
-                temp &= temp - 1;
-                ones++;
-            }
-            if (ones == k) {
-                sum += nums.get(i);
-            }
-        }
         return sum;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1
+public int sumIndicesWithKSetBits(List<Integer> nums, int k) {
+    int sum = 0;
+    int n = nums.size();
+    for (int i = 0; i < n; i++) {
+        int ones = 0;
+        int temp = i;
+        while (temp != 0) {
+            temp &= temp - 1;
+            ones++;
+        }
+        if (ones == k) {
+            sum += nums.get(i);
+        }
+    }
+    return sum;
+}
+*/

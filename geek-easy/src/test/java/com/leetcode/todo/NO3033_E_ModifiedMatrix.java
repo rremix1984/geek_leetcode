@@ -29,29 +29,55 @@ import static org.junit.Assert.assertArrayEquals;
         测试用例中生成的输入满足每列至少包含一个非负整数。
     Related Topics:数组,矩阵
 */
+@SuppressWarnings("all")
 public class NO3033_E_ModifiedMatrix {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[][]{{1,2,9}, {4,8,6}, {7,8,9}},
-            modifiedMatrix(new int[][]{{1,2,-1}, {4,-1,6}, {7,8,9}}));
+        assertArrayEquals(new int[][]{{1, 2, 9}, {4, 8, 6}, {7, 8, 9}},
+            modifiedMatrix(new int[][]{{1, 2, -1}, {4, -1, 6}, {7, 8, 9}}));
     }
 
     public int[][] modifiedMatrix(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++)
-            for (int j = 0; j < matrix[0].length; j++)
-                if (matrix[i][j] < 0)
-                    matrix[i][j] = getColumnMax(matrix, j);
-
         return matrix;
     }
 
-    public int getColumnMax(int[][] matrix, int col) {
-        int max = 0;
-        for (int[] ints : matrix)
-            max = max(max, ints[col]);
-
-        return max;
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int[][] modifiedMatrix(int[][] matrix) {
+    for (int i = 0; i < matrix.length; i++)
+        for (int j = 0; j < matrix[0].length; j++)
+            if (matrix[i][j] < 0)
+                matrix[i][j] = getColumnMax(matrix, j);
+
+    return matrix;
+}
+
+public int getColumnMax(int[][] matrix, int col) {
+    int max = 0;
+    for (int[] ints : matrix)
+        max = max(max, ints[col]);
+
+    return max;
+}
+*/

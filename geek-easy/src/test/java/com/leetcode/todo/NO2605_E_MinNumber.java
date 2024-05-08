@@ -23,6 +23,7 @@ import java.util.Set;
         每个数组中，元素 互不相同 。
     Related Topics:数组,哈希表,枚举
 */
+@SuppressWarnings("all")
 public class NO2605_E_MinNumber {
 
     @Test
@@ -34,28 +35,52 @@ public class NO2605_E_MinNumber {
     }
 
     public int minNumber(int[] nums1, int[] nums2) {
-        int s = 10;
-        Set<Integer> set = new HashSet<>();
-        for (int x : nums1)
-            set.add(x);
-
-        for (int x : nums2)
-            if (set.contains(x))
-                s = Math.min(s, x);
-
-        if (s != 10)
-            return s;
-
-        int x = 10, y = 10;
-        // int x = Arrays.stream(nums1).min().getAsInt();
-        for (int v : nums1)
-            x = Math.min(x, v);
-
-        for (int v : nums2)
-            y = Math.min(y, v);
-
-        // int y = Arrays.stream(nums2).min().getAsInt();
-        return Math.min(x * 10 + y, y * 10 + x);
+        return -1;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int minNumber(int[] nums1, int[] nums2) {
+    int s = 10;
+    Set<Integer> set = new HashSet<>();
+    for (int x : nums1)
+        set.add(x);
+
+    for (int x : nums2)
+        if (set.contains(x))
+            s = Math.min(s, x);
+
+    if (s != 10)
+        return s;
+
+    int x = 10, y = 10;
+    // int x = Arrays.stream(nums1).min().getAsInt();
+    for (int v : nums1)
+        x = Math.min(x, v);
+
+    for (int v : nums2)
+        y = Math.min(y, v);
+
+    // int y = Arrays.stream(nums2).min().getAsInt();
+    return Math.min(x * 10 + y, y * 10 + x);
+}
+*/

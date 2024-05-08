@@ -25,6 +25,7 @@ import org.junit.Test;
         输出：1440
         解释：小时总共有 24 种选择，分钟总共有 60 种选择。所以总共有 24 * 60 = 1440 种选择。
 */
+@SuppressWarnings("all")
 public class NO6208_E_CountTime_x2 {
 
     @Test
@@ -35,25 +36,7 @@ public class NO6208_E_CountTime_x2 {
     }
 
     public int countTime(String time) {
-        int H = 1;
-        int M = 1;
-
-        char[] digit = time.toCharArray();
-        if (digit[0] == '?' && digit[1] == '?')
-            H = 24;
-        else if(digit[0] == '?')
-            H = (digit[1] <= '3') ? 3 : 2;
-        else if(digit[1] == '?')
-            H = (digit[0] <= '1') ? 10 : 4;
-
-        if (digit[3] == '?' && digit[4] == '?')
-            M = 60;
-        else if (digit[3] == '?')
-            M = 6;
-        else if (digit[4] == '?')
-            M = 10;
-
-        return H * M;
+        return -1;
     }
 
 }
@@ -72,7 +55,8 @@ public class NO6208_E_CountTime_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int countTime(String time) {
     int hour = 1;
     int minute = 1;

@@ -35,6 +35,7 @@ import org.junit.Test;
         nums[i] != 0
     Related Topics:数组,前缀和,模拟
 */
+@SuppressWarnings("all")
 public class NO3028_E_ReturnToBoundaryCount {
 
     @Test
@@ -57,3 +58,38 @@ public class NO3028_E_ReturnToBoundaryCount {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int returnToBoundaryCount(int[] nums) {
+    int cnt = 0;
+    int sum = 0;
+    for (int num : nums) {
+        sum += num;
+        // 只有在蚂蚁移动了|nums[i]|单位后才检查它是否位于边界上
+        // 如果蚂蚁只是在移动过程中穿过了边界，则不会计算在内
+        if (sum == 0)
+            cnt++;
+    }
+    return cnt;
+}
+*/

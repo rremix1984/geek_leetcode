@@ -19,6 +19,7 @@ import static com.leetcode.util.MathUtils.cTree;
         输入：root = [1, 2, 2, null, 3, null, 3]
         输出：false
 */
+@SuppressWarnings("all")
 public class NO101_E_SymmetricTree {
 
     @Test

@@ -29,6 +29,7 @@ import static org.junit.Assert.assertArrayEquals;
         1 <= nums[i] <= 105
     Related Topics:数组,模拟
 */
+@SuppressWarnings("all")
 public class NO2553_E_SeparateDigits {
 
     @Test
@@ -40,16 +41,7 @@ public class NO2553_E_SeparateDigits {
     }
 
     public int[] separateDigits(int[] nums) {
-        String ans = "";
-        for (int num : nums)
-            ans += num + "";
-
-        int[] res = new int[ans.length()];
-
-        for (int i = 0; i < ans.length(); i++)
-            res[i] = Integer.parseInt(ans.substring(i, i+1));
-
-        return res;
+        return null;
     }
 
 }

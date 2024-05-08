@@ -20,6 +20,7 @@ import static com.leetcode.util.LogUtil.info;
         输入: s = "rat", t = "car"
         输出: false
 */
+@SuppressWarnings("all")
 public class NO242_E_ValidAnagram_x3 {
 
     @Test

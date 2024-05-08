@@ -23,15 +23,16 @@ import static com.leetcode.util.SystemUtil.printListNode;
         输入：head = [1, 2]
         输出：false
 */
+@SuppressWarnings("all")
 public class NO234_E_PalindromeLinkedList {
 
     @Test
     public void test() {
-        assert isPalindrome(new ListNode(1, 2, 2, 1));// true
-        assert !isPalindrome(new ListNode(1, 2));// false
+        assert isPalindrome(new ListNode<>(1, 2, 2, 1));// true
+        assert !isPalindrome(new ListNode<>(1, 2));// false
     }
 
-    public boolean isPalindrome(ListNode head) {
+    public boolean isPalindrome(ListNode<Integer> head) {
         // 2024/3/26 NO.1 没做出来，用快慢指针法
         return true;
     }

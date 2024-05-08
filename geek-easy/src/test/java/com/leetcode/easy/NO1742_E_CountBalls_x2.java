@@ -37,6 +37,7 @@ import org.junit.Test;
     提示：
         1 <= lowLimit <= highLimit <= 10^5
 */
+@SuppressWarnings("all")
 public class NO1742_E_CountBalls_x2 {
 
     @Test

@@ -31,6 +31,7 @@ import static java.lang.Math.min;
         -109 <= rec1[i], rec2[i] <= 109
         rec1 和 rec2 表示一个面积不为零的有效矩形
 */
+@SuppressWarnings("all")
 public class NO836_E_IsRectangleOverlap_x2 {
 
     @Test

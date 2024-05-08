@@ -37,6 +37,7 @@ import java.util.Queue;
         1 <= k <= 103
     Related Topics:数组,模拟,堆（优先队列）
 */
+@SuppressWarnings("all")
 public class NO2558_E_PickGifts {
 
     @Test
@@ -64,3 +65,42 @@ public class NO2558_E_PickGifts {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public long pickGifts(int[] gifts, int k) {
+    Queue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+    for (int g : gifts)
+        pq.offer(g);
+
+    while (k > 0) {
+        int x = pq.poll();
+        pq.offer((int) Math.sqrt(x));
+        --k;
+    }
+
+    long res = 0;
+    while (!pq.isEmpty())
+        res += pq.poll();
+
+    return res;
+}
+*/

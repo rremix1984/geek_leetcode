@@ -23,6 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
              1 --> 1        4 --> 100
              2 --> 10       5 --> 101
 */
+@SuppressWarnings("all")
 public class NO338_E_CountBits_x2 {
 
     @Test
@@ -52,7 +53,7 @@ public class NO338_E_CountBits_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int[] countBits(int n) {
     int[] bits = new int[n + 1];

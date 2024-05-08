@@ -25,6 +25,7 @@ import org.junit.Test;
         解释：两个字符串都是 s 的前缀。
             注意，相同的字符串可能在 words 中出现多次，它们应该被计数多次。
 */
+@SuppressWarnings("all")
 public class NO2255_E_CountPrefixes_x2 {
 
     @Test

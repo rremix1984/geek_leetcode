@@ -39,6 +39,7 @@ import org.junit.Test;
         输出：0
         解释：所有包含全部五种元音的子字符串都含有辅音，所以不存在元音子字符串。
 */
+@SuppressWarnings("all")
 public class NO2062_E_CountVowelSubstrings_x2 {
 
     @Test
@@ -69,7 +70,7 @@ public class NO2062_E_CountVowelSubstrings_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public int countVowelSubstrings(String word) {
     int cnt = 0;

@@ -28,6 +28,7 @@ import static java.lang.Math.min;
         输入：root = [2,null,3,null,4,null,5,null,6]
         输出：5
 */
+@SuppressWarnings("all")
 public class NO111_E_MinimumDepthOfBinaryTree_x3 {
 
     @Test

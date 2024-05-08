@@ -26,6 +26,7 @@ import java.util.Arrays;
         解释：可行的 {new1, new2} 数对为 {0, 49} ，{490, 0} 等等。
         最小和为数对 {4, 9} 的和：4 + 9 = 13 。
 */
+@SuppressWarnings("all")
 public class NO2160_E_MinimumSum_x2 {
 
     @Test
@@ -35,16 +36,46 @@ public class NO2160_E_MinimumSum_x2 {
     }
 
     public int minimumSum(int num) {
-        int[] arr = new int[4];
-        for(int i = 0; i < 4; i++) {
-            arr[i] = num % 10;
-            num /= 10;
-        }
-
-        Arrays.sort(arr);
-        int new1 = arr[0] * 10 + arr[2];
-        int new2 = arr[1] * 10 + arr[3];
-        return new1 + new2;
+        return -1;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int minimumSum(int num) {
+    int[] arr = new int[4];
+    for(int i = 0; i < 4; i++) {
+        arr[i] = num % 10;
+        num /= 10;
+    }
+
+    Arrays.sort(arr);
+    int new1 = arr[0] * 10 + arr[2];
+    int new2 = arr[1] * 10 + arr[3];
+    return new1 + new2;
+}
+*/

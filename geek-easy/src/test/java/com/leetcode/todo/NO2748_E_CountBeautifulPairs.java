@@ -32,6 +32,7 @@ import org.junit.Test;
         nums[i] % 10 != 0
     Related Topics:数组,数学,数论
 */
+@SuppressWarnings("all")
 public class NO2748_E_CountBeautifulPairs {
 
     @Test
@@ -42,25 +43,54 @@ public class NO2748_E_CountBeautifulPairs {
 
     public int countBeautifulPairs(int[] nums) {
         int res = 0;
-        int len = nums.length;
-        for (int i = 0; i < len; i++) {
-            int x = String.valueOf(nums[i]).charAt(0) - '0';
-            for (int j = i + 1; j < len; j++) {
-                String strR =   String.valueOf(nums[j]);
-                int y = strR.charAt(strR.length() -1) - '0';
-                if (gcdCheck(x, y))
-                    res++;
-            }
-        }
         return res;
     }
 
-    //有非1的公因子 return false； 无非1的公因子 return true
-    public boolean gcdCheck(int x, int y) {
-        for (int i = 2; i <= 9; i++) {
-            if (x % i == 0 && y % i == 0) return false;
-        }
-        return true;
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int countBeautifulPairs(int[] nums) {
+    int res = 0;
+    int len = nums.length;
+    for (int i = 0; i < len; i++) {
+        int x = String.valueOf(nums[i]).charAt(0) - '0';
+        for (int j = i + 1; j < len; j++) {
+            String strR =   String.valueOf(nums[j]);
+            int y = strR.charAt(strR.length() -1) - '0';
+            if (gcdCheck(x, y))
+                res++;
+        }
+    }
+    return res;
+}
+
+//有非1的公因子 return false； 无非1的公因子 return true
+public boolean gcdCheck(int x, int y) {
+    for (int i = 2; i <= 9; i++) {
+        if (x % i == 0 && y % i == 0) return false;
+    }
+    return true;
+}
+*/
