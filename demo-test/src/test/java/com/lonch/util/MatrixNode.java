@@ -9,6 +9,7 @@ import lombok.*;
 import java.util.*;
 
 import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.System.out;
 
 /**
@@ -193,15 +194,13 @@ public class MatrixNode<T> {
         return (char) ('a' + (c++ % 26));
     }
 
-    public static void printAllPaths(Set<List<MatrixNode<Integer>>> allPaths) {
+    public static <T> void printAllPaths(List<List<MatrixNode<T>>> allPaths) {
         out.println("All paths from start to end:");
-        for (List<MatrixNode<Integer>> path : allPaths) {
-            int sum = 0;
-            for (MatrixNode<Integer> node : path) {
+        for (List<MatrixNode<T>> path : allPaths) {
+            for (MatrixNode<T> node : path) {
                 out.print("(" + node.val + ") -> ");
-                sum += node.val;
             }
-            out.println("end:" + sum);
+            out.println();
         }
     }
 
@@ -245,14 +244,12 @@ public class MatrixNode<T> {
 
     public MatrixNode<T> pos(int row, int col) {
         MatrixNode<T> pr = this;
-        while (row > 0) {
+        while (row-- > 1)
             pr = pr.down;
-            row--;
-        }
-        while (col > 0) {
+
+        while (col-- > 1)
             pr = pr.right;
-            col--;
-        }
+
         return pr;
     }
 }

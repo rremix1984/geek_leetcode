@@ -8,6 +8,8 @@ import lombok.val;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.*;
+import static java.lang.System.out;
+import static java.util.Comparator.comparingInt;
 
 /**
     [ARRAY] |
@@ -41,87 +43,36 @@ import static com.lonch.util.MatrixNode.*;
               / \                  /  \
            1 /   \ 1             / 4   \  3
             /     \     5       /       \
-start ---> 〇      ③ -------> ⑥ ------> ⑦ ----> ⑧ end
+start ---> 〇      ③----------⑥-------->⑦ -----> ⑧ end
             \    /             \   5    /
            8 \  /  5          5 \     / 7
               \/                 \  /
               ② ---------------> ⑤
                         2
     PriorityQueue queue; // 优先列表
-     ____________      ____________      ____________      ____________      ____________
-    |_1_|___0___|     |_1_|___1___|     |_1_|___2___|     |_1_|___4___|     |_1_|__14___|
-    |_2_|_99999_|     |_2_|___1___|     |_2_|___2___|     |_2_|___5___|     |_2_|__15___|
-    |_3_|_99999_|  => |_3_|_99999_|  => |_3_|___1___| =>  |_3_|___6___| =>  |_3_|__16___|
-    |_4_|_99999_|     |_4_|_99999_|     |_4_|_99999_|     |_4_|___3___|     |_4_|___9___|
-    |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_4_|___7___|
-        第1步             第2步              第3步                第4步            第5步
+ ____________      ____________      ____________      ____________      ____________
+|_1_|___0___|     |_1_|___1___|     |_1_|___2___|     |_1_|___4___|     |_1_|__14___|
+|_2_|_99999_|     |_2_|___1___|     |_2_|___2___|     |_2_|___5___|     |_2_|__15___|
+|_3_|_99999_|  => |_3_|_99999_|  => |_3_|___1___| =>  |_3_|___6___| =>  |_3_|__16___|
+|_4_|_99999_|     |_4_|_99999_|     |_4_|_99999_|     |_4_|___3___|     |_4_|___9___|
+|_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_4_|___7___|
+    第1步             第2步              第3步                第4步            第5步
  */
 @SuppressWarnings("all")
 public class NO18_DijkstraTest {
 
     @Test
     public void test() {
-        MatrixNode<Integer> start = initInt(10, 10);
+        MatrixNode<Integer> start = initI(10);
         printMatrix(start);
-        Set<List<MatrixNode<Integer>>> res = new HashSet<>();  // 存储所有找到的最短路径
-        MatrixNode<Integer> end = start.right.right.right.down.down.down;
-        // TODO
-        dijkstra(res, start, end);
+
+        // 存储所有找到的最短路径
+        List<List<MatrixNode<Integer>>> res = new ArrayList<>();
+        MatrixNode<Integer> end = start.pos(3,3);
+
         printAllPaths(res);
-
         // 2024/5/8 NO.1 终于看懂了，能做出来了
-        //
-    }
 
-    private void dijkstra(Set<List<MatrixNode<Integer>>> res,
-                          MatrixNode<Integer> start, MatrixNode<Integer> end) {
-        // 1. 初始化
-        Queue<MatrixNode<Integer>> queue = new PriorityQueue<>(Comparator.comparingInt(a->a.dist));
-        start.dist = 0;
-        queue.offer(start);
-
-        // 2. 更新
-        while (!queue.isEmpty()) {
-            MatrixNode<Integer> cur = queue.poll();
-            if (cur.dist > end.dist)
-                break;
-
-            update(queue, cur, cur.up);
-            update(queue, cur, cur.down);
-            update(queue, cur, cur.left);
-            update(queue, cur, cur.right);
-        }
-
-        // 3. 遍历
-        dfs(res, new LinkedList<>(), end);
-    }
-
-    private void update(Queue<MatrixNode<Integer>> queue,
-                        MatrixNode<Integer> cur, MatrixNode<Integer> next) {
-        if (next == null)
-            return;
-
-        int dist = cur.dist + 1;
-        if (dist < next.dist) {
-            next.dist = dist;
-            next.prevs.clear();
-            next.prevs.add(cur);
-            queue.offer(next);
-        } else if (dist == next.dist) {
-            if (!next.prevs.contains(cur))
-                next.prevs.add(cur);
-            queue.offer(next);
-        }
-    }
-
-    private void dfs(Set<List<MatrixNode<Integer>>> res,
-                     LinkedList<MatrixNode<Integer>> list, MatrixNode<Integer> end) {
-        list.addFirst(end);
-        if (end.prevs.isEmpty())
-            res.add(new LinkedList<>(list));
-        else
-            end.prevs.forEach(cur -> dfs(res, list, cur));
-        list.removeFirst();
     }
 
 }
@@ -184,10 +135,9 @@ private void update(Queue<MatrixNode<Integer>> queue,
     if (next == null)
         return;
 
-    int distance = cur.dist + next.val;
-
-    if (distance < next.dist) {
-        next.dist = distance;
+    int dist = cur.dist + next.val;
+    if (dist < next.dist) {
+        next.dist = dist;
         next.prevs.clear();
         next.prevs.add(cur);
         queue.offer(next);
@@ -225,9 +175,6 @@ public void dijkstra(Set<List<MatrixNode<Integer>>> res,
 
     // 当前节点（start）从【起始点】开始的最短路径长度
     start.dist = 0;
-
-    // 前置节点（起始节点没有前置节点）
-    start.prevs = new ArrayList<>();
 
     // 将起始节点加入队列
     queue.offer(start);
