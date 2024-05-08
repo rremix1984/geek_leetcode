@@ -23,7 +23,7 @@ public class NO5_MatrixLinkedList {
 
     @Test
     public void test() {
-        MatrixNode<Character> head = init(6, 6);
+        MatrixNode<Character> head = initC(6, 6);
         printMatrix(head);
         // 2024/4/7 NO.1 没思路，可以看懂。4月18日 20:00 面试
         // 2024/4/8 NO.2 没思路，能看懂。至少要写 10 遍才行

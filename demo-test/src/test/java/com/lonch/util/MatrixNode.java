@@ -18,7 +18,7 @@ import static java.lang.System.out;
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
-@SuppressWarnings({"all", "unused"})
+@SuppressWarnings({"unused"})
 public class MatrixNode<T> {
 
     @NonNull public T val;
@@ -61,7 +61,7 @@ public class MatrixNode<T> {
         return neighbors;
     }
 
-    public static MatrixNode<Character> init(int row, int col) {
+    public static MatrixNode<Character> initC(int row, int col) {
         MatrixNode<Character> dummy = new MatrixNode<>(nextChar());
         MatrixNode<Character> row1 = dummy;
         for (int i = 1; i < row; i++) {
@@ -99,7 +99,7 @@ public class MatrixNode<T> {
         while (col != null) {
             MatrixNode<T> row = col;
             while (row != null) {
-                sb.append(row.val + "\t");
+                sb.append(row.val).append("\t");
                 row = row.right;
             }
             sb.append("\n");
@@ -191,17 +191,17 @@ public class MatrixNode<T> {
         }
     }
 
-    public static List<List<MatrixNode>> findShortestPaths(MatrixNode start, MatrixNode end) {
-        List<List<MatrixNode>> res = new ArrayList<>();
+    public static  <T> List<List<MatrixNode<T>>> findShortestPaths(MatrixNode<T> start, MatrixNode<T> end) {
+        List<List<MatrixNode<T>>> res = new ArrayList<>();
         // 剪枝法
         dfs(res, new ArrayList<>(), start, end, new HashSet<>());
         return res;
     }
 
     // 递归搜索最短路径
-    private static void dfs(List<List<MatrixNode>> res, List<MatrixNode> list,
-                     MatrixNode start, MatrixNode end,
-                     Set<MatrixNode> visited) {
+    private static <T> void dfs(List<List<MatrixNode<T>>> res, List<MatrixNode<T>> list,
+                     MatrixNode<T> start, MatrixNode<T> end,
+                     Set<MatrixNode<T>> visited) {
 
         if (visited.contains(start))
             return;
@@ -220,7 +220,7 @@ public class MatrixNode<T> {
         } else {
             // 否则，继续搜索当前节点的相邻节点
             start.getNeighbors().forEach(
-                    cur -> dfs(res, list, (MatrixNode) cur, end, visited)
+                    cur -> dfs(res, list, cur, end, visited)
             );
         }
 

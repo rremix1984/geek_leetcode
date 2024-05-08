@@ -21,7 +21,7 @@ public class NO6_MatrixLinkedListShortestPath {
 
     @Test
     public void test() {
-        MatrixNode<Character> mnode = init(7, 7);
+        MatrixNode<Character> mnode = initC(6, 6);
         printMatrix(mnode);
         // 2024/4/7   NO.1 没思路，但能看懂。
         // 2024/4/8   NO.2 有思路了，没写出来。
@@ -30,7 +30,7 @@ public class NO6_MatrixLinkedListShortestPath {
         //            NO.4、5、6、7、8、9、10 一遍过
         // 2024/4/30  NO.11 做错了，但是大致思路对，写的差不多，要化【定式】为【棋力】
         // 2024/5/6-7 NO.12-13 一遍过
-        List<List<MatrixNode>> res = findShortestPaths(mnode,
+        List<List<MatrixNode<Character>>> res = findShortestPaths(mnode,
                 mnode.right.right.right.down.down.down);
         res.forEach(
             cur -> {
