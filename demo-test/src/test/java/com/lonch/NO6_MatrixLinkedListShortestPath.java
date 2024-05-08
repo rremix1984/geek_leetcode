@@ -39,62 +39,9 @@ public class NO6_MatrixLinkedListShortestPath {
         //
         // 方法2：迪杰克斯拉算法
         // dijkstra(res, start, end);
+        //
         printAllPaths(res);
     }
-
-    private void dijkstra(List<List<MatrixNode<Character>>> res,
-                          MatrixNode<Character> start,
-                          MatrixNode<Character> end) {
-        // 1. init
-        Queue<MatrixNode<Character>> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a.dist));
-        start.dist = 0;
-        queue.offer(start);
-
-        // 2. update
-        while(!queue.isEmpty()) {
-            MatrixNode<Character> cur = queue.poll();
-            if (cur.dist > end.dist)
-                break;
-            update(queue, cur, cur.up);
-            update(queue, cur, cur.down);
-            update(queue, cur, cur.left);
-            update(queue, cur, cur.right);
-        }
-
-        // 3. dfs
-        dfs(res, new LinkedList<>(), end);
-    }
-
-    private void dfs(List<List<MatrixNode<Character>>> res,
-                      LinkedList<MatrixNode<Character>> list,
-                      MatrixNode<Character> end) {
-        list.addFirst(end);
-        if (end.prevs.isEmpty()) {
-            res.add(new LinkedList<>(list));
-        } else {
-            end.prevs.forEach(cur -> dfs(res, list, cur));
-        }
-        list.removeFirst();
-    }
-
-    private void update(Queue<MatrixNode<Character>> queue,
-                        MatrixNode<Character> cur, MatrixNode<Character> next) {
-        if (next == null)
-            return;
-
-        int dist = cur.dist + 1;
-        if (dist < next.dist) {
-            next.dist = dist;
-            next.prevs.clear();
-            next.prevs.add(cur);
-            queue.offer(next);
-        } else if (dist == next.dist) {
-            if (!next.prevs.contains(cur))
-                next.prevs.add(cur);
-            queue.offer(next);
-        }
-    }
-
 
 }
 
