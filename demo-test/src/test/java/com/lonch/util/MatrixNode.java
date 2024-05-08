@@ -25,10 +25,12 @@ public class MatrixNode<T> {
 
     public int col,row;
 
-    // 上、下、左、右四指针
+    // 上、下、左、右四个指针
     public MatrixNode<T> left, right, up, down;
+
     public int dist = MAX_VALUE;
-    public List<MatrixNode> prevs = new ArrayList<>();
+
+    public List<MatrixNode<T>> prevs = new ArrayList<>();
 
     public static <T> String getMatrix(MatrixNode<T> head) {
         StringBuilder sb = new StringBuilder();
@@ -59,6 +61,10 @@ public class MatrixNode<T> {
             neighbors.add(this.down);
 
         return neighbors;
+    }
+
+    public static MatrixNode<Character> initC(int n) {
+        return initC(n, n);
     }
 
     public static MatrixNode<Character> initC(int row, int col) {
@@ -108,7 +114,11 @@ public class MatrixNode<T> {
         out.println(sb);
     }
 
-    public static MatrixNode<Integer> initInt(int row, int col) {
+    public static MatrixNode<Integer> initI(int n) {
+        return initI(n, n);
+    }
+
+    public static MatrixNode<Integer> initI(int row, int col) {
         int c = 1;
         MatrixNode<Integer> dummy = new MatrixNode<>(c++);
         MatrixNode<Integer> row1 = dummy;
@@ -139,7 +149,11 @@ public class MatrixNode<T> {
         return dummy;
     }
 
-    public static MatrixNode<Integer> initIntRandom(int row, int col) {
+    public static MatrixNode<Integer> initIR(int n) {
+        return initIR(n, n);
+    }
+
+    public static MatrixNode<Integer> initIR(int row, int col) {
         MatrixNode<Integer> dummy = new MatrixNode<>(new Random().nextInt(10));
         MatrixNode<Integer> row1 = dummy;
         for (int i = 1; i < row; i++) {
@@ -229,4 +243,16 @@ public class MatrixNode<T> {
         visited.remove(start);
     }
 
+    public MatrixNode<T> pos(int row, int col) {
+        MatrixNode<T> pr = this;
+        while (row > 0) {
+            pr = pr.down;
+            row--;
+        }
+        while (col > 0) {
+            pr = pr.right;
+            col--;
+        }
+        return pr;
+    }
 }
