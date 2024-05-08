@@ -1,7 +1,10 @@
+/**
+ * copyright 2020-2024
+ */
 package com.lonch.util;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.sun.istack.internal.NotNull;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,58 +15,23 @@ import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
 
 /**
-    四方向链表
+ * 四方向链表
  */
 @Setter
 @Getter
+@RequiredArgsConstructor
+@AllArgsConstructor
 @SuppressWarnings({"all", "unused"})
 public class MatrixNode<T> {
 
-    public T val;
+    @NonNull public T val;
 
-    public int col;
+    public int col,row;
 
-    public int row;
-
-    // 默认距离为最大值，代表未访问
-    public int dist = MAX_VALUE;
-
-    // 存储所有可能的前置节点
-    public List<MatrixNode<T>> prevs;
-
+    // 上、下、左、右四指针
     public MatrixNode<T> left, right, up, down;
-
-    public MatrixNode(T val) {
-        this.val = val;
-        this.prevs = new ArrayList<>();
-        this.left = null;
-        this.right = null;
-        this.up = null;
-        this.down = null;
-    }
-
-    public MatrixNode(T val, MatrixNode left, MatrixNode right, int row, int col) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-        this.col = col;
-        this.row = row;
-    }
-
-    public static <T> void printMatrix(MatrixNode<T> head) {
-        MatrixNode<T> col = head;
-        StringBuilder sb = new StringBuilder();
-        while (col != null) {
-            MatrixNode<T> row = col;
-            while (row != null) {
-                sb.append(row.val + "\t");
-                row = row.right;
-            }
-            sb.append("\n");
-            col = col.down;
-        }
-        out.println(sb);
-    }
+    public int dist = MAX_VALUE;
+    public List<MatrixNode> prevs = new ArrayList<>();
 
     public static <T> String getMatrix(MatrixNode<T> head) {
         StringBuilder sb = new StringBuilder();
@@ -128,30 +96,44 @@ public class MatrixNode<T> {
         return dummy;
     }
 
+    public static <T> void printMatrix(MatrixNode<T> head) {
+        MatrixNode<T> col = head;
+        StringBuilder sb = new StringBuilder();
+        while (col != null) {
+            MatrixNode<T> row = col;
+            while (row != null) {
+                sb.append(row.val + "\t");
+                row = row.right;
+            }
+            sb.append("\n");
+            col = col.down;
+        }
+        out.println(sb);
+    }
+
     public static MatrixNode<Integer> initInt(int row, int col) {
-        MatrixNode<Integer> dummy = new MatrixNode<>(1);
+        int c = 1;
+        MatrixNode<Integer> dummy = new MatrixNode<>(c++);
         MatrixNode<Integer> row1 = dummy;
         for (int i = 1; i < row; i++) {
-            row1.right = new MatrixNode<>(i);
+            row1.right = new MatrixNode<>(c++);
             row1.right.left = row1;
             row1 = row1.right;
         }
 
         MatrixNode<Integer> pre = dummy;
-        for (int i = 1; i < row; i++) {
-            MatrixNode<Integer> newHead = new MatrixNode<>(1);
+        for (int i = 0; i < row - 1; i++) {
+            MatrixNode<Integer> newHead = new MatrixNode<>(c++);
             newHead.up = pre;
             pre.down = newHead;
 
             MatrixNode<Integer> up = pre;
             MatrixNode<Integer> right = newHead;
             for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode<>(1);
+                right.right = new MatrixNode<>(c++);
                 right.right.left = right;
-
                 right = right.right;
                 up = up.right;
-
                 right.up = up;
                 up.down = right;
             }
@@ -171,14 +153,16 @@ public class MatrixNode<T> {
 
         MatrixNode<Integer> pre = dummy;
         for (int i = 1; i < row; i++) {
-            MatrixNode<Integer> newHead = new MatrixNode<>(new Random().nextInt(10));
+            MatrixNode<Integer> newHead = new MatrixNode<>(
+                    new Random().nextInt(10));
             newHead.up = pre;
             pre.down = newHead;
 
             MatrixNode<Integer> up = pre;
             MatrixNode<Integer> right = newHead;
             for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode<>(new Random().nextInt(10));
+                right.right = new MatrixNode<>(
+                        new Random().nextInt(10));
                 right.right.left = right;
 
                 right = right.right;
@@ -201,9 +185,12 @@ public class MatrixNode<T> {
     public static void printAllPaths(Set<List<MatrixNode<Integer>>> allPaths) {
         out.println("All paths from start to end:");
         for (List<MatrixNode<Integer>> path : allPaths) {
-            for (MatrixNode<Integer> node : path)
+            int sum = 0;
+            for (MatrixNode<Integer> node : path) {
                 out.print("(" + node.val + ") -> ");
-            out.println("end");
+                sum += node.val;
+            }
+            out.println("end:" + sum);
         }
     }
 
