@@ -6,10 +6,7 @@ package com.lonch.util;
 import com.sun.istack.internal.NotNull;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
@@ -192,6 +189,44 @@ public class MatrixNode<T> {
             }
             out.println("end:" + sum);
         }
+    }
+
+    public static List<List<MatrixNode>> findShortestPaths(MatrixNode start, MatrixNode end) {
+        List<List<MatrixNode>> res = new ArrayList<>();
+        // 剪枝法
+        dfs(res, new ArrayList<>(), start, end, new HashSet<>());
+        return res;
+    }
+
+    // 递归搜索最短路径
+    private static void dfs(List<List<MatrixNode>> res, List<MatrixNode> list,
+                     MatrixNode start, MatrixNode end,
+                     Set<MatrixNode> visited) {
+
+        if (visited.contains(start))
+            return;
+
+        // 加入当前节点到路径中
+        list.add(start);
+        visited.add(start);
+
+        // 如果当前节点是目标节点，且路径比已找到的最短路径短，则更新最短路径列表
+        if (start == end) {
+            if (res.isEmpty() || list.size() < res.get(0).size()) {
+                res.clear();
+                res.add(new ArrayList<>(list));
+            } else if (list.size() == res.get(0).size())
+                res.add(new ArrayList<>(list));
+        } else {
+            // 否则，继续搜索当前节点的相邻节点
+            start.getNeighbors().forEach(
+                    cur -> dfs(res, list, (MatrixNode) cur, end, visited)
+            );
+        }
+
+        // 回溯，移除当前节点，继续搜索其他可能的路径
+        list.remove(start);
+        visited.remove(start);
     }
 
 }
