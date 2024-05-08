@@ -33,6 +33,14 @@ public class MatrixNode<T> {
 
     public List<MatrixNode<T>> prevs = new ArrayList<>();
 
+    public MatrixNode(T val, MatrixNode<T> left, MatrixNode<T> right, int row, int col) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+        this.row = row;
+        this.col = col;
+    }
+
     public static <T> String getMatrix(MatrixNode<T> head) {
         StringBuilder sb = new StringBuilder();
         MatrixNode<T> col = head;

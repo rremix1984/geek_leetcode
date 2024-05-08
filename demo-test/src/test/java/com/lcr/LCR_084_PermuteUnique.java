@@ -48,9 +48,9 @@ public class LCR_084_PermuteUnique {
                 permuteUnique(new int[]{1, 1, 2}));
     }
 
-    public List<List<Integer>> permuteUnique(int[] nums) {
+    public ArrayList<ArrayList<Integer>> permuteUnique(int[] nums) {
         // 2024/3/17 NO.1 不会做，挺经典的一道题
-        List<List<Integer>> res = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         return res;
     }
 

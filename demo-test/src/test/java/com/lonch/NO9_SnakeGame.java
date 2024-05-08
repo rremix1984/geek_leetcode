@@ -11,7 +11,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 /**
-    [SNAKE] ||||||||||||
+    [SNAKE] |||||||||||||
     (困难)
     NO.9 贪吃蛇游戏
  */
@@ -24,7 +24,7 @@ public class NO9_SnakeGame {
         //           NO.2-3-4-5-6-7-8-9 一遍过
         // 2024/4/30-5/2
         //           NO.10-11 一遍过
-        // 2024/5/7  NO.12 一遍过
+        // 2024/5/7-8  NO.12-13 一遍过
 
     }
 

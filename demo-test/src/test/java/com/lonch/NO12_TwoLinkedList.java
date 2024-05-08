@@ -19,7 +19,7 @@ import static java.lang.System.out;
     6. 给一个创建一个 N = 4 的树，并赋值
     这是最终的树
     4  最好用递归
-    规律就是，左子树是父节点的2n倍率，右子树是 2N + 1。
+    规律就是，左子树是父节点的 2n 倍率，右子树是 2N + 1。
  */
 public class NO12_TwoLinkedList {
 

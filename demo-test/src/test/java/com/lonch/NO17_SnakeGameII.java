@@ -17,8 +17,7 @@ import static java.lang.System.in;
 @SuppressWarnings("all")
 public class NO17_SnakeGameII {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
 
     }
 
