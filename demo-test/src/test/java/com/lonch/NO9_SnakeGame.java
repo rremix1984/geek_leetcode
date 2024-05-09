@@ -3,12 +3,14 @@
  */
 package com.lonch;
 
+import com.lonch.util.MatrixNode;
 import lombok.val;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 import static java.lang.System.in;
+import static java.lang.System.out;
 
 /**
     [SNAKE] |||||||||||||
@@ -20,11 +22,12 @@ public class NO9_SnakeGame {
 
     public static void main(String[] args) {
         // 2024/4/9  NO.1 能看懂，做不出来
-        // 2024/4/10-11-12-13-14-15-16-18
-        //           NO.2-3-4-5-6-7-8-9 一遍过
+        // 2024/4/10-16、18
+        //           NO.2-9 一遍过
         // 2024/4/30-5/2
-        //           NO.10-11 一遍过
-        // 2024/5/7-8  NO.12-13 一遍过
+        //           NO.10、11 一遍过
+        // 2024/5/7、8、9
+        //           NO.12、13、14 一遍过
 
     }
 

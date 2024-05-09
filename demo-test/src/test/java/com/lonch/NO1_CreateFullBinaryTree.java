@@ -36,6 +36,7 @@ public class NO1_CreateFullBinaryTree {
         // 2024/4/9  NO.4 能做出来了
         // 2024/4/14 NO.5 一遍过
         // 2024/5/6  NO.6 有点瑕疵
+
         return null;
     }
 

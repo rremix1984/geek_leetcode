@@ -1,31 +1,26 @@
 /**
- * @copyright wxz
+ * copyright 2020-2024
  */
 package com.lonch.util;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
+import lombok.*;
+import org.junit.Test;
 import static java.lang.System.out;
 
+/**
+ * TernaryTreeNode 三叉树
+ * @author wangxiaozhe
+ */
+@Setter
+@Getter
 @SuppressWarnings("unused")
-@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class TernaryTreeNode<T> {
 
-    public T value;
+    @NonNull public T value;
 
-    public TernaryTreeNode<T> left;
-
-    public TernaryTreeNode<T> middle;
-
-    public TernaryTreeNode<T> right;
-
-    public TernaryTreeNode(T value) {
-        this.value = value;
-        this.left = null;
-        this.middle = null;
-        this.right = null;
-    }
+    public TernaryTreeNode<T> left, middle, right;
 
     public static <T> void preOrder(TernaryTreeNode<T> root, StringBuilder sb) {
         if (root == null)
@@ -36,24 +31,32 @@ public class TernaryTreeNode<T> {
         preOrder(root.right, sb);
     }
 
+    public static TernaryTreeNode<Integer> cTree(int depth, int val) {
+        if (depth == 0)
+            return null;
+
+        TernaryTreeNode<Integer> node = new TernaryTreeNode<>(val);
+        node.left   = cTree(depth - 1, 3 * val + 1);
+        node.middle = cTree(depth - 1, 3 * val + 2);
+        node.right  = cTree(depth - 1, 3 * val + 3);
+        return node;
+    }
+
     // 打印三叉树的方法
     public static <T> void printTernaryTree(TernaryTreeNode<T> node) {
         if (node == null)
             return;
 
-        // 打印当前节点值
         out.print(node.value + " ");
-
-        // 递归打印左子树
         printTernaryTree(node.left);
-
-        // 递归打印中子树
         printTernaryTree(node.middle);
-
-        // 递归打印右子树
         printTernaryTree(node.right);
     }
 
+    public static void main(String[] args) {
+        TernaryTreeNode<Integer> root = cTree(4, 0);
+        printTernaryTree(root);
+    }
 
 }
 

@@ -7,11 +7,9 @@ import com.lonch.util.Node;
 import lombok.val;
 import org.junit.Test;
 import java.util.*;
-//import static com.lonch.util.Node.copy;
-//import static com.lonch.util.Node.travel;
 import static com.lonch.util.Node.*;
-import static java.lang.System.arraycopy;
 import static java.lang.System.out;
+import static java.lang.System.arraycopy;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -33,8 +31,7 @@ import static org.junit.Assert.assertEquals;
       4     5     6     7     8     9
      / \   / \   / \   / \   / \   / \
     10 11 12 13 14 15 16 17 18 19 20 21
-
- */
+*/
 @SuppressWarnings("all")
 public class NO11_BinaryTreeTraversal {
 
@@ -43,60 +40,38 @@ public class NO11_BinaryTreeTraversal {
         Node<Character> root1 = cTree(3, 0);
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
-        // 2024/4/12-13-14-15-16-18 NO.3-4-5-6-7-8 一遍过
+        // 2024/4/12、13、14、15、16、18
+        //           NO.3、4、5、6、7、8 一遍过
         // 2024/4/30 NO.9 一遍过
-        // 2024/5/7-8  NO.10-11 一遍过
-        // 假设这里有三棵树的根节点，并且它们通过parent相互连接
-        Node<Character> root2 = copys(root1, 26);
-        Node<Character> root3 = copys(root2, 26);
+        // 2024/5/7、8  NO.10-11 一遍过
+        Node<Character> root2 = copy(root1);
+        Node<Character> root3 = copy(root2);
         root1.parent = root2;
         root2.parent = root3;
         root3.parent = root1;
-        printTree(root1);
-        val list = new ArrayList<Node<Character>>();
         StringBuilder sb = new StringBuilder();
-        travels(root1.left.right, sb);
-        out.println(sb);
+        printTree(root1);
+        List<Character> res = new ArrayList<>();
+        travels(res, root1.left.right);
+        res.forEach(cur -> out.print(cur + " "));
     }
 
-    private void travels(Node<Character> cur, StringBuilder sb) {
-        if (cur == null || cur.data == '*')
+    private void travels(List<Character> res, Node<Character> root) {
+        if (root == null || root.data == '*')
             return;
 
-        sb.append(cur.data + " ");
+        Character oldVal = root.data;
+        res.add(oldVal);
+        root.data = '*';
 
-        // 将当前节点的数据重置为特殊值来标记已访问
-        char val = cur.data;
-        cur.data = '*';
+        travels(res, root.left);
+        travels(res, root.right);
+        travels(res, root.parent);
 
-        travels(cur.left, sb);
-        travels(cur.right, sb);
-        travels(cur.parent, sb);
-
-        // 在退出节点时，将其数据恢复为原始值
-        cur.data = val;
-    }
-
-    private Node<Character> copys(Node<Character> root1, int delta) {
-        if (root1 == null)
-            return null;
-
-        Node<Character> node = new Node<>((char) (root1.data + delta));
-
-        node.left = copys(root1.left, delta);
-        if (node.left != null)
-            node.left.parent = node;
-
-        node.right = copys(root1.right, delta);
-        if (node.right != null)
-            node.right.parent = node;
-
-        return node;
+        root.data = oldVal;
     }
 
 }
-
-
 
 
 
@@ -201,5 +176,41 @@ public void test() {
     out.println(res);
     assertEquals("JEKBDHIACFLMGNOABDHIEJKCFLMGNOABDHIEJKCFLMGNO", res);
     printTree(root1);
+}
+
+// 方法2：不使用 HashSet 去重， 或者 visited 标志位
+private void travels(Node<Character> cur, StringBuilder sb) {
+    if (cur == null || cur.data == '*')
+        return;
+
+    sb.append(cur.data + " ");
+
+    // 将当前节点的数据重置为特殊值来标记已访问
+    char val = cur.data;
+    cur.data = '*';
+
+    travels(cur.left, sb);
+    travels(cur.right, sb);
+    travels(cur.parent, sb);
+
+    // 在退出节点时，将其数据恢复为原始值
+    // cur.data = val;
+}
+
+private Node<Character> copys(Node<Character> root1, int delta) {
+    if (root1 == null)
+        return null;
+
+    Node<Character> node = new Node<>((char) (root1.data + delta));
+
+    node.left = copys(root1.left, delta);
+    if (node.left != null)
+        node.left.parent = node;
+
+    node.right = copys(root1.right, delta);
+    if (node.right != null)
+        node.right.parent = node;
+
+    return node;
 }
 */

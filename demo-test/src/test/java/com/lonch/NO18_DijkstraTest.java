@@ -38,24 +38,24 @@ import static java.util.Comparator.comparingInt;
 
     6. 完成探索
     最后，你会得到一个包含所有可能最短路径的集合。这就像是你探索后在地图上画出所有能最快到达终点的路线。
-                          2
+
                ① -----------------> ④
-              / \                   | \
+              / \         2         | \
            1 /   \ 1                |  \  3
-            /     \     5           |   \
+            /     \        5        | 4 \
 start ---> 〇      ③---------------|--->⑦ ----->⑧ end
             \    /                 |   /
            8 \  /  5               |  / 7
-              \/                   |/
+              \/         2         |/
               ② ---------------> ⑤
-                        2
+
     PriorityQueue queue; // 优先列表
      ____________      ____________      ____________      ____________      ____________
-    |_1_|___0___|     |_1_|___1___|     |_1_|___2___|     |_1_|___4___|     |_1_|__14___|
-    |_2_|_99999_|     |_2_|___1___|     |_2_|___2___|     |_2_|___5___|     |_2_|__15___|
-    |_3_|_99999_|  => |_3_|_99999_|  => |_3_|___1___| =>  |_3_|___6___| =>  |_3_|__16___|
+    |_1_|___0___|     |_1_|___1___|     |_1_|___2___|     |_1_|___4___|     |_1_|___14__|
+    |_2_|_99999_|     |_2_|___1___|     |_2_|___2___|     |_2_|___5___|     |_2_|___15__|
+    |_3_|_99999_|  => |_3_|_99999_|  => |_3_|___1___| =>  |_3_|___6___| =>  |_3_|___16__|
     |_4_|_99999_|     |_4_|_99999_|     |_4_|_99999_|     |_4_|___3___|     |_4_|___9___|
-    |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_4_|___7___|
+    |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_5_|_99999_|     |_5_|___7___|
         第1步             第2步              第3步                第4步            第5步
  */
 @SuppressWarnings("all")
@@ -64,15 +64,70 @@ public class NO18_DijkstraTest {
     @Test
     public void test() {
         MatrixNode<Integer> node = initI(10);
-        printMatrix(node);
-
         // 存储所有找到的最短路径
-        MatrixNode<Integer> start = node.pos(9,9);
+        MatrixNode<Integer> start = node.pos(8,8);
         MatrixNode<Integer> end = node.pos(10,10);
+        printMatrix(node, start, end);
         // TODO
-
         // 2024/5/8 NO.1 终于看懂了，能做出来了
+        // 2024/5/9 NO.2
+        List<List<MatrixNode<Integer>>> res = new ArrayList<>();
+        dijkstra(res, start, end);
+        printAllPaths(res);
+    }
 
+    private void dijkstra(List<List<MatrixNode<Integer>>> res,
+                          MatrixNode<Integer> start,
+                          MatrixNode<Integer> end) {
+        // 1. 初始化
+        Queue<MatrixNode> queue = new PriorityQueue<>(
+                comparingInt(a->a.dist));
+        start.dist = 0;
+        queue.offer(start);
+
+        // 2. update
+        while (!queue.isEmpty()) {
+            MatrixNode<Integer> cur = queue.poll();
+            if (cur.dist > end.dist)
+                break;
+
+            update(queue, cur, cur.up);
+            update(queue, cur, cur.down);
+            update(queue, cur, cur.right);
+            update(queue, cur, cur.left);
+        }
+
+        // 3. dfs
+        dfs(res, new LinkedList<>(), end);
+    }
+
+    private void dfs(List<List<MatrixNode<Integer>>> res,
+                     LinkedList<MatrixNode<Integer>> list,
+                     MatrixNode<Integer> end) {
+        list.addFirst(end);
+        if (end.prevs.isEmpty())
+            res.add(new LinkedList<>(list));
+        else
+            end.prevs.forEach(cur -> dfs(res, list, cur));
+        list.removeFirst();
+    }
+
+    private void update(Queue<MatrixNode> queue,
+                        MatrixNode<Integer> cur, MatrixNode<Integer> next) {
+        if (next == null)
+            return;
+
+        int dist = cur.dist + 1;
+        if (dist < next.dist) {
+            next.dist = dist;
+            next.prevs.clear();
+            next.prevs.add(cur);
+            queue.offer(next);
+        } else if (dist == next.dist) {
+            if (!next.prevs.contains(cur))
+                next.prevs.add(cur);
+            queue.offer(next);
+        }
     }
 
 }

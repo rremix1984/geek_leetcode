@@ -3,8 +3,8 @@
  */
 package com.lonch.util;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.*;
 import static java.lang.System.out;
 
@@ -14,21 +14,16 @@ import static java.lang.System.out;
  */
 @Setter
 @Getter
+@NoArgsConstructor
+@RequiredArgsConstructor
 @SuppressWarnings("unused")
 public class Node<E> {
 
-    public E data;
+    @NonNull public E data;
+
     public Node<E> parent, left, right;
+
     boolean visit;
-
-    // 构造器
-    public Node(E data) {
-        this.data = data;
-    }
-
-    public Node() {
-
-    }
 
     public void setLeft(Node<E> left) {
         this.left = left;

@@ -6,7 +6,6 @@ package com.lonch;
 import com.lonch.util.Node;
 import com.lonch.util.TreeNode;
 import org.junit.Test;
-
 import static com.lonch.util.Node.printTree;
 import static java.lang.Math.pow;
 import static org.junit.Assert.assertEquals;
@@ -15,10 +14,10 @@ import static org.junit.Assert.assertEquals;
     [TREENODE] |||||
     (简单)
     NO.3 指定深度（depth）从 1 到 n 层序遍历赋值
-                   0
-              /        \
-            1           2
-          /  \        /   \
+                    0
+              /         \
+            1            2
+          /  \        /    \
         3     4      5      6
       /  \  /  \   /  \   /  \
      7   8 9   10 11  12 13  14
@@ -49,10 +48,13 @@ public class NO3_CreateTreeNode {
 
         Node<Integer> node = new Node<>(val);
         node.left = dfs(depth - 1, 2 * val + 1);
-        node.left.parent = node;
+        if (node.left != null)
+            node.left.parent = node;
 
         node.right = dfs(depth - 1, 2 * val + 2);
-        node.right.parent = node;
+        if (node.right != null)
+            node.right.parent = node;
+
         return node;
     }
 

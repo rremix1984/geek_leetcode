@@ -1,3 +1,6 @@
+/**
+ * copyright 2020-2024
+ */
 package com.leetcode;
 
 import org.junit.Test;
