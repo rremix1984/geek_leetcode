@@ -8,10 +8,11 @@ import lombok.val;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.*;
+import static java.lang.System.arraycopy;
 import static java.lang.System.out;
 
 /**
-    [MATRIXLINKED] ||||||||||||||||
+    [MATRIXLINKED] ||||||||||||||||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
  */
@@ -20,11 +21,11 @@ public class NO6_MatrixLinkedListShortestPath {
 
     @Test
     public void test() {
-        MatrixNode<Character> node = initC(6);
+        MatrixNode<Integer> node = initI(6);
         printMatrix(node);
-        MatrixNode<Character> start = node.pos(0,0);
-        MatrixNode<Character> end = node.pos(6, 6);
-        List<List<MatrixNode<Character>>> res = new ArrayList<>();
+        MatrixNode<Integer> start = node;
+        MatrixNode<Integer> end = node.pos(6);
+        List<List<MatrixNode<Integer>>> res = new ArrayList<>();
         // 2024/4/7   NO.1 没思路，但能看懂。
         // 2024/4/8   NO.2 有思路了，没写出来。
         // 2024/4/9   NO.3 一遍过，做了两遍都是一遍过
@@ -34,14 +35,15 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/5/6、7
         //            NO.12、13 一遍过
         // 2024/5/8   NO.14 Dijkstra算法看懂了，下次争取独立做出来
-        // 2024/5/9   NO.15 Dijkstra算法能独立做出来了
+        // 2024/5/9、10
+        //            NO.15 Dijkstra算法能独立做出来了、一遍过
         //
         // TODO 方法1：剪枝法
         // List<List<MatrixNode<Character>>> res = findShortestPaths(start, end);
         //
         // TODO 方法2：迪杰克斯拉算法
         // dijkstra(res, start, end);
-        //
+
         printAllPaths(res);
     }
 
@@ -75,7 +77,6 @@ public List<List<MatrixNode>> findShortestPaths(MatrixNode start, MatrixNode end
 private void dfs(List<List<MatrixNode>> res, List<MatrixNode> list,
                  MatrixNode start, MatrixNode end,
                  Set<MatrixNode> visited) {
-
     if (visited.contains(start))
         return;
 
@@ -109,9 +110,7 @@ public void test() {
     find(mnode.down.right.right,
         mnode.down.down.right.right.right).forEach(
         path -> {
-            path.forEach(
-                s -> out.print(s.val + " -> ")
-            );
+            path.forEach(s -> out.print(s.val + " -> "));
             out.println();
         });
 }

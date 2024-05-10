@@ -16,6 +16,7 @@ import static java.lang.System.out;
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @SuppressWarnings({"unused"})
 public class MatrixNode<T> {
 
@@ -25,6 +26,8 @@ public class MatrixNode<T> {
 
     // 上、下、左、右四个指针
     public MatrixNode<T> left, right, up, down;
+
+    public MatrixNode<T> head, tail;
 
     public int dist = MAX_VALUE;
 
@@ -212,7 +215,7 @@ public class MatrixNode<T> {
     }
 
     public static <T> void printAllPaths(List<List<MatrixNode<T>>> allPaths) {
-        out.println("All paths from start to end: " + allPaths.size());
+        out.println("\n All paths from start to end: " + allPaths.size());
         for (List<MatrixNode<T>> path : allPaths) {
             for (MatrixNode<T> node : path) {
                 if ((node.val + "").length() == 1) {
@@ -233,9 +236,10 @@ public class MatrixNode<T> {
     }
 
     // 递归搜索最短路径
-    private static <T> void dfs(List<List<MatrixNode<T>>> res, List<MatrixNode<T>> list,
-                     MatrixNode<T> start, MatrixNode<T> end,
-                     Set<MatrixNode<T>> visited) {
+    public static <T> void dfs(List<List<MatrixNode<T>>> res,
+                                List<MatrixNode<T>> list,
+                                 MatrixNode<T> start, MatrixNode<T> end,
+                                 Set<MatrixNode<T>> visited) {
 
         if (visited.contains(start))
             return;
@@ -263,6 +267,10 @@ public class MatrixNode<T> {
         visited.remove(start);
     }
 
+    public MatrixNode<T> pos(int n) {
+        return pos(n, n);
+    }
+
     public MatrixNode<T> pos(int row, int col) {
         MatrixNode<T> pr = this;
         while (row-- > 1)
@@ -273,4 +281,48 @@ public class MatrixNode<T> {
 
         return pr;
     }
+
+    public MatrixNode<T> getFirst() {
+        return head;
+    }
+
+    // 在链表头部添加节点
+    public void addFirst(T value) {
+        MatrixNode<T> newNode = new MatrixNode<>(value);
+        if (head == null) {
+            tail = newNode;
+            head = tail;
+            return;
+        }
+
+        newNode.right = head;
+        head.left = newNode;
+        head = newNode;
+    }
+
+    // 在链表尾部添加节点
+    public void addLast(T value) {
+        MatrixNode<T> newNode = new MatrixNode<>(value);
+        if (tail == null) {
+            head = tail = newNode;
+        } else {
+            tail.right = newNode;
+            newNode.left = tail;
+            tail = newNode;
+        }
+    }
+
+    // 移除尾部节点
+    public void removeLast() {
+        if (tail == null)
+            return;
+
+        if (tail.left != null) {
+            tail = tail.left;
+            tail.right = null;
+        } else {
+            head = tail = null;
+        }
+    }
+
 }

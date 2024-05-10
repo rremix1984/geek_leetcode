@@ -10,6 +10,7 @@ import java.util.*;
 import static com.lonch.util.Node.*;
 import static java.lang.System.out;
 import static java.lang.System.arraycopy;
+import static java.util.Comparator.comparingInt;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -37,38 +38,25 @@ public class NO11_BinaryTreeTraversal {
 
     @Test
     public void test() {
-        Node<Character> root1 = cTree(3, 0);
+        Node<Character> root1 = cTree(10, 0);
+        Node<Character> root2 = root1.copy();
+        Node<Character> root3 = root2.copy();
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12、13、14、15、16、18
         //           NO.3、4、5、6、7、8 一遍过
         // 2024/4/30 NO.9 一遍过
-        // 2024/5/7、8  NO.10-11 一遍过
-        Node<Character> root2 = copy(root1);
-        Node<Character> root3 = copy(root2);
+        // 2024/5/7、8、10  NO.10-11-12 一遍过，dijkstra算法看懂了，更简单
         root1.parent = root2;
         root2.parent = root3;
         root3.parent = root1;
-        StringBuilder sb = new StringBuilder();
         printTree(root1);
-        List<Character> res = new ArrayList<>();
-        travels(res, root1.left.right);
-        res.forEach(cur -> out.print(cur + " "));
-    }
-
-    private void travels(List<Character> res, Node<Character> root) {
-        if (root == null || root.data == '*')
-            return;
-
-        Character oldVal = root.data;
-        res.add(oldVal);
-        root.data = '*';
-
-        travels(res, root.left);
-        travels(res, root.right);
-        travels(res, root.parent);
-
-        root.data = oldVal;
+        // 方法1：剪枝法
+        //
+        // 方法2：dijkstra 算法
+        // StringBuilder sb = new StringBuilder();
+        // dijkstraTravel(root1.right.left, sb);
+        // out.println(sb);
     }
 
 }
@@ -212,5 +200,36 @@ private Node<Character> copys(Node<Character> root1, int delta) {
         node.right.parent = node;
 
     return node;
+}
+
+// 方法2：Dijkstra算法，由于数据结构是一个有向无环图，
+// 任意2个节点之间有且仅有一条最短路径，所以可以做到路径唯一。
+private static void dijkstraTravel(Node<Character> root, StringBuilder sb) {
+    if (root == null)
+        return;
+
+    PriorityQueue<Node<Character>> queue
+            = new PriorityQueue<>(comparingInt(n -> n.dist));
+    root.dist = 0;
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+        Node<Character> cur = queue.poll();
+        sb.append(cur.data + " ");
+        update(queue, cur);
+    }
+}
+
+private static void update(PriorityQueue<Node<Character>> queue,
+                           Node<Character> node) {
+    node.getNeighbors().forEach(
+        cur -> {
+            // 假设所有边的权重为 1
+            if (node.dist + 1 < cur.dist) {
+                cur.dist = node.dist + 1;
+                queue.add(cur);
+            }
+        }
+    );
 }
 */

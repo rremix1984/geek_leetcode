@@ -15,30 +15,6 @@ import static java.util.Comparator.comparingInt;
     [ARRAY] |
     [困难]
     NO.18 迪杰克斯拉算法（Dijkstra）
-
-    1. 准备出发
-    你把起点标记为距离 0（因为你已经在那里了），然后开始探索四周。这就好比设置 start.dist = 0。
-
-    2. 探索四周
-    你开始向四周看，看每一步走去会加多少距离（比如走到右边的格子加 1，上面的格子加 2）。
-    这些数字代表了你额外需要走的步数。在这个过程中，你会优先选择那些步数最少的方向，这就是优先队列
-    （优先处理距离短的节点）在起作用。
-
-    3. 更新地图
-    每当你考虑走向一个新的位置时，如果通过你当前的路径到那里的总步数比之前记录的要少，
-    你就更新那个位置上的数字，并记下你是从哪里来的。这就是检查和更新 dist 的过程。
-
-    4. 发现更多选择
-    如果你发现有另一条路可以到达某个位置，并且总步数与之前最短的路径相同，你会记下这也是一种可能。
-    这样你就不会错过任何一条可能的最短路径。
-
-    5. 回溯寻找路径
-    当你到达终点后，你不只满足于到达那里，还要找出所有可能的最短路线。你开始回溯，沿着你来时的路逆
-    向走回去，记录下来每一步，直到回到起点。这就是 dfs 方法在做的事情。
-
-    6. 完成探索
-    最后，你会得到一个包含所有可能最短路径的集合。这就像是你探索后在地图上画出所有能最快到达终点的路线。
-
                ① -----------------> ④
               / \         2         | \
            1 /   \ 1                |  \  3
@@ -48,8 +24,6 @@ start ---> 〇      ③---------------|--->⑦ ----->⑧ end
            8 \  /  5               |  / 7
               \/         2         |/
               ② ---------------> ⑤
-
-    PriorityQueue queue; // 优先列表
      ____________      ____________      ____________      ____________      ____________
     |_1_|___0___|     |_1_|___1___|     |_1_|___2___|     |_1_|___4___|     |_1_|___14__|
     |_2_|_99999_|     |_2_|___1___|     |_2_|___2___|     |_2_|___5___|     |_2_|___15__|
@@ -63,29 +37,28 @@ public class NO18_DijkstraTest {
 
     @Test
     public void test() {
-        MatrixNode<Integer> node = initI(10);
+        MatrixNode<Integer> node = initIR(10);
         // 存储所有找到的最短路径
-        MatrixNode<Integer> start = node.pos(8,8);
-        MatrixNode<Integer> end = node.pos(10,10);
+        MatrixNode<Integer> start = node.pos(5);
+        MatrixNode<Integer> end = node.pos(7);
         printMatrix(node, start, end);
         // TODO
-        // 2024/5/8 NO.1 终于看懂了，能做出来了
-        // 2024/5/9 NO.2
+        // 2024/5/8  NO.1 终于看懂了，能做出来了
+        // 2024/5/9  NO.2 一遍过
+        // 2024/5/10 NO.3 能做出来，有点磕巴，时间上肯定是超时了（10分钟）
         List<List<MatrixNode<Integer>>> res = new ArrayList<>();
         dijkstra(res, start, end);
+//        dfs(res, new ArrayList<>(), start, end, new HashSet<>());
         printAllPaths(res);
     }
 
     private void dijkstra(List<List<MatrixNode<Integer>>> res,
                           MatrixNode<Integer> start,
                           MatrixNode<Integer> end) {
-        // 1. 初始化
-        Queue<MatrixNode> queue = new PriorityQueue<>(
-                comparingInt(a->a.dist));
+        Queue<MatrixNode<Integer>> queue =
+                new PriorityQueue<>(comparingInt(a -> a.dist));
         start.dist = 0;
         queue.offer(start);
-
-        // 2. update
         while (!queue.isEmpty()) {
             MatrixNode<Integer> cur = queue.poll();
             if (cur.dist > end.dist)
@@ -93,31 +66,29 @@ public class NO18_DijkstraTest {
 
             update(queue, cur, cur.up);
             update(queue, cur, cur.down);
-            update(queue, cur, cur.right);
             update(queue, cur, cur.left);
+            update(queue, cur, cur.right);
         }
-
-        // 3. dfs
-        dfs(res, new LinkedList<>(), end);
+        dfss(res, new LinkedList<>(), end);
     }
 
-    private void dfs(List<List<MatrixNode<Integer>>> res,
+    private void dfss(List<List<MatrixNode<Integer>>> res,
                      LinkedList<MatrixNode<Integer>> list,
                      MatrixNode<Integer> end) {
         list.addFirst(end);
         if (end.prevs.isEmpty())
             res.add(new LinkedList<>(list));
         else
-            end.prevs.forEach(cur -> dfs(res, list, cur));
+            end.prevs.forEach(cur -> dfss(res, list, cur));
         list.removeFirst();
     }
 
-    private void update(Queue<MatrixNode> queue,
-                        MatrixNode<Integer> cur, MatrixNode<Integer> next) {
+    private void update(Queue<MatrixNode<Integer>> queue,
+                        MatrixNode<Integer> cur,
+                        MatrixNode<Integer> next) {
         if (next == null)
             return;
-
-        int dist = cur.dist + 1;
+        int dist = cur.dist + next.val;
         if (dist < next.dist) {
             next.dist = dist;
             next.prevs.clear();

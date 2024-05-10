@@ -4,22 +4,96 @@
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
-import org.junit.Test;
 import java.util.Random;
 import java.util.Scanner;
-
-import static com.leetcode.util.SystemUtil.printArr;
-import static java.lang.System.in;
+import static java.lang.System.*;
 
 /**
- * @author rremix
+    [简单]
+    NO.17 贪吃蛇
+
+    问双向链表、三向链表、四向链表，然后用四向链表结构构建一个双向链表，
+    然后再把双向链表改为蛇形链表，最后是用蛇形链表写一个贪吃蛇的弹出和吃入方法。
+    @author wangxiaozhe
  */
 @SuppressWarnings("all")
 public class NO17_SnakeGameII {
 
     public static void main(String[] args) {
+        // 2024/5/10 NO。1 一遍过
+        SnakeGame g = new SnakeGame();
+        while (g.move(new Scanner(in).nextLine().charAt(0)) != -1)
+            out.println("S/W/D/A");
+        out.println("game over! score:" + g.score);
+    }
+
+    static class SnakeGame {
+        int[] food;
+        MatrixNode snake;
+        int ROWS = 10, COLS = 10;
+        char[][] board;
+        int score = 0;
+        public SnakeGame() {
+            snake = new MatrixNode<>();
+            food = new int[]{3, 3};
+            snake.addFirst(new int[]{0, 0}); // 在网格中心初始化蛇
+            board = new char[ROWS][COLS];
+            init();
+        }
+        public void init() {
+            for (int i = 0; i < ROWS; i++)
+                for (int j = 0; j < COLS; j++)
+                    board[i][j] = '-';
+            board[food[0]][food[1]] = 'F';
+            MatrixNode cur = snake.head;
+            while (cur != null) {
+                board[cur.row][cur.col] = '*';
+                cur = cur.tail;
+            }
+            for (int i = 0; i < ROWS; i++) {
+                for (int j = 0; j < COLS; j++)
+                    out.print(board[i][j] + " ");
+                out.println();
+            }
+        }
+
+        public int move(char dir) {
+            MatrixNode first = snake.head;
+            int[] head = {first.row, first.col};
+            switch (dir) {
+                case 'W':
+                    head[0]--;
+                    break;
+                case 'S':
+                    head[0]++;
+                    break;
+                case 'A':
+                    head[1]--;
+                    break;
+                case 'D':
+                    head[1]++;
+                    break;
+            }
+
+            if (head[0] < 0 || head[1] < 0 || head[0] >= ROWS || head[1] >= COLS
+                || board[head[0]][head[1]] == '*') {
+                return -1; // 碰撞发生，游戏结束
+            }
+
+            snake.addFirst(head);
+            if (head[0] == food[0] && head[1] == food[1]) { // 吃到食物
+                score++;
+                food = new int[]{new Random().nextInt(ROWS),
+                                 new Random().nextInt(COLS)};
+            } else {
+                snake.removeLast(); // 移动身体，不增长
+            }
+            init();
+            return score;
+        }
 
     }
+
 
 }
 
@@ -99,8 +173,8 @@ static class Game{
 
     public int move(char dir) {
         //******************
-//         区别点 2：用 position替代原有的 int[] 数组
-//         ********************
+        // 区别点 2：用 position替代原有的 int[] 数组
+        //********************
         int[] position = new int[]{snake.row, snake.col};
         switch (dir) {
             case 'W':

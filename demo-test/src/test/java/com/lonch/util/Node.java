@@ -4,8 +4,9 @@
 package com.lonch.util;
 
 import lombok.*;
-
 import java.util.*;
+
+import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
 
 /**
@@ -25,6 +26,8 @@ public class Node<E> {
 
     boolean visit;
 
+    public int dist = MAX_VALUE;
+
     public void setLeft(Node<E> left) {
         this.left = left;
         if (left != null)
@@ -37,22 +40,16 @@ public class Node<E> {
             right.parent = this;
     }
 
-    public static <E> Node<E> copy(Node<E> root) {
-        if (root == null)
-            return null;
-
-        Node<E> node = new Node<>(root.data);
-
-        // 设置父节点
-        node.left = copy(root.left);
-        if (node.left != null)
+    public Node<E> copy() {
+        Node<E> node = new Node<>(this.data);
+        if (this.left != null) {
+            node.left = this.left.copy();
             node.left.parent = node;
-
-        // 设置父节点
-        node.right = copy(root.right);
-        if (node.right != null)
+        }
+        if (this.right != null) {
+            node.right = this.right.copy();
             node.right.parent = node;
-
+        }
         return node;
     }
 
@@ -125,6 +122,18 @@ public class Node<E> {
             }
             out.println(); // 每层遍历结束后换行
         }
+    }
+
+    // 返回节点的邻居节点列表
+    public List<Node<E>> getNeighbors() {
+        List<Node<E>> neighbors = new ArrayList<>();
+        if (parent != null)
+            neighbors.add(parent);
+        if (left != null)
+            neighbors.add(left);
+        if (right != null)
+            neighbors.add(right);
+        return neighbors;
     }
 
     @Override
