@@ -22,7 +22,7 @@ public class MatrixNode<T> {
 
     @NonNull public T val;
 
-    public int col,row;
+    public int col, row;
 
     // 上、下、左、右四个指针
     public MatrixNode<T> left, right, up, down;
@@ -37,6 +37,11 @@ public class MatrixNode<T> {
         this.val = val;
         this.left = left;
         this.right = right;
+        this.row = row;
+        this.col = col;
+    }
+
+    public MatrixNode(int row, int col) {
         this.row = row;
         this.col = col;
     }
@@ -289,6 +294,8 @@ public class MatrixNode<T> {
     // 在链表头部添加节点
     public void addFirst(T value) {
         MatrixNode<T> newNode = new MatrixNode<>(value);
+        newNode.row = ((int[])value)[0];
+        newNode.col = ((int[])value)[1];
         if (head == null) {
             tail = newNode;
             head = tail;
@@ -303,6 +310,8 @@ public class MatrixNode<T> {
     // 在链表尾部添加节点
     public void addLast(T value) {
         MatrixNode<T> newNode = new MatrixNode<>(value);
+        newNode.row = ((int[])value)[0];
+        newNode.col = ((int[])value)[1];
         if (tail == null) {
             head = tail = newNode;
         } else {

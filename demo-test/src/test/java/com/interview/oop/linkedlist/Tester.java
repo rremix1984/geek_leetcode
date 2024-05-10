@@ -1,28 +1,23 @@
 package com.interview.oop.linkedlist;
 
+import static com.interview.oop.linkedlist.LinkedList.newEmptyList;
 import static java.lang.System.out;
 
 public class Tester {
 
     public static void main(String[] args) {
-        LinkedList<Integer> list = LinkedList.newEmptyList();
+        LinkedList<Integer> res = newEmptyList();
         for (int i = 0; i < 100; i++) {
-            list.add(i);
+            res.add(i);
+            out.println(i);
         }
 
-        for (Integer value : list) {
-            out.println(value);
-        }
-
-        LinkedList<String> stringList = LinkedList.newEmptyList();
+        LinkedList<String> list = newEmptyList();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 100; i++) {
-            sb.append("a");
-            stringList.add(sb.toString());
-        }
+        for (int i = 0; i < 100; i++)
+            list.add(sb.append("a").toString());
 
-        for (String value : stringList) {
-            out.println(value);
-        }
+        list.forEach(out::println);
     }
+
 }

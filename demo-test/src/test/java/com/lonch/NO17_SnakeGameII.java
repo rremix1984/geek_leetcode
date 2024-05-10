@@ -4,9 +4,13 @@
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
+import lombok.Getter;
+
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import static java.lang.System.*;
+import static java.util.Arrays.fill;
 
 /**
     [简单]
@@ -22,78 +26,116 @@ public class NO17_SnakeGameII {
     public static void main(String[] args) {
         // 2024/5/10 NO。1 一遍过
         SnakeGame g = new SnakeGame();
-        while (g.move(new Scanner(in).nextLine().charAt(0)) != -1)
-            out.println("S/W/D/A");
-        out.println("game over! score:" + g.score);
+        while (g.move(new Scanner(in).nextLine().charAt(0))) {
+            out.println("W/A/S/D");
+        }
+        out.println("game over!");
     }
 
     static class SnakeGame {
-        int[] food;
-        MatrixNode snake;
-        int ROWS = 10, COLS = 10;
-        char[][] board;
-        int score = 0;
+        private int ROWS = 10;
+        private int COLS = 10;
+        private char[][] board = new char[ROWS][COLS];
+        private DoubleLinkedList snake = new DoubleLinkedList();
+        private int[] food;
+
         public SnakeGame() {
-            snake = new MatrixNode<>();
+            snake.addFirst(new MatrixNode(0, 0)); // 初始蛇头位置
+            board[0][0] = '*';
             food = new int[]{3, 3};
-            snake.addFirst(new int[]{0, 0}); // 在网格中心初始化蛇
-            board = new char[ROWS][COLS];
             init();
         }
+
         public void init() {
             for (int i = 0; i < ROWS; i++)
-                for (int j = 0; j < COLS; j++)
-                    board[i][j] = '-';
+                fill(board[i], '-');
+
             board[food[0]][food[1]] = 'F';
-            MatrixNode cur = snake.head;
-            while (cur != null) {
-                board[cur.row][cur.col] = '*';
-                cur = cur.tail;
+
+            MatrixNode tail = snake.getHead();
+            while (tail != null) {
+                board[tail.row][tail.col] = '*';
+                tail = tail.right;
             }
+
             for (int i = 0; i < ROWS; i++) {
                 for (int j = 0; j < COLS; j++)
-                    out.print(board[i][j] + " ");
-                out.println();
+                    System.out.print(board[i][j] + " ");
+                System.out.println();
             }
         }
 
-        public int move(char dir) {
-            MatrixNode first = snake.head;
-            int[] head = {first.row, first.col};
+        public boolean move(char dir) {
+            MatrixNode head = snake.getHead();
+            int newRow = head.row;
+            int newCol = head.col;
+
             switch (dir) {
                 case 'W':
-                    head[0]--;
+                    newRow--;
                     break;
                 case 'S':
-                    head[0]++;
+                    newRow++;
                     break;
                 case 'A':
-                    head[1]--;
+                    newCol--;
                     break;
                 case 'D':
-                    head[1]++;
+                    newCol++;
                     break;
             }
 
-            if (head[0] < 0 || head[1] < 0 || head[0] >= ROWS || head[1] >= COLS
-                || board[head[0]][head[1]] == '*') {
-                return -1; // 碰撞发生，游戏结束
+            if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS
+                    || board[newRow][newCol] == '*') {
+                return false;
             }
 
-            snake.addFirst(head);
-            if (head[0] == food[0] && head[1] == food[1]) { // 吃到食物
-                score++;
+            MatrixNode newNode= new MatrixNode(newRow, newCol);
+            snake.addFirst(newNode);
+            if (newRow == food[0] && newCol == food[1]) {
                 food = new int[]{new Random().nextInt(ROWS),
                                  new Random().nextInt(COLS)};
             } else {
-                snake.removeLast(); // 移动身体，不增长
+                snake.removeLast();
             }
             init();
-            return score;
+            return true;
+        }
+    }
+
+    @Getter
+    static class DoubleLinkedList<T> {
+        private MatrixNode<T> head;
+        private MatrixNode<T> tail;
+
+        public void addFirst(MatrixNode newNode) {
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                newNode.right = head;
+                head.left = newNode;
+                head = newNode;
+            }
+        }
+
+        public void removeLast() {
+            if (tail != null) {
+                if (tail.left != null) {
+                    tail.left.right = null;
+                    tail = tail.left;
+                } else {
+                    head = null;
+                    tail = null;
+                }
+            }
+        }
+
+        public MatrixNode getHead() {
+            return head;
         }
 
     }
-
 
 }
 
