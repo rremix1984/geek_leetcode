@@ -5,7 +5,6 @@ package com.lonch.util;
 
 import lombok.*;
 import java.util.*;
-
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
 
@@ -24,21 +23,7 @@ public class Node<E> {
 
     public Node<E> parent, left, right;
 
-    boolean visit;
-
     public int dist = MAX_VALUE;
-
-    public void setLeft(Node<E> left) {
-        this.left = left;
-        if (left != null)
-            left.parent = this;
-    }
-
-    public void setRight(Node<E> right) {
-        this.right = right;
-        if (right != null)
-            right.parent = this;
-    }
 
     public Node<E> copy() {
         Node<E> node = new Node<>(this.data);
@@ -90,7 +75,7 @@ public class Node<E> {
         dfs(node.parent, visit, sb);
     }
 
-    public static <E> void printTree(Node<E> root) {
+    public static <E> void print(Node<E> root) {
         if (root == null)
             return;
 

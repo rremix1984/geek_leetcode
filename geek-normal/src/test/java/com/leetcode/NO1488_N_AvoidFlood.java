@@ -80,25 +80,7 @@ public class NO1488_N_AvoidFlood {
     }
 
     public int[] avoidFlood(int[] rains) {
-        TreeSet<Integer> notRains = new TreeSet<>();
-        Map<Integer, Integer> preRains = new HashMap<>();
 
-        for (int i = 0; i < rains.length; i++) {
-            int lake = rains[i];
-            if (lake > 0) {
-                if (preRains.containsKey(lake)) {
-                    Integer day = notRains.higher(preRains.get(lake));
-                    if (day == null) return new int[0];
-                    notRains.remove(day);
-                    rains[day] = lake;
-                }
-                preRains.put(lake, i);
-                rains[i] = -1;
-            } else {
-                notRains.add(i);
-                rains[i] = 1;
-            }
-        }
         return rains;
     }
 

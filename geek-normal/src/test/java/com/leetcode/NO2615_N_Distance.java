@@ -37,6 +37,7 @@ import static org.junit.Assert.assertArrayEquals;
         0 <= nums[i] <= 109
     Related Topics:数组,哈希表,前缀和
 */
+@SuppressWarnings("all")
 public class NO2615_N_Distance {
 
     @Test
@@ -50,32 +51,6 @@ public class NO2615_N_Distance {
     public long[] distance(int[] nums) {
         long[] ans = new long[nums.length];
 
-        // 构造哈希表，记录所有相同的数据
-        HashMap<Integer, List<Integer>> map = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];
-            map.computeIfAbsent(num, k -> new ArrayList<>()).add(i);
-        }
-
-        // 遍历哈希表
-        for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
-            List<Integer> value = entry.getValue();
-
-            // 前缀和 + 后缀和，区别是要乘以距离
-            long[] list = new long[value.size()];
-            long[] list2 = new long[value.size()];
-            for (int i = 1; i < value.size(); i++)
-                list[i] = list[i - 1] + (long) (value.get(i) - value.get(i - 1)) * i;
-
-            for (int i = value.size() - 2; i >= 0; i--)
-                list2[i] = list2[i + 1] + (long) (value.get(i + 1) - value.get(i)) * (value.size() - i - 1);
-
-            // 将前缀和和后缀和相加
-            for (int i = 0; i < value.size(); i++)
-                ans[value.get(i)] = list[i] + list2[i];
-
-        }
         return ans;
     }
 

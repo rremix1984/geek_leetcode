@@ -33,6 +33,7 @@ import static java.util.Arrays.fill;
         这里用桶排序，只用考虑桶间的排序，不用考虑桶内的排序
         用后一个桶的最小值减前一个桶的最大值，可以得到最大间距。
 */
+@SuppressWarnings("all")
 public class NO164_N_MaximumGap {
 
     @Test
@@ -41,51 +42,16 @@ public class NO164_N_MaximumGap {
         assert 0 == maximumGap(new int[]{10});
     }
 
-    // 线性时间复杂度和空间复杂度 不能用Arrays.sort
+    /**
+     * 线性时间复杂度和空间复杂度 不能用Arrays.sort
+     * @param nums nums
+     * @return maxGap
+     */
     public int maximumGap(int[] nums) {
         // 2024/3/12 NO.1
         // 2024/3/31 NO.2
-        if (nums.length < 2)
-            return 0;
-
-        int len = nums.length;
-        int max = -1;
-        int min = MAX_VALUE;
-        for (int num : nums) {
-            max = max(num, max);
-            min = min(num, min);
-        }
-
-        if (max - min == 0)
-            return 0;
-
-        int[] bucketMin = new int[len - 1];
-        int[] bucketMax = new int[len - 1];
-
-        fill(bucketMax, -1);
-        fill(bucketMin, MAX_VALUE);
-
-        int interval = (int) ceil((double)(max - min) / (len - 1));
-        for (int num : nums) {
-            int index = (num - min) / interval;
-            if (num == min || num == max)
-                continue;
-
-            bucketMax[index] = max(bucketMax[index], num);
-            bucketMin[index] = min(bucketMin[index], num);
-        }
-
         int maxGap = 0;
-        int preMax = min;
-        for (int i = 0; i < len - 1; i++) {
-            if (bucketMax[i] == -1)
-                continue;
 
-            maxGap = max(bucketMin[i] - preMax, maxGap);
-            preMax = bucketMax[i];
-        }
-
-        maxGap = max(maxGap, max - preMax);
         return maxGap;
     }
 

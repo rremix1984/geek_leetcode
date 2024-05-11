@@ -39,7 +39,7 @@ public class NO442_N_FindDuplicates {
                 findDuplicates(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
         assert arrayAllMatch(getArray(1),
                 findDuplicates(new int[]{1, 1, 2}));
-        assert arrayAllMatch(getArray(),
+        assert arrayAllMatch(getArrayI(),
                 findDuplicates(new int[]{1}));
     }
 

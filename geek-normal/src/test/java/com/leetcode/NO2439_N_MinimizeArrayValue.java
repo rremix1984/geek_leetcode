@@ -33,39 +33,70 @@ import org.junit.Test;
         0 <= nums[i] <= 109
     Related Topics:贪心,数组,二分查找,动态规划,前缀和
 */
+@SuppressWarnings("ALL")
 public class NO2439_N_MinimizeArrayValue {
 
     @Test
     public void test() {
-        assert 5 == minimizeArrayValue(new int[]{3, 7, 1, 6});
+        assert  5 == minimizeArrayValue(new int[]{3, 7, 1, 6});
         assert 10 == minimizeArrayValue(new int[]{10,1});
     }
 
     public int minimizeArrayValue(int[] nums) {
-        int n = nums.length;
-        int l = 0;
-        int r = (int) 1e9;
-        int ans = r;
-        while (l <= r) {
-            int mid = l + (r - l) / 2;
-            if (verify(nums, n, mid)) {
-                ans = Math.min(ans, mid);
-                r = mid - 1;
-            } else {
-                l = mid + 1;
-            }
-        }
+        int ans = -1;
+
         return ans;
     }
 
-    public boolean verify(int[] nums, int n, int x) {
-        long c = 0;
-        for (int i = 0; i < n; i++) {
-            int d = x - nums[i];
-            c += d;
-            if (c < 0) return false;
-        }
-        return true;
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int minimizeArrayValue(int[] nums) {
+    int n = nums.length;
+    int l = 0;
+    int r = (int) 1e9;
+    int ans = r;
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+        if (verify(nums, n, mid)) {
+            ans = Math.min(ans, mid);
+            r = mid - 1;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return ans;
+}
+
+public boolean verify(int[] nums, int n, int x) {
+    long c = 0;
+    for (int i = 0; i < n; i++) {
+        int d = x - nums[i];
+        c += d;
+        if (c < 0) return false;
+    }
+    return true;
+}
+*/

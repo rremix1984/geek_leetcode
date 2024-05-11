@@ -113,8 +113,8 @@ public class MatrixNode<T> {
         return dummy;
     }
 
-    public static <T> void printMatrix(MatrixNode<T> head,
-                                       MatrixNode<T> start, MatrixNode<T> end) {
+    public static <T> void print(MatrixNode<T> head,
+                               MatrixNode<T> start, MatrixNode<T> end) {
         MatrixNode<T> col = head;
         StringBuilder sb = new StringBuilder();
         while (col != null) {
@@ -136,8 +136,8 @@ public class MatrixNode<T> {
         }
     }
 
-    public static <T> void printMatrix(MatrixNode<T> head) {
-        printMatrix(head, null, null);
+    public static <T> void print(MatrixNode<T> head) {
+        print(head, null, null);
     }
 
     public static MatrixNode<Integer> initI(int n) {
@@ -219,10 +219,19 @@ public class MatrixNode<T> {
         return (char) ('a' + (c++ % 26));
     }
 
-    public static <T> void printAllPaths(List<List<MatrixNode<T>>> allPaths) {
+    public static <T> void print(List<List<MatrixNode<T>>> allPaths) {
+        print(allPaths, null, null);
+    }
+
+    public static <T> void print(List<List<MatrixNode<T>>> allPaths,
+                                 MatrixNode<T> start, MatrixNode<T> end) {
         out.println("\n All paths from start to end: " + allPaths.size());
         for (List<MatrixNode<T>> path : allPaths) {
             for (MatrixNode<T> node : path) {
+                if (node == start || node == end) {
+                    out.printf(" (%2s) -> ", node.val);
+                    continue;
+                }
                 if ((node.val + "").length() == 1) {
                     out.printf(" (%s) -> ", node.val);
                 } else {

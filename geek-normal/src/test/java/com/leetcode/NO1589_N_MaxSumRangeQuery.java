@@ -58,24 +58,55 @@ public class NO1589_N_MaxSumRangeQuery {
 
     public int maxSumRangeQuery(int[] nums, int[][] requests) {
         // 2024/3/17 NO.1
-        int mod = (int) 1e9 + 7;
-        int[] arr = new int[nums.length + 1];
-        for (int[] req : requests) {
-            arr[req[0]]++;
-            arr[req[1] + 1]--;
-        }
-
-        int[] cnts = new int[nums.length];
-        for (int i = 0, sum = 0; i < cnts.length; i++)
-            cnts[i] = sum += arr[i];
-
-        sort(nums);
-        sort(cnts);
         long ans = 0;
-        for (int i = 0; i < cnts.length; i++)
-            ans = (ans + (long) nums[i] * cnts[i]) % mod;
-
-        return (int)ans;
+        return (int) ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1:
+public int maxSumRangeQuery(int[] nums, int[][] requests) {
+    // 2024/3/17 NO.1
+    int mod = (int) 1e9 + 7;
+    int[] arr = new int[nums.length + 1];
+    for (int[] req : requests) {
+        arr[req[0]]++;
+        arr[req[1] + 1]--;
+    }
+
+    int[] cnts = new int[nums.length];
+    for (int i = 0, sum = 0; i < cnts.length; i++)
+        cnts[i] = sum += arr[i];
+
+    sort(nums);
+    sort(cnts);
+    long ans = 0;
+    for (int i = 0; i < cnts.length; i++)
+        ans = (ans + (long) nums[i] * cnts[i]) % mod;
+
+    return (int)ans;
+}
+*/

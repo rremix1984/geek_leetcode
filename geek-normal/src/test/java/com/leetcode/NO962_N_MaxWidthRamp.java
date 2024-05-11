@@ -32,6 +32,7 @@ import static java.util.Arrays.sort;
         0 <= A[i] <= 50000
     Related Topics:栈,数组,单调栈
 */
+@SuppressWarnings("all")
 public class NO962_N_MaxWidthRamp {
 
     @Test
@@ -44,6 +45,7 @@ public class NO962_N_MaxWidthRamp {
         // 2024/3/19 NO.2 挺难想的，需要琢磨
         // 2024/3/22 NO.3 没思路，琢磨不出来
         int len = 0;
+
         return len;
     }
 

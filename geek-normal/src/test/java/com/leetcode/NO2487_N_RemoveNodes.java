@@ -37,13 +37,6 @@ public class NO2487_N_RemoveNodes {
 
     // 递归
     public ListNode<Integer> removeNodes(ListNode<Integer> head) {
-        if (head == null)
-            return null;
-
-        head.next = removeNodes(head.next);
-        if (head.next != null && head.val < head.next.val)
-            return head.next;
-
         return head;
     }
 
@@ -67,7 +60,6 @@ public class NO2487_N_RemoveNodes {
 /*
 // 方法1：递归
 public ListNode removeNodes(ListNode head) {
-
     if (head == null)
         return null;
 

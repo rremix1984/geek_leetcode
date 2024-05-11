@@ -10,9 +10,10 @@ import java.util.*;
 import static com.lonch.util.MatrixNode.*;
 import static java.lang.System.arraycopy;
 import static java.lang.System.out;
+import static java.util.Comparator.comparingInt;
 
 /**
-    [MATRIXLINKED] ||||||||||||||||||
+    [MATRIXLINKED] |||||||||||||||||||
     (简单)
     NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
  */
@@ -22,9 +23,9 @@ public class NO6_MatrixLinkedListShortestPath {
     @Test
     public void test() {
         MatrixNode<Integer> node = initI(6);
-        printMatrix(node);
         MatrixNode<Integer> start = node;
         MatrixNode<Integer> end = node.pos(6);
+        print(node, start, end);
         List<List<MatrixNode<Integer>>> res = new ArrayList<>();
         // 2024/4/7   NO.1 没思路，但能看懂。
         // 2024/4/8   NO.2 有思路了，没写出来。
@@ -37,14 +38,13 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/5/8   NO.14 Dijkstra算法看懂了，下次争取独立做出来
         // 2024/5/9、10
         //            NO.15 Dijkstra算法能独立做出来了、一遍过
-        //
+        // 2024/5/11  NO.16 Dijkstra
         // TODO 方法1：剪枝法
         // List<List<MatrixNode<Character>>> res = findShortestPaths(start, end);
         //
         // TODO 方法2：迪杰克斯拉算法
         // dijkstra(res, start, end);
-
-        printAllPaths(res);
+        print(res);
     }
 
 }

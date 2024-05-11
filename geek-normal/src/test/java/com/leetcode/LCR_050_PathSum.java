@@ -74,7 +74,7 @@ public class LCR_050_PathSum {
                 , 0);
     }
 
-    public int pathSum(TreeNode root, int targetSum) {
+    public int pathSum(TreeNode<Integer> root, int targetSum) {
         // 2024/3/25 NO.1 递归没做出来
         // 2024/3/26 NO.2 忘记了，没思路了
         // 2024/3/27 NO.3 没做出来，但是看答案能做出来了，思路也通了
@@ -85,12 +85,11 @@ public class LCR_050_PathSum {
             return 0;
 
         return rootSum(root, targetSum)
-                + pathSum(root.left, targetSum)
-                + pathSum(root.right, targetSum);
-//        return ret;
+             + pathSum(root.left, targetSum)
+             + pathSum(root.right, targetSum);
     }
 
-    public int rootSum(TreeNode root, int targetSum) {
+    public int rootSum(TreeNode<Integer> root, int targetSum) {
         // TODO
         return 0;
     }

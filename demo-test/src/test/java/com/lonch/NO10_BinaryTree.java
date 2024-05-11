@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.*;
 
 import static com.lonch.util.Node.cTree;
-import static com.lonch.util.Node.printTree;
+import static com.lonch.util.Node.print;
 import static java.lang.System.out;
 
 /**
@@ -72,7 +72,7 @@ public Node<Character> cTree(int depth, int cur) {
     return node;
 }
 
-public static void printTree(Node<Character> root) {
+public static void print(Node<Character> root) {
     if (root == null)
         return;
 

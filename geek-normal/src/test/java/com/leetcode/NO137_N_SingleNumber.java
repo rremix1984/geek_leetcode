@@ -25,7 +25,7 @@ public class NO137_N_SingleNumber {
 
     @Test
     public void test() {
-        assert 3 == singleNumber(new int[]{2, 2, 3, 2});
+        assert  3 == singleNumber(new int[]{2, 2, 3, 2});
         assert 99 == singleNumber(new int[]{0, 1, 0, 1, 0, 1, 99});
     }
 

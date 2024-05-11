@@ -8,7 +8,7 @@ import lombok.*;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.*;
-import static com.lonch.util.MatrixNode.printMatrix;
+import static com.lonch.util.MatrixNode.print;
 import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +24,7 @@ public class NO5_MatrixLinkedList {
     @Test
     public void test() {
         MatrixNode<Character> head = initC(6);
-        printMatrix(head);
+        print(head);
         // 2024/4/7  NO.1 没思路，可以看懂。4月18日 20:00 面试
         // 2024/4/8  NO.2 没思路，能看懂。至少要写 10 遍才行
         // 2024/4/9  NO.3 一遍过，做了几遍都是一遍过
@@ -92,17 +92,10 @@ public static MatrixNode init(int row, int col) {
     return dummy;
 }
 
+@RequiredArgsConstructor
 static class MatrixNode {
-    public int val;
+    @NonNull public int val;
     public MatrixNode left, right, up, down;
-
-    public MatrixNode(int val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-        this.up = null;
-        this.down = null;
-    }
 }
 
 public static <T> void printMatrix(MatrixNode<T> head) {
