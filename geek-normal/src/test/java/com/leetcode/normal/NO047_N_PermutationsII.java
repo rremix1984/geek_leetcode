@@ -54,11 +54,11 @@ public class NO047_N_PermutationsII {
             permuteUnique(new int[]{1, 1, 1, 1, 1, 1, 2}));
     }
 
-    public List<List<Integer>> permuteUnique(int[] nums) {
+    public ArrayList<ArrayList<Integer>> permuteUnique(int[] nums) {
         // 2024/3/13 NO.1 回溯法
         // 2024/3/18 NO.2 做出来了，但是犹豫了
         // 2024/3/21 NO.3 在提示下，做出来了，死记硬背的题型，并没有理解
-        List<List<Integer>> res = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         return res;
     }
 
