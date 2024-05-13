@@ -19,6 +19,7 @@ import org.junit.Test;
             0 <= nums1[i], nums2[i] <= 100
     Related Topics:数组,二分查找,动态规划,滑动窗口,哈希函数,滚动哈希
 */
+@SuppressWarnings("all")
 public class NO718_N_FindLength {
 
     @Test
@@ -34,18 +35,7 @@ public class NO718_N_FindLength {
     public int findLength(int[] A, int[] B) {
         // 2024/3/16 NO.1
         int ans = 0;
-        // 建立一个二维表。
-        int[][] dp = new int[A.length + 1][B.length + 1];
-        for (int i = 1; i <= A.length; i++)
-            for (int j = 1; j <= B.length; j++) {
-                // 如果两个元素相等，就看他前面一个元素匹配的结果。
-                if (A[i - 1] == B[j - 1])
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
 
-                // 这里是找最长得长度
-                if (dp[i][j] > ans)
-                    ans = dp[i][j];
-            }
         return ans;
     }
 
@@ -86,5 +76,24 @@ public int findLength(int[] A, int[] B) {
         }
     }
     return len;
+}
+
+// 方法2：
+public int findLength(int[] A, int[] B) {
+    // 2024/3/16 NO.1
+    int ans = 0;
+    // 建立一个二维表。
+    int[][] dp = new int[A.length + 1][B.length + 1];
+    for (int i = 1; i <= A.length; i++)
+        for (int j = 1; j <= B.length; j++) {
+            // 如果两个元素相等，就看他前面一个元素匹配的结果。
+            if (A[i - 1] == B[j - 1])
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+
+            // 这里是找最长得长度
+            if (dp[i][j] > ans)
+                ans = dp[i][j];
+        }
+    return ans;
 }
 */

@@ -33,6 +33,7 @@ import static java.lang.Math.max;
         1 <= nums[i] <= 10 ^ 5
     Related Topics:数组,哈希表,滑动窗口
 */
+@SuppressWarnings("ALL")
 public class NO2461_N_MaximumSubarraySum {
 
     @Test
@@ -45,42 +46,74 @@ public class NO2461_N_MaximumSubarraySum {
 
     public long maximumSubarraySum(int[] nums, int k) {
         // 2024/3/19 NO.1
-        if (k > nums.length)
-            return 0;
-
         long ans = 0;
-        int sum = 0;
-        int cat = 0;
-        int[] cnt = new int[100005];
-        for (int i = 0; i < k; i++) {
-            sum += nums[i];
-            cnt[nums[i]]++;
 
-            if (cnt[nums[i]] == 2)
-                cat++;
-        }
-
-        if (cat == 0)
-            ans = sum;
-
-        for (int i = k; i < nums.length; i++) {
-            if (nums[i] == nums[i - k])
-                continue;
-
-            cnt[nums[i]]++;
-            cnt[nums[i - k]]--;
-
-            if (cnt[nums[i]] == 2)
-                cat++;
-
-            if (cnt[nums[i - k]] == 1)
-                cat--;
-
-            sum -= nums[i - k] - nums[i];
-            if (cat == 0)
-                ans = max(ans, sum);
-        }
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public long maximumSubarraySum(int[] nums, int k) {
+    // 2024/3/19 NO.1
+    if (k > nums.length)
+        return 0;
+
+    long ans = 0;
+    int sum = 0;
+    int cat = 0;
+    int[] cnt = new int[100005];
+    for (int i = 0; i < k; i++) {
+        sum += nums[i];
+        cnt[nums[i]]++;
+
+        if (cnt[nums[i]] == 2)
+            cat++;
+    }
+
+    if (cat == 0)
+        ans = sum;
+
+    for (int i = k; i < nums.length; i++) {
+        if (nums[i] == nums[i - k])
+            continue;
+
+        cnt[nums[i]]++;
+        cnt[nums[i - k]]--;
+
+        if (cnt[nums[i]] == 2)
+            cat++;
+
+        if (cnt[nums[i - k]] == 1)
+            cat--;
+
+        sum -= nums[i - k] - nums[i];
+        if (cat == 0)
+            ans = max(ans, sum);
+    }
+    return ans;
+}
+*/

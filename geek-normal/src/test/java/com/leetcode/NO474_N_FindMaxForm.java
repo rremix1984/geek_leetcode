@@ -25,6 +25,7 @@ import org.junit.Test;
             1 <= m, n <= 100
     Related Topics:数组,字符串,动态规划
 */
+@SuppressWarnings("ALL")
 public class NO474_N_FindMaxForm {
 
     @Test
@@ -38,29 +39,7 @@ public class NO474_N_FindMaxForm {
     public int findMaxForm(String[] strs, int m, int n) {
         int t = strs.length;
         int[][][] dp = new int[t + 1][m + 1][n + 1];
-        for (int i = 1; i <= t; i++) {
-            String str = strs[i - 1];
-            int zeros = 0, ones = 0;
-            int length = str.length();
-            for (int x = 0; x < length; x++) {
-                char c = str.charAt(x);
-                if (c == '0') {
-                    zeros++;
-                } else {
-                    ones++;
-                }
-            }
-
-            for (int j = 0; j <= m; j++) {
-                for (int k = 0; k <= n; k++) {
-                    if (j < zeros || k < ones) {
-                        dp[i][j][k] = dp[i - 1][j][k];
-                    } else {
-                        dp[i][j][k] = Math.max(dp[i - 1][j][k], dp[i - 1][j - zeros][k - ones] + 1);
-                    }
-                }
-            }
-        }
+        // TODO
         return dp[t][m][n];
     }
 

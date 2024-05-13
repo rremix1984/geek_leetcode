@@ -37,6 +37,7 @@ import static org.junit.Assert.assertArrayEquals;
         给定的输入 保证 是一棵树，并且 不会有重复的边
     Related Topics:深度优先搜索,广度优先搜索,图,拓扑排序
 */
+@SuppressWarnings("ALL")
 public class NO310_N_FindMinHeightTrees {
 
     @Test

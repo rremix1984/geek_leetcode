@@ -2,7 +2,7 @@ package com.lonch;
 
 import com.lonch.util.Node;
 
-import static com.lonch.util.Node.printTree;
+import static com.lonch.util.Node.print;
 import static java.lang.System.out;
 
 public class NO15_TreeNodeTest {
@@ -11,9 +11,9 @@ public class NO15_TreeNodeTest {
         Node<Integer> head = new Node<>();
         Integer headVal = 1;
         Node<Integer> root1 = genRecursiveTree(head, 4, headVal); // root
-        printTree(root1);
+        print(root1);
         Node<Integer> root2 = genRecursiveTree(head, 4, headVal); // root
-        printTree(root2);
+        print(root2);
         Node<Integer> root3 = genRecursiveTree(head, 4, headVal); // root
         Node<Integer> root4 = genRecursiveTree(head, 4, headVal); // root
         if (root1 != null)
@@ -42,9 +42,7 @@ public class NO15_TreeNodeTest {
             return null;
 
         Node<Integer> cur = new Node<>();
-        if (father.data != null)
-            cur.parent = father;
-
+        cur.parent = father;
         cur.data = val;
 
         //左子的值为父亲x2， 右子的值为父亲x2+1

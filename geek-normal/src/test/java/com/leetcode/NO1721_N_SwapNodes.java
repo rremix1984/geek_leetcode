@@ -36,34 +36,36 @@ import static com.leetcode.util.SystemUtil.printListNode;
         0 <= Node.val <= 100
     Related Topics:链表,双指针
 */
+@SuppressWarnings("all")
 public class NO1721_N_SwapNodes {
 
     @Test
     public void test() {
-        assertNodeEquals(swapNodes(new ListNode(1, 2, 3, 4, 5), 2),
+        assertNodeEquals(swapNodes(new ListNode<>(1, 2, 3, 4, 5), 2),
                 1, 4, 3, 2, 5);
-        assertNodeEquals(swapNodes(new ListNode(7, 9, 6, 6, 7, 8, 3, 0, 9, 5), 5),
+        assertNodeEquals(swapNodes(new ListNode<>(7, 9, 6, 6, 7, 8, 3, 0, 9, 5), 5),
                 7, 9, 6, 6, 8, 7, 3, 0, 9, 5);
-        assertNodeEquals(swapNodes(new ListNode(1), 1),
+        assertNodeEquals(swapNodes(new ListNode<>(1), 1),
                 1);
-        assertNodeEquals(swapNodes(new ListNode(1, 2), 1), 2, 1);
-        assertNodeEquals(swapNodes(new ListNode(1, 2, 3), 2),
+        assertNodeEquals(swapNodes(new ListNode<>(1, 2), 1), 2, 1);
+        assertNodeEquals(swapNodes(new ListNode<>(1, 2, 3), 2),
                 1, 2, 3);
     }
 
-    public ListNode swapNodes(ListNode head, int k) {
+    public ListNode<Integer> swapNodes(ListNode<Integer> head, int k) {
         // 2024/3/30 NO.1 没做出来，看懂答案了，不容易
-        ListNode dummy = new ListNode(0);
+        ListNode<Integer> dummy = new ListNode<>(0);
         dummy.next = head;
-        ListNode left = dummy;
-        ListNode right = dummy;
+
+        ListNode<Integer> left = dummy;
+        ListNode<Integer> right = dummy;
 
         return dummy.next;
     }
 
-
-    public void swap(ListNode left, ListNode right) {
+    public void swap(ListNode<Integer> left, ListNode<Integer> right) {
         // TODO
+
     }
 
 }
@@ -86,10 +88,13 @@ public class NO1721_N_SwapNodes {
 public ListNode swapNodes(ListNode head, int k) {
     ListNode dummyHead = new ListNode(0);
     dummyHead.next = head;
+
     // 指向左边待交换节点的前置节点
     ListNode left = dummyHead;
+
     // 指向右边待交换节点的前置节点
     ListNode right = dummyHead;
+
     while (head != null) {
         head = head.next;
         k--;
@@ -98,40 +103,39 @@ public ListNode swapNodes(ListNode head, int k) {
             left = left.next;
             continue;
         }
-        if (k < 0) {
+        if (k < 0)
             // 右指针开始移向第 len-k-1 位
             right = right.next;
-        }
     }
-    if (right.next == left) {
+    if (right.next == left)
         // 两个节点相邻，且right在left前面，需要交换下位置
         swap(right, left);
-    } else {
+    else
         swap(left, right);
-    }
     return dummyHead.next;
 }
 
 // 交换链表中两个节点的位置
 public void swap(ListNode left, ListNode right) {
+
 //           ————————>————————
 //          |                 |
 //         left     right <- tmp     null
 //                      |______>______|
-//
+
     if (left.next == right) {
         ListNode tmp = right.next;
         left.next.next = tmp.next;
         tmp.next = right;
         left.next = tmp;
-//
+
 //                      _____________(1)_ > __________
 //                     |       ____<___ _(2)__        |
 //                     |      |               |       |
 //  dummy ->  left    tmp     n0  -> right    n1     n2 -> null
 //             |       |______<_(4)_____|     |
 //             |_________________(3)___ > ____|
-//
+
     } else {
         ListNode tmp = left.next.next;
         left.next.next = right.next.next;

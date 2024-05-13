@@ -48,6 +48,7 @@ import java.util.List;
             queries[i] 和 pattern 由英文字母组成
     Related Topics:字典树,数组,双指针,字符串,字符串匹配
 */
+@SuppressWarnings("ALL")
 public class NO1023_N_CamelMatch {
 
     @Test
@@ -65,31 +66,55 @@ public class NO1023_N_CamelMatch {
                     "FrameBuffer", "ForceFeedBack"}, "FoBaT"),
             asList(false, true, false, false, false));
     }
+
     public List<Boolean> camelMatch(String[] queries, String pattern) {
         List<Boolean> res = new ArrayList<>(queries.length);
-        for (String query : queries) {
-            String other = getOther(query, pattern);
-            if (other.isEmpty())
-                res.add(false);
-            else
-                res.add(other.toLowerCase().equals(other));
-        }
+
         return res;
     }
 
-    private static String getOther(String query, String pattern) {
-        int index = 0;
-        // 避免两个串相等时返回""
-        StringBuilder sb = new StringBuilder("a");
-        for (int i = 0; i < pattern.length(); i++) {
-            int index2 = query.indexOf(pattern.charAt(i), index);
-            if (index2 < 0)
-                return "";
-
-            sb.append(query, index, index2);
-            index = index2 + 1;
-        }
-        return sb.append(query.substring(index)).toString();
-    }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public List<Boolean> camelMatch(String[] queries, String pattern) {
+    List<Boolean> res = new ArrayList<>(queries.length);
+    for (String query : queries) {
+        String other = getOther(query, pattern);
+        if (other.isEmpty())
+            res.add(false);
+        else
+            res.add(other.toLowerCase().equals(other));
+    }
+    return res;
+}
+
+private static String getOther(String query, String pattern) {
+    int index = 0;
+    // 避免两个串相等时返回""
+    StringBuilder sb = new StringBuilder("a");
+    for (int i = 0; i < pattern.length(); i++) {
+        int index2 = query.indexOf(pattern.charAt(i), index);
+        if (index2 < 0)
+            return "";
+
+        sb.append(query, index, index2);
+        index = index2 + 1;
+    }
+    return sb.append(query.substring(index)).toString();
+}
+*/

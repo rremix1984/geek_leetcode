@@ -51,26 +51,28 @@ import static com.leetcode.util.ListNode.assertNodeEquals;
                      |
     因为是连续和为0的元素，所以抵消掉了就相当于 0
 */
+@SuppressWarnings("ALL")
 public class NO1171_N_RemoveZeroSumSublists {
 
     @Test
     public void test() {
         assertNodeEquals(removeZeroSumSublists(
-                new ListNode(1, 2, 3, -3, -2)), 1);
+                new ListNode<>(1, 2, 3, -3, -2)), 1);
         assertNodeEquals(removeZeroSumSublists(
-                new ListNode(1, 2, -3, 3, 1)), 3, 1);
+                new ListNode<>(1, 2, -3, 3, 1)), 3, 1);
         assertNodeEquals(removeZeroSumSublists(
-                new ListNode(1, 2, 3, -3, 4)), 1, 2, 4);
+                new ListNode<>(1, 2, 3, -3, 4)), 1, 2, 4);
     }
 
-    public ListNode removeZeroSumSublists(ListNode head) {
+    public ListNode<Integer> removeZeroSumSublists(ListNode<Integer> head) {
         // 2024/3/28 NO.1
         // 2024/3/31 NO.2 没思路，没看懂...
         // 2024/4/1  NO.3 没思路，能看懂答案
-        ListNode dummy = new ListNode(0);
+        ListNode<Integer> dummy = new ListNode<>(0);
         dummy.next = head;
-        Map<Integer, ListNode> map = new HashMap<>();
+        Map<Integer, ListNode<Integer>> map = new HashMap<>();
         // TODO
+
         return dummy.next;
     }
 

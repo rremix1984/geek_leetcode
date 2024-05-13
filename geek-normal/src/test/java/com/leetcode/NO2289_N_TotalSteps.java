@@ -33,23 +33,52 @@ public class NO2289_N_TotalSteps {
 
     @Test
     public void test() {
-        assert 3 == totalSteps(5,3,4,4,7,3,6,11,8,5,11);
-        assert 0 == totalSteps(4,5,7,7,13);
+        assert 3 == totalSteps(5, 3, 4, 4, 7, 3, 6, 11, 8, 5, 11);
+        assert 0 == totalSteps(4, 5, 7, 7, 13);
     }
 
     public int totalSteps(int... nums) {
         int ans = 0;
-        Deque<int[]> st = new ArrayDeque<>();
-        for (int num : nums) {
-            int maxT = 0;
-            while (!st.isEmpty() && st.peek()[0] <= num)
-                maxT = max(maxT, st.pop()[1]);
-
-            maxT = st.isEmpty() ? 0 : maxT + 1;
-            ans = max(ans, maxT);
-            st.push(new int[]{num, maxT});
-        }
         return ans;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+// 方法1：
+public int totalSteps(int... nums) {
+    int ans = 0;
+    Deque<int[]> st = new ArrayDeque<>();
+    for (int num : nums) {
+        int maxT = 0;
+        while (!st.isEmpty() && st.peek()[0] <= num)
+            maxT = max(maxT, st.pop()[1]);
+
+        maxT = st.isEmpty() ? 0 : maxT + 1;
+        ans = max(ans, maxT);
+        st.push(new int[]{num, maxT});
+    }
+    return ans;
+}
+*/

@@ -19,7 +19,7 @@ import static java.util.Comparator.comparingInt;
               / \         2         | \
            1 /   \ 1                |  \  3
             /     \        5        | 4 \
-start ---> 〇      ③---------------|--->⑦ ----->⑧ end
+start ---> 〇      ③---------------|--->⑦------>⑧ end
             \    /                 |   /
            8 \  /  5               |  / 7
               \/         2         |/
@@ -37,68 +37,20 @@ public class NO18_DijkstraTest {
 
     @Test
     public void test() {
-        MatrixNode<Integer> node = initIR(10);
+        MatrixNode<Integer> node = initIR(6);
         // 存储所有找到的最短路径
-        MatrixNode<Integer> start = node.pos(5);
-        MatrixNode<Integer> end = node.pos(7);
-        printMatrix(node, start, end);
+        MatrixNode<Integer> start = node.pos(0);
+        MatrixNode<Integer> end = node.pos(6);
+        print(node, start, end);
         // TODO
         // 2024/5/8  NO.1 终于看懂了，能做出来了
         // 2024/5/9  NO.2 一遍过
         // 2024/5/10 NO.3 能做出来，有点磕巴，时间上肯定是超时了（10分钟）
+        // 2024/5/12 NO.4 一遍过
         List<List<MatrixNode<Integer>>> res = new ArrayList<>();
-        dijkstra(res, start, end);
-//        dfs(res, new ArrayList<>(), start, end, new HashSet<>());
-        printAllPaths(res);
-    }
-
-    private void dijkstra(List<List<MatrixNode<Integer>>> res,
-                          MatrixNode<Integer> start,
-                          MatrixNode<Integer> end) {
-        Queue<MatrixNode<Integer>> queue =
-                new PriorityQueue<>(comparingInt(a -> a.dist));
-        start.dist = 0;
-        queue.offer(start);
-        while (!queue.isEmpty()) {
-            MatrixNode<Integer> cur = queue.poll();
-            if (cur.dist > end.dist)
-                break;
-
-            update(queue, cur, cur.up);
-            update(queue, cur, cur.down);
-            update(queue, cur, cur.left);
-            update(queue, cur, cur.right);
-        }
-        dfss(res, new LinkedList<>(), end);
-    }
-
-    private void dfss(List<List<MatrixNode<Integer>>> res,
-                     LinkedList<MatrixNode<Integer>> list,
-                     MatrixNode<Integer> end) {
-        list.addFirst(end);
-        if (end.prevs.isEmpty())
-            res.add(new LinkedList<>(list));
-        else
-            end.prevs.forEach(cur -> dfss(res, list, cur));
-        list.removeFirst();
-    }
-
-    private void update(Queue<MatrixNode<Integer>> queue,
-                        MatrixNode<Integer> cur,
-                        MatrixNode<Integer> next) {
-        if (next == null)
-            return;
-        int dist = cur.dist + next.val;
-        if (dist < next.dist) {
-            next.dist = dist;
-            next.prevs.clear();
-            next.prevs.add(cur);
-            queue.offer(next);
-        } else if (dist == next.dist) {
-            if (!next.prevs.contains(cur))
-                next.prevs.add(cur);
-            queue.offer(next);
-        }
+//        dijkstra(res, start, end);
+        // dfs(res, new ArrayList<>(), start, end, new HashSet<>());
+        print(res);
     }
 
 }

@@ -4,7 +4,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-
 import static com.leetcode.util.SystemUtil.printArr;
 import static java.lang.Math.abs;
 

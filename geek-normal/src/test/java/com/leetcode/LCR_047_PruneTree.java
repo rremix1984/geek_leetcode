@@ -59,7 +59,7 @@ public class LCR_047_PruneTree {
                         0)));
     }
 
-    public TreeNode pruneTree(TreeNode root) {
+    public TreeNode<Integer> pruneTree(TreeNode<Integer> root) {
         // 2024/3/26 NO.1 没思路
         // 2024/3/30 NO.2 还是没思路, 好的是已经看懂了
         // 2024/4/1  NO.3 思路差点，能看懂
@@ -69,7 +69,7 @@ public class LCR_047_PruneTree {
         return root;
     }
 
-    private boolean isZeroTree(TreeNode node) {
+    private boolean isZeroTree(TreeNode<Integer> node) {
         // TODO
 
         return false;

@@ -5,9 +5,9 @@ package com.lonch.util;
 
 import lombok.*;
 import java.util.*;
-
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.System.out;
+import static java.util.Comparator.comparingInt;
 
 /**
  * Node
@@ -24,32 +24,25 @@ public class Node<E> {
 
     public Node<E> parent, left, right;
 
-    boolean visit;
-
     public int dist = MAX_VALUE;
 
-    public void setLeft(Node<E> left) {
-        this.left = left;
-        if (left != null)
-            left.parent = this;
-    }
-
-    public void setRight(Node<E> right) {
-        this.right = right;
-        if (right != null)
-            right.parent = this;
-    }
-
     public Node<E> copy() {
-        Node<E> node = new Node<>(this.data);
-        if (this.left != null) {
-            node.left = this.left.copy();
+        Node<E> node = new Node<>(data);
+        if (left != null) {
+            node.left = left.copy();
             node.left.parent = node;
         }
-        if (this.right != null) {
-            node.right = this.right.copy();
+
+        if (right != null) {
+            node.right = right.copy();
             node.right.parent = node;
         }
+        return node;
+    }
+
+    public Node<E> copyAndParent() {
+        Node<E> node = copy();
+        this.parent = node;
         return node;
     }
 
@@ -78,19 +71,19 @@ public class Node<E> {
         return sb.toString();
     }
 
-    private static <E> void dfs(Node<E> node, HashSet<Node<E>> visit, StringBuilder sb) {
+    private static <E> void dfs(Node<E> node,
+                                HashSet<Node<E>> visit, StringBuilder sb) {
         if (node == null || visit.contains(node))
             return;
 
         sb.append(node.data).append(" ");
         visit.add(node);
 
-        dfs(node.left, visit, sb);
-        dfs(node.right, visit, sb);
-        dfs(node.parent, visit, sb);
+        node.getNeighbors().forEach(
+                cur -> dfs(cur, visit, sb));
     }
 
-    public static <E> void printTree(Node<E> root) {
+    public static <E> void print(Node<E> root) {
         if (root == null)
             return;
 
@@ -111,7 +104,6 @@ public class Node<E> {
                     continue;
 
                 out.print(node.data + " ");
-
                 if (node.left != null)
                     queue.add(node.left);
 
@@ -120,7 +112,8 @@ public class Node<E> {
 
                 size--;
             }
-            out.println(); // 每层遍历结束后换行
+            // 每层遍历结束后换行
+            out.println();
         }
     }
 
@@ -129,11 +122,34 @@ public class Node<E> {
         List<Node<E>> neighbors = new ArrayList<>();
         if (parent != null)
             neighbors.add(parent);
+
         if (left != null)
             neighbors.add(left);
+
         if (right != null)
             neighbors.add(right);
+
         return neighbors;
+    }
+
+    public static void dijkstra(Node<Character> root, StringBuilder sb) {
+        if (root == null)
+            return;
+        Queue<Node<Character>> queue
+                    = new PriorityQueue<>(comparingInt(n -> n.dist));
+        root.dist = 0;
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node<Character> node = queue.poll();
+            sb.append(node.data).append(" ");
+            node.getNeighbors().forEach(
+                cur -> {
+                    if (node.dist + 1 < cur.dist) {
+                        cur.dist = node.dist + 1;
+                        queue.add(cur);
+                    }
+            });
+        }
     }
 
     @Override

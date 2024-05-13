@@ -51,22 +51,23 @@ import static org.junit.Assert.assertTrue;
         二叉树包含的节点数目在 1 到 2500 之间。
     Related Topics:树,深度优先搜索,广度优先搜索,链表,二叉树
 */
+@SuppressWarnings("ALL")
 public class NO1367_N_IsSubPath {
 
     @Test
     public void test() {
-        assertTrue(isSubPath(new ListNode(4, 2, 8),
+        assertTrue(isSubPath(new ListNode<>(4, 2, 8),
                 cTree(1, 4, 4, null, 2, 2, null, 1,
                         null, 6, 8, null, null, null, null, 1, 3)));
-        assertTrue(isSubPath(new ListNode(1,4,2,6),
+        assertTrue(isSubPath(new ListNode<>(1,4,2,6),
                 cTree(1, 4, 4, null, 2, 2, null, 1,
                         null, 6, 8, null, null, null, null, 1, 3)));
-        assertFalse(isSubPath(new ListNode(1, 4, 2, 6, 8),
+        assertFalse(isSubPath(new ListNode<>(1, 4, 2, 6, 8),
                 cTree(1, 4, 4, null, 2, 2, null, 1,
                         null, 6, 8, null, null, null, null, 1, 3)));
     }
 
-    public boolean isSubPath(ListNode head, TreeNode root) {
+    public boolean isSubPath(ListNode<Integer> head, TreeNode<Integer> root) {
         // 2024/3/29 NO.1
         if (root == null)
             return false;

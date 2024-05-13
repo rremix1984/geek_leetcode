@@ -192,6 +192,11 @@ public class MathUtils {
         return new ArrayList<>();
     }
 
+    public static List<Integer> getArrayI() {
+        return new ArrayList<>();
+    }
+
+
     public static List<Integer> getLinkedList(int num) {
         List<Integer> l1 = new LinkedList<>();
         l1.add(num);

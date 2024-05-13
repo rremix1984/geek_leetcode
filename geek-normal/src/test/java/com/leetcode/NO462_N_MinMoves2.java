@@ -34,7 +34,7 @@ public class NO462_N_MinMoves2 {
 
     @Test
     public void test() {
-        assert 2 == minMoves2(new int[]{1, 2, 3});
+        assert 2  == minMoves2(new int[]{1, 2, 3});
         assert 16 == minMoves2(new int[]{1, 10, 2, 9});
     }
 

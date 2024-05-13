@@ -6,7 +6,7 @@ package com.lonch;
 import com.lonch.util.Node;
 import com.lonch.util.TreeNode;
 import org.junit.Test;
-import static com.lonch.util.Node.printTree;
+import static com.lonch.util.Node.print;
 import static java.lang.Math.pow;
 import static org.junit.Assert.assertEquals;
 
@@ -29,33 +29,17 @@ public class NO3_CreateTreeNode {
     public void test() {
         int depth = 4;
         // 快速排序
-        Node<Integer> node = dfs(depth, 0);
-        assertEquals("[0, " +
-                        "[1, [3, [7, [8], [4, [9, [10]], " +
-                        "[2, [5, [11, [12], [6, [13, [14]]]",
-                node.toString());
+//        Node<Integer> node = dfs(depth, 0);
+//        assertEquals("[0, " +
+//                        "[1, [3, [7, [8], [4, [9, [10]], " +
+//                        "[2, [5, [11, [12], [6, [13, [14]]]",
+//                node.toString());
         // 2024/4/8  NO.1 没思路，能做出来
         // 2024/4/9  NO.2 没思路，看答案做出来了，题不难
         // 2024/4/14 NO.3 做出来了，有点瑕疵
         // 2024/4/15 NO.4 一遍过
         // 2024/4/30 NO.5 没做出来，没思路了
-        printTree(node);
-    }
-
-    private Node<Integer> dfs(int depth, int val) {
-        if (depth == 0)
-            return null;
-
-        Node<Integer> node = new Node<>(val);
-        node.left = dfs(depth - 1, 2 * val + 1);
-        if (node.left != null)
-            node.left.parent = node;
-
-        node.right = dfs(depth - 1, 2 * val + 2);
-        if (node.right != null)
-            node.right.parent = node;
-
-        return node;
+//        print(node);
     }
 
 }

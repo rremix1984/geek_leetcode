@@ -14,7 +14,7 @@ import static java.util.Comparator.comparingInt;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] ||||||||||
+    [TREENODE] |||||||||||||
     (中等)
     NO.11 创建的树复制成三个份，根用 parent 彼此连接，
         从任意节点开始，遍历全部，输出遍历结果要求:
@@ -23,10 +23,10 @@ import static org.junit.Assert.assertEquals;
         3）不能改动树结构，
         4）不能修改节点结构和值
         5）只能从给定的节点开始变遍历，而且不能使用任何中间介质做排重或存储.
-           《也就是不能使用 HashSet 做判断》
-           ______________________
+         《也就是不能使用 HashSet 做判断》
+           _______________________
           |                      |
-         V                       |
+          V                      |
          1 --------> 2 --------> 3
        /   \       /   \       /   \
       4     5     6     7     8     9
@@ -38,25 +38,29 @@ public class NO11_BinaryTreeTraversal {
 
     @Test
     public void test() {
-        Node<Character> root1 = cTree(10, 0);
-        Node<Character> root2 = root1.copy();
-        Node<Character> root3 = root2.copy();
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12、13、14、15、16、18
         //           NO.3、4、5、6、7、8 一遍过
         // 2024/4/30 NO.9 一遍过
-        // 2024/5/7、8、10  NO.10-11-12 一遍过，dijkstra算法看懂了，更简单
-        root1.parent = root2;
-        root2.parent = root3;
+        // 2024/5/7、8、10
+        //           NO.10-11-12 一遍过，dijkstra算法看懂了，更简单
+        // 2024/5/11 NO-13 Dijkstra算法没做出来，没真的理解
+        // 2024/5/12 NO-14 Dijkstra 算法做错了，要多练习，
+        //           print方法也要练，很可能要考
+        // 2024/5/13 NO-15 一遍过
+        Node<Character> root1 = cTree(3, 0);
+        Node<Character> root2 = root1.copyAndParent();
+        Node<Character> root3 = root2.copyAndParent();
         root3.parent = root1;
-        printTree(root1);
+        print(root1);
+        StringBuilder sb = new StringBuilder();
         // 方法1：剪枝法
-        //
+        // dfs(root1.right.left, sb);
+
         // 方法2：dijkstra 算法
-        // StringBuilder sb = new StringBuilder();
-        // dijkstraTravel(root1.right.left, sb);
-        // out.println(sb);
+        dijkstra(root1.right.left, sb);
+        out.println(sb);
     }
 
 }
@@ -163,7 +167,7 @@ public void test() {
     String res = travel(root1.left.right.left);
     out.println(res);
     assertEquals("JEKBDHIACFLMGNOABDHIEJKCFLMGNOABDHIEJKCFLMGNO", res);
-    printTree(root1);
+    print(root1);
 }
 
 // 方法2：不使用 HashSet 去重， 或者 visited 标志位
@@ -204,11 +208,12 @@ private Node<Character> copys(Node<Character> root1, int delta) {
 
 // 方法2：Dijkstra算法，由于数据结构是一个有向无环图，
 // 任意2个节点之间有且仅有一条最短路径，所以可以做到路径唯一。
-private static void dijkstraTravel(Node<Character> root, StringBuilder sb) {
+private static void dijkstra(Node<Character> root,
+                             StringBuilder sb) {
     if (root == null)
         return;
 
-    PriorityQueue<Node<Character>> queue
+    Queue<Node<Character>> queue
             = new PriorityQueue<>(comparingInt(n -> n.dist));
     root.dist = 0;
     queue.add(root);
@@ -216,20 +221,22 @@ private static void dijkstraTravel(Node<Character> root, StringBuilder sb) {
     while (!queue.isEmpty()) {
         Node<Character> cur = queue.poll();
         sb.append(cur.data + " ");
-        update(queue, cur);
+        update(queue, cur, cur.left);
+        update(queue, cur, cur.right);
+        update(queue, cur, cur.parent);
     }
 }
 
-private static void update(PriorityQueue<Node<Character>> queue,
-                           Node<Character> node) {
-    node.getNeighbors().forEach(
-        cur -> {
-            // 假设所有边的权重为 1
-            if (node.dist + 1 < cur.dist) {
-                cur.dist = node.dist + 1;
-                queue.add(cur);
-            }
-        }
-    );
+private static void update(Queue<Node<Character>> queue,
+                           Node<Character> node, Node<Character> next) {
+    if (next == null)
+        return;
+
+    // 假设所有边的权重为 1
+    int dist = node.dist + 1;
+    if (dist < next.dist) {
+        next.dist = dist;
+        queue.add(next);
+    }
 }
 */
