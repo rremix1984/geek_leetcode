@@ -101,8 +101,6 @@ public class NO17_SnakeGameII {
             init();
             return true;
         }
-    }
-
     @Getter
     static class DoubleLinkedList<T> {
         private MatrixNode<T> head;
