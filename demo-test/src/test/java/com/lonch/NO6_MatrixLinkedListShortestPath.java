@@ -13,9 +13,9 @@ import static java.lang.System.out;
 import static java.util.Comparator.comparingInt;
 
 /**
-    [MATRIXLINKED] ||||| ||||| ||||| |||||
+    [MATRIXLINKED] ||||||||||||||||||||
     (简单)
-    NO.6 在上一步（NO5）矩阵已经建好的基本上，
+    NO.6 在上一步（NO.5）矩阵已经建好的基本上，
          任意给出两个节点，输出所有最短路径。
  */
 @SuppressWarnings("all")

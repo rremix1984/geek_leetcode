@@ -14,7 +14,7 @@ import static java.lang.System.*;
 import static java.util.Arrays.fill;
 
 /**
-    |||
+    ||||
     [简单]
     NO.17 贪吃蛇
     问双向链表、三向链表、四向链表，然后用四向链表结构构建一个双向链表，
