@@ -25,6 +25,7 @@ public class NO12_TwoLinkedList {
 
     public static void main(String[] args) {
         // 2024/4/14 NO.1
+
     }
 
 }

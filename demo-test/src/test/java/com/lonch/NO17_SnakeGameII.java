@@ -5,6 +5,8 @@ package com.lonch;
 
 import com.lonch.util.MatrixNode;
 import lombok.Getter;
+import lombok.val;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -15,7 +17,6 @@ import static java.util.Arrays.fill;
     |||
     [简单]
     NO.17 贪吃蛇
-
     问双向链表、三向链表、四向链表，然后用四向链表结构构建一个双向链表，
     然后再把双向链表改为蛇形链表，最后是用蛇形链表写一个贪吃蛇的弹出和吃入方法。
     @author wangxiaozhe
