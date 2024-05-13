@@ -12,7 +12,7 @@ import static java.lang.System.*;
 import static java.util.Arrays.fill;
 
 /**
-    |
+    |||
     [简单]
     NO.17 贪吃蛇
 
@@ -26,108 +26,9 @@ public class NO17_SnakeGameII {
     public static void main(String[] args) {
         // 2024/5/10 NO.1 一遍过
         // 2024/5/11 NO.2 没做对，要重复的练习才行
-        Game g = new Game();
-        while (g.move(new Scanner(in)
-                .nextLine().toUpperCase().charAt(0)))
-            out.println("W/A/S/D");
-        out.println("game over");
-    }
+        // 2024/5/12 NO.3 能做出来，还不熟练，还要多练习
+        // 2024/5/13 NO.4 做错了，查bug居然要看答案...
 
-    static class Game{
-        int ROWS = 10, COLS = 10;
-        DBLink<MatrixNode> snake;
-        char[][] board;
-        int[] food;
-        public Game() {
-            food = new int[]{3, 3};
-            snake = new DBLink<>();
-            snake.addFirst(new MatrixNode<>(0, 0));
-            board = new char[ROWS][COLS];
-            init();
-        }
-        public void init() {
-            for (int i = 0; i < ROWS; i++)
-                Arrays.fill(board[i], '-');
-            board[food[0]][food[1]] = 'F';
-            MatrixNode cur = snake.getFirst();
-            while (cur != null) {
-                board[cur.row][cur.col] = '*';
-                cur = cur.right;
-            }
-            for (int i = 0; i < ROWS; i++) {
-                for (int j = 0; j < COLS; j++)
-                    out.print(board[i][j] + " ");
-                out.println();
-            }
-        }
-        public boolean move(char dir) {
-            MatrixNode head = snake.getFirst();
-            int row = head.row;
-            int col = head.col;
-            switch (dir) {
-                case 'W': row--; break;
-                case 'S': row++; break;
-                case 'A': col--; break;
-                case 'D': col++; break;
-            }
-            if (row < 0 || col < 0 || row >= ROWS || col >= COLS
-                || board[row][col] == '*') {
-                return false;
-            }
-            MatrixNode nHead = new MatrixNode(row, col);
-            snake.addFirst(nHead);
-            if (food[0] == row && food[1] == col) {
-                do {
-                    food = new int[]{new Random().nextInt(ROWS),
-                            new Random().nextInt(COLS)};
-                } while (contains(snake, food));
-            } else {
-                snake.removeLast();
-            }
-            init();
-            return true;
-        }
-
-        private boolean contains(DBLink<MatrixNode> snake, int[] food) {
-            MatrixNode cur = snake.head;
-            while (cur != null) {
-                if (cur.row == food[0] && cur.col == food[1])
-                    return true;
-                cur = cur.right;
-            }
-            return false;
-        }
-    }
-
-    static class DBLink<E> {
-        MatrixNode<E> head;
-        MatrixNode<E> tail;
-
-        public void removeLast() {
-            if (tail == null)
-                return;
-
-            if (tail.left == null) {
-                head = tail = null;
-            } else {
-                tail.left.right = null;
-                tail = tail.left;
-            }
-        }
-
-        public void addFirst(MatrixNode node) {
-            if (head == null) {
-                head = tail = node;
-                return;
-            }
-            head.left = node;
-            node.right = head;
-            head = node;
-        }
-
-        public MatrixNode<E> getFirst() {
-            return head;
-        }
     }
 
 }
@@ -238,7 +139,8 @@ static class Game{
 
         if (position[0] == food[0] && position[1] == food[1]) {
             score++;
-            food = new int[]{new Random().nextInt(ROWS), new Random().nextInt(COLS)};
+            food = new int[]{new Random().nextInt(ROWS),
+                   new Random().nextInt(COLS)};
         } else {
             //***********************
 //             区别点 3:
@@ -342,7 +244,7 @@ static class SnakeGame {
         if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS
                 || board[newRow][newCol] == '*')
             return false;
-
+        
         MatrixNode newNode= new MatrixNode(newRow, newCol);
         snake.addFirst(newNode);
         if (newRow == food[0] && newCol == food[1])

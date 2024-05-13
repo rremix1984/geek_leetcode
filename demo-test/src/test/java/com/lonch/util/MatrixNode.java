@@ -27,8 +27,6 @@ public class MatrixNode<T> {
     // 上、下、左、右四个指针
     public MatrixNode<T> left, right, up, down;
 
-    public MatrixNode<T> head, tail;
-
     public int dist = MAX_VALUE;
 
     public List<MatrixNode<T>> prevs = new ArrayList<>();
@@ -294,53 +292,6 @@ public class MatrixNode<T> {
             pr = pr.right;
 
         return pr;
-    }
-
-    public MatrixNode<T> getFirst() {
-        return head;
-    }
-
-    // 在链表头部添加节点
-    public void addFirst(T value) {
-        MatrixNode<T> newNode = new MatrixNode<>(value);
-        newNode.row = ((int[])value)[0];
-        newNode.col = ((int[])value)[1];
-        if (head == null) {
-            tail = newNode;
-            head = tail;
-            return;
-        }
-
-        newNode.right = head;
-        head.left = newNode;
-        head = newNode;
-    }
-
-    // 在链表尾部添加节点
-    public void addLast(T value) {
-        MatrixNode<T> newNode = new MatrixNode<>(value);
-        newNode.row = ((int[])value)[0];
-        newNode.col = ((int[])value)[1];
-        if (tail == null) {
-            head = tail = newNode;
-        } else {
-            tail.right = newNode;
-            newNode.left = tail;
-            tail = newNode;
-        }
-    }
-
-    // 移除尾部节点
-    public void removeLast() {
-        if (tail == null)
-            return;
-
-        if (tail.left != null) {
-            tail = tail.left;
-            tail.right = null;
-        } else {
-            head = tail = null;
-        }
     }
 
 }

@@ -14,7 +14,7 @@ import static java.util.Comparator.comparingInt;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREENODE] |||||||||||
+    [TREENODE] |||||||||||||
     (中等)
     NO.11 创建的树复制成三个份，根用 parent 彼此连接，
         从任意节点开始，遍历全部，输出遍历结果要求:
@@ -23,10 +23,10 @@ import static org.junit.Assert.assertEquals;
         3）不能改动树结构，
         4）不能修改节点结构和值
         5）只能从给定的节点开始变遍历，而且不能使用任何中间介质做排重或存储.
-           《也就是不能使用 HashSet 做判断》
-           ______________________
+         《也就是不能使用 HashSet 做判断》
+           _______________________
           |                      |
-         V                       |
+          V                      |
          1 --------> 2 --------> 3
        /   \       /   \       /   \
       4     5     6     7     8     9
@@ -38,9 +38,6 @@ public class NO11_BinaryTreeTraversal {
 
     @Test
     public void test() {
-        Node<Character> root1 = cTree(3, 0);
-        Node<Character> root2 = root1.copy();
-        Node<Character> root3 = root2.copy();
         // 2024/4/10 NO.1 没做出来
         // 2024/4/11 NO.2 没做出来，思路对
         // 2024/4/12、13、14、15、16、18
@@ -49,16 +46,20 @@ public class NO11_BinaryTreeTraversal {
         // 2024/5/7、8、10
         //           NO.10-11-12 一遍过，dijkstra算法看懂了，更简单
         // 2024/5/11 NO-13 Dijkstra算法没做出来，没真的理解
-        root1.parent = root2;
-        root2.parent = root3;
+        // 2024/5/12 NO-14 Dijkstra 算法做错了，要多练习，
+        //           print方法也要练，很可能要考
+        // 2024/5/13 NO-15 一遍过
+        Node<Character> root1 = cTree(3, 0);
+        Node<Character> root2 = root1.copyAndParent();
+        Node<Character> root3 = root2.copyAndParent();
         root3.parent = root1;
         print(root1);
         StringBuilder sb = new StringBuilder();
         // 方法1：剪枝法
         // dfs(root1.right.left, sb);
-        //
+
         // 方法2：dijkstra 算法
-        // dijkstra(root1.right.left, sb);
+        dijkstra(root1.right.left, sb);
         out.println(sb);
     }
 

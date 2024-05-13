@@ -6,6 +6,8 @@ package com.lonch;
 import com.lonch.util.MatrixNode;
 import lombok.val;
 import org.junit.Test;
+import sun.java2d.xr.MaskTile;
+
 import java.util.*;
 import static com.lonch.util.MatrixNode.*;
 import static java.lang.System.arraycopy;
@@ -13,19 +15,19 @@ import static java.lang.System.out;
 import static java.util.Comparator.comparingInt;
 
 /**
-    [MATRIXLINKED] |||||||||||||||||||
+    [MATRIXLINKED] ||||| ||||| ||||| |||||
     (简单)
-    NO.6 在上一步（NO5）矩阵已经建好的基本上，任意给出两个节点，输出所有最短路径
+    NO.6 在上一步（NO5）矩阵已经建好的基本上，
+         任意给出两个节点，输出所有最短路径。
  */
 @SuppressWarnings("all")
 public class NO6_MatrixLinkedListShortestPath {
 
     @Test
     public void test() {
-        MatrixNode<Integer> node = initI(6);
-        MatrixNode<Integer> start = node;
-        MatrixNode<Integer> end = node.pos(6);
-        print(node, start, end);
+        MatrixNode<Integer> start = initI(6);
+        MatrixNode<Integer> end   = start.pos(6);
+        print(start, start, end);
         List<List<MatrixNode<Integer>>> res = new ArrayList<>();
         // 2024/4/7   NO.1 没思路，但能看懂。
         // 2024/4/8   NO.2 有思路了，没写出来。
@@ -39,6 +41,8 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/5/9、10
         //            NO.15 Dijkstra算法能独立做出来了、一遍过
         // 2024/5/11  NO.16 Dijkstra
+        // 2024/5/12  NO.17 Dijkstra 一遍过
+        // 2024/5/13  NO.18 Dijkstra 没有一遍过，但是思路对
         // TODO 方法1：剪枝法
         // List<List<MatrixNode<Character>>> res = findShortestPaths(start, end);
         //

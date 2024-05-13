@@ -42,9 +42,7 @@ public class NO15_TreeNodeTest {
             return null;
 
         Node<Integer> cur = new Node<>();
-        if (father.data != null)
-            cur.parent = father;
-
+        cur.parent = father;
         cur.data = val;
 
         //左子的值为父亲x2， 右子的值为父亲x2+1

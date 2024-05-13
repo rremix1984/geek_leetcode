@@ -37,17 +37,18 @@ public class NO18_DijkstraTest {
 
     @Test
     public void test() {
-        MatrixNode<Integer> node = initIR(10);
+        MatrixNode<Integer> node = initIR(6);
         // 存储所有找到的最短路径
-        MatrixNode<Integer> start = node.pos(5);
-        MatrixNode<Integer> end = node.pos(7);
+        MatrixNode<Integer> start = node.pos(0);
+        MatrixNode<Integer> end = node.pos(6);
         print(node, start, end);
         // TODO
         // 2024/5/8  NO.1 终于看懂了，能做出来了
         // 2024/5/9  NO.2 一遍过
         // 2024/5/10 NO.3 能做出来，有点磕巴，时间上肯定是超时了（10分钟）
+        // 2024/5/12 NO.4 一遍过
         List<List<MatrixNode<Integer>>> res = new ArrayList<>();
-        // dijkstra(res, start, end);
+//        dijkstra(res, start, end);
         // dfs(res, new ArrayList<>(), start, end, new HashSet<>());
         print(res);
     }
