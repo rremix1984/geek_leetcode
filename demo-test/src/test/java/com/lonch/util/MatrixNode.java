@@ -5,6 +5,9 @@ package com.lonch.util;
 
 import lombok.*;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 import static java.lang.System.out;
@@ -44,20 +47,6 @@ public class MatrixNode<T> {
         this.col = col;
     }
 
-    public static <T> String getMatrix(MatrixNode<T> head) {
-        StringBuilder sb = new StringBuilder();
-        MatrixNode<T> col = head;
-        while (col != null) {
-            MatrixNode<T> row = col;
-            while (row != null) {
-                sb.append(row.val).append("\t");
-                row = row.right;
-            }
-            col = col.down;
-        }
-        return sb.toString();
-    }
-
     public List<MatrixNode<T>> getNeighbors() {
         List<MatrixNode<T>> neighbors = new ArrayList<>();
         if (this.left != null)
@@ -76,28 +65,45 @@ public class MatrixNode<T> {
     }
 
     public static MatrixNode<Character> initC(int n) {
-        return initC(n, n);
+        AtomicInteger c = new AtomicInteger(0);
+        Supplier<Character> supplier = () -> (char)('A' + c.getAndIncrement() % 26);
+        return init(n, n, supplier);
     }
 
-    public static MatrixNode<Character> initC(int row, int col) {
-        MatrixNode<Character> dummy = new MatrixNode<>(nextChar());
-        MatrixNode<Character> row1 = dummy;
+    public static <T> MatrixNode<T> init(int n, Supplier<T> supplier) {
+        return init(n, n, supplier);
+    }
+
+    public static MatrixNode<Integer> init(int n) {
+        Supplier<Integer> supplier = new AtomicInteger(1)::getAndIncrement;
+        return init(n, n, supplier);
+    }
+
+    public static MatrixNode<Integer> initIR(int n) {
+        Supplier<Integer> supplier =
+                () -> new Random().nextInt(10);
+        return init(n, n, supplier);
+    }
+
+    public static <T> MatrixNode<T> init(int row, int col, Supplier<T> supplier) {
+        MatrixNode<T> dummy = new MatrixNode<>(supplier.get());
+        MatrixNode<T> row1 = dummy;
         for (int i = 1; i < row; i++) {
-            row1.right = new MatrixNode<>(nextChar());
+            row1.right = new MatrixNode<>(supplier.get());
             row1.right.left = row1;
             row1 = row1.right;
         }
 
-        MatrixNode<Character> pre = dummy;
+        MatrixNode<T> pre = dummy;
         for (int i = 1; i < row; i++) {
-            MatrixNode<Character> newHead = new MatrixNode<>(nextChar());
+            MatrixNode<T> newHead = new MatrixNode<>(supplier.get());
             newHead.up = pre;
             pre.down = newHead;
 
-            MatrixNode<Character> up = pre;
-            MatrixNode<Character> right = newHead;
+            MatrixNode<T> up = pre;
+            MatrixNode<T> right = newHead;
             for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode<>(nextChar());
+                right.right = new MatrixNode<>(supplier.get());
                 right.right.left = right;
 
                 right = right.right;
@@ -138,85 +144,6 @@ public class MatrixNode<T> {
         print(head, null, null);
     }
 
-    public static MatrixNode<Integer> initI(int n) {
-        return initI(n, n);
-    }
-
-    public static MatrixNode<Integer> initI(int row, int col) {
-        int c = 1;
-        MatrixNode<Integer> dummy = new MatrixNode<>(c++);
-        MatrixNode<Integer> row1 = dummy;
-        for (int i = 1; i < row; i++) {
-            row1.right = new MatrixNode<>(c++);
-            row1.right.left = row1;
-            row1 = row1.right;
-        }
-
-        MatrixNode<Integer> pre = dummy;
-        for (int i = 0; i < row - 1; i++) {
-            MatrixNode<Integer> newHead = new MatrixNode<>(c++);
-            newHead.up = pre;
-            pre.down = newHead;
-
-            MatrixNode<Integer> up = pre;
-            MatrixNode<Integer> right = newHead;
-            for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode<>(c++);
-                right.right.left = right;
-                right = right.right;
-                up = up.right;
-                right.up = up;
-                up.down = right;
-            }
-            pre = newHead;
-        }
-        return dummy;
-    }
-
-    public static MatrixNode<Integer> initIR(int n) {
-        return initIR(n, n);
-    }
-
-    public static MatrixNode<Integer> initIR(int row, int col) {
-        MatrixNode<Integer> dummy = new MatrixNode<>(new Random().nextInt(10));
-        MatrixNode<Integer> row1 = dummy;
-        for (int i = 1; i < row; i++) {
-            row1.right = new MatrixNode<>(i);
-            row1.right.left = row1;
-            row1 = row1.right;
-        }
-
-        MatrixNode<Integer> pre = dummy;
-        for (int i = 1; i < row; i++) {
-            MatrixNode<Integer> newHead = new MatrixNode<>(
-                    new Random().nextInt(10));
-            newHead.up = pre;
-            pre.down = newHead;
-
-            MatrixNode<Integer> up = pre;
-            MatrixNode<Integer> right = newHead;
-            for (int j = 1; j < col; j++) {
-                right.right = new MatrixNode<>(
-                        new Random().nextInt(10));
-                right.right.left = right;
-
-                right = right.right;
-                up = up.right;
-
-                right.up = up;
-                up.down = right;
-            }
-            pre = newHead;
-        }
-        return dummy;
-    }
-
-    static int c;
-
-    public static char nextChar() {
-        return (char) ('a' + (c++ % 26));
-    }
-
     public static <T> void print(List<List<MatrixNode<T>>> allPaths) {
         print(allPaths, null, null);
     }
@@ -250,8 +177,8 @@ public class MatrixNode<T> {
     // 递归搜索最短路径
     public static <T> void dfs(List<List<MatrixNode<T>>> res,
                                 List<MatrixNode<T>> list,
-                                 MatrixNode<T> start, MatrixNode<T> end,
-                                 Set<MatrixNode<T>> visited) {
+                                MatrixNode<T> start, MatrixNode<T> end,
+                                Set<MatrixNode<T>> visited) {
 
         if (visited.contains(start))
             return;

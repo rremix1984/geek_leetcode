@@ -7,7 +7,6 @@ import com.lonch.util.Node;
 import com.lonch.util.TreeNode;
 import org.junit.Test;
 import java.util.*;
-import static com.lonch.util.MatrixNode.nextChar;
 import static com.lonch.util.Node.print;
 import static com.lonch.util.TreeNode.*;
 import static java.lang.System.out;
