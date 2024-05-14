@@ -45,11 +45,11 @@ public class NO6_MatrixLinkedListShortestPath {
         // 2024/5/13  NO.18 Dijkstra 没有一遍过，但是思路对
         // 2024/5/14  NO.19 Dijkstra 做出来了，剪枝法也做出来了
         // TODO 方法1：剪枝法
-         List<List<MatrixNode<Integer>>> res = findShortestPaths(end, start);
+        // List<List<MatrixNode<Integer>>> res = findShortestPaths(end, start);
         //
         // TODO 方法2：迪杰克斯拉算法
 //        dijkstra(res, start, end);
-        print(res);
+//        print(res);
     }
 
 }

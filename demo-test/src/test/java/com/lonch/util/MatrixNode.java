@@ -66,7 +66,8 @@ public class MatrixNode<T> {
 
     public static MatrixNode<Character> initC(int n) {
         AtomicInteger c = new AtomicInteger(0);
-        Supplier<Character> supplier = () -> (char)('A' + c.getAndIncrement() % 26);
+        Supplier<Character> supplier =
+                () -> (char)('A' + c.getAndIncrement() % 26);
         return init(n, n, supplier);
     }
 
@@ -75,7 +76,8 @@ public class MatrixNode<T> {
     }
 
     public static MatrixNode<Integer> init(int n) {
-        Supplier<Integer> supplier = new AtomicInteger(1)::getAndIncrement;
+        Supplier<Integer> supplier =
+                new AtomicInteger(1)::getAndIncrement;
         return init(n, n, supplier);
     }
 
@@ -124,15 +126,13 @@ public class MatrixNode<T> {
         while (col != null) {
             MatrixNode<T> row = col;
             while (row != null) {
-                if (row == start || row == end) {
-                    if ((row.val + "").length() == 1) {
+                if (row == start || row == end)
+                    if ((row.val + "").length() == 1)
                         out.printf(" (%s)", row.val);
-                    } else {
+                    else
                         out.printf("(%2s)", row.val);
-                    }
-                } else {
+                else
                     out.printf(" %2s ", row.val);
-                }
                 row = row.right;
             }
             out.println();
@@ -157,53 +157,13 @@ public class MatrixNode<T> {
                     out.printf(" (%2s) -> ", node.val);
                     continue;
                 }
-                if ((node.val + "").length() == 1) {
+                if ((node.val + "").length() == 1)
                     out.printf(" (%s) -> ", node.val);
-                } else {
+                else
                     out.printf("(%2s) -> ", node.val);
-                }
             }
             out.println();
         }
-    }
-
-    public static  <T> List<List<MatrixNode<T>>> findShortestPaths(MatrixNode<T> start, MatrixNode<T> end) {
-        List<List<MatrixNode<T>>> res = new ArrayList<>();
-        // 剪枝法
-        dfs(res, new ArrayList<>(), start, end, new HashSet<>());
-        return res;
-    }
-
-    // 递归搜索最短路径
-    public static <T> void dfs(List<List<MatrixNode<T>>> res,
-                                List<MatrixNode<T>> list,
-                                MatrixNode<T> start, MatrixNode<T> end,
-                                Set<MatrixNode<T>> visited) {
-
-        if (visited.contains(start))
-            return;
-
-        // 加入当前节点到路径中
-        list.add(start);
-        visited.add(start);
-
-        // 如果当前节点是目标节点，且路径比已找到的最短路径短，则更新最短路径列表
-        if (start == end) {
-            if (res.isEmpty() || list.size() < res.get(0).size()) {
-                res.clear();
-                res.add(new ArrayList<>(list));
-            } else if (list.size() == res.get(0).size())
-                res.add(new ArrayList<>(list));
-        } else {
-            // 否则，继续搜索当前节点的相邻节点
-            start.getNeighbors().forEach(
-                    cur -> dfs(res, list, cur, end, visited)
-            );
-        }
-
-        // 回溯，移除当前节点，继续搜索其他可能的路径
-        list.remove(start);
-        visited.remove(start);
     }
 
     public MatrixNode<T> pos(int n) {
