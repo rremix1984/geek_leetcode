@@ -144,19 +144,20 @@ public class MatrixNode<T> {
         print(head, null, null);
     }
 
-    public static <T> void print(List<List<MatrixNode<T>>> allPaths) {
-        print(allPaths, null, null);
+    public static <T> void print(List<List<MatrixNode<T>>> res) {
+        print(res, null, null);
     }
 
-    public static <T> void print(List<List<MatrixNode<T>>> allPaths,
+    public static <T> void print(List<List<MatrixNode<T>>> res,
                                  MatrixNode<T> start, MatrixNode<T> end) {
-        out.println("\n All paths from start to end: " + allPaths.size());
-        for (List<MatrixNode<T>> path : allPaths) {
+        out.println("\n All paths from start to end: " + res.size());
+        for (List<MatrixNode<T>> path : res) {
             for (MatrixNode<T> node : path) {
                 if (node == start || node == end) {
                     out.printf(" (%2s) -> ", node.val);
                     continue;
                 }
+
                 if ((node.val + "").length() == 1)
                     out.printf(" (%s) -> ", node.val);
                 else

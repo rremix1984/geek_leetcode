@@ -4,12 +4,9 @@
 package com.lonch;
 
 import com.lonch.util.MatrixNode;
-import lombok.val;
 import org.junit.Test;
 import java.util.*;
 import static com.lonch.util.MatrixNode.*;
-import static com.lonch.util.Node.dijkstra;
-import static java.lang.System.arraycopy;
 import static java.lang.System.out;
 import static java.util.Comparator.comparingInt;
 
@@ -28,7 +25,7 @@ public class NO6_MatrixLinkedListShortestPath {
         MatrixNode<Integer> start = node.pos(2);
         MatrixNode<Integer> end   = node.pos(5);
         print(node, start, end);
-//        List<List<MatrixNode<Integer>>> res = new ArrayList<>();
+        List<List<MatrixNode<Integer>>> res = new ArrayList<>();
         // 2024/4/7   NO.1 没思路，但能看懂。
         // 2024/4/8   NO.2 有思路了，没写出来。
         // 2024/4/9   NO.3 一遍过，做了两遍都是一遍过
@@ -48,8 +45,9 @@ public class NO6_MatrixLinkedListShortestPath {
         // List<List<MatrixNode<Integer>>> res = findShortestPaths(end, start);
         //
         // TODO 方法2：迪杰克斯拉算法
-//        dijkstra(res, start, end);
-//        print(res);
+        // dijkstra(res, start, end);
+        //
+        print(res);
     }
 
 }
@@ -127,7 +125,7 @@ public void dijkstra(List<List<MatrixNode<Integer>>> res,
     // 使用优先队列按距离排序
     // 建立一个队列queue，根据 MatrixNode 的 dist 值从小到大排序
     Queue<MatrixNode<Integer>> queue = new PriorityQueue<>(
-            comparingInt(a -> a.dist)
+        comparingInt(a -> a.dist)
     );
 
     // 当前节点（start）从【起始点】开始的最短路径长度

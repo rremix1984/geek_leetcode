@@ -63,37 +63,6 @@ public class NO11_BinaryTreeTraversal {
         out.println(sb);
     }
 
-    private static void dijkstra(Node<Character> root,
-                                 StringBuilder sb) {
-        if (root == null)
-            return;
-
-        Queue<Node<Character>> queue
-                = new PriorityQueue<>(comparingInt(n -> n.dist));
-        root.dist = 0;
-        queue.add(root);
-
-        while (!queue.isEmpty()) {
-            Node<Character> cur = queue.poll();
-            sb.append(cur.data + " ");
-            cur.getNeighbors().forEach(
-                next -> {
-                    update(queue, cur, next);
-                }
-            );
-        }
-    }
-
-    private static void update(Queue<Node<Character>> queue,
-                               Node<Character> node, Node<Character> next) {
-        // 假设所有边的权重为 1
-        int dist = node.dist + 1;
-        if (dist < next.dist) {
-            next.dist = dist;
-            queue.add(next);
-        }
-    }
-
 }
 
 
@@ -253,9 +222,7 @@ private static void dijkstra(Node<Character> root,
         Node<Character> cur = queue.poll();
         sb.append(cur.data + " ");
         cur.getNeighbors().forEach(
-            next -> {
-                update(queue, cur, next);
-            }
+            next -> update(queue, cur, next)
         );
     }
 }
@@ -268,5 +235,6 @@ private static void update(Queue<Node<Character>> queue,
         next.dist = dist;
         queue.add(next);
     }
+
 }
 */
