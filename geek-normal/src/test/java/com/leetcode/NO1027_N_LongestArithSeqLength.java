@@ -8,6 +8,7 @@ import static java.lang.Math.max;
 
 /**
     [ARRAY] |||||
+    [DP]
     (中等)
     NO.1027 最长等差数列
     给你一个整数数组 nums，返回 nums 中最长等差子序列的长度。

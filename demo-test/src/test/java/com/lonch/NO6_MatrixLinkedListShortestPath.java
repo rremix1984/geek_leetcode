@@ -21,7 +21,7 @@ public class NO6_MatrixLinkedListShortestPath {
 
     @Test
     public void test() {
-        MatrixNode<Integer> node = init(5);
+        MatrixNode<Integer> node  = init(5);
         MatrixNode<Integer> start = node.pos(2);
         MatrixNode<Integer> end   = node.pos(5);
         print(node, start, end);
@@ -195,6 +195,7 @@ private void dfs(List<List<MatrixNode<Integer>>> res,
         node.prevs.forEach(
                 prev -> dfs(res, list, prev)
         );
+
     // 移除路径列表的当前节点，为回溯其他路径做准备
     list.removeFirst();
 }
