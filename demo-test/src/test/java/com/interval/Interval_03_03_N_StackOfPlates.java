@@ -48,21 +48,46 @@ public class Interval_03_03_N_StackOfPlates {
 }
 class StackOfPlates {
 
-    public StackOfPlates(int cap) {
+    private List<Stack<Integer>> stackList;
 
+    private int cap;
+
+    public StackOfPlates(int cap) {
+        this.stackList = new ArrayList<>();
+        this.cap = cap;
     }
 
     public void push(int val) {
+        if (this.cap == 0)
+            return;
 
+        Stack<Integer> curStack;
+        if (stackList.isEmpty()
+            || (curStack = stackList.get(stackList.size() - 1)).size()
+                    >= this.cap) {
+            curStack = new Stack<>();
+            this.stackList.add(curStack);
+        }
+        curStack.push(val);
     }
 
     public int pop() {
-        return -1;
+        return popAt(this.stackList.size() - 1);
     }
 
     public int popAt(int index) {
-
-        return -1;
+        if (cap == 0 || index >= this.stackList.size() || index < 0) {
+            return -1;
+        }
+        Stack<Integer> curStack = null;
+        if ((curStack = this.stackList.get(index)).isEmpty()) {
+            return -1;
+        }
+        int res = curStack.pop();
+        if (curStack.isEmpty()) {
+            this.stackList.remove(index);
+        }
+        return res;
     }
 
 }

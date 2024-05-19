@@ -6,18 +6,18 @@ package com.leetcode.easy;
 import com.leetcode.util.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+
+import java.util.*;
+
 import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.MathUtils.getArray;
 import static org.junit.Assert.assertEquals;
 
 /**
-    [TREE] ||||||||
+    [TREE] |||||||||
     (简单)
     NO.94 二叉树的中序遍历
-    给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。
+    给定一个二叉树的根节点root，返回它的中序遍历。
     示例 1：
         输入：root = [1, null, 2, 3]
         输出：[1, 3, 2]
@@ -58,7 +58,10 @@ public class NO094_E_InorderTraversal {
         // 2024/4/1  NO.8 一遍过
         // 2024/4/15 NO.9 没做对，但是思路对了，忘了一部分了
         // 2024/4/16 NO.10 做对了，能回忆起来
-        return null;
+        // 2024/5/16 NO.11 又不会了，化定势为棋力啊，大哥
+        List<Integer> res = new ArrayList<>();
+
+        return res;
     }
 
 }

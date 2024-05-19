@@ -6,6 +6,7 @@ package com.leetcode.util;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.val;
 
 import static java.util.Arrays.copyOf;
 
@@ -14,7 +15,7 @@ import static java.util.Arrays.copyOf;
  *
  * @author wangxiaozhe
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "unchecked", "EqualsWhichDoesntCheckParameterClass"})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,9 +23,11 @@ public class ListNode<E> {
 
     public E val = (E) Integer.valueOf(0);
 
-    public int data;
-
     public ListNode<E> next;
+
+    public ListNode(E val) {
+        this.val = val;
+    }
 
     public static <E> E toInt(ListNode<E> node, E defaultValue) {
         if (node == null)
@@ -90,28 +93,50 @@ public class ListNode<E> {
     }
 
     public static <E> void assertNodeEquals(ListNode<E> node, int... arr) {
-        assert new ListNode<>(arr).equals(node);
+        StringBuilder sb = new StringBuilder();
+        for (int j : arr) {
+            sb.append(j);
+        }
+        StringBuilder sb2 = new StringBuilder();
+        ListNode<E> cur = node;
+        while (cur != null) {
+            sb2.append(cur.val);
+            cur = cur.next;
+        }
+        System.out.println(sb);
+        System.out.println(sb2);
+        assert sb.toString().contentEquals(sb2);
     }
 
+    /**
+     * @param vals vals
+     */
     @SafeVarargs
     public ListNode(E... vals) {
-        if (vals != null) {
-            this.val = vals[0];
-            ListNode<E> cur = this;
-            for (int i = 1; i < vals.length; i++) {
-                cur.next = new ListNode<>(vals[i]);
-                cur = cur.next;
-            }
+        if (vals == null || vals.length == 0) {
+            throw new IllegalArgumentException("Values array must not be null or empty");
+        }
+
+        this.val = vals[0];
+
+        ListNode<E> cur = this;
+        for (int i = 1; i < vals.length; i++) {
+            cur.next = new ListNode<>(vals[i]);
+            cur = cur.next;
         }
     }
+
 
     public ListNode(E val, ListNode<E> next) {
         this.val = val;
         this.next = next;
     }
 
-    public boolean equals(ListNode<E> listNode) {
-        ListNode<E> p1 = this;
+    @Override
+    public boolean equals(Object o) {
+        ListNode<E> listNode = (ListNode<E>) o;
+        ListNode<E> p1 = new ListNode<>(val);
+        p1.next = next;
         ListNode<E> p2 = listNode;
         if (p2 == null)
             return false;
@@ -120,6 +145,7 @@ public class ListNode<E> {
             p1 = p1.next;
             p2 = p2.next;
         }
+
         return p1 == null && p2 == null;
     }
 

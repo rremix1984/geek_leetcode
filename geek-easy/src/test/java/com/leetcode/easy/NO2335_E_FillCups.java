@@ -4,14 +4,18 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
+import java.util.Arrays;
+import static java.util.Arrays.sort;
 
 /**
     [ARRAY] |
     (简单)（数学）
     2335. 装满杯子需要的最短总时长
-        现有一台饮水机，可以制备冷水、温水和热水。每秒钟，可以装满 2 杯 不同 类型的水或者 1 杯任意类型的水。
-        给你一个下标从 0 开始、长度为 3 的整数数组 amount ，其中 amount[0]、amount[1] 和 amount[2]
-        分别表示需要装满冷水、温水和热水的杯子数量。返回装满所有杯子所需的 最少 秒数。
+        现有一台饮水机，可以制备冷水、温水和热水。每秒钟，可以装满 2 杯 不同
+        类型的水或者 1 杯任意类型的水。给你一个下标从 0 开始、长度为 3 的整数
+        数组 amount ，其中 amount[0]、amount[1] 和 amount[2]
+        分别表示需要装满冷水、温水和热水的杯子数量。
+        返回装满所有杯子所需的最少秒数。
     示例 1：
         输入：amount = {1, 4, 2}
         输出：4
@@ -49,7 +53,7 @@ import org.junit.Test;
         所以当x是最大值时，y与z的差值的绝对值肯定小于x。z > y 的情况亦同。
         只要y与z的差值小于x，那么只要消耗较大值，就会使得z = y的情况。
 */
-public class NO2335_E_FillCups_x2 {
+public class NO2335_E_FillCups {
 
     @Test
     public void test() {
@@ -60,8 +64,22 @@ public class NO2335_E_FillCups_x2 {
 
     public int fillCups(int[] amount) {
         // 2024/2/27 NO.3
+        // 2024/5/15 NO.4
+        sort(amount);
 
-        return -1;
+        // 如果最大的杯子数量（amount[2]）大于或等于其他两种杯子数量之和，
+        // 则最少秒数就是 amount[2]。因为每秒最多可以装两杯不同类型的水，
+        // 所以在这种情况下，只需要装满 amount[2] 这么多秒。
+        if (amount[2] >= amount[1] + amount[0])
+            return amount[2];
+
+        // 如果 amount[2] 小于 amount[1] 和 amount[0] 之和，那么需要更多的
+        // 秒数来装满所有的杯子。
+        // amount[2] 是最多的水杯数量，所以需要至少 amount[2] 秒来装满这些杯子。
+        // 还需要处理剩下的 amount[1] + amount[0] - amount[2] 杯子。每秒最多可以
+        // 装两杯，所以计算 (amount[1] + amount[0] - amount[2] + 1) / 2，
+        // 这里加 1 是为了向上取整。
+        return amount[2] + (amount[1] + amount[0] - amount[2] + 1) / 2;
     }
 
 }

@@ -24,19 +24,22 @@ import org.junit.Test;
             2. 1 阶 + 2 阶
             3. 2 阶 + 1 阶
 */
-public class NO070_E_ClimbStairs_x2 {
+public class NO070_E_ClimbStairs {
 
     @Test
     public void test() {
-        assert 2 == climbStairs(2);// 2
-        assert 3 == climbStairs(3);// 3
-        assert 5 == climbStairs(4);// 5
+        assert 2  == climbStairs(2);// 2
+        assert 3  == climbStairs(3);// 3
+        assert 5  == climbStairs(4);// 5
         assert 89 == climbStairs(10);// 89
     }
 
     public int climbStairs(int n) {
-        return 0;
+        // 2024/5/15 NO.1 动态规划，不能一遍过但是思路对
+
+        return -1;
     }
+
 }
 
 
@@ -46,7 +49,8 @@ public class NO070_E_ClimbStairs_x2 {
 
 
 
-/**
+/*
+// 方法1：
 public int climbStairs(int n) {
     if (n == 1)
         return 1;
@@ -58,5 +62,19 @@ public int climbStairs(int n) {
         s2 = tmp;
     }
     return s1;
+}
+
+// 方法2：
+public int climbStairs(int n) {
+    if (n < 3)
+        return n;
+
+    int[] dp = new int[n + 1];
+    dp[1] = 1;
+    dp[2] = 2;
+    for (int i = 3; i <= n; i++)
+        dp[i] = dp[i - 1] + dp[i - 2];
+
+    return dp[n];
 }
  */

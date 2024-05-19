@@ -5,8 +5,10 @@ package com.leetcode.easy;
 
 import org.junit.Test;
 
+import static java.lang.Math.min;
+
 /**
-    [ARRAY] |
+    [ARRAY] |||
     (简单)
     1413. 逐步求和得到正数的最小值
         给你一个整数数组nums。你可以选定任意的【正数】startValue作为初始值。
@@ -52,6 +54,7 @@ public class NO1413_E_MinStartValue {
 
     public int minStartValue(int[] nums) {
         // 2024/2/29 NO.3
+        // 2024/5/15 NO.4 没思路，答案看懂了
         return -1;
     }
 
@@ -72,7 +75,7 @@ public class NO1413_E_MinStartValue {
 
 
 /*
-// 方法1：
+// 方法1：遍历法
 public int minStartValue(int[] nums) {
     int sum = 0;
     int min = 0;
@@ -83,8 +86,7 @@ public int minStartValue(int[] nums) {
     return -min + 1;
 }
 
-
-// 方法2
+// 方法2：二分法
 public int minStartValue(int[] nums) {
     int m = Arrays.stream(nums).min().getAsInt();
     if (m >= 0)

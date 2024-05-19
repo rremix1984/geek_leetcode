@@ -9,7 +9,7 @@ import static com.leetcode.util.MathUtils.cTree;
 import static com.leetcode.util.TreeNode.treeEquals;
 
 /**
-    [TREE] |||
+    [TREE] ||||
     (中等)
     LCR.047 二叉树剪枝
     给定一个二叉树 根节点 root ，树的每个节点的值要么是 0，要么是 1。
@@ -32,7 +32,7 @@ import static com.leetcode.util.TreeNode.treeEquals;
     提示:
         二叉树的节点个数的范围是 [1,200]
         二叉树节点的值只会是 0 或 1
-    Related Topics:树,深度优先搜索,二叉树
+    Related Topics:树,深度优先搜索,二叉树,剪枝法
 */
 public class LCR_047_PruneTree {
 
@@ -63,16 +63,8 @@ public class LCR_047_PruneTree {
         // 2024/3/26 NO.1 没思路
         // 2024/3/30 NO.2 还是没思路, 好的是已经看懂了
         // 2024/4/1  NO.3 思路差点，能看懂
-        if (isZeroTree(root))
-            return null;
-
-        return root;
-    }
-
-    private boolean isZeroTree(TreeNode<Integer> node) {
-        // TODO
-
-        return false;
+        // 2024/5/16 NO.4 能看懂，做不出来
+        return null;
     }
 
 }

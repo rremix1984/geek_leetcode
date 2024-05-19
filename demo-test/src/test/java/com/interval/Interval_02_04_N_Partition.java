@@ -6,6 +6,8 @@ package com.interval;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.SystemUtil.print;
+
 /**
     [LISTNODE] |
     (中等)
@@ -36,9 +38,8 @@ public class Interval_02_04_N_Partition {
     }
 
     public ListNode<Integer> partition(ListNode<Integer> head, int x) {
-        ListNode<Integer> dummy = new ListNode<>(0, head);
-
-        return dummy.next;
+        // 2024/5/16 NO.1 没思路，看懂了
+        return null;
     }
 
 }
@@ -62,27 +63,27 @@ public class Interval_02_04_N_Partition {
 // 方法1：
 public ListNode partition(ListNode head, int x) {
     // 新建两个链表
-    ListNode smlDummy = new ListNode(0);
-    ListNode bigDummy = new ListNode(0);
+    ListNode<Integer> lDummy = new ListNode<>(0);
+    ListNode<Integer> rDummy = new ListNode<>(0);
     // 遍历链表
-    ListNode sml = smlDummy;
-    ListNode big = bigDummy;
+    ListNode<Integer> left = lDummy;
+    ListNode<Integer> right = rDummy;
     while (head != null) {
         // 将 < x 的节点加入 sml 节点后
         if (head.val < x) {
-            sml.next = head;
-            sml = sml.next;
+            left.next = head;
+            left = left.next;
             // 将 >= x 的节点加入 big 节点后
         } else {
-            big.next = head;
-            big = big.next;
+            right.next = head;
+            right = right.next;
         }
         head = head.next;
     }
     // 拼接两链表
-    sml.next = bigDummy.next;
-    big.next = null;
-    return smlDummy.next;
+    left.next = rDummy.next;
+    right.next = null;
+    return lDummy.next;
 }
 
 // 方法2：
