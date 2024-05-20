@@ -18,15 +18,16 @@ import org.junit.Test;
         输入: head = [1, 2]
         输出: false
 */
-public class OfferII_027_E_IsPalindrome_x2 {
+@SuppressWarnings("all")
+public class OfferII_027_E_IsPalindrome {
 
     @Test
     public void test() {
-        assert  isPalindrome(new ListNode(1, 2, 3, 3, 2, 1));
-        assert !isPalindrome(new ListNode(1, 2));
+        assert  isPalindrome(new ListNode<>(1, 2, 3, 3, 2, 1));
+        assert !isPalindrome(new ListNode<>(1, 2));
     }
 
-    public boolean isPalindrome(ListNode head) {
+    public boolean isPalindrome(ListNode<Integer> head) {
         return true;
     }
 

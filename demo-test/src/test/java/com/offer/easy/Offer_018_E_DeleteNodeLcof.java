@@ -5,6 +5,8 @@ package com.offer.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
+
+import static com.leetcode.util.ListNode.assertNodeEquals;
 import static com.leetcode.util.LogUtil.info;
 
 /**
@@ -22,15 +24,16 @@ import static com.leetcode.util.LogUtil.info;
         输出: [4, 5, 9]
         解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -> 5 -> 9.
 */
-public class Offer_018_E_DeleteNodeLcof_x2 {
+@SuppressWarnings("all")
+public class Offer_018_E_DeleteNodeLcof {
 
     @Test
     public void test() {
-        assert new ListNode<>(4, 1, 9).equals(
+        assertNodeEquals(new ListNode<>(4, 1, 9),
                 deleteNode(new ListNode<>(4, 5, 1, 9), 5));
-        assert new ListNode<>(4, 5, 9).equals(
+        assertNodeEquals(new ListNode<>(4, 5, 9),
                 deleteNode(new ListNode<>(4, 5, 1, 9), 1));
-        assert new ListNode<>(5, -99).equals(
+        assertNodeEquals(new ListNode<>(5, -99),
                 deleteNode(new ListNode<>(-3, 5, -99), -3));
     }
 

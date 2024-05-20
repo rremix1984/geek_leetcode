@@ -5,9 +5,12 @@ package com.offer.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
+
+import static com.leetcode.util.ListNode.assertNodeEquals;
 import static org.junit.Assert.assertNull;
 
 /**
+    [LISTNODE]
     (简单)
     剑指 Offer II 023. 两个链表的第一个重合节点
         给定两个单链表的头节点 headA 和 headB ，请找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
@@ -32,7 +35,8 @@ import static org.junit.Assert.assertNull;
             由于这两个链表不相交，所以 intersectVal 必须为 0，而 skipA 和 skipB 可以是任意值。
             这两个链表不相交，因此返回 null 。
 */
-public class OfferII_023_E_GetIntersectionNode_x2 {
+@SuppressWarnings("all")
+public class OfferII_023_E_GetIntersectionNode {
 
     @Test
     public void test() {

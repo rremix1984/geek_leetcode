@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.Iterator;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
 import static com.leetcode.util.SystemUtil.print;
 import static com.leetcode.util.SystemUtil.printListNode;
 
@@ -31,19 +32,20 @@ import static com.leetcode.util.SystemUtil.printListNode;
     这样就得到了闭合为环的链表。然后我们找到新链表的最后一个节点，
     将当前闭合为环的链表断开，即可得到结果。
 */
+@SuppressWarnings("all")
 public class NO061_N_RotateList {
 
     @Test
     public void test() {
-        assert new ListNode<>(4, 5, 1, 2, 3).equals(
+        assertNodeEquals(new ListNode<>(4, 5, 1, 2, 3),
                 rotateRight(new ListNode<>(1, 2, 3, 4, 5), 2));
-        assert new ListNode<>(2, 0, 1).equals(
+        assertNodeEquals(new ListNode<>(2, 0, 1),
                 rotateRight(new ListNode<>(0, 1, 2), 4));
-        assert new ListNode<>(0, 1, 2).equals(
+        assertNodeEquals(new ListNode<>(0, 1, 2),
                 rotateRight(new ListNode<>(0, 1, 2), 3));
     }
 
-    public ListNode rotateRight(ListNode head, int k) {
+    public ListNode<Integer> rotateRight(ListNode<Integer> head, int k) {
         // 2024/3/12 NO.1
         // 2024/3/18 NO.2 压根没思路。先成环、再拆环
         // 2024/3/20 NO.3 做不出来，虽然不难，但是想的不够
@@ -51,6 +53,7 @@ public class NO061_N_RotateList {
         // 2024/3/23 NO.5【闭合成环】做不出来，只能说有印象
         // 2024/3/25 NO.6【闭合成环】几乎已经做出来了，差一点。
         // 2024/3/27 NO.7【闭合成环】边界条件处理不好，所以每次都差一点
+
         return null;
     }
 

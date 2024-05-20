@@ -6,6 +6,8 @@ package com.offer.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
+
 /**
     (简单)
     剑指 Offer 25. 合并两个排序的链表
@@ -14,13 +16,13 @@ import org.junit.Test;
         输入：1->2->4, 1->3->4
         输出：1->1->2->3->4->4
 */
-public class Offer_025_E_MergeTwoLists_x2 {
+@SuppressWarnings("all")
+public class Offer_025_E_MergeTwoLists {
 
     @Test
     public void test() {
-        assert new ListNode<>(1, 1, 2, 3, 4, 4).equals(
-            mergeTwoLists(new ListNode<>(1, 2, 4),
-                          new ListNode<>(1, 3, 4)));
+        assertNodeEquals(new ListNode<>(1, 1, 2, 3, 4, 4),
+                         mergeTwoLists(new ListNode<>(1, 2, 4), new ListNode<>(1, 3, 4)));
     }
 
     public ListNode<Integer> mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2) {

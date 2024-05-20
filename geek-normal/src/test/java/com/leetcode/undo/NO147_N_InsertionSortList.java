@@ -6,6 +6,8 @@ package com.leetcode.undo;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
+
 /**
     (中等)
     147. 对链表进行插入排序
@@ -27,9 +29,9 @@ public class NO147_N_InsertionSortList {
 
     @Test
     public void test() {
-        assert new ListNode<>(1, 2, 3, 4).equals(
+        assertNodeEquals(new ListNode<>(1, 2, 3, 4),
                 insertionSortList(new ListNode<>(4, 2, 1, 3)));
-        assert new ListNode<>(-1, 0, 3, 4, 5).equals(
+        assertNodeEquals(new ListNode<>(-1, 0, 3, 4, 5),
                 insertionSortList(new ListNode<>(-1, 5, 3, 4, 0)));
     }
 

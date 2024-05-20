@@ -106,6 +106,23 @@ public class ListNode<E> {
         assert sb.toString().contentEquals(sb2);
     }
 
+    public static <E> void assertNodeEquals(ListNode<E> node, ListNode<E> next) {
+        ListNode<E> p = next;
+        StringBuilder sb = new StringBuilder();
+        while (p != null) {
+            sb.append(p.val);
+            p = p.next;
+        }
+
+        StringBuilder sb2 = new StringBuilder();
+        ListNode<E> cur = node;
+        while (cur != null) {
+            sb2.append(cur.val);
+            cur = cur.next;
+        }
+        assert sb.toString().contentEquals(sb2);
+    }
+
     /**
      * @param vals vals
      */

@@ -6,6 +6,9 @@ package com.offer.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
+import static com.leetcode.util.ListNode.reverse;
+
 /**
     [LISTNODE] |||
     (简单)
@@ -16,13 +19,14 @@ import org.junit.Test;
         输入: 1 -> 2 -> 3 -> 4 -> 5 -> NULL
         输出: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
 */
+@SuppressWarnings("all")
 public class Offer_024_E_ReverseList {
 
     @Test
     public void test() {
-        assert new ListNode<>(5, 4, 3, 2, 1).equals(
+        assertNodeEquals(new ListNode<>(5, 4, 3, 2, 1),
                 reverseList(new ListNode<>(1, 2, 3, 4, 5)));
-        assert new ListNode<>(3, 4, 5, 1, 2).equals(
+        assertNodeEquals(new ListNode<>(3, 4, 5, 1, 2),
                 reverseList(new ListNode<>(2, 1, 5, 4, 3)));
     }
 
@@ -30,6 +34,7 @@ public class Offer_024_E_ReverseList {
         // 2024/3/16 NO.1
         // 2024/3/23 NO.2 一遍过
         // 2024/3/25 NO.3 一遍过
+        // 2024/5/20 NO.4 一段时间不做，必出错，要化【定式】为【棋力】
 
         return null;
     }

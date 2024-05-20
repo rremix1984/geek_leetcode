@@ -42,7 +42,6 @@ public class NO1721_N_SwapNodes {
 
     @Test
     public void test() {
-        swapNodes(new ListNode<>(1, 2, 3, 4, 5, 6), 1);
         assertNodeEquals(swapNodes(new ListNode<>(1, 2, 3, 4, 5), 2),
                   1, 4, 3, 2, 5);
         assertNodeEquals(swapNodes(new ListNode<>(7, 9, 6, 6, 7, 8, 3, 0, 9, 5), 5),

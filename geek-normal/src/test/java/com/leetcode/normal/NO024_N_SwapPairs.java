@@ -6,8 +6,10 @@ package com.leetcode.normal;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
+
 /**
-    [ARRAY]
+    [LISTNODE] |
     (中等)
     24. 两两交换链表中的节点
         给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。
@@ -22,17 +24,23 @@ import org.junit.Test;
         输入：head = {1}
         输出：{1}
 */
-public class NO024_N_SwapPairs_x2 {
+@SuppressWarnings("all")
+public class NO024_N_SwapPairs {
 
     @Test
     public void test() {
-        assert new ListNode<>(2, 1, 4, 3).equals(swapPairs(new ListNode<>(1, 2, 3, 4)));
-        assert new ListNode<>().equals(swapPairs(new ListNode<>()));
-        assert new ListNode<>(1).equals(swapPairs(new ListNode<>(1)));
+        assertNodeEquals(
+                swapPairs(new ListNode<>(1, 2, 3, 4)), 2, 1, 4, 3);
+        assertNodeEquals(
+                swapPairs(new ListNode<>()), new ListNode<>());
+        assertNodeEquals(
+                swapPairs(new ListNode<>(1)), 1);
     }
 
     public ListNode<Integer> swapPairs(ListNode<Integer> head) {
-        return head;
+        // 2024/5/20 NO.1 递归能做出来了，一天做一道新题吧，多了做不完，反而会反噬自
+
+        return null;
     }
 
 }
@@ -50,18 +58,26 @@ public class NO024_N_SwapPairs_x2 {
 
 
 
-/**
+/*
 // 方法1：递归解法
 public ListNode swapPairs(ListNode head) {
     if (head == null || head.next == null)
         return head;
-
+//
+//      _<(2)__
+//     |       |       ______________________
+//    \|/      |      |     【以下是递归部分】   |
+//   head     next    | n1 ---> n2 ---> null |
+//     |      (0)     |______________________|
+//     |              /|\
+//     |_______>_______|
+//          (1)
+//
     ListNode next = head.next;
     head.next = swapPairs(next.next);
     next.next = head;
     return next;
 }
-
 
 // 方法2：
 public ListNode swapPairs(ListNode head) {
