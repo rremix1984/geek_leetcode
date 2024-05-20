@@ -103,8 +103,6 @@ public class ListNode<E> {
             sb2.append(cur.val);
             cur = cur.next;
         }
-        System.out.println(sb);
-        System.out.println(sb2);
         assert sb.toString().contentEquals(sb2);
     }
 

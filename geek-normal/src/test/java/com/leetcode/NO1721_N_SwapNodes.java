@@ -10,12 +10,12 @@ import static com.leetcode.util.SystemUtil.print;
 import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
-    [LISTNODE] ||
+    [LISTNODE] |||
     (中等)
     NO.1721 交换链表中的节点
     给你链表的头节点 head 和一个整数 k 。
     交换链表正数第 k 个节点和倒数第 k 个节点的值后，返回链表的头节点
-    （链表 从 1 开始索引）。
+    （链表从 1 开始索引）。
     示例 1：
         输入：head = [1, 2, 3, 4, 5], k = 2
         输出：[1, 4, 3, 2, 5]
@@ -42,6 +42,7 @@ public class NO1721_N_SwapNodes {
 
     @Test
     public void test() {
+        swapNodes(new ListNode<>(1, 2, 3, 4, 5, 6), 1);
         assertNodeEquals(swapNodes(new ListNode<>(1, 2, 3, 4, 5), 2),
                   1, 4, 3, 2, 5);
         assertNodeEquals(swapNodes(new ListNode<>(7, 9, 6, 6, 7, 8, 3, 0, 9, 5), 5),
@@ -69,56 +70,76 @@ public class NO1721_N_SwapNodes {
         ListNode dummyHead = new ListNode(0);
         dummyHead.next = head;
 
-        // 指向左边待交换节点的前置节点
         ListNode left = dummyHead;
-
-        // 指向右边待交换节点的前置节点
         ListNode right = dummyHead;
-
         while (head != null) {
             head = head.next;
             k--;
-            if (k > 0) {
-                // 左指针移向第 k - 1 位
+            if (k > 0)
                 left = left.next;
-                continue;
-            }
-            if (k < 0)
-                // 右指针开始移向第 len - k - 1 位
+            else if (k < 0)
                 right = right.next;
         }
+
         if (right.next == left)
             // 两个节点相邻，且right在left前面，需要交换下位置
             swap(right, left);
         else
             swap(left, right);
+
         return dummyHead.next;
     }
 
     public void swap(ListNode left, ListNode right) {
-//                          （3）
-//          ____________>_______________
-//          |                （2）      |
-//         left       right <-------- tmp（0）  null
-//                      |______>________________|
-//                           （1）
-        if (left.next == right) {
+//                          (3)
+//               ___________>________________
+//              |                            |
+//              |                  (2)      \/
+//             left     right <----------- tmp（0）  null
+//                        |                          /\
+//                        |______________>___________|
+//                                     （1)
+//
+        if (left.next == right || right.next == left) {
             ListNode tmp = right.next;
             left.next.next = tmp.next;
             tmp.next = right;
             left.next = tmp;
 //
-//                      _____________(1)__> __________
-//                     |       ____<___ _(2)__        |
-//                     |      |（0）           |       |
-//  dummy ->  left    tmp     n0 ---> right   n1     n2 -> null
-//             |       |______<_(4)_____|     |
-//             |_________________(3)___ > ____|
+//                      __________________(1)__> _________
+//                     |         ___________<__(2)__      |
+//                     |        |(0)                |     |
+//    ... --> left    tmp(3)    n0 -------> right   n1    n2 -> null
+//             |       |_______<_(5)_________|      |
+//             |__________________(4)_______ > _____|
+//
+//
+//                      ___________(1)__>___________
+//                     |          ___<_(2)___       |
+//                     |         |           |      |
+//                  (3)|        \|/          |      \/
+//    ... ---> left   tmp       right(0)     n1     n2 -> null
+//             |       |    (5)  |          /|\
+//             |       |____<____|           |
+//             |                             |
+//             |__________(4)_>______________|
+//
+//
+//                      _______________(2)___>______
+//                     |                            |
+//                     |          ____<_(1)__       |
+//                     |         |           |      |
+//     ... --> right  n0        left      tmp(3)    n2 -> null
+//              |      |__<______|           |     (0)
+//              |         (3)         (1)    |
+//              |_____________>______________|
+//                         (5)
 //
         } else {
             ListNode tmp = left.next.next;
             left.next.next = right.next.next;
             right.next.next = tmp;
+
             tmp = left.next;
             left.next = right.next;
             right.next = tmp;
@@ -141,6 +162,23 @@ public class NO1721_N_SwapNodes {
 
 
 /*
+    在交换链表节点时，将节点相邻和不相邻的情况区分开来是为了正确处理链表指针的重定向。
+    相邻节点的指针操作比不相邻节点的指针操作更复杂，因此需要单独处理。
+    下面是详细解释为什么要区分这两种情况以及如何处理它们。
+
+    1. 节点相邻的情况
+    情况1: left 紧挨在 right 之前
+    假设链表如下所示：
+        dummy -> ... -> prev -> left -> right -> next -> ...
+    在这种情况下，我们需要交换 left 和 right 的位置，使得链表变为：
+        dummy -> ... -> prev -> right -> left -> next -> ...
+
+    2. 节点不相邻的情况
+    当节点 left 和 right 不相邻时，假设链表如下所示：
+        dummy -> ... ->【left】-> next -> ... -> prev -> 【right】-> ...
+    在这种情况下，我们需要交换 left 和 right 的位置，使得链表变为：
+        dummy -> ... ->【right】-> next -> ... -> prev -> 【left】-> ...
+
 // 方法1：
 public ListNode swapNodes(ListNode head, int k) {
     ListNode dummyHead = new ListNode(0);
@@ -172,35 +210,63 @@ public ListNode swapNodes(ListNode head, int k) {
     return dummyHead.next;
 }
 
-// 交换链表中两个节点的位置
-public void swap(ListNode left, ListNode right) {
-//                          （3）
-//          ____________>_______________
-//          |                （2）      | 指针
-//         left       right <-------- tmp（0）  null
-//                      |______>________________|
+    public void swap(ListNode left, ListNode right) {
+//
+//  场景1：left 和 right 相邻，就会出现 right 在 left 左边的情况
+//
+//           ____________>_(3)__________
+//          |                          |
+//          |                 (2)     \/
+// ... --> left       right <-------- tmp（0）  null
+//                      |                       /\
+//                      |______>_________________|
 //                           （1）
 //
-    if (left.next == right) {
-        ListNode tmp = right.next;
-        left.next.next = tmp.next;
-        tmp.next = right;
-        left.next = tmp;
+        if (left.next == right || right.next == left) {
+            ListNode tmp = right.next;
+            left.next.next = tmp.next;
+            tmp.next = right;
+            left.next = tmp;
+
+//  场景2：left 和 right 不相邻
+//                      __________________(1)__> _________
+//                     |         ___________<__(2)__      |
+//                     |        |(0)                |     |
+//    ... --> left    tmp(3)    n0 -------> right   n1    n2 -> null
+//             |       |_______<_(5)_________|      |
+//             |__________________(4)_______ > _____|
 //
-//                      _____________(1)__> __________
-//                     |       ____<_(2)_______       |
-//                     |      |（0）指针        |       |
-//  dummy ->  left    tmp     n0 ---> right   n1     n2 -> null
-//             |       |______<_(4)_____|     |
-//             |_________________(3)___ > ____|
 //
-    } else {
-        ListNode tmp = left.next.next;
-        left.next.next = right.next.next;
-        right.next.next = tmp;
-        tmp = left.next;
-        left.next = right.next;
-        right.next = tmp;
+//                      ___________(1)__>___________
+//                     |          ___<_(2)___       |
+//                     |         |           |      |
+//                  (3)|        \|/          |      \/
+//    ... ---> left   tmp       right(0)     n1     n2 -> null
+//             |       |    (5)  |          /|\
+//             |       |____<____|           |
+//             |                             |
+//             |__________(4)_>______________|
+//
+//
+//                      _______________(2)___>______
+//                     |                            |
+//                     |          ____<_(1)__       |
+//                     |         |           |      |
+//     ... --> right  n0        left      tmp(3)    n2 -> null
+//              |      |__<______|           |     (0)
+//              |         (3)         (1)    |
+//              |_____________>______________|
+//                         (5)
+//
+        } else {
+            ListNode tmp = left.next.next;
+            left.next.next = right.next.next;
+            right.next.next = tmp;
+            tmp = left.next;
+            left.next = right.next;
+            right.next = tmp;
+        }
     }
+
 }
 */
