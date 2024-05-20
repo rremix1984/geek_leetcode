@@ -57,6 +57,7 @@ public class NO1721_N_SwapNodes {
         // TODO 不好做但是要多练习，很经典的题
         // 2024/3/30 NO.1 没做出来，看懂答案了，不容易
         // 2024/5/17 NO.2 看懂了，找不到工作就改行呗，心态好就行
+        // 2024/5/20 NO.3 找不到工作，就在家休息，看书学习，但是应该有一个好心态
         /*
             ListNode<Integer> dummy = new ListNode<>(0);
             dummy.next = head;
