@@ -31,6 +31,7 @@ import java.util.Queue;
         树中节点的数量在 [0,  212 - 1] 范围内
         -1000 <= node.val <= 1000
 */
+@SuppressWarnings("all")
 public class NO116_N_Connect {
 
     @Test

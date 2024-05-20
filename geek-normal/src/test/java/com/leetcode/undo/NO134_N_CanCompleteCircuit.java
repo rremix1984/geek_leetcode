@@ -37,6 +37,7 @@ import org.junit.Test;
         1 <= n <= 10^5
         0 <= gas[i], cost[i] <= 10^4
 */
+@SuppressWarnings("all")
 public class NO134_N_CanCompleteCircuit {
 
     @Test

@@ -38,6 +38,7 @@ import static java.lang.Integer.MIN_VALUE;
         -104 <= Node.val <= 104
         Node.random 为 null 或指向链表中的节点。
 */
+@SuppressWarnings("all")
 public class NO138_N_CopyRandomList {
 
     @Test
@@ -70,6 +71,7 @@ public class NO138_N_CopyRandomList {
     }
 
     Map<Node, Node> map = new HashMap<>();
+
     public Node copyRandomList(Node head) {
         if (head == null)
             return null;

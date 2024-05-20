@@ -28,6 +28,7 @@ import static com.leetcode.util.LogUtil.info;
         输入：board = {{'X'}}
         输出：{{'X'}}
 */
+@SuppressWarnings("all")
 public class NO130_N_SurroundedRegions {
 
     @Test

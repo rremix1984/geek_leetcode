@@ -54,14 +54,12 @@ public class TreeNode<T> {
 
     public static void assertTreeEquals(TreeNode<Integer> node1, TreeNode<Integer> node2) {
         // 如果两个节点都为空，则它们相等
-        if (node1 == null && node2 == null) {
+        if (node1 == null && node2 == null)
             assert true;
-        }
 
         // 如果其中一个节点为空，另一个节点不为空，或者节点的值不相等，则它们不相等
-        if (node1 == null || node2 == null || !node1.val.equals(node2.val)) {
+        if (node1 == null || node2 == null || !node1.val.equals(node2.val))
             assert false;
-        }
 
         // 递归比较左子树和右子树
         assertTreeEquals(node1.left, node2.left);

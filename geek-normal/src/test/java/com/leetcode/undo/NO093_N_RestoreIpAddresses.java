@@ -29,6 +29,7 @@ import static com.leetcode.util.MathUtils.getArray;
         1 <= s.length <= 20
         s 仅由数字组成
 */
+@SuppressWarnings("all")
 public class NO093_N_RestoreIpAddresses {
 
     @Test

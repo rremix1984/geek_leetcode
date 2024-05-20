@@ -32,6 +32,7 @@ import org.junit.Test;
               word = 'ABCB'
         输出：false
 */
+@SuppressWarnings("ALL")
 public class NO79_N_WordSearch {
 
     @Test

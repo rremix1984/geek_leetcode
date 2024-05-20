@@ -30,6 +30,7 @@ import static org.junit.Assert.assertEquals;
         -231 <= numerator, denominator <= 231 - 1
         denominator != 0
 */
+@SuppressWarnings("all")
 public class NO166_N_FractionToDecimal {
 
     @Test
