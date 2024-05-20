@@ -38,6 +38,7 @@ import static com.leetcode.util.MathUtils.cTree;
     此时，慢指针对应的元素就是中位数。在找出了中位数节点之后，我们将其作为当前根节点的元素，
     并递归地构造其左侧部分的链表对应的左子树，以及右侧部分的链表对应的右子树。
 */
+@SuppressWarnings("all")
 public class NO109_N_SortedListToBST {
 
     @Test

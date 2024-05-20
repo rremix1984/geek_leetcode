@@ -6,6 +6,9 @@ package com.offer.normal;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
+import static com.leetcode.util.SystemUtil.print;
+
 /**
     (中等)
     剑指 Offer II 021. 删除链表的倒数第 n 个结点
@@ -25,16 +28,17 @@ import org.junit.Test;
         0 <= Node.val <= 100
         1 <= n <= sz
 */
+@SuppressWarnings("all")
 public class OfferII_021_N_RemoveNthFromEnd {
 
     @Test
     public void test() {
-        assert new ListNode<>(1,2,3,5).equals(
-                removeNthFromEnd(new ListNode<>(1,2,3,4,5), 2));
-        assert new ListNode<>().equals(
-                removeNthFromEnd(new ListNode<>(1),1));
-        assert new ListNode<>(1).equals(
-                removeNthFromEnd(new ListNode<>(1,2),1));
+        assertNodeEquals(new ListNode<>(1, 2, 3, 5),
+                removeNthFromEnd(new ListNode<>(1, 2, 3, 4, 5), 2));
+        assertNodeEquals(null,
+                removeNthFromEnd(new ListNode<>(1), 1));
+        assertNodeEquals(new ListNode<>(1),
+                removeNthFromEnd(new ListNode<>(1, 2),1));
     }
 
     public ListNode<Integer> removeNthFromEnd(ListNode<Integer> head, int n) {
