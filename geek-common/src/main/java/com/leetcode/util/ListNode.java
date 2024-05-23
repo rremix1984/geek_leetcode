@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.val;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 import static java.util.Arrays.copyOf;
 
 /**
@@ -94,9 +97,8 @@ public class ListNode<E> {
 
     public static <E> void assertNodeEquals(ListNode<E> node, int... arr) {
         StringBuilder sb = new StringBuilder();
-        for (int j : arr) {
-            sb.append(j);
-        }
+        Arrays.stream(arr).forEach(sb::append);
+
         StringBuilder sb2 = new StringBuilder();
         ListNode<E> cur = node;
         while (cur != null) {

@@ -6,11 +6,14 @@ package com.offer.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.leetcode.util.ListNode.assertNodeEquals;
 import static com.leetcode.util.ListNode.reverse;
 
 /**
-    [LISTNODE] |||
+    [LISTNODE] |||||
     (简单)
     (做了很多次，感觉已经拿捏了)
     剑指 Offer 24. 反转链表
@@ -35,7 +38,8 @@ public class Offer_024_E_ReverseList {
         // 2024/3/23 NO.2 一遍过
         // 2024/3/25 NO.3 一遍过
         // 2024/5/20 NO.4 一段时间不做，必出错，要化【定式】为【棋力】
-
+        // 2024/5/21 NO.5 递归一遍过，迭代法没做对
+        
         return null;
     }
 
