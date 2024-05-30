@@ -32,9 +32,9 @@ public class BubbleSort {
 
     @Test
     public void test() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5},
+        assertArrayEquals( new int[]{1, 2, 3, 4, 5},
                 bubbleSort(new int[]{5, 4, 3, 2, 1}));
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5},
+        assertArrayEquals( new int[]{1, 2, 3, 4, 5},
                 bubbleSort(new int[]{4, 2, 3, 5, 1}));
     }
 

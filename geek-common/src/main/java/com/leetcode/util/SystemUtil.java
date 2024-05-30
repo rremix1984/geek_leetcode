@@ -94,6 +94,12 @@ public class SystemUtil {
         out.print(br);
     }
 
+    public static void print(Integer[] arr, String br) {
+        for (int i = 0; i < arr.length; i++)
+            out.printf(" %s ", arr[i]);
+        out.print(br);
+    }
+
     public static void printArr(int[] arr, String br) {
         for (int i = 0; i < arr.length; i++)
             out.printf(" %s ", arr[i]);

@@ -3,16 +3,27 @@
  */
 package com.leetcode.sort;
 
+import org.junit.Test;
+import static com.leetcode.util.SystemUtil.*;
 import static com.leetcode.util.SwapUtil.swap;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
    7. 堆排序
-   创建一个堆 H[0……n-1]；
+   创建一个堆 H[0……n-1]
    把堆首（最大值）和堆尾互换；
    把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置；
    重复步骤 2，直到堆的尺寸为 1。
  */
 public class HeapSort {
+
+    @Test
+    public void test() {
+        assertArrayEquals( new Integer[]{1, 2, 3, 4, 5},
+                heapSort(new Integer[]{5, 4, 3, 2, 1}));
+        assertArrayEquals( new Integer[]{1, 2, 3, 4, 5},
+                heapSort(new Integer[]{4, 2, 3, 5, 1}));
+    }
 
     public static Integer[] heapSort(Integer[] arr) {
         int len = arr.length;
