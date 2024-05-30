@@ -176,7 +176,8 @@ public class ListNode<E> {
             sb.append(cur.val).append(" -> ");
             cur = cur.next;
         }
-        return sb.append(cur.val).append(" -> null").toString();
+//        return sb.append(cur.val).append(" -> null").toString();
+        return sb.append(cur.val).toString();
     }
 
     public static <E> int getListNodeLength(ListNode<E> head) {

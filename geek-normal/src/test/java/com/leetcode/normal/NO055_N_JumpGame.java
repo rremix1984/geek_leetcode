@@ -7,7 +7,7 @@ import org.junit.Test;
 import static java.lang.Math.max;
 
 /**
-    [ARRAY] |||||||||||||
+    [ARRAY] ||||||||||||||
     （中等）
     (重要,面试）
     55. 跳跃游戏 I
@@ -30,9 +30,9 @@ public class NO055_N_JumpGame {
 
     @Test
     public void test() {
-        assert  canJump(new int[]{2,  3, 1,  1, 4});// true
-        assert !canJump(new int[]{3,  2, 1,  0, 4});// false
-        assert !canJump(new int[]{1, -1, 1, -1, 1});// false
+        assert  canJump(new int[]{2,  3,  1,  1,  4});// true
+        assert !canJump(new int[]{3,  2,  1,  0,  4});// false
+        assert !canJump(new int[]{1, -1,  1, -1,  1});// false
     }
 
     public boolean canJump(int[] nums) {
@@ -42,6 +42,7 @@ public class NO055_N_JumpGame {
         // 2024/3/25    NO.13 发烧没做出来。但是思路清楚
         // 2024/3/29    NO.14 忘了怎么做了，思路大概对
         // 2024/4/2-7   NO.15-16 一遍过
+        // 2024/5/30    NO.17 忘了怎么做到
 
         return true;
     }

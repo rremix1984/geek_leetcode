@@ -7,6 +7,7 @@ import com.leetcode.util.ListNode;
 import org.junit.Test;
 
 import static com.leetcode.util.ListNode.assertNodeEquals;
+import static com.leetcode.util.SystemUtil.print;
 
 /**
     [LINKEDLIST] |||||||
@@ -43,7 +44,6 @@ public class NO206_E_ReverseLinkedList {
         // 2024/3/17-20 NO.4-5 两种都做出来了
         // 2024/4/16 NO.6 迭代法能做出来了，递归法做错了，需要反复练习
         // 2024/5/30 NO.7 递归做出来了
-
         return null;
     }
 
