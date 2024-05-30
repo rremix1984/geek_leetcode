@@ -20,7 +20,7 @@ package com.leetcode.sort;
             变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；n-1趟结束，
             数组有序化了。
 */
-public class SelectionSort_x3 {
+public class SelectionSort {
 
     public static int[] selectionSort(int[] arr) {
         return arr;

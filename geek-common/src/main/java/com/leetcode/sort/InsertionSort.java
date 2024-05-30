@@ -17,11 +17,12 @@ package com.leetcode.sort;
         将新元素插入到该位置后；
         重复步骤2~5。
 */
-public class InsertionSort_x3 {
+public class InsertionSort {
 
     public static int[] insertionSort(int[] arr) {
         return arr;
     }
+
 }
 
 
