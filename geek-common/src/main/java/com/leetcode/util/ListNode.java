@@ -109,6 +109,8 @@ public class ListNode<E> {
     }
 
     public static <E> void assertNodeEquals(ListNode<E> node, ListNode<E> next) {
+        assert node != null && next != null || node == next;
+
         ListNode<E> p = next;
         StringBuilder sb = new StringBuilder();
         while (p != null) {

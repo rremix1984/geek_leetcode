@@ -216,4 +216,11 @@ public class SystemUtil {
         preOrder(root.right, res);
     }
 
+    public static void displayMap(Map<Integer, List<Integer>> map) {
+        map.entrySet().forEach(
+            e -> out.printf("%s：%s\n", e.getKey(), e.getValue())
+        );
+        out.println("-------------");
+    }
+
 }

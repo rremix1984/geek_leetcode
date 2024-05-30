@@ -5,7 +5,7 @@ package com.leetcode.sort;
 
 import org.junit.Test;
 
-import static com.leetcode.sort.BaseTest.generateRandomArray;
+import static com.leetcode.BaseTest.generateRandomArray;
 import static java.lang.System.out;
 import static java.util.Arrays.stream;
 import static org.junit.Assert.assertArrayEquals;

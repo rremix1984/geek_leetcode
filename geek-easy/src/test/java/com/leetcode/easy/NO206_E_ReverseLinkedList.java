@@ -6,8 +6,10 @@ package com.leetcode.easy;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 
+import static com.leetcode.util.ListNode.assertNodeEquals;
+
 /**
-    [LINKEDLIST] ||||||
+    [LINKEDLIST] |||||||
     (简单)
     206. 反转链表
         给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -25,12 +27,13 @@ public class NO206_E_ReverseLinkedList {
 
     @Test
     public void test() {
-        assert new ListNode<>(5, 4, 3, 2, 1).equals(
+        assertNodeEquals(new ListNode<>(5, 4, 3, 2, 1),
             reverseList(new ListNode<>(1, 2, 3, 4, 5)));
-        assert new ListNode<>(2, 1).equals(
+        assertNodeEquals(new ListNode<>(2, 1),
             reverseList(new ListNode<>(1,2)));
-        assert new ListNode<Integer>().equals(
+        assertNodeEquals(new ListNode<Integer>(),
             reverseList(new ListNode<>()));
+        assertNodeEquals(null, reverseList(null));
     }
 
     public ListNode<Integer> reverseList(ListNode<Integer> head) {
@@ -39,6 +42,8 @@ public class NO206_E_ReverseLinkedList {
         // 2024/3/11 NO.3
         // 2024/3/17-20 NO.4-5 两种都做出来了
         // 2024/4/16 NO.6 迭代法能做出来了，递归法做错了，需要反复练习
+        // 2024/5/30 NO.7 递归做出来了
+
         return null;
     }
 
@@ -60,25 +65,37 @@ public class NO206_E_ReverseLinkedList {
 
 /*
 // 方法1：
-public ListNode reverseList(ListNode head) {
+public ListNode<Integer reverseList(ListNode<Integer head) {
     if (head == null || head.next == null)
         return head;
 
-    ListNode newHead = reverseList(head.next);
+    ListNode<Integer> newHead = reverseList(head.next);
     head.next.next = head;
     head.next = null;
     return newHead;
 }
 
 // 方法2：
-public ListNode reverseList(ListNode head) {
-    ListNode pre = null;
-    ListNode cur = head;
+public ListNode<Integer> reverseList(ListNode<Integer> head) {
+    ListNode<Integer> pre = null;
+    ListNode<Integer> cur = head;
     while (cur != null) {
         ListNode next = cur.next;
         cur.next = pre;
         pre = cur;
         cur = next;
+    }
+    return pre;
+}
+
+// 方法3：
+public ListNode<Integer> reverseList(ListNode<Integer> head) {
+    ListNode<Integer> pre = null;
+    while (head != null) {
+        ListNode next = head.next;
+        head.next = pre;
+        pre = head;
+        head = next;
     }
     return pre;
 }

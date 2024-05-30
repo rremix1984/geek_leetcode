@@ -5,7 +5,7 @@ package com.interval;
 
 import org.junit.Test;
 import java.util.Arrays;
-import static com.leetcode.sort.BaseTest.generateRandomArray;
+import static com.leetcode.BaseTest.generateRandomArray;
 import static java.lang.Math.max;
 
 public class Code08_GetMax {

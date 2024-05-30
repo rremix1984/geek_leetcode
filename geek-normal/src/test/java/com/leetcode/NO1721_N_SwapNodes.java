@@ -6,8 +6,6 @@ package com.leetcode;
 import com.leetcode.util.ListNode;
 import org.junit.Test;
 import static com.leetcode.util.ListNode.assertNodeEquals;
-import static com.leetcode.util.SystemUtil.print;
-import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
     [LISTNODE] |||
@@ -45,27 +43,27 @@ import static com.leetcode.util.SystemUtil.printListNode;
 
     pre -->  right -->  left  --> next --> null
 
-            ____________>_(3)__________
-            |                          |
-            |                   (2)   \/
-    ... --> left       right <------ tmp       n1 ----> n2 ----> null
-                       |             (0)       /\
-                       |_______(1)__>__________|
+             ___________(3)_>______
+            |                     |
+            |               (2)  \/
+    ... --> left     right <--- tmp (0)    n1 -----> n2 ----> null
+                       |                  /\
+                       |________(1)_>_____|
 
     场景2：left 和 right 不相邻
-                       __________________(1)__>______________
-                      |                                     |
-                      |         ___________<_(2)______      |
-                      |        |(0)                   |     |
-                      |       \/                      |     |
-     ... --> left    tmp(3)    n0 -------> right      n1    n2 -> null
-              |       |                     |        /\
-              |       |_______<_(5)_________|         |
-              |                                       |
-              |__________________(4)________>_________|
+                     __________________(1)__>_________________
+                    |                                        |
+                    |         ___________<_(2)______         |
+                    |        |(0)                   |        |
+                    |       \/                      |       \/
+    ... --> left   tmp(3)    n0 -------> right      n1      n2  ---> null
+            |      /\                     |         /\
+            |       |_______<_(5)_________|         |
+            |                                       |
+            |__________________(4)________>_________|
 */
 @SuppressWarnings("all")
-public class NO1721_N_SwapNodes {
+public class NO1721_N_SwapNodes extends BaseTest {
 
     @Test
     public void test() {
@@ -78,7 +76,7 @@ public class NO1721_N_SwapNodes {
         assertNodeEquals(swapNodes(new ListNode<>(1, 2), 1), 2, 1);
         assertNodeEquals(swapNodes(new ListNode<>(1, 2, 3), 2),
                 1, 2, 3);
-        print(swapNodes(null, 2));
+//        print(swapNodes(null, 2));
     }
 
     public ListNode<Integer> swapNodes(ListNode<Integer> head, int k) {
@@ -86,26 +84,23 @@ public class NO1721_N_SwapNodes {
         // 2024/3/30 NO.1 没做出来，看懂答案了，不容易
         // 2024/5/17 NO.2 看懂了，找不到工作就改行呗，心态好就行
         // 2024/5/20 NO.3 找不到工作，就在家休息，看书学习，但是应该有一个好心态
-        /*
-            ListNode<Integer> dummy = new ListNode<>(0);
-            dummy.next = head;
-
-            ListNode<Integer> left = dummy;
-            ListNode<Integer> right = dummy;
-
-            return dummy.next;
-        */
+        // 2024/5/23 NO.4 能看懂有自己的思路，DP（动态规划）是我的弱点，要多练练
+        // 2024/5/29 NO.5 分段能走出来了，但是完整的费点劲
+        // 2024/5/30 NO.6
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
+        // TODO 先把这里做熟练吧
         ListNode left = dummy;
         ListNode right = dummy;
+
         while (head != null) {
             k--;
             if (k > 0)
                 left = left.next;
             else if (k < 0)
                 right = right.next;
+
             head = head.next;
         }
 
@@ -122,21 +117,25 @@ public class NO1721_N_SwapNodes {
         if (left.next == right) {
 
 
-             ListNode next = right.next;
-             left.next.next = next.next;
-             next.next = right;
-             left.next = next;
+
+
+//             ListNode next = right.next;
+//             left.next.next = next.next;
+//             next.next = right;
+//             left.next = next;
         } else {
-        // TODO CASE1:  ...  ->  left  ->  n0  ->  right  ->  n1  ->  n2  ->  null
-        // TODO CASE2:  ...  ->  left  ->  n0  ->  n1  ->  right  ->  n2  ->  n3 ->  null
+        // TODO CASE1: ...  ->  left  ->  n0  ->  right  ->  n1  ->  n2  ->  n3 ->  null
+        // TODO CASE2: ...  ->  left  ->  n0  ->  n1  ->  right  ->  n2  ->  n3 ->  null
 
 
-             ListNode next = left.next.next;
-             left.next.next = right.next.next;
-             right.next.next = next;
-             next = left.next;
-             left.next = right.next;
-             right.next = next;
+
+
+//             ListNode next = left.next.next;
+//             left.next.next = right.next.next;
+//             right.next.next = next;
+//             next = left.next;
+//             left.next = right.next;
+//             right.next = next;
         }
     }
 
@@ -187,10 +186,10 @@ public ListNode swapNodes(ListNode head, int k) {
     while (head != null) {
         k--;
         if (k > 0)
-            // 左指针移向第 k-1 位
+            // 左指针移向第 k - 1 位
             left = left.next;
         else if (k < 0)
-            // 右指针开始移向第 len-k-1 位
+            // 右指针开始移向第 len - k - 1 位
             right = right.next;
         head = head.next;
     }
@@ -209,19 +208,19 @@ public ListNode swapNodes(ListNode head, int k) {
 //
 //  场景1：left 和 right 相邻，就会出现 right 在 left 左边的情况
 //
-//          pre -->  left  -->  right -->  next --> null
+//          pre -->  left  -->  right --> next --> null
 //
 //          left 和 right 互换，结果就出现 right.next == left 了
 //
 //          pre -->  right -->  left  --> next --> null
 //
-//           ____________>_(3)__________
-//          |                           |
-//          |                 (2)      \/
-// ... --> left       right <--------- tmp       n1 ----> n2 ----> null
-//                      |              (0)       /\
-//                      |______>__________________|
-//                           （1）
+//              __________>_________
+//             |         (3)        |
+//             |                    \/
+// ... -->    left     right <---- tmp(0)     n1 ---> null
+//                       |     (2)            /\
+//                       |______>_____________|
+//                            （1）
 //
         if (left.next == right) {
             ListNode next = right.next;
@@ -236,7 +235,7 @@ public ListNode swapNodes(ListNode head, int k) {
 //                       |           _______<_(2)_______       |
 //                       |          |                   |      |
 //                       |          |                   |      |
-//    ... --> left      tmp(3)      n0 ------> right    n1     n2 ----> null
+//    ... --> left    【tmp】(3)    n0 ------> right   【n1】   n2 ----> null
 //             |         |         (0)          |       |
 //             |         |___________<_(5)______|       |
 //             |                                        |
@@ -248,28 +247,29 @@ public ListNode swapNodes(ListNode head, int k) {
 //                       |           ___<_(2)___        |
 //                       |          |           |       |
 //                       |         \|/          |       \/
-//    ... ---> left     tmp(3)    right(0)      n1      n2 ---> n3 ---> null
+//    ... --> left    【tmp】(3)   right(0)    【n1】    n2 ---> null
 //             |         |          |          /|\
 //             |         |__<_(5)___|           |
 //             |                                |
 //             |____________(4)_>_______________|
 //
 //
-//                        _______________(2)___>_________
-//                       |                               |
-//                       |            ____<_(1)__        |
-//                       |           |           |       |
-//   ... ---> right      n0         left      tmp(3)     n2 ---> n3 ---> null
-//             |         |__<________|           |       (0)
-//             |          (3)                    |
-//             |________________>________________|
+//                        ______________(2)___>_________
+//                       |                              |
+//                       |           ____<_(1)__        |
+//                       |          |           |       |
+//   ... ---> right      n0        left      tmp(3)     n2 ---> n3 ---> null
+//             |         |__<_______|           |       (0)
+//             |          (3)                   |
+//             |________________>_______________|
 //                         (5)
 //
         } else {
             ListNode next = left.next.next;
             left.next.next = right.next.next;
             right.next.next = next;
-            next = left.next;
+
+            ListNode next = left.next;
             left.next = right.next;
             right.next = next;
         }
