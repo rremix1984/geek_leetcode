@@ -5,11 +5,11 @@ package com.leetcode.sort;
 
 import org.junit.jupiter.api.Test;
 import static com.leetcode.util.SwapUtil.swap;
-import static com.leetcode.util.SystemUtil.printArr;
+import static com.leetcode.util.SystemUtil.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
-    [ARRAY] ||||||
+    [ARRAY] |||||||
     (简单)
     冒泡排序
         是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，
@@ -45,6 +45,8 @@ public class BubbleSort {
         // 2024/3/23 NO.4 一遍过
         // 2024/3/25 No.5 一遍过
         // 2024/4/1  NO.6 忘了怎么做了
+        // 2024/5/30 NO.7
+
         return arr;
     }
 

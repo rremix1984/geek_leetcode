@@ -88,6 +88,18 @@ public class SystemUtil {
         out.println(s);
     }
 
+    public static void print(int[] arr, String br) {
+        for (int i = 0; i < arr.length; i++)
+            out.printf(" %s ", arr[i]);
+        out.print(br);
+    }
+
+    public static void printArr(int[] arr, String br) {
+        for (int i = 0; i < arr.length; i++)
+            out.printf(" %s ", arr[i]);
+        out.print(br);
+    }
+
     public static void printArr(boolean[] arr) {
         for (boolean i : arr)
             out.printf("%b\t", i);
