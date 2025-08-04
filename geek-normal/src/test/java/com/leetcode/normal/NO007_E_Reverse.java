@@ -40,8 +40,8 @@ public class NO007_E_Reverse {
         assert 21   == reverse(120);
         assert 0    == reverse(0);
         assert 0    == reverse(1534236469);
-        assert 0    == reverse(MAX_VALUE);
-        assert 0    == reverse(MIN_VALUE);
+        assert 0    == reverse(MAX);
+        assert 0    == reverse(MIN);
     }
 
     public int reverse(int x) {
@@ -49,6 +49,7 @@ public class NO007_E_Reverse {
         // 2024/3/22 NO.2 还是没思路啊
         // 2024/3/23 NO.3 有思路，但是有问题，做不出来
         // 2024/3/25 NO.4
+        // 2024/6/4  NO.5
         int ans = 0;
 
         return ans;

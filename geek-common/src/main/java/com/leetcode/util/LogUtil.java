@@ -1,14 +1,16 @@
 package com.leetcode.util;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author 大硕
  * 2019-04-07 9:55 AM
  **/
-@Slf4j
 @SuppressWarnings("all")
 public class LogUtil {
+    
+    private static final Logger log = LoggerFactory.getLogger(LogUtil.class);
 
     public static void info(String msg) {
         log.info(msg);

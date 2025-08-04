@@ -49,38 +49,15 @@ public class NO695_N_MaxAreaOfIsland {
         assert maxAreaOfIsland(grid) == 6;
     }
 
-    private static final int[][] DIRECTIONS =
-            new int[][]{{ 0,  1},
-                        { 0, -1},
-                        { 1,  0},
-                        {-1,  0}};
+    private static final int[][] DIR =
+            new int[][]{{ 0,  1}, { 0, -1},
+                        { 1,  0}, {-1,  0}};
 
     public int maxAreaOfIsland(int[][] grid) {
         // 2024/3/16 NO.1
+        // 2024/5/30 NO.2 做不出来，但是看懂了
         int count = 0;
-        // 遍历网格内所有的点
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[0].length; j++)
-                // 如果这个位置是陆地，就计算它的面积，并将走过的陆地设置为海洋
-                if (grid[i][j] == 1)
-                    count = max(count, dfs(grid, i, j));
 
-        return count;
-    }
-
-    private int dfs(int[][] grid, int i, int j) {
-        int count = 1;
-        grid[i][j] = 0;
-        for (int[] dir : DIRECTIONS) {
-            int x = dir[0] + i;
-            int y = dir[1] + j;
-            if (x < 0 || x > grid.length - 1
-             || y < 0 || y > grid[0].length - 1
-             || grid[x][y] == 0)
-                continue;
-
-            count += dfs(grid, x, y);
-        }
         return count;
     }
 
@@ -117,7 +94,7 @@ public int maxAreaOfIsland(int[][] grid) {
     for (int i = 0; i < grid.length; i++)
         for (int j = 0; j < grid[0].length; j++)
             // 如果这个位置是陆地，就计算它的面积，并将走过的陆地设置为海洋
-            if (grid[i][j] == GRAND)
+            if (grid[i][j] == 1)
                 count = max(count, dfs(grid, i, j));
 
     return count;
@@ -125,13 +102,13 @@ public int maxAreaOfIsland(int[][] grid) {
 
 private int dfs(int[][] grid, int i, int j) {
     int count = 1;
-    grid[i][j] = WATER;
-    for (int[] dir : DIRECTIONS) {
+    grid[i][j] = 0;
+    for (int[] dir : DIR) {
         int x = dir[0] + i;
         int y = dir[1] + j;
         if (x < 0 || x > grid.length - 1
                 || y < 0 || y > grid[0].length - 1
-                || grid[x][y] == WATER)
+                || grid[x][y] == 0)
             continue;
 
         count += dfs(grid, x, y);

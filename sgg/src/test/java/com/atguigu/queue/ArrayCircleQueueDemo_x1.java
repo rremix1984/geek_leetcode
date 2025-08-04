@@ -57,36 +57,89 @@ class ArrayCircleQueue {
     // 2024/2/20 NO.1
     //
 
-    // 构造函数，初始化队列
+    /**
+     * Constructs a new circular queue implemented using an array with the specified capacity.
+     * The circular queue allows efficient enqueue and dequeue operations by reusing space in the array
+     * when elements are removed from the front.
+     *
+     * @param capacity the maximum number of elements the queue can hold. Must be a positive integer.
+     * @throws IllegalArgumentException if the specified capacity is less than or equal to zero.
+     */ // 构造函数，初始化队列
     public ArrayCircleQueue(int capacity) {
 
     }
 
-    // 入队
+    /**
+     * Adds the specified element to the end of this circular queue.
+     *
+     * @param element the element to be added to the queue
+     * @throws IllegalStateException if the queue is full and cannot accept new elements
+     *
+     * The method implements the enqueue operation for a circular array-based queue.
+     * When called, it attempts to insert the given element at the rear position
+     * of the queue, following the circular queue implementation rules.
+     *
+     * Before adding the element, the method should check if the queue has available
+     * space. If the queue is full, it throws an IllegalStateException to indicate
+     * that the element cannot be added.
+     */ // 入队
     public void enqueue(int element) throws IllegalStateException {
         return;
     }
 
-    // 出队
+    /**
+     * Removes and returns the element at the front of this circular queue.
+     * This operation reduces the queue size by one.
+     *
+     * @return the element at the front of this queue
+     * @throws IllegalStateException if the queue is empty
+     */ // 出队
     public int dequeue() throws IllegalStateException {
         return -1;
     }
 
-    // 查看队列头部元素
+    /**
+     * Retrieves, but does not remove, the head element of this circular queue.
+     * This method throws an exception if the queue is empty.
+     *
+     * @return the head element of this queue
+     * @throws IllegalStateException if this queue is empty
+     */ // 查看队列头部元素
     public int peek() throws IllegalStateException {
         return -1;
     }
 
+    /**
+     * Displays the current contents of the circular queue.
+     *
+     * This method prints all elements currently stored in the queue in their logical order,
+     * from front to rear. The display includes only the active elements in the queue,
+     * excluding any unused array slots. If the queue is empty, no output will be produced.
+     *
+     * The method is primarily intended for debugging and demonstration purposes to visualize
+     * the queue's contents during program execution.
+     *
+     * @throws IllegalStateException if the queue is empty (implementation dependent)
+     */
     public void showQueue() {
 
     }
 
-    // 检查队列是否为空
+    /**
+     * Checks whether the circular queue is empty.
+     *
+     * @return {@code true} if the queue is empty, {@code false} otherwise
+     */ // 检查队列是否为空
     public boolean isEmpty() {
         return false;
     }
 
-    // 检查队列是否已满
+    /**
+     * Checks whether the circular queue is full.
+     *
+     * @return {@code true} if the queue has reached its maximum capacity,
+     *         {@code false} otherwise
+     */ // 检查队列是否已满
     public boolean isFull() {
         return false;
     }

@@ -400,7 +400,7 @@ public class MathUtils {
     }
 
     public static ListNode<Integer>[] getListNodes(int[][] arr) {
-        if (arr == null ||arr.length == 0 || arr[0] == null)
+        if (arr == null || arr.length == 0 || arr[0] == null)
             return new ListNode[]{new ListNode<>()};
 
         ListNode<Integer>[] res = new ListNode[arr.length];
@@ -417,7 +417,10 @@ public class MathUtils {
         return "aeiouAEIOU".indexOf(ch) >= 0;
     }
 
-    public static String[] MONTH_ENUM = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};;
+    public static String[] MONTH_ENUM = {
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    };
 
     // 欧几里得法：计算最大公因数
     // 也叫辗转相除法

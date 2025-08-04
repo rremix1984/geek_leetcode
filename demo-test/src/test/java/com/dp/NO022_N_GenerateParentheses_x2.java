@@ -25,6 +25,7 @@ public class NO022_N_GenerateParentheses_x2 {
 
     @Test
     public void test() {
+        // 写一个helloworld
         assert getArray("((()))", "(()())", "(())()", "()(())", "()()()").containsAll(
                 generateParenthesis(3));
         assert generateParenthesis(3).containsAll(

@@ -5,9 +5,10 @@ package com.leetcode.normal;
 
 import org.junit.Test;
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
-    [ARRAY] ||||||||||||
+    [ARRAY] |||||||||||||
     (中等)
     (重要,面试）
     1306. 跳跃游戏 III
@@ -55,8 +56,27 @@ public class NO1306_N_JumpGameIII {
         // 2024/3/29 NO.9 做对了...
         // 2024/4/2  NO.10 基本上对了，没处理好 '0' 和 0 的关系
         // 2024/4/7  NO.11 一遍过
+        // 2024/5/30 NO.12
+        // 2024/5/31 NO.13
+        // 2024/6/4  NO.14
         int n = arr.length;
-        return false;
+        return dfs(arr, start, new boolean[n]);
+//        return false;
+    }
+
+    private boolean dfs(int[] num, int idx, boolean[] visit) {
+        if (idx < 0 || idx >= num.length || visit[idx])
+            return false;
+
+        int step = num[idx];
+
+        if (step == 0)
+            return true;
+
+        visit[idx] = true;
+
+        return dfs(num, idx + step, visit)
+                || dfs(num, idx - step, visit);
     }
 
 }

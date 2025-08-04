@@ -4,9 +4,7 @@
 package com.leetcode.easy;
 
 import org.junit.Test;
-
 import static com.leetcode.util.LogUtil.info;
-import static com.leetcode.util.MathUtils.GCD;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -24,12 +22,20 @@ import static org.junit.Assert.assertEquals;
     示例 3：
         输入：str1 = "LEET", str2 = "CODE"
         输出：""
+
+    辗转相除法：求 4 和 6 的最大公约数。
+
+    _________6_________        __2___         __2___
+    |_x|_x|_x|_x|__|__|       |_x|_x|      2 |__|__|
+ 4  |_x|_x|_x|_x|__|__|  => 4 |_x|_x|  =>    |__|__|  => 最大公约数是 2
+    |_x|_x|_x|_x|__|__|       |__|__|
+    |_x|_x|_x|_x|__|__|       |__|__|
+
 */
 public class NO1071_E_GcdOfStrings_x2 {
 
     @Test
     public void test() {
-        info(GCD(4, 6));
         assertEquals("ABC", gcdOfStrings("ABCABC", "ABC"));
         assertEquals("AB", gcdOfStrings("ABABAB", "ABAB"));
         assertEquals("", gcdOfStrings("LEET", "CODE"));
@@ -39,20 +45,18 @@ public class NO1071_E_GcdOfStrings_x2 {
         if (!(str1 + str2).equals(str2 + str1))
             return "";
         return str1.substring(0,
-                    GCD(str1.length(), str2.length()));
+                    gcd(str1.length(), str2.length()));
     }
 
-    // 欧几里得法：计算最大公因数
-    // 也叫辗转相除法
-    public int GCD(int d1, int d2) {
-        int tmp = d1 % d2;
-        while (tmp != 0) {
-            d1 = d2;
-            d2 = tmp;
-            tmp = d1 % d2;
+    private int gcd(int a, int b) {
+        while (a != 0) {
+            int temp = a;
+            a = b % a;
+            b = temp;
         }
-        return d2;
+        return b;
     }
+
 
 }
 
@@ -78,7 +82,7 @@ public class NO1071_E_GcdOfStrings_x2 {
 
 
 
-/**
+/*
 // 方法1：
 public String gcdOfStrings(String str1, String str2) {
     if (!(str1 + str2).equals(str2 + str1))
@@ -86,5 +90,17 @@ public String gcdOfStrings(String str1, String str2) {
 
     return str1.substring(0,
             GCD(str1.length(), str2.length()));
+}
+
+// 欧几里得法：计算最大公因数
+// 也叫辗转相除法
+public int GCD(int d1, int d2) {
+    int tmp = d1 % d2;
+    while (tmp != 0) {
+        d1 = d2;
+        d2 = tmp;
+        tmp = d1 % d2;
+    }
+    return d2;
 }
 */
