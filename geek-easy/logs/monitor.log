@@ -1,8 +1,0 @@
-Warning: the fonts "Times" and "Lucida Bright" are not available for the Java logical font "Serif", which may have unexpected appearance or behavior. Re-enable the "Times" font to remove this warning.
-OpenJDK 64-Bit Server VM warning: CodeCache is full. Compiler has been disabled.
-OpenJDK 64-Bit Server VM warning: Try increasing the code cache size using -XX:ReservedCodeCacheSize=
-CodeCache: size=131072Kb used=3464Kb max_used=3464Kb free=127607Kb
- bounds [0x00000001061a0000, 0x0000000106510000, 0x000000010e1a0000]
- total_blobs=1698 nmethods=1122 adapters=492
- compilation: disabled (not enough contiguous free space left)
-2025-08-04 16:59:53.653 java[13550:4946311] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit

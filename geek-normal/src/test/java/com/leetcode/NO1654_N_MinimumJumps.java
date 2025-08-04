@@ -5,10 +5,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
 
 /**
     [ARRAY]

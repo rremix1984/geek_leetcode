@@ -22,6 +22,7 @@
         <module>geek-hard</module>
         <module>geek-multithread</module>
         <module>geek-common</module>
+        <module>geek-animation</module>
         <module>itcast-zookeeper-study</module>
         <module>curator-api-example</module>
         <module>sgg</module>

@@ -1,0 +1,6 @@
+OpenJDK 64-Bit Server VM warning: CodeCache is full. Compiler has been disabled.
+OpenJDK 64-Bit Server VM warning: Try increasing the code cache size using -XX:ReservedCodeCacheSize=
+CodeCache: size=2097152Kb used=3040Kb max_used=3050Kb free=2094111Kb
+ bounds [0x0000000300000000, 0x0000000300300000, 0x0000000380000000]
+ total_blobs=1336 nmethods=820 adapters=433
+ compilation: disabled (not enough contiguous free space left)
