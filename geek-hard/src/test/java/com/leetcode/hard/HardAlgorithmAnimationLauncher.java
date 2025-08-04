@@ -54,6 +54,10 @@ public class HardAlgorithmAnimationLauncher extends JFrame {
             new NO188_H_BestTimeToBuyAndSellStockIV_Animation().setVisible(true);
         });
         
+        animations.put("NO.403 青蛙过河", () -> {
+            new NO403_H_FrogJump_Animation().setVisible(true);
+        });
+        
         // 可以继续添加更多Hard难度动画...
     }
     
@@ -246,6 +250,26 @@ public class HardAlgorithmAnimationLauncher extends JFrame {
                        "• 实时显示不同交易次数下的最大利润\\n" +
                        "• 展示k值对结果的影响\\n" +
                        "• 支持自定义交易次数和价格";
+                       
+            case "NO.403 青蛙过河":
+                return "【NO.403 青蛙过河】\\n\\n" +
+                       "问题描述：\\n" +
+                       "一只青蛙想要过河。假定河流被等分为若干个单元格，并且在每一个单元格内都有可能放有一块石子。" +
+                       "青蛙可以跳上石子，但是不可以跳入水中。给你石子的位置列表stones，请判定青蛙能否成功过河。\\n\\n" +
+                       "核心算法（动态规划）：\\n" +
+                       "• 状态定义：dp[i][k] 表示能否以步长k跳到第i个石子\\n" +
+                       "• 初始状态：dp[0][0] = true（青蛙在第一个石子上）\\n" +
+                       "• 状态转移：从石子j跳到石子i，步长为k = stones[i] - stones[j]\\n" +
+                       "• 转移条件：dp[i][k] = dp[j][k-1] || dp[j][k] || dp[j][k+1]\\n" +
+                       "• 跳跃规则：如果上一步跳了k个单位，下一步只能跳k-1、k或k+1个单位\\n\\n" +
+                       "时间复杂度：O(n²)\\n" +
+                       "空间复杂度：O(n²)\\n\\n" +
+                       "动画特色：\\n" +
+                       "• 可视化青蛙跳跃过程\\n" +
+                       "• 实时显示DP状态表\\n" +
+                       "• 动态展示跳跃路径\\n" +
+                       "• 支持自定义石子位置\\n" +
+                       "• 分步骤演示算法执行过程";
                        
             default:
                 return "算法描述加载中...";

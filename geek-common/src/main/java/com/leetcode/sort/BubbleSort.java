@@ -4,8 +4,6 @@
 package com.leetcode.sort;
 
 import org.junit.jupiter.api.Test;
-import static com.leetcode.util.SwapUtil.swap;
-import static com.leetcode.util.SystemUtil.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**

@@ -6,3 +6,4 @@ CodeCache: size=2097152Kb used=2773Kb max_used=2783Kb free=2094378Kb
  total_blobs=1265 nmethods=753 adapters=429
  compilation: disabled (not enough contiguous free space left)
 2025-08-04 17:00:08.851 java[13536:4946135] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
+2025-08-04 17:16:37.925 java[13536:4946135] error messaging the mach port for IMKCFRunLoopWakeUpReliable

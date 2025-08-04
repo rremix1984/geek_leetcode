@@ -68,7 +68,7 @@ public class NO746_E_MinCostClimbingStairs {
         // 2024/3/4 NO.1 前pre、中cur、后next, 共三个指针
         // 2024/4/1 NO.2 没看懂，还需要理解才行，应该是理解了
         int cur = 0;
-        int pre = 0;
+        // int pre = 0;
         // TODO
 
         return cur;

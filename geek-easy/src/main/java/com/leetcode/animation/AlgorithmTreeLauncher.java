@@ -39,6 +39,12 @@ import com.leetcode.animation.dp.*;
 // 贪心算法导入
 import com.leetcode.animation.greedy.*;
 
+// DFS算法导入
+import com.leetcode.animation.dfs.*;
+
+// BFS算法导入
+import com.leetcode.animation.bfs.*;
+
 // 字符串算法导入
 import com.leetcode.animation.string.*;
 
@@ -53,6 +59,10 @@ import com.leetcode.animation.math.*;
 
 // 树算法导入
 import com.leetcode.animation.tree.*;
+
+// 困难算法导入
+import com.leetcode.animation.hard.NO403_H_FrogJump_Animation;
+
 
 /**
  * 算法动画演示树形启动器
@@ -83,11 +93,14 @@ public class AlgorithmTreeLauncher extends JFrame {
     private DefaultMutableTreeNode searchNode;
     private DefaultMutableTreeNode dpNode;
     private DefaultMutableTreeNode greedyNode;
+    private DefaultMutableTreeNode dfsNode;
+    private DefaultMutableTreeNode bfsNode;
     private DefaultMutableTreeNode stringNode;
     private DefaultMutableTreeNode bitNode;
     private DefaultMutableTreeNode graphNode;
     private DefaultMutableTreeNode mathNode;
     private DefaultMutableTreeNode treeNode;
+    private DefaultMutableTreeNode hardNode;
     
     private AlgorithmTreeLauncher() {
         // 获取JMX端口号并设置标题
@@ -171,9 +184,27 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.118 杨辉三角", () -> new NO118_E_Generate_Animation().setVisible(true));
         
         // 贪心算法
+        animations.put("NO.055 跳跃游戏", () -> new NO055_E_JumpGame_Animation().setVisible(true));
+        animations.put("NO.055 跳跃游戏 (Normal)", () -> {
+            try {
+                Class<?> clazz = Class.forName("com.leetcode.animation.greedy.NO055_N_JumpGame_Animation");
+                JFrame frame = (JFrame) clazz.getDeclaredConstructor().newInstance();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "无法启动动画: " + e.getMessage());
+            }
+        });
+        animations.put("NO.045 跳跃游戏 II", () -> new NO045_N_JumpGameII_Animation().setVisible(true));
+        animations.put("NO.2498 青蛙过河 II", () -> new NO2498_N_MaxJump_Animation().setVisible(true));
         animations.put("NO.121 买卖股票的最佳时机", () -> new NO121_E_BestTimeToBuyAndSellStock_Animation().setVisible(true));
         animations.put("NO.2558 从数量最多的堆取走礼物", () -> new NO2558_E_PickGifts_Animation().setVisible(true));
         animations.put("NO.1005 K次取反后最大化数组和", () -> new NO1005_E_LargestSumAfterKNegations_Animation().setVisible(true));
+        
+        // DFS算法
+        animations.put("NO.1306 跳跃游戏 III", () -> new NO1306_N_JumpGameIII_Animation().setVisible(true));
+        
+        // BFS算法
+        animations.put("NO.1654 到家的最少跳跃次数", () -> new NO1654_N_MinimumJumps_Animation().setVisible(true));
         
         // 字符串算法
         animations.put("NO.1002 查找常用字符", () -> new NO1002_E_CommonChars_Animation().setVisible(true));
@@ -205,39 +236,64 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.2562 找出数组的串联值", () -> new NO2562_E_FindTheArrayConcVal_Animation().setVisible(true));
         animations.put("NO.2574 左右元素和的差值", () -> new NO2574_E_LeftRightDifference_Animation().setVisible(true));
         animations.put("NO.2586 统计范围内的元音字符串数", () -> new NO2586_E_VowelStrings_Animation().setVisible(true));
+        
+        // 困难算法
+        animations.put("NO.403 青蛙过河", () -> new NO403_H_FrogJump_Animation().setVisible(true));
     }
     
     /**
      * 初始化树形结构
      */
     private void initTreeStructure() {
-        rootNode = new DefaultMutableTreeNode("算法分类目录");
+        rootNode = new DefaultMutableTreeNode("🎯 LeetCode算法动画演示系统");
         
-        // 创建分类节点
+        // 创建主要难度分组
+        DefaultMutableTreeNode easyGroupNode = new DefaultMutableTreeNode("🟢 简单算法 (Easy) - 共42个");
+        DefaultMutableTreeNode normalGroupNode = new DefaultMutableTreeNode("🟡 中等算法 (Normal) - 共2个");
+        DefaultMutableTreeNode hardGroupNode = new DefaultMutableTreeNode("🔴 困难算法 (Hard) - 共1个");
+        
+        // 创建Easy算法分类节点
         arrayNode = new DefaultMutableTreeNode("📊 数组算法 (18个)");
         sortNode = new DefaultMutableTreeNode("🔄 排序算法 (1个)");
         dataStructureNode = new DefaultMutableTreeNode("🏗️ 数据结构设计 (5个)");
         searchNode = new DefaultMutableTreeNode("🔍 搜索算法 (2个)");
         dpNode = new DefaultMutableTreeNode("💡 动态规划 (1个)");
-        greedyNode = new DefaultMutableTreeNode("🎯 贪心算法 (3个)");
+        greedyNode = new DefaultMutableTreeNode("🎯 贪心算法 (7个)");
         stringNode = new DefaultMutableTreeNode("📝 字符串算法 (1个)");
         bitNode = new DefaultMutableTreeNode("⚡ 位运算 (2个)");
         graphNode = new DefaultMutableTreeNode("🌐 图论算法 (1个)");
         mathNode = new DefaultMutableTreeNode("🔢 数学算法 (4个)");
         treeNode = new DefaultMutableTreeNode("🌳 树算法 (5个)");
         
-        // 添加分类节点到根节点
-        rootNode.add(arrayNode);
-        rootNode.add(sortNode);
-        rootNode.add(dataStructureNode);
-        rootNode.add(searchNode);
-        rootNode.add(dpNode);
-        rootNode.add(greedyNode);
-        rootNode.add(stringNode);
-        rootNode.add(bitNode);
-        rootNode.add(graphNode);
-        rootNode.add(mathNode);
-        rootNode.add(treeNode);
+        // 创建Normal算法分类节点
+        dfsNode = new DefaultMutableTreeNode("🔍 深度优先搜索 (1个)");
+        bfsNode = new DefaultMutableTreeNode("🌊 广度优先搜索 (1个)");
+        
+        // 创建Hard算法分类节点
+        hardNode = new DefaultMutableTreeNode("🔥 动态规划算法 (1个)");
+        
+        // 将分类节点添加到主分组
+        easyGroupNode.add(arrayNode);
+        easyGroupNode.add(sortNode);
+        easyGroupNode.add(dataStructureNode);
+        easyGroupNode.add(searchNode);
+        easyGroupNode.add(dpNode);
+        easyGroupNode.add(greedyNode);
+        easyGroupNode.add(stringNode);
+        easyGroupNode.add(bitNode);
+        easyGroupNode.add(graphNode);
+        easyGroupNode.add(mathNode);
+        easyGroupNode.add(treeNode);
+        
+        normalGroupNode.add(dfsNode);
+        normalGroupNode.add(bfsNode);
+        
+        hardGroupNode.add(hardNode);
+        
+        // 将主分组添加到根节点
+        rootNode.add(easyGroupNode);
+        rootNode.add(normalGroupNode);
+        rootNode.add(hardGroupNode);
         
         // 添加具体算法到分类节点
         addAlgorithmToCategory(arrayNode, "NO.001 两数之和", "Easy", "哈希表 + 双指针");
@@ -272,6 +328,10 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         addAlgorithmToCategory(dpNode, "NO.118 杨辉三角", "Easy", "动态规划 + 组合数学");
         
+        addAlgorithmToCategory(greedyNode, "NO.055 跳跃游戏", "Easy", "贪心 + 最远可达位置");
+        addAlgorithmToCategory(greedyNode, "NO.055 跳跃游戏 (Normal)", "Normal", "贪心 + 最远可达位置 (详细版)");
+        addAlgorithmToCategory(greedyNode, "NO.045 跳跃游戏 II", "Normal", "贪心 + 最少跳跃次数");
+        addAlgorithmToCategory(greedyNode, "NO.2498 青蛙过河 II", "Normal", "贪心 + 最小跳跃距离");
         addAlgorithmToCategory(greedyNode, "NO.121 买卖股票的最佳时机", "Easy", "贪心 + 一次遍历");
         addAlgorithmToCategory(greedyNode, "NO.2558 从数量最多的堆取走礼物", "Easy", "贪心 + 最大堆");
         addAlgorithmToCategory(greedyNode, "NO.1005 K次取反后最大化数组和", "Easy", "贪心 + 排序");
@@ -293,6 +353,12 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(treeNode, "NO.101 对称二叉树", "Easy", "树遍历 + 对称性检查");
         addAlgorithmToCategory(treeNode, "NO.104 二叉树的最大深度", "Easy", "树遍历 + 深度计算");
         addAlgorithmToCategory(treeNode, "NO.108 将有序数组转换为二叉搜索树", "Easy", "分治算法 + 平衡树构建");
+        
+        addAlgorithmToCategory(dfsNode, "NO.1306 跳跃游戏 III", "Normal", "深度优先搜索 + 递归回溯");
+        
+        addAlgorithmToCategory(bfsNode, "NO.1654 到家的最少跳跃次数", "Normal", "广度优先搜索 + 最短路径");
+        
+        addAlgorithmToCategory(hardNode, "NO.403 青蛙过河", "Hard", "动态规划 + 状态转移");
     }
     
     /**
