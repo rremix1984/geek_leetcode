@@ -17,6 +17,10 @@ public class NetMall {
         this.netMallName = netMallName;
     }
 
+    public String getNetMallName() {
+        return netMallName;
+    }
+
     public static List<NetMall> netMalls(String... netMallName) {
         List<NetMall> res = new ArrayList<>();
         for (String s : netMallName) {

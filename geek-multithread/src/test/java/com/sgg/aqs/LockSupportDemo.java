@@ -1,7 +1,5 @@
 package com.sgg.aqs;
 
-import java.util.concurrent.locks.LockSupport;
-
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.out;
 import static java.lang.Thread.currentThread;

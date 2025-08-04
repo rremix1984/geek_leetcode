@@ -1,4 +1,4 @@
-package com.bilibili.juc.rwlock;;
+package com.bilibili.juc.rwlock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;

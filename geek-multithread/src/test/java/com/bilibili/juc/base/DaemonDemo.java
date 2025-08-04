@@ -4,7 +4,6 @@
  */
 package com.bilibili.juc.base;
 
-import lombok.val;
 import org.junit.Test;
 
 import java.util.concurrent.*;
@@ -17,7 +16,7 @@ public class DaemonDemo {
     @Test
     public void test() {
         Thread t1 = new Thread(() -> {
-            val thrd = Thread.currentThread();
+            Thread thrd = Thread.currentThread();
             out.println(thrd.getName() + "\t 开始运行, " +
                     (thrd.isDaemon() ? "守护线程" : "用户线程"));
             try {

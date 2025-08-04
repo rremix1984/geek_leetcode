@@ -4,8 +4,6 @@
  */
 package com.bilibili.juc.rwlock;
 
-import lombok.val;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -68,7 +66,7 @@ class MyResource {//资源类，模拟一个简单的缓存
     public void write(String key, String value) {
         rwLock.writeLock().lock();
         try {
-            val name = Thread.currentThread().getName();
+            String name = Thread.currentThread().getName();
             out.println(name + "\t" + "正在写入");
             map.put(key, value);
             //暂停毫秒

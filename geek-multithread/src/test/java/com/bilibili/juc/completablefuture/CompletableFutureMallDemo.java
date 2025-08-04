@@ -61,13 +61,14 @@ public class CompletableFutureMallDemo {
      * List<NetMall> ----->List<CompletableFuture<String>>------> List<String>
      */
     public List<String> getPriceFuture(List<NetMall> list, String productName) {
-        return list.stream().map(netMall ->
+        List<CompletableFuture<String>> futures = list.stream().map(netMall ->
                     CompletableFuture.supplyAsync(() -> format(productName + " in %s price is %.2f",
                         netMall.getNetMallName(),
                         netMall.calcPrice(productName))))
-                .collect(Collectors.toList())
-                .stream()
-                .map(s -> s.join())
+                .collect(Collectors.toList());
+        
+        return futures.stream()
+                .map(CompletableFuture::join)
                 .collect(Collectors.toList());
     }
 

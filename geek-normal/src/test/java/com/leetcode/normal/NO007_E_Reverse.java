@@ -1,12 +1,8 @@
 package com.leetcode.normal;
 
-import com.leetcode.util.MathUtils;
 import org.junit.Test;
-
 import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.MathUtils.MIN;
-import static java.lang.Integer.MAX_VALUE;
-import static java.lang.Integer.MIN_VALUE;
 
 /**
     [ARRAY] ||||

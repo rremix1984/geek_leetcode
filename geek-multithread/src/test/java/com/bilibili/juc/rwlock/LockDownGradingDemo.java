@@ -8,7 +8,6 @@
  */
 package com.bilibili.juc.rwlock;
 
-import lombok.val;
 import org.junit.Test;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import static java.lang.System.out;
@@ -19,8 +18,8 @@ public class LockDownGradingDemo {
     @Test
     public void test() {
         ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-        val readLock = readWriteLock.readLock();
-        val writeLock = readWriteLock.writeLock();
+        ReentrantReadWriteLock.ReadLock readLock = readWriteLock.readLock();
+        ReentrantReadWriteLock.WriteLock writeLock = readWriteLock.writeLock();
 
         //正常 A B两个线程
         // A

@@ -2,7 +2,6 @@ package com.leetcode;
 
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static com.leetcode.util.MathUtils.*;
@@ -52,7 +51,7 @@ public class NO442_N_FindDuplicates {
         // 2024/3/27 NO.6
         // 2024/3/31 NO.7 思路有一点，但是做不出来
         List<Integer> ret = new ArrayList<>();
-        int n = nums.length;
+        //int n = nums.length;
 
         return ret;
     }

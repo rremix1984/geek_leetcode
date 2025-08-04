@@ -10,10 +10,14 @@ import static java.lang.System.out;
 
 @Getter
 @ToString
-@AllArgsConstructor
 class User {
     String userName;
     int age;
+    
+    public User(String userName, int age) {
+        this.userName = userName;
+        this.age = age;
+    }
 }
 
 /**

@@ -4,7 +4,6 @@
  */
 package com.bilibili.juc.interrupt;
 
-import lombok.val;
 import org.junit.Test;
 
 import java.util.concurrent.locks.LockSupport;
@@ -22,8 +21,8 @@ public class InterruptDemo4 {
 
     @Test
     public void test() {
-        val thrd = currentThread();
-        val name = thrd.getName();
+        Thread thrd = currentThread();
+        String name = thrd.getName();
         out.println(name + "\t" + interrupted());
         out.println(name  + "\t" + interrupted());
         out.println("----1");

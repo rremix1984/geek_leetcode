@@ -1,10 +1,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-import java.util.Arrays;
-
-import static com.leetcode.util.SystemUtil.printArr;
-import static com.leetcode.util.SystemUtil.printArrs;
 import static java.util.Arrays.stream;
 
 /**

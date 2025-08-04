@@ -9,12 +9,17 @@ import java.util.concurrent.atomic.AtomicStampedReference;
 
 import static java.lang.System.out;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 class Book {
     private int id;
     private String bookName;
+    
+    public Book() {}
+    
+    public Book(int id, String bookName) {
+        this.id = id;
+        this.bookName = bookName;
+    }
 }
 
 /**

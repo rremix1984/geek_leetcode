@@ -6,9 +6,7 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.GetChildrenBuilder;
 import org.apache.curator.retry.RetryOneTime;
 import org.junit.Test;
-import java.util.Collections;
 import java.util.List;
-
 import static java.lang.System.out;
 import static java.util.Collections.sort;
 

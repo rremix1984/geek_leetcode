@@ -4,7 +4,6 @@
 package com.dp;
 
 import org.junit.Test;
-import static java.lang.Math.min;
 
 /**
     [ARRAY] ||

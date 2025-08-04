@@ -7,7 +7,6 @@
 package com.bilibili.juc.threadlocal;
 
 import com.bilibili.juc.threadlocal.util.MyData;
-import lombok.val;
 
 import java.util.concurrent.ExecutorService;
 
@@ -23,7 +22,7 @@ public class ThreadLocalDemo2 {
             for (int i = 0; i < 10; i++) {
                 threadPool.submit(() -> {
                     try {
-                        val name = Thread.currentThread().getName();
+                        String name = Thread.currentThread().getName();
                         Integer beforeInt = myData.threadLocalField.get();
                         myData.add();
                         Integer afterInt = myData.threadLocalField.get();

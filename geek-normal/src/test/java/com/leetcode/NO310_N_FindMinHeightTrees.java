@@ -3,10 +3,7 @@ package com.leetcode;
 import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.MathUtils.getArray;
-import static com.leetcode.util.MathUtils.getArrays;
 import static com.leetcode.util.SystemUtil.arrayAllMatch;
-import static java.util.Arrays.fill;
-import static org.junit.Assert.assertArrayEquals;
 
 /**
     [ARRAY]

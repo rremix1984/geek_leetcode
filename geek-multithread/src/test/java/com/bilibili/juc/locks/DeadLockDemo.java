@@ -4,7 +4,6 @@
  */
 package com.bilibili.juc.locks;
 
-import lombok.val;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -23,7 +22,7 @@ public class DeadLockDemo {
         final Object objectB = new Object();
         new Thread(() -> {
             synchronized (objectA) {
-                val name = Thread.currentThread().getName();
+                String name = Thread.currentThread().getName();
                 out.println(name + "\t 自己持有A锁，希望获得B锁");
                 try {SECONDS.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}
                 synchronized (objectB) {
@@ -34,7 +33,7 @@ public class DeadLockDemo {
 
         new Thread(() -> {
             synchronized (objectB) {
-                val name = Thread.currentThread().getName();
+                String name = Thread.currentThread().getName();
                 out.println(name + "\t 自己持有B锁，希望获得A锁");
                 try {SECONDS.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}
                 synchronized (objectA) {

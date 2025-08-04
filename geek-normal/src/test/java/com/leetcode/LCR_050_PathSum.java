@@ -5,8 +5,6 @@ package com.leetcode;
 
 import com.leetcode.util.TreeNode;
 import org.junit.Test;
-import java.util.HashMap;
-import java.util.Map;
 import static com.leetcode.util.MathUtils.cTree;
 
 /**
@@ -80,7 +78,7 @@ public class LCR_050_PathSum {
         // 2024/3/27 NO.3 没做出来，但是看答案能做出来了，思路也通了
         // 2024/3/28 NO.4 差一点点，就做出来了
         // 2024/4/1  NO.5 没做出来，思路没有。
-        int ret = 0;
+        //int ret = 0;
         if (root == null)
             return 0;
 

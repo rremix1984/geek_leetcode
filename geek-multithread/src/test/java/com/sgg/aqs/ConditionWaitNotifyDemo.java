@@ -1,6 +1,5 @@
 package com.sgg.aqs;
 
-import lombok.val;
 import org.junit.Test;
 import java.util.concurrent.locks.*;
 import static java.lang.System.out;
@@ -24,7 +23,7 @@ public class ConditionWaitNotifyDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            val tName = currentThread().getName();
+            String tName = currentThread().getName();
             lock.lock();
             try {
                 out.println(tName + "\t___--come in");
@@ -41,7 +40,7 @@ public class ConditionWaitNotifyDemo {
 
         new Thread (() -> {
             lock.lock();
-            val tName = currentThread().getName();
+            String tName = currentThread().getName();
             try {
                 condition.signal();
                 out.println(tName + "\t+“-----通知");
@@ -59,7 +58,7 @@ public class ConditionWaitNotifyDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            val tName = currentThread().getName();
+            String tName = currentThread().getName();
             synchronized (lock) {
                 out.println(tName + "\t--come in");
                 try {
@@ -72,7 +71,7 @@ public class ConditionWaitNotifyDemo {
         }, "A").start();
 
         new Thread(() -> {
-            val tName = currentThread().getName();
+            String tName = currentThread().getName();
             synchronized (lock) {
                 lock.notify();
                 out.println(tName + "\t-----通知");

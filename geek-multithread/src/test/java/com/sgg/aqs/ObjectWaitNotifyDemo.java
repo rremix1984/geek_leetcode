@@ -1,7 +1,5 @@
 package com.sgg.aqs;
 
-import lombok.val;
-
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -28,7 +26,7 @@ public class ObjectWaitNotifyDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            val tName = Thread.currentThread().getName();
+            String tName = Thread.currentThread().getName();
             synchronized (lock) {
                 out.println(tName + "\t--come in");
                 try {

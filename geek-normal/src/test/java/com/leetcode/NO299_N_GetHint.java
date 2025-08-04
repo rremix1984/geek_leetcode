@@ -1,7 +1,6 @@
 package com.leetcode;
 
 import org.junit.Test;
-import static java.lang.Math.min;
 import static org.junit.Assert.assertEquals;
 
 /**
