@@ -1,5 +1,6 @@
 package com.leetcode.animation;
 
+import com.leetcode.animation.greedy.NO1005_E_LargestSumAfterKNegations_Animation;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import javax.swing.*;

@@ -1,5 +1,6 @@
 package com.leetcode.animation;
 
+import com.leetcode.animation.datastructure.NO705_E_MyHashSet_Animation;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import javax.swing.*;

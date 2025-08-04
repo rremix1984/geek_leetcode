@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import javax.swing.*;
 import java.util.List;
 import java.util.Map;
+import com.leetcode.animation.array.NO001_E_TwoSum_Animation;
 
 /**
  * NO.001 两数之和动画测试类
@@ -296,4 +297,5 @@ public class NO001_E_TwoSum_AnimationTest extends BaseAnimationTest {
         assertEquals("nums大小应该正确", 4, nums.size());
         assertEquals("第一个元素应该是2", Integer.valueOf(2), nums.get(0));
     }
+    
 }

@@ -1,5 +1,6 @@
 package com.leetcode.animation;
 
+import com.leetcode.animation.search.NO704_E_BinarySearch_Animation;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import javax.swing.*;
