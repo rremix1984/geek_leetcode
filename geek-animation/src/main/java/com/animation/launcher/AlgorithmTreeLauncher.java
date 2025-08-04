@@ -253,6 +253,15 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.284 顶端迭代器", () -> new NO284_N_PeekingIterator_Animation().setVisible(true));
         animations.put("NO.764 最大加号标志", () -> new NO764_N_OrderOfLargestPlusSign_Animation().setVisible(true));
         animations.put("NO.915 分割数组", () -> new NO915_N_PartitionDisjoint_Animation().setVisible(true));
+        
+        // Normal算法 - normal目录新增
+        animations.put("NO.005 最长回文子串", () -> new NO005_N_LongestPalindromicSubstring_Animation().setVisible(true));
+        animations.put("NO.015 三数之和", () -> new NO015_N_ThreeSum_Animation().setVisible(true));
+        animations.put("NO.053 最大子数组和", () -> new NO053_N_MaximumSubarray_Animation().setVisible(true));
+        animations.put("NO.046 全排列", () -> new NO046_N_Permutations_Animation().setVisible(true));
+        animations.put("NO.200 岛屿数量", () -> new NO200_N_NumberOfIslands_Animation().setVisible(true));
+        animations.put("NO.322 零钱兑换", () -> new NO322_N_CoinChange_Animation().setVisible(true));
+        animations.put("NO.139 单词拆分", () -> new NO139_N_WordBreak_Animation().setVisible(true));
     }
     
     /**
@@ -263,7 +272,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         // 创建主要难度分组
         DefaultMutableTreeNode easyGroupNode = new DefaultMutableTreeNode("🟢 简单算法 (Easy) - 共42个");
-        DefaultMutableTreeNode normalGroupNode = new DefaultMutableTreeNode("🟡 中等算法 (Normal) - 共7个");
+        DefaultMutableTreeNode normalGroupNode = new DefaultMutableTreeNode("🟡 中等算法 (Normal) - 共14个");
         DefaultMutableTreeNode hardGroupNode = new DefaultMutableTreeNode("🔴 困难算法 (Hard) - 共1个");
         
         // 创建Easy算法分类节点
@@ -282,7 +291,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         // 创建Normal算法分类节点
         dfsNode = new DefaultMutableTreeNode("🔍 深度优先搜索 (1个)");
         bfsNode = new DefaultMutableTreeNode("🌊 广度优先搜索 (1个)");
-        normalNode = new DefaultMutableTreeNode("🎯 Normal算法 - donnot目录 (5个)");
+        normalNode = new DefaultMutableTreeNode("🎯 Normal算法 (12个)");
         
         // 创建Hard算法分类节点
         hardNode = new DefaultMutableTreeNode("🔥 动态规划算法 (1个)");
@@ -374,12 +383,19 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         addAlgorithmToCategory(bfsNode, "NO.1654 到家的最少跳跃次数", "Normal", "广度优先搜索 + 最短路径");
         
-        // Normal算法 - donnot目录
+        // Normal算法
         addAlgorithmToCategory(normalNode, "NO.208 实现Trie(前缀树)", "Normal", "Trie + 字符串处理");
         addAlgorithmToCategory(normalNode, "NO.211 添加与搜索单词", "Normal", "Trie + 通配符搜索");
         addAlgorithmToCategory(normalNode, "NO.284 顶端迭代器", "Normal", "迭代器设计 + 缓存");
         addAlgorithmToCategory(normalNode, "NO.764 最大加号标志", "Normal", "动态规划 + 网格处理");
         addAlgorithmToCategory(normalNode, "NO.915 分割数组", "Normal", "数组分割 + 双指针");
+        addAlgorithmToCategory(normalNode, "NO.005 最长回文子串", "Normal", "动态规划 + 中心扩展");
+        addAlgorithmToCategory(normalNode, "NO.015 三数之和", "Normal", "双指针 + 排序");
+        addAlgorithmToCategory(normalNode, "NO.053 最大子数组和", "Normal", "动态规划 + Kadane算法");
+        addAlgorithmToCategory(normalNode, "NO.046 全排列", "Normal", "回溯算法 + 递归");
+        addAlgorithmToCategory(normalNode, "NO.200 岛屿数量", "Normal", "深度优先搜索 + 网格遍历");
+        addAlgorithmToCategory(normalNode, "NO.322 零钱兑换", "Normal", "动态规划 + 完全背包");
+        addAlgorithmToCategory(normalNode, "NO.139 单词拆分", "Normal", "动态规划 + 字符串匹配");
         
         addAlgorithmToCategory(hardNode, "NO.403 青蛙过河", "Hard", "动态规划 + 状态转移");
     }
@@ -1010,6 +1026,132 @@ public class AlgorithmTreeLauncher extends JFrame {
                        "• 高亮显示分割点\n" +
                        "• 支持自定义数组输入\n\n" +
                        "💡 算法技巧：数组分割 + 双向扫描";
+
+            case "NO.005 最长回文子串":
+                return "🎯 【NO.005 最长回文子串】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给你一个字符串s，找到s中最长的回文子串。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• 中心扩展法：以每个字符为中心向两边扩展\n" +
+                       "• 考虑奇数长度和偶数长度的回文串\n" +
+                       "• 对于每个中心，尽可能向外扩展\n" +
+                       "• 记录最长回文串的起始位置和长度\n\n" +
+                       "⏰ 时间复杂度：O(n²)\n" +
+                       "💾 空间复杂度：O(1)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化中心扩展过程\n" +
+                       "• 高亮显示当前检查的回文串\n" +
+                       "• 显示奇数和偶数长度的处理\n" +
+                       "• 支持自定义字符串输入\n\n" +
+                       "💡 算法技巧：中心扩展 + 双指针";
+
+            case "NO.015 三数之和":
+                return "🎯 【NO.015 三数之和】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给你一个包含n个整数的数组nums，判断nums中是否存在三个元素a,b,c，使得a+b+c=0？请你找出所有和为0且不重复的三元组。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• 首先对数组进行排序\n" +
+                       "• 固定第一个数，用双指针寻找另外两个数\n" +
+                       "• 跳过重复元素避免重复解\n" +
+                       "• 根据三数之和调整左右指针\n\n" +
+                       "⏰ 时间复杂度：O(n²)\n" +
+                       "💾 空间复杂度：O(1)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化排序和双指针移动\n" +
+                       "• 高亮显示当前三元组\n" +
+                       "• 显示重复元素跳过过程\n" +
+                       "• 支持自定义数组输入\n\n" +
+                       "💡 算法技巧：排序 + 双指针";
+
+            case "NO.053 最大子数组和":
+                return "🎯 【NO.053 最大子数组和】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给你一个整数数组nums，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• Kadane算法：动态规划的经典应用\n" +
+                       "• dp[i] = max(dp[i-1] + nums[i], nums[i])\n" +
+                       "• 如果前面的和为负数，则重新开始\n" +
+                       "• 记录过程中的最大值\n\n" +
+                       "⏰ 时间复杂度：O(n)\n" +
+                       "💾 空间复杂度：O(1)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化动态规划过程\n" +
+                       "• 高亮显示最大子数组\n" +
+                       "• 显示状态转移方程\n" +
+                       "• 支持自定义数组输入\n\n" +
+                       "💡 算法技巧：动态规划 + Kadane算法";
+
+            case "NO.046 全排列":
+                return "🎯 【NO.046 全排列】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给定一个不含重复数字的数组nums，返回其所有可能的全排列。你可以按任意顺序返回答案。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• 回溯算法：深度优先搜索 + 状态回退\n" +
+                       "• 使用visited数组标记已使用的元素\n" +
+                       "• 递归构建排列，到达叶子节点时记录结果\n" +
+                       "• 回溯时撤销选择，尝试其他可能\n\n" +
+                       "⏰ 时间复杂度：O(n! × n)\n" +
+                       "💾 空间复杂度：O(n)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化递归树的构建过程\n" +
+                       "• 高亮显示当前路径和回溯过程\n" +
+                       "• 显示visited数组的状态变化\n" +
+                       "• 支持自定义数组输入\n\n" +
+                       "💡 算法技巧：回溯算法 + 递归";
+
+            case "NO.200 岛屿数量":
+                return "🎯 【NO.200 岛屿数量】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给你一个由'1'（陆地）和'0'（水）组成的的二维网格，请你计算网格中岛屿的数量。岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• 深度优先搜索（DFS）遍历网格\n" +
+                       "• 遇到'1'时开始DFS，将连通的'1'标记为已访问\n" +
+                       "• 每次DFS完成代表找到一个岛屿\n" +
+                       "• 四个方向递归搜索相邻的陆地\n\n" +
+                       "⏰ 时间复杂度：O(m × n)\n" +
+                       "💾 空间复杂度：O(m × n)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化网格和DFS搜索过程\n" +
+                       "• 高亮显示当前搜索的岛屿\n" +
+                       "• 显示已访问区域的标记\n" +
+                       "• 支持自定义网格输入\n\n" +
+                       "💡 算法技巧：深度优先搜索 + 网格遍历";
+
+            case "NO.322 零钱兑换":
+                return "🎯 【NO.322 零钱兑换】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给你一个整数数组coins，表示不同面额的硬币；以及一个整数amount，表示总金额。计算并返回可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回-1。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• 动态规划：完全背包问题的变种\n" +
+                       "• dp[i] = min(dp[i], dp[i-coin] + 1)\n" +
+                       "• 对每个金额计算最少硬币数\n" +
+                       "• 遍历所有硬币面额进行状态转移\n\n" +
+                       "⏰ 时间复杂度：O(amount × coins.length)\n" +
+                       "💾 空间复杂度：O(amount)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化DP表的填充过程\n" +
+                       "• 高亮显示状态转移方程\n" +
+                       "• 显示硬币选择的决策过程\n" +
+                       "• 支持自定义硬币和金额\n\n" +
+                       "💡 算法技巧：动态规划 + 完全背包";
+
+            case "NO.139 单词拆分":
+                return "🎯 【NO.139 单词拆分】\n\n" +
+                       "📝 问题描述：\n" +
+                       "给你一个字符串s和一个字符串列表wordDict作为字典。请你判断是否可以利用字典中出现的单词拼接出s。注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。\n\n" +
+                       "🔧 核心算法：\n" +
+                       "• 动态规划：dp[i]表示s[0...i-1]是否可以拆分\n" +
+                       "• 状态转移：dp[i] = dp[j] && s[j...i-1] in wordDict\n" +
+                       "• 遍历所有可能的分割点\n" +
+                       "• 检查子串是否在字典中\n\n" +
+                       "⏰ 时间复杂度：O(n² × m)\n" +
+                       "💾 空间复杂度：O(n)\n\n" +
+                       "🎬 动画特色：\n" +
+                       "• 可视化字符串拆分过程\n" +
+                       "• 高亮显示当前检查的子串\n" +
+                       "• 显示DP状态的更新\n" +
+                       "• 支持自定义字符串和字典\n\n" +
+                       "💡 算法技巧：动态规划 + 字符串匹配";
 
             // 继续添加其他算法的描述...
             default:
