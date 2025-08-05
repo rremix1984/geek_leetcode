@@ -38,7 +38,7 @@ public class JumpGameAnimation extends JFrame {
     private void setupUI() {
         setTitle("跳跃游戏 II - 可视化演示");
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         
         JPanel buttonPanel = new JPanel();
