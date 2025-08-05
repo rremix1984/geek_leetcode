@@ -2110,20 +2110,90 @@ public class AlgorithmTreeLauncher extends JFrame {
                     // 对话框关闭后重置状态
                     resetAnimationState(algorithmName);
                 } else {
-                    // 对于其他类型的动画，在新线程中运行
+                    // 对于其他类型的动画，先运行获取JFrame实例，然后包装在模态对话框中
                     currentAnimationName = algorithmName;
                     statusLabel.setText("正在启动算法动画：" + algorithmName);
                     
-                    new Thread(() -> {
+                    // 在EDT中运行动画创建逻辑
+                    SwingUtilities.invokeLater(() -> {
                         try {
+                            // 运行动画创建逻辑
                             animation.run();
-                        } finally {
-                            SwingUtilities.invokeLater(() -> {
-                                // 动画结束后重置状态
+                            
+                            // 查找新创建的JFrame窗口
+                             Window[] windows = Window.getWindows();
+                             JFrame foundFrame = null;
+                             for (Window window : windows) {
+                                 if (window instanceof JFrame && window.isVisible() && 
+                                     window != AlgorithmTreeLauncher.this) {
+                                     foundFrame = (JFrame) window;
+                                     break;
+                                 }
+                             }
+                             
+                             final JFrame animationFrame = foundFrame;
+                             if (animationFrame != null) {
+                                // 隐藏原始JFrame
+                                animationFrame.setVisible(false);
+                                
+                                // 创建模态对话框来包装JFrame的内容
+                                JDialog dialog = new JDialog(AlgorithmTreeLauncher.this, "算法动画演示 - " + algorithmName, true);
+                                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                                
+                                // 获取JFrame的内容面板
+                                Container contentPane = animationFrame.getContentPane();
+                                
+                                // 将JFrame的内容转移到对话框中
+                                dialog.setContentPane(contentPane);
+                                
+                                // 设置窗口属性
+                                dialog.setSize(animationFrame.getSize().width > 0 ? animationFrame.getSize() : new Dimension(800, 600));
+                                dialog.setLocationRelativeTo(AlgorithmTreeLauncher.this);
+                                
+                                // 设置窗口图标
+                                if (AlgorithmTreeLauncher.this.getIconImage() != null) {
+                                    dialog.setIconImage(AlgorithmTreeLauncher.this.getIconImage());
+                                }
+                                
+                                // 保存当前窗口引用
+                                currentAnimationWindow = dialog;
+                                
+                                // 添加窗口关闭监听器
+                                dialog.addWindowListener(new WindowAdapter() {
+                                    @Override
+                                    public void windowClosed(WindowEvent e) {
+                                        // 确保原始JFrame也被销毁
+                                        animationFrame.dispose();
+                                        resetAnimationState(algorithmName);
+                                    }
+                                    
+                                    @Override
+                                    public void windowClosing(WindowEvent e) {
+                                        // 确保原始JFrame也被销毁
+                                        animationFrame.dispose();
+                                        resetAnimationState(algorithmName);
+                                    }
+                                });
+                                
+                                // 显示模态对话框
+                                dialog.setVisible(true);
+                                
+                                // 对话框关闭后重置状态
                                 resetAnimationState(algorithmName);
-                            });
+                            } else {
+                                // 如果没有找到JFrame，重置状态
+                                resetAnimationState(algorithmName);
+                            }
+                        } catch (Exception e) {
+                            resetAnimationState(algorithmName);
+                            statusLabel.setText("启动失败：" + e.getMessage());
+                            JOptionPane.showMessageDialog(AlgorithmTreeLauncher.this, 
+                                "创建动画窗口时发生错误：\n" + e.getMessage(), 
+                                "错误", 
+                                JOptionPane.ERROR_MESSAGE);
+                            e.printStackTrace();
                         }
-                    }).start();
+                    });
                 }
             }
             
