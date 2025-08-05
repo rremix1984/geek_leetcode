@@ -1,12 +1,14 @@
 package com.itcast.example;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.junit.Test;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class MyConfigCenterTest extends BaseTest implements Watcher {
 
     @Override
