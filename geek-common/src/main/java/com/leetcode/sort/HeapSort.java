@@ -6,7 +6,7 @@ package com.leetcode.sort;
 import org.junit.Test;
 import static com.leetcode.util.SystemUtil.*;
 import static com.leetcode.util.SwapUtil.swap;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
    7. 堆排序
