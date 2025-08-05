@@ -75,6 +75,7 @@ import com.animation.math.*;
 // 树算法导入
 import com.animation.tree.*;
 import com.animation.normal.*;
+import com.animation.atomics.*;
 
 // 困难算法导入
 import com.animation.hard.NO403_H_FrogJump_Animation;
@@ -114,7 +115,8 @@ public class AlgorithmTreeLauncher extends JFrame {
     private JButton startButton;
     private JButton processMonitorButton;
     private JButton memoryMonitorButton;
-    private JButton statsButton; // 新增：算法统计按钮
+    // 移除统计按钮，改为在标题栏显示饼图
+    private StatsPieChartPanel statsPieChartPanel;
     private JLabel statusLabel;
     private DefaultMutableTreeNode rootNode;
     private DefaultMutableTreeNode filteredRootNode;
@@ -149,6 +151,16 @@ public class AlgorithmTreeLauncher extends JFrame {
     private DefaultMutableTreeNode hardNode;
     private DefaultMutableTreeNode normalNode;
     
+    // 算法信息列表，用于统计
+    private List<AlgorithmInfo> algorithmInfos;
+    
+    // 防止重复点击的标志
+    private volatile boolean isAnimationRunning = false;
+    
+    // 当前动画窗口引用（单例模式）
+    private Window currentAnimationWindow = null;
+    private String currentAnimationName = null;
+    
     private AlgorithmTreeLauncher() {
         LOGGER.info("Constructor started.");
         // 获取JMX端口号并设置标题
@@ -162,7 +174,27 @@ public class AlgorithmTreeLauncher extends JFrame {
         setSize(1000, 700);
         setLocationRelativeTo(null);
         
+        // 添加窗口关闭监听器，确保父窗口关闭时正确处理子窗口
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // 关闭所有子窗口
+                closeCurrentAnimationWindow();
+                // 执行清理工作
+                if (recentAlgorithmManager != null) {
+                    try {
+                        // 保存最近访问的算法列表
+                        // recentAlgorithmManager.saveRecentAlgorithms();
+                    } catch (Exception ex) {
+                        System.err.println("保存最近访问算法列表失败: " + ex.getMessage());
+                    }
+                }
+                LOGGER.info("主窗口正在关闭，已清理所有子窗口");
+            }
+        });
+        
         allAlgorithmNodes = new ArrayList<>();
+        algorithmInfos = new ArrayList<>();
         
         // 初始化最近访问管理器，添加异常处理
         try {
@@ -212,13 +244,42 @@ public class AlgorithmTreeLauncher extends JFrame {
     }
     
     /**
-     * 获取单例实例
+     * 获取单例实例 - 确保整个应用程序只有一个主窗口实例
      */
     public static AlgorithmTreeLauncher getInstance() {
         if (instance == null) {
-            instance = new AlgorithmTreeLauncher();
+            synchronized (AlgorithmTreeLauncher.class) {
+                if (instance == null) {
+                    instance = new AlgorithmTreeLauncher();
+                    LOGGER.info("创建主窗口单例实例");
+                }
+            }
         }
         return instance;
+    }
+    
+    /**
+     * 获取父窗口实例 - 供子窗口使用以建立正确的父子关系
+     * @return 主窗口实例，作为所有子窗口的父窗口
+     */
+    public static JFrame getParentWindow() {
+        return getInstance();
+    }
+    
+    /**
+     * 检查是否有子窗口正在运行
+     * @return true如果有子窗口正在运行，false否则
+     */
+    public boolean hasChildWindowRunning() {
+        return currentAnimationWindow != null && currentAnimationWindow.isDisplayable();
+    }
+    
+    /**
+     * 获取当前运行的子窗口名称
+     * @return 当前子窗口名称，如果没有则返回null
+     */
+    public String getCurrentChildWindowName() {
+        return currentAnimationName;
     }
     
     /**
@@ -303,6 +364,11 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         // 图论算法
         animations.put("NO.463 岛屿的周长", () -> new NO463_E_IslandPerimeter_Animation().setVisible(true));
+        animations.put("图的深度优先搜索(DFS)", () -> new GraphDFSAnimation().setVisible(true));
+        animations.put("图的广度优先搜索(BFS)", () -> new GraphBFSAnimation().setVisible(true));
+        animations.put("Dijkstra最短路径算法", () -> new DijkstraAnimation().setVisible(true));
+        animations.put("Kruskal最小生成树算法", () -> new KruskalMSTAnimation().setVisible(true));
+        animations.put("拓扑排序算法", () -> new TopologicalSortAnimation().setVisible(true));
         
         // 数学算法
         animations.put("NO.009 回文数", () -> new NO009_E_IsPalindrome_Animation().setVisible(true));
@@ -340,26 +406,63 @@ public class AlgorithmTreeLauncher extends JFrame {
             }
         });
         animations.put("NO.85 最大矩形", () -> new NO85_H_MaximalRectangle_Animation().setVisible(true));
-        animations.put("NO.312 戳气球", () -> {
+        animations.put("NO.312 戳气球", (Runnable) () -> {
             int[] nums = {3, 1, 5, 8};
             new NO312_H_BurstBalloons_Animation(nums).setVisible(true);
         });
-        animations.put("NO.773 滑动谜题", () -> {
+        animations.put("NO.773 滑动谜题", (Runnable) () -> {
+            JFrame frame = new JFrame("NO.773 滑动谜题");
             int[][] board = {{1, 2, 3}, {4, 0, 5}};
-            new NO773_H_SlidingPuzzle_Animation(board).setVisible(true);
+            NO773_H_SlidingPuzzle_Animation animation = new NO773_H_SlidingPuzzle_Animation(board);
+            frame.add(animation);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
         });
-        animations.put("NO.127 单词接龙", () -> {
+        animations.put("NO.127 单词接龙", (Runnable) () -> {
+            JFrame frame = new JFrame("NO.127 单词接龙");
             String beginWord = "hit";
             String endWord = "cog";
             java.util.List<String> wordList = java.util.Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
-            new NO127_H_WordLadder_Animation(beginWord, endWord, wordList).setVisible(true);
+            NO127_H_WordLadder_Animation animation = new NO127_H_WordLadder_Animation(beginWord, endWord, wordList);
+            frame.add(animation);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
         });
-        animations.put("NO.126 单词接龙 II", () -> {
+        animations.put("NO.126 单词接龙II", (Runnable) () -> {
+            JFrame frame = new JFrame("NO.126 单词接龙II");
             String beginWord = "hit";
             String endWord = "cog";
             java.util.List<String> wordList = java.util.Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
-            new NO126_H_WordLadderII_Animation(beginWord, endWord, wordList).setVisible(true);
+            NO126_H_WordLadderII_Animation animation = new NO126_H_WordLadderII_Animation(beginWord, endWord, wordList);
+            frame.add(animation);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
         });
+        // NO.297 和 NO.834 动画在 geek-hard 模块中，暂时移除
+        // animations.put("NO.297 二叉树的序列化与反序列化", () -> {
+        //     JFrame frame = new JFrame("NO.297 二叉树的序列化与反序列化");
+        //     NO297_H_SerializeAndDeserializeBinaryTree_Animation animation = new NO297_H_SerializeAndDeserializeBinaryTree_Animation();
+        //     frame.add(animation);
+        //     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //     frame.pack();
+        //     frame.setLocationRelativeTo(null);
+        //     frame.setVisible(true);
+        // });
+        // animations.put("NO.834 树中距离之和", () -> {
+        //     JFrame frame = new JFrame("NO.834 树中距离之和");
+        //     NO834_H_SumOfDistancesInTree_Animation animation = new NO834_H_SumOfDistancesInTree_Animation();
+        //     frame.add(animation);
+        //     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //     frame.pack();
+        //     frame.setLocationRelativeTo(null);
+        //     frame.setVisible(true);
+        // });
         
         // Normal算法 - donnot目录
         animations.put("NO.208 实现Trie(前缀树)", () -> new NO208_N_Trie_Animation().setVisible(true));
@@ -376,6 +479,14 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.200 岛屿数量", () -> new com.animation.graph.NO200_N_NumberOfIslands_Animation().setVisible(true));
         animations.put("NO.322 零钱兑换", () -> new NO322_N_CoinChange_Animation().setVisible(true));
         animations.put("NO.139 单词拆分", () -> new NO139_N_WordBreak_Animation().setVisible(true));
+        
+        // 原子类动画
+        animations.put("AtomicInteger 多线程安全演示", () -> new AtomicIntegerAnimation().setVisible(true));
+        animations.put("AtomicReference CAS操作演示", () -> new AtomicReferenceAnimation().setVisible(true));
+        animations.put("LongAdder 高并发性能演示", () -> new LongAdderAnimation().setVisible(true));
+        animations.put("AtomicIntegerArray 数组操作演示", () -> new AtomicIntegerArrayAnimation().setVisible(true));
+        animations.put("AtomicStampedReference ABA问题演示", () -> new AtomicStampedReferenceAnimation().setVisible(true));
+        animations.put("AtomicMarkableReference 标记演示", () -> new AtomicMarkableReferenceAnimation().setVisible(true));
     }
     
     /**
@@ -388,6 +499,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         DefaultMutableTreeNode easyGroupNode = new DefaultMutableTreeNode("🟢 简单算法 (Easy) - 共42个");
         DefaultMutableTreeNode normalGroupNode = new DefaultMutableTreeNode("🟡 中等算法 (Normal) - 共14个");
         DefaultMutableTreeNode hardGroupNode = new DefaultMutableTreeNode("🔴 困难算法 (Hard) - 共6个");
+        DefaultMutableTreeNode atomicsGroupNode = new DefaultMutableTreeNode("⚛️ 原子类动画 (Atomics) - 共6个");
         
         // 创建Easy算法分类节点
         arrayNode = new DefaultMutableTreeNode("📊 数组算法 (18个)");
@@ -410,6 +522,14 @@ public class AlgorithmTreeLauncher extends JFrame {
         // 创建Hard算法分类节点
         hardNode = new DefaultMutableTreeNode("🔥 困难算法 (8个)");
         
+        // 创建Atomics原子类分类节点
+        DefaultMutableTreeNode atomicIntegerNode = new DefaultMutableTreeNode("🔢 AtomicInteger (1个)");
+        DefaultMutableTreeNode atomicReferenceNode = new DefaultMutableTreeNode("📦 AtomicReference (1个)");
+        DefaultMutableTreeNode longAdderNode = new DefaultMutableTreeNode("➕ LongAdder (1个)");
+        DefaultMutableTreeNode atomicArrayNode = new DefaultMutableTreeNode("📊 AtomicArray (1个)");
+        DefaultMutableTreeNode atomicStampedNode = new DefaultMutableTreeNode("🏷️ AtomicStamped (1个)");
+        DefaultMutableTreeNode atomicMarkableNode = new DefaultMutableTreeNode("✅ AtomicMarkable (1个)");
+        
         // 将分类节点添加到主分组
         easyGroupNode.add(arrayNode);
         easyGroupNode.add(sortNode);
@@ -428,6 +548,13 @@ public class AlgorithmTreeLauncher extends JFrame {
         normalGroupNode.add(normalNode);
         
         hardGroupNode.add(hardNode);
+        
+        atomicsGroupNode.add(atomicIntegerNode);
+        atomicsGroupNode.add(atomicReferenceNode);
+        atomicsGroupNode.add(longAdderNode);
+        atomicsGroupNode.add(atomicArrayNode);
+        atomicsGroupNode.add(atomicStampedNode);
+        atomicsGroupNode.add(atomicMarkableNode);
 
         addAlgorithmToCategory(hardNode, "NO.85 最大矩形", "Hard", "单调栈 + 动态规划");
         addAlgorithmToCategory(hardNode, "NO.312 戳气球", "Hard", "区间DP");
@@ -435,10 +562,19 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(hardNode, "NO.127 单词接龙", "Hard", "BFS + 图论");
         addAlgorithmToCategory(hardNode, "NO.126 单词接龙 II", "Hard", "BFS + DFS");
         
+        // 添加原子类算法
+        addAlgorithmToCategory(atomicIntegerNode, "AtomicInteger 多线程安全演示", "Atomics", "原子整数 + 线程安全");
+        addAlgorithmToCategory(atomicReferenceNode, "AtomicReference CAS操作演示", "Atomics", "原子引用 + CAS操作");
+        addAlgorithmToCategory(longAdderNode, "LongAdder 高并发性能演示", "Atomics", "高并发计数器 + 性能对比");
+        addAlgorithmToCategory(atomicArrayNode, "AtomicIntegerArray 数组操作演示", "Atomics", "原子数组 + 并发操作");
+        addAlgorithmToCategory(atomicStampedNode, "AtomicStampedReference ABA问题演示", "Atomics", "版本戳引用 + ABA问题解决");
+        addAlgorithmToCategory(atomicMarkableNode, "AtomicMarkableReference 标记演示", "Atomics", "可标记引用 + 布尔标记");
+        
         // 将主分组添加到根节点
         rootNode.add(easyGroupNode);
         rootNode.add(normalGroupNode);
         rootNode.add(hardGroupNode);
+        rootNode.add(atomicsGroupNode);
         
         // 添加具体算法到分类节点
         addAlgorithmToCategory(arrayNode, "NO.001 两数之和", "Easy", "哈希表 + 双指针");
@@ -460,7 +596,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(arrayNode, "NO.2574 左右元素和的差值", "Easy", "前缀和 + 数组遍历");
         addAlgorithmToCategory(arrayNode, "NO.2586 统计范围内的元音字符串数", "Easy", "字符串遍历 + 条件判断");
         
-        addAlgorithmToCategory(sortNode, "插入排序算法演示", "Basic", "插入排序 + 可视化");
+        addAlgorithmToCategory(sortNode, "插入排序算法演示", "Easy", "插入排序 + 可视化");
         
         addAlgorithmToCategory(dataStructureNode, "NO.225 用队列实现栈", "Easy", "队列 + LIFO模拟");
         addAlgorithmToCategory(dataStructureNode, "NO.234 回文链表", "Easy", "快慢指针 + 栈");
@@ -474,9 +610,9 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(dpNode, "NO.118 杨辉三角", "Easy", "动态规划 + 组合数学");
         
         addAlgorithmToCategory(greedyNode, "NO.055 跳跃游戏", "Easy", "贪心 + 最远可达位置");
-        addAlgorithmToCategory(greedyNode, "NO.055 跳跃游戏 (Normal)", "Normal", "贪心 + 最远可达位置 (详细版)");
-        addAlgorithmToCategory(greedyNode, "NO.045 跳跃游戏 II", "Normal", "贪心 + 最少跳跃次数");
-        addAlgorithmToCategory(greedyNode, "NO.2498 青蛙过河 II", "Normal", "贪心 + 最小跳跃距离");
+        addAlgorithmToCategory(greedyNode, "NO.055 跳跃游戏 (Normal)", "Easy", "贪心 + 最远可达位置 (详细版)");
+        addAlgorithmToCategory(greedyNode, "NO.045 跳跃游戏 II", "Easy", "贪心 + 最少跳跃次数");
+        addAlgorithmToCategory(greedyNode, "NO.2498 青蛙过河 II", "Easy", "贪心 + 最小跳跃距离");
         addAlgorithmToCategory(greedyNode, "NO.121 买卖股票的最佳时机", "Easy", "贪心 + 一次遍历");
         addAlgorithmToCategory(greedyNode, "NO.2558 从数量最多的堆取走礼物", "Easy", "贪心 + 最大堆");
         addAlgorithmToCategory(greedyNode, "NO.1005 K次取反后最大化数组和", "Easy", "贪心 + 排序");
@@ -487,7 +623,12 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(bitNode, "NO.190 颠倒二进制位", "Easy", "位运算 + 逐位处理");
         
         addAlgorithmToCategory(graphNode, "NO.463 岛屿的周长", "Easy", "网格遍历 + 边界计算");
-        addAlgorithmToCategory(graphNode, "NO.200 岛屿数量", "Normal", "深度优先搜索 + 网格遍历");
+        addAlgorithmToCategory(graphNode, "NO.200 岛屿数量", "Easy", "深度优先搜索 + 网格遍历");
+        addAlgorithmToCategory(graphNode, "图的深度优先搜索(DFS)", "Easy", "深度优先搜索 + 栈 + 回溯");
+        addAlgorithmToCategory(graphNode, "图的广度优先搜索(BFS)", "Easy", "广度优先搜索 + 队列 + 层次遍历");
+        addAlgorithmToCategory(graphNode, "Dijkstra最短路径算法", "Easy", "最短路径 + 优先队列 + 贪心");
+        addAlgorithmToCategory(graphNode, "Kruskal最小生成树算法", "Easy", "最小生成树 + 并查集 + 贪心");
+        addAlgorithmToCategory(graphNode, "拓扑排序算法", "Easy", "拓扑排序 + Kahn算法 + 入度");
         
         addAlgorithmToCategory(mathNode, "NO.009 回文数", "Easy", "数学运算 + 数位反转");
         addAlgorithmToCategory(mathNode, "NO.066 加一", "Easy", "数学运算 + 进位处理");
@@ -499,7 +640,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(treeNode, "NO.101 对称二叉树", "Easy", "树遍历 + 对称性检查");
         addAlgorithmToCategory(treeNode, "NO.104 二叉树的最大深度", "Easy", "树遍历 + 深度计算");
         addAlgorithmToCategory(treeNode, "NO.108 将有序数组转换为二叉搜索树", "Easy", "分治算法 + 平衡树构建");
-        addAlgorithmToCategory(treeNode, "NO.199 二叉树的右视图", "Normal", "树 + 广度优先搜索");
+        addAlgorithmToCategory(treeNode, "NO.199 二叉树的右视图", "Easy", "树 + 广度优先搜索");
         
         addAlgorithmToCategory(dfsNode, "NO.1306 跳跃游戏 III", "Normal", "深度优先搜索 + 递归回溯");
         
@@ -522,6 +663,9 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(hardNode, "NO.403 青蛙过河", "Hard", "动态规划 + 集合");
         addAlgorithmToCategory(hardNode, "NO.23 合并K个升序链表", "Hard", "优先队列 + 链表");
         addAlgorithmToCategory(hardNode, "NO.52 N皇后II", "Hard", "回溯算法");
+        // NO.297 和 NO.834 在 geek-hard 模块中，暂时移除
+        // addAlgorithmToCategory(hardNode, "NO.297 二叉树的序列化与反序列化", "Hard", "前序遍历 + 递归重建");
+        // addAlgorithmToCategory(hardNode, "NO.834 树中距离之和", "Hard", "树形DP + DFS");
     }
     
     /**
@@ -533,6 +677,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         DefaultMutableTreeNode algorithmNode = new DefaultMutableTreeNode(info);
         categoryNode.add(algorithmNode);
         allAlgorithmNodes.add(algorithmNode);
+        algorithmInfos.add(info);  // 添加到统计列表
     }
     
     /**
@@ -588,11 +733,8 @@ public class AlgorithmTreeLauncher extends JFrame {
         memoryMonitorButton.setFont(new Font("微软雅黑", Font.PLAIN, 12));
         memoryMonitorButton.setToolTipText("打开jconsole");
 
-        // 初始化算法统计按钮
-        statsButton = new JButton("统计");
-        statsButton.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-        statsButton.setToolTipText("显示算法统计信息");
-        statsButton.setIcon(createImageIconFromSVG("/icons/statistics.svg", 16, 16));
+        // 初始化统计饼图面板
+        statsPieChartPanel = new StatsPieChartPanel();
         
         // 创建状态标签
         statusLabel = new JLabel("请选择一个算法查看详细信息");
@@ -695,7 +837,6 @@ public class AlgorithmTreeLauncher extends JFrame {
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         controlPanel.add(processMonitorButton);
         controlPanel.add(memoryMonitorButton);
-        controlPanel.add(statsButton);
         controlPanel.add(startButton);
         
         rightPanel.add(descPanel, BorderLayout.CENTER);
@@ -706,7 +847,17 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         add(mainSplitPane, BorderLayout.CENTER);
         
-        // 顶部标题
+        // 顶部标题和统计面板
+        JPanel topContainer = new JPanel(new BorderLayout());
+        
+        // 统计饼图面板
+        JPanel statsContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5));
+        statsContainer.setBackground(new Color(248, 250, 252));
+        statsContainer.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
+        statsPieChartPanel.setPreferredSize(new Dimension(getWidth(), 80));
+        statsContainer.add(statsPieChartPanel);
+        
+        // 标题面板
         JPanel titlePanel = new JPanel(new BorderLayout());
         titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         titlePanel.setBackground(new Color(240, 248, 255));
@@ -727,7 +878,11 @@ public class AlgorithmTreeLauncher extends JFrame {
         titlePanel.add(titleTextPanel, BorderLayout.WEST);
         titlePanel.add(statusLabel, BorderLayout.EAST);
         
-        add(titlePanel, BorderLayout.NORTH);
+        // 组合顶部容器
+        topContainer.add(statsContainer, BorderLayout.NORTH);
+        topContainer.add(titlePanel, BorderLayout.CENTER);
+        
+        add(topContainer, BorderLayout.NORTH);
     }
     
     /**
@@ -836,8 +991,7 @@ public class AlgorithmTreeLauncher extends JFrame {
             statusLabel.setText("已折叠所有分类");
         });
 
-        // 算法统计按钮事件
-        statsButton.addActionListener(e -> showAlgorithmStats());
+        // 统计按钮已移除，饼图直接显示在标题栏
     }
     
     /**
@@ -1499,6 +1653,8 @@ public class AlgorithmTreeLauncher extends JFrame {
                        "• 动态生成并展示所有最短转换路径\n\n" +
                        "💡 算法技巧：BFS + DFS + 图论";
 
+            // NO.297 和 NO.834 的描述已移除，因为它们在 geek-hard 模块中
+
             // 继续添加其他算法的描述...
             default:
                 return "🔍 算法描述加载中...\n\n请稍候，正在为您准备详细的算法说明。";
@@ -1620,6 +1776,9 @@ public class AlgorithmTreeLauncher extends JFrame {
                         break;
                     case "Hard":
                         setIcon(createColorIcon(new Color(244, 67, 54))); // 红色
+                        break;
+                    case "Atomics":
+                        setIcon(createColorIcon(new Color(156, 39, 176))); // 紫色
                         break;
                     default:
                         setIcon(createColorIcon(new Color(96, 125, 139))); // 灰色
@@ -1745,6 +1904,15 @@ public class AlgorithmTreeLauncher extends JFrame {
      * 启动算法动画
      */
     private void startAnimation() {
+        // 防止重复点击
+        if (isAnimationRunning) {
+            JOptionPane.showMessageDialog(this, 
+                "动画正在运行中，请等待当前动画结束后再启动新的动画！", 
+                "提示", 
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) algorithmTree.getLastSelectedPathComponent();
         
         if (selectedNode == null || !(selectedNode.getUserObject() instanceof AlgorithmInfo)) {
@@ -1768,6 +1936,9 @@ public class AlgorithmTreeLauncher extends JFrame {
         }
         
         try {
+            // 设置动画运行标志
+            isAnimationRunning = true;
+            startButton.setEnabled(false); // 禁用启动按钮
             statusLabel.setText("正在启动算法动画：" + algorithmName);
             
             // 记录到最近访问
@@ -1786,43 +1957,21 @@ public class AlgorithmTreeLauncher extends JFrame {
                 }
             }
             
-            // 在新线程中启动动画，避免阻塞UI
-            new Thread(() -> {
-                try {
-                    Runnable animation = animations.get(algorithmName);
-                    
-                    // 隐藏主窗口
-                    SwingUtilities.invokeLater(() -> {
-                        AlgorithmTreeLauncher.this.setVisible(false);
-                    });
-                    
-                    try {
-                        // 运行动画
-                        animation.run();
-                    } finally {
-                        // 动画结束后（无论是否发生异常），都确保主窗口重新显示
-                        SwingUtilities.invokeLater(() -> {
-                            AlgorithmTreeLauncher.this.setVisible(true);
-                            AlgorithmTreeLauncher.this.toFront();
-                            AlgorithmTreeLauncher.this.requestFocus();
-                            statusLabel.setText("算法动画已结束：" + algorithmName);
-                        });
-                    }
-                    
-                } catch (Exception ex) {
-                    SwingUtilities.invokeLater(() -> {
-                        statusLabel.setText("启动失败：" + ex.getMessage());
-                        JOptionPane.showMessageDialog(AlgorithmTreeLauncher.this, 
-                            "启动算法动画时发生错误：\n" + ex.getMessage(), 
-                            "错误", 
-                            JOptionPane.ERROR_MESSAGE);
-                        // 确保主窗口可见
-                        AlgorithmTreeLauncher.this.setVisible(true);
-                        AlgorithmTreeLauncher.this.toFront();
-                    });
-                    ex.printStackTrace();
-                }
-            }).start();
+            // 直接在EDT线程中创建模态窗口
+            try {
+                Runnable animation = animations.get(algorithmName);
+                createModalAnimationWindow(animation, algorithmName);
+            } catch (Exception ex) {
+                statusLabel.setText("启动失败：" + ex.getMessage());
+                JOptionPane.showMessageDialog(this, 
+                    "启动算法动画时发生错误：\n" + ex.getMessage(), 
+                    "错误", 
+                    JOptionPane.ERROR_MESSAGE);
+                // 重置状态
+                isAnimationRunning = false;
+                startButton.setEnabled(true);
+                ex.printStackTrace();
+            }
             
         } catch (Exception e) {
             statusLabel.setText("启动失败：" + e.getMessage());
@@ -1830,153 +1979,508 @@ public class AlgorithmTreeLauncher extends JFrame {
                 "启动算法动画时发生错误：\n" + e.getMessage(), 
                 "错误", 
                 JOptionPane.ERROR_MESSAGE);
+            // 重置状态
+            isAnimationRunning = false;
+            startButton.setEnabled(true);
             e.printStackTrace();
         }
     }
     
     /**
-     * 主方法
+     * 创建模态动画窗口（单例模式）
      */
     /**
-     * 显示算法统计信息
+     * 创建模态动画窗口 - 确保子页面是父页面的真正子窗口
+     * 实现单例模式：同一时间只能有一个动画窗口打开
      */
-    private void showAlgorithmStats() {
-        Map<String, Integer> difficultyCount = new LinkedHashMap<>();
-        Map<String, Integer> techniqueCount = new HashMap<>();
-        int totalAlgorithms = 0;
-
-        // 初始化难度顺序
-        difficultyCount.put("简单", 0);
-        difficultyCount.put("中等", 0);
-        difficultyCount.put("困难", 0);
-
-        for (DefaultMutableTreeNode node : allAlgorithmNodes) {
-            if (node.getUserObject() instanceof AlgorithmInfo) {
-                totalAlgorithms++;
-                AlgorithmInfo info = (AlgorithmInfo) node.getUserObject();
-
-                // 统计难度
-                difficultyCount.put(info.getDifficulty(), difficultyCount.getOrDefault(info.getDifficulty(), 0) + 1);
-
-                // 统计技术
-                String[] techniques = info.getTechnique().split("\\s*\\+\\s*");
-                for (String tech : techniques) {
-                    if (!tech.trim().isEmpty()) {
-                        techniqueCount.put(tech.trim(), techniqueCount.getOrDefault(tech.trim(), 0) + 1);
+    private void createModalAnimationWindow(Runnable animation, String algorithmName) {
+        try {
+            // 如果当前已有动画窗口且是同一个动画，则将窗口置于前台
+            if (currentAnimationWindow != null && algorithmName.equals(currentAnimationName)) {
+                currentAnimationWindow.toFront();
+                currentAnimationWindow.requestFocus();
+                statusLabel.setText("动画窗口已置于前台：" + algorithmName);
+                return;
+            }
+            
+            // 关闭现有的动画窗口（确保单例）
+            closeCurrentAnimationWindow();
+            
+            // 如果动画是JPanel类型，需要包装在JFrame中
+            if (animation instanceof JPanel) {
+                JPanel animationPanel = (JPanel) animation;
+                
+                // 创建模态对话框，明确设置父窗口关系
+                JDialog dialog = new JDialog(this, "算法动画演示 - " + algorithmName, true);
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                
+                // 设置窗口属性 - 确保子窗口特性
+                dialog.setSize(800, 600);
+                dialog.setLocationRelativeTo(this); // 相对于父窗口居中
+                dialog.setAlwaysOnTop(false); // 移除置顶，让其表现为正常的子窗口
+                
+                // 设置窗口图标与父窗口一致
+                if (this.getIconImage() != null) {
+                    dialog.setIconImage(this.getIconImage());
+                }
+                
+                // 添加动画面板
+                dialog.add(animationPanel);
+                
+                // 保存当前窗口引用
+                currentAnimationWindow = dialog;
+                currentAnimationName = algorithmName;
+                
+                // 添加窗口关闭监听器
+                dialog.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        // 动画窗口关闭后重置状态
+                        resetAnimationState(algorithmName);
                     }
+                    
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        // 窗口正在关闭时也重置状态
+                        resetAnimationState(algorithmName);
+                    }
+                });
+                
+                // 更新状态标签
+                statusLabel.setText("正在启动算法动画：" + algorithmName);
+                
+                // 显示模态对话框（阻塞调用）
+                dialog.setVisible(true);
+                
+                // 对话框关闭后重置状态
+                resetAnimationState(algorithmName);
+                
+            } else {
+                // 对于JFrame类型的动画，也包装在模态对话框中
+                if (animation instanceof JFrame) {
+                    JFrame animationFrame = (JFrame) animation;
+                    
+                    // 创建模态对话框来包装JFrame的内容，明确设置父窗口关系
+                    JDialog dialog = new JDialog(this, "算法动画演示 - " + algorithmName, true);
+                    dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                    
+                    // 获取JFrame的内容面板
+                    Container contentPane = animationFrame.getContentPane();
+                    
+                    // 将JFrame的内容转移到对话框中
+                    dialog.setContentPane(contentPane);
+                    
+                    // 设置窗口属性 - 确保子窗口特性
+                    dialog.setSize(animationFrame.getSize().width > 0 ? animationFrame.getSize() : new Dimension(800, 600));
+                    dialog.setLocationRelativeTo(this); // 相对于父窗口居中
+                    
+                    // 设置窗口图标与父窗口一致
+                    if (this.getIconImage() != null) {
+                        dialog.setIconImage(this.getIconImage());
+                    }
+                    
+                    // 保存当前窗口引用
+                    currentAnimationWindow = dialog;
+                    currentAnimationName = algorithmName;
+                    
+                    // 添加窗口关闭监听器
+                    dialog.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            // 动画窗口关闭后重置状态
+                            resetAnimationState(algorithmName);
+                        }
+                        
+                        @Override
+                        public void windowClosing(WindowEvent e) {
+                            // 窗口正在关闭时也重置状态
+                            resetAnimationState(algorithmName);
+                        }
+                    });
+                    
+                    // 更新状态标签
+                    statusLabel.setText("正在启动算法动画：" + algorithmName);
+                    
+                    // 显示模态对话框（阻塞调用）
+                    dialog.setVisible(true);
+                    
+                    // 对话框关闭后重置状态
+                    resetAnimationState(algorithmName);
+                } else {
+                    // 对于其他类型的动画，在新线程中运行
+                    currentAnimationName = algorithmName;
+                    statusLabel.setText("正在启动算法动画：" + algorithmName);
+                    
+                    new Thread(() -> {
+                        try {
+                            animation.run();
+                        } finally {
+                            SwingUtilities.invokeLater(() -> {
+                                // 动画结束后重置状态
+                                resetAnimationState(algorithmName);
+                            });
+                        }
+                    }).start();
                 }
             }
+            
+        } catch (Exception e) {
+            // 发生异常时重置状态
+            resetAnimationState(algorithmName);
+            statusLabel.setText("启动失败：" + e.getMessage());
+            JOptionPane.showMessageDialog(this, 
+                "创建动画窗口时发生错误：\n" + e.getMessage(), 
+                "错误", 
+                JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
-
-        // 按技术点计数排序
-        Map<String, Integer> sortedTechniqueCount = techniqueCount.entrySet().stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-
-        JFrame statsFrame = new JFrame("算法统计报表");
-        statsFrame.setSize(900, 700);
-        statsFrame.setLocationRelativeTo(this);
-        statsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        StatsChartPanel chartPanel = new StatsChartPanel(difficultyCount, sortedTechniqueCount, totalAlgorithms);
-        statsFrame.add(chartPanel);
-
-        statsFrame.setVisible(true);
     }
+    
+    /**
+     * 关闭当前动画窗口 - 确保正确清理子窗口资源
+     */
+    private void closeCurrentAnimationWindow() {
+        if (currentAnimationWindow != null) {
+            try {
+                LOGGER.info("正在关闭动画窗口: " + currentAnimationName);
+                
+                if (currentAnimationWindow instanceof JDialog) {
+                    JDialog dialog = (JDialog) currentAnimationWindow;
+                    // 确保对话框不可见
+                    dialog.setVisible(false);
+                    // 释放资源
+                    dialog.dispose();
+                } else if (currentAnimationWindow instanceof JFrame) {
+                    JFrame frame = (JFrame) currentAnimationWindow;
+                    // 确保窗口不可见
+                    frame.setVisible(false);
+                    // 释放资源
+                    frame.dispose();
+                }
+                
+                LOGGER.info("动画窗口已关闭: " + currentAnimationName);
+            } catch (Exception e) {
+                LOGGER.warning("关闭动画窗口时发生异常: " + e.getMessage());
+                e.printStackTrace();
+            } finally {
+                // 无论如何都要重置引用
+                currentAnimationWindow = null;
+                currentAnimationName = null;
+            }
+        }
+    }
+    
+    /**
+     * 重置动画状态
+     */
+    private void resetAnimationState(String algorithmName) {
+        isAnimationRunning = false;
+        startButton.setEnabled(true);
+        currentAnimationWindow = null;
+        currentAnimationName = null;
+        statusLabel.setText("算法动画已结束：" + algorithmName);
+    }
+    
+    /**
+     * 主方法
+     */
+    // 统计功能已移至标题栏饼图显示，不再需要单独的统计窗口
 
     /**
      * 主方法
      */
-    class StatsChartPanel extends JPanel {
-        private final Map<String, Integer> difficultyData;
-        private final Map<String, Integer> techniqueData;
-        private final int total;
-        private final Color[] difficultyColors = {new Color(90, 200, 90), new Color(255, 170, 0), new Color(255, 80, 80)};
-        private final Color[] techColors = {new Color(70, 130, 180), new Color(255, 165, 0), new Color(60, 179, 113), new Color(220, 20, 60), new Color(138, 43, 226), new Color(24, 116, 205)};
-
-        public StatsChartPanel(Map<String, Integer> difficultyData, Map<String, Integer> techniqueData, int total) {
-            this.difficultyData = difficultyData;
-            this.techniqueData = techniqueData;
-            this.total = total;
-            setBackground(Color.WHITE);
-            setBorder(new EmptyBorder(20, 20, 20, 20));
+    // 统计饼图面板类
+    private class StatsPieChartPanel extends JPanel {
+        private Map<String, Integer> difficultyData;
+        private Map<String, Integer> categoryData;
+        private Color[] pieColors = {
+            new Color(54, 162, 235),   // 蓝色 - Easy
+            new Color(255, 205, 86),   // 黄色 - Medium  
+            new Color(255, 99, 132),   // 红色 - Hard
+            new Color(153, 102, 255)   // 紫色 - Atomics
+        };
+        private Color[] categoryColors = {
+            new Color(255, 99, 132),   // 红色 - 数组
+            new Color(54, 162, 235),   // 蓝色 - 树
+            new Color(255, 205, 86),   // 黄色 - 图
+            new Color(75, 192, 192),   // 青色 - 动态规划
+            new Color(153, 102, 255),  // 紫色 - 贪心
+            new Color(255, 159, 64),   // 橙色 - 搜索
+            new Color(199, 199, 199),  // 灰色 - 字符串
+            new Color(83, 102, 255),   // 靛蓝 - 位运算
+            new Color(255, 99, 255),   // 品红 - 数据结构
+            new Color(99, 255, 132),   // 绿色 - 数学
+            new Color(255, 206, 84),   // 金色 - 排序
+            new Color(54, 162, 132)    // 深青 - 其他
+        };
+        
+        public StatsPieChartPanel() {
+            setPreferredSize(new Dimension(800, 80));
+            setBackground(new Color(248, 250, 252));
+            updateData();
         }
-
+        
+        public void updateData() {
+            // 统计难度分布
+            difficultyData = new LinkedHashMap<>();
+            difficultyData.put("简单", 0);
+            difficultyData.put("中等", 0);
+            difficultyData.put("困难", 0);
+            difficultyData.put("原子类", 0);
+            
+            // 统计分类分布
+            categoryData = new LinkedHashMap<>();
+            categoryData.put("数组", 0);
+            categoryData.put("树", 0);
+            categoryData.put("图", 0);
+            categoryData.put("动态规划", 0);
+            categoryData.put("贪心", 0);
+            categoryData.put("搜索", 0);
+            categoryData.put("字符串", 0);
+            categoryData.put("位运算", 0);
+            categoryData.put("数据结构", 0);
+            categoryData.put("数学", 0);
+            categoryData.put("排序", 0);
+            categoryData.put("其他", 0);
+            
+            // 统计各难度和分类的算法数量
+            for (AlgorithmInfo info : algorithmInfos) {
+                String difficulty = info.getDifficulty();
+                String technique = info.getTechnique();
+                
+                // 将英文难度映射到中文
+                String mappedDifficulty;
+                switch (difficulty) {
+                    case "Easy":
+                        mappedDifficulty = "简单";
+                        break;
+                    case "Normal":
+                        mappedDifficulty = "中等";
+                        break;
+                    case "Hard":
+                        mappedDifficulty = "困难";
+                        break;
+                    case "Atomics":
+                        mappedDifficulty = "原子类";
+                        break;
+                    default:
+                        mappedDifficulty = "简单"; // 默认为简单
+                        break;
+                }
+                Integer count = difficultyData.get(mappedDifficulty);
+                if (count != null) {
+                    difficultyData.put(mappedDifficulty, count + 1);
+                }
+                
+                // 根据技术标签确定分类
+                String category = getCategoryFromTechnique(technique);
+                Integer categoryCount = categoryData.get(category);
+                if (categoryCount != null) {
+                    categoryData.put(category, categoryCount + 1);
+                }
+            }
+            repaint();
+        }
+        
+        private String getCategoryFromTechnique(String technique) {
+            if (technique == null) return "其他";
+            
+            String lowerTechnique = technique.toLowerCase();
+            if (lowerTechnique.contains("数组") || lowerTechnique.contains("array")) {
+                return "数组";
+            } else if (lowerTechnique.contains("树") || lowerTechnique.contains("tree") || lowerTechnique.contains("二叉")) {
+                return "树";
+            } else if (lowerTechnique.contains("图") || lowerTechnique.contains("graph") || lowerTechnique.contains("岛屿") || lowerTechnique.contains("dfs") || lowerTechnique.contains("bfs")) {
+                return "图";
+            } else if (lowerTechnique.contains("动态规划") || lowerTechnique.contains("dp") || lowerTechnique.contains("背包")) {
+                return "动态规划";
+            } else if (lowerTechnique.contains("贪心") || lowerTechnique.contains("greedy")) {
+                return "贪心";
+            } else if (lowerTechnique.contains("搜索") || lowerTechnique.contains("search") || lowerTechnique.contains("二分")) {
+                return "搜索";
+            } else if (lowerTechnique.contains("字符串") || lowerTechnique.contains("string") || lowerTechnique.contains("字符")) {
+                return "字符串";
+            } else if (lowerTechnique.contains("位运算") || lowerTechnique.contains("bit") || lowerTechnique.contains("异或")) {
+                return "位运算";
+            } else if (lowerTechnique.contains("数据结构") || lowerTechnique.contains("栈") || lowerTechnique.contains("队列") || lowerTechnique.contains("哈希") || lowerTechnique.contains("堆")) {
+                return "数据结构";
+            } else if (lowerTechnique.contains("数学") || lowerTechnique.contains("math") || lowerTechnique.contains("数位")) {
+                return "数学";
+            } else if (lowerTechnique.contains("排序") || lowerTechnique.contains("sort")) {
+                return "排序";
+            } else {
+                return "其他";
+            }
+        }
+        
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g;
+            Graphics2D g2d = (Graphics2D) g.create();
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
+            
             int width = getWidth();
-
-            // Main Title
-            g2d.setFont(new Font("微软雅黑", Font.BOLD, 28));
-            g2d.setColor(Color.DARK_GRAY);
-            drawCenteredString(g2d, "算法统计分析报表", width / 2, 40);
-
-            g2d.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-            g2d.setColor(Color.GRAY);
-            drawCenteredString(g2d, "总算法数: " + total, width / 2, 75);
-
-            // Draw charts
-            drawBarChart(g2d, difficultyData, difficultyColors, "按难度分布", 50, 120, width - 100, 220);
-            drawBarChart(g2d, techniqueData, techColors, "按技术标签分布 (Top 10)", 50, 400, width - 100, 220);
-        }
-
-        private void drawBarChart(Graphics2D g2d, Map<String, Integer> data, Color[] colors, String title, int x, int y, int width, int height) {
-            g2d.setFont(new Font("微软雅黑", Font.BOLD, 20));
-            g2d.setColor(Color.BLACK);
-            g2d.drawString(title, x, y - 15);
-
-            if (data.isEmpty()) {
-                g2d.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-                g2d.setColor(Color.GRAY);
-                g2d.drawString("暂无数据", x + width / 2 - 30, y + height / 2);
+            int height = getHeight();
+            
+            if (difficultyData == null || difficultyData.isEmpty()) {
+                g2d.dispose();
                 return;
             }
-
-            int maxValue = data.values().stream().max(Integer::compareTo).orElse(1);
-            int barSpacing = 15;
-            int barWidth = (width - (data.size() + 1) * barSpacing) / data.size();
-            int currentX = x + barSpacing;
-            int colorIndex = 0;
-
-            // Limit to top 10 for technique chart
-            Map<String, Integer> dataToShow = data;
-            if (title.contains("技术标签")) {
-                dataToShow = data.entrySet().stream()
-                                .limit(10)
-                                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-                barWidth = (width - (dataToShow.size() + 1) * barSpacing) / dataToShow.size();
+            
+            // 计算总数
+            int total = difficultyData.values().stream().mapToInt(Integer::intValue).sum();
+            if (total == 0) {
+                g2d.dispose();
+                return;
             }
-
-            for (Map.Entry<String, Integer> entry : dataToShow.entrySet()) {
-                int value = entry.getValue();
-                int barHeight = (int) (((double) value / maxValue) * (height - 60));
+            
+            // 绘制难度分布统计（左侧）
+            drawDifficultyChart(g2d, width, height, total);
+            
+            // 绘制分类分布统计（右侧）
+            drawCategoryChart(g2d, width, height, total);
+            
+            g2d.dispose();
+        }
+        
+        private void drawDifficultyChart(Graphics2D g2d, int width, int height, int total) {
+            // 绘制标题
+            g2d.setFont(new Font("微软雅黑", Font.BOLD, 12));
+            g2d.setColor(new Color(60, 60, 60));
+            String title = "算法难度分布统计 (总计: " + total + "个)";
+            g2d.drawString(title, 20, 20);
+            
+            // 饼图参数
+            int pieSize = Math.min(height - 40, 50);
+            int pieX = 50;
+            int pieY = (height - pieSize) / 2 + 10;
+            
+            // 绘制饼图
+            double startAngle = 0;
+            int colorIndex = 0;
+            
+            for (Map.Entry<String, Integer> entry : difficultyData.entrySet()) {
+                String difficulty = entry.getKey();
+                int count = entry.getValue();
                 
-                g2d.setColor(colors[colorIndex % colors.length]);
-                g2d.fillRect(currentX, y + height - barHeight - 30, barWidth, barHeight);
+                if (count > 0) {
+                    double percentage = (double) count / total;
+                    double arcAngle = percentage * 360;
+                    
+                    g2d.setColor(pieColors[colorIndex % pieColors.length]);
+                    g2d.fillArc(pieX, pieY, pieSize, pieSize, (int) startAngle, (int) arcAngle);
+                    
+                    startAngle += arcAngle;
+                }
+                colorIndex++;
+            }
+            
+            // 绘制饼图边框
+            g2d.setColor(Color.GRAY);
+            g2d.setStroke(new BasicStroke(1));
+            g2d.drawOval(pieX, pieY, pieSize, pieSize);
+            
+            // 绘制图例
+            int legendX = pieX + pieSize + 20;
+            int legendY = pieY + 5;
+            int legendItemHeight = 15;
+            
+            g2d.setFont(new Font("微软雅黑", Font.PLAIN, 11));
+            colorIndex = 0;
+            
+            for (Map.Entry<String, Integer> entry : difficultyData.entrySet()) {
+                String difficulty = entry.getKey();
+                int count = entry.getValue();
+                double percentage = total > 0 ? (double) count / total * 100 : 0;
                 
-                // Draw value on top of the bar
-                g2d.setColor(Color.DARK_GRAY);
-                g2d.setFont(new Font("微软雅黑", Font.BOLD, 14));
-                drawCenteredString(g2d, String.valueOf(value), currentX + barWidth / 2, y + height - barHeight - 40);
-
-                // Draw label below the bar
+                // 绘制颜色块
+                g2d.setColor(pieColors[colorIndex % pieColors.length]);
+                g2d.fillRect(legendX, legendY, 12, 12);
+                g2d.setColor(Color.GRAY);
+                g2d.drawRect(legendX, legendY, 12, 12);
+                
+                // 绘制文字
                 g2d.setColor(Color.BLACK);
-                g2d.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-                drawCenteredString(g2d, entry.getKey(), currentX + barWidth / 2, y + height - 10);
+                String legendText = String.format("%s: %d (%.1f%%)", difficulty, count, percentage);
+                g2d.drawString(legendText, legendX + 18, legendY + 10);
                 
-                currentX += (barWidth + barSpacing);
+                legendY += legendItemHeight;
                 colorIndex++;
             }
         }
-
-        private void drawCenteredString(Graphics2D g2d, String text, int x, int y) {
-            FontMetrics fm = g2d.getFontMetrics();
-            int textWidth = fm.stringWidth(text);
-            g2d.drawString(text, x - textWidth / 2, y);
+        
+        private void drawCategoryChart(Graphics2D g2d, int width, int height, int total) {
+            if (categoryData == null || categoryData.isEmpty()) {
+                return;
+            }
+            
+            // 绘制标题
+            g2d.setFont(new Font("微软雅黑", Font.BOLD, 12));
+            g2d.setColor(new Color(60, 60, 60));
+            String title = "算法分类分布统计";
+            g2d.drawString(title, width / 2 + 20, 20);
+            
+            // 饼图参数
+            int pieSize = Math.min(height - 40, 50);
+            int pieX = width / 2 + 50;
+            int pieY = (height - pieSize) / 2 + 10;
+            
+            // 绘制饼图
+            double startAngle = 0;
+            int colorIndex = 0;
+            
+            for (Map.Entry<String, Integer> entry : categoryData.entrySet()) {
+                String category = entry.getKey();
+                int count = entry.getValue();
+                
+                if (count > 0) {
+                    double percentage = (double) count / total;
+                    double arcAngle = percentage * 360;
+                    
+                    g2d.setColor(categoryColors[colorIndex % categoryColors.length]);
+                    g2d.fillArc(pieX, pieY, pieSize, pieSize, (int) startAngle, (int) arcAngle);
+                    
+                    startAngle += arcAngle;
+                }
+                colorIndex++;
+            }
+            
+            // 绘制饼图边框
+            g2d.setColor(Color.GRAY);
+            g2d.setStroke(new BasicStroke(1));
+            g2d.drawOval(pieX, pieY, pieSize, pieSize);
+            
+            // 绘制图例（只显示有数据的分类）
+            int legendX = pieX + pieSize + 20;
+            int legendY = pieY + 5;
+            int legendItemHeight = 12;
+            
+            g2d.setFont(new Font("微软雅黑", Font.PLAIN, 10));
+            colorIndex = 0;
+            int displayIndex = 0;
+            
+            for (Map.Entry<String, Integer> entry : categoryData.entrySet()) {
+                String category = entry.getKey();
+                int count = entry.getValue();
+                
+                if (count > 0) {
+                    double percentage = total > 0 ? (double) count / total * 100 : 0;
+                    
+                    // 绘制颜色块
+                    g2d.setColor(categoryColors[colorIndex % categoryColors.length]);
+                    g2d.fillRect(legendX, legendY + displayIndex * legendItemHeight, 10, 10);
+                    g2d.setColor(Color.GRAY);
+                    g2d.drawRect(legendX, legendY + displayIndex * legendItemHeight, 10, 10);
+                    
+                    // 绘制文字
+                    g2d.setColor(Color.BLACK);
+                    String legendText = String.format("%s: %d (%.1f%%)", category, count, percentage);
+                    g2d.drawString(legendText, legendX + 15, legendY + displayIndex * legendItemHeight + 8);
+                    
+                    displayIndex++;
+                }
+                colorIndex++;
+            }
         }
     }
 

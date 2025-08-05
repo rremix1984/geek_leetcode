@@ -2,8 +2,6 @@ package com.animation.hard;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Stack;
 
 /**
@@ -125,14 +123,18 @@ public class NO85_H_MaximalRectangle_Animation extends JFrame {
             return;
         }
 
-        if (currentRow == -1 || histogramIndex >= heights.length) {
-            currentRow++;
-            if (currentRow >= matrix.length) return;
-            histogramIndex = 0;
-            stack.clear();
-            updateHeights();
+        // 移动到下一行
+        currentRow++;
+        if (currentRow >= matrix.length) {
+            animationTimer.stop();
+            isPlaying = false;
+            startButton.setText("完成");
+            return;
         }
-
+        
+        // 更新当前行的直方图高度
+        updateHeights();
+        
         // 使用单调栈计算当前行直方图的最大面积
         calculateMaxInHistogram();
 
@@ -173,9 +175,20 @@ public class NO85_H_MaximalRectangle_Animation extends JFrame {
 
     private void updateInfo() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("当前行: %d\n", currentRow));
-        sb.append("直方图高度: ").append(java.util.Arrays.toString(heights)).append("\n");
+        if (currentRow == -1) {
+            sb.append("准备开始动画演示\n");
+            sb.append("点击'开始/暂停'或'单步'按钮开始\n");
+        } else {
+            sb.append(String.format("当前行: %d\n", currentRow));
+            if (heights != null) {
+                sb.append("直方图高度: ").append(java.util.Arrays.toString(heights)).append("\n");
+            }
+        }
         sb.append(String.format("最大面积: %d", maxArea));
+        if (maxAreaRect != null) {
+            sb.append(String.format("\n最大矩形位置: (%d,%d) 大小: %dx%d", 
+                maxAreaRect.x, maxAreaRect.y, maxAreaRect.width, maxAreaRect.height));
+        }
         infoArea.setText(sb.toString());
     }
 
@@ -197,11 +210,19 @@ public class NO85_H_MaximalRectangle_Animation extends JFrame {
             }
 
             // 绘制当前处理的直方图
-            if (currentRow != -1) {
+            if (currentRow >= 0 && heights != null) {
                 g2d.setColor(HISTOGRAM_COLOR);
                 for (int j = 0; j < heights.length; j++) {
                     if (heights[j] > 0) {
-                        g2d.fillRect(PADDING + j * CELL_SIZE, PADDING + (currentRow - heights[j] + 1) * CELL_SIZE, CELL_SIZE, heights[j] * CELL_SIZE);
+                        // 绘制直方图柱子，从底部向上
+                        int barHeight = heights[j] * CELL_SIZE;
+                        int barY = PADDING + (currentRow + 1) * CELL_SIZE - barHeight;
+                        g2d.fillRect(PADDING + j * CELL_SIZE, barY, CELL_SIZE, barHeight);
+                        
+                        // 绘制直方图边框
+                        g2d.setColor(Color.DARK_GRAY);
+                        g2d.drawRect(PADDING + j * CELL_SIZE, barY, CELL_SIZE, barHeight);
+                        g2d.setColor(HISTOGRAM_COLOR);
                     }
                 }
             }
