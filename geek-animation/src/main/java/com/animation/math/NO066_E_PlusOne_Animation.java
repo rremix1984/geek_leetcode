@@ -43,6 +43,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
     private Timer animationTimer;
     private JButton startButton;
     private JButton resetButton;
+    private JButton backButton;
     private JComboBox<String> testCaseCombo;
     
     // 测试用例
@@ -71,7 +72,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
     private void initializeGUI() {
         setTitle("NO.066 加一 - 动画演示");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         
@@ -96,10 +97,18 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         resetButton.setFont(new Font("微软雅黑", Font.BOLD, 14));
         resetButton.addActionListener(e -> resetAnimation());
         
+        backButton = new JButton("返回首页");
+        backButton.setFont(new Font("微软雅黑", Font.BOLD, 14));
+        backButton.addActionListener(e -> {
+            dispose(); // 关闭当前窗口
+            AlgorithmTreeLauncher.showMainWindow(); // 显示首页
+        });
+        
         controlPanel.add(new JLabel("选择测试用例:"));
         controlPanel.add(testCaseCombo);
         controlPanel.add(startButton);
         controlPanel.add(resetButton);
+        controlPanel.add(backButton);
         
         add(controlPanel, BorderLayout.NORTH);
         
