@@ -56,6 +56,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
     private JButton backButton;
     private JTextArea logArea;
     private JLabel statusLabel;
+    private JPanel drawPanel;
     
     public NO045_N_JumpGameII_Animation() {
         initializeUI();
@@ -78,7 +79,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
         setLayout(new BorderLayout());
         
         // 创建绘图面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -116,7 +117,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
                             animationTimer.stop();
                         }
                     }
-                    repaint();
+                    drawPanel.repaint();
                 }
             }
         });
@@ -407,7 +408,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
             currentPosition++;
             updateLog("前进到位置 " + currentPosition + " (未到达跳跃边界)");
             statusLabel.setText("前进到位置 " + currentPosition);
-            repaint();
+            drawPanel.repaint();
         }
     }
     
@@ -420,7 +421,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
         animationProgress = 0;
         isAnimating = false;
         statusLabel.setText("已重置，准备开始新的演示");
-        repaint();
+        drawPanel.repaint();
     }
     
     private void updateLog(String message) {

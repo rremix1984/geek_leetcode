@@ -45,6 +45,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
     private JButton resetButton;
     private JButton backButton;
     private JComboBox<String> testCaseCombo;
+    private JPanel drawPanel; // 绘图面板引用
     
     // 测试用例
     private final int[][] testCases = {
@@ -85,7 +86,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                repaint();
+                drawPanel.repaint();
             }
         });
         
@@ -113,7 +114,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         add(controlPanel, BorderLayout.NORTH);
         
         // 创建绘图面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -146,7 +147,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
                 }
                 
                 step++;
-                repaint();
+                drawPanel.repaint();
             }
         });
     }
@@ -324,7 +325,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        repaint();
+        drawPanel.repaint();
     }
     
     public static void main(String[] args) {

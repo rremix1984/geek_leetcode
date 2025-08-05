@@ -428,7 +428,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
                         addNewCoinAnimation();
                     }
                     currentItemCount++;
-                    repaint();
+                    visualPanel.repaint();
                 } else {
                     animationTimer.stop();
                 }
@@ -447,7 +447,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
                 startItemAnimation(dp[currentAmount]);
             }
 
-            repaint();
+            visualPanel.repaint();
         }
         
         public void setAnimationComplete(boolean complete) {
@@ -469,7 +469,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             }
             currentItemCount = 0;
             totalItemsToShow = 0;
-            repaint();
+            visualPanel.repaint();
         }
         
         private void startItemAnimation(int itemCount) {
@@ -509,7 +509,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             javax.swing.Timer moveTimer = new javax.swing.Timer(50, null);
             moveTimer.addActionListener(e -> {
                 if (bill.updatePosition()) {
-                    repaint();
+                    visualPanel.repaint();
                 } else {
                     moveTimer.stop();
                 }
@@ -530,7 +530,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             javax.swing.Timer moveTimer = new javax.swing.Timer(50, null);
             moveTimer.addActionListener(e -> {
                 if (coin.updatePosition()) {
-                    repaint();
+                    visualPanel.repaint();
                 } else {
                     moveTimer.stop();
                 }

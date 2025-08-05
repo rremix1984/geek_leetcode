@@ -57,6 +57,7 @@ public class NO101_E_IsSymmetric_Animation extends JFrame {
     private JButton startButton;
     private JButton resetButton;
     private JComboBox<String> testCaseCombo;
+    private JPanel drawPanel; // 绘图面板引用
     
     // 测试用例
     private final String[] testCaseNames = {
@@ -89,7 +90,7 @@ public class NO101_E_IsSymmetric_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                repaint();
+                drawPanel.repaint();
             }
         });
         
@@ -109,7 +110,7 @@ public class NO101_E_IsSymmetric_Animation extends JFrame {
         add(controlPanel, BorderLayout.NORTH);
         
         // 创建绘图面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -142,7 +143,7 @@ public class NO101_E_IsSymmetric_Animation extends JFrame {
                         statusMessage = "开始检查根节点的左右子树是否对称";
                     }
                     initialized = true;
-                    repaint();
+                    drawPanel.repaint();
                     return;
                 }
                 
@@ -174,7 +175,7 @@ public class NO101_E_IsSymmetric_Animation extends JFrame {
                     startButton.setText("开始演示");
                 }
                 
-                repaint();
+                drawPanel.repaint();
             }
         });
     }
@@ -441,7 +442,7 @@ public class NO101_E_IsSymmetric_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        repaint();
+        drawPanel.repaint();
     }
     
     public static void main(String[] args) {

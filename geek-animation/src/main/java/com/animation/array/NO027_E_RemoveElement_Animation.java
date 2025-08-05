@@ -45,6 +45,7 @@ public class NO027_E_RemoveElement_Animation extends JFrame {
     private JButton startButton, stepButton, resetButton, autoButton;
     private JLabel statusLabel;
     private JLabel resultLabel;
+    private JPanel visualizationPanel; // 绘图面板引用
     
     // 动画步骤记录
     private List<AnimationStep> steps;
@@ -126,7 +127,8 @@ public class NO027_E_RemoveElement_Animation extends JFrame {
         
         // 主面板 - 可视化区域
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new RemoveElementVisualizationPanel(), BorderLayout.CENTER);
+        visualizationPanel = new RemoveElementVisualizationPanel();
+        mainPanel.add(visualizationPanel, BorderLayout.CENTER);
         
         // 控制面板
         controlPanel.setLayout(new GridBagLayout());
@@ -199,7 +201,7 @@ public class NO027_E_RemoveElement_Animation extends JFrame {
             statusLabel.setText("状态: " + currentOperation);
             resultLabel.setText("结果: 开始执行算法");
             
-            repaint();
+            visualizationPanel.repaint();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "输入格式错误: " + ex.getMessage());
         }
@@ -273,7 +275,7 @@ public class NO027_E_RemoveElement_Animation extends JFrame {
         statusLabel.setText("状态: " + step.description);
         
         currentStepIndex++;
-        repaint();
+        visualizationPanel.repaint();
     }
     
     private void toggleAutoDemo() {
@@ -306,7 +308,7 @@ public class NO027_E_RemoveElement_Animation extends JFrame {
         statusLabel.setText("状态: 准备开始");
         resultLabel.setText("结果: 未开始");
         
-        repaint();
+        visualizationPanel.repaint();
     }
     
     // 可视化面板

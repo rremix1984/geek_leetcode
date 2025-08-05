@@ -61,6 +61,7 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
     private JButton stepButton;
     private JTextArea logArea;
     private JLabel statusLabel;
+    private JPanel drawPanel; // 绘图面板引用
     
     public NO2498_N_MaxJump_Animation() {
         initializeUI();
@@ -83,7 +84,7 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
         setLayout(new BorderLayout());
         
         // 创建绘图面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -126,7 +127,7 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
                             animationTimer.stop();
                         }
                     }
-                    repaint();
+                    drawPanel.repaint();
                 }
             }
         });
@@ -456,7 +457,7 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
         animationProgress = 0;
         isAnimating = false;
         statusLabel.setText("已重置，准备开始新的演示");
-        repaint();
+        drawPanel.repaint();
     }
     
     private void updateLog(String message) {

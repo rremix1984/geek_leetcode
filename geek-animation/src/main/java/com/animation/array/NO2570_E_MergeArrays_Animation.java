@@ -29,6 +29,7 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
     private int currentStep = 0;
     private int pointer1 = 0, pointer2 = 0;
     private boolean isMerging = false;
+    private ArrayVisualizationPanel visualizationPanel;
     
     public NO2570_E_MergeArrays_Animation() {
         setTitle("NO.2570 合并两个二维数组 - 动画演示");
@@ -70,7 +71,8 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
         
         // 主面板
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new ArrayVisualizationPanel(), BorderLayout.CENTER);
+        visualizationPanel = new ArrayVisualizationPanel();
+        mainPanel.add(visualizationPanel, BorderLayout.CENTER);
         
         // 控制面板
         controlPanel.setLayout(new FlowLayout());
@@ -265,7 +267,7 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
     }
     
     private void updateDisplay() {
-        repaint();
+        visualizationPanel.repaint();
     }
     
     // 数组可视化面板

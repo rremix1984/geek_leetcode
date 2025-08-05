@@ -273,7 +273,7 @@ public class NO139_N_WordBreak_Animation extends JFrame {
             this.currentJ = currentJ;
             this.currentSubstring = substring;
             this.substringInDict = inDict;
-            repaint();
+            visualPanel.repaint();
         }
         
         public void setAnimationComplete(boolean complete) {
@@ -286,7 +286,7 @@ public class NO139_N_WordBreak_Animation extends JFrame {
             dp = null;
             currentSubstring = null;
             animationComplete = false;
-            repaint();
+            visualPanel.repaint();
         }
         
         @Override

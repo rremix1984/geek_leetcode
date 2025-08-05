@@ -33,6 +33,7 @@ public class NO2553_E_SeparateDigits_Animation extends JFrame {
     private boolean isAnimating = false;
     private String currentNumber = "";
     private List<Integer> currentDigits;
+    private DigitVisualizationPanel visualizationPanel; // 绘图面板引用
     
     public NO2553_E_SeparateDigits_Animation() {
         setTitle("NO.2553 分割数组中数字的数位 - 动画演示");
@@ -72,7 +73,8 @@ public class NO2553_E_SeparateDigits_Animation extends JFrame {
         
         // 主面板
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new DigitVisualizationPanel(), BorderLayout.CENTER);
+        visualizationPanel = new DigitVisualizationPanel();
+        mainPanel.add(visualizationPanel, BorderLayout.CENTER);
         
         // 控制面板
         controlPanel.setLayout(new FlowLayout());
@@ -249,7 +251,7 @@ public class NO2553_E_SeparateDigits_Animation extends JFrame {
     }
     
     private void updateDisplay() {
-        repaint();
+        visualizationPanel.repaint();
     }
     
     // 数位分割可视化面板

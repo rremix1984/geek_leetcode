@@ -44,6 +44,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
     private String currentOperation;
     private int step;
     private int leftSquare, rightSquare;
+    private SortedSquaresVisualizationPanel visualizationPanel;
     
     public NO977_E_SortedSquares_Animation() {
         setTitle("NO.977 有序数组的平方 - 动画演示");
@@ -104,7 +105,8 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         
         // 主面板 - 可视化区域
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new SortedSquaresVisualizationPanel(), BorderLayout.CENTER);
+        visualizationPanel = new SortedSquaresVisualizationPanel();
+        mainPanel.add(visualizationPanel, BorderLayout.CENTER);
         
         // 控制面板
         controlPanel.setLayout(new GridBagLayout());
@@ -189,7 +191,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
             statusLabel.setText("状态: " + currentOperation);
             resultLabel.setText("结果: 开始执行算法");
             
-            repaint();
+            visualizationPanel.repaint();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "输入格式错误: " + ex.getMessage());
         }
@@ -255,7 +257,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         resultIndex--;
         
         statusLabel.setText("状态: " + currentOperation);
-        repaint();
+        visualizationPanel.repaint();
     }
     
     private void toggleAutoDemo() {
@@ -294,7 +296,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         statusLabel.setText("状态: " + currentOperation);
         resultLabel.setText("结果: 未开始");
         
-        repaint();
+        visualizationPanel.repaint();
     }
     
     // 可视化面板

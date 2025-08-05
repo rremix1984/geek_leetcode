@@ -47,6 +47,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
     private JButton backButton;
     private JTextArea logArea;
     private Timer animationTimer;
+    private JPanel drawPanel; // 绘图面板引用
     
     // 动画状态
     private List<String> animationSteps;
@@ -97,7 +98,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
         infoPanel.add(scrollPane, BorderLayout.CENTER);
         
         // 创建主绘制面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -189,7 +190,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
         }
         
         currentStep++;
-        repaint();
+        drawPanel.repaint();
         
         if (currentStep >= animationSteps.size()) {
             animationTimer.stop();

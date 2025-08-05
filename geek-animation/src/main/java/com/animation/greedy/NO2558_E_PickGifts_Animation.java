@@ -30,6 +30,7 @@ public class NO2558_E_PickGifts_Animation extends JFrame {
     private Timer animationTimer;
     private int currentK;
     private boolean isAnimating = false;
+    private GiftsVisualizationPanel visualizationPanel;
     
     public NO2558_E_PickGifts_Animation() {
         setTitle("NO.2558 从数量最多的堆取走礼物 - 动画演示");
@@ -69,7 +70,8 @@ public class NO2558_E_PickGifts_Animation extends JFrame {
         
         // 主面板
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new GiftsVisualizationPanel(), BorderLayout.CENTER);
+        visualizationPanel = new GiftsVisualizationPanel();
+        mainPanel.add(visualizationPanel, BorderLayout.CENTER);
         
         // 控制面板
         controlPanel.setLayout(new FlowLayout());
@@ -230,7 +232,7 @@ public class NO2558_E_PickGifts_Animation extends JFrame {
     private void updateDisplay() {
         long total = calculateTotal();
         totalLabel.setText("剩余总数: " + total);
-        repaint();
+        visualizationPanel.repaint();
     }
     
     // 礼物可视化面板

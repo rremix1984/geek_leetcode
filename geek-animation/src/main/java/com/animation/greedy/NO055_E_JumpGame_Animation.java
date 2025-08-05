@@ -50,7 +50,7 @@ public class NO055_E_JumpGame_Animation extends JFrame {
     private JButton homeButton;
     private JLabel statusLabel;
     
-    // 动画控制
+    // 动画相关变量
     private Timer animationTimer;
     private boolean isAnimating = false;
     private int currentStep = 0;
@@ -62,6 +62,8 @@ public class NO055_E_JumpGame_Animation extends JFrame {
     private boolean canReachEnd = false;
     private List<String> animationSteps;
     private List<Integer> visitedPositions;
+    
+    
     
     public NO055_E_JumpGame_Animation() {
         initializeComponents();
@@ -240,6 +242,7 @@ public class NO055_E_JumpGame_Animation extends JFrame {
     
     private void resetAnimation() {
         animationTimer.stop();
+        
         isAnimating = false;
         currentStep = 0;
         currentPosition = 0;
@@ -325,27 +328,52 @@ public class NO055_E_JumpGame_Animation extends JFrame {
     }
     
     private void performAnimationStep() {
-        if (currentStep < animationSteps.size()) {
-            String step = animationSteps.get(currentStep);
-            
-            // 解析步骤，更新当前位置
-            if (step.startsWith("步骤")) {
-                String[] parts = step.split(":");
+        String step = animationSteps.get(currentStep);
+        
+        // 解析步骤，更新当前位置
+        if (step.contains("检查位置")) {
+            try {
+                // 从"检查位置 X"中提取位置数字
+                String[] parts = step.split("检查位置");
                 if (parts.length > 1) {
-                    String positionPart = parts[1].trim();
-                    if (positionPart.startsWith("检查位置")) {
-                        try {
-                            currentPosition = Integer.parseInt(positionPart.split(" ")[2]);
-                            visitedPositions.add(currentPosition);
-                        } catch (Exception e) {
-                            // 忽略解析错误
-                        }
+                    String positionStr = parts[1].trim();
+                    // 提取数字部分
+                    String[] numParts = positionStr.split(" ");
+                    if (numParts.length > 0) {
+                        currentPosition = Integer.parseInt(numParts[0]);
+                        visitedPositions.add(currentPosition);
                     }
                 }
+            } catch (Exception e) {
+                // 忽略解析错误
             }
-            
-            updateStepsDisplay();
         }
+        
+        // 解析maxReach更新信息
+        if (step.contains("更新最远可达位置:")) {
+            try {
+                String[] parts = step.split("更新最远可达位置:")[1].trim().split(" -> ");
+                if (parts.length == 2) {
+                    maxReach = Integer.parseInt(parts[1]);
+                }
+            } catch (Exception e) {
+                // 忽略解析错误
+            }
+        }
+        
+        // 解析当前最远可达位置信息
+        if (step.contains("当前最远可达位置:")) {
+            try {
+                String[] parts = step.split("当前最远可达位置:");
+                if (parts.length == 2) {
+                    maxReach = Integer.parseInt(parts[1].trim());
+                }
+            } catch (Exception e) {
+                // 忽略解析错误
+            }
+        }
+        
+        updateStepsDisplay();
     }
     
     private void updateStepsDisplay() {
@@ -363,8 +391,11 @@ public class NO055_E_JumpGame_Animation extends JFrame {
         algorithmStepsArea.setCaretPosition(algorithmStepsArea.getDocument().getLength());
     }
     
+
+    
     private void stopAnimation() {
         animationTimer.stop();
+        
         isAnimating = false;
         startButton.setEnabled(true);
         pauseButton.setEnabled(false);
@@ -394,7 +425,7 @@ public class NO055_E_JumpGame_Animation extends JFrame {
             
             // 确定颜色
             Color cellColor;
-            if (i == currentPosition && isAnimating) {
+            if (i == currentPosition && currentPosition >= 0) {
                 cellColor = new Color(255, 193, 7); // 当前位置 - 黄色
             } else if (visitedPositions.contains(i)) {
                 cellColor = new Color(40, 167, 69); // 已访问 - 绿色
@@ -429,13 +460,13 @@ public class NO055_E_JumpGame_Animation extends JFrame {
             g2d.drawString(index, indexX, arrayY + cellHeight/2 + 20);
         }
         
-        // 绘制跳跃范围指示
-        if (currentPosition < nums.length && isAnimating) {
+        // 绘制跳跃范围指示（始终显示当前位置的所有可能跳跃）
+        if (currentPosition < nums.length && currentPosition >= 0) {
             int currentX = arrayStartX + currentPosition * (cellWidth + 10);
             int jumpRange = nums[currentPosition];
             
             // 绘制跳跃弧线
-            g2d.setColor(new Color(255, 193, 7, 100));
+            g2d.setColor(new Color(255, 193, 7, 120));
             g2d.setStroke(new BasicStroke(3));
             
             for (int j = 1; j <= jumpRange && currentPosition + j < nums.length; j++) {

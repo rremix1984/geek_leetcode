@@ -76,6 +76,7 @@ import com.animation.math.*;
 import com.animation.tree.*;
 import com.animation.normal.*;
 import com.animation.atomics.*;
+import com.animation.interval.*;
 
 // 困难算法导入
 import com.animation.hard.NO403_H_FrogJump_Animation;
@@ -400,13 +401,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.403 青蛙过河", () -> new NO403_H_FrogJump_Animation().setVisible(true));
         animations.put("NO.52 N皇后II", () -> new NO52_H_NQueensII_Animation(8).setVisible(true));
         animations.put("NO.23 合并K个升序链表", () -> {
-            try {
-                Class<?> clazz = Class.forName("com.leetcode.hard.NO023_H_MergeKSortedLists_Animation");
-                JFrame frame = (JFrame) clazz.getDeclaredConstructor().newInstance();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "无法启动动画: " + e.getMessage());
-            }
+            JOptionPane.showMessageDialog(null, "NO.23 合并K个升序链表动画暂时不可用\n原因：动画类位于test目录下，无法正常加载\n建议：将动画类移动到main目录下", "动画不可用", JOptionPane.WARNING_MESSAGE);
         });
         animations.put("NO.85 最大矩形", () -> new NO85_H_MaximalRectangle_Animation().setVisible(true));
         animations.put("NO.312 戳气球", (Runnable) () -> {
@@ -417,9 +412,32 @@ public class AlgorithmTreeLauncher extends JFrame {
             JFrame frame = new JFrame("NO.773 滑动谜题");
             int[][] board = {{1, 2, 3}, {4, 0, 5}};
             NO773_H_SlidingPuzzle_Animation animation = new NO773_H_SlidingPuzzle_Animation(board);
-            frame.add(animation);
+            
+            // 创建控制面板
+            JPanel controlPanel = new JPanel();
+            JButton startButton = new JButton("开始求解");
+            JButton resetButton = new JButton("重置");
+            JLabel statusLabel = new JLabel("点击开始求解按钮开始动画");
+            
+            startButton.addActionListener(e -> {
+                animation.start();
+                statusLabel.setText("正在求解中...");
+            });
+            
+            resetButton.addActionListener(e -> {
+                animation.repaint();
+                statusLabel.setText("已重置，点击开始求解按钮开始动画");
+            });
+            
+            controlPanel.add(startButton);
+            controlPanel.add(resetButton);
+            controlPanel.add(statusLabel);
+            
+            frame.setLayout(new BorderLayout());
+            frame.add(animation, BorderLayout.CENTER);
+            frame.add(controlPanel, BorderLayout.SOUTH);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.pack();
+            frame.setSize(400, 350); // 设置合适的窗口大小
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
@@ -490,6 +508,13 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("AtomicIntegerArray 数组操作演示", () -> new AtomicIntegerArrayAnimation().setVisible(true));
         animations.put("AtomicStampedReference ABA问题演示", () -> new AtomicStampedReferenceAnimation().setVisible(true));
         animations.put("AtomicMarkableReference 标记演示", () -> new AtomicMarkableReferenceAnimation().setVisible(true));
+        
+        // Interval算法动画
+        animations.put("面试题 04.05. 合法二叉搜索树", () -> new com.animation.interval.Interval_04_05_N_IsValidBST_Animation().setVisible(true));
+        animations.put("面试题 04.10. 检查子树", () -> new com.animation.interval.Interval_04_10_N_CheckSubTree_Animation().setVisible(true));
+        animations.put("面试题 08.09. 括号", () -> new com.animation.interval.Interval_08_09_N_GenerateParenthesis_Animation().setVisible(true));
+        animations.put("面试题 04.06. 后继者", () -> new com.animation.interval.Interval_04_06_N_InorderSuccessor_Animation().setVisible(true));
+        animations.put("面试题 04.12. 求和路径", () -> new com.animation.interval.Interval_04_12_N_PathSum_Animation().setVisible(true));
     }
     
     /**
@@ -503,6 +528,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         DefaultMutableTreeNode normalGroupNode = new DefaultMutableTreeNode("🟡 中等算法 (Normal) - 共14个");
         DefaultMutableTreeNode hardGroupNode = new DefaultMutableTreeNode("🔴 困难算法 (Hard) - 共6个");
         DefaultMutableTreeNode atomicsGroupNode = new DefaultMutableTreeNode("⚛️ 原子类动画 (Atomics) - 共6个");
+        DefaultMutableTreeNode intervalGroupNode = new DefaultMutableTreeNode("📋 面试题算法 (Interval) - 共5个");
         
         // 创建Easy算法分类节点
         arrayNode = new DefaultMutableTreeNode("📊 数组算法 (18个)");
@@ -533,6 +559,11 @@ public class AlgorithmTreeLauncher extends JFrame {
         DefaultMutableTreeNode atomicStampedNode = new DefaultMutableTreeNode("🏷️ AtomicStamped (1个)");
         DefaultMutableTreeNode atomicMarkableNode = new DefaultMutableTreeNode("✅ AtomicMarkable (1个)");
         
+        // 创建Interval面试题分类节点
+        DefaultMutableTreeNode intervalTreeNode = new DefaultMutableTreeNode("🌳 树算法 (3个)");
+        DefaultMutableTreeNode intervalBacktrackNode = new DefaultMutableTreeNode("🔄 回溯算法 (1个)");
+        DefaultMutableTreeNode intervalOtherNode = new DefaultMutableTreeNode("🎯 其他算法 (1个)");
+        
         // 将分类节点添加到主分组
         easyGroupNode.add(arrayNode);
         easyGroupNode.add(sortNode);
@@ -558,6 +589,10 @@ public class AlgorithmTreeLauncher extends JFrame {
         atomicsGroupNode.add(atomicArrayNode);
         atomicsGroupNode.add(atomicStampedNode);
         atomicsGroupNode.add(atomicMarkableNode);
+        
+        intervalGroupNode.add(intervalTreeNode);
+        intervalGroupNode.add(intervalBacktrackNode);
+        intervalGroupNode.add(intervalOtherNode);
 
         addAlgorithmToCategory(hardNode, "NO.85 最大矩形", "Hard", "单调栈 + 动态规划");
         addAlgorithmToCategory(hardNode, "NO.312 戳气球", "Hard", "区间DP");
@@ -578,6 +613,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         rootNode.add(normalGroupNode);
         rootNode.add(hardGroupNode);
         rootNode.add(atomicsGroupNode);
+        rootNode.add(intervalGroupNode);
         
         // 添加具体算法到分类节点
         addAlgorithmToCategory(arrayNode, "NO.001 两数之和", "Easy", "哈希表 + 双指针");
@@ -669,6 +705,13 @@ public class AlgorithmTreeLauncher extends JFrame {
         // NO.297 和 NO.834 在 geek-hard 模块中，暂时移除
         // addAlgorithmToCategory(hardNode, "NO.297 二叉树的序列化与反序列化", "Hard", "前序遍历 + 递归重建");
         // addAlgorithmToCategory(hardNode, "NO.834 树中距离之和", "Hard", "树形DP + DFS");
+        
+        // 添加Interval面试题算法
+        addAlgorithmToCategory(intervalTreeNode, "面试题 04.05. 合法二叉搜索树", "Interval", "二叉搜索树 + DFS验证");
+        addAlgorithmToCategory(intervalTreeNode, "面试题 04.10. 检查子树", "Interval", "树遍历 + 字符串匹配");
+        addAlgorithmToCategory(intervalTreeNode, "面试题 04.06. 后继者", "Interval", "二叉搜索树 + 中序遍历");
+        addAlgorithmToCategory(intervalBacktrackNode, "面试题 08.09. 括号", "Interval", "回溯算法 + 括号生成");
+        addAlgorithmToCategory(intervalOtherNode, "面试题 04.12. 求和路径", "Interval", "树遍历 + 路径统计");
     }
     
     /**
@@ -2114,11 +2157,9 @@ public class AlgorithmTreeLauncher extends JFrame {
                     currentAnimationName = algorithmName;
                     statusLabel.setText("正在启动算法动画：" + algorithmName);
                     
-                    // 在EDT中运行动画创建逻辑
-                    SwingUtilities.invokeLater(() -> {
-                        try {
-                            // 运行动画创建逻辑
-                            animation.run();
+                    try {
+                        // 运行动画创建逻辑
+                        animation.run();
                             
                             // 查找新创建的JFrame窗口
                              Window[] windows = Window.getWindows();
@@ -2184,16 +2225,15 @@ public class AlgorithmTreeLauncher extends JFrame {
                                 // 如果没有找到JFrame，重置状态
                                 resetAnimationState(algorithmName);
                             }
-                        } catch (Exception e) {
-                            resetAnimationState(algorithmName);
-                            statusLabel.setText("启动失败：" + e.getMessage());
-                            JOptionPane.showMessageDialog(AlgorithmTreeLauncher.this, 
-                                "创建动画窗口时发生错误：\n" + e.getMessage(), 
-                                "错误", 
-                                JOptionPane.ERROR_MESSAGE);
-                            e.printStackTrace();
-                        }
-                    });
+                    } catch (Exception e) {
+                        resetAnimationState(algorithmName);
+                        statusLabel.setText("启动失败：" + e.getMessage());
+                        JOptionPane.showMessageDialog(this, 
+                            "创建动画窗口时发生错误：\n" + e.getMessage(), 
+                            "错误", 
+                            JOptionPane.ERROR_MESSAGE);
+                        e.printStackTrace();
+                    }
                 }
             }
             
@@ -2352,7 +2392,7 @@ public class AlgorithmTreeLauncher extends JFrame {
                     categoryData.put(category, categoryCount + 1);
                 }
             }
-            repaint();
+            statsPieChartPanel.repaint();
         }
         
         private String getCategoryFromTechnique(String technique) {
