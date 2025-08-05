@@ -33,6 +33,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
     private static final int CELL_SPACING = 10;
     
     private int[] digits;
+    private int[] originalDigits; // 保存原始数组，用于显示
     private int[] result;
     private int currentIndex = -1;
     private boolean isCompleted = false;
@@ -187,7 +188,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         g2d.drawString(title, titleX, 50);
         
         // 绘制原始数组
-        drawArray(g2d, digits, 100, "原始数组:", currentIndex, false);
+        drawArray(g2d, originalDigits, 100, "原始数组:", currentIndex, false);
         
         // 绘制结果数组（如果有）
         if (isCompleted && result != null) {
@@ -290,7 +291,8 @@ public class NO066_E_PlusOne_Animation extends JFrame {
     }
     
     private void loadTestCase(int index) {
-        digits = testCases[index].clone();
+        originalDigits = testCases[index].clone(); // 保存原始数组用于显示
+        digits = testCases[index].clone(); // 工作数组用于计算
         result = null;
         currentIndex = -1;
         isCompleted = false;
