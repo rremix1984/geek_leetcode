@@ -334,13 +334,16 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         // 贪心算法
         animations.put("NO.055 跳跃游戏", () -> new NO055_E_JumpGame_Animation().setVisible(true));
-        animations.put("NO.055 跳跃游戏 (Normal)", () -> {
-            try {
-                Class<?> clazz = Class.forName("com.leetcode.animation.greedy.NO055_N_JumpGame_Animation");
-                JFrame frame = (JFrame) clazz.getDeclaredConstructor().newInstance();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "无法启动动画: " + e.getMessage());
+        animations.put("NO.055 跳跃游戏 (Normal)", new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Class<?> clazz = Class.forName("com.leetcode.animation.greedy.NO055_N_JumpGame_Animation");
+                    JFrame frame = (JFrame) clazz.getDeclaredConstructor().newInstance();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "无法启动动画: " + e.getMessage());
+                }
             }
         });
         animations.put("NO.045 跳跃游戏 II", () -> new NO045_N_JumpGameII_Animation().setVisible(true));
