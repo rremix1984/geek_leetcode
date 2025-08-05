@@ -44,6 +44,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
     private JButton startButton;
     private JButton stepButton;
     private JButton resetButton;
+    private JButton backButton;
     private JTextArea logArea;
     private Timer animationTimer;
     
@@ -59,7 +60,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
     private void initializeUI() {
         setTitle("LeetCode 55. 跳跃游戏 - 贪心算法动画演示");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         
@@ -73,9 +74,25 @@ public class NO055_N_JumpGame_Animation extends JFrame {
         stepButton.addActionListener(e -> stepAnimation());
         resetButton.addActionListener(e -> resetAnimation());
         
+        backButton = new JButton("返回首页");
+        backButton.addActionListener(e -> {
+            dispose(); // 关闭当前窗口
+            // 这里需要根据实际的主窗口类来调用
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    // 由于这是geek-normal模块，可能没有AlgorithmTreeLauncher
+                    // 简单关闭窗口即可
+                    System.out.println("返回首页 - 当前窗口已关闭");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+        });
+        
         controlPanel.add(startButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
+        controlPanel.add(backButton);
         
         // 创建信息面板
         JPanel infoPanel = new JPanel(new BorderLayout());

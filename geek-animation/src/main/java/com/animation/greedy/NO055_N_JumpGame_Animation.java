@@ -44,6 +44,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
     private JButton startButton;
     private JButton stepButton;
     private JButton resetButton;
+    private JButton backButton;
     private JTextArea logArea;
     private Timer animationTimer;
     
@@ -73,9 +74,16 @@ public class NO055_N_JumpGame_Animation extends JFrame {
         stepButton.addActionListener(e -> stepAnimation());
         resetButton.addActionListener(e -> resetAnimation());
         
+        backButton = new JButton("返回首页");
+        backButton.addActionListener(e -> {
+            dispose(); // 关闭当前窗口
+            com.animation.launcher.AlgorithmTreeLauncher.showMainWindow(); // 显示首页
+        });
+        
         controlPanel.add(startButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
+        controlPanel.add(backButton);
         
         // 创建信息面板
         JPanel infoPanel = new JPanel(new BorderLayout());
