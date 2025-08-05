@@ -5,8 +5,6 @@ package com.lcr;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import static com.leetcode.util.ListNode.reverse;
-import static com.leetcode.util.SystemUtil.printListNode;
 
 /**
     [ARRAY] |||

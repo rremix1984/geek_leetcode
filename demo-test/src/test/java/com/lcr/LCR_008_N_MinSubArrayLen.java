@@ -6,10 +6,6 @@ package com.lcr;
 import org.junit.Test;
 import static com.leetcode.util.MathUtils.MAX;
 import static com.leetcode.util.MathUtils.frontSum;
-import static java.lang.Integer.MAX_VALUE;
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-import static java.util.Arrays.binarySearch;
 
 /**
     [ARRAY] ||||||

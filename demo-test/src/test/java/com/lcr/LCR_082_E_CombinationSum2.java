@@ -2,10 +2,8 @@ package com.lcr;
 
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import static com.leetcode.util.MathUtils.getArray;
-import static com.leetcode.util.SystemUtil.printArr;
 
 /**
     [ARRAY] |
