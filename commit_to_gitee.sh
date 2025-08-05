@@ -120,12 +120,14 @@ show_help() {
     echo "  -s, --status   只显示Git状态，不执行提交"
     echo "  -b, --branch   指定推送的分支名 (默认为当前分支)"
     echo "  -m, --message  指定提交信息"
+    echo "  -f, --force    跳过确认提示，直接执行提交"
     echo
     echo "示例:"
     echo "  $0                                    # 使用默认提交信息"
     echo "  $0 -m \"修复登录bug\"                   # 指定提交信息"
     echo "  $0 -b main -m \"发布新版本\"           # 指定分支和提交信息"
     echo "  $0 -s                                 # 只查看状态"
+    echo "  $0 -f -m \"自动提交\"                  # 跳过确认直接提交"
 }
 
 # 主函数
@@ -133,6 +135,7 @@ main() {
     local commit_message=""
     local target_branch=""
     local status_only=false
+    local force_commit=false
     
     # 解析命令行参数
     while [[ $# -gt 0 ]]; do
@@ -143,6 +146,10 @@ main() {
                 ;;
             -s|--status)
                 status_only=true
+                shift
+                ;;
+            -f|--force)
+                force_commit=true
                 shift
                 ;;
             -b|--branch)
@@ -191,12 +198,16 @@ main() {
         exit 0
     fi
     
-    # 确认是否继续
-    echo -n "是否继续提交并推送到Gitee? (y/N): "
-    read -r confirm
-    if [[ ! $confirm =~ ^[Yy]$ ]]; then
-        print_info "操作已取消"
-        exit 0
+    # 确认是否继续 (除非使用了--force选项)
+    if [ "$force_commit" != true ]; then
+        echo -n "是否继续提交并推送到Gitee? (y/N): "
+        read -r confirm
+        if [[ ! $confirm =~ ^[Yy]$ ]]; then
+            print_info "操作已取消"
+            exit 0
+        fi
+    else
+        print_info "使用强制模式，跳过确认提示"
     fi
     
     echo
