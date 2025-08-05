@@ -44,18 +44,39 @@ public class LCR_022_E_DetectCycle {
     @Test
     public void test() {
         assertEquals(1,
-                detectCycle(newCycle(1, 2, 1)).val);
+                detectCycle(newCycle(1, 2, 1)).val.intValue());
         assertEquals(2,
-                detectCycle(newCycle(3, 2, 0, -4, 2)).val);
+                detectCycle(newCycle(3, 2, 0, -4, 2)).val.intValue());
         assertNull(
                 detectCycle(newCycle(1, -1)));
     }
 
-    public ListNode detectCycle(ListNode head) {
+    public ListNode<Integer> detectCycle(ListNode<Integer> head) {
         // 2024/3/30 NO.1 没做出来，看懂了，有思路
         // 2024/3/31 NO.2 思路对，没做对
-        ListNode fast = head;
-        ListNode slow = head;
+        ListNode<Integer> fast = head;
+        ListNode<Integer> slow = head;
+        
+        // 第一阶段：检测是否有环
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                break;
+            }
+        }
+        
+        // 如果没有环，返回null
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+        
+        // 第二阶段：找到环的入口
+        while (head != slow) {
+            head = head.next;
+            slow = slow.next;
+        }
+        
         return slow;
     }
 
