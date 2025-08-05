@@ -52,7 +52,7 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
     
     public NO088_E_MergeSortedArray_Animation() {
         setTitle("NO.088 合并两个有序数组 - 动画演示");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1200, 900);
         setLocationRelativeTo(null);
         
@@ -68,9 +68,9 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
         nums2 = new ArrayList<>();
         m = 3;
         n = 3;
-        p1 = 0;
-        p2 = 0;
-        tail = 0;
+        p1 = m - 1;
+        p2 = n - 1;
+        tail = m + n - 1;
         isAnimating = false;
         completed = false;
         currentOperation = "准备开始";
@@ -137,21 +137,6 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
         gbc.gridx = 3;
         controlPanel.add(nInput, gbc);
         
-        // 返回首页按钮
-        JButton homeButton = new JButton("返回首页");
-        homeButton.addActionListener(e -> {
-            dispose(); // 关闭当前窗口
-            // 启动主界面
-            SwingUtilities.invokeLater(() -> {
-                 try {
-                     dispose(); // 关闭当前动画窗口
-                     com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                 } catch (Exception ex) {
-                     ex.printStackTrace();
-                 }
-             });
-        });
-
         gbc.gridx = 0;
         controlPanel.add(startButton, gbc);
         gbc.gridx = 1;
@@ -160,8 +145,6 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
         controlPanel.add(autoButton, gbc);
         gbc.gridx = 3;
         controlPanel.add(resetButton, gbc);
-        gbc.gridx = 4;
-        controlPanel.add(homeButton, gbc);
         
         gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 4;
         controlPanel.add(statusLabel, gbc);
@@ -178,6 +161,14 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
         stepButton.addActionListener(e -> stepExecution());
         autoButton.addActionListener(e -> toggleAutoDemo());
         resetButton.addActionListener(e -> resetDemo());
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                AlgorithmTreeLauncher.showMainWindow();
+            }
+        });
     }
     
     private void setupAnimation() {
@@ -350,9 +341,9 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
             n = 3;
         }
         
-        p1 = 0;
-        p2 = 0;
-        tail = 0;
+        p1 = m - 1;
+        p2 = n - 1;
+        tail = m + n - 1;
         completed = false;
         step = 0;
         currentValue = 0;

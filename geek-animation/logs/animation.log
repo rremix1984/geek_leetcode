@@ -1,7 +1,8 @@
+Warning: the fonts "Times" and "Lucida Bright" are not available for the Java logical font "Serif", which may have unexpected appearance or behavior. Re-enable the "Times" font to remove this warning.
 OpenJDK 64-Bit Server VM warning: CodeCache is full. Compiler has been disabled.
 OpenJDK 64-Bit Server VM warning: Try increasing the code cache size using -XX:ReservedCodeCacheSize=
-CodeCache: size=2097152Kb used=3044Kb max_used=3055Kb free=2094108Kb
- bounds [0x0000000300000000, 0x0000000300310000, 0x0000000380000000]
- total_blobs=1343 nmethods=827 adapters=433
+CodeCache: size=2097152Kb used=4083Kb max_used=4092Kb free=2093068Kb
+ bounds [0x0000000300000000, 0x0000000300410000, 0x0000000380000000]
+ total_blobs=1808 nmethods=1191 adapters=534
  compilation: disabled (not enough contiguous free space left)
-2025-08-04 22:58:08.970 java[30719:171201] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+Warning: the fonts "Times" and "Lucida Bright" are not available for the Java logical font "Serif", which may have unexpected appearance or behavior. Re-enable the "Times" font to remove this warning.

@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * NO.322 零钱兑换算法动画演示
@@ -44,9 +46,10 @@ public class NO322_N_CoinChange_Animation extends JFrame {
     }
     
     private void initializeUI() {
-        setTitle("NO.322 零钱兑换算法动画演示");
+        setTitle("NO.322 零钱兑换算法动画演示 - 美元钞票计数");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
+        setSize(900, 750);
         
         // 控制面板
         JPanel controlPanel = new JPanel(new FlowLayout());
@@ -70,7 +73,9 @@ public class NO322_N_CoinChange_Animation extends JFrame {
         
         // 可视化面板
         visualPanel = new CoinChangePanel();
-        visualPanel.setPreferredSize(new Dimension(800, 500));
+        visualPanel.setBackground(Color.WHITE);
+        visualPanel.setBorder(BorderFactory.createTitledBorder("动态规划可视化 - 美元钞票动画"));
+        visualPanel.setPreferredSize(new Dimension(850, 500));
         add(visualPanel, BorderLayout.CENTER);
         
         // 日志面板
@@ -78,6 +83,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
         logArea.setEditable(false);
         logArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
         JScrollPane scrollPane = new JScrollPane(logArea);
+        scrollPane.setBorder(BorderFactory.createTitledBorder("计算日志"));
         add(scrollPane, BorderLayout.SOUTH);
         
         // 事件监听
@@ -104,7 +110,6 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             }
         });
         
-        pack();
         setLocationRelativeTo(null);
     }
     
@@ -263,6 +268,139 @@ public class NO322_N_CoinChange_Animation extends JFrame {
         });
     }
     
+    // 钞票动画类
+    private class BillAnimation {
+        private double currentX, currentY;
+        private double targetX, targetY;
+        private double startX, startY;
+        private int billNumber;
+        private boolean isMoving;
+        private double progress;
+        private static final double ANIMATION_SPEED = 0.05;
+        
+        public BillAnimation(int startX, int startY, int targetX, int targetY, int billNumber) {
+            this.startX = this.currentX = startX;
+            this.startY = this.currentY = startY;
+            this.targetX = targetX;
+            this.targetY = targetY;
+            this.billNumber = billNumber;
+            this.isMoving = true;
+            this.progress = 0.0;
+        }
+        
+        public boolean updatePosition() {
+            if (!isMoving) return false;
+            
+            progress += ANIMATION_SPEED;
+            if (progress >= 1.0) {
+                progress = 1.0;
+                isMoving = false;
+            }
+            
+            // 使用缓动函数让动画更自然
+            double easeProgress = easeInOutQuad(progress);
+            currentX = startX + (targetX - startX) * easeProgress;
+            currentY = startY + (targetY - startY) * easeProgress;
+            
+            return isMoving;
+        }
+        
+        private double easeInOutQuad(double t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+        
+        public void draw(Graphics2D g2d) {
+            // 绘制美元钞票
+            int billWidth = 60;
+            int billHeight = 25;
+            
+            // 钞票阴影
+            g2d.setColor(new Color(0, 0, 0, 50));
+            g2d.fillRoundRect((int)currentX + 2, (int)currentY + 2, billWidth, billHeight, 5, 5);
+            
+            // 钞票主体 - 绿色
+            g2d.setColor(new Color(85, 170, 85));
+            g2d.fillRoundRect((int)currentX, (int)currentY, billWidth, billHeight, 5, 5);
+            
+            // 钞票边框
+            g2d.setColor(new Color(34, 139, 34));
+            g2d.setStroke(new BasicStroke(2));
+            g2d.drawRoundRect((int)currentX, (int)currentY, billWidth, billHeight, 5, 5);
+            
+            // 美元符号
+            g2d.setColor(Color.WHITE);
+            g2d.setFont(new Font("Arial", Font.BOLD, 16));
+            g2d.drawString("$", (int)currentX + 8, (int)currentY + 18);
+            
+            // 面额 (假设都是1美元)
+            g2d.setFont(new Font("Arial", Font.BOLD, 12));
+            g2d.drawString("1", (int)currentX + 25, (int)currentY + 18);
+            
+            // 钞票编号
+            g2d.setFont(new Font("Arial", Font.PLAIN, 8));
+            g2d.setColor(new Color(0, 100, 0));
+            g2d.drawString("#" + billNumber, (int)currentX + 40, (int)currentY + 20);
+            
+            // 如果正在移动，添加一些特效
+            if (isMoving) {
+                g2d.setColor(new Color(255, 255, 0, 100));
+                g2d.fillOval((int)currentX - 5, (int)currentY - 5, billWidth + 10, billHeight + 10);
+            }
+        }
+        
+        public double getCurrentX() { return currentX; }
+        public double getCurrentY() { return currentY; }
+        public boolean isMoving() { return isMoving; }
+    }
+
+    private class CoinAnimation {
+        private int x, y, targetX, targetY;
+        private double currentX, currentY;
+        private double speed = 15.0;
+        private boolean arrived = false;
+        private int coinValue;
+
+        public CoinAnimation(int startX, int startY, int targetX, int targetY, int coinValue) {
+            this.x = startX;
+            this.y = startY;
+            this.currentX = startX;
+            this.currentY = startY;
+            this.targetX = targetX;
+            this.targetY = targetY;
+            this.coinValue = coinValue;
+        }
+
+        public boolean updatePosition() {
+            if (arrived) return false;
+            double dx = targetX - currentX;
+            double dy = targetY - currentY;
+            double distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < speed) {
+                currentX = targetX;
+                currentY = targetY;
+                arrived = true;
+                return false;
+            } else {
+                currentX += (dx / distance) * speed;
+                currentY += (dy / distance) * speed;
+                return true;
+            }
+        }
+
+        public void draw(Graphics2D g2d) {
+            g2d.setColor(Color.ORANGE);
+            g2d.fillOval((int) currentX, (int) currentY, 20, 20);
+            g2d.setColor(Color.BLACK);
+            g2d.drawOval((int) currentX, (int) currentY, 20, 20);
+            String value = String.valueOf(coinValue);
+            FontMetrics fm = g2d.getFontMetrics();
+            int textX = (int) currentX + (20 - fm.stringWidth(value)) / 2;
+            int textY = (int) currentY + (20 + fm.getAscent()) / 2 - 2;
+            g2d.drawString(value, textX, textY);
+        }
+    }
+    
     // 可视化面板
     private class CoinChangePanel extends JPanel {
         private int[] coins;
@@ -272,24 +410,132 @@ public class NO322_N_CoinChange_Animation extends JFrame {
         private int currentCoinIndex;
         private boolean animationComplete;
         
+        // 钞票动画相关
+        private java.util.List<BillAnimation> billAnimations = new ArrayList<>();
+        private java.util.List<CoinAnimation> coinAnimations = new ArrayList<>();
+        private javax.swing.Timer animationTimer;
+        private int totalItemsToShow = 0;
+        private int currentItemCount = 0;
+        
+        public CoinChangePanel() {
+            // 初始化动画定时器
+            animationTimer = new javax.swing.Timer(200, e -> {
+                if (currentItemCount < totalItemsToShow) {
+                    // 决定是添加钞票还是硬币
+                    if (Math.random() > 0.3) { // 70% 概率是钞票
+                        addNewBillAnimation();
+                    } else {
+                        addNewCoinAnimation();
+                    }
+                    currentItemCount++;
+                    repaint();
+                } else {
+                    animationTimer.stop();
+                }
+            });
+        }
+        
         public void updateVisualization(int[] coins, int amount, int[] dp, int currentAmount, int currentCoinIndex) {
             this.coins = coins.clone();
             this.amount = amount;
             this.dp = dp.clone();
             this.currentAmount = currentAmount;
             this.currentCoinIndex = currentCoinIndex;
+
+            // 如果当前金额有解，启动动画
+            if (currentAmount > 0 && dp[currentAmount] != Integer.MAX_VALUE) {
+                startItemAnimation(dp[currentAmount]);
+            }
+
             repaint();
         }
         
         public void setAnimationComplete(boolean complete) {
             this.animationComplete = complete;
+            if (complete && amount > 0 && dp[amount] != Integer.MAX_VALUE) {
+                // 最终结果的动画
+                startFinalItemAnimation(dp[amount]);
+            }
         }
         
         public void clear() {
             coins = null;
             dp = null;
             animationComplete = false;
+            billAnimations.clear();
+            coinAnimations.clear();
+            if (animationTimer != null) {
+                animationTimer.stop();
+            }
+            currentItemCount = 0;
+            totalItemsToShow = 0;
             repaint();
+        }
+        
+        private void startItemAnimation(int itemCount) {
+            if (itemCount <= 0 || itemCount > 20) return; // 限制动画数量
+
+            billAnimations.clear();
+            coinAnimations.clear();
+            totalItemsToShow = itemCount;
+            currentItemCount = 0;
+            animationTimer.setDelay(200);
+            animationTimer.start();
+        }
+        
+        private void startFinalItemAnimation(int itemCount) {
+            if (itemCount <= 0 || itemCount > 20) return;
+
+            billAnimations.clear();
+            coinAnimations.clear();
+            totalItemsToShow = itemCount;
+            currentItemCount = 0;
+
+            // 最终动画更快一些
+            animationTimer.setDelay(150);
+            animationTimer.start();
+        }
+        
+        private void addNewBillAnimation() {
+            int startX = getWidth() - 150;
+            int startY = 50 + currentItemCount * 5; // 稍微错开位置
+            int targetX = getWidth() - 300 + (currentItemCount % 5) * 25;
+            int targetY = 200 + (currentItemCount / 5) * 30;
+
+            BillAnimation bill = new BillAnimation(startX, startY, targetX, targetY, currentItemCount + 1);
+            billAnimations.add(bill);
+
+            // 启动这张钞票的移动动画
+            javax.swing.Timer moveTimer = new javax.swing.Timer(50, null);
+            moveTimer.addActionListener(e -> {
+                if (bill.updatePosition()) {
+                    repaint();
+                } else {
+                    moveTimer.stop();
+                }
+            });
+            moveTimer.start();
+        }
+
+        private void addNewCoinAnimation() {
+            int startX = getWidth() - 150;
+            int startY = 50 + currentItemCount * 5;
+            int targetX = getWidth() - 300 + (currentItemCount % 8) * 22;
+            int targetY = 280 + (currentItemCount / 8) * 22;
+            int coinValue = coins[new Random().nextInt(coins.length)];
+
+            CoinAnimation coin = new CoinAnimation(startX, startY, targetX, targetY, coinValue);
+            coinAnimations.add(coin);
+
+            javax.swing.Timer moveTimer = new javax.swing.Timer(50, null);
+            moveTimer.addActionListener(e -> {
+                if (coin.updatePosition()) {
+                    repaint();
+                } else {
+                    moveTimer.stop();
+                }
+            });
+            moveTimer.start();
         }
         
         @Override
@@ -395,13 +641,52 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             int equationY = coinY + 60;
             g2d.drawString("状态转移方程: dp[i] = min(dp[i], dp[i - coin] + 1)", 20, equationY);
             
+            // 绘制动画区域
+            int itemAreaY = equationY + 50;
+            g2d.setFont(new Font("Arial", Font.BOLD, 14));
+            g2d.setColor(Color.BLACK);
+            g2d.drawString("计数:", 20, itemAreaY);
+
+            // 绘制计数器
+            if (totalItemsToShow > 0) {
+                g2d.setFont(new Font("Arial", Font.BOLD, 16));
+                g2d.setColor(Color.BLUE);
+                g2d.drawString("已数物件: " + currentItemCount + " / " + totalItemsToShow, 150, itemAreaY);
+            }
+
+            // 绘制所有动画
+            for (BillAnimation bill : billAnimations) {
+                bill.draw(g2d);
+            }
+            for (CoinAnimation coin : coinAnimations) {
+                coin.draw(g2d);
+            }
+
+            // 绘制堆叠区域边框
+            if (!billAnimations.isEmpty() || !coinAnimations.isEmpty()) {
+                g2d.setColor(new Color(139, 69, 19, 100)); // 棕色半透明
+                g2d.setStroke(new BasicStroke(2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{5}, 0));
+                g2d.drawRect(width - 350, 180, 200, 150);
+                
+                g2d.setFont(new Font("Arial", Font.PLAIN, 12));
+                g2d.setColor(Color.BLACK);
+                g2d.drawString("堆叠区", width - 340, 175);
+            }
+            
             // 绘制最终结果
             if (animationComplete) {
                 g2d.setFont(new Font("Arial", Font.BOLD, 14));
                 g2d.setColor(Color.RED);
                 String result = dp[amount] == Integer.MAX_VALUE ? 
                     "无解 (返回 -1)" : "最少硬币数: " + dp[amount];
-                g2d.drawString("结果: " + result, 20, equationY + 30);
+                g2d.drawString("结果: " + result, 20, itemAreaY + 30);
+                
+                // 绘制最终总数
+                if (dp[amount] != Integer.MAX_VALUE && totalItemsToShow > 0) {
+                    g2d.setFont(new Font("Arial", Font.BOLD, 16));
+                    g2d.setColor(new Color(0, 128, 0));
+                    g2d.drawString("💰 总计: " + totalItemsToShow, 20, itemAreaY + 55);
+                }
             }
         }
     }

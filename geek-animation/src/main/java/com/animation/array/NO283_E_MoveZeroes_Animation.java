@@ -35,7 +35,6 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
     private JButton startButton;
     private JButton stepButton;
     private JButton resetButton;
-    private JButton homeButton;
     private JLabel statusLabel;
     private JLabel complexityLabel;
     
@@ -61,7 +60,7 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
     private void initComponents() {
         setTitle("LeetCode 283. 移动零 - 动画演示");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         
         animationPanel = new JPanel() {
@@ -77,7 +76,6 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
         startButton = new JButton("开始动画");
         stepButton = new JButton("单步执行");
         resetButton = new JButton("重置");
-        homeButton = new JButton("返回主页");
         
         statusLabel = new JLabel("准备开始演示移动零算法");
         statusLabel.setFont(new Font("微软雅黑", Font.PLAIN, 14));
@@ -112,7 +110,6 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
         controlPanel.add(startButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
-        controlPanel.add(homeButton);
         
         bottomPanel.add(controlPanel, BorderLayout.CENTER);
         bottomPanel.add(statusLabel, BorderLayout.SOUTH);
@@ -124,12 +121,16 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
         startButton.addActionListener(e -> startAnimation());
         stepButton.addActionListener(e -> stepAnimation());
         resetButton.addActionListener(e -> resetAnimation());
-        homeButton.addActionListener(e -> {
-            if (animationTimer != null && animationTimer.isRunning()) {
-                animationTimer.stop();
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (animationTimer != null && animationTimer.isRunning()) {
+                    animationTimer.stop();
+                }
+                AlgorithmTreeLauncher.showMainWindow();
             }
-            dispose();
-            SwingUtilities.invokeLater(() -> AlgorithmTreeLauncher.showMainWindow());
         });
     }
     

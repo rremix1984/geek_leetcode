@@ -46,6 +46,7 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
     private List<Integer> jumpDistances;
     private int maxJumpDistance = 0;
     private int currentJumpDistance = 0;
+    private double distanceScaleFactor = 0.5; // 距离缩放因子
     
     // 动画相关变量
     private double animationProgress = 0;
@@ -234,7 +235,8 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
     }
     
     private void drawStones(Graphics2D g2d) {
-        int stoneSpacing = (getWidth() - 2 * MARGIN) / (stones.length - 1);
+        int drawableWidth = (int)((getWidth() - 2 * MARGIN) * distanceScaleFactor);
+        int stoneSpacing = drawableWidth / (stones.length - 1);
         
         for (int i = 0; i < stones.length; i++) {
             int x = MARGIN + i * stoneSpacing - STONE_SIZE / 2;
@@ -276,7 +278,8 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
     }
     
     private void drawPaths(Graphics2D g2d) {
-        int stoneSpacing = (getWidth() - 2 * MARGIN) / (stones.length - 1);
+        int drawableWidth = (int)((getWidth() - 2 * MARGIN) * distanceScaleFactor);
+        int stoneSpacing = drawableWidth / (stones.length - 1);
         
         // 绘制去程路径
         g2d.setStroke(new BasicStroke(3));
@@ -330,7 +333,8 @@ public class NO2498_N_MaxJump_Animation extends JFrame {
     }
     
     private void drawFrog(Graphics2D g2d) {
-        int stoneSpacing = (getWidth() - 2 * MARGIN) / (stones.length - 1);
+        int drawableWidth = (int)((getWidth() - 2 * MARGIN) * distanceScaleFactor);
+        int stoneSpacing = drawableWidth / (stones.length - 1);
         double currentX, currentY;
         
         if (isAnimating) {

@@ -43,7 +43,7 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
     
     // UI组件
     private JPanel controlPanel;
-    private JButton startButton, stepButton, resetButton, homeButton;
+    private JButton startButton, stepButton, resetButton;
     private JLabel statusLabel, mismatchLabel;
     private HeightVisualizationPanel visualPanel;
     
@@ -75,7 +75,6 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
         startButton = new JButton("开始动画");
         stepButton = new JButton("单步执行");
         resetButton = new JButton("重置");
-        homeButton = new JButton("返回首页");
         statusLabel = new JLabel("点击开始按钮启动动画演示");
         mismatchLabel = new JLabel("不匹配数量：0");
         
@@ -84,7 +83,6 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
         startButton.setFont(buttonFont);
         stepButton.setFont(buttonFont);
         resetButton.setFont(buttonFont);
-        homeButton.setFont(buttonFont);
         statusLabel.setFont(new Font("微软雅黑", Font.PLAIN, 16));
         mismatchLabel.setFont(new Font("微软雅黑", Font.BOLD, 16));
         mismatchLabel.setForeground(Color.RED);
@@ -100,7 +98,6 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
         controlPanel.add(startButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
-        controlPanel.add(homeButton);
         controlPanel.add(Box.createHorizontalStrut(20));
         controlPanel.add(mismatchLabel);
         
@@ -128,16 +125,13 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
         });
         
         resetButton.addActionListener(e -> resetAnimation());
-        
-        homeButton.addActionListener(e -> {
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    dispose(); // 关闭当前动画窗口
-                    com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                AlgorithmTreeLauncher.showMainWindow();
+            }
         });
     }
     

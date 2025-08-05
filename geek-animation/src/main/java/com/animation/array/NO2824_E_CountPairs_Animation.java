@@ -35,7 +35,7 @@ public class NO2824_E_CountPairs_Animation extends JFrame {
     
     public NO2824_E_CountPairs_Animation() {
         setTitle("NO.2824 统计和小于目标的下标对数目 - 动画演示");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1000, 700);
         setLocationRelativeTo(null);
         
@@ -81,21 +81,6 @@ public class NO2824_E_CountPairs_Animation extends JFrame {
         controlPanel.setLayout(new FlowLayout());
         controlPanel.add(new JLabel("数字:"));
         controlPanel.add(numField);
-        // 返回首页按钮
-        JButton homeButton = new JButton("返回首页");
-        homeButton.addActionListener(e -> {
-            dispose(); // 关闭当前窗口
-            // 启动主界面
-            SwingUtilities.invokeLater(() -> {
-                 try {
-                     dispose(); // 关闭当前动画窗口
-                     com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                 } catch (Exception ex) {
-                     ex.printStackTrace();
-                 }
-             });
-        });
-
         controlPanel.add(addNumButton);
         controlPanel.add(new JLabel("目标值:"));
         controlPanel.add(targetField);
@@ -103,7 +88,6 @@ public class NO2824_E_CountPairs_Animation extends JFrame {
         controlPanel.add(startButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
-        controlPanel.add(homeButton);
         controlPanel.add(targetLabel);
         controlPanel.add(resultLabel);
         
@@ -112,6 +96,18 @@ public class NO2824_E_CountPairs_Animation extends JFrame {
     }
     
     private void setupEventHandlers() {
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                try {
+                    com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
         addNumButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

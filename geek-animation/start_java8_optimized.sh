@@ -11,7 +11,7 @@ java_version=$(java -version 2>&1 | head -n 1)
 echo "☕ Java版本: $java_version"
 
 # Java 8兼容的CodeCache优化参数
-JVM_OPTS="-XX:ReservedCodeCacheSize=4096m \
+JVM_OPTS="-XX:ReservedCodeCacheSize=2048m \
           -XX:InitialCodeCacheSize=512m \
           -XX:+UseCodeCacheFlushing \
           -Xmx8g \
@@ -20,7 +20,6 @@ JVM_OPTS="-XX:ReservedCodeCacheSize=4096m \
           -XX:MaxGCPauseMillis=200 \
           -XX:+UseStringDeduplication \
           -XX:+OptimizeStringConcat \
-          -XX:+UseFastAccessorMethods \
           -XX:+AggressiveOpts \
           -Djava.awt.headless=false \
           -Dfile.encoding=UTF-8 \
@@ -30,7 +29,7 @@ JVM_OPTS="-XX:ReservedCodeCacheSize=4096m \
 
 echo "🔧 Java 8兼容的CodeCache优化参数已设置"
 echo "💾 最大堆内存: 8GB"
-echo "🗂️  代码缓存: 4096MB (初始512MB)"
+echo "🗂️  代码缓存: 2048MB (初始512MB)"
 echo "⚡ 启用代码缓存自动清理"
 echo "🎨 启用图形渲染和字体优化"
 echo "🚀 启用G1垃圾收集器和性能优化"
@@ -52,7 +51,10 @@ fi
 echo "🎯 启动算法动画系统..."
 echo "⏳ 正在加载JVM和初始化CodeCache..."
 
+# 设置MAVEN_OPTS以传递JVM参数
+export MAVEN_OPTS="$JVM_OPTS"
+
 # 启动应用
-java $JVM_OPTS -cp target/classes com.animation.launcher.AlgorithmTreeLauncher
+mvn exec:java
 
 echo "👋 算法动画系统已退出"

@@ -35,11 +35,11 @@ public class NO403_H_FrogJump_Animation extends JFrame {
     
     private static final int WINDOW_WIDTH = 1200;
     private static final int WINDOW_HEIGHT = 800;
-    private static final int STONE_SIZE = 40;
-    private static final int FROG_SIZE = 30;
+    private static final int STONE_SIZE = 30;
+    private static final int FROG_SIZE = 25;
     
     // 算法相关变量
-    private int[] stones = {0, 1, 3, 5, 6, 8, 12, 17};
+    private int[] stones = {0, 1, 2, 3, 4, 5, 8, 9, 11, 12, 15, 16, 18, 20, 21};
     private Map<Integer, Set<Integer>> dp;
     private Map<Integer, Integer> stoneIndexMap;
     
@@ -47,7 +47,11 @@ public class NO403_H_FrogJump_Animation extends JFrame {
     private int currentStone = 0;
     private int currentStep = 0;
     private boolean animationRunning = false;
+    private double distanceScaleFactor = 0.8; // 距离缩放因子
     private javax.swing.Timer animationTimer;
+    private boolean isJumping = false;
+    private double jumpProgress = 0;
+    private int jumpStartX, jumpStartY, jumpEndX, jumpEndY;
     
     // UI组件
     private JPanel drawPanel;
@@ -174,9 +178,11 @@ public class NO403_H_FrogJump_Animation extends JFrame {
         int startX = 50;
         int stoneY = 250;
         int maxStonePos = stones[stones.length - 1];
+        int panelWidth = getWidth();
+        int drawableWidth = (int) ((panelWidth - 2 * startX) * distanceScaleFactor);
         
         for (int i = 0; i < stones.length; i++) {
-            int stoneX = startX + (stones[i] * 800) / maxStonePos;
+            int stoneX = startX + (int) ((double) stones[i] / maxStonePos * drawableWidth);
             
             // 石头颜色
             if (i == currentStone) {
@@ -202,17 +208,7 @@ public class NO403_H_FrogJump_Animation extends JFrame {
         }
         
         // 绘制青蛙
-        if (currentStone < stones.length) {
-            int frogX = startX + (stones[currentStone] * 800) / maxStonePos;
-            g2d.setColor(Color.GREEN);
-            g2d.fillOval(frogX - FROG_SIZE/2, stoneY - STONE_SIZE/2 - FROG_SIZE, FROG_SIZE, FROG_SIZE);
-            g2d.setColor(Color.BLACK);
-            g2d.drawOval(frogX - FROG_SIZE/2, stoneY - STONE_SIZE/2 - FROG_SIZE, FROG_SIZE, FROG_SIZE);
-            
-            // 绘制青蛙眼睛
-            g2d.fillOval(frogX - 8, stoneY - STONE_SIZE/2 - FROG_SIZE + 5, 4, 4);
-            g2d.fillOval(frogX + 4, stoneY - STONE_SIZE/2 - FROG_SIZE + 5, 4, 4);
-        }
+        drawFrog(g2d, startX, stoneY, maxStonePos, drawableWidth);
         
         // 绘制算法说明
         g2d.setColor(Color.BLACK);
@@ -223,18 +219,45 @@ public class NO403_H_FrogJump_Animation extends JFrame {
         g2d.drawString("目标：判断青蛙能否到达最后一个石头", 20, 70);
     }
     
+    private void drawFrog(Graphics2D g2d, int startX, int stoneY, int maxStonePos, int drawableWidth) {
+        int frogX, frogY;
+
+        if (isJumping) {
+            frogX = (int) (jumpStartX + (jumpEndX - jumpStartX) * jumpProgress);
+            double jumpHeight = -100 * Math.sin(jumpProgress * Math.PI); // 抛物线轨迹
+            frogY = (int) (jumpStartY + (jumpEndY - jumpStartY) * jumpProgress + jumpHeight);
+        } else {
+            if (currentStone >= stones.length) return;
+            frogX = startX + (int) ((double) stones[currentStone] / maxStonePos * drawableWidth);
+            frogY = stoneY - FROG_SIZE / 2;
+        }
+
+        g2d.setColor(Color.ORANGE);
+        g2d.fillOval(frogX - FROG_SIZE / 2, frogY - FROG_SIZE / 2, FROG_SIZE, FROG_SIZE);
+        g2d.setColor(Color.BLACK);
+        g2d.drawOval(frogX - FROG_SIZE / 2, frogY - FROG_SIZE / 2, FROG_SIZE, FROG_SIZE);
+    }
+
     private void startAnimation() {
         if (animationRunning) {
             stopAnimation();
             return;
         }
-        
+
         animationRunning = true;
         startButton.setText("停止动画");
-        
-        animationTimer = new javax.swing.Timer(1500, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+
+        animationTimer = new javax.swing.Timer(20, e -> {
+            if (isJumping) {
+                jumpProgress += 0.02;
+                if (jumpProgress >= 1.0) {
+                    jumpProgress = 1.0;
+                    isJumping = false;
+                    updateLog("成功跳到 " + stones[currentStone]);
+                    statusLabel.setText("青蛙跳到石头 " + stones[currentStone]);
+                }
+                repaint();
+            } else {
                 if (!stepAnimation()) {
                     stopAnimation();
                 }
@@ -252,6 +275,8 @@ public class NO403_H_FrogJump_Animation extends JFrame {
     }
     
     private boolean stepAnimation() {
+        if (isJumping) return true;
+
         if (currentStone >= stones.length - 1) {
             boolean canReach = !dp.get(stones[stones.length - 1]).isEmpty();
             updateLog("算法结束！");
@@ -259,30 +284,64 @@ public class NO403_H_FrogJump_Animation extends JFrame {
             statusLabel.setText("算法结束 - " + (canReach ? "成功过河" : "无法过河"));
             return false;
         }
-        
-        // 执行算法的一步
+
         int currentPos = stones[currentStone];
-        Set<Integer> possibleSteps = dp.get(currentPos);
-        
+        Set<Integer> lastSteps = dp.get(currentPos);
+
         updateLog("当前在石头位置: " + currentPos + " (索引: " + currentStone + ")");
-        updateLog("可能的跳跃步数: " + possibleSteps);
-        
-        // 尝试所有可能的跳跃
-        for (int step : new HashSet<>(possibleSteps)) {
-            for (int nextStep = step - 1; nextStep <= step + 1; nextStep++) {
-                if (nextStep > 0) {
-                    int nextPos = currentPos + nextStep;
-                    if (stoneIndexMap.containsKey(nextPos)) {
-                        dp.get(nextPos).add(nextStep);
-                        updateLog("  跳跃 " + nextStep + " 步到位置 " + nextPos);
+        updateLog("可能的跳跃步数: " + lastSteps);
+
+        // 寻找下一个要跳的石头
+        int nextStoneIndex = -1;
+        int jumpStep = 0;
+
+        // 遍历所有可能的下一步
+        for (int i = currentStone + 1; i < stones.length; i++) {
+            int nextPos = stones[i];
+            int dist = nextPos - currentPos;
+            for (int lastStep : lastSteps) {
+                if (dist >= lastStep - 1 && dist <= lastStep + 1) {
+                    if (!dp.get(nextPos).contains(dist)) {
+                        dp.get(nextPos).add(dist);
+                        updateLog("  计算出可跳跃: 从 " + currentPos + " 到 " + nextPos + " (步长 " + dist + ")");
                     }
                 }
             }
         }
-        
-        currentStone++;
-        statusLabel.setText("正在处理第 " + (currentStone + 1) + " 个石头");
-        
+
+        // 找到第一个有可行路径的下一个石头
+        for (int i = currentStone + 1; i < stones.length; i++) {
+            if (!dp.get(stones[i]).isEmpty()) {
+                nextStoneIndex = i;
+                break;
+            }
+        }
+
+        if (nextStoneIndex != -1) {
+            int fromStoneIndex = currentStone;
+            currentStone = nextStoneIndex;
+
+            int maxStonePos = stones[stones.length - 1];
+            int panelWidth = getWidth();
+            int drawableWidth = (int) ((panelWidth - 2 * 50) * distanceScaleFactor);
+
+            jumpStartX = 50 + (int) ((double) stones[fromStoneIndex] / maxStonePos * drawableWidth);
+            jumpStartY = 250 - FROG_SIZE / 2;
+            jumpEndX = 50 + (int) ((double) stones[currentStone] / maxStonePos * drawableWidth);
+            jumpEndY = 250 - FROG_SIZE / 2;
+
+            isJumping = true;
+            jumpProgress = 0;
+
+            updateLog("从 " + stones[fromStoneIndex] + " 准备跳到 " + stones[currentStone]);
+            statusLabel.setText("青蛙准备从 " + stones[fromStoneIndex] + " 跳到 " + stones[currentStone]);
+
+        } else {
+            updateLog("在石头 " + currentPos + " 找不到下一步可跳的石头。");
+            statusLabel.setText("青蛙在石头 " + currentPos + " 被困住。");
+            return false; // 动画结束
+        }
+
         repaint();
         return true;
     }

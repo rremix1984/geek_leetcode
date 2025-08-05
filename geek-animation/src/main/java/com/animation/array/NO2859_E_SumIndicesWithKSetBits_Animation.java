@@ -58,7 +58,7 @@ public class NO2859_E_SumIndicesWithKSetBits_Animation extends JFrame {
     private void initializeComponents() {
         setTitle("NO.2859 计算K位置下标对应元素的和 - 动画演示");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         
@@ -83,23 +83,9 @@ public class NO2859_E_SumIndicesWithKSetBits_Animation extends JFrame {
         nextButton = new JButton("下一步");
         resetButton = new JButton("重置");
         
-        // 返回首页按钮
-        JButton homeButton = new JButton("返回首页");
-        homeButton.addActionListener(e -> {
-            dispose();
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-        });
-        
         buttonPanel.add(startButton);
         buttonPanel.add(nextButton);
         buttonPanel.add(resetButton);
-        buttonPanel.add(homeButton);
         
         controlPanel.add(inputPanel);
         controlPanel.add(buttonPanel);
@@ -127,6 +113,18 @@ public class NO2859_E_SumIndicesWithKSetBits_Animation extends JFrame {
         startButton.addActionListener(e -> startAnimation());
         nextButton.addActionListener(e -> nextStep());
         resetButton.addActionListener(e -> resetAnimation());
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                try {
+                    com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
         
         // 动画定时器
         animationTimer = new Timer(1500, e -> nextStep());

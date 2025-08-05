@@ -145,19 +145,7 @@ public class NO2535_E_DifferenceOfSum_Animation extends JFrame {
         bottomPanel.add(nextStepButton);
         bottomPanel.add(resetButton);
         
-        // 返回首页按钮
-        JButton homeButton = new JButton("返回首页");
-        homeButton.addActionListener(e -> {
-            dispose(); // 关闭当前窗口
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-        });
-        bottomPanel.add(homeButton);
+
         
         // 测试用例选择
         JComboBox<String> testCaseCombo = new JComboBox<>();
@@ -184,6 +172,14 @@ public class NO2535_E_DifferenceOfSum_Animation extends JFrame {
         pauseButton.addActionListener(e -> pauseAnimation());
         resetButton.addActionListener(e -> resetAnimation());
         nextStepButton.addActionListener(e -> nextAnimationStep());
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                AlgorithmTreeLauncher.showMainWindow();
+            }
+        });
     }
     
     private void startAnimation() {

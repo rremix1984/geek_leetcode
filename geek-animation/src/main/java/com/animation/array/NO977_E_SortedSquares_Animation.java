@@ -35,7 +35,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
     private JPanel mainPanel;
     private JPanel controlPanel;
     private JTextField arrayInput;
-    private JButton startButton, stepButton, resetButton, autoButton, homeButton;
+    private JButton startButton, stepButton, resetButton, autoButton;
     private JLabel statusLabel;
     private JLabel resultLabel;
     
@@ -47,7 +47,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
     
     public NO977_E_SortedSquares_Animation() {
         setTitle("NO.977 有序数组的平方 - 动画演示");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1100, 800);
         setLocationRelativeTo(null);
         
@@ -87,7 +87,6 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         stepButton = new JButton("单步执行");
         resetButton = new JButton("重置");
         autoButton = new JButton("自动演示");
-        homeButton = new JButton("返回首页");
         statusLabel = new JLabel("状态: 准备开始");
         resultLabel = new JLabel("结果: 未开始");
         
@@ -127,8 +126,6 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         controlPanel.add(autoButton, gbc);
         gbc.gridx = 3;
         controlPanel.add(resetButton, gbc);
-        gbc.gridx = 4;
-        controlPanel.add(homeButton, gbc);
         
         gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 4;
         controlPanel.add(statusLabel, gbc);
@@ -145,21 +142,17 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         stepButton.addActionListener(e -> stepExecution());
         autoButton.addActionListener(e -> toggleAutoDemo());
         resetButton.addActionListener(e -> resetDemo());
-        homeButton.addActionListener(e -> {
-            // 停止动画
-            isAnimating = false;
-            if (animationTimer != null) {
-                animationTimer.stop();
-            }
-            // 关闭当前窗口并返回主界面
-            dispose();
-            SwingUtilities.invokeLater(() -> {
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 try {
                     com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-            });
+            }
         });
     }
     

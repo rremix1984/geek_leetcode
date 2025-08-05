@@ -32,7 +32,7 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
     
     public NO2570_E_MergeArrays_Animation() {
         setTitle("NO.2570 合并两个二维数组 - 动画演示");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1000, 800);
         setLocationRelativeTo(null);
         
@@ -78,27 +78,11 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
         controlPanel.add(idField);
         controlPanel.add(new JLabel("值:"));
         controlPanel.add(valueField);
-        // 返回首页按钮
-        JButton homeButton = new JButton("返回首页");
-        homeButton.addActionListener(e -> {
-            dispose(); // 关闭当前窗口
-            // 启动主界面
-            SwingUtilities.invokeLater(() -> {
-                 try {
-                     dispose(); // 关闭当前动画窗口
-                     com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                 } catch (Exception ex) {
-                     ex.printStackTrace();
-                 }
-             });
-        });
-
         controlPanel.add(addToNums1Button);
         controlPanel.add(addToNums2Button);
         controlPanel.add(mergeButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
-        controlPanel.add(homeButton);
         controlPanel.add(resultLabel);
         
         add(mainPanel, BorderLayout.CENTER);
@@ -146,6 +130,14 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 reset();
+            }
+        });
+
+        // Add window listener to show main window on close
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                AlgorithmTreeLauncher.showMainWindow();
             }
         });
     }

@@ -30,6 +30,7 @@ show_help() {
     echo -e "${CYAN}========================================${NC}"
     echo ""
     echo -e "${YELLOW}用法:${NC} $0 [命令] [选项]"
+    echo -e "${PURPLE}注意:${NC} 不输入任何参数时，默认执行 ${GREEN}start${NC} 命令"
     echo ""
     echo -e "${YELLOW}命令:${NC}"
     echo -e "  ${GREEN}start${NC}     启动服务"
@@ -38,7 +39,7 @@ show_help() {
     echo -e "  ${GREEN}status${NC}    查看状态"
     echo -e "  ${GREEN}logs${NC}      查看日志"
     echo -e "  ${GREEN}clean${NC}     清理日志"
-    echo -e "  ${GREEN}compile${NC}   编译项目"
+    echo -e "  ${GREEN}compile${NC}   编译项目 (自动处理多模块依赖)"
     echo -e "  ${GREEN}verify${NC}    验证JMX连接"
     echo -e "  ${GREEN}help${NC}      显示帮助"
     echo ""
@@ -55,6 +56,7 @@ show_help() {
     echo -e "  ${BLUE}--follow${NC}        实时跟踪日志"
     echo ""
     echo -e "${YELLOW}示例:${NC}"
+    echo -e "  $0                          # 默认启动所有服务 (等同于 start)"
     echo -e "  $0 start                    # 启动所有服务"
     echo -e "  $0 start --animation        # 只启动算法程序"
     echo -e "  $0 start --optimized        # 使用优化参数启动"
@@ -91,13 +93,53 @@ compile_project() {
         return 1
     fi
     
-    mvn compile -q
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ 编译成功${NC}"
-        return 0
+    # 检查是否在geek-animation目录下，如果是，需要先编译整个项目
+    if [[ "$PWD" == *"geek-animation"* ]]; then
+        echo -e "${YELLOW}🔍 检测到多模块项目，先编译整个项目...${NC}"
+        
+        # 切换到项目根目录
+        local root_dir="../"
+        if [ -f "$root_dir/pom.xml" ]; then
+            echo -e "${BLUE}📦 在根目录编译整个项目...${NC}"
+            cd "$root_dir"
+            
+            # 先清理并安装geek-animation依赖的模块到本地仓库
+            echo -e "${BLUE}📦 编译依赖模块: geek-common, geek-easy, geek-normal, geek-hard...${NC}"
+            mvn clean install -DskipTests -q -pl geek-common,geek-easy,geek-normal,geek-hard -am
+            local root_result=$?
+            
+            # 切换回geek-animation目录
+            cd - > /dev/null
+            
+            if [ $root_result -eq 0 ]; then
+                echo -e "${GREEN}✅ 根项目编译成功${NC}"
+                echo -e "${BLUE}📦 编译当前模块...${NC}"
+                mvn compile -q
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}✅ 当前模块编译成功${NC}"
+                    return 0
+                else
+                    echo -e "${RED}❌ 当前模块编译失败${NC}"
+                    return 1
+                fi
+            else
+                echo -e "${RED}❌ 根项目编译失败${NC}"
+                return 1
+            fi
+        else
+            echo -e "${RED}❌ 未找到根目录pom.xml文件${NC}"
+            return 1
+        fi
     else
-        echo -e "${RED}❌ 编译失败${NC}"
-        return 1
+        # 直接编译当前项目
+        mvn compile -q
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}✅ 编译成功${NC}"
+            return 0
+        else
+            echo -e "${RED}❌ 编译失败${NC}"
+            return 1
+        fi
     fi
 }
 
@@ -131,7 +173,7 @@ start_animation() {
                   -XX:MaxGCPauseMillis=200 \
                   -XX:+UseStringDeduplication \
                   -XX:+OptimizeStringConcat \
-                  -XX:+UseFastAccessorMethods \
+
                   -XX:+UseCompressedOops \
                   -XX:+UseCompressedClassPointers \
                   -Djava.awt.headless=false \
@@ -155,12 +197,23 @@ start_animation() {
     
     create_log_dir
     
+    # 定义JAR文件路径
+    JAR_FILE="target/geek-animation-1.0-SNAPSHOT-jar-with-dependencies.jar"
+
+    # 检查JAR文件是否存在
+    if [ ! -f "$JAR_FILE" ]; then
+        echo -e "${RED}❌ 错误: 找不到可执行的JAR文件: $JAR_FILE${NC}"
+        echo -e "${YELLOW}ℹ️  请先运行 'compile' 命令 (确保它生成 fat JAR) 或手动执行 'mvn package'。${NC}"
+        return 1
+    fi
+
+    # 使用 java -jar 启动
     if [ "$background" = "true" ]; then
-        java $JVM_OPTS $JMX_OPTS -cp target/classes $ANIMATION_CLASS > $LOG_DIR/animation.log 2>&1 &
+        java $JVM_OPTS $JMX_OPTS -jar "$JAR_FILE" > "$LOG_DIR/animation.log" 2>&1 &
         local pid=$!
-        echo -e "${GREEN}✅ 算法动画程序已启动 (PID: $pid)${NC}"
+        echo -e "${GREEN}✅ 算法动画程序已通过 'java -jar' 启动 (PID: $pid)。${NC}"
     else
-        java $JVM_OPTS $JMX_OPTS -cp target/classes $ANIMATION_CLASS
+        java $JVM_OPTS $JMX_OPTS -jar "$JAR_FILE"
     fi
 }
 
@@ -182,12 +235,14 @@ start_monitor() {
     
     create_log_dir
     
+    export MAVEN_OPTS="$JVM_OPTS $JMX_OPTS"
+
     if [ "$background" = "true" ]; then
-        java $JVM_OPTS -cp target/classes $MONITOR_CLASS > $LOG_DIR/monitor.log 2>&1 &
+        mvn exec:java -Dexec.mainClass="$MONITOR_CLASS" > $LOG_DIR/monitor.log 2>&1 &
         local pid=$!
         echo -e "${GREEN}✅ JVM进程监控已启动 (PID: $pid)${NC}"
     else
-        java $JVM_OPTS -cp target/classes $MONITOR_CLASS
+        mvn exec:java -Dexec.mainClass="$MONITOR_CLASS"
     fi
 }
 
@@ -209,12 +264,14 @@ start_memory_monitor() {
     
     create_log_dir
     
+    export MAVEN_OPTS="$JVM_OPTS $JMX_OPTS"
+
     if [ "$background" = "true" ]; then
-        java $JVM_OPTS -cp target/classes $MEMORY_MONITOR_CLASS > $LOG_DIR/memory.log 2>&1 &
+        mvn exec:java -Dexec.mainClass="$MEMORY_MONITOR_CLASS" > $LOG_DIR/memory.log 2>&1 &
         local pid=$!
         echo -e "${GREEN}✅ JVM内存监控已启动 (PID: $pid)${NC}"
     else
-        java $JVM_OPTS -cp target/classes $MEMORY_MONITOR_CLASS
+        mvn exec:java -Dexec.mainClass="$MEMORY_MONITOR_CLASS"
     fi
 }
 
@@ -381,9 +438,11 @@ main() {
         exit 1
     fi
     
-    # 解析参数
-    local command=$1
-    shift
+    # 解析参数 - 如果没有提供命令，默认为start
+    local command=${1:-start}
+    if [ $# -gt 0 ]; then
+        shift
+    fi
     
     local animation_only=false
     local monitor_only=false
@@ -527,7 +586,7 @@ main() {
         "verify")
             verify_jmx
             ;;
-        "help"|"--help"|"-h"|"")
+        "help"|"--help"|"-h")
             show_help
             ;;
         *)

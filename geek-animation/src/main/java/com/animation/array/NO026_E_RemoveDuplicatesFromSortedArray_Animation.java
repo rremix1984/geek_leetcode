@@ -61,7 +61,7 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_Animation extends JFrame {
     private void initComponents() {
         setTitle("LeetCode 26. 删除有序数组中的重复项 - 动画演示");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         
         animationPanel = new JPanel() {
@@ -77,7 +77,7 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_Animation extends JFrame {
         startButton = new JButton("开始动画");
         stepButton = new JButton("单步执行");
         resetButton = new JButton("重置");
-        homeButton = new JButton("返回主页");
+
         
         statusLabel = new JLabel("准备开始演示删除有序数组中的重复项算法");
         statusLabel.setFont(new Font("微软雅黑", Font.PLAIN, 14));
@@ -112,7 +112,6 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_Animation extends JFrame {
         controlPanel.add(startButton);
         controlPanel.add(stepButton);
         controlPanel.add(resetButton);
-        controlPanel.add(homeButton);
         
         bottomPanel.add(controlPanel, BorderLayout.CENTER);
         bottomPanel.add(statusLabel, BorderLayout.SOUTH);
@@ -124,13 +123,6 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_Animation extends JFrame {
         startButton.addActionListener(e -> startAnimation());
         stepButton.addActionListener(e -> stepAnimation());
         resetButton.addActionListener(e -> resetAnimation());
-        homeButton.addActionListener(e -> {
-            if (animationTimer != null && animationTimer.isRunning()) {
-                animationTimer.stop();
-            }
-            dispose();
-            SwingUtilities.invokeLater(() -> AlgorithmTreeLauncher.showMainWindow());
-        });
     }
     
     private void startAnimation() {

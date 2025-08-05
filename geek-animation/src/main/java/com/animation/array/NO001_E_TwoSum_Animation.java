@@ -52,7 +52,7 @@ public class NO001_E_TwoSum_Animation extends JFrame {
     
     public NO001_E_TwoSum_Animation() {
         setTitle("NO.001 两数之和 - 动画演示");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(900, 700);
         setLocationRelativeTo(null);
         
@@ -124,21 +124,6 @@ public class NO001_E_TwoSum_Animation extends JFrame {
         gbc.gridx = 3;
         controlPanel.add(targetInput, gbc);
         
-        // 返回首页按钮
-        JButton homeButton = new JButton("返回首页");
-        homeButton.addActionListener(e -> {
-            dispose(); // 关闭当前窗口
-            // 启动主界面
-            SwingUtilities.invokeLater(() -> {
-                 try {
-                     dispose(); // 关闭当前动画窗口
-                     com.animation.launcher.AlgorithmTreeLauncher.showMainWindow();
-                 } catch (Exception ex) {
-                     ex.printStackTrace();
-                 }
-             });
-        });
-
         gbc.gridx = 0;
         controlPanel.add(startButton, gbc);
         gbc.gridx = 1;
@@ -147,8 +132,6 @@ public class NO001_E_TwoSum_Animation extends JFrame {
         controlPanel.add(autoButton, gbc);
         gbc.gridx = 3;
         controlPanel.add(resetButton, gbc);
-        gbc.gridx = 4;
-        controlPanel.add(homeButton, gbc);
         
         gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 4;
         controlPanel.add(statusLabel, gbc);
