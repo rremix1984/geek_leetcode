@@ -35,13 +35,14 @@ public class AnimationTest {
     }
     
     @Test
-    public void testLauncher() {
+    public void testFrogJumpAnimation() {
         try {
-            // 测试启动器
-            HardAlgorithmAnimationLauncher launcher = new HardAlgorithmAnimationLauncher();
-            System.out.println("HardAlgorithmAnimationLauncher 创建成功");
+            // 测试青蛙跳跃动画类
+            NO403_H_FrogJump_Animation animation = 
+                new NO403_H_FrogJump_Animation();
+            System.out.println("NO403 动画类创建成功");
         } catch (Exception e) {
-            System.err.println("HardAlgorithmAnimationLauncher 创建失败: " + e.getMessage());
+            System.err.println("NO403 动画类创建失败: " + e.getMessage());
             e.printStackTrace();
         }
     }
