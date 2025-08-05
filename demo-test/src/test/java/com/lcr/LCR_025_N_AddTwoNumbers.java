@@ -5,8 +5,6 @@ package com.lcr;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**

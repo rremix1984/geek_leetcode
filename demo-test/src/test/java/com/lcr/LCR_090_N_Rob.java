@@ -4,9 +4,6 @@
 package com.lcr;
 
 import org.junit.Test;
-import java.util.Arrays;
-import static java.lang.Math.max;
-import static java.util.Arrays.copyOfRange;
 
 /**
     [ARRAY] |
