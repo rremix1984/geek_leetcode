@@ -55,6 +55,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
     private JButton startButton;
     private JButton resetButton;
     private JButton stepButton;
+    private JButton backButton;
     private JTextArea logArea;
     private JLabel statusLabel;
     
@@ -66,7 +67,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
     private void initializeUI() {
         setTitle("LeetCode 1306. 跳跃游戏 III (Jump Game III) - DFS算法动画演示");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         
         // 设置Look and Feel
@@ -129,9 +130,16 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
         resetButton.addActionListener(e -> resetAnimation());
         stepButton.addActionListener(e -> stepAnimation());
         
+        backButton = new JButton("返回首页");
+        backButton.addActionListener(e -> {
+            dispose(); // 关闭当前窗口
+            com.animation.launcher.AlgorithmTreeLauncher.showMainWindow(); // 显示首页
+        });
+        
         panel.add(startButton);
         panel.add(stepButton);
         panel.add(resetButton);
+        panel.add(backButton);
         
         statusLabel = new JLabel("准备开始跳跃游戏III动画演示");
         panel.add(statusLabel);
