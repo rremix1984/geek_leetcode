@@ -1,17 +1,11 @@
 package com.animation.array;
 
 import javax.swing.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.ArrayList;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.List;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * NO.2824 统计和小于目标的下标对数目 - 动画演示
