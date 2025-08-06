@@ -391,6 +391,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.104 二叉树的最大深度", () -> new NO104_E_MaximumDepthOfBinaryTree_Animation().setVisible(true));
         animations.put("NO.108 将有序数组转换为二叉搜索树", () -> new NO108_E_SortedArrayToBST_Animation().setVisible(true));
         animations.put("NO.199 二叉树的右视图", () -> new NO199_N_BinaryTreeRightSideView_Animation().setVisible(true));
+        animations.put("二叉树的顶层视图", () -> new BinaryTreeTopView_Animation().setVisible(true));
         
         // 新增算法 - 2024年12月批次
         animations.put("NO.2529 正整数和负整数的最大计数", () -> new NO2529_E_MaximumCount_Animation().setVisible(true));
@@ -691,6 +692,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(treeNode, "NO.104 二叉树的最大深度", "Easy", "树遍历 + 深度计算");
         addAlgorithmToCategory(treeNode, "NO.108 将有序数组转换为二叉搜索树", "Easy", "分治算法 + 平衡树构建");
         addAlgorithmToCategory(treeNode, "NO.199 二叉树的右视图", "Easy", "树 + 广度优先搜索");
+        addAlgorithmToCategory(treeNode, "二叉树的顶层视图", "Medium", "树 + 广度优先搜索 + 水平距离");
         
         addAlgorithmToCategory(dfsNode, "NO.1306 跳跃游戏 III", "Normal", "深度优先搜索 + 递归回溯");
         

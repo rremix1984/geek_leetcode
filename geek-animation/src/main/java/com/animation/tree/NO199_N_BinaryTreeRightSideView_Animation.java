@@ -25,8 +25,10 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
     private JTextArea codeArea;
     private JLabel statusLabel;
 
-    private JButton startButton, pauseButton, resumeButton, resetButton, backButton;
+    private JButton startButton, pauseButton, resumeButton, resetButton, backButton, homeButton;
     private JSlider speedSlider;
+    private JTextField treeInputField;
+    private JButton buildTreeButton;
 
     private Timer animationTimer;
     private Queue<TreeNode<Integer>> queue = new LinkedList<>();
@@ -73,6 +75,15 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
         statusLabel.setFont(new Font("Serif", Font.BOLD, 16));
         rightPanel.add(statusLabel, BorderLayout.SOUTH);
 
+        // Tree input panel
+        JPanel treeInputPanel = new JPanel(new FlowLayout());
+        treeInputPanel.add(new JLabel("二叉树输入(层序遍历):"));
+        treeInputField = new JTextField("1,2,3,null,5,null,4", 20);
+        buildTreeButton = new JButton("构建树");
+        treeInputPanel.add(treeInputField);
+        treeInputPanel.add(buildTreeButton);
+        controlPanel.add(treeInputPanel, BorderLayout.NORTH);
+
         // Buttons
         JPanel buttonPanel = new JPanel();
         startButton = new JButton("开始");
@@ -80,21 +91,25 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
         resumeButton = new JButton("继续");
         resetButton = new JButton("重置");
         backButton = new JButton("返回");
+        homeButton = new JButton("返回首页");
 
         buttonPanel.add(startButton);
         buttonPanel.add(pauseButton);
         buttonPanel.add(resumeButton);
         buttonPanel.add(resetButton);
         buttonPanel.add(backButton);
+        buttonPanel.add(homeButton);
         controlPanel.add(buttonPanel, BorderLayout.CENTER);
 
-        // Speed slider
-        speedSlider = new JSlider(0, 1000, 500);
-        speedSlider.setMajorTickSpacing(200);
+        // Speed slider - simplified
+        JPanel speedPanel = new JPanel(new FlowLayout());
+        speedPanel.add(new JLabel("速度:"));
+        speedSlider = new JSlider(1, 10, 5);
+        speedSlider.setMajorTickSpacing(3);
         speedSlider.setPaintTicks(true);
         speedSlider.setPaintLabels(true);
-        speedSlider.setBorder(BorderFactory.createTitledBorder("动画速度"));
-        controlPanel.add(speedSlider, BorderLayout.SOUTH);
+        speedPanel.add(speedSlider);
+        controlPanel.add(speedPanel, BorderLayout.SOUTH);
 
         setupActionListeners();
         resetAnimationState();
@@ -109,6 +124,11 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
             dispose();
             AlgorithmTreeLauncher.getInstance().setVisible(true);
         });
+        homeButton.addActionListener(e -> {
+            dispose();
+            AlgorithmTreeLauncher.getInstance().setVisible(true);
+        });
+        buildTreeButton.addActionListener(e -> buildTreeFromInput());
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -144,19 +164,73 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
         root.right.right = new TreeNode<>(4);
         return root;
     }
+    
+    private void buildTreeFromInput() {
+        try {
+            String input = treeInputField.getText().trim();
+            if (input.isEmpty()) {
+                statusLabel.setText("请输入二叉树数据");
+                return;
+            }
+            
+            String[] values = input.split(",");
+            TreeNode<Integer> newRoot = buildTreeFromArray(values);
+            drawingPanel.root = newRoot;
+            resetAnimationState();
+            statusLabel.setText("树构建成功，可以开始动画");
+        } catch (Exception e) {
+            statusLabel.setText("输入格式错误，请检查");
+        }
+    }
+    
+    private TreeNode<Integer> buildTreeFromArray(String[] values) {
+        if (values.length == 0 || values[0].trim().equals("null")) {
+            return null;
+        }
+        
+        TreeNode<Integer> root = new TreeNode<>(Integer.parseInt(values[0].trim()));
+        Queue<TreeNode<Integer>> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        int i = 1;
+        while (!queue.isEmpty() && i < values.length) {
+            TreeNode<Integer> current = queue.poll();
+            
+            // Left child
+            if (i < values.length && !values[i].trim().equals("null")) {
+                current.left = new TreeNode<>(Integer.parseInt(values[i].trim()));
+                queue.offer(current.left);
+            }
+            i++;
+            
+            // Right child
+            if (i < values.length && !values[i].trim().equals("null")) {
+                current.right = new TreeNode<>(Integer.parseInt(values[i].trim()));
+                queue.offer(current.right);
+            }
+            i++;
+        }
+        
+        return root;
+    }
 
     @Override
     public void start() {
+        if (animationTimer != null && animationTimer.isRunning()) {
+            animationTimer.stop();
+        }
         resetAnimationState();
         queue.offer(drawingPanel.root);
-        animationTimer = new Timer(speedSlider.getValue(), e -> animationStep());
+        int delay = (11 - speedSlider.getValue()) * 100; // 1000ms to 100ms
+        animationTimer = new Timer(delay, e -> animationStep());
         animationTimer.start();
+        statusLabel.setText("动画运行中...");
     }
 
     private void animationStep() {
         if (isPaused) return;
 
-        animationTimer.setDelay(1000 - speedSlider.getValue());
+        animationTimer.setDelay((11 - speedSlider.getValue()) * 100);
 
         if (levelSize == 0) {
             if (queue.isEmpty()) {
@@ -192,6 +266,8 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
                 statusLabel.setText("找到本层最右节点: " + currentNode.val);
                 highlightCodeLine(11);
                 levelSize = 0; // Reset for next level
+                // 更新右视图显示
+                drawingPanel.setRightSideView(rightSideView);
             }
             drawingPanel.setHighlightedNodes(highlightedNodes, currentNode);
             SwingUtilities.invokeLater(() -> drawingPanel.repaint());
