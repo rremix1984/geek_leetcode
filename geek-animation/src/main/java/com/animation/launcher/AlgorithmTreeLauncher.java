@@ -78,6 +78,7 @@ import com.animation.normal.*;
 import com.animation.atomics.*;
 import com.animation.interval.*;
 import com.animation.lonch.*;
+import com.animation.tree.BPlusTreeAnimation;
 
 // 困难算法导入
 import com.animation.hard.NO403_H_FrogJump_Animation;
@@ -156,6 +157,8 @@ public class AlgorithmTreeLauncher extends JFrame {
     private DefaultMutableTreeNode hardNode;
     private DefaultMutableTreeNode normalNode;
     private DefaultMutableTreeNode lonchNode;
+    private DefaultMutableTreeNode atomicIntegerNode, atomicReferenceNode, longAdderNode, atomicArrayNode, atomicStampedNode, atomicMarkableNode;
+    private DefaultMutableTreeNode intervalTreeNode, intervalBacktrackNode, intervalOtherNode;
     
     // 算法信息列表，用于统计
     private List<AlgorithmInfo> algorithmInfos;
@@ -451,6 +454,9 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.10 二叉树动画", () -> new NO10_BinaryTree_Animation().setVisible(true));
         animations.put("NO.11 二叉树遍历动画", () -> new NO11_BinaryTreeTraversal_Animation().setVisible(true));
         animations.put("NO.9 贪吃蛇游戏", () -> new NO9_SnakeGame_Animation().setVisible(true));
+        animations.put("NO.5 矩阵链表动画", () -> new com.animation.lonch.NO5_MatrixLinkedListAnimation().setVisible(true));
+        animations.put("NO.6 矩阵链表最短路径动画", () -> new com.animation.lonch.NO6_MatrixLinkedListShortestPathAnimation().setVisible(true));
+        animations.put("B+-树", () -> new BPlusTreeAnimation().setVisible(true));
     }
     
     /**
@@ -488,17 +494,17 @@ public class AlgorithmTreeLauncher extends JFrame {
         hardNode = new DefaultMutableTreeNode("🔥 困难算法 (8个)");
         
         // 创建Atomics原子类分类节点
-        DefaultMutableTreeNode atomicIntegerNode = new DefaultMutableTreeNode("🔢 AtomicInteger (1个)");
-        DefaultMutableTreeNode atomicReferenceNode = new DefaultMutableTreeNode("📦 AtomicReference (1个)");
-        DefaultMutableTreeNode longAdderNode = new DefaultMutableTreeNode("➕ LongAdder (1个)");
-        DefaultMutableTreeNode atomicArrayNode = new DefaultMutableTreeNode("📊 AtomicArray (1个)");
-        DefaultMutableTreeNode atomicStampedNode = new DefaultMutableTreeNode("🏷️ AtomicStamped (1个)");
-        DefaultMutableTreeNode atomicMarkableNode = new DefaultMutableTreeNode("✅ AtomicMarkable (1个)");
+        atomicIntegerNode = new DefaultMutableTreeNode("🔢 AtomicInteger (1个)");
+        atomicReferenceNode = new DefaultMutableTreeNode("📦 AtomicReference (1个)");
+        longAdderNode = new DefaultMutableTreeNode("➕ LongAdder (1个)");
+        atomicArrayNode = new DefaultMutableTreeNode("📊 AtomicArray (1个)");
+        atomicStampedNode = new DefaultMutableTreeNode("🏷️ AtomicStamped (1个)");
+        atomicMarkableNode = new DefaultMutableTreeNode("✅ AtomicMarkable (1个)");
         
         // 创建Interval面试题分类节点
-        DefaultMutableTreeNode intervalTreeNode = new DefaultMutableTreeNode("🌳 树算法 (3个)");
-        DefaultMutableTreeNode intervalBacktrackNode = new DefaultMutableTreeNode("🔄 回溯算法 (1个)");
-        DefaultMutableTreeNode intervalOtherNode = new DefaultMutableTreeNode("🎯 其他算法 (1个)");
+        intervalTreeNode = new DefaultMutableTreeNode("🌳 树算法 (3个)");
+        intervalBacktrackNode = new DefaultMutableTreeNode("🔄 回溯算法 (1个)");
+        intervalOtherNode = new DefaultMutableTreeNode("🎯 其他算法 (1个)");
         lonchNode = new DefaultMutableTreeNode("Lonch");
         
         // 将分类节点添加到主分组
@@ -531,20 +537,6 @@ public class AlgorithmTreeLauncher extends JFrame {
         intervalGroupNode.add(intervalBacktrackNode);
         intervalGroupNode.add(intervalOtherNode);
 
-        addAlgorithmToCategory(hardNode, "NO.85 最大矩形", "Hard", "单调栈 + 动态规划");
-        addAlgorithmToCategory(hardNode, "NO.312 戳气球", "Hard", "区间DP");
-        addAlgorithmToCategory(hardNode, "NO.773 滑动谜题", "Hard", "BFS + 状态压缩");
-        addAlgorithmToCategory(hardNode, "NO.127 单词接龙", "Hard", "BFS + 图论");
-        addAlgorithmToCategory(hardNode, "NO.126 单词接龙 II", "Hard", "BFS + DFS");
-        
-        // 添加原子类算法
-        addAlgorithmToCategory(atomicIntegerNode, "AtomicInteger 多线程安全演示", "Atomics", "原子整数 + 线程安全");
-        addAlgorithmToCategory(atomicReferenceNode, "AtomicReference CAS操作演示", "Atomics", "原子引用 + CAS操作");
-        addAlgorithmToCategory(longAdderNode, "LongAdder 高并发性能演示", "Atomics", "高并发计数器 + 性能对比");
-        addAlgorithmToCategory(atomicArrayNode, "AtomicIntegerArray 数组操作演示", "Atomics", "原子数组 + 并发操作");
-        addAlgorithmToCategory(atomicStampedNode, "AtomicStampedReference ABA问题演示", "Atomics", "版本戳引用 + ABA问题解决");
-        addAlgorithmToCategory(atomicMarkableNode, "AtomicMarkableReference 标记演示", "Atomics", "可标记引用 + 布尔标记");
-        
         // 将主分组添加到根节点
         rootNode.add(easyGroupNode);
         rootNode.add(normalGroupNode);
@@ -552,10 +544,76 @@ public class AlgorithmTreeLauncher extends JFrame {
         rootNode.add(atomicsGroupNode);
         rootNode.add(intervalGroupNode);
         rootNode.add(lonchNode);
+
+
         
         // 添加具体算法到分类节点
-        addAlgorithmToCategory(arrayNode, "NO.001 两数之和", "Easy", "哈希表 + 双指针");
-        addAlgorithmToCategory(arrayNode, "NO.026 删除有序数组中的重复项", "Easy", "双指针 + 原地删除");
+        addAllAlgorithms();
+    }
+
+    private void addAllAlgorithms() {
+        // Easy
+        addAlgorithmToCategory(arrayNode, "NO.001 两数之和", "Easy", "哈希表");
+        addAlgorithmToCategory(arrayNode, "NO.088 合并两个有序数组", "Easy", "双指针");
+        addAlgorithmToCategory(arrayNode, "NO.977 有序数组的平方", "Easy", "双指针");
+        addAlgorithmToCategory(arrayNode, "NO.026 删除有序数组中的重复项", "Easy", "双指针");
+        addAlgorithmToCategory(arrayNode, "NO.283 移动零", "Easy", "双指针");
+        addAlgorithmToCategory(dataStructureNode, "NO.225 用队列实现栈", "Easy", "队列, 栈");
+        addAlgorithmToCategory(dataStructureNode, "NO.234 回文链表", "Easy", "链表, 双指针, 栈");
+        addAlgorithmToCategory(searchNode, "NO.704 二分查找", "Easy", "二分查找");
+        addAlgorithmToCategory(dpNode, "NO.118 杨辉三角", "Easy", "动态规划");
+        addAlgorithmToCategory(dpNode, "NO.121 买卖股票的最佳时机", "Easy", "动态规划, 贪心");
+        addAlgorithmToCategory(bitNode, "NO.136 只出现一次的数字", "Easy", "位运算, 异或");
+        addAlgorithmToCategory(sortNode, "插入排序算法演示", "Easy", "排序, 插入排序");
+
+        // Medium
+        addAlgorithmToCategory(normalNode, "NO.208 实现Trie(前缀树)", "Medium", "Trie, 数据结构");
+        addAlgorithmToCategory(normalNode, "NO.211 添加与搜索单词", "Medium", "Trie, DFS");
+        addAlgorithmToCategory(normalNode, "NO.284 顶端迭代器", "Medium", "设计, 迭代器");
+        addAlgorithmToCategory(normalNode, "NO.764 最大加号标志", "Medium", "动态规划");
+        addAlgorithmToCategory(normalNode, "NO.915 分割数组", "Medium", "数组");
+
+        // Hard
+        addAlgorithmToCategory(normalNode, "NO.005 最长回文子串", "Medium", "动态规划, 字符串");
+        addAlgorithmToCategory(normalNode, "NO.015 三数之和", "Medium", "数组, 双指针, 排序");
+        addAlgorithmToCategory(normalNode, "NO.053 最大子数组和", "Medium", "动态规划, 数组");
+        addAlgorithmToCategory(hardNode, "NO.046 全排列", "Hard", "回溯");
+        addAlgorithmToCategory(hardNode, "NO.200 岛屿数量", "Hard", "DFS, BFS, 图");
+        addAlgorithmToCategory(hardNode, "NO.322 零钱兑换", "Hard", "动态规划, 背包");
+        addAlgorithmToCategory(hardNode, "NO.139 单词拆分", "Hard", "动态规划, 字符串");
+        addAlgorithmToCategory(hardNode, "NO.85 最大矩形", "Hard", "单调栈, 动态规划");
+        addAlgorithmToCategory(hardNode, "NO.312 戳气球", "Hard", "动态规划, 区间DP");
+        addAlgorithmToCategory(hardNode, "NO.773 滑动谜题", "Hard", "BFS, 状态压缩");
+        addAlgorithmToCategory(hardNode, "NO.127 单词接龙", "Hard", "BFS, 图");
+        addAlgorithmToCategory(hardNode, "NO.126 单词接龙 II", "Hard", "BFS, DFS, 图");
+
+        // Atomics
+        addAlgorithmToCategory(atomicIntegerNode, "AtomicInteger 多线程安全演示", "Atomics", "原子整数 + 线程安全");
+        addAlgorithmToCategory(atomicReferenceNode, "AtomicReference CAS操作演示", "Atomics", "原子引用 + CAS操作");
+        addAlgorithmToCategory(longAdderNode, "LongAdder 高并发性能演示", "Atomics", "高并发计数器 + 性能对比");
+        addAlgorithmToCategory(atomicArrayNode, "AtomicIntegerArray 数组操作演示", "Atomics", "原子数组 + 并发操作");
+        addAlgorithmToCategory(atomicStampedNode, "AtomicStampedReference ABA问题演示", "Atomics", "版本戳引用 + ABA问题解决");
+        addAlgorithmToCategory(atomicMarkableNode, "AtomicMarkableReference 标记演示", "Atomics", "可标记引用 + 布尔标记");
+
+        // 数据库
+        DefaultMutableTreeNode dbNode = new DefaultMutableTreeNode("数据库");
+        addAlgorithmToCategory(dbNode, "B+-树", "Hard", "数据库");
+        rootNode.add(dbNode);
+
+        // Interview
+        addAlgorithmToCategory(intervalTreeNode, "B+-树", "Hard", "B+树, 数据结构");
+        addAlgorithmToCategory(intervalTreeNode, "NO.297 二叉树的序列化与反序列化", "Hard", "树, DFS, 设计");
+         addAlgorithmToCategory(intervalTreeNode, "NO.834 树中距离之和", "Hard", "树, DFS, 动态规划");
+        addAlgorithmToCategory(intervalBacktrackNode, "面试题 08.09. 括号", "Interval", "回溯算法 + 括号生成");
+        addAlgorithmToCategory(intervalOtherNode, "面试题 04.12. 求和路径", "Interval", "树遍历 + 路径统计");
+
+        // Lonch
+        addAlgorithmToCategory(lonchNode, "NO.10 二叉树动画", "Lonch", "二叉树基础动画");
+        addAlgorithmToCategory(lonchNode, "NO.11 二叉树遍历动画", "Lonch", "二叉树遍历过程动画");
+        addAlgorithmToCategory(lonchNode, "NO.9 贪吃蛇游戏", "Lonch", "经典游戏动画");
+        addAlgorithmToCategory(lonchNode, "NO.5 矩阵链表动画", "Lonch", "矩阵链表创建");
+        addAlgorithmToCategory(lonchNode, "NO.6 矩阵链表最短路径动画", "Lonch", "矩阵链表最短路径");
+    addAlgorithmToCategory(arrayNode, "NO.026 删除有序数组中的重复项", "Easy", "双指针 + 原地删除");
         addAlgorithmToCategory(arrayNode, "NO.027 移除元素", "Easy", "双指针 + 原地删除");
         addAlgorithmToCategory(arrayNode, "NO.088 合并两个有序数组", "Easy", "双指针 + 原地合并");
         addAlgorithmToCategory(arrayNode, "NO.283 移动零", "Easy", "双指针 + 原地移动");
@@ -598,6 +656,13 @@ public class AlgorithmTreeLauncher extends JFrame {
         
         addAlgorithmToCategory(bitNode, "NO.136 只出现一次的数字", "Easy", "位运算 + 异或运算");
         addAlgorithmToCategory(bitNode, "NO.190 颠倒二进制位", "Easy", "位运算 + 逐位处理");
+
+        // Lonch 算法
+        addAlgorithmToCategory(lonchNode, "NO.10 二叉树动画", "Lonch", "二叉树基础动画");
+        addAlgorithmToCategory(lonchNode, "NO.11 二叉树遍历动画", "Lonch", "二叉树遍历过程动画");
+        addAlgorithmToCategory(lonchNode, "NO.9 贪吃蛇游戏", "Lonch", "经典游戏动画");
+        addAlgorithmToCategory(lonchNode, "NO.5 矩阵链表动画", "Lonch", "矩阵链表创建");
+        addAlgorithmToCategory(lonchNode, "NO.6 矩阵链表最短路径动画", "Lonch", "矩阵链表最短路径");
         
         addAlgorithmToCategory(graphNode, "NO.463 岛屿的周长", "Easy", "网格遍历 + 边界计算");
         addAlgorithmToCategory(graphNode, "NO.200 岛屿数量", "Easy", "深度优先搜索 + 网格遍历");
@@ -606,11 +671,6 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(graphNode, "Dijkstra最短路径算法", "Easy", "最短路径 + 优先队列 + 贪心");
         addAlgorithmToCategory(graphNode, "Kruskal最小生成树算法", "Easy", "最小生成树 + 并查集 + 贪心");
         addAlgorithmToCategory(graphNode, "拓扑排序算法", "Easy", "拓扑排序 + Kahn算法 + 入度");
-
-        // Lonch 算法
-        addAlgorithmToCategory(lonchNode, "NO.10 二叉树动画", "Lonch", "树");
-        addAlgorithmToCategory(lonchNode, "NO.11 二叉树遍历动画", "Lonch", "树");
-        addAlgorithmToCategory(lonchNode, "NO.9 贪吃蛇游戏", "Lonch", "游戏");
         
         addAlgorithmToCategory(mathNode, "NO.009 回文数", "Easy", "数学运算 + 数位反转");
         addAlgorithmToCategory(mathNode, "NO.066 加一", "Easy", "数学运算 + 进位处理");
@@ -1644,6 +1704,22 @@ public class AlgorithmTreeLauncher extends JFrame {
                        "• 可视化每个节点的前驱和后继关系\n" +
                        "• 动态生成并展示所有最短转换路径\n\n" +
                        "💡 算法技巧：BFS + DFS + 图论";
+
+            case "B+-树":
+                return "🎯 【B+-树】\n\n" +
+                        "📝 问题描述：\n" +
+                        "B+-树是一种自平衡的树，能够保持数据有序，并允许在对数时间内进行搜索、顺序访问、插入和删除。它特别适用于数据库和文件系统。\n\n" +
+                        "🔧 核心算法：\n" +
+                        "• 节点分裂与合并：当节点满或太空时，进行分裂或合并以保持平衡。\n" +
+                        "• 键的重新分配：在兄弟节点之间移动键以避免分裂或合并。\n" +
+                        "• 所有数据都存储在叶子节点中，内部节点仅用作索引。\n\n" +
+                        "⏰ 时间复杂度：O(log n) for search, insertion, deletion\n" +
+                        "💾 空间复杂度：O(n)\n\n" +
+                        "🎬 动画特色：\n" +
+                        "• 可视化B+-树的插入、删除和搜索操作。\n" +
+                        "• 动态展示节点的分裂、合并和键的重新分配过程。\n" +
+                        "• 高亮显示搜索路径和受影响的节点。\n\n" +
+                        "💡 算法技巧：自平衡树 + 索引结构";
 
             // NO.297 和 NO.834 的描述已移除，因为它们在 geek-hard 模块中
 

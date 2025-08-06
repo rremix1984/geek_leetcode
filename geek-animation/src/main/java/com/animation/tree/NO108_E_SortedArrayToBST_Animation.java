@@ -2,10 +2,13 @@ package com.animation.tree;
 
 import javax.swing.*;
 import javax.swing.Timer;
+import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.List;
+import java.util.Stack;
+import java.util.ArrayList;
 
 /**
  * NO.108 将有序数组转换为二叉搜索树 - 动画演示
@@ -66,10 +69,31 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
     private java.util.List<String> constructionSteps = new ArrayList<>();
     private Stack<ArrayRange> constructionStack = new Stack<>();
     
-    private Timer animationTimer;
+    private Timer logicTimer; // 负责逻辑步进
+    private Timer animationTimer; // 负责动画效果
+    private boolean isAnimating = false; // 动画播放状态
     private JButton startButton;
     private JButton resetButton;
     private JComboBox<String> testCaseCombo;
+    private JTextPane codePane;
+    private int highlightedLine = -1;
+
+    private final String[] codeSteps = {
+        "public TreeNode sortedArrayToBST(int[] nums) {",
+        "    return build(nums, 0, nums.length - 1);",
+        "}",
+        "",
+        "private TreeNode build(int[] nums, int left, int right) {",
+        "    if (left > right) {",
+        "        return null;",
+        "    }",
+        "    int mid = left + (right - left) / 2;",
+        "    TreeNode root = new TreeNode(nums[mid]);",
+        "    root.left = build(nums, left, mid - 1);",
+        "    root.right = build(nums, mid + 1, right);",
+        "    return root;",
+        "}"
+    };
     
     // 测试用例
     private final String[] testCaseNames = {
@@ -100,8 +124,9 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
         // 测试用例选择
         testCaseCombo = new JComboBox<>(testCaseNames);
         testCaseCombo.addActionListener(e -> {
-            if (!animationTimer.isRunning()) {
+            if (logicTimer == null || !logicTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
+        highlightCodeLine(-1);
                 SwingUtilities.invokeLater(() -> repaint());
             }
         });
@@ -120,7 +145,7 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
         controlPanel.add(resetButton);
         
         add(controlPanel, BorderLayout.NORTH);
-        
+
         // 创建绘图面板
         JPanel drawPanel = new JPanel() {
             @Override
@@ -130,87 +155,140 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
             }
         };
         drawPanel.setBackground(Color.WHITE);
-        add(drawPanel, BorderLayout.CENTER);
+
+        // 创建代码面板
+        codePane = new JTextPane();
+        codePane.setEditable(false);
+        codePane.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        codePane.setBackground(new Color(43, 43, 43));
+        codePane.setForeground(new Color(187, 187, 187));
+        JScrollPane codeScrollPane = new JScrollPane(codePane);
+
+        // 创建分割面板
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, drawPanel, codeScrollPane);
+        splitPane.setDividerLocation(800);
+        splitPane.setResizeWeight(0.7);
+
+        add(splitPane, BorderLayout.CENTER);
+
+        // 初始化代码显示
+        updateCodePane();
     }
     
+    private void updateCodePane() {
+        StringBuilder sb = new StringBuilder();
+        for (String line : codeSteps) {
+            sb.append(line).append("\n");
+        }
+        codePane.setText(sb.toString());
+        highlightCodeLine(highlightedLine);
+    }
+
+    private void highlightCodeLine(int line) {
+        highlightedLine = line;
+        StyledDocument doc = codePane.getStyledDocument();
+        SimpleAttributeSet defaultStyle = new SimpleAttributeSet();
+        StyleConstants.setForeground(defaultStyle, new Color(187, 187, 187));
+        StyleConstants.setBackground(defaultStyle, new Color(43, 43, 43));
+        doc.setCharacterAttributes(0, doc.getLength(), defaultStyle, true);
+
+        if (line >= 0) {
+            try {
+                int start = codePane.getDocument().getDefaultRootElement().getElement(line).getStartOffset();
+                int end = codePane.getDocument().getDefaultRootElement().getElement(line).getEndOffset();
+                SimpleAttributeSet highlightedStyle = new SimpleAttributeSet();
+                StyleConstants.setBackground(highlightedStyle, new Color(60, 80, 100));
+                doc.setCharacterAttributes(start, end - start, highlightedStyle, false);
+            } catch (Exception e) {
+                // Line number out of bounds, do nothing
+            }
+        }
+    }
+
     private void setupAnimation() {
-        animationTimer = new Timer(2000, new ActionListener() {
-            private boolean initialized = false;
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!initialized) {
-                    // 初始化
-                    constructionSteps.clear();
-                    constructionStack.clear();
-                    root = null;
-                    currentNode = null;
-                    currentRange = null;
-                    
-                    if (nums.length == 0) {
-                        isCompleted = true;
-                        statusMessage = "空数组，无法构建树";
-                        animationTimer.stop();
-                        startButton.setText("开始演示");
-                    } else {
-                        constructionStack.push(new ArrayRange(0, nums.length - 1, 0, null, false));
-                        statusMessage = "开始构建平衡二叉搜索树";
-                    }
-                    initialized = true;
-                    SwingUtilities.invokeLater(() -> repaint());
-                    return;
-                }
-                
-                if (!constructionStack.isEmpty()) {
-                    ArrayRange range = constructionStack.pop();
-                    currentRange = range;
-                    
-                    if (range.left <= range.right) {
-                        // 创建当前节点
-                        TreeNode newNode = new TreeNode(nums[range.mid]);
-                        newNode.isNewlyCreated = true;
-                        currentNode = newNode;
-                        
-                        // 连接到父节点
-                        if (range.parentNode == null) {
-                            root = newNode;
-                        } else {
-                            if (range.isLeftChild) {
-                                range.parentNode.left = newNode;
-                            } else {
-                                range.parentNode.right = newNode;
-                            }
-                        }
-                        
-                        constructionMessage = String.format("创建节点 %d (索引 %d)，区间 [%d, %d]", 
-                            nums[range.mid], range.mid, range.left, range.right);
-                        constructionSteps.add(constructionMessage);
-                        
-                        // 添加子区间到栈中（注意顺序，右子树先入栈）
-                        if (range.mid + 1 <= range.right) {
-                            constructionStack.push(new ArrayRange(range.mid + 1, range.right, 
-                                range.level + 1, newNode, false));
-                        }
-                        if (range.left <= range.mid - 1) {
-                            constructionStack.push(new ArrayRange(range.left, range.mid - 1, 
-                                range.level + 1, newNode, true));
-                        }
-                    }
-                } else {
-                    // 构建完成
-                    isCompleted = true;
-                    animationTimer.stop();
-                    statusMessage = "平衡二叉搜索树构建完成！";
-                    startButton.setText("开始演示");
-                    currentRange = null;
-                    
-                    // 重置新创建标记
-                    resetNewlyCreatedFlags(root);
-                }
-                
-                SwingUtilities.invokeLater(() -> repaint());
+        logicTimer = new Timer(2500, e -> {
+            if (!isAnimating) {
+                stepAnimation();
             }
         });
+        logicTimer.setInitialDelay(2500);
+
+        // 动画定时器，用于播放短暂的过渡动画
+        animationTimer = new Timer(50, e -> {
+            // 在这个版本中，我们没有复杂的动画，所以这个定时器可以暂时为空
+            // 或者用它来控制一个短暂的高亮效果
+            isAnimating = false; // 动画结束
+            animationTimer.stop();
+            logicTimer.restart(); // 动画结束后，以完整延迟重新启动逻辑定时器
+        });
+    }
+
+    private void stepAnimation() {
+        highlightCodeLine(4); // build function entry
+        if (!constructionStack.isEmpty()) {
+            ArrayRange range = constructionStack.pop();
+            currentRange = range;
+
+            if (range.left <= range.right) {
+                highlightCodeLine(5); // if (left > right)
+                // 创建当前节点
+                highlightCodeLine(8); // int mid = ...
+                TreeNode newNode = new TreeNode(nums[range.mid]);
+                newNode.isNewlyCreated = true;
+                currentNode = newNode;
+                highlightCodeLine(9); // TreeNode root = ...
+
+                // 连接到父节点
+                if (range.parentNode == null) {
+                    root = newNode;
+                } else {
+                    if (range.isLeftChild) {
+                        range.parentNode.left = newNode;
+                    } else {
+                        range.parentNode.right = newNode;
+                    }
+                }
+
+                constructionMessage = String.format("创建节点 %d (索引 %d)，区间 [%d, %d]",
+                        nums[range.mid], range.mid, range.left, range.right);
+                constructionSteps.add(constructionMessage);
+
+                // 添加子区间到栈中（注意顺序，右子树先入栈）
+                if (range.mid + 1 <= range.right) {
+                    highlightCodeLine(11); // root.right = ...
+                    constructionStack.push(new ArrayRange(range.mid + 1, range.right,
+                            range.level + 1, newNode, false));
+                }
+                if (range.left <= range.mid - 1) {
+                    highlightCodeLine(10); // root.left = ...
+                    constructionStack.push(new ArrayRange(range.left, range.mid - 1,
+                            range.level + 1, newNode, true));
+                }
+
+                // 触发一个短暂的“动画”
+                isAnimating = true;
+                logicTimer.stop();
+                animationTimer.start();
+
+            } else {
+                 // 如果弹出的区间无效，则不执行任何操作，等待下一个定时器周期
+                highlightCodeLine(6); // return null
+                currentRange = null; // 清除无效区间的显示
+            }
+        } else {
+            // 构建完成
+            highlightCodeLine(12); // return root
+            isCompleted = true;
+            logicTimer.stop();
+            statusMessage = "平衡二叉搜索树构建完成！";
+            startButton.setText("开始演示");
+            currentRange = null;
+
+            // 重置新创建标记
+            resetNewlyCreatedFlags(root);
+        }
+
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void resetNewlyCreatedFlags(TreeNode node) {
@@ -493,24 +571,46 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
         constructionSteps.clear();
         constructionStack.clear();
         statusMessage = "已加载测试用例 " + (index + 1) + "，点击开始按钮开始演示";
+        highlightCodeLine(-1); // Reset highlight
     }
     
     private void startAnimation() {
-        if (animationTimer.isRunning()) {
+        if (logicTimer.isRunning()) {
+            logicTimer.stop();
             animationTimer.stop();
+            isAnimating = false;
             startButton.setText("开始演示");
         } else {
-            resetAnimation();
-            animationTimer.start();
+            resetAnimationForStart();
+            // 初始化第一步
+            if (nums.length == 0) {
+                isCompleted = true;
+                statusMessage = "空数组，无法构建树";
+            } else {
+                highlightCodeLine(0); // sortedArrayToBST function entry
+                constructionStack.push(new ArrayRange(0, nums.length - 1, 0, null, false));
+                statusMessage = "开始构建平衡二叉搜索树";
+                highlightCodeLine(1); // return build(...)
+            }
+            logicTimer.start();
             startButton.setText("暂停");
         }
     }
     
     private void resetAnimation() {
+        logicTimer.stop();
         animationTimer.stop();
+        isAnimating = false;
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
         SwingUtilities.invokeLater(() -> repaint());
+    }
+
+    private void resetAnimationForStart() {
+        logicTimer.stop();
+        animationTimer.stop();
+        isAnimating = false;
+        loadTestCase(testCaseCombo.getSelectedIndex());
     }
     
     public static void main(String[] args) {

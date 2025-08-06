@@ -50,6 +50,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
     private javax.swing.Timer animationTimer;
     private int animationFromPos = -1;
     private int animationToPos = -1;
+    private javax.swing.Timer autoTimer; // 自动执行动画的Timer
     
     // UI组件
     private JButton startButton;
@@ -112,6 +113,13 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
                         isAnimating = false;
                         animationFromPos = -1;
                         animationToPos = -1;
+                        // 动画结束后，如果不是自动模式，则不需要做什么
+                        // 如果是自动模式，理论上 autoTimer 会触发下一次 step
+                        // 但为了更流畅，可以在这里检查是否需要立即进行下一步
+                        if (autoTimer != null && autoTimer.isRunning()) {
+                             // 立即触发下一次逻辑，而不是等待 autoTimer 的延迟
+                             stepAnimation(); 
+                        }
                     }
                     SwingUtilities.invokeLater(() -> repaint());
                 }
@@ -410,7 +418,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
             animationTimer.start();
         }
         
-        javax.swing.Timer autoTimer = new javax.swing.Timer(1500, new ActionListener() {
+        autoTimer = new javax.swing.Timer(1500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!isAnimating && !algorithmComplete) {
@@ -425,63 +433,78 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
     
     private void stepAnimation() {
         if (isAnimating || algorithmComplete) return;
-        
+
         if (dfsStack.isEmpty()) {
             algorithmComplete = true;
             updateLog("搜索完成！未找到值为0的位置");
             statusLabel.setText("搜索完成 - 未找到目标");
+            if (autoTimer != null) autoTimer.stop();
+            SwingUtilities.invokeLater(this::repaint);
             return;
         }
-        
-        int pos = dfsStack.pop();
-        
+
+        int pos = dfsStack.peek();
+
+        // 如果当前位置已经访问过，则跳过
         if (visited.contains(pos)) {
-            updateLog("位置 " + pos + " 已访问，跳过");
-            stepAnimation(); // 继续下一步
-            return;
+            dfsStack.pop();
+            updateLog("位置 " + pos + " 已被访问过，从栈中移除并跳过。");
+            statusLabel.setText("跳过已访问位置: " + pos);
+            SwingUtilities.invokeLater(this::repaint);
+            return; // 本次step只做“跳过”这一件事
         }
-        
+
+        // 处理新位置
+        dfsStack.pop();
         visited.add(pos);
-        
+
+        // 触发移动动画
         if (pos != currentPosition) {
             animationFromPos = currentPosition;
             animationToPos = pos;
             animationProgress = 0;
             isAnimating = true;
             searchPath.add(pos);
+        } else {
+            // 如果DFS的下一个节点就是当前位置（例如，初始状态），也需要刷新状态
+            currentPosition = pos;
         }
-        
+
         updateLog("访问位置 " + pos + ", 值: " + arr[pos]);
-        
+
         if (arr[pos] == 0) {
             foundTarget = true;
             algorithmComplete = true;
             updateLog("找到目标！位置 " + pos + " 的值为 0");
             statusLabel.setText("成功找到目标位置: " + pos);
+            if (autoTimer != null) autoTimer.stop();
+            SwingUtilities.invokeLater(this::repaint);
             return;
         }
-        
-        // 添加可能的跳跃位置到栈中
+
+        // 将邻居节点加入栈
         int forward = pos + arr[pos];
-        int backward = pos - arr[pos];
-        
-        if (backward >= 0 && backward < arr.length && !visited.contains(backward)) {
-            dfsStack.push(backward);
-            updateLog("添加后退位置到栈: " + backward);
-        }
-        
         if (forward >= 0 && forward < arr.length && !visited.contains(forward)) {
             dfsStack.push(forward);
             updateLog("添加前进位置到栈: " + forward);
         }
-        
+
+        int backward = pos - arr[pos];
+        if (backward >= 0 && backward < arr.length && !visited.contains(backward)) {
+            dfsStack.push(backward);
+            updateLog("添加后退位置到栈: " + backward);
+        }
+
         statusLabel.setText("当前位置: " + pos + ", 值: " + arr[pos] + ", 栈大小: " + dfsStack.size());
-        SwingUtilities.invokeLater(() -> repaint());
+        SwingUtilities.invokeLater(this::repaint);
     }
     
     private void resetAnimation() {
         if (animationTimer.isRunning()) {
             animationTimer.stop();
+        }
+        if (autoTimer != null && autoTimer.isRunning()) {
+            autoTimer.stop();
         }
         
         initializeAlgorithm();
