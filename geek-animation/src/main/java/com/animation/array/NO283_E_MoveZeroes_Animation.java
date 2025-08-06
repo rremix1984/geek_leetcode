@@ -3,15 +3,10 @@ package com.animation.array;
 import javax.swing.*;
 import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.ArrayList;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.List;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * LeetCode 283. 移动零 - 动画演示

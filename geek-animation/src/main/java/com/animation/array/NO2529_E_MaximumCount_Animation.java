@@ -3,13 +3,7 @@ package com.animation.array;
 import javax.swing.*;
 import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
-import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
-import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.Arrays;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * NO.2529 正整数和负整数的最大计数 - 动画演示

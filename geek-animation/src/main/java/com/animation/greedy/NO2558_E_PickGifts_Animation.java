@@ -1,19 +1,12 @@
 package com.animation.greedy;
 
 import javax.swing.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.ArrayList;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.List;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.PriorityQueue;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * NO.2558 从数量最多的堆取走礼物 - 动画演示

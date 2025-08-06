@@ -3,15 +3,10 @@ package com.animation.greedy;
 import javax.swing.*;
 import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.ArrayList;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.List;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * LeetCode 121. 买卖股票的最佳时机 - 动画演示
