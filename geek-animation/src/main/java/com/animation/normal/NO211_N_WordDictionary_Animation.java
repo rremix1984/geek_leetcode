@@ -221,7 +221,7 @@ public class NO211_N_WordDictionary_Animation extends JFrame {
         listModel.addElement(word);
         addLog("添加单词: " + word);
         inputField.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void searchWord() {
@@ -251,7 +251,7 @@ public class NO211_N_WordDictionary_Animation extends JFrame {
             JOptionPane.showMessageDialog(this, "搜索模式 '" + pattern + "' 没有匹配的单词", "搜索结果", JOptionPane.WARNING_MESSAGE);
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private List<String> findMatchingWords(String pattern) {
@@ -285,7 +285,7 @@ public class NO211_N_WordDictionary_Animation extends JFrame {
         listModel.clear();
         currentSearchWord = null;
         addLog("WordDictionary 已清空");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void loadDemoData() {
@@ -300,7 +300,7 @@ public class NO211_N_WordDictionary_Animation extends JFrame {
         }
         
         addLog("加载演示数据: " + String.join(", ", demoWords));
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void showWildcardExamples() {

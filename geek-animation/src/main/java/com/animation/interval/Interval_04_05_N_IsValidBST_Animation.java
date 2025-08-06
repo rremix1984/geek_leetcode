@@ -164,7 +164,7 @@ public class Interval_04_05_N_IsValidBST_Animation extends JFrame {
         startButton.setEnabled(false);
         stepButton.setEnabled(true);
         statusLabel.setText("状态: 开始验证二叉搜索树");
-        repaint();
+        SwingUtilities.invokeLater(() -> mainPanel.repaint());
     }
     
     private void parseInput() {
@@ -253,7 +253,7 @@ public class Interval_04_05_N_IsValidBST_Animation extends JFrame {
             }
             
             currentStep++;
-            repaint();
+            SwingUtilities.invokeLater(() -> mainPanel.repaint());
         }
     }
     
@@ -281,7 +281,7 @@ public class Interval_04_05_N_IsValidBST_Animation extends JFrame {
         autoButton.setText("自动演示");
         statusLabel.setText("状态: 准备开始");
         resultLabel.setText("结果: 未开始");
-        repaint();
+        SwingUtilities.invokeLater(() -> mainPanel.repaint());
     }
     
     private class BSTVisualizationPanel extends JPanel {

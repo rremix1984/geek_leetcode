@@ -172,6 +172,7 @@ public class GraphDFSAnimation extends JFrame implements Animation {
                 visitOrder.add(currentNode);
                 statusLabel.setText("访问节点 " + currentNode);
                 logArea.append("访问节点 " + currentNode + "\n");
+                SwingUtilities.invokeLater(() -> visualPanel.repaint());
                 
                 // 将邻居节点压入栈（逆序，保证按字典序访问）
                 List<Integer> neighbors = new ArrayList<>(graph.get(currentNode));
@@ -192,7 +193,7 @@ public class GraphDFSAnimation extends JFrame implements Animation {
             stopAnimation();
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -204,7 +205,7 @@ public class GraphDFSAnimation extends JFrame implements Animation {
         visitOrder = new ArrayList<>();
         statusLabel.setText("准备开始DFS遍历");
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private class GraphVisualizationPanel extends JPanel {

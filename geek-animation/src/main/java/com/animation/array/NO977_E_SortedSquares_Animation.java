@@ -191,7 +191,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
             statusLabel.setText("状态: " + currentOperation);
             resultLabel.setText("结果: 开始执行算法");
             
-            visualizationPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "输入格式错误: " + ex.getMessage());
         }
@@ -257,7 +257,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         resultIndex--;
         
         statusLabel.setText("状态: " + currentOperation);
-        visualizationPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
     }
     
     private void toggleAutoDemo() {
@@ -296,7 +296,7 @@ public class NO977_E_SortedSquares_Animation extends JFrame {
         statusLabel.setText("状态: " + currentOperation);
         resultLabel.setText("结果: 未开始");
         
-        visualizationPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
     }
     
     // 可视化面板

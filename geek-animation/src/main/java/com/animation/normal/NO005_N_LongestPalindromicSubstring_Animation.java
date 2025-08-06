@@ -54,7 +54,7 @@ public class NO005_N_LongestPalindromicSubstring_Animation extends JFrame {
     private void initializeAnimation() {
         animationTimer = new javax.swing.Timer(150, e -> {
             if (isAnimating) {
-                visualPanel.repaint();
+                SwingUtilities.invokeLater(() -> visualPanel.repaint());
             }
         });
     }
@@ -156,7 +156,7 @@ public class NO005_N_LongestPalindromicSubstring_Animation extends JFrame {
                 animationTimer.stop();
                 addLog("✅ 查找完成！最长回文子串: \"" + result + "\"");
                 addLog("📏 长度: " + result.length());
-                visualPanel.repaint();
+                SwingUtilities.invokeLater(() -> visualPanel.repaint());
             });
         }).start();
     }
@@ -305,7 +305,7 @@ public class NO005_N_LongestPalindromicSubstring_Animation extends JFrame {
                     addLog("  ✅ 发现回文: \"" + palindrome + "\" (位置: " + finalLeft + "-" + finalRight + ", 长度: " + palindrome.length() + ")");
                 }
                 
-                visualPanel.repaint();
+                SwingUtilities.invokeLater(() -> visualPanel.repaint());
             });
             
             left--;
@@ -352,7 +352,7 @@ public class NO005_N_LongestPalindromicSubstring_Animation extends JFrame {
         
         inputField.setText("");
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
         
         addLog("✨ 已清除所有数据和动画状态");
     }

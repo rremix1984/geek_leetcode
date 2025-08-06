@@ -325,7 +325,7 @@ public class AtomicMarkableReferenceAnimation extends JFrame implements Animatio
         expectedMarkCheckBox.setSelected(mark[0]);
         
         // 重绘动画面板
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawMarkVisualization(Graphics g) {

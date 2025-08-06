@@ -208,7 +208,7 @@ public class NO2942_E_FindWordsContaining_Animation extends JFrame {
             animationStep = 0;
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void finishAnimation() {
@@ -243,7 +243,7 @@ public class NO2942_E_FindWordsContaining_Animation extends JFrame {
         }
         
         setButtonsEnabled(true);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics2D g2d) {

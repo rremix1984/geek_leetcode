@@ -223,7 +223,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
                         }
                         
                         visualPanel.setAnimationComplete(true);
-                        visualPanel.repaint();
+                        SwingUtilities.invokeLater(() -> visualPanel.repaint());
                     }
                 }
             }
@@ -428,7 +428,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
                         addNewCoinAnimation();
                     }
                     currentItemCount++;
-                    visualPanel.repaint();
+                    SwingUtilities.invokeLater(() -> visualPanel.repaint());
                 } else {
                     animationTimer.stop();
                 }
@@ -447,7 +447,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
                 startItemAnimation(dp[currentAmount]);
             }
 
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         public void setAnimationComplete(boolean complete) {
@@ -469,7 +469,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             }
             currentItemCount = 0;
             totalItemsToShow = 0;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         private void startItemAnimation(int itemCount) {
@@ -509,7 +509,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             javax.swing.Timer moveTimer = new javax.swing.Timer(50, null);
             moveTimer.addActionListener(e -> {
                 if (bill.updatePosition()) {
-                    visualPanel.repaint();
+                    SwingUtilities.invokeLater(() -> visualPanel.repaint());
                 } else {
                     moveTimer.stop();
                 }
@@ -530,7 +530,7 @@ public class NO322_N_CoinChange_Animation extends JFrame {
             javax.swing.Timer moveTimer = new javax.swing.Timer(50, null);
             moveTimer.addActionListener(e -> {
                 if (coin.updatePosition()) {
-                    visualPanel.repaint();
+                    SwingUtilities.invokeLater(() -> visualPanel.repaint());
                 } else {
                     moveTimer.stop();
                 }

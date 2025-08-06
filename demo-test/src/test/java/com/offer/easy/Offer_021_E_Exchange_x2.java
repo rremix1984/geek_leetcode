@@ -4,7 +4,7 @@
 package com.offer.easy;
 
 import org.junit.Test;
-import static com.leetcode.util.SwapUtil.swap;
+// import static com.leetcode.util.SwapUtil.swap;
 import static org.junit.Assert.assertArrayEquals;
 
 /**

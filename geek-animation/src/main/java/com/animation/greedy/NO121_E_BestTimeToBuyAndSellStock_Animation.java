@@ -184,7 +184,7 @@ public class NO121_E_BestTimeToBuyAndSellStock_Animation extends JFrame {
         
         statusLabel.setText(stepDescriptions.get(currentDay));
         currentDay++;
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
         
         return currentDay <= prices.length;
     }
@@ -209,7 +209,7 @@ public class NO121_E_BestTimeToBuyAndSellStock_Animation extends JFrame {
         generateStepDescriptions();
         
         statusLabel.setText("准备开始演示买卖股票的最佳时机算法");
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void generateStepDescriptions() {

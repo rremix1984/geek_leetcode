@@ -160,7 +160,7 @@ public class NO463_E_IslandPerimeter_Animation extends JFrame {
             currentRow++;
             currentCol = 0;
             currentDirection = 0;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
             return;
         }
         
@@ -186,7 +186,7 @@ public class NO463_E_IslandPerimeter_Animation extends JFrame {
             currentDirection = 0;
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void checkDirection() {
@@ -215,7 +215,7 @@ public class NO463_E_IslandPerimeter_Animation extends JFrame {
         
         statusLabel.setText("点击开始按钮启动动画演示");
         perimeterLabel.setText("当前周长：0");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     // 网格可视化面板

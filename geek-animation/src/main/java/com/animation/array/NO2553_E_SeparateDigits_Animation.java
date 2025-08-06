@@ -251,7 +251,7 @@ public class NO2553_E_SeparateDigits_Animation extends JFrame {
     }
     
     private void updateDisplay() {
-        visualizationPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
     }
     
     // 数位分割可视化面板

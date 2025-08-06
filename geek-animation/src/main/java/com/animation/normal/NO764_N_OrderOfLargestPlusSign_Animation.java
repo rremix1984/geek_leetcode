@@ -178,7 +178,7 @@ public class NO764_N_OrderOfLargestPlusSign_Animation extends JFrame {
         
         solved = false;
         maxOrder = 0;
-        gridPanel.repaint();
+        SwingUtilities.invokeLater(() -> gridPanel.repaint());
     }
     
     private void generateGrid() {
@@ -223,7 +223,7 @@ public class NO764_N_OrderOfLargestPlusSign_Animation extends JFrame {
             solved = false;
             maxOrder = 0;
             addLog("生成 " + n + "x" + n + " 网格，地雷数量: " + mines.length);
-            gridPanel.repaint();
+            SwingUtilities.invokeLater(() -> gridPanel.repaint());
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "请输入有效的数字", "错误", JOptionPane.ERROR_MESSAGE);
@@ -317,7 +317,7 @@ public class NO764_N_OrderOfLargestPlusSign_Animation extends JFrame {
         resultLabel.setText("<html>" + result.replace("，", "<br/>") + "</html>");
         addLog(result);
         
-        gridPanel.repaint();
+        SwingUtilities.invokeLater(() -> gridPanel.repaint());
     }
     
     private void clear() {
@@ -330,7 +330,7 @@ public class NO764_N_OrderOfLargestPlusSign_Animation extends JFrame {
         minesField.setText("");
         resultLabel.setText("<html>最大加号阶数: 未计算<br/>中心位置: 未知</html>");
         addLog("已清空所有数据");
-        gridPanel.repaint();
+        SwingUtilities.invokeLater(() -> gridPanel.repaint());
     }
     
     private void loadDemoData() {

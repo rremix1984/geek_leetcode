@@ -115,7 +115,7 @@ public class NO207_M_CourseSchedule_Animation extends JFrame {
 
         visited[course] = 1; // Mark as visiting
         statusLabel.setText("正在访问课程: " + course);
-        graphPanel.repaint();
+        SwingUtilities.invokeLater(() -> graphPanel.repaint());
         try {
             Thread.sleep(ANIMATION_DELAY);
         } catch (InterruptedException e) {
@@ -128,7 +128,7 @@ public class NO207_M_CourseSchedule_Animation extends JFrame {
             } else if (visited[neighbor] == 1) {
                 hasCycle = true;
                 statusLabel.setText("检测到环: " + course + " -> " + neighbor);
-                graphPanel.repaint();
+                SwingUtilities.invokeLater(() -> graphPanel.repaint());
                 return;
             }
         }
@@ -136,7 +136,7 @@ public class NO207_M_CourseSchedule_Animation extends JFrame {
         visited[course] = 2; // Mark as visited
         topologicalOrder.add(0, course);
         statusLabel.setText("完成课程: " + course);
-        graphPanel.repaint();
+        SwingUtilities.invokeLater(() -> graphPanel.repaint());
         try {
             Thread.sleep(ANIMATION_DELAY);
         } catch (InterruptedException e) {

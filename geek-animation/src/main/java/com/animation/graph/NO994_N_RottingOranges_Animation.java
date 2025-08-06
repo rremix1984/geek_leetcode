@@ -117,7 +117,7 @@ public class NO994_N_RottingOranges_Animation extends JFrame {
                         }
                     }
                 }
-                gridPanel.repaint();
+                SwingUtilities.invokeLater(() -> gridPanel.repaint());
             }
         }, 1000, ANIMATION_DELAY);
     }

@@ -200,7 +200,7 @@ public class NO009_E_IsPalindrome_Animation extends JFrame {
             statusLabel.setText("状态: " + currentOperation);
             resultLabel.setText("结果: 开始执行算法");
             
-            repaint();
+            SwingUtilities.invokeLater(() -> repaint());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "输入格式错误: " + ex.getMessage());
         }
@@ -264,7 +264,7 @@ public class NO009_E_IsPalindrome_Animation extends JFrame {
         statusLabel.setText("状态: " + step.description);
         
         currentStepIndex++;
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void toggleAutoDemo() {
@@ -294,7 +294,7 @@ public class NO009_E_IsPalindrome_Animation extends JFrame {
         statusLabel.setText("状态: 准备开始");
         resultLabel.setText("结果: 未开始");
         
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     // 可视化面板

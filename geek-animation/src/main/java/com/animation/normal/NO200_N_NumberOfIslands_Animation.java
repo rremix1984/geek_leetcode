@@ -251,14 +251,14 @@ public class NO200_N_NumberOfIslands_Animation extends JFrame {
             this.currentCol = col;
             this.islands = islands;
             this.islandCount = count;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         public void clear() {
             currentGrid = null;
             currentVisited = null;
             islands = null;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         @Override

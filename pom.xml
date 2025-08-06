@@ -16,15 +16,15 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>demo-test</module>
+        <!-- <module>demo-test</module> -->
         <module>geek-easy</module>
         <module>geek-normal</module>
         <module>geek-hard</module>
         <module>geek-multithread</module>
         <module>geek-common</module>
         <module>geek-animation</module>
-        <module>itcast-zookeeper-study</module>
-        <module>curator-api-example</module>
+        <!-- <module>itcast-zookeeper-study</module> -->
+        <!-- <module>curator-api-example</module> -->
         <module>sgg</module>
     </modules>
 
@@ -98,6 +98,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

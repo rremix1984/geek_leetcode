@@ -4,8 +4,6 @@ import com.animation.Animation;
 import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -338,7 +336,7 @@ public class NO312_H_BurstBalloons_Animation extends JFrame implements Animation
         startButton.setText("开始动画");
         statusLabel.setText("动画已重置");
         resultLabel.setText("最大硬币数: 待计算");
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void nextStep() {
@@ -352,7 +350,7 @@ public class NO312_H_BurstBalloons_Animation extends JFrame implements Animation
             statusLabel.setText(String.format("步骤 %d/%d: %s", currentStep + 1, steps.size(), step.description));
             currentStep++;
             
-            repaint();
+            SwingUtilities.invokeLater(() -> repaint());
         } else {
             // 动画结束
             animationTimer.stop();

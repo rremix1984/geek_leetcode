@@ -185,7 +185,7 @@ public class NO2859_E_SumIndicesWithKSetBits_Animation extends JFrame {
             animationStep = 0;
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private int countSetBits(int n) {
@@ -231,7 +231,7 @@ public class NO2859_E_SumIndicesWithKSetBits_Animation extends JFrame {
         }
         
         setButtonsEnabled(true);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics2D g2d) {

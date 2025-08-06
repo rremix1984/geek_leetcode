@@ -165,7 +165,7 @@ public class AtomicReferenceAnimation extends JFrame implements Animation {
     
     private void updateExpectedUser() {
         // 当期望用户改变时，更新显示
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void performCAS() {

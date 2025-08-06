@@ -363,17 +363,17 @@ public class NO046_N_Permutations_Animation extends JFrame {
         
         public void updateVisualization(AnimationState state) {
             this.currentState = state;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         public void updateVisualization(int[] nums, List<Integer> path, boolean[] used, int depth, List<Integer> permutation) {
             // 保持向后兼容性
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         public void clear() {
             currentState = null;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         @Override

@@ -36,7 +36,7 @@ public class NO126_H_WordLadderII_Animation extends JPanel implements Animation 
         // 动画执行逻辑将在这里实现
         Set<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) {
-            repaint();
+            SwingUtilities.invokeLater(() -> repaint());
             return;
         }
 
@@ -45,7 +45,7 @@ public class NO126_H_WordLadderII_Animation extends JPanel implements Animation 
 
         bfs(beginWord, endWord, wordSet, map, dist);
         dfs(beginWord, endWord, map, new LinkedList<>());
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
 
     private void bfs(String beginWord, String endWord, Set<String> wordSet, Map<String, List<String>> map, Map<String, Integer> dist) {

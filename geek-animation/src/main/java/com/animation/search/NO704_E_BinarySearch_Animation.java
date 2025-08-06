@@ -34,6 +34,7 @@ public class NO704_E_BinarySearch_Animation extends JFrame {
     // UI组件
     private JPanel mainPanel;
     private JPanel controlPanel;
+    private BinarySearchVisualizationPanel visualPanel;
     private JTextField arrayInput;
     private JTextField targetInput;
     private JButton startButton, stepButton, resetButton, autoButton;
@@ -105,7 +106,8 @@ public class NO704_E_BinarySearch_Animation extends JFrame {
         
         // 主面板 - 可视化区域
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.add(new BinarySearchVisualizationPanel(), BorderLayout.CENTER);
+        visualPanel = new BinarySearchVisualizationPanel();
+        mainPanel.add(visualPanel, BorderLayout.CENTER);
         
         // 返回首页按钮
         JButton homeButton = new JButton("返回首页");
@@ -195,7 +197,7 @@ public class NO704_E_BinarySearch_Animation extends JFrame {
             statusLabel.setText("状态: " + currentOperation);
             resultLabel.setText("结果: 开始执行算法");
             
-            repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "输入格式错误: " + ex.getMessage());
         }
@@ -276,7 +278,7 @@ public class NO704_E_BinarySearch_Animation extends JFrame {
         }
         
         statusLabel.setText("状态: " + currentOperation);
-        repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void toggleAutoDemo() {
@@ -313,7 +315,7 @@ public class NO704_E_BinarySearch_Animation extends JFrame {
         statusLabel.setText("状态: " + currentOperation);
         resultLabel.setText("结果: 未开始");
         
-        repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     // 可视化面板

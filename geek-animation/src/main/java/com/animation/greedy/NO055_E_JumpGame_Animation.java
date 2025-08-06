@@ -125,7 +125,7 @@ public class NO055_E_JumpGame_Animation extends JFrame {
             if (currentStep < animationSteps.size()) {
                 performAnimationStep();
                 currentStep++;
-                visualPanel.repaint();
+                SwingUtilities.invokeLater(() -> visualPanel.repaint());
             } else {
                 stopAnimation();
             }
@@ -256,7 +256,7 @@ public class NO055_E_JumpGame_Animation extends JFrame {
         parseInput();
         initializeAlgorithm();
         updateStepsDisplay();
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void parseInput() {

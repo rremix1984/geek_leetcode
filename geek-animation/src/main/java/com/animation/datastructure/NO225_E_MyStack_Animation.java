@@ -166,7 +166,7 @@ public class NO225_E_MyStack_Animation extends JFrame {
     private void updateDisplay() {
         queue1Label.setText("Queue1 (主队列): " + stack.getQueue1Display());
         queue2Label.setText("Queue2 (辅助队列): " + stack.getQueue2Display());
-        visualizationPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
     }
     
     // 栈的可视化面板

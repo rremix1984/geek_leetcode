@@ -184,7 +184,7 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
         }
         
         step++;
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
         return step < stepDescriptions.size();
     }
     
@@ -208,7 +208,7 @@ public class NO283_E_MoveZeroes_Animation extends JFrame {
         generateStepDescriptions();
         
         statusLabel.setText("准备开始演示移动零算法");
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void generateStepDescriptions() {

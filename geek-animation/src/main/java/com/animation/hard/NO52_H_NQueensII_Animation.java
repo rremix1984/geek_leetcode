@@ -34,7 +34,7 @@ public class NO52_H_NQueensII_Animation extends JFrame {
     private void backtrack(int row, Set<Integer> cols, Set<Integer> diag1, Set<Integer> diag2) {
         if (row == n) {
             solutions++;
-            boardPanel.repaint();
+            SwingUtilities.invokeLater(() -> boardPanel.repaint());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -52,7 +52,7 @@ public class NO52_H_NQueensII_Animation extends JFrame {
             diag1.add(row - col);
             diag2.add(row + col);
             board[row][col] = 1;
-            boardPanel.repaint();
+            SwingUtilities.invokeLater(() -> boardPanel.repaint());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -65,7 +65,7 @@ public class NO52_H_NQueensII_Animation extends JFrame {
             diag1.remove(row - col);
             diag2.remove(row + col);
             board[row][col] = 0;
-            boardPanel.repaint();
+            SwingUtilities.invokeLater(() -> boardPanel.repaint());
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {

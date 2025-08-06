@@ -277,7 +277,7 @@ public class KruskalMSTAnimation extends JFrame implements Animation {
             stopAnimation();
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -291,7 +291,7 @@ public class KruskalMSTAnimation extends JFrame implements Animation {
         unionFind = new UnionFind(nodeCount);
         statusLabel.setText("准备开始Kruskal算法");
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private class GraphVisualizationPanel extends JPanel {

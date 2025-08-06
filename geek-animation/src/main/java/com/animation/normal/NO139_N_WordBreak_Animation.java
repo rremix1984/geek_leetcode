@@ -228,7 +228,7 @@ public class NO139_N_WordBreak_Animation extends JFrame {
                         }
                         
                         visualPanel.setAnimationComplete(true);
-                        visualPanel.repaint();
+                        SwingUtilities.invokeLater(() -> visualPanel.repaint());
                     }
                 }
             }
@@ -273,7 +273,7 @@ public class NO139_N_WordBreak_Animation extends JFrame {
             this.currentJ = currentJ;
             this.currentSubstring = substring;
             this.substringInDict = inDict;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         public void setAnimationComplete(boolean complete) {
@@ -286,7 +286,7 @@ public class NO139_N_WordBreak_Animation extends JFrame {
             dp = null;
             currentSubstring = null;
             animationComplete = false;
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
         }
         
         @Override

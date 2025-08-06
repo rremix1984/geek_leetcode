@@ -117,7 +117,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
                             animationTimer.stop();
                         }
                     }
-                    drawPanel.repaint();
+                    SwingUtilities.invokeLater(() -> drawPanel.repaint());
                 }
             }
         });
@@ -408,7 +408,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
             currentPosition++;
             updateLog("前进到位置 " + currentPosition + " (未到达跳跃边界)");
             statusLabel.setText("前进到位置 " + currentPosition);
-            drawPanel.repaint();
+            SwingUtilities.invokeLater(() -> drawPanel.repaint());
         }
     }
     
@@ -421,7 +421,7 @@ public class NO045_N_JumpGameII_Animation extends JFrame {
         animationProgress = 0;
         isAnimating = false;
         statusLabel.setText("已重置，准备开始新的演示");
-        drawPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     private void updateLog(String message) {

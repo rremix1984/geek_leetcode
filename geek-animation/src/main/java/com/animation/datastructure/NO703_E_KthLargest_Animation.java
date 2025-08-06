@@ -182,7 +182,7 @@ public class NO703_E_KthLargest_Animation extends JFrame {
             logArea.append("\\n演示完成！\\n");
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -201,7 +201,7 @@ public class NO703_E_KthLargest_Animation extends JFrame {
         logArea.append("2. 当堆大小超过K时，移除最小元素\\n");
         logArea.append("3. 堆顶元素就是第K大元素\\n\\n");
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void parseInput() {

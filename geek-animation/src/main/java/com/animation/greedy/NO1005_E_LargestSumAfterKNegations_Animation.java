@@ -176,7 +176,7 @@ public class NO1005_E_LargestSumAfterKNegations_Animation extends JFrame {
             logArea.append("最终数组和: " + currentSum + "\\n");
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -194,7 +194,7 @@ public class NO1005_E_LargestSumAfterKNegations_Animation extends JFrame {
         logArea.append("2. 如果还有剩余次数，对绝对值最小的数取反\\n");
         logArea.append("3. 贪心策略：每次选择能使和增加最多的操作\\n\\n");
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void parseInput() {

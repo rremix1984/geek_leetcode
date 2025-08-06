@@ -190,7 +190,7 @@ public class NO915_N_PartitionDisjoint_Animation extends JFrame {
             
             reset();
             addLog("解析数组: " + Arrays.toString(nums));
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "请输入有效的数字", "错误", JOptionPane.ERROR_MESSAGE);
@@ -220,7 +220,7 @@ public class NO915_N_PartitionDisjoint_Animation extends JFrame {
         addLog("左子数组: " + Arrays.toString(Arrays.copyOfRange(nums, 0, partitionIndex + 1)));
         addLog("右子数组: " + Arrays.toString(Arrays.copyOfRange(nums, partitionIndex + 1, nums.length)));
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void stepSolve() {
@@ -256,7 +256,7 @@ public class NO915_N_PartitionDisjoint_Animation extends JFrame {
             addLog("单步执行完成");
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void preprocessArrays() {
@@ -294,7 +294,7 @@ public class NO915_N_PartitionDisjoint_Animation extends JFrame {
         rightMin = null;
         resultLabel.setText("<html>分割位置: 未计算</html>");
         addLog("重置算法状态");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void loadDemoData() {

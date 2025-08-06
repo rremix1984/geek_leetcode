@@ -233,7 +233,7 @@ public class NO2733_E_FindNonMinOrMax_Animation extends JFrame {
             finishAnimation();
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void finishAnimation() {
@@ -267,7 +267,7 @@ public class NO2733_E_FindNonMinOrMax_Animation extends JFrame {
         }
         
         setButtonsEnabled(true);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics2D g2d) {

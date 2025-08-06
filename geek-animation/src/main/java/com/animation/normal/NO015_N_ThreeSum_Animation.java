@@ -221,7 +221,7 @@ public class NO015_N_ThreeSum_Animation extends JFrame {
         currentRight = -1;
         currentSum = 0;
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
         addLog("可视化已清空");
     }
     

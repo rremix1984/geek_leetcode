@@ -175,6 +175,7 @@ public class GraphBFSAnimation extends JFrame implements Animation {
             
             statusLabel.setText("访问节点 " + currentNode + "，层级 " + currentLevel);
             logArea.append("访问节点 " + currentNode + "，层级 " + currentLevel + "\n");
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
             
             // 将未访问的邻居节点加入队列
             for (int neighbor : graph.get(currentNode)) {
@@ -194,7 +195,7 @@ public class GraphBFSAnimation extends JFrame implements Animation {
             stopAnimation();
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -208,7 +209,7 @@ public class GraphBFSAnimation extends JFrame implements Animation {
         levels = new HashMap<>();
         statusLabel.setText("准备开始BFS遍历");
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private class GraphVisualizationPanel extends JPanel {

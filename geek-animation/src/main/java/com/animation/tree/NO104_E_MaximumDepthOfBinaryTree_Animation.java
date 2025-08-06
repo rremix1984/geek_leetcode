@@ -96,7 +96,7 @@ public class NO104_E_MaximumDepthOfBinaryTree_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                drawPanel.repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
         
@@ -148,7 +148,7 @@ public class NO104_E_MaximumDepthOfBinaryTree_Animation extends JFrame {
                         statusMessage = "开始计算二叉树的最大深度";
                     }
                     initialized = true;
-                    drawPanel.repaint();
+                    SwingUtilities.invokeLater(() -> drawPanel.repaint());
                     return;
                 }
                 
@@ -199,7 +199,7 @@ public class NO104_E_MaximumDepthOfBinaryTree_Animation extends JFrame {
                     startButton.setText("开始演示");
                 }
                 
-                drawPanel.repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
     }
@@ -474,7 +474,7 @@ public class NO104_E_MaximumDepthOfBinaryTree_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        drawPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     public static void main(String[] args) {

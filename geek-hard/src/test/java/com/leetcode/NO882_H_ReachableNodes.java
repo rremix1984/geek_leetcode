@@ -33,6 +33,7 @@ import java.util.*;
         0 <= maxMoves <= 109
         1 <= n <= 3000
 */
+@SuppressWarnings("unchecked")
 public class NO882_H_ReachableNodes {
 
     @Test
@@ -43,7 +44,7 @@ public class NO882_H_ReachableNodes {
     }
 
     public int reachableNodes(int[][] edges, int maxMoves, int n) {
-        List<int[]>[] adList = new List[n];
+        List<int[]>[] adList = (List<int[]>[]) new List[n];
         for (int i = 0; i < n; i++) {
             adList[i] = new ArrayList<int[]>();
         }

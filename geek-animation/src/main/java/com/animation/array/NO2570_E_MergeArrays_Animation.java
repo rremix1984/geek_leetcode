@@ -267,7 +267,7 @@ public class NO2570_E_MergeArrays_Animation extends JFrame {
     }
     
     private void updateDisplay() {
-        visualizationPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
     }
     
     // 数组可视化面板

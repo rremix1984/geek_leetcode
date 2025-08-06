@@ -95,7 +95,7 @@ public class NO695_N_MaxAreaOfIsland_Animation extends JFrame {
                     c = 0;
                     r++;
                 }
-                gridPanel.repaint();
+                SwingUtilities.invokeLater(() -> gridPanel.repaint());
             }
         }, 1000, ANIMATION_DELAY);
     }
@@ -107,7 +107,7 @@ public class NO695_N_MaxAreaOfIsland_Animation extends JFrame {
 
         visited[r][c] = true;
         currentArea++;
-        gridPanel.repaint();
+        SwingUtilities.invokeLater(() -> gridPanel.repaint());
         try {
             Thread.sleep(ANIMATION_DELAY);
         } catch (InterruptedException e) {

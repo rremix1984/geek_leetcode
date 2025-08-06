@@ -4,7 +4,7 @@
 package com.offer.easy;
 
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
+// import static com.leetcode.util.LogUtil.info;
 
 /**
     (简单)

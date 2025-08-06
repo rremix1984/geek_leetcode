@@ -190,7 +190,7 @@ public class NO055_N_JumpGame_Animation extends JFrame {
         }
         
         currentStep++;
-        drawPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
         
         if (currentStep >= animationSteps.size()) {
             animationTimer.stop();

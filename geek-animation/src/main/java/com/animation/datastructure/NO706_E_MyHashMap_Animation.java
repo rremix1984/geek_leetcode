@@ -247,7 +247,7 @@ public class NO706_E_MyHashMap_Animation extends JFrame {
             currentIndex = -1;
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -272,7 +272,7 @@ public class NO706_E_MyHashMap_Animation extends JFrame {
         logArea.append("2. 哈希函数: hash(key) = key % 11\\n");
         logArea.append("3. 线性探测法解决哈希冲突\\n\\n");
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void parseInput() {

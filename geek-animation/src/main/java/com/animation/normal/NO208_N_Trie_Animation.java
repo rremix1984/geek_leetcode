@@ -178,7 +178,7 @@ public class NO208_N_Trie_Animation extends JFrame {
         insertedWords.add(word);
         addLog("插入单词: " + word);
         inputField.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void searchWord() {
@@ -228,7 +228,7 @@ public class NO208_N_Trie_Animation extends JFrame {
         trie = new Trie();
         insertedWords.clear();
         addLog("Trie 已清空");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void loadDemoData() {
@@ -240,7 +240,7 @@ public class NO208_N_Trie_Animation extends JFrame {
         }
         
         addLog("加载演示数据: " + String.join(", ", demoWords));
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void drawTrie(Graphics g) {

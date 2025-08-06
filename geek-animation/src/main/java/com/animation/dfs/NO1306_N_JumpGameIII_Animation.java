@@ -113,7 +113,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
                         animationFromPos = -1;
                         animationToPos = -1;
                     }
-                    repaint();
+                    SwingUtilities.invokeLater(() -> repaint());
                 }
             }
         });
@@ -476,6 +476,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
         }
         
         statusLabel.setText("当前位置: " + pos + ", 值: " + arr[pos] + ", 栈大小: " + dfsStack.size());
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void resetAnimation() {
@@ -489,7 +490,7 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
         animationFromPos = -1;
         animationToPos = -1;
         statusLabel.setText("已重置，准备开始新的演示");
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void updateLog(String message) {

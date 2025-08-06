@@ -214,7 +214,7 @@ public class TopologicalSortAnimation extends JFrame implements Animation {
             stopAnimation();
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void calculateInDegrees() {
@@ -246,7 +246,7 @@ public class TopologicalSortAnimation extends JFrame implements Animation {
         processedNodes = new HashSet<>();
         statusLabel.setText("准备开始拓扑排序");
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private class GraphVisualizationPanel extends JPanel {

@@ -156,7 +156,7 @@ public class NO190_E_ReverseBits_Animation extends JFrame {
                           " -> 放到第 " + (31 - processedBits) + " 位");
         
         processedBits++;
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -167,7 +167,7 @@ public class NO190_E_ReverseBits_Animation extends JFrame {
         processedBits = 0;
         
         statusLabel.setText("点击开始按钮启动动画演示");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     // 二进制位可视化面板

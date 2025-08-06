@@ -112,7 +112,7 @@ public class NO85_H_MaximalRectangle_Animation extends JFrame {
         stack = new Stack<>();
         histogramIndex = 0;
         updateInfo();
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
 
     private void step() {
@@ -139,7 +139,7 @@ public class NO85_H_MaximalRectangle_Animation extends JFrame {
         calculateMaxInHistogram();
 
         updateInfo();
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
 
     private void updateHeights() {

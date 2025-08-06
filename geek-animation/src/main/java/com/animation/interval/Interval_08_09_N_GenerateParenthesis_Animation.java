@@ -159,13 +159,13 @@ public class Interval_08_09_N_GenerateParenthesis_Animation extends JFrame {
         charAnimationTimer = new Timer(200, e -> {
             if (isCharAnimating && charAnimationIndex < targetCombination.length()) {
                 charAnimationIndex++;
-                repaint();
+                SwingUtilities.invokeLater(() -> mainPanel.repaint());
             } else {
                 charAnimationTimer.stop();
                 isCharAnimating = false;
                 // 动画完成后更新当前组合
                 currentCombination = targetCombination;
-                repaint();
+                SwingUtilities.invokeLater(() -> mainPanel.repaint());
             }
         });
     }
@@ -177,7 +177,7 @@ public class Interval_08_09_N_GenerateParenthesis_Animation extends JFrame {
         startButton.setEnabled(false);
         stepButton.setEnabled(true);
         statusLabel.setText("状态: 开始生成括号组合");
-        repaint();
+        SwingUtilities.invokeLater(() -> mainPanel.repaint());
     }
     
     private void parseInput() {
@@ -267,7 +267,7 @@ public class Interval_08_09_N_GenerateParenthesis_Animation extends JFrame {
             }
             
             currentStep++;
-            repaint();
+            SwingUtilities.invokeLater(() -> mainPanel.repaint());
         }
     }
     
@@ -317,7 +317,7 @@ public class Interval_08_09_N_GenerateParenthesis_Animation extends JFrame {
         autoButton.setText("自动演示");
         statusLabel.setText("状态: 准备开始");
         resultLabel.setText("结果: 未开始");
-        repaint();
+        SwingUtilities.invokeLater(() -> mainPanel.repaint());
     }
     
     private class ParenthesisVisualizationPanel extends JPanel {

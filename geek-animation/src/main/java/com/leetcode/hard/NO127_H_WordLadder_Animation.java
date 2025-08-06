@@ -33,7 +33,7 @@ public class NO127_H_WordLadder_Animation extends JPanel implements Animation {
         Set<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) {
             ladderLength = 0;
-            repaint();
+            SwingUtilities.invokeLater(() -> repaint());
             return;
         }
 
@@ -49,7 +49,7 @@ public class NO127_H_WordLadder_Animation extends JPanel implements Animation {
                 String currentWord = queue.poll();
                 if (currentWord.equals(endWord)) {
                     ladderLength = level;
-                    repaint();
+                    SwingUtilities.invokeLater(() -> repaint());
                     return;
                 }
                 char[] charArray = currentWord.toCharArray();
@@ -70,7 +70,7 @@ public class NO127_H_WordLadder_Animation extends JPanel implements Animation {
             level++;
         }
         ladderLength = 0;
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
 
     public static void main(String[] args) {

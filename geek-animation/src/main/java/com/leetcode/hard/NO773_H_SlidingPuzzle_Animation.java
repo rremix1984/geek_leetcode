@@ -1,8 +1,6 @@
 package com.leetcode.hard;
 
 import com.animation.Animation;
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -65,7 +63,7 @@ public class NO773_H_SlidingPuzzle_Animation extends JPanel implements Animation
                 String curr = queue.poll();
                 if (curr.equals(target)) {
                     moves = step;
-                    repaint();
+                    SwingUtilities.invokeLater(() -> this.repaint());
                     return;
                 }
                 int zeroIndex = curr.indexOf('0');
@@ -84,7 +82,7 @@ public class NO773_H_SlidingPuzzle_Animation extends JPanel implements Animation
             step++;
         }
         moves = -1;
-        repaint();
+        SwingUtilities.invokeLater(() -> this.repaint());
     }
 
     public static void main(String[] args) {

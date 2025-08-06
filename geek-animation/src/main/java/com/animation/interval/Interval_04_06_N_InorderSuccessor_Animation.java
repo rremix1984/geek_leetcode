@@ -189,7 +189,11 @@ public class Interval_04_06_N_InorderSuccessor_Animation extends JFrame {
         startButton.setEnabled(false);
         stepButton.setEnabled(true);
         statusLabel.setText("状态: 开始查找中序后继");
-        repaint();
+        SwingUtilities.invokeLater(() -> {
+            if (mainPanel != null) {
+                SwingUtilities.invokeLater(() -> mainPanel.repaint());
+            }
+        });
     }
     
     private void parseInput() {
@@ -338,7 +342,11 @@ public class Interval_04_06_N_InorderSuccessor_Animation extends JFrame {
             }
             
             currentStep++;
-            repaint();
+            SwingUtilities.invokeLater(() -> {
+                if (mainPanel != null) {
+                    SwingUtilities.invokeLater(() -> mainPanel.repaint());
+                }
+            });
         }
     }
     
@@ -365,7 +373,11 @@ public class Interval_04_06_N_InorderSuccessor_Animation extends JFrame {
         autoButton.setText("自动演示");
         statusLabel.setText("状态: 准备开始");
         resultLabel.setText("结果: 未开始");
-        repaint();
+        SwingUtilities.invokeLater(() -> {
+            if (mainPanel != null) {
+                SwingUtilities.invokeLater(() -> mainPanel.repaint());
+            }
+        });
     }
     
     private class SuccessorVisualizationPanel extends JPanel {

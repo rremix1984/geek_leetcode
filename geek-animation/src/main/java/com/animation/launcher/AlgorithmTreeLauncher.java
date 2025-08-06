@@ -77,16 +77,20 @@ import com.animation.tree.*;
 import com.animation.normal.*;
 import com.animation.atomics.*;
 import com.animation.interval.*;
+import com.animation.lonch.*;
 
 // 困难算法导入
 import com.animation.hard.NO403_H_FrogJump_Animation;
 import com.animation.hard.NO51_H_NQueens_Animation;
 import com.animation.hard.NO52_H_NQueensII_Animation;
 import com.animation.hard.NO85_H_MaximalRectangle_Animation;
-import com.leetcode.hard.NO312_H_BurstBalloons_Animation;
-import com.leetcode.hard.NO773_H_SlidingPuzzle_Animation;
-import com.leetcode.hard.NO127_H_WordLadder_Animation;
-import com.leetcode.hard.NO126_H_WordLadderII_Animation;
+import com.animation.hard.NO023_H_MergeKSortedLists_Animation;
+import com.animation.hard.NO126_H_WordLadderII_Animation;
+import com.animation.hard.NO127_H_WordLadder_Animation;
+import com.animation.hard.NO297_H_SerializeAndDeserializeBinaryTree_Animation;
+import com.animation.hard.NO312_H_BurstBalloons_Animation;
+import com.animation.hard.NO773_H_SlidingPuzzle_Animation;
+import com.animation.hard.NO834_H_SumOfDistancesInTree_Animation;
 import com.animation.tree.*;
 
 // 导入JVM监控工具
@@ -151,6 +155,7 @@ public class AlgorithmTreeLauncher extends JFrame {
     private DefaultMutableTreeNode treeNode;
     private DefaultMutableTreeNode hardNode;
     private DefaultMutableTreeNode normalNode;
+    private DefaultMutableTreeNode lonchNode;
     
     // 算法信息列表，用于统计
     private List<AlgorithmInfo> algorithmInfos;
@@ -379,8 +384,10 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.066 加一", () -> new NO066_E_PlusOne_Animation().setVisible(true));
         animations.put("NO.069 x的平方根", () -> new NO069_E_SqrtX_Animation().setVisible(true));
         
-        // 树算法
+        // 树算法导入
+        animations.put("NO.144 二叉树的前序遍历", () -> new NO144_E_PreorderTraversal_Animation().setVisible(true));
         animations.put("NO.094 二叉树的中序遍历", () -> new NO094_E_InorderTraversal_Animation().setVisible(true));
+        animations.put("NO.145 二叉树的后序遍历", () -> new NO145_E_PostorderTraversal_Animation().setVisible(true));
         animations.put("NO.100 相同的树", () -> new NO100_E_IsSameTree_Animation().setVisible(true));
         animations.put("NO.101 对称二叉树", () -> new NO101_E_IsSymmetric_Animation().setVisible(true));
         animations.put("NO.104 二叉树的最大深度", () -> new NO104_E_MaximumDepthOfBinaryTree_Animation().setVisible(true));
@@ -397,93 +404,17 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.2586 统计范围内的元音字符串数", () -> new NO2586_E_VowelStrings_Animation().setVisible(true));
         
         // 困难算法
+        animations.put("NO.23 合并K个升序链表", () -> new NO023_H_MergeKSortedLists_Animation().setVisible(true));
         animations.put("NO.51 N皇后", () -> new NO51_H_NQueens_Animation().setVisible(true));
-        animations.put("NO.403 青蛙过河", () -> new NO403_H_FrogJump_Animation().setVisible(true));
-        animations.put("NO.52 N皇后II", () -> new NO52_H_NQueensII_Animation(8).setVisible(true));
-        animations.put("NO.23 合并K个升序链表", () -> {
-            JOptionPane.showMessageDialog(null, "NO.23 合并K个升序链表动画暂时不可用\n原因：动画类位于test目录下，无法正常加载\n建议：将动画类移动到main目录下", "动画不可用", JOptionPane.WARNING_MESSAGE);
-        });
+        animations.put("NO.52 N皇后 II", () -> new NO52_H_NQueensII_Animation(8).setVisible(true));
         animations.put("NO.85 最大矩形", () -> new NO85_H_MaximalRectangle_Animation().setVisible(true));
-        animations.put("NO.312 戳气球", (Runnable) () -> {
-            int[] nums = {3, 1, 5, 8};
-            new NO312_H_BurstBalloons_Animation(nums).setVisible(true);
-        });
-        animations.put("NO.773 滑动谜题", (Runnable) () -> {
-            JFrame frame = new JFrame("NO.773 滑动谜题");
-            int[][] board = {{1, 2, 3}, {4, 0, 5}};
-            NO773_H_SlidingPuzzle_Animation animation = new NO773_H_SlidingPuzzle_Animation(board);
-            
-            // 创建控制面板
-            JPanel controlPanel = new JPanel();
-            JButton startButton = new JButton("开始求解");
-            JButton resetButton = new JButton("重置");
-            JLabel statusLabel = new JLabel("点击开始求解按钮开始动画");
-            
-            startButton.addActionListener(e -> {
-                animation.start();
-                statusLabel.setText("正在求解中...");
-            });
-            
-            resetButton.addActionListener(e -> {
-                animation.repaint();
-                statusLabel.setText("已重置，点击开始求解按钮开始动画");
-            });
-            
-            controlPanel.add(startButton);
-            controlPanel.add(resetButton);
-            controlPanel.add(statusLabel);
-            
-            frame.setLayout(new BorderLayout());
-            frame.add(animation, BorderLayout.CENTER);
-            frame.add(controlPanel, BorderLayout.SOUTH);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(400, 350); // 设置合适的窗口大小
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-        animations.put("NO.127 单词接龙", (Runnable) () -> {
-            JFrame frame = new JFrame("NO.127 单词接龙");
-            String beginWord = "hit";
-            String endWord = "cog";
-            java.util.List<String> wordList = java.util.Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
-            NO127_H_WordLadder_Animation animation = new NO127_H_WordLadder_Animation(beginWord, endWord, wordList);
-            frame.add(animation);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-        animations.put("NO.126 单词接龙II", (Runnable) () -> {
-            JFrame frame = new JFrame("NO.126 单词接龙II");
-            String beginWord = "hit";
-            String endWord = "cog";
-            java.util.List<String> wordList = java.util.Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
-            NO126_H_WordLadderII_Animation animation = new NO126_H_WordLadderII_Animation(beginWord, endWord, wordList);
-            frame.add(animation);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-        // NO.297 和 NO.834 动画在 geek-hard 模块中，暂时移除
-        // animations.put("NO.297 二叉树的序列化与反序列化", () -> {
-        //     JFrame frame = new JFrame("NO.297 二叉树的序列化与反序列化");
-        //     NO297_H_SerializeAndDeserializeBinaryTree_Animation animation = new NO297_H_SerializeAndDeserializeBinaryTree_Animation();
-        //     frame.add(animation);
-        //     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //     frame.pack();
-        //     frame.setLocationRelativeTo(null);
-        //     frame.setVisible(true);
-        // });
-        // animations.put("NO.834 树中距离之和", () -> {
-        //     JFrame frame = new JFrame("NO.834 树中距离之和");
-        //     NO834_H_SumOfDistancesInTree_Animation animation = new NO834_H_SumOfDistancesInTree_Animation();
-        //     frame.add(animation);
-        //     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //     frame.pack();
-        //     frame.setLocationRelativeTo(null);
-        //     frame.setVisible(true);
-        // });
+        animations.put("NO.126 单词接龙 II", () -> new NO126_H_WordLadderII_Animation().setVisible(true));
+        animations.put("NO.127 单词接龙", () -> new NO127_H_WordLadder_Animation().setVisible(true));
+        animations.put("NO.297 二叉树的序列化与反序列化", () -> new NO297_H_SerializeAndDeserializeBinaryTree_Animation().setVisible(true));
+        animations.put("NO.312 戳气球", () -> new NO312_H_BurstBalloons_Animation().setVisible(true));
+        animations.put("NO.403 青蛙过河", () -> new NO403_H_FrogJump_Animation().setVisible(true));
+        animations.put("NO.773 滑动谜题", () -> new NO773_H_SlidingPuzzle_Animation().setVisible(true));
+        animations.put("NO.834 树中距离之和", () -> new NO834_H_SumOfDistancesInTree_Animation().setVisible(true));
         
         // Normal算法 - donnot目录
         animations.put("NO.208 实现Trie(前缀树)", () -> new NO208_N_Trie_Animation().setVisible(true));
@@ -515,6 +446,11 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("面试题 08.09. 括号", () -> new com.animation.interval.Interval_08_09_N_GenerateParenthesis_Animation().setVisible(true));
         animations.put("面试题 04.06. 后继者", () -> new com.animation.interval.Interval_04_06_N_InorderSuccessor_Animation().setVisible(true));
         animations.put("面试题 04.12. 求和路径", () -> new com.animation.interval.Interval_04_12_N_PathSum_Animation().setVisible(true));
+
+        // Lonch 算法
+        animations.put("NO.10 二叉树动画", () -> new NO10_BinaryTree_Animation().setVisible(true));
+        animations.put("NO.11 二叉树遍历动画", () -> new NO11_BinaryTreeTraversal_Animation().setVisible(true));
+        animations.put("NO.9 贪吃蛇游戏", () -> new NO9_SnakeGame_Animation().setVisible(true));
     }
     
     /**
@@ -563,6 +499,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         DefaultMutableTreeNode intervalTreeNode = new DefaultMutableTreeNode("🌳 树算法 (3个)");
         DefaultMutableTreeNode intervalBacktrackNode = new DefaultMutableTreeNode("🔄 回溯算法 (1个)");
         DefaultMutableTreeNode intervalOtherNode = new DefaultMutableTreeNode("🎯 其他算法 (1个)");
+        lonchNode = new DefaultMutableTreeNode("Lonch");
         
         // 将分类节点添加到主分组
         easyGroupNode.add(arrayNode);
@@ -614,6 +551,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         rootNode.add(hardGroupNode);
         rootNode.add(atomicsGroupNode);
         rootNode.add(intervalGroupNode);
+        rootNode.add(lonchNode);
         
         // 添加具体算法到分类节点
         addAlgorithmToCategory(arrayNode, "NO.001 两数之和", "Easy", "哈希表 + 双指针");
@@ -668,13 +606,20 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(graphNode, "Dijkstra最短路径算法", "Easy", "最短路径 + 优先队列 + 贪心");
         addAlgorithmToCategory(graphNode, "Kruskal最小生成树算法", "Easy", "最小生成树 + 并查集 + 贪心");
         addAlgorithmToCategory(graphNode, "拓扑排序算法", "Easy", "拓扑排序 + Kahn算法 + 入度");
+
+        // Lonch 算法
+        addAlgorithmToCategory(lonchNode, "NO.10 二叉树动画", "Lonch", "树");
+        addAlgorithmToCategory(lonchNode, "NO.11 二叉树遍历动画", "Lonch", "树");
+        addAlgorithmToCategory(lonchNode, "NO.9 贪吃蛇游戏", "Lonch", "游戏");
         
         addAlgorithmToCategory(mathNode, "NO.009 回文数", "Easy", "数学运算 + 数位反转");
         addAlgorithmToCategory(mathNode, "NO.066 加一", "Easy", "数学运算 + 进位处理");
         addAlgorithmToCategory(mathNode, "NO.069 x的平方根", "Easy", "二分查找 + 数学运算");
         addAlgorithmToCategory(mathNode, "NO.2549 统计桌面上的不同数字", "Easy", "数学推理 + 模拟");
         
+        addAlgorithmToCategory(treeNode, "NO.144 二叉树的前序遍历", "Easy", "树遍历 + 递归/栈模拟");
         addAlgorithmToCategory(treeNode, "NO.094 二叉树的中序遍历", "Easy", "树遍历 + 栈模拟");
+        addAlgorithmToCategory(treeNode, "NO.145 二叉树的后序遍历", "Easy", "树遍历 + 递归/栈模拟");
         addAlgorithmToCategory(treeNode, "NO.100 相同的树", "Easy", "树比较 + 递归");
         addAlgorithmToCategory(treeNode, "NO.101 对称二叉树", "Easy", "树遍历 + 对称性检查");
         addAlgorithmToCategory(treeNode, "NO.104 二叉树的最大深度", "Easy", "树遍历 + 深度计算");
@@ -781,6 +726,7 @@ public class AlgorithmTreeLauncher extends JFrame {
 
         // 初始化统计饼图面板
         statsPieChartPanel = new StatsPieChartPanel();
+        statsPieChartPanel.updateData();
         
         // 创建状态标签
         statusLabel = new JLabel("请选择一个算法查看详细信息");
@@ -2330,7 +2276,6 @@ public class AlgorithmTreeLauncher extends JFrame {
         public StatsPieChartPanel() {
             setPreferredSize(new Dimension(800, 80));
             setBackground(new Color(248, 250, 252));
-            updateData();
         }
         
         public void updateData() {
@@ -2392,7 +2337,7 @@ public class AlgorithmTreeLauncher extends JFrame {
                     categoryData.put(category, categoryCount + 1);
                 }
             }
-            statsPieChartPanel.repaint();
+            SwingUtilities.invokeLater(() -> statsPieChartPanel.repaint());
         }
         
         private String getCategoryFromTechnique(String technique) {

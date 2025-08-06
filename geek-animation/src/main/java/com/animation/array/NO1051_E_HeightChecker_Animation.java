@@ -213,7 +213,7 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
         if (currentStep < 3) {
             currentStep++;
         }
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -230,7 +230,7 @@ public class NO1051_E_HeightChecker_Animation extends JFrame {
         
         statusLabel.setText("点击开始按钮启动动画演示");
         mismatchLabel.setText("不匹配数量：0");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     // 高度可视化面板

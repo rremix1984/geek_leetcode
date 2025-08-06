@@ -1,17 +1,11 @@
 package com.animation.tree;
 
 import javax.swing.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import javax.swing.Timer;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * NO.108 将有序数组转换为二叉搜索树 - 动画演示
@@ -108,7 +102,7 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                repaint();
+                SwingUtilities.invokeLater(() -> repaint());
             }
         });
         
@@ -163,7 +157,7 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
                         statusMessage = "开始构建平衡二叉搜索树";
                     }
                     initialized = true;
-                    repaint();
+                    SwingUtilities.invokeLater(() -> repaint());
                     return;
                 }
                 
@@ -214,7 +208,7 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
                     resetNewlyCreatedFlags(root);
                 }
                 
-                repaint();
+                SwingUtilities.invokeLater(() -> repaint());
             }
         });
     }
@@ -516,7 +510,7 @@ public class NO108_E_SortedArrayToBST_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     public static void main(String[] args) {

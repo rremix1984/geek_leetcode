@@ -193,7 +193,7 @@ public class Interval_04_12_N_PathSum_Animation extends JFrame {
         // 高亮动画计时器，用于闪烁效果
         highlightTimer = new Timer(500, e -> {
             highlightState = !highlightState;
-            repaint();
+            SwingUtilities.invokeLater(() -> mainPanel.repaint());
         });
         highlightTimer.start();
     }
@@ -205,7 +205,7 @@ public class Interval_04_12_N_PathSum_Animation extends JFrame {
         startButton.setEnabled(false);
         stepButton.setEnabled(true);
         statusLabel.setText("状态: 开始计算路径和");
-        repaint();
+        SwingUtilities.invokeLater(() -> mainPanel.repaint());
     }
     
     private void parseInput() {
@@ -342,7 +342,7 @@ public class Interval_04_12_N_PathSum_Animation extends JFrame {
             }
             
             currentStep++;
-            repaint();
+            SwingUtilities.invokeLater(() -> mainPanel.repaint());
         }
     }
     
@@ -370,7 +370,7 @@ public class Interval_04_12_N_PathSum_Animation extends JFrame {
         autoButton.setText("自动演示");
         statusLabel.setText("状态: 准备开始");
         resultLabel.setText("结果: 未开始");
-        repaint();
+        SwingUtilities.invokeLater(() -> mainPanel.repaint());
     }
     
     private class PathSumVisualizationPanel extends JPanel {

@@ -194,7 +194,7 @@ public class NO2706_E_BuyChoco_Animation extends JFrame {
                 break;
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -213,7 +213,7 @@ public class NO2706_E_BuyChoco_Animation extends JFrame {
         
         startButton.setEnabled(true);
         nextStepButton.setEnabled(false);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics2D g2d) {

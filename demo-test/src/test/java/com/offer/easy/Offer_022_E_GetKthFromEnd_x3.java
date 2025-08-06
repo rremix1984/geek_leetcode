@@ -5,7 +5,7 @@ package com.offer.easy;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import static com.leetcode.util.LogUtil.info;
+// import static com.leetcode.util.LogUtil.info;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -21,10 +21,10 @@ public class Offer_022_E_GetKthFromEnd_x3 {
 
     @Test
     public void test() {
-        assertEquals(4, getKthFromEnd(new ListNode(1,2,3,4,5),2).val);
+        assertEquals(Integer.valueOf(4), getKthFromEnd(new ListNode<Integer>(1,2,3,4,5),2).val);
     }
 
-    public ListNode getKthFromEnd(ListNode head, int k) {
+    public ListNode<Integer> getKthFromEnd(ListNode<Integer> head, int k) {
         return null;
     }
 

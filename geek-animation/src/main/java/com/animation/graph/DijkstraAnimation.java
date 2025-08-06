@@ -231,7 +231,7 @@ public class DijkstraAnimation extends JFrame implements Animation {
             stopAnimation();
         }
         
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -251,7 +251,7 @@ public class DijkstraAnimation extends JFrame implements Animation {
         
         statusLabel.setText("准备开始Dijkstra算法");
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private class GraphVisualizationPanel extends JPanel {

@@ -279,7 +279,7 @@ public class NO2824_E_CountPairs_Animation extends JFrame {
     }
     
     private void updateDisplay() {
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     // 下标对可视化面板

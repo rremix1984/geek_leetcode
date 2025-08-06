@@ -180,7 +180,7 @@ public class NO234_E_PalindromeLinkedList_Animation extends JFrame {
                 current = current.next;
             }
             
-            drawPanel.repaint();
+            SwingUtilities.invokeLater(() -> drawPanel.repaint());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "请输入有效的数字，用逗号分隔");
         }
@@ -289,7 +289,7 @@ public class NO234_E_PalindromeLinkedList_Animation extends JFrame {
         nextButton.setEnabled(false);
         prevButton.setEnabled(false);
         resultLabel.setText("");
-        drawPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     private void updateUI() {
@@ -308,7 +308,7 @@ public class NO234_E_PalindromeLinkedList_Animation extends JFrame {
         nextButton.setEnabled(currentStep < steps.size() - 1);
         prevButton.setEnabled(currentStep > 0);
         
-        drawPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     private void drawAnimation(Graphics g) {

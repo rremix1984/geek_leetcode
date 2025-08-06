@@ -169,7 +169,7 @@ public class NO136_E_SingleNumber_Animation extends JFrame {
         
         statusLabel.setText(stepDescriptions.get(currentIndex));
         currentIndex++;
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
         
         return currentIndex <= nums.length;
     }
@@ -191,7 +191,7 @@ public class NO136_E_SingleNumber_Animation extends JFrame {
         generateStepDescriptions();
         
         statusLabel.setText("准备开始演示只出现一次的数字算法");
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void generateStepDescriptions() {

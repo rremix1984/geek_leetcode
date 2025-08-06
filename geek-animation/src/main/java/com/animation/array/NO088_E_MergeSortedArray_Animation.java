@@ -201,7 +201,7 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
             statusLabel.setText("状态: " + currentOperation);
             resultLabel.setText("结果: 开始执行算法");
             
-            repaint();
+            SwingUtilities.invokeLater(() -> repaint());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "输入格式错误: " + ex.getMessage());
         }
@@ -307,7 +307,7 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
         tail--;
         
         statusLabel.setText("状态: " + currentOperation);
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void toggleAutoDemo() {
@@ -358,7 +358,7 @@ public class NO088_E_MergeSortedArray_Animation extends JFrame {
         statusLabel.setText("状态: " + currentOperation);
         resultLabel.setText("结果: 未开始");
         
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     // 可视化面板

@@ -254,7 +254,7 @@ public class NO2586_E_VowelStrings_Animation extends JFrame {
         nextStepButton.setEnabled(true);
         
         statusLabel.setText("准备开始动画演示");
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void nextAnimationStep() {
@@ -276,7 +276,7 @@ public class NO2586_E_VowelStrings_Animation extends JFrame {
             startButton.setEnabled(true);
             pauseButton.setEnabled(false);
             nextStepButton.setEnabled(false);
-            animationPanel.repaint();
+            SwingUtilities.invokeLater(() -> animationPanel.repaint());
             return;
         }
         
@@ -299,7 +299,7 @@ public class NO2586_E_VowelStrings_Animation extends JFrame {
             currentStringIsVowel ? "是元音字符串" : "不是元音字符串");
         
         statusLabel.setText(operationText);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics g) {

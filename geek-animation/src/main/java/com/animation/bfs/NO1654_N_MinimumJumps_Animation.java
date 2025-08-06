@@ -143,7 +143,7 @@ public class NO1654_N_MinimumJumps_Animation extends JFrame {
                         animationFromPos = -1;
                         animationToPos = -1;
                     }
-                    repaint();
+                    SwingUtilities.invokeLater(() -> repaint());
                 }
             }
         });
@@ -515,7 +515,7 @@ public class NO1654_N_MinimumJumps_Animation extends JFrame {
         }
         
         statusLabel.setText("位置: " + currentPosition + ", 步数: " + jumpCount + ", 队列: " + bfsQueue.size());
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void resetAnimation() {
@@ -529,7 +529,7 @@ public class NO1654_N_MinimumJumps_Animation extends JFrame {
         animationFromPos = -1;
         animationToPos = -1;
         statusLabel.setText("已重置，准备开始新的演示");
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     private void updateLog(String message) {

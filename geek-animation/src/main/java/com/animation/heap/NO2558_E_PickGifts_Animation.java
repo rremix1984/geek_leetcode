@@ -180,7 +180,7 @@ public class NO2558_E_PickGifts_Animation extends JFrame {
             currentStep++;
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -204,7 +204,7 @@ public class NO2558_E_PickGifts_Animation extends JFrame {
         
         startButton.setEnabled(true);
         nextStepButton.setEnabled(false);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics2D g2d) {

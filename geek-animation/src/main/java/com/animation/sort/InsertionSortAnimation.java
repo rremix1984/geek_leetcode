@@ -156,7 +156,7 @@ public class InsertionSortAnimation extends JFrame {
     }
     
     private void updateDisplay() {
-        repaint();
+        SwingUtilities.invokeLater(() -> this.repaint());
     }
     
     // 排序可视化面板

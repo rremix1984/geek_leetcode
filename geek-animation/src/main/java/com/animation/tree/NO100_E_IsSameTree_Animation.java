@@ -56,6 +56,7 @@ public class NO100_E_IsSameTree_Animation extends JFrame {
     private JButton startButton;
     private JButton resetButton;
     private JComboBox<String> testCaseCombo;
+    private JPanel drawPanel;
     
     // 测试用例
     private final String[] testCaseNames = {
@@ -88,7 +89,7 @@ public class NO100_E_IsSameTree_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
         
@@ -108,7 +109,7 @@ public class NO100_E_IsSameTree_Animation extends JFrame {
         add(controlPanel, BorderLayout.NORTH);
         
         // 创建绘图面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -133,7 +134,7 @@ public class NO100_E_IsSameTree_Animation extends JFrame {
                     queue.offer(new TreeNode[]{tree1, tree2});
                     initialized = true;
                     statusMessage = "开始比较两棵树，使用BFS遍历";
-                    repaint();
+                    SwingUtilities.invokeLater(() -> drawPanel.repaint());
                     return;
                 }
                 
@@ -165,7 +166,7 @@ public class NO100_E_IsSameTree_Animation extends JFrame {
                     startButton.setText("开始演示");
                 }
                 
-                repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
     }
@@ -433,7 +434,7 @@ public class NO100_E_IsSameTree_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     public static void main(String[] args) {

@@ -377,7 +377,7 @@ public class AtomicStampedReferenceAnimation extends JFrame implements Animation
             if (animationPanel.getGraphics() != null) {
                 animationPanel.getGraphics().clearRect(0, 0, animationPanel.getWidth(), animationPanel.getHeight());
             }
-            animationPanel.repaint();
+            SwingUtilities.invokeLater(() -> animationPanel.repaint());
             isAnimating = false;
         });
         timer.setRepeats(false);

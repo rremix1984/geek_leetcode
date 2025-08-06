@@ -61,6 +61,7 @@ public class NO094_E_InorderTraversal_Animation extends JFrame {
     private JButton startButton;
     private JButton resetButton;
     private JComboBox<String> testCaseCombo;
+    private JPanel drawPanel; // 将drawPanel声明为成员变量
     
     // 测试用例
     private final String[] testCaseNames = {
@@ -92,7 +93,7 @@ public class NO094_E_InorderTraversal_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
         
@@ -112,7 +113,7 @@ public class NO094_E_InorderTraversal_Animation extends JFrame {
         add(controlPanel, BorderLayout.NORTH);
         
         // 创建绘图面板
-        JPanel drawPanel = new JPanel() {
+        drawPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -128,7 +129,7 @@ public class NO094_E_InorderTraversal_Animation extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 performInorderStep();
-                repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
     }
@@ -157,7 +158,7 @@ public class NO094_E_InorderTraversal_Animation extends JFrame {
                 // 延迟清除访问标记
                 Timer clearTimer = new Timer(800, evt -> {
                     visitedNode = null;
-                    repaint();
+                    SwingUtilities.invokeLater(() -> drawPanel.repaint());
                     ((Timer) evt.getSource()).stop();
                 });
                 clearTimer.setRepeats(false);
@@ -420,7 +421,7 @@ public class NO094_E_InorderTraversal_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     public static void main(String[] args) {

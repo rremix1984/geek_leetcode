@@ -74,7 +74,7 @@ public class NO069_E_SqrtX_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                repaint();
+                SwingUtilities.invokeLater(() -> repaint());
             }
         });
         
@@ -119,7 +119,7 @@ public class NO069_E_SqrtX_Animation extends JFrame {
                     statusMessage = "二分查找完成！x=" + x + " 的平方根是: " + result;
                     startButton.setText("开始演示");
                 }
-                repaint();
+                SwingUtilities.invokeLater(() -> repaint());
             }
         });
     }
@@ -328,7 +328,7 @@ public class NO069_E_SqrtX_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        repaint();
+        SwingUtilities.invokeLater(() -> repaint());
     }
     
     public static void main(String[] args) {

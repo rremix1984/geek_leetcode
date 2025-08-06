@@ -86,7 +86,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         testCaseCombo.addActionListener(e -> {
             if (!animationTimer.isRunning()) {
                 loadTestCase(testCaseCombo.getSelectedIndex());
-                drawPanel.repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
         
@@ -147,7 +147,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
                 }
                 
                 step++;
-                drawPanel.repaint();
+                SwingUtilities.invokeLater(() -> drawPanel.repaint());
             }
         });
     }
@@ -325,7 +325,7 @@ public class NO066_E_PlusOne_Animation extends JFrame {
         animationTimer.stop();
         loadTestCase(testCaseCombo.getSelectedIndex());
         startButton.setText("开始演示");
-        drawPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawPanel.repaint());
     }
     
     public static void main(String[] args) {

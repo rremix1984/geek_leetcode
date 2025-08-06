@@ -214,7 +214,7 @@ public class NO705_E_MyHashSet_Animation extends JFrame {
             currentBucket = -1;
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void resetAnimation() {
@@ -238,7 +238,7 @@ public class NO705_E_MyHashSet_Animation extends JFrame {
         logArea.append("2. 哈希函数: hash(key) = key % 7\\n");
         logArea.append("3. 链地址法解决哈希冲突\\n\\n");
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void parseInput() {

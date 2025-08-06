@@ -203,7 +203,7 @@ public class NO225_E_MyStack_Animation extends JFrame {
                 animateTop();
                 break;
         }
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void animatePush() {
@@ -316,7 +316,7 @@ public class NO225_E_MyStack_Animation extends JFrame {
         }
         
         setButtonsEnabled(true);
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics2D g2d) {

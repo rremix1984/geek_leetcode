@@ -225,7 +225,7 @@ public class NO2540_E_GetCommon_Animation extends JFrame {
         nextStepButton.setEnabled(true);
         
         statusLabel.setText("准备开始动画演示");
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void nextAnimationStep() {
@@ -268,7 +268,7 @@ public class NO2540_E_GetCommon_Animation extends JFrame {
             nextStepButton.setEnabled(false);
         }
         
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void drawAnimation(Graphics g) {

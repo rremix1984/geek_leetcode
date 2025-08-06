@@ -171,7 +171,7 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_Animation extends JFrame {
         }
         
         step++;
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
         return step < stepDescriptions.size();
     }
     
@@ -195,7 +195,7 @@ public class NO026_E_RemoveDuplicatesFromSortedArray_Animation extends JFrame {
         generateStepDescriptions();
         
         statusLabel.setText("准备开始演示删除有序数组中的重复项算法");
-        animationPanel.repaint();
+        SwingUtilities.invokeLater(() -> animationPanel.repaint());
     }
     
     private void generateStepDescriptions() {

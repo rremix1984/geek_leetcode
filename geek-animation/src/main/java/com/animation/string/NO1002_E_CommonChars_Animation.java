@@ -190,7 +190,7 @@ public class NO1002_E_CommonChars_Animation extends JFrame {
         }
         
         currentStep++;
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void countCharactersInCurrentWord() {
@@ -251,7 +251,7 @@ public class NO1002_E_CommonChars_Animation extends JFrame {
         }
         
         statusLabel.setText("点击开始按钮启动动画演示");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     // 可视化面板

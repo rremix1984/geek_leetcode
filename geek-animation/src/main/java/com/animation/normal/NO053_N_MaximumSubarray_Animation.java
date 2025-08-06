@@ -205,7 +205,7 @@ public class NO053_N_MaximumSubarray_Animation extends JFrame {
         maxEnd = 0;
         currentSum = 0;
         logArea.setText("");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
         addLog("可视化已清空");
     }
     

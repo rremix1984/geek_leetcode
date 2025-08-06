@@ -133,7 +133,7 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
         drawingPanel.setHighlightedNodes(highlightedNodes, null);
         statusLabel.setText("准备开始");
         highlightCodeLine(-1);
-        drawingPanel.repaint();
+        SwingUtilities.invokeLater(() -> drawingPanel.repaint());
     }
 
     private TreeNode<Integer> constructTree() {
@@ -164,7 +164,7 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
                 statusLabel.setText("动画完成!");
                 highlightCodeLine(-1);
                 drawingPanel.setHighlightedNodes(new ArrayList<>(), null);
-                drawingPanel.repaint();
+                SwingUtilities.invokeLater(() -> drawingPanel.repaint());
                 return;
             }
             levelSize = queue.size();
@@ -194,7 +194,7 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
                 levelSize = 0; // Reset for next level
             }
             drawingPanel.setHighlightedNodes(highlightedNodes, currentNode);
-            drawingPanel.repaint();
+            SwingUtilities.invokeLater(() -> drawingPanel.repaint());
         }
     }
 

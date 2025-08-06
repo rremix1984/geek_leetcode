@@ -232,7 +232,7 @@ public class NO2558_E_PickGifts_Animation extends JFrame {
     private void updateDisplay() {
         long total = calculateTotal();
         totalLabel.setText("剩余总数: " + total);
-        visualizationPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualizationPanel.repaint());
     }
     
     // 礼物可视化面板

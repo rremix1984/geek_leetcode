@@ -256,7 +256,7 @@ public class NO284_N_PeekingIterator_Animation extends JFrame {
             updateStateLabel();
             addLog("初始化PeekingIterator，数组: " + originalList);
             operationHistory.add("初始化: " + originalList);
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "请输入有效的数字", "错误", JOptionPane.ERROR_MESSAGE);
@@ -280,7 +280,7 @@ public class NO284_N_PeekingIterator_Animation extends JFrame {
             operationHistory.add("peek() -> " + lastPeekedValue);
             
             updateStateLabel();
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "peek操作失败: " + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
@@ -307,7 +307,7 @@ public class NO284_N_PeekingIterator_Animation extends JFrame {
             operationHistory.add("next() -> " + lastNextValue);
             
             updateStateLabel();
-            visualPanel.repaint();
+            SwingUtilities.invokeLater(() -> visualPanel.repaint());
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "next操作失败: " + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
@@ -371,7 +371,7 @@ public class NO284_N_PeekingIterator_Animation extends JFrame {
         
         updateStateLabel();
         addLog("重置迭代器状态");
-        visualPanel.repaint();
+        SwingUtilities.invokeLater(() -> visualPanel.repaint());
     }
     
     private void loadDemoData() {
