@@ -1,17 +1,11 @@
 package com.animation.tree;
 
 import javax.swing.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import javax.swing.Timer;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * NO.100 相同的树 - 动画演示

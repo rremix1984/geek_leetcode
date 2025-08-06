@@ -256,47 +256,206 @@ public class NO199_N_BinaryTreeRightSideView_Animation extends JFrame implements
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             Graphics2D g2d = (Graphics2D) g;
+            
+            // 设置高质量渲染
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            
+            // 绘制渐变背景
+            GradientPaint backgroundGradient = new GradientPaint(
+                0, 0, new Color(240, 248, 255),
+                getWidth(), getHeight(), new Color(230, 240, 250)
+            );
+            g2d.setPaint(backgroundGradient);
+            g2d.fillRect(0, 0, getWidth(), getHeight());
+            
+            // 绘制网格背景（可选）
+            drawGridBackground(g2d);
+            
+            // 绘制二叉树
             drawTree(g2d, root, getWidth() / 2, 50, getWidth() / 4);
+            
+            // 绘制右视图
             drawRightSideView(g2d);
+            
+            // 绘制标题
+            drawTitle(g2d);
+        }
+        
+        private void drawGridBackground(Graphics2D g) {
+            g.setColor(new Color(200, 220, 240, 50));
+            g.setStroke(new BasicStroke(0.5f));
+            
+            // 绘制垂直线
+            for (int x = 0; x < getWidth(); x += 40) {
+                g.drawLine(x, 0, x, getHeight());
+            }
+            
+            // 绘制水平线
+            for (int y = 0; y < getHeight(); y += 40) {
+                g.drawLine(0, y, getWidth(), y);
+            }
+        }
+        
+        private void drawTitle(Graphics2D g) {
+            g.setColor(new Color(0, 123, 255));
+            g.setFont(new Font("Arial", Font.BOLD, 24));
+            FontMetrics fm = g.getFontMetrics();
+            String title = "二叉树右视图算法演示";
+            int titleWidth = fm.stringWidth(title);
+            
+            // 绘制标题阴影
+            g.setColor(new Color(0, 0, 0, 50));
+            g.drawString(title, (getWidth() - titleWidth) / 2 + 2, 27);
+            
+            // 绘制标题
+            g.setColor(new Color(0, 123, 255));
+            g.drawString(title, (getWidth() - titleWidth) / 2, 25);
         }
 
         private void drawTree(Graphics2D g, TreeNode<Integer> node, int x, int y, int xOffset) {
             if (node == null) return;
 
+            // 绘制连接线，使用更美观的颜色和粗细
+            g.setStroke(new BasicStroke(2.5f));
             if (node.left != null) {
-                g.setColor(Color.GRAY);
+                g.setColor(new Color(100, 100, 100, 180));
                 g.drawLine(x, y, x - xOffset, y + 80);
                 drawTree(g, node.left, x - xOffset, y + 80, xOffset / 2);
             }
 
             if (node.right != null) {
-                g.setColor(Color.GRAY);
+                g.setColor(new Color(100, 100, 100, 180));
                 g.drawLine(x, y, x + xOffset, y + 80);
                 drawTree(g, node.right, x + xOffset, y + 80, xOffset / 2);
             }
 
+            // 绘制节点阴影效果
+            g.setColor(new Color(0, 0, 0, 50));
+            g.fillOval(x - NODE_SIZE / 2 + 3, y - NODE_SIZE / 2 + 3, NODE_SIZE, NODE_SIZE);
+
+            // 根据节点状态设置不同的颜色和效果
+            Color nodeColor;
+            Color borderColor;
             if (currentNode == node) {
-                g.setColor(Color.ORANGE);
+                // 当前处理节点：红色渐变
+                nodeColor = new Color(255, 87, 87);
+                borderColor = new Color(255, 0, 0);
+                // 添加脉动效果
+                g.setStroke(new BasicStroke(3.0f));
             } else if (highlightedNodes.contains(node)) {
-                g.setColor(Color.CYAN);
+                // 已访问节点：蓝色渐变
+                nodeColor = new Color(64, 169, 255);
+                borderColor = new Color(0, 123, 255);
+                g.setStroke(new BasicStroke(2.5f));
+            } else if (rightSideView.contains(node.val)) {
+                // 右视图节点：绿色渐变
+                nodeColor = new Color(40, 167, 69);
+                borderColor = new Color(25, 135, 84);
+                g.setStroke(new BasicStroke(2.5f));
             } else {
-                g.setColor(Color.LIGHT_GRAY);
+                // 普通节点：灰色渐变
+                nodeColor = new Color(248, 249, 250);
+                borderColor = new Color(173, 181, 189);
+                g.setStroke(new BasicStroke(2.0f));
             }
+
+            // 绘制渐变填充
+            GradientPaint gradient = new GradientPaint(
+                x - NODE_SIZE / 2, y - NODE_SIZE / 2, nodeColor.brighter(),
+                x + NODE_SIZE / 2, y + NODE_SIZE / 2, nodeColor.darker()
+            );
+            g.setPaint(gradient);
             g.fillOval(x - NODE_SIZE / 2, y - NODE_SIZE / 2, NODE_SIZE, NODE_SIZE);
-            g.setColor(Color.BLACK);
+            
+            // 绘制边框
+            g.setColor(borderColor);
             g.drawOval(x - NODE_SIZE / 2, y - NODE_SIZE / 2, NODE_SIZE, NODE_SIZE);
-            g.drawString(String.valueOf(node.val), x - 5, y + 5);
+            
+            // 绘制节点值
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Arial", Font.BOLD, 14));
+            FontMetrics fm = g.getFontMetrics();
+            String text = String.valueOf(node.val);
+            int textWidth = fm.stringWidth(text);
+            int textHeight = fm.getAscent();
+            g.drawString(text, x - textWidth / 2, y + textHeight / 2 - 2);
         }
 
         private void drawRightSideView(Graphics2D g) {
-            g.setColor(Color.BLUE);
-            g.setFont(new Font("Arial", Font.BOLD, 16));
-            g.drawString("Right Side View:", 20, 40);
-            int y = 60;
-            for (Integer val : rightSideView) {
-                g.drawString(String.valueOf(val), 20, y);
-                y += 20;
+            // 绘制右视图面板背景
+            g.setColor(new Color(248, 249, 250, 200));
+            g.fillRoundRect(10, 10, 180, Math.max(100, rightSideView.size() * 50 + 80), 15, 15);
+            
+            // 绘制面板边框
+            g.setStroke(new BasicStroke(2.0f));
+            g.setColor(new Color(0, 123, 255));
+            g.drawRoundRect(10, 10, 180, Math.max(100, rightSideView.size() * 50 + 80), 15, 15);
+            
+            // 绘制标题
+            g.setColor(new Color(0, 123, 255));
+            g.setFont(new Font("Arial", Font.BOLD, 18));
+            g.drawString("右视图结果", 25, 35);
+            
+            // 绘制分隔线
+            g.setStroke(new BasicStroke(1.5f));
+            g.setColor(new Color(0, 123, 255, 150));
+            g.drawLine(25, 45, 175, 45);
+            
+            // 绘制右视图节点
+            int y = 70;
+            for (int i = 0; i < rightSideView.size(); i++) {
+                Integer val = rightSideView.get(i);
+                
+                // 绘制节点阴影
+                g.setColor(new Color(0, 0, 0, 30));
+                g.fillOval(28, y - 12, 24, 24);
+                
+                // 绘制节点背景渐变
+                GradientPaint nodeGradient = new GradientPaint(
+                    25, y - 15, new Color(40, 167, 69).brighter(),
+                    25 + 20, y - 15 + 20, new Color(40, 167, 69).darker()
+                );
+                g.setPaint(nodeGradient);
+                g.fillOval(25, y - 15, 20, 20);
+                
+                // 绘制节点边框
+                g.setStroke(new BasicStroke(2.0f));
+                g.setColor(new Color(25, 135, 84));
+                g.drawOval(25, y - 15, 20, 20);
+                
+                // 绘制节点值
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("Arial", Font.BOLD, 12));
+                FontMetrics fm = g.getFontMetrics();
+                String text = String.valueOf(val);
+                int textWidth = fm.stringWidth(text);
+                g.drawString(text, 35 - textWidth / 2, y - 7);
+                
+                // 绘制层级标签
+                g.setColor(new Color(73, 80, 87));
+                g.setFont(new Font("Arial", Font.PLAIN, 14));
+                g.drawString("第 " + (i + 1) + " 层", 55, y - 5);
+                
+                // 绘制箭头指向效果
+                if (i < rightSideView.size() - 1) {
+                    g.setStroke(new BasicStroke(1.5f));
+                    g.setColor(new Color(108, 117, 125));
+                    int arrowY = y + 10;
+                    g.drawLine(35, arrowY, 35, arrowY + 15);
+                    g.drawLine(35, arrowY + 15, 32, arrowY + 12);
+                    g.drawLine(35, arrowY + 15, 38, arrowY + 12);
+                }
+                
+                y += 40;
+            }
+            
+            // 如果没有结果，显示提示
+            if (rightSideView.isEmpty()) {
+                g.setColor(new Color(108, 117, 125));
+                g.setFont(new Font("Arial", Font.ITALIC, 14));
+                g.drawString("等待遍历...", 25, 70);
             }
         }
     }

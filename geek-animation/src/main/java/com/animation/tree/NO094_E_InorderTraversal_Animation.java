@@ -1,19 +1,12 @@
 package com.animation.tree;
 
 import javax.swing.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import javax.swing.Timer;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionEvent;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.awt.event.ActionListener;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.*;
-import com.animation.launcher.AlgorithmTreeLauncher;
 import java.util.List;
-import com.animation.launcher.AlgorithmTreeLauncher;
 
 /**
  * NO.094 二叉树的中序遍历 - 动画演示
