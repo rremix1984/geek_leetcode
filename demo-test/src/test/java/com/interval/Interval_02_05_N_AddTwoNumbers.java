@@ -2,12 +2,6 @@ package com.interval;
 
 import com.leetcode.util.ListNode;
 import org.junit.Test;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-
-import static com.leetcode.util.SystemUtil.printListNode;
-
 /**
     [LISTNODE] |||
     (中等)
@@ -46,9 +40,9 @@ public class Interval_02_05_N_AddTwoNumbers {
         // 2024/3/30 NO.1 没思路，没做出来
         // 2024/3/31 NO.2 思路有，没做出来
         // 2024/4/1  NO.3 没思路，能看懂
-        int carry = 0;
-        ListNode<Integer> head = null;
-        ListNode<Integer> tail = null;
+        // int carry = 0;
+        // ListNode<Integer> head = null;
+        // ListNode<Integer> tail = null;
         // TODO
 
         return head;

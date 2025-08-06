@@ -71,6 +71,7 @@ import com.animation.graph.*;
 
 // 数学算法导入
 import com.animation.math.*;
+import com.animation.easy.*;
 
 // 树算法导入
 import com.animation.tree.*;
@@ -386,6 +387,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.009 回文数", () -> new NO009_E_IsPalindrome_Animation().setVisible(true));
         animations.put("NO.066 加一", () -> new NO066_E_PlusOne_Animation().setVisible(true));
         animations.put("NO.069 x的平方根", () -> new NO069_E_SqrtX_Animation().setVisible(true));
+        animations.put("NO.1266 访问所有点的最小时间", () -> new NO1266_E_MinTimeToVisitAllPoints_Animation().setVisible(true));
         
         // 树算法导入
         animations.put("NO.144 二叉树的前序遍历", () -> new NO144_E_PreorderTraversal_Animation().setVisible(true));
@@ -451,6 +453,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("面试题 08.09. 括号", () -> new com.animation.interval.Interval_08_09_N_GenerateParenthesis_Animation().setVisible(true));
         animations.put("面试题 04.06. 后继者", () -> new com.animation.interval.Interval_04_06_N_InorderSuccessor_Animation().setVisible(true));
         animations.put("面试题 04.12. 求和路径", () -> new com.animation.interval.Interval_04_12_N_PathSum_Animation().setVisible(true));
+        animations.put("Interval_02_05_N_AddTwoNumbers", () -> new com.animation.interval.Interval_02_05_N_AddTwoNumbers_Animation().setVisible(true));
 
         // Lonch 算法
         animations.put("NO.10 二叉树动画", () -> new NO10_BinaryTree_Animation().setVisible(true));
@@ -577,6 +580,7 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(normalNode, "NO.046 全排列", "Medium", "回溯");
         addAlgorithmToCategory(normalNode, "NO.047 全排列 II", "Medium", "回溯");
         addAlgorithmToCategory(normalNode, "NO.784 字母大小写全排列", "Medium", "回溯");
+        addAlgorithmToCategory(dataStructureNode, "Interval_02_05_N_AddTwoNumbers", "Medium", "链表, 数学");
 
         // Hard
         addAlgorithmToCategory(normalNode, "NO.005 最长回文子串", "Medium", "动态规划, 字符串");
@@ -644,6 +648,11 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(dataStructureNode, "NO.703 数据流中的第K大元素", "Easy", "最小堆 + 优先队列");
         
         addAlgorithmToCategory(searchNode, "NO.035 搜索插入位置", "Easy", "二分搜索 + 插入位置");
+        
+        addAlgorithmToCategory(mathNode, "NO.009 回文数", "Easy", "数学 + 回文判断");
+        addAlgorithmToCategory(mathNode, "NO.066 加一", "Easy", "数学 + 进位处理");
+        addAlgorithmToCategory(mathNode, "NO.069 x的平方根", "Easy", "数学 + 二分查找");
+        addAlgorithmToCategory(mathNode, "NO.1266 访问所有点的最小时间", "Easy", "数学 + 切比雪夫距离");
         addAlgorithmToCategory(searchNode, "NO.704 二分查找", "Easy", "二分搜索 + 有序数组");
         
         addAlgorithmToCategory(dpNode, "NO.118 杨辉三角", "Easy", "动态规划 + 组合数学");
