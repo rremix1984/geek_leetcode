@@ -17,6 +17,6 @@ if [ ! -d "target/classes" ]; then
 fi
 
 echo "✅ 启动树形分类算法动画界面..."
-mvn exec:java -Dexec.mainClass="com.animation.launcher.AlgorithmTreeLauncher"
+java -cp target/classes:$(mvn dependency:build-classpath -Dmdep.outputFile=/dev/stdout -q) com.animation.launcher.AlgorithmTreeLauncher
 
 echo "👋 算法动画系统已退出"

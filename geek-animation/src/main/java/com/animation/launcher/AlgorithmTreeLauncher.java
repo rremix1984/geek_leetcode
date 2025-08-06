@@ -431,9 +431,11 @@ public class AlgorithmTreeLauncher extends JFrame {
         animations.put("NO.015 三数之和", () -> new NO015_N_ThreeSum_Animation().setVisible(true));
         animations.put("NO.053 最大子数组和", () -> new NO053_N_MaximumSubarray_Animation().setVisible(true));
         animations.put("NO.046 全排列", () -> new NO046_N_Permutations_Animation().setVisible(true));
+        animations.put("NO.047 全排列 II", () -> new NO047_N_PermutationsII_Animation().setVisible(true));
         animations.put("NO.200 岛屿数量", () -> new com.animation.graph.NO200_N_NumberOfIslands_Animation().setVisible(true));
         animations.put("NO.322 零钱兑换", () -> new NO322_N_CoinChange_Animation().setVisible(true));
         animations.put("NO.139 单词拆分", () -> new NO139_N_WordBreak_Animation().setVisible(true));
+        animations.put("NO.784 字母大小写全排列", () -> new NO784_N_LetterCasePermutation_Animation().setVisible(true));
         
         // 原子类动画
         animations.put("AtomicInteger 多线程安全演示", () -> new AtomicIntegerAnimation().setVisible(true));
@@ -572,12 +574,14 @@ public class AlgorithmTreeLauncher extends JFrame {
         addAlgorithmToCategory(normalNode, "NO.284 顶端迭代器", "Medium", "设计, 迭代器");
         addAlgorithmToCategory(normalNode, "NO.764 最大加号标志", "Medium", "动态规划");
         addAlgorithmToCategory(normalNode, "NO.915 分割数组", "Medium", "数组");
+        addAlgorithmToCategory(normalNode, "NO.046 全排列", "Medium", "回溯");
+        addAlgorithmToCategory(normalNode, "NO.047 全排列 II", "Medium", "回溯");
+        addAlgorithmToCategory(normalNode, "NO.784 字母大小写全排列", "Medium", "回溯");
 
         // Hard
         addAlgorithmToCategory(normalNode, "NO.005 最长回文子串", "Medium", "动态规划, 字符串");
         addAlgorithmToCategory(normalNode, "NO.015 三数之和", "Medium", "数组, 双指针, 排序");
         addAlgorithmToCategory(normalNode, "NO.053 最大子数组和", "Medium", "动态规划, 数组");
-        addAlgorithmToCategory(hardNode, "NO.046 全排列", "Hard", "回溯");
         addAlgorithmToCategory(hardNode, "NO.200 岛屿数量", "Hard", "DFS, BFS, 图");
         addAlgorithmToCategory(hardNode, "NO.322 零钱兑换", "Hard", "动态规划, 背包");
         addAlgorithmToCategory(hardNode, "NO.139 单词拆分", "Hard", "动态规划, 字符串");

@@ -102,26 +102,24 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
         add(infoPanel, BorderLayout.EAST);
         
         // 设置动画定时器
-        animationTimer = new javax.swing.Timer(50, new ActionListener() {
+        animationTimer = new javax.swing.Timer(30, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isAnimating) {
-                    animationProgress += 0.08;
+                    animationProgress += 0.15; // 增加动画速度
                     if (animationProgress >= 1.0) {
                         animationProgress = 1.0;
                         currentPosition = animationToPos;
                         isAnimating = false;
                         animationFromPos = -1;
                         animationToPos = -1;
-                        // 动画结束后，如果不是自动模式，则不需要做什么
-                        // 如果是自动模式，理论上 autoTimer 会触发下一次 step
-                        // 但为了更流畅，可以在这里检查是否需要立即进行下一步
-                        if (autoTimer != null && autoTimer.isRunning()) {
-                             // 立即触发下一次逻辑，而不是等待 autoTimer 的延迟
-                             stepAnimation(); 
-                        }
+                        // 动画结束后，让autoTimer来控制下一步
+                        // 不在这里直接调用stepAnimation()避免递归问题
                     }
                     SwingUtilities.invokeLater(() -> repaint());
+                } else {
+                    // 如果没有动画在进行，停止timer节省资源
+                    ((javax.swing.Timer) e.getSource()).stop();
                 }
             }
         });
@@ -414,8 +412,14 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
     }
     
     private void startAnimation() {
+        // 确保animationTimer在需要时能够启动
         if (!animationTimer.isRunning()) {
             animationTimer.start();
+        }
+        
+        // 停止之前的autoTimer避免多个timer同时运行
+        if (autoTimer != null && autoTimer.isRunning()) {
+            autoTimer.stop();
         }
         
         autoTimer = new javax.swing.Timer(1500, new ActionListener() {
@@ -465,6 +469,10 @@ public class NO1306_N_JumpGameIII_Animation extends JFrame {
             animationProgress = 0;
             isAnimating = true;
             searchPath.add(pos);
+            // 确保animationTimer在动画开始时启动
+            if (!animationTimer.isRunning()) {
+                animationTimer.start();
+            }
         } else {
             // 如果DFS的下一个节点就是当前位置（例如，初始状态），也需要刷新状态
             currentPosition = pos;
