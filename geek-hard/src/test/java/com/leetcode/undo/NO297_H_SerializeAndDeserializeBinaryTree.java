@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import static com.leetcode.util.LogUtil.info;
 import static com.leetcode.util.MathUtils.cTree;
-import static com.leetcode.util.MathUtils.cTree;
 
 /**
     （困难）

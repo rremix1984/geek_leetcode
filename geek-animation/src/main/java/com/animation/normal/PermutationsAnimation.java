@@ -170,9 +170,25 @@ public class PermutationsAnimation extends JPanel {
                 nums[i] = Integer.parseInt(parts[i].trim());
             }
             
-            if (nums.length > 4) {
-                JOptionPane.showMessageDialog(this, "为了演示效果，数组长度不超过4个元素");
+            if (nums.length > 5) {
+                JOptionPane.showMessageDialog(this, "为了演示效果，数组长度不超过5个元素");
                 return;
+            }
+            
+            // 5个元素性能提示
+            if (nums.length == 5) {
+                int choice = JOptionPane.showConfirmDialog(this, 
+                    "5个元素将生成120个排列，动画较长（约2-4分钟）。\n" +
+                    "建议使用较快的播放速度。是否继续？", 
+                    "性能提示", 
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+                // 自动调整为较快速度
+                speedSlider.setValue(500);
+                animationSpeed = 500;
             }
             
             result.clear();

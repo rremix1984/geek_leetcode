@@ -39,6 +39,8 @@ public class NO046_N_Permutations_Animation extends JFrame {
     private JSlider speedSlider;
     private JTextArea logArea;
     private PermutationPanel visualPanel;
+    private JProgressBar progressBar;
+    private JLabel progressLabel;
     
     private int[] nums;
     private List<List<Integer>> result;
@@ -123,6 +125,17 @@ public class NO046_N_Permutations_Animation extends JFrame {
         speedSlider.setPreferredSize(new Dimension(100, 30));
         animationPanel.add(speedSlider);
         
+        // 进度指示器
+        progressLabel = new JLabel("进度: 0/0");
+        progressBar = new JProgressBar(0, 100);
+        progressBar.setStringPainted(true);
+        progressBar.setString("0%");
+        progressBar.setPreferredSize(new Dimension(150, 25));
+        
+        animationPanel.add(new JLabel(" | "));
+        animationPanel.add(progressLabel);
+        animationPanel.add(progressBar);
+        
         topPanel.add(animationPanel, BorderLayout.SOUTH);
         add(topPanel, BorderLayout.NORTH);
         
@@ -181,9 +194,25 @@ public class NO046_N_Permutations_Animation extends JFrame {
                 nums[i] = Integer.parseInt(parts[i].trim());
             }
             
-            if (nums.length > 4) {
-                JOptionPane.showMessageDialog(this, "为了演示效果，数组长度不超过4个元素");
+            if (nums.length > 5) {
+                JOptionPane.showMessageDialog(this, "为了演示效果，数组长度不超过5个元素");
                 return;
+            }
+            
+            // 5个元素性能提示
+            if (nums.length == 5) {
+                int choice = JOptionPane.showConfirmDialog(this, 
+                    "5个元素将生成120个排列，动画较长（约2-4分钟）。\n" +
+                    "建议使用较快的播放速度。是否继续？", 
+                    "性能提示", 
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+                // 自动调整为较快速度
+                speedSlider.setValue(500);
+                animationSpeed = 500;
             }
             
             result.clear();
@@ -206,6 +235,11 @@ public class NO046_N_Permutations_Animation extends JFrame {
             
             appendLog("动画状态生成完成，共 " + animationStates.size() + " 个步骤");
             appendLog("点击播放按钮开始动画演示\n");
+            
+            // 初始化进度指示器
+            progressLabel.setText("进度: 0/" + animationStates.size());
+            progressBar.setValue(0);
+            progressBar.setString("0%");
             
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "请输入有效的数字");
@@ -268,6 +302,12 @@ public class NO046_N_Permutations_Animation extends JFrame {
             if (currentStateIndex < animationStates.size()) {
                 showCurrentState();
                 currentStateIndex++;
+                
+                // 更新进度
+                int progress = (int) ((double) currentStateIndex / animationStates.size() * 100);
+                progressBar.setValue(progress);
+                progressBar.setString(progress + "%");
+                progressLabel.setText("进度: " + currentStateIndex + "/" + animationStates.size());
             } else {
                 pauseAnimation();
                 appendLog("\n全排列生成完成!");
@@ -275,6 +315,7 @@ public class NO046_N_Permutations_Animation extends JFrame {
                 for (int i = 0; i < result.size(); i++) {
                     appendLog((i + 1) + ": " + result.get(i));
                 }
+                progressBar.setString("完成!");
             }
         });
         animationTimer.start();
@@ -293,6 +334,12 @@ public class NO046_N_Permutations_Animation extends JFrame {
         if (currentStateIndex < animationStates.size()) {
             showCurrentState();
             currentStateIndex++;
+            
+            // 更新进度
+            int progress = (int) ((double) currentStateIndex / animationStates.size() * 100);
+            progressBar.setValue(progress);
+            progressBar.setString(progress + "%");
+            progressLabel.setText("进度: " + currentStateIndex + "/" + animationStates.size());
         }
         
         if (currentStateIndex >= animationStates.size()) {
@@ -302,6 +349,7 @@ public class NO046_N_Permutations_Animation extends JFrame {
             for (int i = 0; i < result.size(); i++) {
                 appendLog((i + 1) + ": " + result.get(i));
             }
+            progressBar.setString("完成!");
         }
     }
     
@@ -348,6 +396,16 @@ public class NO046_N_Permutations_Animation extends JFrame {
         result.clear();
         currentPath.clear();
         visualPanel.clear();
+        
+        // 重置进度指示器
+        progressLabel.setText("进度: 0/0");
+        progressBar.setValue(0);
+        progressBar.setString("0%");
+        
+        // 重置按钮状态
+        playButton.setEnabled(false);
+        nextStepButton.setEnabled(false);
+        pauseButton.setEnabled(false);
     }
     
     private void appendLog(String message) {

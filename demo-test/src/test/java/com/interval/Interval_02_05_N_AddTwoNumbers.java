@@ -37,13 +37,27 @@ public class Interval_02_05_N_AddTwoNumbers {
     }
 
     public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
-        // 2024/3/30 NO.1 没思路，没做出来
-        // 2024/3/31 NO.2 思路有，没做出来
-        // 2024/4/1  NO.3 没思路，能看懂
-        // int carry = 0;
-        // ListNode<Integer> head = null;
-        // ListNode<Integer> tail = null;
-        // TODO
+        int carry = 0;
+        ListNode<Integer> head = null;
+        ListNode<Integer> tail = null;
+        
+        while (l1 != null || l2 != null || carry != 0) {
+            int v1 = l1 != null ? l1.val : 0;
+            int v2 = l2 != null ? l2.val : 0;
+            int sum = v1 + v2 + carry;
+            carry = sum / 10;
+            
+            if (head == null) {
+                head = new ListNode<>(sum % 10);
+                tail = head;
+            } else {
+                tail.next = new ListNode<>(sum % 10);
+                tail = tail.next;
+            }
+            
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
 
         return head;
     }
