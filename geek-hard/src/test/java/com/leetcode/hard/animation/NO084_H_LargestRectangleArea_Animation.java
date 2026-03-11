@@ -1,4 +1,4 @@
-package com.leetcode.hard;
+package com.leetcode.hard.animation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -119,82 +119,34 @@ public class NO084_H_LargestRectangleArea_Animation extends JFrame {
                 if (heights != null) {
                     System.arraycopy(heights, 0, newHeights, 0, heights.length);
                 }
-                newHeights[newHeights.length - 1] = height;
+                newHeights[heights == null ? 0 : heights.length] = height;
                 heights = newHeights;
-                
-                updateDisplay();
-                resultLabel.setText("结果: 添加高度 " + height);
                 heightField.setText("");
-            } else {
-                resultLabel.setText("错误: 请输入正整数");
+                resultLabel.setText("结果: 已添加高度");
+                repaint();
             }
-        } catch (NumberFormatException ex) {
-            resultLabel.setText("错误: 请输入有效数字");
+        } catch (NumberFormatException e) {
+            // ignore
         }
-    }
-    
-    private void initializeDefaultData() {
-        // 初始化默认数据 [2, 1, 5, 6, 2, 3]
-        heights = new int[]{2, 1, 5, 6, 2, 3};
-        updateDisplay();
     }
     
     private void startAnimation() {
-        if (heights == null || heights.length == 0) {
-            resultLabel.setText("错误: 请添加至少一个柱子");
-            return;
-        }
-        
+        if (heights == null || heights.length == 0) return;
         isAnimating = true;
+        startButton.setText("停止查找");
+        stepButton.setEnabled(true);
+        stack = new Stack<>();
+        currentHistogram = heights.clone();
         currentIndex = 0;
         maxArea = 0;
-        stack = new Stack<>();
-        stack.push(-1);
-        currentHistogram = heights.clone();
         
-        startButton.setText("停止动画");
-        stepButton.setEnabled(true);
-        addHeightButton.setEnabled(false);
-        
-        animationTimer = new Timer(1500, new ActionListener() {
+        animationTimer = new Timer(800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!executeNextStep()) {
-                    stopAnimation();
-                    resultLabel.setText("计算完成! 最大矩形面积: " + maxArea);
-                }
+                executeNextStep();
             }
         });
         animationTimer.start();
-        
-        resultLabel.setText("开始查找最大矩形面积...");
-        updateDisplay();
-    }
-    
-    private boolean executeNextStep() {
-        if (currentIndex <= heights.length) {
-            while (!stack.isEmpty() && (currentIndex == heights.length || heights[currentIndex] <= heights[stack.peek()])) {
-                int height = heights[stack.pop()];
-                int width = (stack.isEmpty() ? currentIndex : currentIndex - stack.peek() - 1);
-                int area = height * width;
-                maxArea = Math.max(maxArea, area);
-                resultLabel.setText("步骤: 高度 = " + height + ", 宽度 = " + width + " → 面积 = " + area + ", 最大面积 = " + maxArea);
-                
-                if (currentIndex < heights.length) {
-                    currentHistogram[currentIndex - 1] = height;
-                }
-                updateDisplay();
-                return true;
-            }
-            
-            if (currentIndex < heights.length) {
-                stack.push(currentIndex);
-                currentIndex++;
-            }
-        } else {
-            return false; // 动画结束
-        }
-        return true;
     }
     
     private void stopAnimation() {
@@ -213,16 +165,41 @@ public class NO084_H_LargestRectangleArea_Animation extends JFrame {
         currentIndex = 0;
         maxArea = 0;
         currentHistogram = null;
-        
+        stack = null;
         initializeDefaultData();
         resultLabel.setText("结果: 已重置");
     }
     
-    private void updateDisplay() {
+    private void initializeDefaultData() {
+        heights = new int[]{2, 1, 5, 6, 2, 3};
+        resultLabel.setText("结果: 默认示例已加载");
         repaint();
     }
     
-    // 矩形最大面积可视化面板
+    private void executeNextStep() {
+        if (!isAnimating) return;
+        
+        if (currentIndex <= heights.length) {
+            int currentHeight = (currentIndex == heights.length) ? 0 : heights[currentIndex];
+            
+            while (!stack.isEmpty() && (currentIndex == heights.length || currentHeight < heights[stack.peek()])) {
+                int height = heights[stack.pop()];
+                int width = stack.isEmpty() ? currentIndex : currentIndex - stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+            
+            if (currentIndex < heights.length) {
+                stack.push(currentIndex);
+            } else {
+                stopAnimation();
+            }
+            
+            currentIndex++;
+            resultLabel.setText("结果: 最大矩形面积 = " + maxArea);
+            repaint();
+        }
+    }
+    
     private class RectangleVisualizationPanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
@@ -230,86 +207,36 @@ public class NO084_H_LargestRectangleArea_Animation extends JFrame {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             
-            if (heights == null) return;
-            
-            drawHistogram(g2d);
-            drawCurrentSteps(g2d);
-            drawAlgorithmInfo(g2d);
-        }
-        
-        private void drawHistogram(Graphics2D g2d) {
-            g2d.setColor(Color.BLACK);
-            g2d.drawString("柱状图:", 50, 50);
+            if (currentHistogram == null) return;
             
             int startX = 50;
-            int startY = 350;
+            int startY = 450;
             int barWidth = 40;
-            int maxHeight = getMaxHeight();
-            int scale = 200 / Math.max(maxHeight, 1);
             
             for (int i = 0; i < currentHistogram.length; i++) {
-                int barHeight = currentHistogram[i] * scale;
-                Rectangle bar = new Rectangle(startX + i * (barWidth + 5), startY - barHeight, barWidth, barHeight);
+                int barHeight = currentHistogram[i] * 20;
                 
-                g2d.setColor(isAnimating && (i == currentIndex - 1) ? Color.RED : Color.LIGHT_GRAY);
-                g2d.fill(bar);
+                g2d.setColor(Color.GRAY);
+                g2d.fillRect(startX + i * (barWidth + 5), startY - barHeight, barWidth, barHeight);
                 g2d.setColor(Color.BLACK);
-                g2d.draw(bar);
+                g2d.drawRect(startX + i * (barWidth + 5), startY - barHeight, barWidth, barHeight);
                 
-                String heightStr = String.valueOf(currentHistogram[i]);
+                if (isAnimating && i == currentIndex - 1) {
+                    g2d.setColor(Color.RED);
+                    g2d.setStroke(new BasicStroke(3));
+                    g2d.drawRect(startX + i * (barWidth + 5), startY - barHeight, barWidth, barHeight);
+                    g2d.setStroke(new BasicStroke(1));
+                }
+                
+                g2d.setColor(Color.BLACK);
+                String hStr = String.valueOf(currentHistogram[i]);
                 FontMetrics fm = g2d.getFontMetrics();
-                int textX = startX + i * (barWidth + 5) + (barWidth - fm.stringWidth(heightStr)) / 2;
-                g2d.drawString(heightStr, textX, startY + 20);
+                int textX = startX + i * (barWidth + 5) + (barWidth - fm.stringWidth(hStr)) / 2;
+                g2d.drawString(hStr, textX, startY + 20);
             }
-        }
-        
-        private void drawCurrentSteps(Graphics2D g2d) {
-            if (!isAnimating) return;
             
             g2d.setColor(Color.BLUE);
-            g2d.drawString("当前堆栈:", 50, 450);
-            int x = 50;
-            for (Integer index : stack) {
-                if (index == -1) continue;
-                String indexStr = "index " + index;
-                g2d.drawString(indexStr, x, 470);
-                x += 70;
-            }
-        }
-        
-        private void drawAlgorithmInfo(Graphics2D g2d) {
-            int infoX = 600;
-            int infoY = 50;
-            
-            g2d.setColor(Color.BLACK);
-            g2d.drawString("算法步骤 (单调栈):", infoX, infoY);
-            g2d.drawString("1. 遍历每个柱子的索引", infoX, infoY + 20);
-            g2d.drawString("2. 维护一个递减栈保存柱子的高度索引", infoX, infoY + 40);
-            g2d.drawString("3. 当当前柱子的高度小于或等于栈顶高度时，弹出栈顶计算面积", infoX, infoY + 60);
-            g2d.drawString("4. 更新最大面积", infoX, infoY + 80);
-            g2d.drawString("5. 继续到下个柱子或结束", infoX, infoY + 100);
-            
-            // 显示当前状态
-            if (isAnimating) {
-                g2d.setColor(Color.BLUE);
-                g2d.drawString("当前状态:", infoX, infoY + 150);
-                g2d.drawString("当前索引: " + currentIndex, infoX, infoY + 170);
-                g2d.drawString("最大面积: " + maxArea, infoX, infoY + 190);
-            }
-            
-            // 示例说明
-            g2d.setColor(Color.DARK_GRAY);
-            g2d.drawString("示例: heights = [2,1,5,6,2,3]", infoX, infoY + 250);
-            g2d.drawString("结果: 最大矩形面积 = 10", infoX, infoY + 270);
-        }
-        
-        private int getMaxHeight() {
-            if (heights == null) return 1;
-            int max = 0;
-            for (int h : heights) {
-                max = Math.max(max, h);
-            }
-            return max;
+            g2d.drawString("最大矩形面积: " + maxArea, 600, 50);
         }
     }
     

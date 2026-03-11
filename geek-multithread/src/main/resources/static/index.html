@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeetCode 算法动画 Web</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="title">
+        <div class="title-main">LeetCode 算法动画 Web</div>
+        <div class="title-sub">目录/搜索/启动（启动后会在本机弹出 Swing 动画窗口）</div>
+      </div>
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="搜索：NO.001 / 二叉树 / 跳跃游戏 ..." />
+        <button id="clearBtn" type="button">清空</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="sidebar">
+        <div class="tabs">
+          <button id="tabCatalog" class="tab active" type="button">目录</button>
+          <button id="tabAll" class="tab" type="button">全部</button>
+        </div>
+        <div id="listRoot" class="list"></div>
+      </section>
+
+      <section class="content">
+        <div class="card">
+          <div class="card-title">算法信息</div>
+          <div id="algoName" class="algo-name">请选择一个算法</div>
+          <div class="meta">
+            <div class="meta-item"><span class="meta-k">难度</span><span id="algoDiff" class="meta-v">-</span></div>
+            <div class="meta-item"><span class="meta-k">技巧</span><span id="algoTech" class="meta-v">-</span></div>
+            <div class="meta-item"><span class="meta-k">可启动</span><span id="algoLaunchable" class="meta-v">-</span></div>
+          </div>
+          <div class="actions">
+            <button id="launchBtn" type="button" disabled>启动动画</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">提示</div>
+          <div class="hint">
+            Web 页面用于浏览与搜索。点击“启动动画”会调用后端在本机进程内启动对应的 Swing 动画窗口。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">后端状态</div>
+          <pre id="healthBox" class="health">加载中...</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-package com.leetcode.hard;
+package com.leetcode.hard.animation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -123,88 +123,39 @@ public class NO188_H_BestTimeToBuyAndSellStockIV_Animation extends JFrame {
 
     private void setTransactions() {
         try {
-            int transactions = Integer.parseInt(transactionField.getText());
-            if (transactions > 0) {
-                maxTransactions = transactions;
-                resultLabel.setText("结果: 设置最大交易次数为 " + maxTransactions);
-            } else {
-                resultLabel.setText("错误: 交易次数必须为正数");
-            }
+            int k = Integer.parseInt(transactionField.getText());
+            maxTransactions = Math.max(1, Math.min(5, k));
+            resultLabel.setText("结果: 最大交易次数设置为 " + maxTransactions);
         } catch (NumberFormatException ex) {
             resultLabel.setText("错误: 请输入有效数字");
         }
     }
 
     private void initializeDefaultData() {
-        // 初始化默认数据 [2, 4, 1]
-        prices = new int[]{2, 4, 1};
+        // 初始化默认数据
+        prices = new int[]{3, 2, 6, 5, 0, 3};
         updateDisplay();
     }
 
     private void startAnimation() {
         if (prices == null || prices.length == 0) {
-            resultLabel.setText("错误: 请添加股票价格");
+            resultLabel.setText("错误: 请先输入价格数据");
             return;
         }
-
         isAnimating = true;
+        startButton.setText("停止计算");
+        stepButton.setEnabled(true);
         currentDay = 0;
         maxProfit = 0;
         dp = new int[maxTransactions + 1][prices.length];
-
-        startButton.setText("停止动画");
-        stepButton.setEnabled(true);
-        addPriceButton.setEnabled(false);
-        setTransactionButton.setEnabled(false);
-
-        animationTimer = new Timer(1500, new ActionListener() {
+        
+        animationTimer = new Timer(800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!executeNextStep()) {
-                    stopAnimation();
-                    resultLabel.setText("计算完成! 最大利润: " + maxProfit);
-                }
+                executeNextStep();
             }
         });
         animationTimer.start();
-
-        resultLabel.setText("开始计算最大利润...");
-        updateDisplay();
-    }
-
-    private boolean executeNextStep() {
-        if (currentDay < prices.length) {
-            if (currentDay == 0) {
-                // 第一天初始化
-                for (int t = 1; t <= maxTransactions; t++) {
-                    dp[t][0] = -prices[0]; // 第一天买入
-                }
-            } else {
-                // 从第二天开始的状态转移
-                for (int t = 1; t <= maxTransactions; t++) {
-                    // 不持股状态：要么保持不持股，要么今天卖出
-                    dp[t][currentDay] = Math.max(
-                        dp[t][currentDay - 1], 
-                        (t > 1 ? dp[t - 1][currentDay - 1] : 0) + prices[currentDay]
-                    );
-                    
-                    // 持股状态：要么保持持股，要么今天买入
-                    int buyState = Math.max(
-                        (t <= maxTransactions && currentDay > 0) ? dp[t][currentDay - 1] : -prices[currentDay],
-                        (t > 1 ? dp[t - 1][currentDay - 1] : 0) - prices[currentDay]
-                    );
-                    
-                    dp[t][currentDay] = Math.max(dp[t][currentDay], buyState);
-                }
-            }
-            
-            maxProfit = Math.max(maxProfit, dp[maxTransactions][currentDay]);
-            currentDay++;
-        } else {
-            return false; // 动画结束
-        }
-        updateDisplay();
-        return true;
     }
 
     private void stopAnimation() {
@@ -214,27 +165,47 @@ public class NO188_H_BestTimeToBuyAndSellStockIV_Animation extends JFrame {
         isAnimating = false;
         startButton.setText("开始计算");
         stepButton.setEnabled(false);
-        addPriceButton.setEnabled(true);
-        setTransactionButton.setEnabled(true);
     }
 
     private void reset() {
         stopAnimation();
         prices = null;
+        dp = null;
         currentDay = 0;
         maxProfit = 0;
-        dp = null;
-        maxTransactions = 2;
-
-        initializeDefaultData();
         resultLabel.setText("结果: 已重置");
+        updateDisplay();
     }
 
-    private void updateDisplay() {
+    private void executeNextStep() {
+        if (!isAnimating || prices == null) return;
+        
+        for (int k = 1; k <= maxTransactions; k++) {
+            if (currentDay == 0) {
+                dp[k][currentDay] = 0;
+            } else {
+                int noTrade = dp[k][currentDay - 1];
+                int trade = Math.max(0, prices[currentDay] - prices[currentDay - 1]) + dp[k - 1][currentDay - 1];
+                dp[k][currentDay] = Math.max(noTrade, trade);
+            }
+            maxProfit = Math.max(maxProfit, dp[k][currentDay]);
+        }
+        
+        currentDay++;
+        if (currentDay >= prices.length) {
+            stopAnimation();
+        }
+        
+        resultLabel.setText("结果: 最大利润 = " + maxProfit);
         repaint();
     }
 
-    // 股票价格与利润可视化面板
+    private void updateDisplay() {
+        if (mainPanel != null) {
+            mainPanel.repaint();
+        }
+    }
+
     private class StockVisualizationPanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
@@ -244,77 +215,25 @@ public class NO188_H_BestTimeToBuyAndSellStockIV_Animation extends JFrame {
 
             if (prices == null) return;
 
-            drawPrices(g2d);
-            drawDP(g2d);
-            drawAlgorithmInfo(g2d);
-        }
-
-        private void drawPrices(Graphics2D g2d) {
-            g2d.setColor(Color.BLACK);
-            g2d.drawString("股票价格:", 50, 50);
-
             int startX = 50;
-            int startY = 100;
+            int startY = 350;
             int barWidth = 40;
 
-            for (int i = 0; i < prices.length; i++) {
-                String priceStr = String.valueOf(prices[i]);
-                g2d.setColor(i == currentDay ? Color.RED : Color.LIGHT_GRAY);
-                g2d.fillRect(startX + i * (barWidth + 10), startY - prices[i] * 5, barWidth, prices[i] * 5);
-                g2d.setColor(Color.BLACK);
-                g2d.drawRect(startX + i * (barWidth + 10), startY - prices[i] * 5, barWidth, prices[i] * 5);
-                g2d.drawString(priceStr, startX + i * (barWidth + 10) + 10, startY + 20);
-            }
-        }
-
-        private void drawDP(Graphics2D g2d) {
-            if (dp == null || currentDay == 0) return;
-
+            // 绘制价格曲线
             g2d.setColor(Color.BLACK);
-            g2d.drawString("DP状态:", 50, 300);
-
-            int startX = 50;
-            int startY = 320;
-            int gridWidth = 80;
-            int gridHeight = 30;
-
-            // 确保不超出数组范围
-            int maxDay = Math.min(currentDay, prices.length - 1);
-
-            for (int t = 1; t <= maxTransactions; t++) {
-                // 绘制交易数标签
-                g2d.setColor(Color.BLACK);
-                g2d.drawString("T" + t, startX - 30, startY + t * gridHeight + 20);
-                
-                for (int d = 0; d <= maxDay; d++) {
-                    String dpStr = String.valueOf(dp[t][d]);
-                    g2d.setColor(d == maxDay && currentDay >= prices.length ? Color.GREEN : 
-                                (d == currentDay - 1 ? Color.RED : Color.LIGHT_GRAY));
-                    g2d.fillRect(startX + d * gridWidth, startY + t * gridHeight, gridWidth, gridHeight);
-                    g2d.setColor(Color.BLACK);
-                    g2d.drawRect(startX + d * gridWidth, startY + t * gridHeight, gridWidth, gridHeight);
-                    g2d.drawString(dpStr, startX + d * gridWidth + 20, startY + t * gridHeight + 20);
-                }
+            g2d.drawString("价格:", startX, 50);
+            for (int i = 0; i < prices.length - 1; i++) {
+                int x1 = startX + i * (barWidth + 5);
+                int x2 = startX + (i + 1) * (barWidth + 5);
+                int y1 = startY - prices[i] * 10;
+                int y2 = startY - prices[i + 1] * 10;
+                g2d.drawLine(x1, y1, x2, y2);
             }
-        }
 
-        private void drawAlgorithmInfo(Graphics2D g2d) {
-            int infoX = 600;
-            int infoY = 50;
-
-            g2d.setColor(Color.BLACK);
-            g2d.drawString("算法步骤:", infoX, infoY);
-            g2d.drawString("1. 初始化DP数组", infoX, infoY + 20);
-            g2d.drawString("2. 计算每一天的利润", infoX, infoY + 40);
-            g2d.drawString("3. 更新最大利润", infoX, infoY + 60);
-            g2d.drawString("4. 完成所有天数计算", infoX, infoY + 80);
-
-            if (isAnimating) {
-                g2d.setColor(Color.BLUE);
-                g2d.drawString("当前状态:", infoX, infoY + 120);
-                g2d.drawString("当前天: " + currentDay, infoX, infoY + 140);
-                g2d.drawString("当前最大利润: " + maxProfit, infoX, infoY + 160);
-            }
+            g2d.setColor(Color.BLUE);
+            g2d.drawString("最大利润: " + maxProfit, 600, 50);
+            g2d.drawString("当前天数索引: " + currentDay, 600, 70);
+            g2d.drawString("最大交易次数: " + maxTransactions, 600, 90);
         }
     }
 

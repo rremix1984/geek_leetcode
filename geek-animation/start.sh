@@ -6,6 +6,21 @@
 echo "🚀 正在启动算法动画系统..."
 echo "📁 工作目录: $(pwd)"
 
+if [ "${1:-}" = "compile" ]; then
+    mvn clean compile
+    exit $?
+fi
+
+if [ "${1:-}" = "test-compile" ]; then
+    mvn clean test-compile
+    exit $?
+fi
+
+if [ "${1:-}" = "package" ]; then
+    mvn -DskipTests=true clean package
+    exit $?
+fi
+
 # 检查是否已编译
 if [ ! -d "target/classes" ]; then
     echo "⚠️  未找到编译文件，正在编译项目..."
