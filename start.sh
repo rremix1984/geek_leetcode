@@ -38,7 +38,10 @@ write_pid() {
 
 rm_pid() {
   local f="$1"
-  [[ -f "$f" ]] && rm -f "$f"
+  if [[ -f "$f" ]]; then
+    rm -f "$f"
+  fi
+  return 0
 }
 
 usage() {
@@ -53,10 +56,13 @@ usage() {
   test                           运行测试(强制不跳过)
   clean                          清理构建产物
 
-前端(桌面UI/动画系统):
+Swing桌面端(算法动画系统):
   frontend:start                 启动算法动画系统(树形界面)
   frontend:start-debug           调试模式启动算法动画系统(端口5005)
   frontend:compile               编译 geek-animation 模块
+  swing:start                    同 frontend:start
+  swing:start-debug              同 frontend:start-debug
+  swing:compile                  同 frontend:compile
 
 后端(Spring Boot):
   backend:start                  前台启动 geek-multithread 服务
@@ -64,13 +70,18 @@ usage() {
   backend:stop                   停止后台启动的 geek-multithread 服务
   backend:status                 查看后台服务状态
   backend:logs                   查看后台服务日志(tail -f)
-  backend:health                 健康检查(默认 http://localhost:8080/)
+  backend:health                 健康检查(默认 http://localhost:18089/)
 
 Web(浏览器页面):
-  web:url                        页面地址(默认 http://localhost:8080/)
+  web:url                        页面地址(默认 http://localhost:18089/)
   web:start                      同 backend:start
   web:start --daemon             同 backend:start --daemon
-  web:health                     健康检查(默认 http://localhost:8080/api/health)
+  web:health                     健康检查(默认 http://localhost:18089/api/health)
+
+一键启动:
+  stack:start                    一键启动 Web 系统(仅 backend 后台)
+  stack:stop                     停止后台 backend
+  stack:status                   查看 backend 状态并输出页面地址
 
 运维:
   health                         汇总健康检查(前端/后端)
@@ -112,13 +123,27 @@ cmd_frontend_compile() {
   (cd "$ROOT_DIR" && mvn -pl geek-animation -am -DskipTests=true clean compile)
 }
 
-backend_port() { printf "%s" "${BACKEND_PORT:-8080}"; }
+default_backend_port() {
+  local config_file="$ROOT_DIR/geek-multithread/src/main/resources/application.properties"
+  if [[ -f "$config_file" ]]; then
+    local configured
+    configured="$(grep -E '^server\.port=' "$config_file" | tail -n 1 | cut -d'=' -f2 | tr -d '[:space:]' || true)"
+    if [[ -n "$configured" ]]; then
+      printf "%s" "$configured"
+      return
+    fi
+  fi
+  printf "18089"
+}
+
+backend_port() { printf "%s" "${BACKEND_PORT:-$(default_backend_port)}"; }
 backend_url() { printf "http://localhost:%s/" "$(backend_port)"; }
 backend_health_url() { printf "http://localhost:%s/api/health" "$(backend_port)"; }
+backend_run_arg() { printf -- "--server.port=%s" "$(backend_port)"; }
 
 cmd_backend_start_foreground() {
   need_cmd mvn
-  (cd "$ROOT_DIR/geek-multithread" && mvn spring-boot:run)
+  (cd "$ROOT_DIR/geek-multithread" && mvn spring-boot:run -Dspring-boot.run.arguments="$(backend_run_arg)")
 }
 
 cmd_backend_start_daemon() {
@@ -136,7 +161,7 @@ cmd_backend_start_daemon() {
   rm_pid "$pf"
   : > "$lf"
 
-  (cd "$ROOT_DIR/geek-multithread" && nohup mvn spring-boot:run >"$lf" 2>&1 & echo $! >"$pf")
+  (cd "$ROOT_DIR/geek-multithread" && nohup mvn spring-boot:run -Dspring-boot.run.arguments="$(backend_run_arg)" >"$lf" 2>&1 & echo $! >"$pf")
 
   pid="$(read_pid "$pf")"
   if ! is_pid_running "$pid"; then
@@ -206,6 +231,41 @@ cmd_web_url() {
   green "$(backend_url)"
 }
 
+wait_backend_ready() {
+  need_cmd curl
+  local url attempts code
+  url="$(backend_health_url)"
+  attempts=30
+  while (( attempts > 0 )); do
+    code="$(curl -sS -o /dev/null -m 2 --connect-timeout 1 -w "%{http_code}" "$url" || true)"
+    if [[ "$code" =~ ^[1-5][0-9][0-9]$ ]] && [[ "$code" != "000" ]]; then
+      return 0
+    fi
+    attempts=$((attempts - 1))
+    sleep 1
+  done
+  return 1
+}
+
+cmd_stack_start() {
+  cmd_backend_start_daemon
+  if wait_backend_ready; then
+    green "backend 已就绪: $(backend_url)"
+    green "Web 页面地址: $(backend_url)"
+  else
+    die "backend 在预期时间内未就绪，请查看日志: $(log_file backend)"
+  fi
+}
+
+cmd_stack_stop() {
+  cmd_backend_stop
+}
+
+cmd_stack_status() {
+  cmd_backend_status
+  green "web: $(backend_url)"
+}
+
 cmd_health() {
   local ok=true
 
@@ -229,6 +289,13 @@ cmd_health() {
 main() {
   local cmd="${1:-help}"
   shift || true
+  while :; do
+    case "$cmd" in
+      *[。.,，：:]) cmd="${cmd%?}" ;;
+      *) break ;;
+    esac
+  done
+  [[ -n "$cmd" ]] || cmd="help"
 
   case "$cmd" in
     help|-h|--help) usage ;;
@@ -240,6 +307,9 @@ main() {
     frontend:start) cmd_frontend_start ;;
     frontend:start-debug) cmd_frontend_start_debug ;;
     frontend:compile) cmd_frontend_compile ;;
+    swing:start) cmd_frontend_start ;;
+    swing:start-debug) cmd_frontend_start_debug ;;
+    swing:compile) cmd_frontend_compile ;;
     ui:start) cmd_frontend_start ;;
     ui:start-debug) cmd_frontend_start_debug ;;
     ui:compile) cmd_frontend_compile ;;
@@ -267,6 +337,13 @@ main() {
       fi
       ;;
     web:health) cmd_backend_health ;;
+
+    stack:start) cmd_stack_start ;;
+    stack:stop) cmd_stack_stop ;;
+    stack:status) cmd_stack_status ;;
+    all:start) cmd_stack_start ;;
+    all:stop) cmd_stack_stop ;;
+    all:status) cmd_stack_status ;;
 
     health) cmd_health ;;
     *) die "未知命令: $cmd (运行 ./start.sh help 查看帮助)" ;;

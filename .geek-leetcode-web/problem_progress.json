@@ -1,0 +1,11 @@
+{
+  "no001" : {
+    "accepted" : false,
+    "attempts" : 2,
+    "acceptedCount" : 0,
+    "lastSubmittedAt" : "2026-03-15T14:15:17.164242Z",
+    "lastAcceptedAt" : null,
+    "bestRuntimeMs" : 0,
+    "bestMemoryKb" : 0
+  }
+}

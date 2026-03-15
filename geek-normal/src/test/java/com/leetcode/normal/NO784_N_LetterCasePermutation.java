@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.util.*;
 import static com.leetcode.util.MathUtils.getArray;
 import static com.leetcode.util.SystemUtil.*;
-import static java.lang.Character.isDigit;
 
 /**
     [ARRAY] |||||||||||||

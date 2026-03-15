@@ -52,19 +52,19 @@ public class Interval_02_07_E_GetIntersectionNode {
 
     @Test
     public void test() {
-        ListNode eight = new ListNode(8, 4, 5);
-        ListNode two = new ListNode(2, 4);
+        ListNode<Integer> eight = new ListNode<>(8, 4, 5);
+        ListNode<Integer> two = new ListNode<>(2, 4);
 
         Assert.assertEquals(eight, getIntersectionNode(
-                new ListNode(4, 1).next(eight),
-                new ListNode(5, 6, 1).next(eight)));
+                new ListNode<Integer>(4, 1).next(eight),
+                new ListNode<Integer>(5, 6, 1).next(eight)));
 
         Assert.assertEquals(two, getIntersectionNode(
-                new ListNode(1, 9, 1).next(two),
-                new ListNode(3).next(two)));
+                new ListNode<Integer>(1, 9, 1).next(two),
+                new ListNode<Integer>(3).next(two)));
     }
 
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public ListNode<Integer> getIntersectionNode(ListNode<Integer> headA, ListNode<Integer> headB) {
         // 2024/3/27 NO.1
         return null;
     }
