@@ -1,12 +1,24 @@
 package com.bilibili.juc.web.service;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -16,10 +28,47 @@ import com.bilibili.juc.web.model.CatalogItem;
 @Service
 public class AnimationCatalogService {
 
+    private static final Pattern NO_PATTERN = Pattern.compile("NO\\.?\\s*(\\d{3,4})", Pattern.CASE_INSENSITIVE);
+    private static final Pattern DOC_PATTERN = Pattern.compile("/\\*\\*([\\s\\S]*?)\\*/");
+
     private final AnimationRegistry registry = new AnimationRegistry();
     private final Map<String, String> displayNameToLaunchName = buildDisplayNameToLaunchName();
+    private final Map<String, String> codeIndex = buildCodeIndex();
+    private final List<CatalogItem> catalog = buildCatalog();
 
     public List<CatalogItem> curatedCatalog() {
+        return catalog;
+    }
+
+    public List<CatalogItem> listProblems(String difficulty, String keyword) {
+        String diff = difficulty == null ? "" : difficulty.trim().toLowerCase(Locale.ROOT);
+        String kw = keyword == null ? "" : keyword.trim();
+        return catalog.stream()
+                .filter(item -> diff.isEmpty() || "all".equals(diff)
+                        || (item.getDifficulty() != null && item.getDifficulty().toLowerCase(Locale.ROOT).equals(diff)))
+                .filter(item -> kw.isEmpty() || contains(item.getName(), kw) || contains(item.getTechnique(), kw)
+                        || contains(item.getCategoryPath(), kw))
+                .collect(Collectors.toList());
+    }
+
+    public CatalogItem findProblemById(String id) {
+        if (id == null || id.trim().isEmpty()) {
+            return null;
+        }
+        String target = id.trim();
+        for (CatalogItem item : catalog) {
+            if (target.equals(item.getId())) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public CatalogItem firstProblem() {
+        return catalog.isEmpty() ? null : catalog.get(0);
+    }
+
+    private List<CatalogItem> buildCatalog() {
         List<CatalogItem> items = new ArrayList<>();
 
         add(items, "Easy/数组算法", "NO.001 两数之和", "NO.001 两数之和", "Easy", "哈希表");
@@ -102,6 +151,10 @@ public class AnimationCatalogService {
             String launchName = resolveLaunchName(item.getLaunchName());
             item.setLaunchName(launchName);
             item.setLaunchable(launchName != null && registry.hasAnimation(launchName));
+            item.setId(buildProblemId(item));
+            String sourceCode = findSourceCode(item);
+            item.setCode(buildStarterCode(item));
+            item.setDescription(buildDescription(item, sourceCode));
         }
 
         return Collections.unmodifiableList(items);
@@ -129,12 +182,13 @@ public class AnimationCatalogService {
     public Map<String, Object> summary() {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("totalAnimations", registry.size());
+        map.put("totalProblems", catalog.size());
         return map;
     }
 
     private void add(List<CatalogItem> items, String categoryPath, String name, String launchName, String difficulty,
             String technique) {
-        items.add(new CatalogItem(categoryPath, name, launchName, difficulty, technique, false));
+        items.add(new CatalogItem("", categoryPath, name, launchName, difficulty, technique, "", "", false));
     }
 
     private String resolveLaunchName(String input) {
@@ -171,5 +225,476 @@ public class AnimationCatalogService {
         map.put("面试题 08.09. 括号", "NO.08.09 括号生成");
         map.put("面试题 04.12. 求和路径", "NO.04.12 路径总和");
         return map;
+    }
+
+    private String buildProblemId(CatalogItem item) {
+        String launchName = item.getLaunchName() == null ? "" : item.getLaunchName();
+        Matcher matcher = NO_PATTERN.matcher(item.getName() + " " + launchName);
+        if (matcher.find()) {
+            return "no" + matcher.group(1);
+        }
+        String raw = (item.getName() == null ? "" : item.getName()).toLowerCase(Locale.ROOT);
+        String normalized = raw.replaceAll("[^a-z0-9\\u4e00-\\u9fa5]+", "-").replaceAll("(^-|-$)", "");
+        return normalized.isEmpty() ? "problem-" + Math.abs(launchName.hashCode()) : normalized;
+    }
+
+    private String findSourceCode(CatalogItem item) {
+        Matcher matcher = NO_PATTERN.matcher(item.getName() + " " + item.getLaunchName());
+        if (matcher.find()) {
+            String key = "NO" + matcher.group(1);
+            String code = codeIndex.get(key);
+            if (code != null && !code.trim().isEmpty()) {
+                return code;
+            }
+        }
+        return "";
+    }
+
+    private String buildStarterCode(CatalogItem item) {
+        String method = buildMethodName(item);
+        return "public class Solution {\n"
+                + "    public static Object " + method + "() {\n"
+                + "        return null;\n"
+                + "    }\n\n"
+                + "    public static void main(String[] args) {\n"
+                + "        System.out.println(" + method + "());\n"
+                + "    }\n"
+                + "}\n";
+    }
+
+    private String buildMethodName(CatalogItem item) {
+        String base = item.getName() == null ? "solve" : item.getName();
+        String normalized = base.replaceAll("NO\\.?\\s*\\d{1,4}", "")
+                .replaceAll("[^a-zA-Z0-9\\u4e00-\\u9fa5]+", " ").trim();
+        if (normalized.isEmpty()) {
+            return "solve";
+        }
+        String[] parts = normalized.split("\\s+");
+        StringBuilder builder = new StringBuilder("solve");
+        for (String part : parts) {
+            if (part.isEmpty()) {
+                continue;
+            }
+            builder.append(part.substring(0, 1).toUpperCase(Locale.ROOT));
+            if (part.length() > 1) {
+                builder.append(part.substring(1));
+            }
+            if (builder.length() > 36) {
+                break;
+            }
+        }
+        return builder.toString().replaceAll("[^a-zA-Z0-9_]", "");
+    }
+
+    private String buildDescription(CatalogItem item, String code) {
+        String doc = extractDoc(code);
+        if (!doc.isEmpty()) {
+            return normalizeStructuredDescription(item, doc);
+        }
+        return normalizeStructuredDescription(item, "");
+    }
+
+    private String normalizeStructuredDescription(CatalogItem item, String doc) {
+        List<String> lines = splitDocLines(doc);
+        String title = compactText(item == null ? "" : item.getName(), 80);
+        String statement = compactText(extractStatement(lines, item), 180);
+        String input = compactText(extractSectionValue(lines, "输入"), 180);
+        String output = compactText(extractSectionValue(lines, "输出"), 180);
+        Map<String, String> example = extractExample(lines);
+
+        if (statement.isEmpty()) {
+            statement = compactText("分类：" + value(item == null ? null : item.getCategoryPath()) + "；技巧："
+                    + value(item == null ? null : item.getTechnique()), 180);
+        }
+        if (input.isEmpty()) {
+            input = "请参考题目中的参数定义";
+        }
+        if (output.isEmpty()) {
+            output = "返回题目要求的结果";
+        }
+        String exampleInput = compactText(example.getOrDefault("input", ""), 120);
+        String exampleOutput = compactText(example.getOrDefault("output", ""), 120);
+        String exampleExplain = compactText(example.getOrDefault("explain", ""), 120);
+        if (exampleInput.isEmpty()) {
+            exampleInput = input;
+        }
+        if (exampleOutput.isEmpty()) {
+            exampleOutput = output;
+        }
+        StringBuilder exampleLine = new StringBuilder("输入：").append(exampleInput).append("；输出：").append(exampleOutput);
+        if (!exampleExplain.isEmpty()) {
+            exampleLine.append("；解释：").append(exampleExplain);
+        }
+        return "题目：" + (title.isEmpty() ? "未命名题目" : title)
+                + "\n说明：" + statement
+                + "\n输入：" + input
+                + "\n输出：" + output
+                + "\n示例：" + exampleLine;
+    }
+
+    private List<String> splitDocLines(String doc) {
+        if (doc == null || doc.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
+        String[] rawLines = doc.split("\\r?\\n");
+        List<String> lines = new ArrayList<>();
+        for (String raw : rawLines) {
+            String line = raw == null ? "" : raw.trim();
+            if (line.isEmpty()) {
+                continue;
+            }
+            if (line.startsWith("[") && line.endsWith("]")) {
+                continue;
+            }
+            if (line.startsWith("（") && line.endsWith("）") && line.length() <= 8) {
+                continue;
+            }
+            if (line.startsWith("(") && line.endsWith(")") && line.length() <= 8) {
+                continue;
+            }
+            if (line.matches("^NO\\.?\\s*\\d{1,4}.*$")) {
+                continue;
+            }
+            lines.add(line);
+        }
+        return lines;
+    }
+
+    private String extractStatement(List<String> lines, CatalogItem item) {
+        if (lines == null || lines.isEmpty()) {
+            return "";
+        }
+        String name = item == null ? "" : value(item.getName());
+        StringBuilder builder = new StringBuilder();
+        for (String line : lines) {
+            if (startsWithLabel(line, "输入") || startsWithLabel(line, "输出") || startsWithLabel(line, "示例")
+                    || startsWithLabel(line, "提示") || startsWithLabel(line, "约束")) {
+                break;
+            }
+            if (line.equals(name)) {
+                continue;
+            }
+            if (builder.length() > 0) {
+                builder.append(" ");
+            }
+            builder.append(line);
+            if (builder.length() >= 180) {
+                break;
+            }
+        }
+        return builder.toString().trim();
+    }
+
+    private String extractSectionValue(List<String> lines, String label) {
+        if (lines == null || lines.isEmpty()) {
+            return "";
+        }
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (!startsWithLabel(line, label)) {
+                continue;
+            }
+            String direct = valueAfterLabel(line);
+            if (!direct.isEmpty()) {
+                return direct;
+            }
+            StringBuilder next = new StringBuilder();
+            for (int j = i + 1; j < lines.size(); j++) {
+                String follower = lines.get(j);
+                if (isSectionAnchor(follower)) {
+                    break;
+                }
+                if (next.length() > 0) {
+                    next.append(" ");
+                }
+                next.append(follower);
+                if (next.length() >= 180) {
+                    break;
+                }
+            }
+            return next.toString().trim();
+        }
+        return "";
+    }
+
+    private Map<String, String> extractExample(List<String> lines) {
+        Map<String, String> result = new LinkedHashMap<>();
+        if (lines == null || lines.isEmpty()) {
+            return result;
+        }
+        int start = -1;
+        for (int i = 0; i < lines.size(); i++) {
+            if (startsWithLabel(lines.get(i), "示例")) {
+                start = i;
+                break;
+            }
+        }
+        if (start < 0) {
+            return result;
+        }
+        for (int i = start + 1; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (startsWithLabel(line, "示例") || startsWithLabel(line, "提示") || startsWithLabel(line, "约束")) {
+                break;
+            }
+            if (!result.containsKey("input") && startsWithLabel(line, "输入")) {
+                result.put("input", valueAfterLabel(line));
+                continue;
+            }
+            if (!result.containsKey("output") && startsWithLabel(line, "输出")) {
+                result.put("output", valueAfterLabel(line));
+                continue;
+            }
+            if (!result.containsKey("explain") && startsWithLabel(line, "解释")) {
+                result.put("explain", valueAfterLabel(line));
+            }
+        }
+        return result;
+    }
+
+    private boolean isSectionAnchor(String line) {
+        return startsWithLabel(line, "输入") || startsWithLabel(line, "输出") || startsWithLabel(line, "示例")
+                || startsWithLabel(line, "提示") || startsWithLabel(line, "约束") || startsWithLabel(line, "解释");
+    }
+
+    private boolean startsWithLabel(String line, String label) {
+        if (line == null || label == null) {
+            return false;
+        }
+        String normalized = line.trim();
+        if (normalized.startsWith(label + "：") || normalized.startsWith(label + ":")) {
+            return true;
+        }
+        if (normalized.equals(label)) {
+            return true;
+        }
+        return normalized.matches("^" + Pattern.quote(label) + "\\s*\\d+.*$");
+    }
+
+    private String valueAfterLabel(String line) {
+        if (line == null) {
+            return "";
+        }
+        int idx = line.indexOf('：');
+        if (idx < 0) {
+            idx = line.indexOf(':');
+        }
+        if (idx < 0 || idx + 1 >= line.length()) {
+            return "";
+        }
+        return line.substring(idx + 1).trim();
+    }
+
+    private String compactText(String input, int maxLen) {
+        String text = value(input).replaceAll("\\s+", " ").trim();
+        if (text.length() <= maxLen) {
+            return text;
+        }
+        if (maxLen <= 1) {
+            return text.substring(0, Math.max(0, maxLen));
+        }
+        return text.substring(0, maxLen - 1).trim() + "…";
+    }
+
+    private String value(String input) {
+        return input == null ? "" : input.trim();
+    }
+
+    private String extractDoc(String code) {
+        if (code == null || code.trim().isEmpty()) {
+            return "";
+        }
+        Matcher matcher = DOC_PATTERN.matcher(code);
+        String best = "";
+        int bestScore = Integer.MIN_VALUE;
+        while (matcher.find()) {
+            String candidate = normalizeDocBlock(matcher.group(1));
+            if (candidate.isEmpty()) {
+                continue;
+            }
+            int score = scoreDoc(candidate);
+            if (score > bestScore) {
+                best = candidate;
+                bestScore = score;
+            }
+        }
+        return best;
+    }
+
+    private String normalizeDocBlock(String block) {
+        if (block == null || block.trim().isEmpty()) {
+            return "";
+        }
+        String[] rawLines = block.split("\\r?\\n");
+        List<String> lines = new ArrayList<>();
+        for (String raw : rawLines) {
+            String value = raw.replaceFirst("^\\s*\\*\\s?", "").trim();
+            if (value.isEmpty()) {
+                continue;
+            }
+            String lower = value.toLowerCase(Locale.ROOT);
+            if (lower.startsWith("copyright")) {
+                continue;
+            }
+            if (lower.matches("^\\d{4}[/.-]\\d{1,2}[/.-]\\d{1,2}$")) {
+                continue;
+            }
+            if (lower.startsWith("author") || lower.startsWith("@author") || lower.startsWith("@date")
+                    || lower.startsWith("@since")) {
+                continue;
+            }
+            lines.add(value);
+        }
+        int start = 0;
+        while (start < lines.size() && isNoiseLine(lines.get(start))) {
+            start++;
+        }
+        if (start >= lines.size()) {
+            return "";
+        }
+        List<String> picked = new ArrayList<>();
+        for (int i = start; i < lines.size(); i++) {
+            picked.add(lines.get(i));
+            if (picked.size() >= 16) {
+                break;
+            }
+        }
+        return String.join("\n", picked).trim();
+    }
+
+    private boolean isNoiseLine(String line) {
+        if (line == null || line.trim().isEmpty()) {
+            return true;
+        }
+        String lower = line.trim().toLowerCase(Locale.ROOT);
+        if (lower.startsWith("package ") || lower.startsWith("import ")) {
+            return true;
+        }
+        if (lower.matches("^\\[[^\\]]+\\].*$")) {
+            return true;
+        }
+        if (lower.matches("^[\\W_]+$")) {
+            return true;
+        }
+        if (lower.contains("copyright")) {
+            return true;
+        }
+        return lower.matches("^\\d{4}[/.-]\\d{1,2}[/.-]\\d{1,2}.*$");
+    }
+
+    private int scoreDoc(String doc) {
+        String lower = doc.toLowerCase(Locale.ROOT);
+        int score = 0;
+        if (lower.contains("题目") || lower.contains("算法描述")) {
+            score += 14;
+        }
+        if (lower.contains("no.")) {
+            score += 6;
+        }
+        if (lower.contains("给定")) {
+            score += 10;
+        }
+        if (lower.contains("输入")) {
+            score += 8;
+        }
+        if (lower.contains("输出")) {
+            score += 8;
+        }
+        if (lower.contains("示例")) {
+            score += 10;
+        }
+        if (lower.contains("解释")) {
+            score += 6;
+        }
+        if (lower.contains("提示")) {
+            score += 4;
+        }
+        if (lower.contains("复杂度")) {
+            score += 4;
+        }
+        if (lower.contains("copyright")) {
+            score -= 40;
+        }
+        if (doc.length() < 12) {
+            score -= 8;
+        }
+        score += Math.min(20, doc.length() / 30);
+        return score;
+    }
+
+    private Map<String, String> buildCodeIndex() {
+        Map<String, String> index = new LinkedHashMap<>();
+        Path root = detectProjectRoot();
+        if (root == null) {
+            return index;
+        }
+        List<Path> dirs = new ArrayList<>();
+        dirs.add(root.resolve("geek-easy/src/test/java"));
+        dirs.add(root.resolve("geek-easy/src/main/java"));
+        dirs.add(root.resolve("geek-normal/src/test/java"));
+        dirs.add(root.resolve("geek-normal/src/main/java"));
+        dirs.add(root.resolve("geek-hard/src/test/java"));
+        dirs.add(root.resolve("geek-hard/src/main/java"));
+        for (Path dir : dirs) {
+            index.putAll(scanDirectory(dir, index.keySet()));
+        }
+        return index;
+    }
+
+    private Map<String, String> scanDirectory(Path dir, Set<String> exists) {
+        Map<String, String> map = new LinkedHashMap<>();
+        if (dir == null || !Files.exists(dir)) {
+            return map;
+        }
+        Set<String> seen = new LinkedHashSet<>(exists);
+        try (Stream<Path> stream = Files.walk(dir)) {
+            List<Path> files = stream.filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName().toString().endsWith(".java"))
+                    .collect(Collectors.toList());
+            for (Path file : files) {
+                String name = file.getFileName().toString();
+                Matcher matcher = Pattern.compile("NO(\\d{3,4})", Pattern.CASE_INSENSITIVE).matcher(name);
+                if (!matcher.find()) {
+                    continue;
+                }
+                String key = "NO" + matcher.group(1);
+                if (seen.contains(key)) {
+                    continue;
+                }
+                String code = readFile(file);
+                if (code.isEmpty()) {
+                    continue;
+                }
+                map.put(key, code);
+                seen.add(key);
+            }
+        } catch (IOException ignored) {
+        }
+        return map;
+    }
+
+    private Path detectProjectRoot() {
+        Path current = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
+        for (int i = 0; i < 6 && current != null; i++) {
+            if (Files.exists(current.resolve("geek-easy")) && Files.exists(current.resolve("geek-normal"))
+                    && Files.exists(current.resolve("geek-hard"))) {
+                return current;
+            }
+            current = current.getParent();
+        }
+        return null;
+    }
+
+    private String readFile(Path file) {
+        try {
+            byte[] bytes = Files.readAllBytes(file);
+            return new String(bytes, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    private boolean contains(String value, String keyword) {
+        return value != null && value.toLowerCase(Locale.ROOT).contains(keyword.toLowerCase(Locale.ROOT));
     }
 }

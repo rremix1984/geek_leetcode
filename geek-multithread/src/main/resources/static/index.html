@@ -3,55 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LeetCode 算法动画 Web</title>
+    <title>LeetCode Practice</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="title">
-        <div class="title-main">LeetCode 算法动画 Web</div>
-        <div class="title-sub">目录/搜索/启动（启动后会在本机弹出 Swing 动画窗口）</div>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-logo">LC</span>
+        <span class="brand-text">LeetCode Practice</span>
       </div>
-      <div class="search">
-        <input id="searchInput" type="text" placeholder="搜索：NO.001 / 二叉树 / 跳跃游戏 ..." />
-        <button id="clearBtn" type="button">清空</button>
+      <div class="global-search">
+        <input id="searchInput" type="text" placeholder="搜索题目 / 技巧 / 分类" />
       </div>
+      <div id="healthBadge" class="health-badge">Connecting...</div>
     </header>
 
-    <main class="main">
-      <section class="sidebar">
-        <div class="tabs">
-          <button id="tabCatalog" class="tab active" type="button">目录</button>
-          <button id="tabAll" class="tab" type="button">全部</button>
-        </div>
-        <div id="listRoot" class="list"></div>
-      </section>
-
-      <section class="content">
-        <div class="card">
-          <div class="card-title">算法信息</div>
-          <div id="algoName" class="algo-name">请选择一个算法</div>
-          <div class="meta">
-            <div class="meta-item"><span class="meta-k">难度</span><span id="algoDiff" class="meta-v">-</span></div>
-            <div class="meta-item"><span class="meta-k">技巧</span><span id="algoTech" class="meta-v">-</span></div>
-            <div class="meta-item"><span class="meta-k">可启动</span><span id="algoLaunchable" class="meta-v">-</span></div>
-          </div>
-          <div class="actions">
-            <button id="launchBtn" type="button" disabled>启动动画</button>
+    <main class="workspace">
+      <aside class="left-panel">
+        <div class="left-header">
+          <h3>题目列表</h3>
+          <div class="difficulty-tabs">
+            <button class="difficulty-tab active" data-diff="all" type="button">All</button>
+            <button class="difficulty-tab" data-diff="easy" type="button">Easy</button>
+            <button class="difficulty-tab" data-diff="normal" type="button">Medium</button>
+            <button class="difficulty-tab" data-diff="hard" type="button">Hard</button>
           </div>
         </div>
+        <div id="problemList" class="problem-list"></div>
+      </aside>
 
-        <div class="card">
-          <div class="card-title">提示</div>
-          <div class="hint">
-            Web 页面用于浏览与搜索。点击“启动动画”会调用后端在本机进程内启动对应的 Swing 动画窗口。
+      <section class="right-panel">
+        <div class="problem-toolbar">
+          <div>
+            <div id="problemTitle" class="problem-title">请选择题目</div>
+            <div class="problem-meta">
+              <span id="difficultyTag" class="tag tag-easy">Easy</span>
+              <span id="techniqueTag" class="tag">技巧</span>
+              <span id="categoryTag" class="tag">分类</span>
+              <span id="solvedTag" class="tag">未通过</span>
+            </div>
+          </div>
+          <div class="toolbar-actions">
+            <button id="launchBtn" class="btn btn-secondary" type="button" disabled>播放动画</button>
+            <button id="runBtn" class="btn btn-primary" type="button" disabled>Run</button>
+            <button id="submitBtn" class="btn btn-submit" type="button" disabled>Submit</button>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-title">后端状态</div>
-          <pre id="healthBox" class="health">加载中...</pre>
+        <div class="content-split">
+          <section class="panel">
+            <div class="panel-header">题目描述</div>
+            <div id="problemDesc" class="problem-desc">请选择左侧题目后查看描述</div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">代码编辑区（Java）</div>
+            <textarea id="codeEditor" class="code-editor" spellcheck="false"></textarea>
+          </section>
         </div>
+
+        <section class="animation-panel">
+          <div class="panel-header">前端动画</div>
+          <canvas id="animationCanvas" width="1000" height="220"></canvas>
+          <div id="animationDesc" class="animation-desc">点击“播放动画”开始可视化</div>
+        </section>
+
+        <section class="console-panel">
+          <div class="panel-header">控制台输出</div>
+          <pre id="consoleOutput" class="console-output">等待运行...</pre>
+          <div class="tips">
+            提示：Run 会编译并执行当前代码，代码需包含 public class 与 main 方法。
+          </div>
+        </section>
+
+        <section class="submit-panel">
+          <div class="panel-header">提交判题结果</div>
+          <div class="submit-summary">
+            <span id="submitVerdict" class="submit-verdict">等待提交</span>
+            <span id="submitPassRate" class="submit-metric">通过率: -</span>
+            <span id="submitRuntime" class="submit-metric">耗时: -</span>
+            <span id="submitMemory" class="submit-metric">内存: -</span>
+          </div>
+          <pre id="submitCases" class="submit-cases">点击 Submit 后展示多测试用例明细。</pre>
+        </section>
       </section>
     </main>
 
