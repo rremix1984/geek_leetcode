@@ -1598,15 +1598,35 @@ public class WebAnimationService {
         if ("no190".equals(id)) {
             int value = 0b00000010100101000001111010011100;
             int reversed = 0;
+            String sourceBits = toBinary32(value);
             for (int i = 0; i < 32; i++) {
+                int extracted = (value >>> i) & 1;
                 reversed <<= 1;
-                reversed |= (value >>> i) & 1;
-                Map<String, Object> frame = baseFrame(new int[] { i + 1, reversed });
-                frame.put("active", 1);
-                frame.put("description", "处理第 " + (i + 1) + " 位，当前反转结果（二进制低位截断）=" + Integer.toUnsignedString(reversed));
+                reversed |= extracted;
+                Map<String, Object> frame = baseFrame(new int[] { extracted, reversed });
+                frame.put("mode", "bit-reverse");
+                frame.put("fromPos", i);
+                frame.put("toPos", 31 - i);
+                frame.put("processed", i + 1);
+                frame.put("sourceBits", sourceBits);
+                frame.put("resultBits", toBinary32(reversed));
+                frame.put("sourceValue", Integer.toUnsignedString(value));
+                frame.put("resultValue", Integer.toUnsignedString(reversed));
+                frame.put("action", "取出原数第 " + i + " 位(" + extracted + ")，左移结果并拼接到末尾");
+                frame.put("reason", "每次把低位取出后拼到新数右端，执行 32 次后顺序完全翻转");
+                frame.put("description", "第 " + (i + 1) + " 步：bit[" + i + "] -> result[" + (31 - i) + "]，当前无符号值 "
+                        + Integer.toUnsignedString(reversed));
                 frames.add(frame);
             }
             Map<String, Object> done = baseFrame(new int[] { reversed });
+            done.put("mode", "bit-reverse");
+            done.put("sourceBits", sourceBits);
+            done.put("resultBits", toBinary32(reversed));
+            done.put("sourceValue", Integer.toUnsignedString(value));
+            done.put("resultValue", Integer.toUnsignedString(reversed));
+            done.put("processed", 32);
+            done.put("action", "32 位全部搬运完成，得到最终反转结果");
+            done.put("reason", "位运算按固定宽度处理，完整遍历可保证每一位都映射到对称位置");
             done.put("found", true);
             done.put("result", Integer.toUnsignedString(reversed));
             done.put("description", "32 位反转完成");
@@ -1684,8 +1704,96 @@ public class WebAnimationService {
         map.put("type", type);
         map.put("technique", item == null ? "" : item.getTechnique());
         map.put("intervalMs", intervalMs);
-        map.put("frames", frames);
+        map.put("frames", enrichFrames(frames));
         return map;
+    }
+
+    private List<Map<String, Object>> enrichFrames(List<Map<String, Object>> frames) {
+        if (frames == null) {
+            return new ArrayList<>();
+        }
+        for (int i = 0; i < frames.size(); i++) {
+            Map<String, Object> frame = frames.get(i);
+            if (frame == null) {
+                continue;
+            }
+            if (!frame.containsKey("step")) {
+                frame.put("step", i + 1);
+            }
+            String description = String.valueOf(frame.getOrDefault("description", ""));
+            if (!frame.containsKey("action")) {
+                frame.put("action", inferAction(description));
+            }
+            if (!frame.containsKey("reason")) {
+                frame.put("reason", inferReason(description, frame, i, frames.size()));
+            }
+        }
+        return frames;
+    }
+
+    private String inferAction(String description) {
+        if (description == null || description.trim().isEmpty()) {
+            return "推进算法状态并更新当前可视化";
+        }
+        String text = description.trim();
+        int idx = firstSplitIndex(text);
+        if (idx <= 0) {
+            return text.length() > 30 ? text.substring(0, 30) + "..." : text;
+        }
+        String action = text.substring(0, idx).trim();
+        return action.isEmpty() ? "推进算法状态并更新当前可视化" : action;
+    }
+
+    private String inferReason(String description, Map<String, Object> frame, int index, int total) {
+        if (description != null && !description.trim().isEmpty()) {
+            String text = description.trim();
+            int idx = firstSplitIndex(text);
+            if (idx >= 0 && idx + 1 < text.length()) {
+                String tail = text.substring(idx + 1).trim();
+                if (!tail.isEmpty()) {
+                    return "通过" + tail + "来验证状态并决定下一步";
+                }
+            }
+        }
+        if (Boolean.TRUE.equals(frame.get("found"))) {
+            return "用于确认条件已满足并收敛到最终答案";
+        }
+        if (index + 1 >= total) {
+            return "用于收尾展示最终结果";
+        }
+        return "用于逐步缩小搜索范围或累计中间结果，确保算法可解释";
+    }
+
+    private int firstSplitIndex(String text) {
+        int idx = text.indexOf('：');
+        if (idx >= 0) {
+            return idx;
+        }
+        idx = text.indexOf('，');
+        if (idx >= 0) {
+            return idx;
+        }
+        idx = text.indexOf("->");
+        if (idx >= 0) {
+            return idx;
+        }
+        idx = text.indexOf(':');
+        if (idx >= 0) {
+            return idx;
+        }
+        return text.indexOf(',');
+    }
+
+    private String toBinary32(int value) {
+        String bits = Integer.toBinaryString(value);
+        if (bits.length() >= 32) {
+            return bits.substring(bits.length() - 32);
+        }
+        StringBuilder prefix = new StringBuilder();
+        for (int i = bits.length(); i < 32; i++) {
+            prefix.append('0');
+        }
+        return prefix + bits;
     }
 
     private Map<String, Object> baseFrame(int[] arr) {

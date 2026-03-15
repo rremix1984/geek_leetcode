@@ -43,11 +43,6 @@
               <span id="solvedTag" class="tag">未通过</span>
             </div>
           </div>
-          <div class="toolbar-actions">
-            <button id="launchBtn" class="btn btn-secondary" type="button" disabled>播放动画</button>
-            <button id="runBtn" class="btn btn-primary" type="button" disabled>Run</button>
-            <button id="submitBtn" class="btn btn-submit" type="button" disabled>Submit</button>
-          </div>
         </div>
 
         <div class="content-split">
@@ -62,29 +57,53 @@
           </section>
         </div>
 
-        <section class="animation-panel">
-          <div class="panel-header">前端动画</div>
-          <canvas id="animationCanvas" width="1000" height="220"></canvas>
-          <div id="animationDesc" class="animation-desc">点击“播放动画”开始可视化</div>
-        </section>
-
-        <section class="console-panel">
-          <div class="panel-header">控制台输出</div>
-          <pre id="consoleOutput" class="console-output">等待运行...</pre>
-          <div class="tips">
-            提示：Run 会编译并执行当前代码，代码需包含 public class 与 main 方法。
+        <section class="workbench-tabs-wrap">
+          <div class="workbench-tabs">
+            <div class="workbench-tab active" data-tab="animation">播放动画</div>
+            <div class="workbench-tab" data-tab="run">Run</div>
+            <div class="workbench-tab" data-tab="submit">Submit</div>
           </div>
-        </section>
 
-        <section class="submit-panel">
-          <div class="panel-header">提交判题结果</div>
-          <div class="submit-summary">
-            <span id="submitVerdict" class="submit-verdict">等待提交</span>
-            <span id="submitPassRate" class="submit-metric">通过率: -</span>
-            <span id="submitRuntime" class="submit-metric">耗时: -</span>
-            <span id="submitMemory" class="submit-metric">内存: -</span>
+          <div class="workbench-panels">
+            <section class="animation-panel workbench-panel active" data-panel="animation">
+              <div class="panel-header">前端动画</div>
+              <div class="workbench-action-row">
+                <button id="launchBtn" class="btn btn-secondary" type="button" disabled>播放动画</button>
+              </div>
+              <canvas id="animationCanvas" width="1000" height="220"></canvas>
+              <div id="animationDesc" class="animation-desc">点击“播放动画”开始可视化</div>
+              <div class="animation-step-panel">
+                <div class="animation-step-title">本步说明</div>
+                <div id="animationStepAction" class="animation-step-line">在做什么：等待播放</div>
+                <div id="animationStepReason" class="animation-step-line">为什么：用于解释当前操作目的</div>
+              </div>
+            </section>
+
+            <section class="console-panel workbench-panel" data-panel="run">
+              <div class="panel-header">控制台输出</div>
+              <div class="workbench-action-row">
+                <button id="runBtn" class="btn btn-primary" type="button" disabled>Run</button>
+              </div>
+              <pre id="consoleOutput" class="console-output">等待运行...</pre>
+              <div class="tips">
+                提示：Run 会编译并执行当前代码，代码需包含 public class 与 main 方法。
+              </div>
+            </section>
+
+            <section class="submit-panel workbench-panel" data-panel="submit">
+              <div class="panel-header">提交判题结果</div>
+              <div class="workbench-action-row">
+                <button id="submitBtn" class="btn btn-submit" type="button" disabled>Submit</button>
+              </div>
+              <div class="submit-summary">
+                <span id="submitVerdict" class="submit-verdict">等待提交</span>
+                <span id="submitPassRate" class="submit-metric">通过率: -</span>
+                <span id="submitRuntime" class="submit-metric">耗时: -</span>
+                <span id="submitMemory" class="submit-metric">内存: -</span>
+              </div>
+              <pre id="submitCases" class="submit-cases">点击 Submit 后展示多测试用例明细。</pre>
+            </section>
           </div>
-          <pre id="submitCases" class="submit-cases">点击 Submit 后展示多测试用例明细。</pre>
         </section>
       </section>
     </main>

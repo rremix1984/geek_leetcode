@@ -5,6 +5,7 @@ const state = {
   selectedId: "",
   selectedProblem: null,
   loading: false,
+  activeWorkbenchTab: "animation",
   animationTimer: null,
   animationData: null,
   animationIndex: 0,
@@ -190,6 +191,19 @@ function setLoading(loading) {
   $("submitBtn").disabled = loading || !state.selectedProblem;
 }
 
+function switchWorkbenchTab(tab) {
+  const key = tab || "animation";
+  state.activeWorkbenchTab = key;
+  document.querySelectorAll(".workbench-tab").forEach((el) => {
+    const active = el.dataset.tab === key;
+    el.classList.toggle("active", active);
+  });
+  document.querySelectorAll(".workbench-panel").forEach((el) => {
+    const active = el.dataset.panel === key;
+    el.classList.toggle("active", active);
+  });
+}
+
 function fillProblem(problem) {
   state.selectedProblem = problem;
   $("problemTitle").textContent = problem ? problem.name : "请选择题目";
@@ -232,6 +246,7 @@ async function selectProblem(id) {
 }
 
 async function runCode() {
+  switchWorkbenchTab("run");
   if (!state.selectedProblem) {
     $("consoleOutput").textContent = "请先选择题目后再运行。";
     return;
@@ -258,6 +273,7 @@ async function runCode() {
 }
 
 async function submitCode() {
+  switchWorkbenchTab("submit");
   if (!state.selectedProblem) {
     $("submitVerdict").textContent = "请先选择题目";
     $("submitCases").textContent = "请先从左侧题目列表选择一道题后再提交。";
@@ -316,12 +332,13 @@ async function submitCode() {
 }
 
 async function launchAnimation() {
+  switchWorkbenchTab("animation");
   if (!state.selectedProblem) return;
   setLoading(true);
   try {
     const data = await fetchJson(`/api/visualize/${encodeURIComponent(state.selectedProblem.id)}`);
     startAnimationPlayback(data);
-    const panel = document.querySelector(".animation-panel");
+    const panel = document.querySelector(".workbench-tabs-wrap");
     if (panel) {
       panel.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -367,6 +384,8 @@ function resetAnimationCanvas() {
   ctx.font = "16px sans-serif";
   ctx.fillText("点击“播放动画”开始可视化", 20, 40);
   $("animationDesc").textContent = "点击“播放动画”开始可视化";
+  $("animationStepAction").textContent = "在做什么：等待播放";
+  $("animationStepReason").textContent = "为什么：用于解释当前操作目的";
 }
 
 function resizeCanvas(canvas) {
@@ -385,6 +404,8 @@ function startAnimationPlayback(data) {
   const frames = (data && data.frames) || [];
   if (!frames.length) {
     $("animationDesc").textContent = "没有可播放的动画帧";
+    $("animationStepAction").textContent = "在做什么：无可用动画帧";
+    $("animationStepReason").textContent = "为什么：当前题目暂未提供步骤数据";
     return;
   }
   drawFrame(frames[0], data);
@@ -436,6 +457,7 @@ function drawFrame(frame, animationData) {
   const title = (animationData && animationData.title) || "";
   const technique = (animationData && animationData.technique) || "";
   $("animationDesc").textContent = `${title} | ${technique} | Step ${state.animationIndex + 1}/${((animationData && animationData.frames) || []).length} | ${desc}`;
+  renderAnimationStepExplain(frame);
 
   const width = canvas.width;
   ctx.fillStyle = "#cbd5e1";
@@ -455,6 +477,13 @@ function drawFrame(frame, animationData) {
   if (frame.steps !== undefined) {
     ctx.fillText(`steps: ${frame.steps}`, width - 180, 60);
   }
+}
+
+function renderAnimationStepExplain(frame) {
+  const action = String((frame && frame.action) || "推进到下一步并更新可视化状态");
+  const reason = String((frame && frame.reason) || "帮助理解算法当前为什么这么做");
+  $("animationStepAction").textContent = `在做什么：${action}`;
+  $("animationStepReason").textContent = `为什么：${reason}`;
 }
 
 function drawSqrtFrame(ctx, canvas, frame) {
@@ -550,6 +579,10 @@ function drawSqrtFrame(ctx, canvas, frame) {
 }
 
 function drawArrayFrame(ctx, canvas, frame) {
+  if (frame && frame.mode === "bit-reverse") {
+    drawBitReverseFrame(ctx, canvas, frame);
+    return;
+  }
   if (frame && frame.mode === "sorted-squares") {
     drawSortedSquaresFrame(ctx, canvas, frame);
     return;
@@ -627,6 +660,57 @@ function drawArrayFrame(ctx, canvas, frame) {
       ctx.textAlign = "left";
       ctx.textBaseline = "alphabetic";
     }
+  }
+}
+
+function drawBitReverseFrame(ctx, canvas, frame) {
+  const sourceBits = String((frame && frame.sourceBits) || "").padStart(32, "0").slice(-32);
+  const resultBits = String((frame && frame.resultBits) || "").padStart(32, "0").slice(-32);
+  const fromPos = Number(frame && frame.fromPos);
+  const toPos = Number(frame && frame.toPos);
+  const processed = Number(frame && frame.processed);
+  const sourceValue = String((frame && frame.sourceValue) || "0");
+  const resultValue = String((frame && frame.resultValue) || "0");
+  const cellSize = 18;
+  const gap = 4;
+  const groupGap = 8;
+  const startX = 22;
+  const topY = 68;
+  const rowGap = 118;
+  const drawBitRow = (bits, y, label, highlightIndex, fillProcessed, processedCount) => {
+    ctx.fillStyle = "#93c5fd";
+    ctx.font = "14px sans-serif";
+    ctx.fillText(label, startX, y - 14);
+    for (let i = 0; i < 32; i++) {
+      const groupOffset = Math.floor(i / 8) * groupGap;
+      const x = startX + i * (cellSize + gap) + groupOffset;
+      const filled = fillProcessed ? i >= 32 - processedCount : true;
+      let color = filled ? "#334155" : "#1e293b";
+      if (i === highlightIndex) {
+        color = "#ef4444";
+      }
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, cellSize, 26);
+      ctx.fillStyle = "#e2e8f0";
+      ctx.font = "14px monospace";
+      ctx.fillText(bits[i], x + 5, y + 18);
+      if (i % 8 === 7) {
+        ctx.fillStyle = "#64748b";
+        ctx.font = "10px sans-serif";
+        ctx.fillText(`${31 - i}-${24 - i}`, x - 10, y + 40);
+      }
+    }
+  };
+  drawBitRow(sourceBits, topY, "原始 32 位（二进制）", Number.isFinite(fromPos) ? 31 - fromPos : -1, false, 0);
+  drawBitRow(resultBits, topY + rowGap, "反转结果（左移并拼接）", Number.isFinite(toPos) ? 31 - toPos : -1, true, Number.isFinite(processed) ? processed : 0);
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "13px monospace";
+  ctx.fillText(`source(uint32): ${sourceValue}`, 22, topY + rowGap + 66);
+  ctx.fillText(`result(uint32): ${resultValue}`, 22, topY + rowGap + 88);
+  if (Number.isFinite(fromPos) && Number.isFinite(toPos)) {
+    ctx.fillStyle = "#fef08a";
+    ctx.font = "13px sans-serif";
+    ctx.fillText(`当前移动: 原第 ${fromPos} 位 -> 结果第 ${toPos} 位`, 22, 42);
   }
 }
 
@@ -1398,10 +1482,16 @@ function bindEvents() {
   $("runBtn").addEventListener("click", runCode);
   $("launchBtn").addEventListener("click", launchAnimation);
   $("submitBtn").addEventListener("click", submitCode);
+  document.querySelectorAll(".workbench-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      switchWorkbenchTab(tab.dataset.tab || "animation");
+    });
+  });
 }
 
 async function init() {
   bindEvents();
+  switchWorkbenchTab("animation");
   try {
     const health = await fetchJson("/api/health");
     setHealthBadge(true, `Backend: ${health.status}`);
