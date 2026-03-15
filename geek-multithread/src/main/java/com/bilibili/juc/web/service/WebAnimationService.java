@@ -841,22 +841,66 @@ public class WebAnimationService {
         }
         if ("no139".equals(id)) {
             String s = "leetcode";
+            List<String> dict = Arrays.asList("leet", "code", "lee", "tcode");
             boolean[] ok = new boolean[s.length() + 1];
             ok[0] = true;
             for (int i = 1; i <= s.length(); i++) {
-                if ((i == 4 && ok[0]) || (i == 8 && ok[4])) {
-                    ok[i] = true;
+                boolean decided = false;
+                for (int j = i - 1; j >= 0; j--) {
+                    String piece = s.substring(j, i);
+                    boolean inDict = dict.contains(piece);
+                    boolean reachable = ok[j];
+                    Map<String, Object> probe = baseFrame(toIntArray(ok));
+                    probe.put("mode", "word-break");
+                    probe.put("text", s);
+                    probe.put("dict", dict);
+                    probe.put("active", i);
+                    probe.put("scanStart", j);
+                    probe.put("scanEnd", i);
+                    probe.put("scanWord", piece);
+                    probe.put("startReachable", reachable);
+                    probe.put("wordInDict", inDict);
+                    if (inDict && reachable) {
+                        ok[i] = true;
+                        decided = true;
+                        probe.put("matched", true);
+                        probe.put("segStart", j);
+                        probe.put("segEnd", i);
+                        probe.put("array", toIntArray(ok));
+                        probe.put("description", "前缀 [0," + i + ") 命中单词 \"" + piece + "\"，且 dp[" + j + "]=true");
+                    } else {
+                        probe.put("matched", false);
+                        probe.put("description", "尝试 \"" + piece + "\"：字典命中=" + inDict + "，dp[" + j + "]=" + reachable);
+                    }
+                    probe.put("profit", ok[i] ? 1 : 0);
+                    frames.add(probe);
+                    if (ok[i]) {
+                        break;
+                    }
                 }
-                int[] arr = new int[ok.length];
-                for (int j = 0; j < ok.length; j++) {
-                    arr[j] = ok[j] ? 1 : 0;
-                }
-                Map<String, Object> frame = baseFrame(arr);
-                frame.put("active", i);
-                frame.put("profit", ok[i] ? 1 : 0);
-                frame.put("description", "前缀 [0," + i + ") 是否可拆分: " + ok[i]);
-                frames.add(frame);
+                Map<String, Object> settle = baseFrame(toIntArray(ok));
+                settle.put("mode", "word-break");
+                settle.put("text", s);
+                settle.put("dict", dict);
+                settle.put("active", i);
+                settle.put("scanStart", -1);
+                settle.put("scanEnd", i);
+                settle.put("matched", ok[i]);
+                settle.put("profit", ok[i] ? 1 : 0);
+                settle.put("description", decided
+                        ? "完成前缀 [0," + i + ")：可拆分"
+                        : "完成前缀 [0," + i + ")：不可拆分");
+                frames.add(settle);
             }
+            Map<String, Object> done = baseFrame(toIntArray(ok));
+            done.put("mode", "word-break");
+            done.put("text", s);
+            done.put("dict", dict);
+            done.put("active", s.length());
+            done.put("found", ok[s.length()]);
+            done.put("result", ok[s.length()]);
+            done.put("description", "最终结论：" + (ok[s.length()] ? "可以拆分" : "不可以拆分"));
+            frames.add(done);
             return response(item, "dp", 900, frames);
         }
         if ("no915".equals(id)) {

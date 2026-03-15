@@ -1070,6 +1070,10 @@ function drawHashFrame(ctx, canvas, frame) {
 }
 
 function drawDpFrame(ctx, canvas, frame) {
+  if (frame && frame.mode === "word-break") {
+    drawWordBreakFrame(ctx, canvas, frame);
+    return;
+  }
   if (frame && frame.mode === "coin-change") {
     drawCoinChangeFrame(ctx, canvas, frame);
     return;
@@ -1213,6 +1217,76 @@ function drawFrogJumpFrame(ctx, canvas, frame) {
     ctx.fillStyle = frame.result ? "#22c55e" : "#ef4444";
     ctx.fillText(`是否可达终点: ${String(frame.result)}`, 40, 72);
   }
+}
+
+function drawWordBreakFrame(ctx, canvas, frame) {
+  const text = typeof (frame && frame.text) === "string" ? frame.text : "";
+  const chars = text.split("");
+  const dict = Array.isArray(frame && frame.dict) ? frame.dict : [];
+  const ok = Array.isArray(frame && frame.array) ? frame.array : [];
+  const active = Number.isInteger(frame && frame.active) ? frame.active : -1;
+  const scanStart = Number.isInteger(frame && frame.scanStart) ? frame.scanStart : -1;
+  const scanEnd = Number.isInteger(frame && frame.scanEnd) ? frame.scanEnd : -1;
+  const matched = !!(frame && frame.matched);
+  const startReachable = !!(frame && frame.startReachable);
+  const wordInDict = !!(frame && frame.wordInDict);
+  const scanWord = typeof (frame && frame.scanWord) === "string" ? frame.scanWord : "";
+  const segStart = Number.isInteger(frame && frame.segStart) ? frame.segStart : -1;
+  const segEnd = Number.isInteger(frame && frame.segEnd) ? frame.segEnd : -1;
+  const cellW = 44;
+  const gap = 6;
+  const startX = 24;
+  const rowY = 96;
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`字符串: ${text}`, 24, 34);
+  ctx.fillText(`字典: ${dict.join(", ")}`, 24, 56);
+  chars.forEach((ch, idx) => {
+    const x = startX + idx * (cellW + gap);
+    const inScan = scanStart >= 0 && scanEnd > scanStart && idx >= scanStart && idx < scanEnd;
+    const inSeg = segStart >= 0 && segEnd > segStart && idx >= segStart && idx < segEnd;
+    const isCut = idx === active;
+    let color = "#334155";
+    if (inScan) color = "#f59e0b";
+    if (inSeg) color = "#16a34a";
+    if (isCut) color = "#f97316";
+    ctx.fillStyle = color;
+    ctx.fillRect(x, rowY, cellW, 36);
+    ctx.fillStyle = "#f8fafc";
+    ctx.font = "16px monospace";
+    ctx.fillText(ch, x + 17, rowY + 23);
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "11px monospace";
+    ctx.fillText(String(idx), x + 17, rowY + 50);
+  });
+  const dpY = 176;
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText("可达前缀 dp（绿=true，灰=false）", 24, 156);
+  const maxCells = Math.min(ok.length, Math.max(1, Math.floor((canvas.width - 48) / 60)));
+  const offset = active >= maxCells ? active - maxCells + 1 : 0;
+  for (let i = 0; i < maxCells; i++) {
+    const idx = i + offset;
+    const x = 24 + i * 60;
+    const val = Number(ok[idx] || 0) === 1;
+    ctx.fillStyle = idx === active ? "#f97316" : val ? "#16a34a" : "#334155";
+    ctx.fillRect(x, dpY, 54, 34);
+    ctx.fillStyle = "#e2e8f0";
+    ctx.font = "11px monospace";
+    ctx.fillText(`dp[${idx}]`, x + 8, dpY + 13);
+    ctx.font = "13px monospace";
+    ctx.fillText(val ? "T" : "F", x + 24, dpY + 28);
+  }
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`当前切分终点 i = ${active >= 0 ? active : "-"}`, 24, 232);
+  ctx.fillText(`候选片段: ${scanWord || "-"}`, 24, 256);
+  ctx.fillText(`字典命中: ${wordInDict}   起点可达: ${startReachable}`, 24, 280);
+  if (scanStart >= 0 && scanEnd >= 0) {
+    ctx.fillText(`片段区间: [${scanStart}, ${scanEnd})`, 24, 304);
+  }
+  ctx.fillStyle = matched ? "#22c55e" : "#f59e0b";
+  ctx.fillText(matched ? "本次匹配成功，dp[i] 置为 true" : "继续尝试其他切分点", 24, 330);
 }
 
 function drawHeapFrame(ctx, canvas, frame) {
