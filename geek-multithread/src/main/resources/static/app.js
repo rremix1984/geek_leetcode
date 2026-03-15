@@ -424,7 +424,9 @@ function drawFrame(frame, animationData) {
     drawHashFrame(ctx, canvas, frame);
   } else if (type === "dp") {
     drawDpFrame(ctx, canvas, frame);
-  } else if (type === "two-pointers" || type === "heap" || type === "stack") {
+  } else if (type === "heap") {
+    drawHeapFrame(ctx, canvas, frame);
+  } else if (type === "two-pointers" || type === "stack") {
     drawArrayFrame(ctx, canvas, frame);
   } else {
     drawArrayFrame(ctx, canvas, frame);
@@ -889,6 +891,10 @@ function drawBacktrackingFrame(ctx, canvas, frame, animationData) {
     drawNQueensFrame(ctx, canvas, frame);
     return;
   }
+  if (frame && frame.mode === "permutation-tree") {
+    drawPermutationFrame(ctx, canvas, frame);
+    return;
+  }
   const choices = (frame && frame.array) || [];
   const path = (frame && frame.result) || [];
   const active = frame && frame.active;
@@ -967,6 +973,53 @@ function drawNQueensFrame(ctx, canvas, frame) {
   }
 }
 
+function drawPermutationFrame(ctx, canvas, frame) {
+  const choices = Array.isArray(frame && frame.array) ? frame.array : [];
+  const path = Array.isArray(frame && frame.path) ? frame.path : [];
+  const usedRaw = Array.isArray(frame && frame.used) ? frame.used : [];
+  const perms = Array.isArray(frame && frame.permutations) ? frame.permutations : [];
+  const active = Number.isInteger(frame && frame.active) ? frame.active : -1;
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText("候选数字（灰=未选，橙=当前，绿=已选）", 28, 42);
+  choices.forEach((value, idx) => {
+    const x = 28 + idx * 88;
+    const used = Number(usedRaw[idx] || 0) === 1;
+    ctx.fillStyle = idx === active ? "#f97316" : used ? "#16a34a" : "#334155";
+    ctx.fillRect(x, 56, 72, 36);
+    ctx.fillStyle = "#f8fafc";
+    ctx.font = "15px monospace";
+    ctx.fillText(String(value), x + 30, 80);
+  });
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`当前路径（深度 ${path.length}）`, 28, 124);
+  path.forEach((value, idx) => {
+    const x = 28 + idx * 90;
+    ctx.fillStyle = "#0ea5e9";
+    ctx.fillRect(x, 138, 74, 36);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "14px monospace";
+    ctx.fillText(String(value), x + 30, 161);
+    if (idx < path.length - 1) {
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "16px sans-serif";
+      ctx.fillText("→", x + 79, 161);
+    }
+  });
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`已生成全排列 ${perms.length} 个`, 28, 208);
+  const startY = 224;
+  const shown = perms.slice(Math.max(0, perms.length - 6));
+  shown.forEach((perm, idx) => {
+    const y = startY + idx * 24;
+    ctx.fillStyle = idx === shown.length - 1 ? "#22c55e" : "#cbd5e1";
+    ctx.font = "13px monospace";
+    ctx.fillText(`[${perm.join(", ")}]`, 40, y);
+  });
+}
+
 function drawHashFrame(ctx, canvas, frame) {
   const nums = (frame && frame.array) || [];
   const active = Number.isInteger(frame && frame.active) ? frame.active : -1;
@@ -1017,6 +1070,14 @@ function drawHashFrame(ctx, canvas, frame) {
 }
 
 function drawDpFrame(ctx, canvas, frame) {
+  if (frame && frame.mode === "coin-change") {
+    drawCoinChangeFrame(ctx, canvas, frame);
+    return;
+  }
+  if (frame && frame.mode === "frog-jump") {
+    drawFrogJumpFrame(ctx, canvas, frame);
+    return;
+  }
   const arr = (frame && frame.array) || [];
   const active = frame && frame.active;
   arr.forEach((value, i) => {
@@ -1034,6 +1095,200 @@ function drawDpFrame(ctx, canvas, frame) {
     ctx.font = "15px sans-serif";
     ctx.fillText(`当前最优: ${frame.profit}`, 24, 150);
   }
+}
+
+function drawCoinChangeFrame(ctx, canvas, frame) {
+  const arr = Array.isArray(frame && frame.array) ? frame.array : [];
+  const coins = Array.isArray(frame && frame.coins) ? frame.coins : [];
+  const amount = Number(frame && frame.amount);
+  const active = Number.isInteger(frame && frame.active) ? frame.active : -1;
+  const activeCoin = Number(frame && frame.activeCoin);
+  const candidate = Number(frame && frame.candidate);
+  const prevAmount = Number(frame && frame.prevAmount);
+  const cellW = 56;
+  const gap = 6;
+  const startX = 24;
+  const startY = 88;
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`硬币面值: ${coins.join(", ")}   目标金额: ${Number.isFinite(amount) ? amount : "-"}`, 24, 42);
+  coins.forEach((coin, idx) => {
+    const x = 24 + idx * 74;
+    ctx.fillStyle = coin === activeCoin ? "#f97316" : "#1e40af";
+    ctx.fillRect(x, 52, 60, 24);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "13px monospace";
+    ctx.fillText(String(coin), x + 24, 68);
+  });
+  const maxCells = Math.min(arr.length, Math.max(1, Math.floor((canvas.width - 48) / (cellW + gap))));
+  const offset = active >= maxCells ? active - maxCells + 1 : 0;
+  for (let i = 0; i < maxCells; i++) {
+    const idx = i + offset;
+    const x = startX + i * (cellW + gap);
+    const v = Number(arr[idx]);
+    const inf = Number.isFinite(amount) && v > amount;
+    ctx.fillStyle = idx === active ? "#f97316" : "#334155";
+    ctx.fillRect(x, startY, cellW, 34);
+    ctx.fillStyle = "#e2e8f0";
+    ctx.font = "11px monospace";
+    ctx.fillText(`dp[${idx}]`, x + 8, startY + 13);
+    ctx.font = "13px monospace";
+    ctx.fillText(inf ? "∞" : String(v), x + 22, startY + 28);
+  }
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`当前金额 i = ${active >= 0 ? active : "-"}`, 24, 146);
+  ctx.fillText(`使用硬币 coin = ${Number.isFinite(activeCoin) ? activeCoin : "-"}`, 24, 172);
+  ctx.fillText(`转移来源 i-coin = ${Number.isFinite(prevAmount) ? prevAmount : "-"}`, 24, 198);
+  ctx.fillText(`候选值 candidate = ${candidate >= 0 ? candidate : "无效"}`, 24, 224);
+  if (frame && frame.pickedCoin !== undefined) {
+    const picked = Number(frame.pickedCoin);
+    ctx.fillStyle = "#22c55e";
+    ctx.fillText(`当前最优来自硬币: ${picked > 0 ? picked : "-"}`, 24, 250);
+  }
+}
+
+function drawFrogJumpFrame(ctx, canvas, frame) {
+  const stones = Array.isArray(frame && frame.array) ? frame.array : [];
+  const count = Math.max(1, stones.length);
+  const startX = 40;
+  const endX = canvas.width - 40;
+  const baseY = Math.floor(canvas.height * 0.65);
+  const toX = (idx) => startX + ((endX - startX) * idx) / Math.max(1, count - 1);
+  ctx.strokeStyle = "#1e3a8a";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(startX, baseY + 26);
+  ctx.lineTo(endX, baseY + 26);
+  ctx.stroke();
+  stones.forEach((stone, idx) => {
+    const x = toX(idx);
+    const active = idx === frame.active;
+    ctx.fillStyle = active ? "#f97316" : "#334155";
+    ctx.fillRect(x - 16, baseY, 32, 18);
+    ctx.fillStyle = "#dbeafe";
+    ctx.font = "12px monospace";
+    ctx.fillText(String(stone), x - 10, baseY - 8);
+  });
+  const from = Number(frame && frame.jumpFrom);
+  const to = Number(frame && frame.jumpTo);
+  const progressRaw = Number(frame && frame.jumpProgress);
+  const progress = Number.isFinite(progressRaw) ? Math.max(0, Math.min(1, progressRaw)) : 1;
+  let frogX = toX(Number(frame && frame.frogIndex) || 0);
+  let frogY = baseY - 20;
+  if (from >= 0 && from < count && to >= 0 && to < count) {
+    const fromX = toX(from);
+    const toStoneX = toX(to);
+    const controlX = (fromX + toStoneX) / 2;
+    const peak = Math.max(36, Math.abs(toStoneX - fromX) * 0.2);
+    const controlY = baseY - peak - 24;
+    ctx.strokeStyle = "rgba(251, 191, 36, 0.9)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let t = 0; t <= 1.001; t += 0.03) {
+      const x = (1 - t) * (1 - t) * fromX + 2 * (1 - t) * t * controlX + t * t * toStoneX;
+      const y = (1 - t) * (1 - t) * (baseY - 8) + 2 * (1 - t) * t * controlY + t * t * (baseY - 8);
+      if (t === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.stroke();
+    frogX = (1 - progress) * (1 - progress) * fromX + 2 * (1 - progress) * progress * controlX + progress * progress * toStoneX;
+    frogY = (1 - progress) * (1 - progress) * (baseY - 8)
+      + 2 * (1 - progress) * progress * controlY
+      + progress * progress * (baseY - 8);
+  }
+  ctx.font = "26px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("🐸", frogX, frogY);
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText(`上一次跳跃步长 k = ${Number(frame && frame.lastJump) || 0}`, 40, 46);
+  if (frame && frame.result !== undefined) {
+    ctx.fillStyle = frame.result ? "#22c55e" : "#ef4444";
+    ctx.fillText(`是否可达终点: ${String(frame.result)}`, 40, 72);
+  }
+}
+
+function drawHeapFrame(ctx, canvas, frame) {
+  if (frame && frame.mode === "merge-k-lists") {
+    drawMergeKListsFrame(ctx, canvas, frame);
+    return;
+  }
+  drawArrayFrame(ctx, canvas, frame);
+}
+
+function drawMergeKListsFrame(ctx, canvas, frame) {
+  const lists = Array.isArray(frame && frame.lists) ? frame.lists : [];
+  const pointers = Array.isArray(frame && frame.listPointers) ? frame.listPointers : [];
+  const heap = Array.isArray(frame && frame.heap) ? frame.heap : [];
+  const heapFrom = Array.isArray(frame && frame.heapFrom) ? frame.heapFrom : [];
+  const merged = Array.isArray(frame && frame.merged) ? frame.merged : [];
+  const activeList = Number.isInteger(frame && frame.activeList) ? frame.activeList : -1;
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText("原始链表（亮色为当前链表头）", 24, 34);
+  lists.forEach((list, listIdx) => {
+    const y = 52 + listIdx * 52;
+    ctx.fillStyle = "#cbd5e1";
+    ctx.font = "13px sans-serif";
+    ctx.fillText(`L${listIdx + 1}`, 24, y + 20);
+    list.forEach((value, nodeIdx) => {
+      const x = 62 + nodeIdx * 72;
+      const pointer = Number(pointers[listIdx] || 0);
+      const isHead = nodeIdx === pointer;
+      const consumed = nodeIdx < pointer;
+      let color = consumed ? "#1e293b" : "#334155";
+      if (isHead) color = listIdx === activeList ? "#f97316" : "#0ea5e9";
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, 56, 28);
+      ctx.fillStyle = "#f8fafc";
+      ctx.font = "13px monospace";
+      ctx.fillText(String(value), x + 20, y + 19);
+      if (nodeIdx < list.length - 1) {
+        ctx.fillStyle = "#64748b";
+        ctx.font = "14px sans-serif";
+        ctx.fillText("→", x + 59, y + 19);
+      }
+    });
+  });
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText("最小堆（按值从小到大）", 24, 220);
+  heap.forEach((value, idx) => {
+    const x = 24 + idx * 74;
+    const from = Number(heapFrom[idx] || 0) + 1;
+    ctx.fillStyle = "#1e40af";
+    ctx.fillRect(x, 234, 64, 34);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "13px monospace";
+    ctx.fillText(String(value), x + 24, 254);
+    ctx.fillStyle = "#93c5fd";
+    ctx.font = "11px sans-serif";
+    ctx.fillText(`L${from}`, x + 22, 276);
+  });
+  ctx.fillStyle = "#93c5fd";
+  ctx.font = "14px sans-serif";
+  ctx.fillText("合并结果链表", 24, 306);
+  const mergedShown = merged.slice(Math.max(0, merged.length - 8));
+  mergedShown.forEach((value, idx) => {
+    const x = 24 + idx * 74;
+    ctx.fillStyle = idx === mergedShown.length - 1 ? "#22c55e" : "#475569";
+    ctx.fillRect(x, 320, 64, 34);
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "13px monospace";
+    ctx.fillText(String(value), x + 24, 340);
+    if (idx < mergedShown.length - 1) {
+      ctx.fillStyle = "#64748b";
+      ctx.font = "14px sans-serif";
+      ctx.fillText("→", x + 67, 340);
+    }
+  });
 }
 
 function bindEvents() {

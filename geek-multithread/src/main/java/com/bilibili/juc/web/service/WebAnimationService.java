@@ -751,18 +751,93 @@ public class WebAnimationService {
             Arrays.fill(dp, amount + 1);
             dp[0] = 0;
             for (int i = 1; i <= amount; i++) {
+                int bestCoin = -1;
                 for (int coin : coins) {
-                    if (coin <= i) {
-                        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                    Map<String, Object> frame = baseFrame(Arrays.copyOf(dp, dp.length));
+                    frame.put("mode", "coin-change");
+                    frame.put("coins", Arrays.stream(coins).boxed().collect(Collectors.toList()));
+                    frame.put("amount", amount);
+                    frame.put("active", i);
+                    frame.put("activeCoin", coin);
+                    frame.put("prevAmount", i - coin);
+                    if (coin > i || dp[i - coin] > amount) {
+                        frame.put("candidate", -1);
+                        frame.put("description", "金额 " + i + " 尝试硬币 " + coin + "：无法组成有效状态");
+                        frames.add(frame);
+                        continue;
                     }
+                    int candidate = dp[i - coin] + 1;
+                    frame.put("candidate", candidate);
+                    if (candidate < dp[i]) {
+                        dp[i] = candidate;
+                        bestCoin = coin;
+                        frame.put("description", "金额 " + i + " 尝试硬币 " + coin + "：更新最优为 " + candidate);
+                    } else {
+                        frame.put("description", "金额 " + i + " 尝试硬币 " + coin + "：保持当前最优 " + dp[i]);
+                    }
+                    frame.put("array", Arrays.copyOf(dp, dp.length));
+                    frame.put("pickedCoin", bestCoin);
+                    frame.put("profit", dp[i] > amount ? -1 : dp[i]);
+                    frames.add(frame);
                 }
-                Map<String, Object> frame = baseFrame(Arrays.copyOf(dp, dp.length));
-                frame.put("active", i);
-                frame.put("profit", dp[i] > amount ? -1 : dp[i]);
-                frame.put("description", "金额 " + i + " 的最少硬币数 = " + (dp[i] > amount ? "INF" : dp[i]));
-                frames.add(frame);
+                Map<String, Object> settle = baseFrame(Arrays.copyOf(dp, dp.length));
+                settle.put("mode", "coin-change");
+                settle.put("coins", Arrays.stream(coins).boxed().collect(Collectors.toList()));
+                settle.put("amount", amount);
+                settle.put("active", i);
+                settle.put("pickedCoin", bestCoin);
+                settle.put("profit", dp[i] > amount ? -1 : dp[i]);
+                settle.put("description", "完成金额 " + i + "：最少硬币数 = " + (dp[i] > amount ? "INF" : dp[i]));
+                frames.add(settle);
             }
+            Map<String, Object> done = baseFrame(Arrays.copyOf(dp, dp.length));
+            done.put("mode", "coin-change");
+            done.put("coins", Arrays.stream(coins).boxed().collect(Collectors.toList()));
+            done.put("amount", amount);
+            done.put("active", amount);
+            done.put("result", dp[amount] > amount ? -1 : dp[amount]);
+            done.put("pickedCoin", -1);
+            done.put("found", dp[amount] <= amount);
+            done.put("description", "兑换完成：金额 " + amount + " 的最少硬币数 = " + (dp[amount] > amount ? -1 : dp[amount]));
+            frames.add(done);
             return response(item, "dp", 900, frames);
+        }
+        if ("no403".equals(id)) {
+            int[] stones = new int[] { 0, 1, 3, 5, 6, 8, 12, 17 };
+            int[][] jumps = new int[][] { { 0, 1 }, { 1, 2 }, { 2, 3 }, { 3, 5 }, { 5, 6 }, { 6, 7 } };
+            Map<String, Object> start = baseFrame(Arrays.copyOf(stones, stones.length));
+            start.put("mode", "frog-jump");
+            start.put("frogIndex", 0);
+            start.put("lastJump", 0);
+            start.put("description", "青蛙在石头 0，第一跳必须是 1");
+            frames.add(start);
+            for (int[] jump : jumps) {
+                int from = jump[0];
+                int to = jump[1];
+                int step = stones[to] - stones[from];
+                double[] progress = new double[] { 0.0, 0.35, 0.7, 1.0 };
+                for (double p : progress) {
+                    Map<String, Object> frame = baseFrame(Arrays.copyOf(stones, stones.length));
+                    frame.put("mode", "frog-jump");
+                    frame.put("frogIndex", p >= 1.0 ? to : from);
+                    frame.put("jumpFrom", from);
+                    frame.put("jumpTo", to);
+                    frame.put("jumpProgress", p);
+                    frame.put("lastJump", step);
+                    frame.put("active", to);
+                    frame.put("description", "从石头 " + stones[from] + " 跳到 " + stones[to] + "，步长 " + step);
+                    frames.add(frame);
+                }
+            }
+            Map<String, Object> done = baseFrame(Arrays.copyOf(stones, stones.length));
+            done.put("mode", "frog-jump");
+            done.put("frogIndex", stones.length - 1);
+            done.put("lastJump", stones[stones.length - 1] - stones[stones.length - 2]);
+            done.put("found", true);
+            done.put("result", true);
+            done.put("description", "成功到达最后一块石头，返回 true");
+            frames.add(done);
+            return response(item, "dp", 500, frames);
         }
         if ("no139".equals(id)) {
             String s = "leetcode";
@@ -860,24 +935,108 @@ public class WebAnimationService {
             return response(item, "backtracking", 1000, frames);
         }
         if ("no046".equals(id)) {
-            int[] choices = new int[] { 1, 2, 3, 4 };
+            int[] nums = new int[] { 1, 2, 3 };
             List<Integer> path = new ArrayList<>();
-            for (int i = 0; i < choices.length; i++) {
-                path.add(choices[i]);
-                Map<String, Object> frame = baseFrame(choices);
-                frame.put("active", i);
-                frame.put("result", new ArrayList<>(path));
-                frame.put("description", "选择 " + choices[i] + "，当前路径 " + path);
-                frames.add(frame);
-                if (path.size() >= 3) {
-                    int removed = path.remove(path.size() - 1);
-                    Map<String, Object> back = baseFrame(choices);
-                    back.put("active", i);
-                    back.put("result", new ArrayList<>(path));
-                    back.put("description", "回溯撤销 " + removed + "，恢复路径 " + path);
-                    frames.add(back);
+            boolean[] used = new boolean[nums.length];
+            List<List<Integer>> perms = new ArrayList<>();
+            Map<String, Object> start = baseFrame(Arrays.copyOf(nums, nums.length));
+            start.put("mode", "permutation-tree");
+            start.put("active", -1);
+            start.put("depth", 0);
+            start.put("path", new ArrayList<>(path));
+            start.put("used", new int[] { 0, 0, 0 });
+            start.put("permutations", new ArrayList<>(perms));
+            start.put("description", "从空路径开始，依次选择未使用数字");
+            frames.add(start);
+            for (int i = 0; i < nums.length; i++) {
+                used[i] = true;
+                path.add(nums[i]);
+                Map<String, Object> choose1 = baseFrame(Arrays.copyOf(nums, nums.length));
+                choose1.put("mode", "permutation-tree");
+                choose1.put("active", i);
+                choose1.put("depth", path.size());
+                choose1.put("path", new ArrayList<>(path));
+                choose1.put("used", toIntArray(used));
+                choose1.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+                choose1.put("description", "深度 " + path.size() + "：选择 " + nums[i]);
+                frames.add(choose1);
+                for (int j = 0; j < nums.length; j++) {
+                    if (used[j]) {
+                        continue;
+                    }
+                    used[j] = true;
+                    path.add(nums[j]);
+                    Map<String, Object> choose2 = baseFrame(Arrays.copyOf(nums, nums.length));
+                    choose2.put("mode", "permutation-tree");
+                    choose2.put("active", j);
+                    choose2.put("depth", path.size());
+                    choose2.put("path", new ArrayList<>(path));
+                    choose2.put("used", toIntArray(used));
+                    choose2.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+                    choose2.put("description", "深度 " + path.size() + "：继续选择 " + nums[j]);
+                    frames.add(choose2);
+                    for (int k = 0; k < nums.length; k++) {
+                        if (used[k]) {
+                            continue;
+                        }
+                        used[k] = true;
+                        path.add(nums[k]);
+                        perms.add(new ArrayList<>(path));
+                        Map<String, Object> full = baseFrame(Arrays.copyOf(nums, nums.length));
+                        full.put("mode", "permutation-tree");
+                        full.put("active", k);
+                        full.put("depth", path.size());
+                        full.put("path", new ArrayList<>(path));
+                        full.put("used", toIntArray(used));
+                        full.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+                        full.put("profit", perms.size());
+                        full.put("description", "得到一个全排列 " + path);
+                        frames.add(full);
+                        path.remove(path.size() - 1);
+                        used[k] = false;
+                        Map<String, Object> back3 = baseFrame(Arrays.copyOf(nums, nums.length));
+                        back3.put("mode", "permutation-tree");
+                        back3.put("active", k);
+                        back3.put("depth", path.size());
+                        back3.put("path", new ArrayList<>(path));
+                        back3.put("used", toIntArray(used));
+                        back3.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+                        back3.put("description", "回溯撤销 " + nums[k] + "，返回上一层");
+                        frames.add(back3);
+                    }
+                    path.remove(path.size() - 1);
+                    used[j] = false;
+                    Map<String, Object> back2 = baseFrame(Arrays.copyOf(nums, nums.length));
+                    back2.put("mode", "permutation-tree");
+                    back2.put("active", j);
+                    back2.put("depth", path.size());
+                    back2.put("path", new ArrayList<>(path));
+                    back2.put("used", toIntArray(used));
+                    back2.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+                    back2.put("description", "回溯撤销 " + nums[j] + "，继续尝试同层其他数字");
+                    frames.add(back2);
                 }
+                path.remove(path.size() - 1);
+                used[i] = false;
+                Map<String, Object> back1 = baseFrame(Arrays.copyOf(nums, nums.length));
+                back1.put("mode", "permutation-tree");
+                back1.put("active", i);
+                back1.put("depth", path.size());
+                back1.put("path", new ArrayList<>(path));
+                back1.put("used", toIntArray(used));
+                back1.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+                back1.put("description", "撤销首层选择 " + nums[i] + "，切换到下一个起点");
+                frames.add(back1);
             }
+            Map<String, Object> done = baseFrame(Arrays.copyOf(nums, nums.length));
+            done.put("mode", "permutation-tree");
+            done.put("path", new ArrayList<>(path));
+            done.put("used", new int[] { 0, 0, 0 });
+            done.put("permutations", perms.stream().map(ArrayList::new).collect(Collectors.toList()));
+            done.put("profit", perms.size());
+            done.put("found", true);
+            done.put("description", "搜索结束，共生成 " + perms.size() + " 个全排列");
+            frames.add(done);
             return response(item, "backtracking", 1000, frames);
         }
         int[] choices = seededArray(id, 4, 1, 9);
@@ -1189,17 +1348,89 @@ public class WebAnimationService {
         List<Map<String, Object>> frames = new ArrayList<>();
         String id = problemId(item);
         if ("no023".equals(id)) {
-            int[] merged = new int[] { 1, 1, 2, 3, 4, 4, 5, 6 };
-            List<Integer> heap = new ArrayList<>();
-            for (int i = 0; i < merged.length; i++) {
-                heap.add(merged[i]);
-                heap.sort(Integer::compareTo);
-                Map<String, Object> frame = baseFrame(heap.stream().mapToInt(Integer::intValue).toArray());
-                frame.put("active", Math.max(0, heap.indexOf(merged[i])));
-                frame.put("description", "将链表头结点 " + merged[i] + " 放入最小堆，弹出后合并到结果链表");
-                frame.put("result", merged[i]);
-                frames.add(frame);
+            int[][] lists = new int[][] { { 1, 4, 5 }, { 1, 3, 4 }, { 2, 6 } };
+            int[] pointers = new int[] { 0, 0, 0 };
+            List<int[]> heap = new ArrayList<>();
+            List<Integer> merged = new ArrayList<>();
+            Map<String, Object> start = baseFrame(new int[] {});
+            start.put("mode", "merge-k-lists");
+            start.put("lists", Arrays.stream(lists)
+                    .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                    .collect(Collectors.toList()));
+            start.put("listPointers", Arrays.copyOf(pointers, pointers.length));
+            start.put("heap", new ArrayList<Integer>());
+            start.put("heapFrom", new ArrayList<Integer>());
+            start.put("merged", new ArrayList<Integer>());
+            start.put("description", "初始化：将每条链表头结点压入最小堆");
+            frames.add(start);
+            for (int i = 0; i < lists.length; i++) {
+                heap.add(new int[] { lists[i][0], i });
+                pointers[i] = 1;
+                heap.sort((a, b) -> Integer.compare(a[0], b[0]));
+                Map<String, Object> push = baseFrame(merged.stream().mapToInt(Integer::intValue).toArray());
+                push.put("mode", "merge-k-lists");
+                push.put("lists", Arrays.stream(lists)
+                        .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                        .collect(Collectors.toList()));
+                push.put("listPointers", Arrays.copyOf(pointers, pointers.length));
+                push.put("heap", heap.stream().map(a -> a[0]).collect(Collectors.toList()));
+                push.put("heapFrom", heap.stream().map(a -> a[1]).collect(Collectors.toList()));
+                push.put("merged", new ArrayList<>(merged));
+                push.put("activeList", i);
+                push.put("description", "压入链表 " + (i + 1) + " 的头结点 " + lists[i][0]);
+                frames.add(push);
             }
+            while (!heap.isEmpty()) {
+                heap.sort((a, b) -> Integer.compare(a[0], b[0]));
+                int[] node = heap.remove(0);
+                int value = node[0];
+                int from = node[1];
+                merged.add(value);
+                Map<String, Object> pop = baseFrame(merged.stream().mapToInt(Integer::intValue).toArray());
+                pop.put("mode", "merge-k-lists");
+                pop.put("lists", Arrays.stream(lists)
+                        .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                        .collect(Collectors.toList()));
+                pop.put("listPointers", Arrays.copyOf(pointers, pointers.length));
+                pop.put("heap", heap.stream().map(a -> a[0]).collect(Collectors.toList()));
+                pop.put("heapFrom", heap.stream().map(a -> a[1]).collect(Collectors.toList()));
+                pop.put("merged", new ArrayList<>(merged));
+                pop.put("activeList", from);
+                pop.put("result", value);
+                pop.put("description", "弹出最小值 " + value + "，接到结果链表尾部");
+                frames.add(pop);
+                if (pointers[from] < lists[from].length) {
+                    int next = lists[from][pointers[from]];
+                    pointers[from]++;
+                    heap.add(new int[] { next, from });
+                    heap.sort((a, b) -> Integer.compare(a[0], b[0]));
+                    Map<String, Object> refill = baseFrame(merged.stream().mapToInt(Integer::intValue).toArray());
+                    refill.put("mode", "merge-k-lists");
+                    refill.put("lists", Arrays.stream(lists)
+                            .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                            .collect(Collectors.toList()));
+                    refill.put("listPointers", Arrays.copyOf(pointers, pointers.length));
+                    refill.put("heap", heap.stream().map(a -> a[0]).collect(Collectors.toList()));
+                    refill.put("heapFrom", heap.stream().map(a -> a[1]).collect(Collectors.toList()));
+                    refill.put("merged", new ArrayList<>(merged));
+                    refill.put("activeList", from);
+                    refill.put("description", "将链表 " + (from + 1) + " 的下一个节点 " + next + " 压回最小堆");
+                    frames.add(refill);
+                }
+            }
+            Map<String, Object> done = baseFrame(merged.stream().mapToInt(Integer::intValue).toArray());
+            done.put("mode", "merge-k-lists");
+            done.put("lists", Arrays.stream(lists)
+                    .map(arr -> Arrays.stream(arr).boxed().collect(Collectors.toList()))
+                    .collect(Collectors.toList()));
+            done.put("listPointers", Arrays.copyOf(pointers, pointers.length));
+            done.put("heap", new ArrayList<Integer>());
+            done.put("heapFrom", new ArrayList<Integer>());
+            done.put("merged", new ArrayList<>(merged));
+            done.put("result", new ArrayList<>(merged));
+            done.put("found", true);
+            done.put("description", "最小堆为空，合并完成");
+            frames.add(done);
             return response(item, "heap", 900, frames);
         }
         int[] stream = new int[] { 4, 5, 8, 2, 3, 10, 9 };
@@ -1475,6 +1706,14 @@ public class WebAnimationService {
         }
         int result = value % mod;
         return result < 0 ? result + mod : result;
+    }
+
+    private int[] toIntArray(boolean[] flags) {
+        int[] values = new int[flags.length];
+        for (int i = 0; i < flags.length; i++) {
+            values[i] = flags[i] ? 1 : 0;
+        }
+        return values;
     }
 
     private int[] seededArray(String id, int size, int minInclusive, int maxInclusive) {
