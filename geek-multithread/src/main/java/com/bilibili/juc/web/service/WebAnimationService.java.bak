@@ -509,57 +509,24 @@ public class WebAnimationService {
             return buildSortedSquaresAnimation(item);
         }
         if ("no026".equals(id)) {
-            // NO.026 删除有序数组中的重复项 - 重新设计的动画
-            // 直观展示：慢指针slow标记不重复位置，快指针fast遍历数组
             int[] nums = new int[] { 1, 1, 2, 2, 3, 4, 4 };
             int slow = 0;
-            
-            // 初始帧
-            Map<String, Object> initFrame = baseFrame(nums);
-            initFrame.put("slow", 0);
-            initFrame.put("fast", 0);
-            initFrame.put("validLen", 1);
-            initFrame.put("description", "初始化：数组 [1,1,2,2,3,4,4]，slow=0，fast从1开始");
-            initFrame.put("action", "初始化双指针");
-            initFrame.put("reason", "slow指向第一个元素作为基准，fast负责遍历查找不同元素");
-            frames.add(initFrame);
-            
             for (int fast = 1; fast < nums.length; fast++) {
                 Map<String, Object> frame = baseFrame(nums);
-                frame.put("slow", slow);
-                frame.put("fast", fast);
-                frame.put("validLen", slow + 1);
-                
+                frame.put("left", slow);
+                frame.put("right", fast);
+                frame.put("active", fast);
                 if (nums[fast] != nums[slow]) {
-                    // 发现不同元素
                     slow++;
                     nums[slow] = nums[fast];
-                    frame.put("description", "发现不同：" + nums[fast] + " ≠ " + nums[slow-1] + " → 写入位置[" + slow + "]");
-                    frame.put("action", "写入新元素到 slow+1 位置");
-                    frame.put("reason", "fast位置的元素与slow不同，说明是新值，写入到slow+1位置");
-                    frame.put("highlight", slow);
+                    frame.put("description", "fast=" + fast + " 发现新值 " + nums[fast] + "，写入 slow=" + slow);
                 } else {
-                    // 发现重复元素
-                    frame.put("description", "发现重复：" + nums[fast] + " = " + nums[slow] + " → 跳过");
-                    frame.put("action", "跳过重复元素");
-                    frame.put("reason", "fast位置的元素与slow相同，说明是重复值，不写入");
-                    frame.put("skipped", fast);
+                    frame.put("description", "fast=" + fast + " 与 slow 重复，跳过");
                 }
-                frame.put("validLen", slow + 1);
+                frame.put("result", slow + 1);
                 frames.add(frame);
             }
-            
-            // 最终帧
-            Map<String, Object> finalFrame = baseFrame(nums);
-            finalFrame.put("slow", slow);
-            finalFrame.put("validLen", slow + 1);
-            finalFrame.put("done", true);
-            finalFrame.put("description", "完成！新数组前" + (slow+1) + "个元素为 [1,2,3,4]，返回长度 " + (slow+1));
-            finalFrame.put("action", "遍历完成");
-            finalFrame.put("reason", "所有重复元素已被跳过，返回不重复部分的长度");
-            frames.add(finalFrame);
-            
-            return response(item, "array", 1200, frames);
+            return response(item, "array", 900, frames);
         }
         if ("no283".equals(id)) {
             int[] nums = new int[] { 0, 1, 0, 3, 12 };

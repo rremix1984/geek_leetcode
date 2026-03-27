@@ -643,6 +643,11 @@ function drawSqrtFrame(ctx, canvas, frame) {
 }
 
 function drawArrayFrame(ctx, canvas, frame) {
+  // NO.026 删除有序数组中的重复项 - 特殊渲染
+  if (frame && (frame.slow !== undefined || frame.validLen !== undefined)) {
+    drawRemoveDuplicatesFrame(ctx, canvas, frame);
+    return;
+  }
   if (frame && frame.mode === "bit-reverse") {
     drawBitReverseFrame(ctx, canvas, frame);
     return;
@@ -725,6 +730,147 @@ function drawArrayFrame(ctx, canvas, frame) {
       ctx.textBaseline = "alphabetic";
     }
   }
+}
+
+
+function drawRemoveDuplicatesFrame(ctx, canvas, frame) {
+  const arr = (frame && frame.array) || [];
+  const width = canvas.width;
+  const height = canvas.height;
+  const padding = 40;
+  
+  const slow = frame.slow !== undefined ? frame.slow : -1;
+  const fast = frame.fast !== undefined ? frame.fast : -1;
+  const validLen = frame.validLen || 0;
+  const highlight = frame.highlight;
+  const skipped = frame.skipped;
+  const done = frame.done;
+  
+  // 计算每个单元格的大小
+  const cellWidth = Math.max(50, Math.min(80, (width - padding * 2) / arr.length - 10));
+  const cellHeight = 60;
+  const gap = 10;
+  const startX = (width - (cellWidth + gap) * arr.length + gap) / 2;
+  const startY = height / 2 - cellHeight / 2 - 20;
+  
+  // 绘制标题
+  ctx.fillStyle = "#e2e8f0";
+  ctx.font = "bold 16px sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("NO.026 删除有序数组中的重复项", width / 2, 30);
+  
+  // 绘制数组元素
+  arr.forEach((value, i) => {
+    const x = startX + i * (cellWidth + gap);
+    const y = startY;
+    
+    // 确定颜色
+    let bgColor = "#334155"; // 默认灰色
+    let borderColor = "#475569";
+    let textColor = "#e2e8f0";
+    
+    if (done) {
+      // 完成状态：前 validLen 个元素绿色
+      if (i < validLen) {
+        bgColor = "#059669"; // 绿色 - 保留的元素
+        borderColor = "#10b981";
+      } else {
+        bgColor = "#1e293b"; // 深灰色 - 不需要的元素
+        textColor = "#64748b";
+      }
+    } else if (i === highlight) {
+      bgColor = "#f59e0b"; // 黄色 - 新写入的元素
+      borderColor = "#fbbf24";
+    } else if (i === skipped) {
+      bgColor = "#dc2626"; // 红色 - 被跳过的重复元素
+      borderColor = "#ef4444";
+      textColor = "#fef2f2";
+    } else if (i <= slow && slow >= 0) {
+      bgColor = "#059669"; // 绿色 - 已保留的不重复元素
+      borderColor = "#10b981";
+    } else if (i === fast) {
+      bgColor = "#3b82f6"; // 蓝色 - fast 指针位置
+      borderColor = "#60a5fa";
+    }
+    
+    // 绘制单元格背景
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(x, y, cellWidth, cellHeight);
+    
+    // 绘制边框
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x, y, cellWidth, cellHeight);
+    
+    // 绘制数值
+    ctx.fillStyle = textColor;
+    ctx.font = "bold 20px monospace";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(String(value), x + cellWidth / 2, y + cellHeight / 2);
+    
+    // 绘制索引
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "12px monospace";
+    ctx.fillText("[" + i + "]", x + cellWidth / 2, y + cellHeight + 15);
+    
+    // 绘制指针标签
+    ctx.font = "bold 12px sans-serif";
+    if (i === slow && slow >= 0) {
+      ctx.fillStyle = "#ef4444";
+      ctx.fillText("slow", x + cellWidth / 2, y - 25);
+      // 绘制箭头
+      ctx.beginPath();
+      ctx.moveTo(x + cellWidth / 2, y - 20);
+      ctx.lineTo(x + cellWidth / 2 - 5, y - 10);
+      ctx.lineTo(x + cellWidth / 2 + 5, y - 10);
+      ctx.closePath();
+      ctx.fill();
+    }
+    if (i === fast && fast >= 0 && !done) {
+      ctx.fillStyle = "#3b82f6";
+      ctx.fillText("fast", x + cellWidth / 2, y - 45);
+      // 绘制箭头
+      ctx.beginPath();
+      ctx.moveTo(x + cellWidth / 2, y - 40);
+      ctx.lineTo(x + cellWidth / 2 - 5, y - 30);
+      ctx.lineTo(x + cellWidth / 2 + 5, y - 30);
+      ctx.closePath();
+      ctx.fill();
+    }
+  });
+  
+  // 绘制状态信息
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "14px sans-serif";
+  
+  const infoY = startY + cellHeight + 50;
+  ctx.fillText("有效长度: " + validLen, padding, infoY);
+  
+  // 绘制颜色说明
+  const legendY = infoY + 30;
+  const legendX = padding;
+  
+  ctx.fillStyle = "#059669";
+  ctx.fillRect(legendX, legendY, 16, 16);
+  ctx.fillStyle = "#94a3b8";
+  ctx.fillText("保留的不重复元素", legendX + 24, legendY + 12);
+  
+  ctx.fillStyle = "#dc2626";
+  ctx.fillRect(legendX + 180, legendY, 16, 16);
+  ctx.fillStyle = "#94a3b8";
+  ctx.fillText("跳过的重复元素", legendX + 204, legendY + 12);
+  
+  ctx.fillStyle = "#3b82f6";
+  ctx.fillRect(legendX + 340, legendY, 16, 16);
+  ctx.fillStyle = "#94a3b8";
+  ctx.fillText("fast 指针", legendX + 364, legendY + 12);
+  
+  ctx.fillStyle = "#f59e0b";
+  ctx.fillRect(legendX + 460, legendY, 16, 16);
+  ctx.fillStyle = "#94a3b8";
+  ctx.fillText("新写入元素", legendX + 484, legendY + 12);
 }
 
 function drawBitReverseFrame(ctx, canvas, frame) {
