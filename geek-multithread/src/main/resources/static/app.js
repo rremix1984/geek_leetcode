@@ -1576,4 +1576,7 @@ async function init() {
   resetAnimationCanvas();
 }
 
+// 初始化主题
+ThemeManager.init();
+
 init();
