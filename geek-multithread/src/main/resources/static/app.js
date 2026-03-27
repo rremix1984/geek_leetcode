@@ -1,3 +1,47 @@
+// ===== 主题管理 =====
+const ThemeManager = {
+  STORAGE_KEY: 'leetcode-theme',
+  
+  init() {
+    const saved = localStorage.getItem(this.STORAGE_KEY);
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      this.updateToggleButton(true);
+    }
+    
+    // 绑定切换按钮
+    const toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => this.toggle());
+    }
+  },
+  
+  isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  },
+  
+  toggle() {
+    const isDark = this.isDark();
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem(this.STORAGE_KEY, 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem(this.STORAGE_KEY, 'dark');
+    }
+    this.updateToggleButton(!isDark);
+  },
+  
+  updateToggleButton(isDark) {
+    const toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) {
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+      toggleBtn.title = isDark ? '切换到亮色模式' : '切换到暗色模式';
+    }
+  }
+};
+
+// ===== 状态管理 =====
 const state = {
   difficulty: "all",
   keyword: "",
@@ -18,6 +62,26 @@ function $(id) {
 function asNumber(value, fallback = 0) {
   const n = Number(value);
   return Number.isFinite(n) ? n : fallback;
+}
+
+async function fetchJson(url, options) {
+  const res = await fetch(url, options);
+  const text = await res.text();
+  let data = null;
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch (e) {
+    data = null;
+  }
+  if (!res.ok) {
+    throw new Error((data && data.error) || `${res.status} ${res.statusText}`);
+  }
+  return data;
+}
+
+function escapeHtml(input) {
+  const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
+  return (input || "").replace(/[&<>]/g, (c) => map[c]);
 }
 
 async function fetchJson(url, options) {

@@ -15,7 +15,12 @@
       <div class="global-search">
         <input id="searchInput" type="text" placeholder="搜索题目 / 技巧 / 分类" />
       </div>
-      <div id="healthBadge" class="health-badge">Connecting...</div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div id="healthBadge" class="health-badge">Connecting...</div>
+        <button id="themeToggle" class="theme-toggle" type="button" title="切换主题">
+          🌙
+        </button>
+      </div>
     </header>
 
     <main class="workspace">
@@ -71,7 +76,7 @@
                 <button id="launchBtn" class="btn btn-secondary" type="button" disabled>播放动画</button>
               </div>
               <canvas id="animationCanvas" width="1000" height="220"></canvas>
-              <div id="animationDesc" class="animation-desc">点击“播放动画”开始可视化</div>
+              <div id="animationDesc" class="animation-desc">点击"播放动画"开始可视化</div>
               <div class="animation-step-panel">
                 <div class="animation-step-title">本步说明</div>
                 <div id="animationStepAction" class="animation-step-line">在做什么：等待播放</div>
